@@ -1,0 +1,952 @@
+{
+  "race": "Tour de Romandie",
+  "race_slug": "tour-de-romandie-2026",
+  "updated_at": "2026-06-02T21:25:28.346061",
+  "total_riders": 118,
+  "riders": [
+    {
+      "name": "POGAČAR Tadej",
+      "nationality": "SI",
+      "number": 1,
+      "team": "UAE Team Emirates - XRG (WT)",
+      "rider_url": "rider/tadej-pogacar",
+      "team_url": "team/uae-team-emirates-xrg-2026"
+    },
+    {
+      "name": "GROßSCHARTNER Felix",
+      "nationality": "AT",
+      "number": 2,
+      "team": "UAE Team Emirates - XRG (WT)",
+      "rider_url": "rider/felix-grossschartner",
+      "team_url": "team/uae-team-emirates-xrg-2026"
+    },
+    {
+      "name": "LAENGEN Vegard Stake",
+      "nationality": "NO",
+      "number": 3,
+      "team": "UAE Team Emirates - XRG (WT)",
+      "rider_url": "rider/vegard-stake-laengen",
+      "team_url": "team/uae-team-emirates-xrg-2026"
+    },
+    {
+      "name": "NOVAK Domen",
+      "nationality": "SI",
+      "number": 4,
+      "team": "UAE Team Emirates - XRG (WT)",
+      "rider_url": "rider/domen-novak",
+      "team_url": "team/uae-team-emirates-xrg-2026"
+    },
+    {
+      "name": "ALMEIDA João",
+      "nationality": "PT",
+      "number": 4,
+      "team": "UAE Team Emirates - XRG (WT)",
+      "rider_url": "rider/joao-almeida",
+      "team_url": "team/uae-team-emirates-xrg-2026"
+    },
+    {
+      "name": "OLIVEIRA Ivo",
+      "nationality": "PT",
+      "number": 5,
+      "team": "UAE Team Emirates - XRG (WT)",
+      "rider_url": "rider/ivo-emanuel-alves",
+      "team_url": "team/uae-team-emirates-xrg-2026"
+    },
+    {
+      "name": "SIVAKOV Pavel",
+      "nationality": "FR",
+      "number": 6,
+      "team": "UAE Team Emirates - XRG (WT)",
+      "rider_url": "rider/pavel-sivakov",
+      "team_url": "team/uae-team-emirates-xrg-2026"
+    },
+    {
+      "name": "VERMAERKE Kevin",
+      "nationality": "US",
+      "number": 7,
+      "team": "UAE Team Emirates - XRG (WT)",
+      "rider_url": "rider/kevin-vermaerke",
+      "team_url": "team/uae-team-emirates-xrg-2026"
+    },
+    {
+      "name": "NORDHAGEN Jørgen",
+      "nationality": "NO",
+      "number": 11,
+      "team": "Team Visma | Lease a Bike (WT)",
+      "rider_url": "rider/jorgen-nordhagen",
+      "team_url": "team/team-visma-lease-a-bike-2026"
+    },
+    {
+      "name": "GRAAT Tijmen",
+      "nationality": "NL",
+      "number": 12,
+      "team": "Team Visma | Lease a Bike (WT)",
+      "rider_url": "rider/tijmen-graat",
+      "team_url": "team/team-visma-lease-a-bike-2026"
+    },
+    {
+      "name": "HUISING Menno",
+      "nationality": "NL",
+      "number": 13,
+      "team": "Team Visma | Lease a Bike (WT)",
+      "rider_url": "rider/menno-huising",
+      "team_url": "team/team-visma-lease-a-bike-2026"
+    },
+    {
+      "name": "KRUIJSWIJK Steven",
+      "nationality": "NL",
+      "number": 14,
+      "team": "Team Visma | Lease a Bike (WT)",
+      "rider_url": "rider/steven-kruijswijk",
+      "team_url": "team/team-visma-lease-a-bike-2026"
+    },
+    {
+      "name": "HAGENES Per Strand",
+      "nationality": "NO",
+      "number": 14,
+      "team": "Team Visma | Lease a Bike (WT)",
+      "rider_url": "rider/per-strand-hagenes",
+      "team_url": "team/team-visma-lease-a-bike-2026"
+    },
+    {
+      "name": "MATTIO Pietro",
+      "nationality": "IT",
+      "number": 15,
+      "team": "Team Visma | Lease a Bike (WT)",
+      "rider_url": "rider/pietro-mattio",
+      "team_url": "team/team-visma-lease-a-bike-2026"
+    },
+    {
+      "name": "SCHIFFER Anton",
+      "nationality": "DE",
+      "number": 16,
+      "team": "Team Visma | Lease a Bike (WT)",
+      "rider_url": "rider/anton-schiffer",
+      "team_url": "team/team-visma-lease-a-bike-2026"
+    },
+    {
+      "name": "ZINGLE Axel",
+      "nationality": "FR",
+      "number": 17,
+      "team": "Team Visma | Lease a Bike (WT)",
+      "rider_url": "rider/axel-zingle",
+      "team_url": "team/team-visma-lease-a-bike-2026"
+    },
+    {
+      "name": "LIPOWITZ Florian",
+      "nationality": "DE",
+      "number": 21,
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "rider_url": "rider/florian-lipowitz",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
+    },
+    {
+      "name": "BOICHIS Adrien",
+      "nationality": "FR",
+      "number": 22,
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "rider_url": "rider/adrien-boichis",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
+    },
+    {
+      "name": "FISHER-BLACK Finn",
+      "nationality": "NZ",
+      "number": 23,
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "rider_url": "rider/finn-fisher-black",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
+    },
+    {
+      "name": "MARTÍNEZ Daniel Felipe",
+      "nationality": "CO",
+      "number": 24,
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "rider_url": "rider/daniel-felipe-martinez",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
+    },
+    {
+      "name": "VAN POPPEL Danny",
+      "nationality": "NL",
+      "number": 24,
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "rider_url": "rider/danny-van-poppel",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
+    },
+    {
+      "name": "ROGLIČ Primož",
+      "nationality": "SI",
+      "number": 25,
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "rider_url": "rider/primoz-roglic",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
+    },
+    {
+      "name": "TRATNIK Jan",
+      "nationality": "SI",
+      "number": 26,
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "rider_url": "rider/jan-tratnik",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
+    },
+    {
+      "name": "TUCKWELL Luke",
+      "nationality": "AU",
+      "number": 27,
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "rider_url": "rider/luke-tuckwell",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
+    },
+    {
+      "name": "MOLLEMA Bauke",
+      "nationality": "NL",
+      "number": 31,
+      "team": "Lidl - Trek (WT)",
+      "rider_url": "rider/bauke-mollema",
+      "team_url": "team/lidl-trek-2026"
+    },
+    {
+      "name": "GEOGHEGAN HART Tao",
+      "nationality": "GB",
+      "number": 32,
+      "team": "Lidl - Trek (WT)",
+      "rider_url": "rider/tao-geoghegan-hart",
+      "team_url": "team/lidl-trek-2026"
+    },
+    {
+      "name": "KONRAD Patrick",
+      "nationality": "AT",
+      "number": 33,
+      "team": "Lidl - Trek (WT)",
+      "rider_url": "rider/patrick-konrad",
+      "team_url": "team/lidl-trek-2026"
+    },
+    {
+      "name": "MOSCA Jacopo",
+      "nationality": "IT",
+      "number": 34,
+      "team": "Lidl - Trek (WT)",
+      "rider_url": "rider/jacopo-mosca",
+      "team_url": "team/lidl-trek-2026"
+    },
+    {
+      "name": "CICCONE Giulio",
+      "nationality": "IT",
+      "number": 34,
+      "team": "Lidl - Trek (WT)",
+      "rider_url": "rider/giulio-ciccone",
+      "team_url": "team/lidl-trek-2026"
+    },
+    {
+      "name": "OOMEN Sam",
+      "nationality": "NL",
+      "number": 35,
+      "team": "Lidl - Trek (WT)",
+      "rider_url": "rider/sam-oomen",
+      "team_url": "team/lidl-trek-2026"
+    },
+    {
+      "name": "WITHEN PHILIPSEN Albert",
+      "nationality": "DK",
+      "number": 36,
+      "team": "Lidl - Trek (WT)",
+      "rider_url": "rider/albert-withen-philipsen",
+      "team_url": "team/lidl-trek-2026"
+    },
+    {
+      "name": "SÖDERQVIST Jakob",
+      "nationality": "SE",
+      "number": 37,
+      "team": "Lidl - Trek (WT)",
+      "rider_url": "rider/jakob-soderqvist",
+      "team_url": "team/lidl-trek-2026"
+    },
+    {
+      "name": "STEINHAUSER Georg",
+      "nationality": "DE",
+      "number": 41,
+      "team": "EF Education - EasyPost (WT)",
+      "rider_url": "rider/georg-steinhauser",
+      "team_url": "team/ef-education-easypost-2026"
+    },
+    {
+      "name": "BATTISTELLA Samuele",
+      "nationality": "IT",
+      "number": 42,
+      "team": "EF Education - EasyPost (WT)",
+      "rider_url": "rider/samuele-battistella",
+      "team_url": "team/ef-education-easypost-2026"
+    },
+    {
+      "name": "CEPEDA Jefferson Alexander",
+      "nationality": "EC",
+      "number": 43,
+      "team": "EF Education - EasyPost (WT)",
+      "rider_url": "rider/jefferson-alexander-cepeda",
+      "team_url": "team/ef-education-easypost-2026"
+    },
+    {
+      "name": "LEONARD Michael",
+      "nationality": "CA",
+      "number": 44,
+      "team": "EF Education - EasyPost (WT)",
+      "rider_url": "rider/michael-leonard1",
+      "team_url": "team/ef-education-easypost-2026"
+    },
+    {
+      "name": "HEALY Ben",
+      "nationality": "IE",
+      "number": 44,
+      "team": "EF Education - EasyPost (WT)",
+      "rider_url": "rider/ben-healy",
+      "team_url": "team/ef-education-easypost-2026"
+    },
+    {
+      "name": "NERURKAR Lukas",
+      "nationality": "GB",
+      "number": 45,
+      "team": "EF Education - EasyPost (WT)",
+      "rider_url": "rider/lukas-nerurkar",
+      "team_url": "team/ef-education-easypost-2026"
+    },
+    {
+      "name": "QUINN Sean",
+      "nationality": "US",
+      "number": 46,
+      "team": "EF Education - EasyPost (WT)",
+      "rider_url": "rider/sean-quinn",
+      "team_url": "team/ef-education-easypost-2026"
+    },
+    {
+      "name": "ONLEY Oscar",
+      "nationality": "GB",
+      "number": 51,
+      "team": "INEOS Grenadiers (WT)",
+      "rider_url": "rider/oscar-onley",
+      "team_url": "team/ineos-grenadiers-2026"
+    },
+    {
+      "name": "AUGUST Andrew",
+      "nationality": "US",
+      "number": 52,
+      "team": "INEOS Grenadiers (WT)",
+      "rider_url": "rider/andrew-august",
+      "team_url": "team/ineos-grenadiers-2026"
+    },
+    {
+      "name": "DE PLUS Laurens",
+      "nationality": "BE",
+      "number": 53,
+      "team": "INEOS Grenadiers (WT)",
+      "rider_url": "rider/laurens-de-plus",
+      "team_url": "team/ineos-grenadiers-2026"
+    },
+    {
+      "name": "GODON Dorian",
+      "nationality": "FR",
+      "number": 54,
+      "team": "INEOS Grenadiers (WT)",
+      "rider_url": "rider/dorian-godon",
+      "team_url": "team/ineos-grenadiers-2026"
+    },
+    {
+      "name": "BERNAL Egan",
+      "nationality": "CO",
+      "number": 54,
+      "team": "INEOS Grenadiers (WT)",
+      "rider_url": "rider/egan-bernal",
+      "team_url": "team/ineos-grenadiers-2026"
+    },
+    {
+      "name": "JUNGELS Bob",
+      "nationality": "LU",
+      "number": 55,
+      "team": "INEOS Grenadiers (WT)",
+      "rider_url": "rider/bob-jungels",
+      "team_url": "team/ineos-grenadiers-2026"
+    },
+    {
+      "name": "RODRÍGUEZ Carlos",
+      "nationality": "ES",
+      "number": 56,
+      "team": "INEOS Grenadiers (WT)",
+      "rider_url": "rider/carlos-rodriguez-cano",
+      "team_url": "team/ineos-grenadiers-2026"
+    },
+    {
+      "name": "SWIFT Ben",
+      "nationality": "GB",
+      "number": 57,
+      "team": "INEOS Grenadiers (WT)",
+      "rider_url": "rider/ben-swift",
+      "team_url": "team/ineos-grenadiers-2026"
+    },
+    {
+      "name": "CHAMPOUSSIN Clément",
+      "nationality": "FR",
+      "number": 61,
+      "team": "XDS Astana Team (WT)",
+      "rider_url": "rider/clement-champoussin",
+      "team_url": "team/xds-astana-team-2026"
+    },
+    {
+      "name": "FORTUNATO Lorenzo",
+      "nationality": "IT",
+      "number": 62,
+      "team": "XDS Astana Team (WT)",
+      "rider_url": "rider/lorenzo-fortunato",
+      "team_url": "team/xds-astana-team-2026"
+    },
+    {
+      "name": "HIGUITA Sergio",
+      "nationality": "CO",
+      "number": 63,
+      "team": "XDS Astana Team (WT)",
+      "rider_url": "rider/sergio-higuita",
+      "team_url": "team/xds-astana-team-2026"
+    },
+    {
+      "name": "KAJAMINI Florian Samuel",
+      "nationality": "IT",
+      "number": 64,
+      "team": "XDS Astana Team (WT)",
+      "rider_url": "rider/florian-samuel-kajamini",
+      "team_url": "team/xds-astana-team-2026"
+    },
+    {
+      "name": "BALLERINI Davide",
+      "nationality": "IT",
+      "number": 64,
+      "team": "XDS Astana Team (WT)",
+      "rider_url": "rider/davide-ballerini",
+      "team_url": "team/xds-astana-team-2026"
+    },
+    {
+      "name": "RODRÍGUEZ Cristián",
+      "nationality": "ES",
+      "number": 65,
+      "team": "XDS Astana Team (WT)",
+      "rider_url": "rider/cristian-rodriguez",
+      "team_url": "team/xds-astana-team-2026"
+    },
+    {
+      "name": "SCHRETTL Marco",
+      "nationality": "AT",
+      "number": 66,
+      "team": "XDS Astana Team (WT)",
+      "rider_url": "rider/marco-schrettl",
+      "team_url": "team/xds-astana-team-2026"
+    },
+    {
+      "name": "TONEATTI Davide",
+      "nationality": "IT",
+      "number": 67,
+      "team": "XDS Astana Team (WT)",
+      "rider_url": "rider/davide-toneatti",
+      "team_url": "team/xds-astana-team-2026"
+    },
+    {
+      "name": "MARTINEZ Lenny",
+      "nationality": "FR",
+      "number": 71,
+      "team": "Bahrain - Victorious (WT)",
+      "rider_url": "rider/lenny-martinez",
+      "team_url": "team/bahrain-victorious-2026"
+    },
+    {
+      "name": "CARUSO Damiano",
+      "nationality": "IT",
+      "number": 72,
+      "team": "Bahrain - Victorious (WT)",
+      "rider_url": "rider/damiano-caruso",
+      "team_url": "team/bahrain-victorious-2026"
+    },
+    {
+      "name": "GRADEK Kamil",
+      "nationality": "PL",
+      "number": 73,
+      "team": "Bahrain - Victorious (WT)",
+      "rider_url": "rider/kamil-gradek",
+      "team_url": "team/bahrain-victorious-2026"
+    },
+    {
+      "name": "STANNARD Robert",
+      "nationality": "AU",
+      "number": 74,
+      "team": "Bahrain - Victorious (WT)",
+      "rider_url": "rider/robert-stannard",
+      "team_url": "team/bahrain-victorious-2026"
+    },
+    {
+      "name": "BRUTTOMESSO Alberto",
+      "nationality": "IT",
+      "number": 74,
+      "team": "Bahrain - Victorious (WT)",
+      "rider_url": "rider/alberto-bruttomesso",
+      "team_url": "team/bahrain-victorious-2026"
+    },
+    {
+      "name": "TIBERI Antonio",
+      "nationality": "IT",
+      "number": 75,
+      "team": "Bahrain - Victorious (WT)",
+      "rider_url": "rider/antonio-tiberi",
+      "team_url": "team/bahrain-victorious-2026"
+    },
+    {
+      "name": "VALTER Attila",
+      "nationality": "HU",
+      "number": 76,
+      "team": "Bahrain - Victorious (WT)",
+      "rider_url": "rider/attila-valter",
+      "team_url": "team/bahrain-victorious-2026"
+    },
+    {
+      "name": "VAN MECHELEN Vlad",
+      "nationality": "BE",
+      "number": 77,
+      "team": "Bahrain - Victorious (WT)",
+      "rider_url": "rider/vlad-van-mechelen",
+      "team_url": "team/bahrain-victorious-2026"
+    },
+    {
+      "name": "DECOMBLE Maxime",
+      "nationality": "FR",
+      "number": 81,
+      "team": "Groupama - FDJ United (WT)",
+      "rider_url": "rider/maxime-decomble",
+      "team_url": "team/groupama-fdj-united-2026"
+    },
+    {
+      "name": "BERTHET Clément",
+      "nationality": "FR",
+      "number": 82,
+      "team": "Groupama - FDJ United (WT)",
+      "rider_url": "rider/clement-berthet",
+      "team_url": "team/groupama-fdj-united-2026"
+    },
+    {
+      "name": "CAVAGNA Rémi",
+      "nationality": "FR",
+      "number": 83,
+      "team": "Groupama - FDJ United (WT)",
+      "rider_url": "rider/remi-cavagna",
+      "team_url": "team/groupama-fdj-united-2026"
+    },
+    {
+      "name": "GAUDU David",
+      "nationality": "FR",
+      "number": 84,
+      "team": "Groupama - FDJ United (WT)",
+      "rider_url": "rider/david-gaudu",
+      "team_url": "team/groupama-fdj-united-2026"
+    },
+    {
+      "name": "MADOUAS Valentin",
+      "nationality": "FR",
+      "number": 84,
+      "team": "Groupama - FDJ United (WT)",
+      "rider_url": "rider/valentin-madouas",
+      "team_url": "team/groupama-fdj-united-2026"
+    },
+    {
+      "name": "GERMANI Lorenzo",
+      "nationality": "IT",
+      "number": 85,
+      "team": "Groupama - FDJ United (WT)",
+      "rider_url": "rider/lorenzo-germani",
+      "team_url": "team/groupama-fdj-united-2026"
+    },
+    {
+      "name": "KENCH Josh",
+      "nationality": "NZ",
+      "number": 86,
+      "team": "Groupama - FDJ United (WT)",
+      "rider_url": "rider/josh-kench",
+      "team_url": "team/groupama-fdj-united-2026"
+    },
+    {
+      "name": "ROCHAS Rémy",
+      "nationality": "FR",
+      "number": 87,
+      "team": "Groupama - FDJ United (WT)",
+      "rider_url": "rider/remy-rochas",
+      "team_url": "team/groupama-fdj-united-2026"
+    },
+    {
+      "name": "PLAPP Luke",
+      "nationality": "AU",
+      "number": 91,
+      "team": "Team Jayco AlUla (WT)",
+      "rider_url": "rider/luke-plapp",
+      "team_url": "team/team-jayco-alula-2026"
+    },
+    {
+      "name": "CONCA Filippo",
+      "nationality": "IT",
+      "number": 92,
+      "team": "Team Jayco AlUla (WT)",
+      "rider_url": "rider/filippo-conca",
+      "team_url": "team/team-jayco-alula-2026"
+    },
+    {
+      "name": "DE PRETTO Davide",
+      "nationality": "IT",
+      "number": 93,
+      "team": "Team Jayco AlUla (WT)",
+      "rider_url": "rider/davide-de-pretto",
+      "team_url": "team/team-jayco-alula-2026"
+    },
+    {
+      "name": "GAMPER Patrick",
+      "nationality": "AT",
+      "number": 94,
+      "team": "Team Jayco AlUla (WT)",
+      "rider_url": "rider/patrick-gamper",
+      "team_url": "team/team-jayco-alula-2026"
+    },
+    {
+      "name": "O'CONNOR Ben",
+      "nationality": "AU",
+      "number": 94,
+      "team": "Team Jayco AlUla (WT)",
+      "rider_url": "rider/ben-o-connor",
+      "team_url": "team/team-jayco-alula-2026"
+    },
+    {
+      "name": "HELLEMOSE Asbjørn",
+      "nationality": "DK",
+      "number": 95,
+      "team": "Team Jayco AlUla (WT)",
+      "rider_url": "rider/asbjorn-hellemose",
+      "team_url": "team/team-jayco-alula-2026"
+    },
+    {
+      "name": "MCKENZIE Hamish",
+      "nationality": "AU",
+      "number": 96,
+      "team": "Team Jayco AlUla (WT)",
+      "rider_url": "rider/hamish-mckenzie",
+      "team_url": "team/team-jayco-alula-2026"
+    },
+    {
+      "name": "SCHMID Mauro",
+      "nationality": "CH",
+      "number": 97,
+      "team": "Team Jayco AlUla (WT)",
+      "rider_url": "rider/mauro-schmid",
+      "team_url": "team/team-jayco-alula-2026"
+    },
+    {
+      "name": "PARET-PEINTRE Valentin",
+      "nationality": "FR",
+      "number": 101,
+      "team": "Soudal Quick-Step (WT)",
+      "rider_url": "rider/valentin-paret-peintre",
+      "team_url": "team/soudal-quick-step-2026"
+    },
+    {
+      "name": "CRAS Steff",
+      "nationality": "BE",
+      "number": 102,
+      "team": "Soudal Quick-Step (WT)",
+      "rider_url": "rider/steff-cras",
+      "team_url": "team/soudal-quick-step-2026"
+    },
+    {
+      "name": "GELDERS Gil",
+      "nationality": "BE",
+      "number": 103,
+      "team": "Soudal Quick-Step (WT)",
+      "rider_url": "rider/gil-gelders",
+      "team_url": "team/soudal-quick-step-2026"
+    },
+    {
+      "name": "LECERF Junior",
+      "nationality": "BE",
+      "number": 104,
+      "team": "Soudal Quick-Step (WT)",
+      "rider_url": "rider/junior-lecerf",
+      "team_url": "team/soudal-quick-step-2026"
+    },
+    {
+      "name": "VANSEVENANT Mauri",
+      "nationality": "BE",
+      "number": 104,
+      "team": "Soudal Quick-Step (WT)",
+      "rider_url": "rider/mauri-vansevenant",
+      "team_url": "team/soudal-quick-step-2026"
+    },
+    {
+      "name": "PEDERSEN Casper",
+      "nationality": "DK",
+      "number": 105,
+      "team": "Soudal Quick-Step (WT)",
+      "rider_url": "rider/casper-pedersen",
+      "team_url": "team/soudal-quick-step-2026"
+    },
+    {
+      "name": "SCHACHMANN Maximilian",
+      "nationality": "DE",
+      "number": 106,
+      "team": "Soudal Quick-Step (WT)",
+      "rider_url": "rider/maximilian-schachmann",
+      "team_url": "team/soudal-quick-step-2026"
+    },
+    {
+      "name": "VERVAEKE Louis",
+      "nationality": "BE",
+      "number": 107,
+      "team": "Soudal Quick-Step (WT)",
+      "rider_url": "rider/louis-vervaeke",
+      "team_url": "team/soudal-quick-step-2026"
+    },
+    {
+      "name": "BENNETT George",
+      "nationality": "NZ",
+      "number": 111,
+      "team": "NSN Cycling Team (WT)",
+      "rider_url": "rider/george-bennett",
+      "team_url": "team/nsn-cycling-team-2026"
+    },
+    {
+      "name": "EINHORN Itamar",
+      "nationality": "IL",
+      "number": 112,
+      "team": "NSN Cycling Team (WT)",
+      "rider_url": "rider/itamar-einhorn",
+      "team_url": "team/nsn-cycling-team-2026"
+    },
+    {
+      "name": "FRIGO Marco",
+      "nationality": "IT",
+      "number": 113,
+      "team": "NSN Cycling Team (WT)",
+      "rider_url": "rider/marco-frigo",
+      "team_url": "team/nsn-cycling-team-2026"
+    },
+    {
+      "name": "RAISBERG Nadav",
+      "nationality": "IL",
+      "number": 114,
+      "team": "NSN Cycling Team (WT)",
+      "rider_url": "rider/nadav-raisberg",
+      "team_url": "team/nsn-cycling-team-2026"
+    },
+    {
+      "name": "NEILANDS Krists",
+      "nationality": "LV",
+      "number": 114,
+      "team": "NSN Cycling Team (WT)",
+      "rider_url": "rider/krists-neilands",
+      "team_url": "team/nsn-cycling-team-2026"
+    },
+    {
+      "name": "TENE Rotem",
+      "nationality": "IL",
+      "number": 115,
+      "team": "NSN Cycling Team (WT)",
+      "rider_url": "rider/rotem-tene",
+      "team_url": "team/nsn-cycling-team-2026"
+    },
+    {
+      "name": "VAN TRICHT Floris",
+      "nationality": "BE",
+      "number": 116,
+      "team": "NSN Cycling Team (WT)",
+      "rider_url": "rider/floris-van-tricht",
+      "team_url": "team/nsn-cycling-team-2026"
+    },
+    {
+      "name": "VOISARD Yannis",
+      "nationality": "CH",
+      "number": 121,
+      "team": "Tudor Pro Cycling Team (PRT)",
+      "rider_url": "rider/yannis-voisard",
+      "team_url": "team/tudor-pro-cycling-team-2026"
+    },
+    {
+      "name": "BRENNER Marco",
+      "nationality": "DE",
+      "number": 122,
+      "team": "Tudor Pro Cycling Team (PRT)",
+      "rider_url": "rider/marco-brenner",
+      "team_url": "team/tudor-pro-cycling-team-2026"
+    },
+    {
+      "name": "DONZÉ Robin",
+      "nationality": "CH",
+      "number": 123,
+      "team": "Tudor Pro Cycling Team (PRT)",
+      "rider_url": "rider/robin-donze",
+      "team_url": "team/tudor-pro-cycling-team-2026"
+    },
+    {
+      "name": "ERIKSSON Jacob",
+      "nationality": "SE",
+      "number": 124,
+      "team": "Tudor Pro Cycling Team (PRT)",
+      "rider_url": "rider/jacob-eriksson",
+      "team_url": "team/tudor-pro-cycling-team-2026"
+    },
+    {
+      "name": "PLUIMERS Rick",
+      "nationality": "NL",
+      "number": 124,
+      "team": "Tudor Pro Cycling Team (PRT)",
+      "rider_url": "rider/rick-pluimers",
+      "team_url": "team/tudor-pro-cycling-team-2026"
+    },
+    {
+      "name": "MAYRHOFER Marius",
+      "nationality": "DE",
+      "number": 125,
+      "team": "Tudor Pro Cycling Team (PRT)",
+      "rider_url": "rider/marius-mayrhofer",
+      "team_url": "team/tudor-pro-cycling-team-2026"
+    },
+    {
+      "name": "SUTER Joel",
+      "nationality": "CH",
+      "number": 126,
+      "team": "Tudor Pro Cycling Team (PRT)",
+      "rider_url": "rider/joel-suter",
+      "team_url": "team/tudor-pro-cycling-team-2026"
+    },
+    {
+      "name": "THALMANN Roland",
+      "nationality": "CH",
+      "number": 127,
+      "team": "Tudor Pro Cycling Team (PRT)",
+      "rider_url": "rider/roland-thalmann",
+      "team_url": "team/tudor-pro-cycling-team-2026"
+    },
+    {
+      "name": "BARGUIL Warren",
+      "nationality": "FR",
+      "number": 131,
+      "team": "Team Picnic PostNL (WT)",
+      "rider_url": "rider/warren-barguil",
+      "team_url": "team/team-picnic-postnl-2026"
+    },
+    {
+      "name": "CORKERY Dillon",
+      "nationality": "IE",
+      "number": 132,
+      "team": "Team Picnic PostNL (WT)",
+      "rider_url": "rider/dillon-corkery",
+      "team_url": "team/team-picnic-postnl-2026"
+    },
+    {
+      "name": "DHONDT Robbe",
+      "nationality": "BE",
+      "number": 133,
+      "team": "Team Picnic PostNL (WT)",
+      "rider_url": "rider/robbe-dhondt",
+      "team_url": "team/team-picnic-postnl-2026"
+    },
+    {
+      "name": "FAURE PROST Alexy",
+      "nationality": "FR",
+      "number": 134,
+      "team": "Team Picnic PostNL (WT)",
+      "rider_url": "rider/alexy-faure-prost",
+      "team_url": "team/team-picnic-postnl-2026"
+    },
+    {
+      "name": "POOLE Max",
+      "nationality": "GB",
+      "number": 134,
+      "team": "Team Picnic PostNL (WT)",
+      "rider_url": "rider/max-poole",
+      "team_url": "team/team-picnic-postnl-2026"
+    },
+    {
+      "name": "GAFFURI Mattia",
+      "nationality": "IT",
+      "number": 135,
+      "team": "Team Picnic PostNL (WT)",
+      "rider_url": "rider/mattia-gaffuri",
+      "team_url": "team/team-picnic-postnl-2026"
+    },
+    {
+      "name": "PEACE Oliver",
+      "nationality": "GB",
+      "number": 136,
+      "team": "Team Picnic PostNL (WT)",
+      "rider_url": "rider/oliver-peace",
+      "team_url": "team/team-picnic-postnl-2026"
+    },
+    {
+      "name": "RENARD-HAQUIN Henri-François",
+      "nationality": "FR",
+      "number": 137,
+      "team": "Team Picnic PostNL (WT)",
+      "rider_url": "rider/henri-francois-renard-haquin",
+      "team_url": "team/team-picnic-postnl-2026"
+    },
+    {
+      "name": "CASTRILLO Pablo",
+      "nationality": "ES",
+      "number": 141,
+      "team": "Movistar Team (WT)",
+      "rider_url": "rider/pablo-castrillo-zapater",
+      "team_url": "team/movistar-team-2026"
+    },
+    {
+      "name": "ARCAS Jorge",
+      "nationality": "ES",
+      "number": 142,
+      "team": "Movistar Team (WT)",
+      "rider_url": "rider/jorge-arcas",
+      "team_url": "team/movistar-team-2026"
+    },
+    {
+      "name": "CEPEDA Jefferson Alveiro",
+      "nationality": "EC",
+      "number": 143,
+      "team": "Movistar Team (WT)",
+      "rider_url": "rider/jefferson-cepeda-hernandez",
+      "team_url": "team/movistar-team-2026"
+    },
+    {
+      "name": "FORMOLO Davide",
+      "nationality": "IT",
+      "number": 144,
+      "team": "Movistar Team (WT)",
+      "rider_url": "rider/davide-formolo",
+      "team_url": "team/movistar-team-2026"
+    },
+    {
+      "name": "RUBIO Einer",
+      "nationality": "CO",
+      "number": 144,
+      "team": "Movistar Team (WT)",
+      "rider_url": "rider/einer-rubio",
+      "team_url": "team/movistar-team-2026"
+    },
+    {
+      "name": "MACIEJUK Filip",
+      "nationality": "PL",
+      "number": 145,
+      "team": "Movistar Team (WT)",
+      "rider_url": "rider/filip-maciejuk",
+      "team_url": "team/movistar-team-2026"
+    },
+    {
+      "name": "NOVÁK Pavel",
+      "nationality": "CZ",
+      "number": 146,
+      "team": "Movistar Team (WT)",
+      "rider_url": "rider/pavel-novak",
+      "team_url": "team/movistar-team-2026"
+    },
+    {
+      "name": "QUINTANA Nairo",
+      "nationality": "CO",
+      "number": 147,
+      "team": "Movistar Team (WT)",
+      "rider_url": "rider/nairo-quintana",
+      "team_url": "team/movistar-team-2026"
+    }
+  ]
+}

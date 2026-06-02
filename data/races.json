@@ -1,8 +1,971 @@
 {
-  "updated_at": "2026-05-23T13:39:05.306174",
+  "updated_at": "2026-06-02T21:26:20.002753",
   "year": 2026,
-  "total_races": 8,
+  "total_races": 37,
   "races": [
+    {
+      "pcs_url": "race/tour-down-under/2026",
+      "slug": "tour-down-under-2026",
+      "pcs_slug": "tour-down-under",
+      "cyclingstage_slug": "tour-down-under",
+      "name": "Tour Down Under",
+      "year": 2026,
+      "nationality": "AU",
+      "startdate": "2026-01-20",
+      "enddate": "2026-01-25",
+      "category": "Men Elite",
+      "uci_tour": "2.UWT",
+      "is_one_day_race": false,
+      "edition": 26,
+      "stages": [
+        {
+          "profile_icon": "p1",
+          "stage_name": "Prologue | Adelaide - Adelaide",
+          "stage_url": "race/tour-down-under/2026/prologue",
+          "date": "01-20"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 1 | Tanunda - Tanunda",
+          "stage_url": "race/tour-down-under/2026/stage-1",
+          "date": "01-21"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 2 | Norwood - Uraidla",
+          "stage_url": "race/tour-down-under/2026/stage-2",
+          "date": "01-22"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 3 | Henley Beach - Nairne",
+          "stage_url": "race/tour-down-under/2026/stage-3",
+          "date": "01-23"
+        },
+        {
+          "profile_icon": "p3",
+          "stage_name": "Stage 4 | Brighton - Willunga",
+          "stage_url": "race/tour-down-under/2026/stage-4",
+          "date": "01-24"
+        },
+        {
+          "profile_icon": "p3",
+          "stage_name": "Stage 5 | Stirling - Stirling",
+          "stage_url": "race/tour-down-under/2026/stage-5",
+          "date": "01-25"
+        }
+      ]
+    },
+    {
+      "pcs_url": "race/volta-a-la-comunitat-valenciana/2026",
+      "slug": "tour-of-valencia-2026",
+      "pcs_slug": "volta-a-la-comunitat-valenciana",
+      "cyclingstage_slug": "tour-of-valencia",
+      "name": "Volta a la Comunitat Valenciana",
+      "year": 2026,
+      "nationality": "ES",
+      "startdate": "2026-02-15",
+      "enddate": "2026-02-15",
+      "category": "Men Elite",
+      "uci_tour": null,
+      "is_one_day_race": false,
+      "edition": null,
+      "stages": [],
+      "_pcs_data_missing": true
+    },
+    {
+      "pcs_url": "race/vuelta-a-andalucia-ruta-del-sol/2026",
+      "slug": "ruta-del-sol-2026",
+      "pcs_slug": "vuelta-a-andalucia-ruta-del-sol",
+      "cyclingstage_slug": "ruta-del-sol",
+      "name": "Vuelta a Andalucía",
+      "year": 2026,
+      "nationality": "ES",
+      "startdate": "2026-02-15",
+      "enddate": "2026-02-15",
+      "category": "Men Elite",
+      "uci_tour": null,
+      "is_one_day_race": false,
+      "edition": null,
+      "stages": [],
+      "_pcs_data_missing": true
+    },
+    {
+      "pcs_url": "race/uae-tour/2026",
+      "slug": "uae-tour-2026",
+      "pcs_slug": "uae-tour",
+      "cyclingstage_slug": "uae-tour",
+      "name": "UAE Tour",
+      "year": 2026,
+      "nationality": "AE",
+      "startdate": "2026-02-16",
+      "enddate": "2026-02-22",
+      "category": "Men Elite",
+      "uci_tour": "2.UWT",
+      "is_one_day_race": false,
+      "edition": 8,
+      "stages": [
+        {
+          "profile_icon": "p3",
+          "stage_name": "Stage 1 | Madinat Zayed Majlis - Liwa Palace",
+          "stage_url": "race/uae-tour/2026/stage-1",
+          "date": "02-16"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 2 (ITT) | Hudayriyat Island - Hudayriyat Island",
+          "stage_url": "race/uae-tour/2026/stage-2",
+          "date": "02-17"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 3 | Umm al Quwain - Jebel Mobrah",
+          "stage_url": "race/uae-tour/2026/stage-3",
+          "date": "02-18"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 4 | Fujairah - Fujairah",
+          "stage_url": "race/uae-tour/2026/stage-4",
+          "date": "02-19"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 5 | Dubai Al Mamzar Park - Hamdan Bin Mohammed Smart University",
+          "stage_url": "race/uae-tour/2026/stage-5",
+          "date": "02-20"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 6 | Al Ain Museum - Jebel Hafeet",
+          "stage_url": "race/uae-tour/2026/stage-6",
+          "date": "02-21"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 7 | Zayed National Museum - Abu Dhabi Breakwater",
+          "stage_url": "race/uae-tour/2026/stage-7",
+          "date": "02-22"
+        }
+      ]
+    },
+    {
+      "pcs_url": "race/volta-ao-algarve/2026",
+      "slug": "volta-ao-algarve-2026",
+      "pcs_slug": "volta-ao-algarve",
+      "cyclingstage_slug": "volta-ao-algarve",
+      "name": "Volta ao Algarve em Bicicleta",
+      "year": 2026,
+      "nationality": "PT",
+      "startdate": "2026-02-18",
+      "enddate": "2026-02-22",
+      "category": "Men Elite",
+      "uci_tour": "2.Pro",
+      "is_one_day_race": false,
+      "edition": 52,
+      "stages": [
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 1 | Vila Real de Santo António - Tavira",
+          "stage_url": "race/volta-ao-algarve/2026/stage-1",
+          "date": "02-18"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 2 | Portimão  - Fóia (Monchique)",
+          "stage_url": "race/volta-ao-algarve/2026/stage-2",
+          "date": "02-19"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 3 (ITT) | Vilamoura - Vilamoura",
+          "stage_url": "race/volta-ao-algarve/2026/stage-3",
+          "date": "02-20"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 4 | Albufeira - Lagos",
+          "stage_url": "race/volta-ao-algarve/2026/stage-4",
+          "date": "02-21"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 5 | Faro - Malhão (Loulé)",
+          "stage_url": "race/volta-ao-algarve/2026/stage-5",
+          "date": "02-22"
+        }
+      ]
+    },
+    {
+      "pcs_url": "race/omloop-het-nieuwsblad/2026",
+      "slug": "omloop-het-nieuwsblad-2026",
+      "pcs_slug": "omloop-het-nieuwsblad",
+      "cyclingstage_slug": "omloop-het-nieuwsblad",
+      "name": "Omloop Nieuwsblad ME",
+      "year": 2026,
+      "nationality": "BE",
+      "startdate": "2026-02-28",
+      "enddate": "2026-02-28",
+      "category": "Men Elite",
+      "uci_tour": "1.UWT",
+      "is_one_day_race": true,
+      "edition": 81,
+      "stages": []
+    },
+    {
+      "pcs_url": "race/kuurne-brussel-kuurne/2026",
+      "slug": "kuurne-brussel-kuurne-2026",
+      "pcs_slug": "kuurne-brussel-kuurne",
+      "cyclingstage_slug": "kuurne-brussels-kuurne",
+      "name": "Kuurne - Brussel - Kuurne",
+      "year": 2026,
+      "nationality": "BE",
+      "startdate": "2026-03-01",
+      "enddate": "2026-03-01",
+      "category": "Men Elite",
+      "uci_tour": "1.Pro",
+      "is_one_day_race": true,
+      "edition": 78,
+      "stages": []
+    },
+    {
+      "pcs_url": "race/strade-bianche/2026",
+      "slug": "strade-bianche-2026",
+      "pcs_slug": "strade-bianche",
+      "cyclingstage_slug": "strade-bianche",
+      "name": "Strade Bianche",
+      "year": 2026,
+      "nationality": "IT",
+      "startdate": "2026-03-07",
+      "enddate": "2026-03-07",
+      "category": "Men Elite",
+      "uci_tour": "1.UWT",
+      "is_one_day_race": true,
+      "edition": 20,
+      "stages": []
+    },
+    {
+      "pcs_url": "race/paris-nice/2026",
+      "slug": "paris-nice-2026",
+      "pcs_slug": "paris-nice",
+      "cyclingstage_slug": "paris-nice",
+      "name": "Paris-Nice",
+      "year": 2026,
+      "nationality": "FR",
+      "startdate": "2026-03-08",
+      "enddate": "2026-03-15",
+      "category": "Men Elite",
+      "uci_tour": "2.UWT",
+      "is_one_day_race": false,
+      "edition": 84,
+      "stages": [
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 1 | Achères - Carrières-sous-Poissy",
+          "stage_url": "race/paris-nice/2026/stage-1",
+          "date": "03-08"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 2 | Épône - Montargis",
+          "stage_url": "race/paris-nice/2026/stage-2",
+          "date": "03-09"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 3 (TTT) | Cosne-Cours-sur-Loire - Pouilly-sur-Loire",
+          "stage_url": "race/paris-nice/2026/stage-3",
+          "date": "03-10"
+        },
+        {
+          "profile_icon": "p3",
+          "stage_name": "Stage 4 | Bourges - Uchon",
+          "stage_url": "race/paris-nice/2026/stage-4",
+          "date": "03-11"
+        },
+        {
+          "profile_icon": "p3",
+          "stage_name": "Stage 5 | Cormoranche-sur-Saône - Colombier-le-Vieux",
+          "stage_url": "race/paris-nice/2026/stage-5",
+          "date": "03-12"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 6 | Barbentane - Apt",
+          "stage_url": "race/paris-nice/2026/stage-6",
+          "date": "03-13"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 7 | Pont Louis Nucera - Isola",
+          "stage_url": "race/paris-nice/2026/stage-7",
+          "date": "03-14"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 8 | Nice - Nice",
+          "stage_url": "race/paris-nice/2026/stage-8",
+          "date": "03-15"
+        }
+      ]
+    },
+    {
+      "pcs_url": "race/tirreno-adriatico/2026",
+      "slug": "tirreno-adriatico-2026",
+      "pcs_slug": "tirreno-adriatico",
+      "cyclingstage_slug": "tirreno-adriatico",
+      "name": "Tirreno-Adriatico",
+      "year": 2026,
+      "nationality": "IT",
+      "startdate": "2026-03-09",
+      "enddate": "2026-03-15",
+      "category": "Men Elite",
+      "uci_tour": "2.UWT",
+      "is_one_day_race": false,
+      "edition": 61,
+      "stages": [
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 1 (ITT) | Lido di Camaiore - Lido di Camaiore",
+          "stage_url": "race/tirreno-adriatico/2026/stage-1",
+          "date": "03-09"
+        },
+        {
+          "profile_icon": "p3",
+          "stage_name": "Stage 2 | Camaiore - San Gimignano",
+          "stage_url": "race/tirreno-adriatico/2026/stage-2",
+          "date": "03-10"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 3 | Cortona - Magliano de' Marsi",
+          "stage_url": "race/tirreno-adriatico/2026/stage-3",
+          "date": "03-11"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 4 | Tagliacozzo - Martinsicuro",
+          "stage_url": "race/tirreno-adriatico/2026/stage-4",
+          "date": "03-12"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 5 | Marotta-Mondolfo - Mombaroccio",
+          "stage_url": "race/tirreno-adriatico/2026/stage-5",
+          "date": "03-13"
+        },
+        {
+          "profile_icon": "p3",
+          "stage_name": "Stage 6 | San Severino Marche - Camerino",
+          "stage_url": "race/tirreno-adriatico/2026/stage-6",
+          "date": "03-14"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 7 | Civitanova Marche - San Benedetto del Tronto",
+          "stage_url": "race/tirreno-adriatico/2026/stage-7",
+          "date": "03-15"
+        }
+      ]
+    },
+    {
+      "pcs_url": "race/o-gran-camino/2026",
+      "slug": "o-gran-camino-2026",
+      "pcs_slug": "o-gran-camino",
+      "cyclingstage_slug": "o-gran-camino",
+      "name": "O Gran Camiño",
+      "year": 2026,
+      "nationality": "ES",
+      "startdate": "2026-03-15",
+      "enddate": "2026-03-15",
+      "category": "Men Elite",
+      "uci_tour": null,
+      "is_one_day_race": false,
+      "edition": null,
+      "stages": [],
+      "_pcs_data_missing": true
+    },
+    {
+      "pcs_url": "race/e3-saxo-classic/2026",
+      "slug": "e3-saxo-classic-2026",
+      "pcs_slug": "e3-saxo-classic",
+      "cyclingstage_slug": "e3-saxo-classic",
+      "name": "E3 Saxo Classic",
+      "year": 2026,
+      "nationality": "BE",
+      "startdate": "2026-03-15",
+      "enddate": "2026-03-15",
+      "category": "Men Elite",
+      "uci_tour": null,
+      "is_one_day_race": true,
+      "edition": null,
+      "stages": [],
+      "_pcs_data_missing": true
+    },
+    {
+      "pcs_url": "race/milano-sanremo/2026",
+      "slug": "milano-sanremo-2026",
+      "pcs_slug": "milano-sanremo",
+      "cyclingstage_slug": "milan-san-remo",
+      "name": "Milano-Sanremo",
+      "year": 2026,
+      "nationality": "IT",
+      "startdate": "2026-03-21",
+      "enddate": "2026-03-21",
+      "category": "Men Elite",
+      "uci_tour": "1.UWT",
+      "is_one_day_race": true,
+      "edition": 117,
+      "stages": []
+    },
+    {
+      "pcs_url": "race/volta-a-catalunya/2026",
+      "slug": "volta-a-catalunya-2026",
+      "pcs_slug": "volta-a-catalunya",
+      "cyclingstage_slug": "volta-a-catalunya",
+      "name": "Volta a Catalunya",
+      "year": 2026,
+      "nationality": "ES",
+      "startdate": "2026-03-23",
+      "enddate": "2026-03-29",
+      "category": "Men Elite",
+      "uci_tour": "2.UWT",
+      "is_one_day_race": false,
+      "edition": 105,
+      "stages": [
+        {
+          "profile_icon": "p3",
+          "stage_name": "Stage 1 | Sant Feliu de Guíxols - Sant Feliu de Guíxols",
+          "stage_url": "race/volta-a-catalunya/2026/stage-1",
+          "date": "03-23"
+        },
+        {
+          "profile_icon": "p3",
+          "stage_name": "Stage 2 | Figueres - Banyoles",
+          "stage_url": "race/volta-a-catalunya/2026/stage-2",
+          "date": "03-24"
+        },
+        {
+          "profile_icon": "p4",
+          "stage_name": "Stage 3 | Mont-roig del Camp - Vila-seca",
+          "stage_url": "race/volta-a-catalunya/2026/stage-3",
+          "date": "03-25"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 4 | Mataró - Camprodón",
+          "stage_url": "race/volta-a-catalunya/2026/stage-4",
+          "date": "03-26"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 5 | La Seu d'Urgell - La Molina/Coll de Pal",
+          "stage_url": "race/volta-a-catalunya/2026/stage-5",
+          "date": "03-27"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 6 | Berga - Queralt",
+          "stage_url": "race/volta-a-catalunya/2026/stage-6",
+          "date": "03-28"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 7 | Barcelona - Barcelona",
+          "stage_url": "race/volta-a-catalunya/2026/stage-7",
+          "date": "03-29"
+        }
+      ]
+    },
+    {
+      "pcs_url": "race/gent-wevelgem/2026",
+      "slug": "gent-wevelgem-2026",
+      "pcs_slug": "gent-wevelgem",
+      "cyclingstage_slug": "in-flanders-fields",
+      "name": "In Flanders Fields",
+      "year": 2026,
+      "nationality": "BE",
+      "startdate": "2026-03-29",
+      "enddate": "2026-03-29",
+      "category": "Men Elite",
+      "uci_tour": "1.UWT",
+      "is_one_day_race": true,
+      "edition": 88,
+      "stages": []
+    },
+    {
+      "pcs_url": "race/dwars-door-vlaanderen/2026",
+      "slug": "dwars-door-vlaanderen-2026",
+      "pcs_slug": "dwars-door-vlaanderen",
+      "cyclingstage_slug": "dwars-door-vlaanderen",
+      "name": "Dwars door Vlaanderen",
+      "year": 2026,
+      "nationality": "BE",
+      "startdate": "2026-04-01",
+      "enddate": "2026-04-01",
+      "category": "Men Elite",
+      "uci_tour": "1.UWT",
+      "is_one_day_race": true,
+      "edition": 80,
+      "stages": []
+    },
+    {
+      "pcs_url": "race/ronde-van-vlaanderen/2026",
+      "slug": "ronde-van-vlaanderen-2026",
+      "pcs_slug": "ronde-van-vlaanderen",
+      "cyclingstage_slug": "tour-of-flanders",
+      "name": "Ronde van Vlaanderen",
+      "year": 2026,
+      "nationality": "BE",
+      "startdate": "2026-04-05",
+      "enddate": "2026-04-05",
+      "category": "Men Elite",
+      "uci_tour": "1.UWT",
+      "is_one_day_race": true,
+      "edition": 110,
+      "stages": []
+    },
+    {
+      "pcs_url": "race/itzulia-basque-country/2026",
+      "slug": "itzulia-basque-country-2026",
+      "pcs_slug": "itzulia-basque-country",
+      "cyclingstage_slug": "tour-of-the-basque-country",
+      "name": "Itzulia Basque Country",
+      "year": 2026,
+      "nationality": "ES",
+      "startdate": "2026-04-06",
+      "enddate": "2026-04-11",
+      "category": "Men Elite",
+      "uci_tour": "2.UWT",
+      "is_one_day_race": false,
+      "edition": 65,
+      "stages": [
+        {
+          "profile_icon": "p3",
+          "stage_name": "Stage 1 (ITT) | Bilbao - Bilbao",
+          "stage_url": "race/itzulia-basque-country/2026/stage-1",
+          "date": "04-06"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 2 | Pamplona-Iruña - Cuevas de Mendukilo",
+          "stage_url": "race/itzulia-basque-country/2026/stage-2",
+          "date": "04-07"
+        },
+        {
+          "profile_icon": "p3",
+          "stage_name": "Stage 3 | Basauri - Basauri",
+          "stage_url": "race/itzulia-basque-country/2026/stage-3",
+          "date": "04-08"
+        },
+        {
+          "profile_icon": "p3",
+          "stage_name": "Stage 4 | Galdakao - Galdakao",
+          "stage_url": "race/itzulia-basque-country/2026/stage-4",
+          "date": "04-09"
+        },
+        {
+          "profile_icon": "p4",
+          "stage_name": "Stage 5 | Eibar - Eibar",
+          "stage_url": "race/itzulia-basque-country/2026/stage-5",
+          "date": "04-10"
+        },
+        {
+          "profile_icon": "p4",
+          "stage_name": "Stage 6 | Goizper-Antzuola - Bergara",
+          "stage_url": "race/itzulia-basque-country/2026/stage-6",
+          "date": "04-11"
+        }
+      ]
+    },
+    {
+      "pcs_url": "race/paris-roubaix/2026",
+      "slug": "paris-roubaix-2026",
+      "pcs_slug": "paris-roubaix",
+      "cyclingstage_slug": "paris-roubaix",
+      "name": "Paris - Roubaix",
+      "year": 2026,
+      "nationality": "FR",
+      "startdate": "2026-04-12",
+      "enddate": "2026-04-12",
+      "category": "Men Elite",
+      "uci_tour": "1.UWT",
+      "is_one_day_race": true,
+      "edition": 123,
+      "stages": []
+    },
+    {
+      "pcs_url": "race/brabantse-pijl/2026",
+      "slug": "brabantse-pijl-2026",
+      "pcs_slug": "brabantse-pijl",
+      "cyclingstage_slug": "brabantse-pijl",
+      "name": "De Brabantse Pijl - La Flèche Brabançonne",
+      "year": 2026,
+      "nationality": "BE",
+      "startdate": "2026-04-17",
+      "enddate": "2026-04-17",
+      "category": "Men Elite",
+      "uci_tour": "1.Pro",
+      "is_one_day_race": true,
+      "edition": 66,
+      "stages": []
+    },
+    {
+      "pcs_url": "race/amstel-gold-race/2026",
+      "slug": "amstel-gold-2026",
+      "pcs_slug": "amstel-gold-2026",
+      "cyclingstage_slug": "amstel-gold-race",
+      "name": "Amstel Gold Race",
+      "year": 2026,
+      "nationality": "NL",
+      "startdate": "2026-04-19",
+      "enddate": "2026-04-19",
+      "category": "Men Elite",
+      "uci_tour": "1.UWT",
+      "is_one_day_race": true,
+      "edition": 60,
+      "stages": []
+    },
+    {
+      "pcs_url": "race/tour-of-the-alps/2026",
+      "slug": "tour-of-the-alps-2026",
+      "pcs_slug": "tour-of-the-alps",
+      "cyclingstage_slug": "tour-of-the-alps",
+      "name": "Tour of the Alps",
+      "year": 2026,
+      "nationality": "IT",
+      "startdate": "2026-04-20",
+      "enddate": "2026-04-24",
+      "category": "Men Elite",
+      "uci_tour": "2.Pro",
+      "is_one_day_race": false,
+      "edition": 49,
+      "stages": [
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 1 | Innsbruck - Innsbruck",
+          "stage_url": "race/tour-of-the-alps/2026/stage-1",
+          "date": "04-20"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 2 | Telfs - Martell/Val Martello",
+          "stage_url": "race/tour-of-the-alps/2026/stage-2",
+          "date": "04-21"
+        },
+        {
+          "profile_icon": "p4",
+          "stage_name": "Stage 3 | Latsch/Laces - Arco",
+          "stage_url": "race/tour-of-the-alps/2026/stage-3",
+          "date": "04-22"
+        },
+        {
+          "profile_icon": "p4",
+          "stage_name": "Stage 4 | Arco - Trento",
+          "stage_url": "race/tour-of-the-alps/2026/stage-4",
+          "date": "04-23"
+        },
+        {
+          "profile_icon": "p4",
+          "stage_name": "Stage 5 | Trento - Bozen/Bolzano",
+          "stage_url": "race/tour-of-the-alps/2026/stage-5",
+          "date": "04-24"
+        }
+      ]
+    },
+    {
+      "pcs_url": "race/la-fleche-wallonne/2026",
+      "slug": "la-fleche-wallonne-2026",
+      "pcs_slug": "la-fleche-wallonne",
+      "cyclingstage_slug": "la-fleche-wallonne",
+      "name": "La Flèche Wallonne",
+      "year": 2026,
+      "nationality": "BE",
+      "startdate": "2026-04-22",
+      "enddate": "2026-04-22",
+      "category": "Men Elite",
+      "uci_tour": "1.UWT",
+      "is_one_day_race": true,
+      "edition": 90,
+      "stages": []
+    },
+    {
+      "pcs_url": "race/liege-bastogne-liege/2026",
+      "slug": "liege-bastogne-liege-2026",
+      "pcs_slug": "liege-bastogne-liege",
+      "cyclingstage_slug": "liege-bastogne-liege",
+      "name": "Liège - Bastogne - Liège",
+      "year": 2026,
+      "nationality": "BE",
+      "startdate": "2026-04-26",
+      "enddate": "2026-04-26",
+      "category": "Men Elite",
+      "uci_tour": "1.UWT",
+      "is_one_day_race": true,
+      "edition": 112,
+      "stages": []
+    },
+    {
+      "pcs_url": "race/tour-de-romandie/2026",
+      "slug": "tour-de-romandie-2026",
+      "pcs_slug": "tour-de-romandie",
+      "cyclingstage_slug": "tour-de-romandie",
+      "name": "Tour de Romandie",
+      "year": 2026,
+      "nationality": "CH",
+      "startdate": "2026-04-28",
+      "enddate": "2026-05-03",
+      "category": "Men Elite",
+      "uci_tour": "2.UWT",
+      "is_one_day_race": false,
+      "edition": 79,
+      "stages": [
+        {
+          "profile_icon": "p1",
+          "stage_name": "Prologue | Villars-sur-Glâne - Villars-sur-Glâne",
+          "stage_url": "race/tour-de-romandie/2026/prologue",
+          "date": "04-28"
+        },
+        {
+          "profile_icon": "p4",
+          "stage_name": "Stage 1 | Martigny - Martigny",
+          "stage_url": "race/tour-de-romandie/2026/stage-1",
+          "date": "04-29"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 2 | Rue - Vucherens",
+          "stage_url": "race/tour-de-romandie/2026/stage-2",
+          "date": "04-30"
+        },
+        {
+          "profile_icon": "p4",
+          "stage_name": "Stage 3 | Orbe - Orbe",
+          "stage_url": "race/tour-de-romandie/2026/stage-3",
+          "date": "05-01"
+        },
+        {
+          "profile_icon": "p4",
+          "stage_name": "Stage 4 | Broc - Charmey",
+          "stage_url": "race/tour-de-romandie/2026/stage-4",
+          "date": "05-02"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 5 | Lucens - Leysin",
+          "stage_url": "race/tour-de-romandie/2026/stage-5",
+          "date": "05-03"
+        }
+      ]
+    },
+    {
+      "pcs_url": "race/giro-d-italia/2026",
+      "slug": "giro-d-italia-2026",
+      "pcs_slug": "giro-d-italia",
+      "cyclingstage_slug": "giro",
+      "name": "Giro d'Italia",
+      "year": 2026,
+      "nationality": "IT",
+      "startdate": "2026-05-08",
+      "enddate": "2026-05-31",
+      "category": "Men Elite",
+      "uci_tour": "2.UWT",
+      "is_one_day_race": false,
+      "edition": 109,
+      "stages": [
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 1 | Nessebar - Burgas",
+          "stage_url": "race/giro-d-italia/2026/stage-1",
+          "date": "05-08"
+        },
+        {
+          "profile_icon": "p4",
+          "stage_name": "Stage 2 | Burgas - Veliko Tarnovo",
+          "stage_url": "race/giro-d-italia/2026/stage-2",
+          "date": "05-09"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 3 | Plovdiv - Sofia",
+          "stage_url": "race/giro-d-italia/2026/stage-3",
+          "date": "05-10"
+        },
+        {
+          "profile_icon": "p4",
+          "stage_name": "Stage 4 | Catanzaro - Cosenza",
+          "stage_url": "race/giro-d-italia/2026/stage-4",
+          "date": "05-12"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 5 | Praia a Mare - Potenza",
+          "stage_url": "race/giro-d-italia/2026/stage-5",
+          "date": "05-13"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 6 | Paestum - Naples",
+          "stage_url": "race/giro-d-italia/2026/stage-6",
+          "date": "05-14"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 7 | Formia - Blockhaus",
+          "stage_url": "race/giro-d-italia/2026/stage-7",
+          "date": "05-15"
+        },
+        {
+          "profile_icon": "p3",
+          "stage_name": "Stage 8 | Chieti - Fermo",
+          "stage_url": "race/giro-d-italia/2026/stage-8",
+          "date": "05-16"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 9 | Cervia - Corno alle Scale",
+          "stage_url": "race/giro-d-italia/2026/stage-9",
+          "date": "05-17"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 10 (ITT) | Viareggio - Massa",
+          "stage_url": "race/giro-d-italia/2026/stage-10",
+          "date": "05-19"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 11 | Porcari (Paper District) - Chiavari",
+          "stage_url": "race/giro-d-italia/2026/stage-11",
+          "date": "05-20"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 12 | Imperia - Novi Ligure",
+          "stage_url": "race/giro-d-italia/2026/stage-12",
+          "date": "05-21"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 13 | Alessandria - Verbania",
+          "stage_url": "race/giro-d-italia/2026/stage-13",
+          "date": "05-22"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 14 | Aosta - Pila (Gressan)",
+          "stage_url": "race/giro-d-italia/2026/stage-14",
+          "date": "05-23"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 15 | Voghera - Milan",
+          "stage_url": "race/giro-d-italia/2026/stage-15",
+          "date": "05-24"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 16 | Bellinzona - Carì",
+          "stage_url": "race/giro-d-italia/2026/stage-16",
+          "date": "05-26"
+        },
+        {
+          "profile_icon": "p3",
+          "stage_name": "Stage 17 | Cassano d'Adda - Andalo",
+          "stage_url": "race/giro-d-italia/2026/stage-17",
+          "date": "05-27"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 18 | Fai della Paganella - Pieve di Soligo",
+          "stage_url": "race/giro-d-italia/2026/stage-18",
+          "date": "05-28"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 19 | Feltre - Alleghe (Piani di Pezzè)",
+          "stage_url": "race/giro-d-italia/2026/stage-19",
+          "date": "05-29"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 20 | Gemona del Friuli 1976-2026 - Piancavallo",
+          "stage_url": "race/giro-d-italia/2026/stage-20",
+          "date": "05-30"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 21 | Rome - Rome",
+          "stage_url": "race/giro-d-italia/2026/stage-21",
+          "date": "05-31"
+        }
+      ]
+    },
+    {
+      "pcs_url": "race/criterium-du-dauphine/2026",
+      "slug": "criterium-du-dauphine-2026",
+      "pcs_slug": "criterium-du-dauphine",
+      "cyclingstage_slug": "tour-auvergne-rhone-alpes",
+      "name": "Tour Auvergne - Rhône-Alpes",
+      "year": 2026,
+      "nationality": "FR",
+      "startdate": "2026-06-07",
+      "enddate": "2026-06-14",
+      "category": "Men Elite",
+      "uci_tour": "2.UWT",
+      "is_one_day_race": false,
+      "edition": 78,
+      "stages": [
+        {
+          "profile_icon": "p3",
+          "stage_name": "Stage 1 | Vizille - Saint-Ismier",
+          "stage_url": "race/tour-auvergne-rhone-alpes/2026/stage-1",
+          "date": "06-07"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 2 | Saint-Martin-Le-Vinoux - Le Puy-en-Velay",
+          "stage_url": "race/tour-auvergne-rhone-alpes/2026/stage-2",
+          "date": "06-08"
+        },
+        {
+          "profile_icon": "p3",
+          "stage_name": "Stage 3 (TTT) | Perreux - Perreux",
+          "stage_url": "race/tour-auvergne-rhone-alpes/2026/stage-3",
+          "date": "06-09"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 4 | Le Puy-en-Velay - Montrond-Les-Bains",
+          "stage_url": "race/tour-auvergne-rhone-alpes/2026/stage-4",
+          "date": "06-10"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 5 | Saint-Chamond - Villars-Les-Dombes",
+          "stage_url": "race/tour-auvergne-rhone-alpes/2026/stage-5",
+          "date": "06-11"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 6 | Saint-Vulbas - Crest-Voland",
+          "stage_url": "race/tour-auvergne-rhone-alpes/2026/stage-6",
+          "date": "06-12"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 7 | La Bridoire - Grand Colombier",
+          "stage_url": "race/tour-auvergne-rhone-alpes/2026/stage-7",
+          "date": "06-13"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 8 | Beaufort - Plateau de Solaison",
+          "stage_url": "race/tour-auvergne-rhone-alpes/2026/stage-8",
+          "date": "06-14"
+        }
+      ]
+    },
     {
       "pcs_url": "race/tour-de-suisse/2026",
       "slug": "tour-de-suisse-2026",
@@ -11,26 +974,42 @@
       "name": "Tour de Suisse",
       "year": 2026,
       "nationality": "CH",
-      "startdate": "2026-06-07",
-      "enddate": "2026-06-14",
+      "startdate": "2026-06-17",
+      "enddate": "2026-06-21",
       "category": "Men Elite",
-      "uci_tour": "UCI World Tour",
+      "uci_tour": "2.UWT",
       "is_one_day_race": false,
-      "edition": 88,
+      "edition": 89,
       "stages": [
         {
+          "profile_icon": "p2",
+          "stage_name": "Stage 1 | Sondrio - Sondrio",
           "stage_url": "race/tour-de-suisse/2026/stage-1",
-          "date": "2026-06-07",
-          "departure": "Frauenfeld",
-          "arrival": "Schaffhausen",
-          "distance": 175.0
+          "date": "06-17"
         },
         {
+          "profile_icon": "p2",
+          "stage_name": "Stage 2 | Locarno - Locarno",
           "stage_url": "race/tour-de-suisse/2026/stage-2",
-          "date": "2026-06-08",
-          "departure": "Stein am Rhein",
-          "arrival": "Amriswil",
-          "distance": 165.0
+          "date": "06-18"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 3 | Bad Ragaz - Bad Ragaz",
+          "stage_url": "race/tour-de-suisse/2026/stage-3",
+          "date": "06-19"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 4 (ITT) | Aarburg - Aarburg",
+          "stage_url": "race/tour-de-suisse/2026/stage-4",
+          "date": "06-20"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 5 | Villars-sur-Ollon - Villars-sur-Ollon",
+          "stage_url": "race/tour-de-suisse/2026/stage-5",
+          "date": "06-21"
         }
       ]
     },
@@ -45,57 +1024,154 @@
       "startdate": "2026-07-04",
       "enddate": "2026-07-26",
       "category": "Men Elite",
-      "uci_tour": "UCI World Tour",
+      "uci_tour": "2.UWT",
       "is_one_day_race": false,
       "edition": 113,
       "stages": [
         {
+          "profile_icon": "p3",
+          "stage_name": "Stage 1 (TTT) | Barcelona - Barcelona",
           "stage_url": "race/tour-de-france/2026/stage-1",
-          "date": "2026-07-04",
-          "departure": "Barcelona",
-          "arrival": "Barcelona",
-          "distance": 185.0
+          "date": "07-04"
         },
         {
+          "profile_icon": "p3",
+          "stage_name": "Stage 2 | Tarragona - Barcelona",
           "stage_url": "race/tour-de-france/2026/stage-2",
-          "date": "2026-07-05",
-          "departure": "Barcelona",
-          "arrival": "Montjuïc",
-          "distance": 13.2
+          "date": "07-05"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 3 | Granollers - Les Angles",
+          "stage_url": "race/tour-de-france/2026/stage-3",
+          "date": "07-06"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 4 | Carcassonne - Foix",
+          "stage_url": "race/tour-de-france/2026/stage-4",
+          "date": "07-07"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 5 | Lannemezan - Pau",
+          "stage_url": "race/tour-de-france/2026/stage-5",
+          "date": "07-08"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 6 | Pau - Gavarnie-Gèdre",
+          "stage_url": "race/tour-de-france/2026/stage-6",
+          "date": "07-09"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 7 | Hagetmau - Bordeaux",
+          "stage_url": "race/tour-de-france/2026/stage-7",
+          "date": "07-10"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 8 | Périgueux - Bergerac",
+          "stage_url": "race/tour-de-france/2026/stage-8",
+          "date": "07-11"
+        },
+        {
+          "profile_icon": "p3",
+          "stage_name": "Stage 9 | Malemort - Ussel",
+          "stage_url": "race/tour-de-france/2026/stage-9",
+          "date": "07-12"
+        },
+        {
+          "profile_icon": "p3",
+          "stage_name": "Stage 10 | Aurillac - Le Lioran",
+          "stage_url": "race/tour-de-france/2026/stage-10",
+          "date": "07-14"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 11 | Vichy - Nevers",
+          "stage_url": "race/tour-de-france/2026/stage-11",
+          "date": "07-15"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 12 | Circuit de Nevers Magny-Cours - Chalon-sur-Saône",
+          "stage_url": "race/tour-de-france/2026/stage-12",
+          "date": "07-16"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 13 | Dole - Belfort",
+          "stage_url": "race/tour-de-france/2026/stage-13",
+          "date": "07-17"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 14 | Mulhouse - Le Markstein",
+          "stage_url": "race/tour-de-france/2026/stage-14",
+          "date": "07-18"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 15 | Champagnole - Plateau de Solaison",
+          "stage_url": "race/tour-de-france/2026/stage-15",
+          "date": "07-19"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 16 (ITT) | Évian Les-Bains - Thonon Les-Bains",
+          "stage_url": "race/tour-de-france/2026/stage-16",
+          "date": "07-21"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 17 | Chambéry - Voiron",
+          "stage_url": "race/tour-de-france/2026/stage-17",
+          "date": "07-22"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 18 | Voiron - Orcières Merlette",
+          "stage_url": "race/tour-de-france/2026/stage-18",
+          "date": "07-23"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 19 | Gap - Alpe d'Huez",
+          "stage_url": "race/tour-de-france/2026/stage-19",
+          "date": "07-24"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 20 | Le Bourg d'Oisans - Alpe d'Huez",
+          "stage_url": "race/tour-de-france/2026/stage-20",
+          "date": "07-25"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 21 | Thoiry - Paris",
+          "stage_url": "race/tour-de-france/2026/stage-21",
+          "date": "07-26"
         }
       ]
     },
     {
       "pcs_url": "race/clasica-ciclista-san-sebastian/2026",
-      "slug": "clasica-ciclista-san-sebastian-2026",
+      "slug": "clasica-de-san-sebastian-2026",
       "pcs_slug": "clasica-ciclista-san-sebastian",
       "cyclingstage_slug": "clasica-de-san-sebastian",
       "name": "Clásica de San Sebastián",
       "year": 2026,
       "nationality": "ES",
-      "startdate": "2026-08-01",
-      "enddate": "2026-08-01",
-      "category": "Men Elite",
-      "uci_tour": "UCI World Tour",
-      "is_one_day_race": true,
-      "edition": 42,
-      "stages": []
-    },
-    {
-      "pcs_url": "race/vuelta-a-espana/2026",
-      "slug": "vuelta-a-espana-2026",
-      "pcs_slug": "vuelta-a-espana",
-      "cyclingstage_slug": "vuelta",
-      "name": "Vuelta a España",
-      "year": 2026,
-      "nationality": "ES",
       "startdate": "2026-08-15",
-      "enddate": "2026-09-06",
+      "enddate": "2026-08-15",
       "category": "Men Elite",
-      "uci_tour": "UCI World Tour",
-      "is_one_day_race": false,
-      "edition": 81,
-      "stages": []
+      "uci_tour": null,
+      "is_one_day_race": true,
+      "edition": null,
+      "stages": [],
+      "_pcs_data_missing": true
     },
     {
       "pcs_url": "race/renewi-tour/2026",
@@ -105,28 +1181,265 @@
       "name": "Renewi Tour",
       "year": 2026,
       "nationality": "BE",
-      "startdate": "2026-08-18",
-      "enddate": "2026-08-22",
+      "startdate": "2026-08-19",
+      "enddate": "2026-08-23",
       "category": "Men Elite",
-      "uci_tour": "UCI World Tour",
+      "uci_tour": "2.UWT",
       "is_one_day_race": false,
-      "edition": 19,
-      "stages": []
+      "edition": 21,
+      "stages": [
+        {
+          "profile_icon": "p0",
+          "stage_name": "Stage 1 | Diest - Diest",
+          "stage_url": "race/renewi-tour/2026/stage-1",
+          "date": "08-19"
+        },
+        {
+          "profile_icon": "p0",
+          "stage_name": "Stage 2 | Blankenberge - Ardooie",
+          "stage_url": "race/renewi-tour/2026/stage-2",
+          "date": "08-20"
+        },
+        {
+          "profile_icon": "p0",
+          "stage_name": "Stage 3 | Celles - Geraardsbergen",
+          "stage_url": "race/renewi-tour/2026/stage-3",
+          "date": "08-21"
+        },
+        {
+          "profile_icon": "p0",
+          "stage_name": "Stage 4 | Riemst - Bilzen-Hoeselt",
+          "stage_url": "race/renewi-tour/2026/stage-4",
+          "date": "08-22"
+        },
+        {
+          "profile_icon": "p0",
+          "stage_name": "Stage 5 | Leuven - Leuven",
+          "stage_url": "race/renewi-tour/2026/stage-5",
+          "date": "08-23"
+        }
+      ]
+    },
+    {
+      "pcs_url": "race/vuelta-a-espana/2026",
+      "slug": "vuelta-a-espana-2026",
+      "pcs_slug": "vuelta-a-espana",
+      "cyclingstage_slug": "vuelta",
+      "name": "Vuelta a España",
+      "year": 2026,
+      "nationality": "ES",
+      "startdate": "2026-08-22",
+      "enddate": "2026-09-13",
+      "category": "Men Elite",
+      "uci_tour": "2.UWT",
+      "is_one_day_race": false,
+      "edition": 81,
+      "stages": [
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 1 (ITT) | Monaco - Monaco",
+          "stage_url": "race/vuelta-a-espana/2026/stage-1",
+          "date": "08-22"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 2 | Monaco - Manosque",
+          "stage_url": "race/vuelta-a-espana/2026/stage-2",
+          "date": "08-23"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 3 | Gruissan - Font Romeu",
+          "stage_url": "race/vuelta-a-espana/2026/stage-3",
+          "date": "08-24"
+        },
+        {
+          "profile_icon": "p4",
+          "stage_name": "Stage 4 | Andorra La Vella - Andorra La Vella",
+          "stage_url": "race/vuelta-a-espana/2026/stage-4",
+          "date": "08-25"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 5 | Falset - Roquetes",
+          "stage_url": "race/vuelta-a-espana/2026/stage-5",
+          "date": "08-26"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 6 | Alcossebre - Castellón",
+          "stage_url": "race/vuelta-a-espana/2026/stage-6",
+          "date": "08-27"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 7 | Vall d'Alba - Aramón Valdelinares",
+          "stage_url": "race/vuelta-a-espana/2026/stage-7",
+          "date": "08-28"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 8 | Puçol - Xeraco",
+          "stage_url": "race/vuelta-a-espana/2026/stage-8",
+          "date": "08-29"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 9 | Villajoyosa - Alto de Aitana",
+          "stage_url": "race/vuelta-a-espana/2026/stage-9",
+          "date": "08-30"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 10 | Alcaraz - Elche de la Sierra",
+          "stage_url": "race/vuelta-a-espana/2026/stage-10",
+          "date": "09-01"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 11 | Cartagena - Lorca",
+          "stage_url": "race/vuelta-a-espana/2026/stage-11",
+          "date": "09-02"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 12 | Vera - Calar Alto",
+          "stage_url": "race/vuelta-a-espana/2026/stage-12",
+          "date": "09-03"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 13 | Almuñécar - Loja",
+          "stage_url": "race/vuelta-a-espana/2026/stage-13",
+          "date": "09-04"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 14 | Jaén - Sierra de la Pandera",
+          "stage_url": "race/vuelta-a-espana/2026/stage-14",
+          "date": "09-05"
+        },
+        {
+          "profile_icon": "p2",
+          "stage_name": "Stage 15 | Palma del Río - Córdoba",
+          "stage_url": "race/vuelta-a-espana/2026/stage-15",
+          "date": "09-06"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 16 | Cortegana - Palos de la Frontera",
+          "stage_url": "race/vuelta-a-espana/2026/stage-16",
+          "date": "09-08"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 17 | Dos Hermanas - Sevilla",
+          "stage_url": "race/vuelta-a-espana/2026/stage-17",
+          "date": "09-09"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 18 (ITT) | El Puerto de Santa María - Jerez de la Frontera",
+          "stage_url": "race/vuelta-a-espana/2026/stage-18",
+          "date": "09-10"
+        },
+        {
+          "profile_icon": "p3",
+          "stage_name": "Stage 19 | Vélez-Málaga - Peñas Blancas. Estepona",
+          "stage_url": "race/vuelta-a-espana/2026/stage-19",
+          "date": "09-11"
+        },
+        {
+          "profile_icon": "p5",
+          "stage_name": "Stage 20 | La Calahorra - Collado del Alguacil",
+          "stage_url": "race/vuelta-a-espana/2026/stage-20",
+          "date": "09-12"
+        },
+        {
+          "profile_icon": "p1",
+          "stage_name": "Stage 21 | Carrefour Granada - Granada",
+          "stage_url": "race/vuelta-a-espana/2026/stage-21",
+          "date": "09-13"
+        }
+      ]
+    },
+    {
+      "pcs_url": "race/tour-of-britain/2026",
+      "slug": "tour-of-britain-2026",
+      "pcs_slug": "tour-of-britain",
+      "cyclingstage_slug": "tour-of-britain",
+      "name": "Tour of Britain",
+      "year": 2026,
+      "nationality": "GB",
+      "startdate": "2026-09-02",
+      "enddate": "2026-09-06",
+      "category": "Men Elite",
+      "uci_tour": "2.Pro",
+      "is_one_day_race": false,
+      "edition": 22,
+      "stages": [
+        {
+          "profile_icon": "p0",
+          "stage_name": "Stage 1 |  - ",
+          "stage_url": "race/tour-of-britain/2026/stage-1",
+          "date": "09-02"
+        },
+        {
+          "profile_icon": "p0",
+          "stage_name": "Stage 2 |  - ",
+          "stage_url": "race/tour-of-britain/2026/stage-2",
+          "date": "09-03"
+        },
+        {
+          "profile_icon": "p0",
+          "stage_name": "Stage 3 |  - ",
+          "stage_url": "race/tour-of-britain/2026/stage-3",
+          "date": "09-04"
+        },
+        {
+          "profile_icon": "p0",
+          "stage_name": "Stage 4 |  - ",
+          "stage_url": "race/tour-of-britain/2026/stage-4",
+          "date": "09-05"
+        },
+        {
+          "profile_icon": "p0",
+          "stage_name": "Stage 5 |  - ",
+          "stage_url": "race/tour-of-britain/2026/stage-5",
+          "date": "09-06"
+        }
+      ]
     },
     {
       "pcs_url": "race/gp-quebec/2026",
       "slug": "gp-quebec-2026",
       "pcs_slug": "gp-quebec",
       "cyclingstage_slug": "gp-quebec",
-      "name": "Grand Prix de Québec",
+      "name": "Grand Prix Cycliste de Québec",
       "year": 2026,
       "nationality": "CA",
       "startdate": "2026-09-11",
       "enddate": "2026-09-11",
       "category": "Men Elite",
-      "uci_tour": "UCI World Tour",
+      "uci_tour": "1.UWT",
       "is_one_day_race": true,
-      "edition": 14,
+      "edition": 15,
+      "stages": []
+    },
+    {
+      "pcs_url": "race/gp-montreal/2026",
+      "slug": "gp-montreal-2026",
+      "pcs_slug": "gp-montreal",
+      "cyclingstage_slug": "gp-montreal",
+      "name": "Grand Prix Cycliste de Montréal",
+      "year": 2026,
+      "nationality": "CA",
+      "startdate": "2026-09-13",
+      "enddate": "2026-09-13",
+      "category": "Men Elite",
+      "uci_tour": "1.UWT",
+      "is_one_day_race": true,
+      "edition": 15,
       "stages": []
     },
     {
@@ -140,25 +1453,25 @@
       "startdate": "2026-10-10",
       "enddate": "2026-10-10",
       "category": "Men Elite",
-      "uci_tour": "UCI World Tour",
+      "uci_tour": "1.UWT",
       "is_one_day_race": true,
       "edition": 120,
       "stages": []
     },
     {
-      "pcs_url": "race/tour-of-guangxi/2026",
-      "slug": "tour-of-guangxi-2026",
-      "pcs_slug": "tour-of-guangxi",
-      "cyclingstage_slug": null,
-      "name": "Tour of Guangxi",
+      "pcs_url": "race/paris-tours/2026",
+      "slug": "paris-tours-2026",
+      "pcs_slug": "paris-tours",
+      "cyclingstage_slug": "paris-tours",
+      "name": "Paris - Tours",
       "year": 2026,
-      "nationality": "CN",
-      "startdate": "2026-10-14",
-      "enddate": "2026-10-18",
+      "nationality": "FR",
+      "startdate": "2026-10-11",
+      "enddate": "2026-10-11",
       "category": "Men Elite",
-      "uci_tour": "UCI World Tour",
-      "is_one_day_race": false,
-      "edition": 7,
+      "uci_tour": "1.Pro",
+      "is_one_day_race": true,
+      "edition": 120,
       "stages": []
     }
   ]

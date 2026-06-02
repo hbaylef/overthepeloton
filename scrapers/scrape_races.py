@@ -40,103 +40,65 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
-# UCI World Tour race slugs (PCS URL format).
-# Verified against procyclingstats.com/races.php?year=2026&circuit=1
+# Master 2026 race calendar.
+# Key   = cyclingstage.com slug (used for GPX scraping)
+# Value = (pcs_slug, display_name, nationality_code, is_one_day_race, month)
 #
-# NOTE: Some race slugs change when races get renamed. The script will
-# log warnings for any slug that returns a 404. If a slug breaks,
-# find the new one at procyclingstats.com and update this list.
+# When PCS has the race, we use its rich data (dates, stages, edition).
+# When PCS fails, we keep the race with this fallback info so the user can
+# still browse it. The `month` field gives a rough sort key.
+#
+# Covers ~37 races: all UCI World Tour + extra ones cyclingstage.com covers
+# (Tour of Britain, Tour of the Alps, Brabantse Pijl, etc.).
 # ---------------------------------------------------------------------------
-WORLD_TOUR_RACES = [
+CALENDAR = {
     # January
-    "race/tour-down-under/{year}",
+    "tour-down-under":           ("tour-down-under",                       "Tour Down Under",                "AU", False, 1),
     # February
-    "race/uae-tour/{year}",
-    "race/omloop-het-nieuwsblad/{year}",
-    "race/kuurne-brussel-kuurne/{year}",
+    "tour-of-valencia":          ("volta-a-la-comunitat-valenciana",       "Volta a la Comunitat Valenciana","ES", False, 2),
+    "ruta-del-sol":              ("vuelta-a-andalucia-ruta-del-sol",       "Vuelta a Andalucía",             "ES", False, 2),
+    "volta-ao-algarve":          ("volta-ao-algarve",                      "Volta ao Algarve",               "PT", False, 2),
+    "uae-tour":                  ("uae-tour",                              "UAE Tour",                       "AE", False, 2),
     # March
-    "race/strade-bianche/{year}",
-    "race/paris-nice/{year}",
-    "race/tirreno-adriatico/{year}",
-    "race/milano-sanremo/{year}",
-    "race/volta-a-catalunya/{year}",
-    "race/e3-saxo-classic/{year}",
-    # Renamed in 2026: Gent-Wevelgem -> In Flanders Fields
-    "race/gent-wevelgem/{year}",
-    "race/dwars-door-vlaanderen/{year}",
+    "omloop-het-nieuwsblad":     ("omloop-het-nieuwsblad",                 "Omloop Het Nieuwsblad",          "BE", True,  3),
+    "kuurne-brussels-kuurne":    ("kuurne-brussel-kuurne",                 "Kuurne-Brussels-Kuurne",         "BE", True,  3),
+    "strade-bianche":            ("strade-bianche",                        "Strade Bianche",                 "IT", True,  3),
+    "o-gran-camino":             ("o-gran-camino",                         "O Gran Camiño",                  "ES", False, 3),
+    "paris-nice":                ("paris-nice",                            "Paris-Nice",                     "FR", False, 3),
+    "tirreno-adriatico":         ("tirreno-adriatico",                     "Tirreno-Adriatico",              "IT", False, 3),
+    "milan-san-remo":            ("milano-sanremo",                        "Milano-Sanremo",                 "IT", True,  3),
+    "volta-a-catalunya":         ("volta-a-catalunya",                     "Volta a Catalunya",              "ES", False, 3),
+    "e3-saxo-classic":           ("e3-saxo-classic",                       "E3 Saxo Classic",                "BE", True,  3),
+    "in-flanders-fields":        ("gent-wevelgem",                         "In Flanders Fields (Gent-Wevelgem)","BE", True, 3),
+    "dwars-door-vlaanderen":     ("dwars-door-vlaanderen",                 "Dwars door Vlaanderen",          "BE", True,  3),
     # April
-    "race/ronde-van-vlaanderen/{year}",
-    "race/paris-roubaix/{year}",
-    "race/itzulia-basque-country/{year}",
-    "race/amstel-gold-race/{year}",
-    "race/la-fleche-wallonne/{year}",
-    "race/liege-bastogne-liege/{year}",
-    "race/tour-de-romandie/{year}",
+    "tour-of-flanders":          ("ronde-van-vlaanderen",                  "Tour of Flanders",               "BE", True,  4),
+    "paris-roubaix":             ("paris-roubaix",                         "Paris-Roubaix",                  "FR", True,  4),
+    "tour-of-the-basque-country":("itzulia-basque-country",                "Itzulia Basque Country",         "ES", False, 4),
+    "brabantse-pijl":            ("brabantse-pijl",                        "Brabantse Pijl",                 "BE", True,  4),
+    "amstel-gold-race":          ("amstel-gold-race",                      "Amstel Gold Race",               "NL", True,  4),
+    "la-fleche-wallonne":        ("la-fleche-wallonne",                    "La Flèche Wallonne",             "BE", True,  4),
+    "liege-bastogne-liege":      ("liege-bastogne-liege",                  "Liège-Bastogne-Liège",           "BE", True,  4),
+    "tour-of-the-alps":          ("tour-of-the-alps",                      "Tour of the Alps",               "IT", False, 4),
+    "tour-de-romandie":          ("tour-de-romandie",                      "Tour de Romandie",               "CH", False, 4),
     # May
-    "race/eschborn-frankfurt/{year}",
-    "race/giro-d-italia/{year}",
+    "giro":                      ("giro-d-italia",                         "Giro d'Italia",                  "IT", False, 5),
     # June
-    "race/tour-de-suisse/{year}",
-    # Renamed in 2026: Critérium du Dauphiné -> Tour Auvergne-Rhône-Alpes
-    "race/criterium-du-dauphine/{year}",
+    "tour-auvergne-rhone-alpes": ("criterium-du-dauphine",                 "Tour Auvergne-Rhône-Alpes",      "FR", False, 6),
+    "tour-de-suisse":            ("tour-de-suisse",                        "Tour de Suisse",                 "CH", False, 6),
     # July
-    "race/tour-de-france/{year}",
+    "tour-de-france":            ("tour-de-france",                        "Tour de France",                 "FR", False, 7),
     # August
-    "race/clasica-ciclista-san-sebastian/{year}",
-    "race/tour-of-poland/{year}",
-    "race/renewi-tour/{year}",
-    "race/vuelta-a-espana/{year}",
+    "clasica-de-san-sebastian":  ("clasica-ciclista-san-sebastian",        "Clásica de San Sebastián",       "ES", True,  8),
+    "vuelta":                    ("vuelta-a-espana",                       "Vuelta a España",                "ES", False, 8),
+    "renewi-tour":               ("renewi-tour",                           "Renewi Tour",                    "BE", False, 8),
     # September
-    "race/bretagne-classic/{year}",
-    "race/gp-quebec/{year}",
-    "race/gp-montreal/{year}",
-    "race/tour-of-luxembourg/{year}",
+    "gp-quebec":                 ("gp-quebec",                             "Grand Prix de Québec",           "CA", True,  9),
+    "gp-montreal":               ("gp-montreal",                           "Grand Prix de Montréal",         "CA", True,  9),
+    "tour-of-britain":           ("tour-of-britain",                       "Tour of Britain",                "GB", False, 9),
     # October
-    "race/il-lombardia/{year}",
-    "race/paris-tours/{year}",
-    "race/japan-cup/{year}",
-    "race/tour-of-guangxi/{year}",
-]
-
-# Mapping of PCS race slugs to CyclingStage.com GPX page slugs.
-# Used later by the GPX scraper to find the right download page.
-PCS_TO_CYCLINGSTAGE = {
-    "tour-down-under": "tour-down-under",
-    "uae-tour": "uae-tour",
-    "omloop-het-nieuwsblad": "omloop-het-nieuwsblad",
-    "kuurne-brussel-kuurne": "kuurne-brussels-kuurne",
-    "strade-bianche": "strade-bianche",
-    "paris-nice": "paris-nice",
-    "tirreno-adriatico": "tirreno-adriatico",
-    "milano-sanremo": "milan-san-remo",
-    "volta-a-catalunya": "volta-a-catalunya",
-    "e3-saxo-classic": "e3-saxo-classic",
-    "gent-wevelgem": "in-flanders-fields",
-    "dwars-door-vlaanderen": "dwars-door-vlaanderen",
-    "ronde-van-vlaanderen": "tour-of-flanders",
-    "paris-roubaix": "paris-roubaix",
-    "itzulia-basque-country": "tour-of-the-basque-country",
-    "amstel-gold-race": "amstel-gold-race",
-    "la-fleche-wallonne": "la-fleche-wallonne",
-    "liege-bastogne-liege": "liege-bastogne-liege",
-    "tour-de-romandie": "tour-de-romandie",
-    "eschborn-frankfurt": None,  # not on CyclingStage
-    "giro-d-italia": "giro",
-    "tour-de-suisse": "tour-de-suisse",
-    "criterium-du-dauphine": "tour-auvergne-rhone-alpes",
-    "tour-de-france": "tour-de-france",
-    "clasica-ciclista-san-sebastian": "clasica-de-san-sebastian",
-    "tour-of-poland": None,
-    "renewi-tour": "renewi-tour",
-    "vuelta-a-espana": "vuelta",
-    "bretagne-classic": None,
-    "gp-quebec": "gp-quebec",
-    "gp-montreal": "gp-montreal",
-    "tour-of-luxembourg": None,
-    "il-lombardia": "tour-of-lombardy",
-    "paris-tours": "paris-tours",
-    "japan-cup": None,
-    "tour-of-guangxi": None,
+    "tour-of-lombardy":          ("il-lombardia",                          "Il Lombardia",                   "IT", True,  10),
+    "paris-tours":               ("paris-tours",                           "Paris-Tours",                    "FR", True,  10),
 }
 
 
@@ -166,13 +128,12 @@ def scrape_race_info(race_url: str) -> Optional[dict]:
         data = race.parse()
 
         slug = pcs_slug(race_url)
-        cs_slug = PCS_TO_CYCLINGSTAGE.get(slug)
-
+        # cyclingstage_slug is filled in by main() from CALENDAR; default to PCS slug.
         result = {
             "pcs_url": race_url,
             "slug": make_slug(race_url),
             "pcs_slug": slug,
-            "cyclingstage_slug": cs_slug,
+            "cyclingstage_slug": slug,  # overridden by caller
             "name": data.get("name"),
             "year": data.get("year"),
             "nationality": data.get("nationality"),
@@ -222,16 +183,31 @@ def scrape_startlist(race_url: str) -> Optional[list]:
         return None
 
 
-def is_upcoming(race_info: dict) -> bool:
-    """Check if a race is upcoming (hasn't finished yet)."""
-    enddate_str = race_info.get("enddate") or race_info.get("startdate")
-    if not enddate_str:
-        return True  # can't tell → include it
-    try:
-        enddate = datetime.strptime(enddate_str, "%Y-%m-%d").date()
-        return enddate >= date.today()
-    except (ValueError, TypeError):
-        return True
+def build_fallback_entry(cs_slug: str, pcs_slug: str, name: str,
+                          nationality: str, is_one_day: bool, month: int,
+                          year: int) -> dict:
+    """
+    Build a minimal race entry when PCS scraping fails for this race.
+    Sets approximate date (15th of given month) so it sorts roughly right.
+    """
+    approx_date = f"{year}-{month:02d}-15"
+    return {
+        "pcs_url": f"race/{pcs_slug}/{year}",
+        "slug": f"{cs_slug}-{year}",
+        "pcs_slug": pcs_slug,
+        "cyclingstage_slug": cs_slug,
+        "name": name,
+        "year": year,
+        "nationality": nationality,
+        "startdate": approx_date,
+        "enddate": approx_date,
+        "category": "Men Elite",
+        "uci_tour": None,
+        "is_one_day_race": is_one_day,
+        "edition": None,
+        "stages": [],
+        "_pcs_data_missing": True,
+    }
 
 
 def main():
@@ -241,71 +217,77 @@ def main():
 
     all_races = []
     startlist_count = 0
+    pcs_ok = 0
+    pcs_fail = 0
 
-    for race_template in WORLD_TOUR_RACES:
-        race_url = race_template.format(year=YEAR)
+    for cs_slug, (pcs_slug, name, nationality, is_one_day, month) in CALENDAR.items():
+        race_url = f"race/{pcs_slug}/{YEAR}"
 
-        # 1) Scrape race info
+        # 1) Try PCS for rich race info
         info = scrape_race_info(race_url)
         time.sleep(DELAY_BETWEEN_REQUESTS)
 
         if info is None:
-            continue
+            # PCS didn't have this race — use fallback with hardcoded basics
+            log.info(f"  → No PCS data, using fallback for: {name}")
+            info = build_fallback_entry(cs_slug, pcs_slug, name, nationality,
+                                         is_one_day, month, YEAR)
+            pcs_fail += 1
+        else:
+            # Override the cyclingstage_slug from our master mapping
+            info["cyclingstage_slug"] = cs_slug
+            pcs_ok += 1
 
         all_races.append(info)
 
-        # 2) Fetch startlist only for upcoming races
-        if is_upcoming(info):
-            riders = scrape_startlist(race_url)
-            time.sleep(DELAY_BETWEEN_REQUESTS)
+        # 2) Try startlist (works only for some races, mainly closer to race day)
+        riders = scrape_startlist(race_url)
+        time.sleep(DELAY_BETWEEN_REQUESTS)
 
-            if riders and len(riders) > 0:
-                slug = info["slug"]
+        if riders and len(riders) > 0:
+            slug = info["slug"]
+            sl_file = STARTLISTS_DIR / f"{slug}.json"
+            with open(sl_file, "w", encoding="utf-8") as f:
+                json.dump({
+                    "race": info["name"],
+                    "race_slug": slug,
+                    "updated_at": datetime.now().isoformat(),
+                    "total_riders": len(riders),
+                    "riders": riders,
+                }, f, indent=2, ensure_ascii=False)
+            startlist_count += 1
+            log.info(f"  → Saved startlist: {slug} ({len(riders)} riders)")
 
-                # Save individual startlist file
-                sl_file = STARTLISTS_DIR / f"{slug}.json"
-                with open(sl_file, "w", encoding="utf-8") as f:
-                    json.dump({
-                        "race": info["name"],
-                        "race_slug": slug,
-                        "updated_at": datetime.now().isoformat(),
-                        "total_riders": len(riders),
-                        "riders": riders,
-                    }, f, indent=2, ensure_ascii=False)
+    # Sort by start date (chronological for the year)
+    all_races.sort(key=lambda r: r.get("startdate") or "9999-12-31")
 
-                startlist_count += 1
-                log.info(f"  → Saved startlist: {slug} ({len(riders)} riders)")
-
-    # Filter to upcoming races for the main output
-    upcoming = [r for r in all_races if is_upcoming(r)]
-
-    # Sort by start date
-    upcoming.sort(key=lambda r: r.get("startdate") or "9999-12-31")
-
-    # Build final output
+    # Build final output — include ALL races, not just upcoming.
+    # The frontend can show past + future together so users browse any race.
     output = {
         "updated_at": datetime.now().isoformat(),
         "year": YEAR,
-        "total_races": len(upcoming),
-        "races": upcoming,
+        "total_races": len(all_races),
+        "races": all_races,
     }
 
     with open(RACES_FILE, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
 
-    log.info(f"Done! {len(upcoming)} upcoming races saved to {RACES_FILE}")
-    log.info(f"  {startlist_count} startlists saved to {STARTLISTS_DIR}/")
+    log.info(f"Done! {len(all_races)} races saved to {RACES_FILE}")
+    log.info(f"  PCS data ok: {pcs_ok}  ·  fallback used: {pcs_fail}")
+    log.info(f"  Startlists saved: {startlist_count}")
 
-    # Summary
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 64)
     print(f"  SCRAPE SUMMARY")
-    print(f"  Upcoming races: {len(upcoming)}")
-    print(f"  Startlists:     {startlist_count}")
-    print(f"  Output:         {RACES_FILE}")
-    print("=" * 60)
-    for r in upcoming:
-        status = "📋" if (STARTLISTS_DIR / f"{r['slug']}.json").exists() else "  "
-        print(f"  {status} {r['startdate']}  {r['name']}")
+    print(f"  Total races:  {len(all_races)}")
+    print(f"  PCS enriched: {pcs_ok}")
+    print(f"  Fallback:     {pcs_fail}  (races PCS didn't have data for)")
+    print(f"  Startlists:   {startlist_count}")
+    print("=" * 64)
+    for r in all_races:
+        has_sl = "📋" if (STARTLISTS_DIR / f"{r['slug']}.json").exists() else "  "
+        flag = "⚠️" if r.get("_pcs_data_missing") else "  "
+        print(f"  {has_sl}{flag} {r['startdate']}  {r['name']}")
 
 
 if __name__ == "__main__":
