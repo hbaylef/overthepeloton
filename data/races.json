@@ -1,0 +1,165 @@
+{
+  "updated_at": "2026-05-23T13:39:05.306174",
+  "year": 2026,
+  "total_races": 8,
+  "races": [
+    {
+      "pcs_url": "race/tour-de-suisse/2026",
+      "slug": "tour-de-suisse-2026",
+      "pcs_slug": "tour-de-suisse",
+      "cyclingstage_slug": "tour-de-suisse",
+      "name": "Tour de Suisse",
+      "year": 2026,
+      "nationality": "CH",
+      "startdate": "2026-06-07",
+      "enddate": "2026-06-14",
+      "category": "Men Elite",
+      "uci_tour": "UCI World Tour",
+      "is_one_day_race": false,
+      "edition": 88,
+      "stages": [
+        {
+          "stage_url": "race/tour-de-suisse/2026/stage-1",
+          "date": "2026-06-07",
+          "departure": "Frauenfeld",
+          "arrival": "Schaffhausen",
+          "distance": 175.0
+        },
+        {
+          "stage_url": "race/tour-de-suisse/2026/stage-2",
+          "date": "2026-06-08",
+          "departure": "Stein am Rhein",
+          "arrival": "Amriswil",
+          "distance": 165.0
+        }
+      ]
+    },
+    {
+      "pcs_url": "race/tour-de-france/2026",
+      "slug": "tour-de-france-2026",
+      "pcs_slug": "tour-de-france",
+      "cyclingstage_slug": "tour-de-france",
+      "name": "Tour de France",
+      "year": 2026,
+      "nationality": "FR",
+      "startdate": "2026-07-04",
+      "enddate": "2026-07-26",
+      "category": "Men Elite",
+      "uci_tour": "UCI World Tour",
+      "is_one_day_race": false,
+      "edition": 113,
+      "stages": [
+        {
+          "stage_url": "race/tour-de-france/2026/stage-1",
+          "date": "2026-07-04",
+          "departure": "Barcelona",
+          "arrival": "Barcelona",
+          "distance": 185.0
+        },
+        {
+          "stage_url": "race/tour-de-france/2026/stage-2",
+          "date": "2026-07-05",
+          "departure": "Barcelona",
+          "arrival": "Montjuïc",
+          "distance": 13.2
+        }
+      ]
+    },
+    {
+      "pcs_url": "race/clasica-ciclista-san-sebastian/2026",
+      "slug": "clasica-ciclista-san-sebastian-2026",
+      "pcs_slug": "clasica-ciclista-san-sebastian",
+      "cyclingstage_slug": "clasica-de-san-sebastian",
+      "name": "Clásica de San Sebastián",
+      "year": 2026,
+      "nationality": "ES",
+      "startdate": "2026-08-01",
+      "enddate": "2026-08-01",
+      "category": "Men Elite",
+      "uci_tour": "UCI World Tour",
+      "is_one_day_race": true,
+      "edition": 42,
+      "stages": []
+    },
+    {
+      "pcs_url": "race/vuelta-a-espana/2026",
+      "slug": "vuelta-a-espana-2026",
+      "pcs_slug": "vuelta-a-espana",
+      "cyclingstage_slug": "vuelta",
+      "name": "Vuelta a España",
+      "year": 2026,
+      "nationality": "ES",
+      "startdate": "2026-08-15",
+      "enddate": "2026-09-06",
+      "category": "Men Elite",
+      "uci_tour": "UCI World Tour",
+      "is_one_day_race": false,
+      "edition": 81,
+      "stages": []
+    },
+    {
+      "pcs_url": "race/renewi-tour/2026",
+      "slug": "renewi-tour-2026",
+      "pcs_slug": "renewi-tour",
+      "cyclingstage_slug": "renewi-tour",
+      "name": "Renewi Tour",
+      "year": 2026,
+      "nationality": "BE",
+      "startdate": "2026-08-18",
+      "enddate": "2026-08-22",
+      "category": "Men Elite",
+      "uci_tour": "UCI World Tour",
+      "is_one_day_race": false,
+      "edition": 19,
+      "stages": []
+    },
+    {
+      "pcs_url": "race/gp-quebec/2026",
+      "slug": "gp-quebec-2026",
+      "pcs_slug": "gp-quebec",
+      "cyclingstage_slug": "gp-quebec",
+      "name": "Grand Prix de Québec",
+      "year": 2026,
+      "nationality": "CA",
+      "startdate": "2026-09-11",
+      "enddate": "2026-09-11",
+      "category": "Men Elite",
+      "uci_tour": "UCI World Tour",
+      "is_one_day_race": true,
+      "edition": 14,
+      "stages": []
+    },
+    {
+      "pcs_url": "race/il-lombardia/2026",
+      "slug": "il-lombardia-2026",
+      "pcs_slug": "il-lombardia",
+      "cyclingstage_slug": "tour-of-lombardy",
+      "name": "Il Lombardia",
+      "year": 2026,
+      "nationality": "IT",
+      "startdate": "2026-10-10",
+      "enddate": "2026-10-10",
+      "category": "Men Elite",
+      "uci_tour": "UCI World Tour",
+      "is_one_day_race": true,
+      "edition": 120,
+      "stages": []
+    },
+    {
+      "pcs_url": "race/tour-of-guangxi/2026",
+      "slug": "tour-of-guangxi-2026",
+      "pcs_slug": "tour-of-guangxi",
+      "cyclingstage_slug": null,
+      "name": "Tour of Guangxi",
+      "year": 2026,
+      "nationality": "CN",
+      "startdate": "2026-10-14",
+      "enddate": "2026-10-18",
+      "category": "Men Elite",
+      "uci_tour": "UCI World Tour",
+      "is_one_day_race": false,
+      "edition": 7,
+      "stages": []
+    }
+  ]
+}

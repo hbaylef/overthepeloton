@@ -1,0 +1,88 @@
+{
+  "race": "Tour de France",
+  "race_slug": "tour-de-france-2026",
+  "updated_at": "2026-05-23T13:39:05.306199",
+  "total_riders": 10,
+  "riders": [
+    {
+      "name": "POGAČAR Tadej",
+      "nationality": "SI",
+      "number": 1,
+      "team": "UAE Team Emirates",
+      "rider_url": "rider/tadej-pogacar",
+      "team_url": "team/uae-team-emirates-2026"
+    },
+    {
+      "name": "VINGEGAARD Jonas",
+      "nationality": "DK",
+      "number": 11,
+      "team": "Red Bull - BORA - hansgrohe",
+      "rider_url": "rider/jonas-vingegaard",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
+    },
+    {
+      "name": "EVENEPOEL Remco",
+      "nationality": "BE",
+      "number": 21,
+      "team": "Soudal - Quick-Step",
+      "rider_url": "rider/remco-evenepoel",
+      "team_url": "team/soudal-quick-step-2026"
+    },
+    {
+      "name": "VAN AERT Wout",
+      "nationality": "BE",
+      "number": 31,
+      "team": "Team Visma | Lease a Bike",
+      "rider_url": "rider/wout-van-aert",
+      "team_url": "team/team-visma-lease-a-bike-2026"
+    },
+    {
+      "name": "VAN DER POEL Mathieu",
+      "nationality": "NL",
+      "number": 41,
+      "team": "Alpecin - Deceuninck",
+      "rider_url": "rider/mathieu-van-der-poel",
+      "team_url": "team/alpecin-deceuninck-2026"
+    },
+    {
+      "name": "ROGLIC Primož",
+      "nationality": "SI",
+      "number": 51,
+      "team": "Red Bull - BORA - hansgrohe",
+      "rider_url": "rider/primoz-roglic",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
+    },
+    {
+      "name": "SEIXAS Paul",
+      "nationality": "FR",
+      "number": 61,
+      "team": "Groupama - FDJ",
+      "rider_url": "rider/paul-seixas",
+      "team_url": "team/groupama-fdj-2026"
+    },
+    {
+      "name": "DEL TORO Isaac",
+      "nationality": "MX",
+      "number": 71,
+      "team": "UAE Team Emirates",
+      "rider_url": "rider/isaac-del-toro",
+      "team_url": "team/uae-team-emirates-2026"
+    },
+    {
+      "name": "PEDERSEN Mads",
+      "nationality": "DK",
+      "number": 81,
+      "team": "Lidl - Trek",
+      "rider_url": "rider/mads-pedersen",
+      "team_url": "team/lidl-trek-2026"
+    },
+    {
+      "name": "AYUSO Juan",
+      "nationality": "ES",
+      "number": 91,
+      "team": "UAE Team Emirates",
+      "rider_url": "rider/juan-ayuso",
+      "team_url": "team/uae-team-emirates-2026"
+    }
+  ]
+}
