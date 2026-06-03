@@ -161,14 +161,25 @@ overthepeloton/
       "uci_tour": "UCI World Tour",
       "is_one_day_race": false,
       "edition": 113,
-      "stages": [ { "stage_url": "...", "date": "...", "departure": "...", "arrival": "...", "distance": 185.0 } ],
-      "_pcs_data_missing": false  // true for ~5 races where PCS lookup failed; entry built from fallback
+      "stages": [ { "stage_url": "...", "date": "...", "departure": "...", "arrival": "...", "distance": 185.0, "profile_icon": "p1" } ],
+      "_pcs_data_missing": false  // historical fallback flag; no longer set after R1 slug fixes
+    },
+    {
+      "slug": "il-lombardia-2026",
+      "is_one_day_race": true,
+      "stages": [],
+      "profile_icon": "p5",                   // R2 Phase 1: race-level icon for one-day races
+      "profile_icon_source": "manual_override" // "pcs" or "manual_override"
     }
   ]
 }
 ```
 
-`_pcs_data_missing: true` entries have an approximate date (the 15th of their month) and minimal fields.
+`_pcs_data_missing: true` is a historical flag (no entries set it after R1's
+slug fixes). On stage races, each `stages[]` entry carries `profile_icon`
+from PCS. On one-day races (where `Race.stages()` returns `[]`), the
+race-level `profile_icon` + `profile_icon_source` come from R2 Phase 1's
+`/result` scrape; see `R1_R2_DESIGN.md` Step 1 status.
 
 ### `startlists/{slug}.json`
 ```json
@@ -332,18 +343,29 @@ a backlog, not in priority order. Several have open design questions noted.
   profile).
 - This rider-specialty data is the foundation for R2.
 
-### R2 — Stage grading + win-probability ranking  ← **next**
+### R2 — Stage grading + win-probability ranking  ← **in progress**
 - Classify each stage by type (sprint / hilly / mountain / cobbles / ITT —
   ideally matching PCS's own specialty categories).
 - Rank each race's startlist riders by how well their specialty points fit the
   stage/race type → a homemade "win probability" per rider.
-- **Start with a `profile_icon` availability spike** — confirm how many 2026
-  stages actually expose `profile_icon` (the library notes it may be absent
-  for some / older races). Without it, Step 1 classification has no input.
-  Build Step 1 only once the spike confirms enough coverage.
+- ✅ **Spike done (2026-06-03):** stage races have 100% `profile_icon`
+  coverage; one-day races have 0% via the library — PCS exposes the
+  race-level icon only on the `/result` subpage.
+- ✅ **Phase 1 done (2026-06-03):** `scrape_races.py` now scrapes
+  `/result` for every one-day race and writes `profile_icon` +
+  `profile_icon_source` onto each one-day race in `data/races.json`. A small
+  `ONE_DAY_OVERRIDE` dict supplies a known-correct value when PCS returns
+  `p0` (placeholder); override is bypassed automatically once PCS publishes
+  a real icon. ITT detection lands in Phase 2 via stage-name regex.
+- ⏭ **Phase 2 next:** `classify_stage` function — pure logic, no scraping.
+  Reads `races.json`, writes a derived `stage_type` annotation **inside**
+  `races.json` (per stage for stage races, at race level for one-day
+  races). Output values: `sprint`, `sprint_break`, `hills_puncheur`,
+  `climber`, `time_trial`. `cobbles` deferred to R4 (Tier 2).
 - Until R1's `recent` block ships, Step 3's blend degrades to `career`-only
   (`blended = career_norm`). Structure preserved so `recent` can drop in later.
-- See `R1_R2_DESIGN.md` for the full 4-step model + weight vectors.
+- See `R1_R2_DESIGN.md` for the full 4-step model + weight vectors + Phase 1
+  details.
 - **Derivation method (still open):** (a) own algorithm = stage type × rider
   specialty points (planned starting point); (b) scrape PCS's own
   predictions/startlist-quality; (c) both, compared. **Planned path:** ship (a)

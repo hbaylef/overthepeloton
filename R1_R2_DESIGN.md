@@ -145,6 +145,60 @@ Primary signal: PCS `profile_icon` (`p0`–`p5`), refined by flags.
 > Note: `profile_icon` may be absent for some/older races (library caveat).
 > Fall back to a sensible default (e.g. treat as sprint/break) and flag it.
 
+### Step 1 status (2026-06-03)
+
+**Phase 1 — DONE: data plumbing for one-day races.**
+
+Spike confirmed `profile_icon` is fully populated by the procyclingstats
+library for all 157 stage-race stages (100%), but `Race.stages()` returns `[]`
+for one-day races — leaving 18 of 37 races (about half the calendar) with no
+profile signal. PCS exposes the race-level icon on the `/result` subpage as
+`class="icon profile pN ..."`. `scrape_races.py` now fetches that page for
+every one-day race and writes two new fields onto the race entry in
+`data/races.json`:
+
+- `profile_icon`: the `pN` code (or `null` on scrape failure).
+- `profile_icon_source`: `"pcs"` or `"manual_override"`.
+
+PCS returns `"p0"` for both legitimately flat races AND races it hasn't yet
+classified (placeholder). The `ONE_DAY_OVERRIDE` dict in `scrape_races.py`
+supplies a known-correct value when the scraped icon is `"p0"` — and ONLY
+then; once PCS publishes a real non-p0 icon, the override is bypassed
+automatically.
+
+Current `ONE_DAY_OVERRIDE` seed (keyed by `cs_slug`, kept next to `CALENDAR`):
+
+```python
+ONE_DAY_OVERRIDE = {
+    "clasica-de-san-sebastian": "p3",  # hilly classic
+    "gp-quebec":                "p3",  # uphill finishes
+    "gp-montreal":              "p3",  # uphill finishes
+    "tour-of-lombardy":         "p5",  # mountain classic
+    # paris-tours intentionally OUT — genuinely flat-ish; trust PCS.
+}
+```
+
+**ITT detection confirmed.** `profile_icon` alone does **not** identify ITTs
+(most are encoded as `p1`, same as flat sprint stages). Step 1 detects ITTs
+by regex on `stage_name` (`(ITT)`, `Prologue`, `Time trial`) and overrides
+the type to `time_trial` regardless of the icon.
+
+**Phase 2 — NEXT: the `classify_stage` function.**
+
+Pure logic, no scraping. Reads `races.json` and writes a derived
+`stage_type` annotation **inside** `races.json` (storage choice (a)):
+
+- Per-stage `stage_type` inside each `stages[]` entry on stage races.
+- Race-level `stage_type` on one-day race entries.
+
+Output values: `sprint`, `sprint_break`, `hills_puncheur`, `climber`,
+`time_trial`. The `cobbles` type is deferred to R4 (Tier 2) — the curated
+cobble set will overlay the type at scoring time for the ~3-4 affected races.
+
+Sidecar file (option b) and function-only (option c) were considered and
+rejected — (a) is simplest to consume from R2 scoring + frontend, and
+re-runs of `scrape_races.py` re-derive freshly so there's no drift.
+
 **Step 2 — Map type → specialty weight vector.**
 Starting weights (uncalibrated — see open questions):
 
