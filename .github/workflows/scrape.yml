@@ -14,7 +14,7 @@ permissions:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 90
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
@@ -35,6 +35,10 @@ jobs:
 
       - name: Scrape GPX routes
         run: python scrapers/scrape_gpx.py
+        continue-on-error: true
+
+      - name: Scrape rider bios + specialty points
+        run: python scrapers/scrape_riders.py
         continue-on-error: true
 
       - name: Commit & push updated data
