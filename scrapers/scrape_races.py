@@ -16,12 +16,14 @@ It will NOT work in sandboxed environments with network restrictions.
 
 import json
 import os
+import re
 import time
 import logging
 from datetime import datetime, date
 from pathlib import Path
 from typing import Optional
 
+import cloudscraper
 from procyclingstats import Race, RaceStartlist
 
 # ---------------------------------------------------------------------------
@@ -100,6 +102,32 @@ CALENDAR = {
     "tour-of-lombardy":          ("il-lombardia",                          "Il Lombardia",                   "IT", True,  10),
     "paris-tours":               ("paris-tours",                           "Paris-Tours",                    "FR", True,  10),
 }
+
+
+# Manual override for one-day race profile icons. PCS returns "p0" for both
+# legitimately flat races AND races it hasn't classified yet (placeholder).
+# This dict only fires when the scraped value is "p0" — the moment PCS
+# publishes a real non-p0 icon, the override is bypassed automatically.
+# Keyed by cs_slug to match CALENDAR.
+ONE_DAY_OVERRIDE = {
+    "clasica-de-san-sebastian": "p3",  # hilly classic
+    "gp-quebec":                "p3",  # uphill finishes
+    "gp-montreal":              "p3",  # uphill finishes
+    "tour-of-lombardy":         "p5",  # mountain classic
+    # paris-tours intentionally OUT — genuinely flat-ish; trust PCS when it publishes.
+}
+
+# Reusable Cloudflare-aware HTTP session for the one-off profile-icon scrape.
+# (The procyclingstats library has its own internal session; this sidecar is
+# used only for endpoints the library doesn't model — see /result below.)
+_scraper = None
+
+
+def _get_scraper():
+    global _scraper
+    if _scraper is None:
+        _scraper = cloudscraper.create_scraper()
+    return _scraper
 
 
 def make_slug(race_url: str) -> str:
@@ -183,6 +211,34 @@ def scrape_startlist(race_url: str) -> Optional[list]:
         return None
 
 
+def scrape_one_day_profile_icon(pcs_slug: str, year: int) -> Optional[str]:
+    """
+    Fetch the profile icon (p0..p5) for a one-day race by scraping its
+    PCS /result page. The procyclingstats library returns [] from
+    Race.stages() for one-day races, so we have to go direct.
+
+    The /result page exists for both past and upcoming races, but for
+    upcoming races PCS often serves "p0" as a placeholder — the caller
+    applies ONE_DAY_OVERRIDE for known mismatches.
+
+    Returns None on network error / parse failure.
+    """
+    url = f"https://www.procyclingstats.com/race/{pcs_slug}/{year}/result"
+    try:
+        r = _get_scraper().get(url, timeout=30)
+        if r.status_code != 200:
+            log.warning(f"  profile icon: HTTP {r.status_code} for {url}")
+            return None
+        m = re.search(r'class="icon profile (p[0-5])', r.text)
+        if not m:
+            log.warning(f"  profile icon: not found in HTML at {url}")
+            return None
+        return m.group(1)
+    except Exception as e:
+        log.warning(f"  profile icon: failed to fetch {url}: {e}")
+        return None
+
+
 def build_fallback_entry(cs_slug: str, pcs_slug: str, name: str,
                           nationality: str, is_one_day: bool, month: int,
                           year: int) -> dict:
@@ -241,6 +297,26 @@ def main():
             info["cyclingstage_slug"] = cs_slug
             info["name"] = name
             pcs_ok += 1
+
+        # For one-day races, fetch the race-level profile icon (the library
+        # gives us nothing — stages() returns []). Apply ONE_DAY_OVERRIDE
+        # only when PCS returns "p0" (placeholder/ambiguous).
+        if is_one_day:
+            scraped_icon = scrape_one_day_profile_icon(pcs_slug, YEAR)
+            time.sleep(DELAY_BETWEEN_REQUESTS)
+            override = ONE_DAY_OVERRIDE.get(cs_slug)
+            if scraped_icon == "p0" and override:
+                info["profile_icon"] = override
+                info["profile_icon_source"] = "manual_override"
+                log.info(f"  → profile icon: {scraped_icon} (p0) → {override} (override)")
+            elif scraped_icon:
+                info["profile_icon"] = scraped_icon
+                info["profile_icon_source"] = "pcs"
+                log.info(f"  → profile icon: {scraped_icon} (pcs)")
+            else:
+                info["profile_icon"] = None
+                info["profile_icon_source"] = None
+                log.info(f"  → profile icon: unavailable")
 
         all_races.append(info)
 
