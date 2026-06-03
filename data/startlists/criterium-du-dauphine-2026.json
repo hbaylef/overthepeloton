@@ -1,23 +1,23 @@
 {
   "race": "Tour Auvergne - Rhône-Alpes",
   "race_slug": "criterium-du-dauphine-2026",
-  "updated_at": "2026-06-02T19:45:34.073465",
-  "total_riders": 87,
+  "updated_at": "2026-06-03T11:12:49.520921",
+  "total_riders": 89,
   "riders": [
-    {
-      "name": "HOULE Hugo",
-      "nationality": "CA",
-      "number": null,
-      "team": "Alpecin - Premier Tech (WT)",
-      "rider_url": "rider/hugo-houle",
-      "team_url": "team/alpecin-premier-tech-2026"
-    },
     {
       "name": "GLIVAR Gal",
       "nationality": "SI",
       "number": null,
       "team": "Alpecin - Premier Tech (WT)",
       "rider_url": "rider/gal-glivar",
+      "team_url": "team/alpecin-premier-tech-2026"
+    },
+    {
+      "name": "HOULE Hugo",
+      "nationality": "CA",
+      "number": null,
+      "team": "Alpecin - Premier Tech (WT)",
+      "rider_url": "rider/hugo-houle",
       "team_url": "team/alpecin-premier-tech-2026"
     },
     {
@@ -85,11 +85,11 @@
       "team_url": "team/decathlon-cma-cgm-team-2026"
     },
     {
-      "name": "STEINHAUSER Georg",
-      "nationality": "DE",
+      "name": "HEALY Ben",
+      "nationality": "IE",
       "number": null,
       "team": "EF Education - EasyPost (WT)",
-      "rider_url": "rider/georg-steinhauser",
+      "rider_url": "rider/ben-healy",
       "team_url": "team/ef-education-easypost-2026"
     },
     {
@@ -101,11 +101,11 @@
       "team_url": "team/ef-education-easypost-2026"
     },
     {
-      "name": "HEALY Ben",
-      "nationality": "IE",
+      "name": "STEINHAUSER Georg",
+      "nationality": "DE",
       "number": null,
       "team": "EF Education - EasyPost (WT)",
-      "rider_url": "rider/ben-healy",
+      "rider_url": "rider/georg-steinhauser",
       "team_url": "team/ef-education-easypost-2026"
     },
     {
@@ -149,19 +149,19 @@
       "team_url": "team/groupama-fdj-united-2026"
     },
     {
-      "name": "VAUQUELIN Kévin",
-      "nationality": "FR",
-      "number": null,
-      "team": "Netcompany INEOS (WT)",
-      "rider_url": "rider/kevin-vauquelin",
-      "team_url": "team/netcompany-ineos-2026"
-    },
-    {
       "name": "RODRÍGUEZ Carlos",
       "nationality": "ES",
       "number": null,
       "team": "Netcompany INEOS (WT)",
       "rider_url": "rider/carlos-rodriguez-cano",
+      "team_url": "team/netcompany-ineos-2026"
+    },
+    {
+      "name": "VAUQUELIN Kévin",
+      "nationality": "FR",
+      "number": null,
+      "team": "Netcompany INEOS (WT)",
+      "rider_url": "rider/kevin-vauquelin",
       "team_url": "team/netcompany-ineos-2026"
     },
     {
@@ -373,6 +373,14 @@
       "team_url": "team/team-picnic-postnl-2026"
     },
     {
+      "name": "NORDHAGEN Jørgen",
+      "nationality": "NO",
+      "number": null,
+      "team": "Team Visma | Lease a Bike (WT)",
+      "rider_url": "rider/jorgen-nordhagen",
+      "team_url": "team/team-visma-lease-a-bike-2026"
+    },
+    {
       "name": "JORGENSON Matteo",
       "nationality": "US",
       "number": null,
@@ -394,6 +402,14 @@
       "number": null,
       "team": "Team Visma | Lease a Bike (WT)",
       "rider_url": "rider/wout-van-aert",
+      "team_url": "team/team-visma-lease-a-bike-2026"
+    },
+    {
+      "name": "HAGENES Per Strand",
+      "nationality": "NO",
+      "number": null,
+      "team": "Team Visma | Lease a Bike (WT)",
+      "rider_url": "rider/per-strand-hagenes",
       "team_url": "team/team-visma-lease-a-bike-2026"
     },
     {
@@ -469,14 +485,6 @@
       "team_url": "team/uae-team-emirates-xrg-2026"
     },
     {
-      "name": "KRON Andreas",
-      "nationality": "DK",
-      "number": null,
-      "team": "Uno-X Mobility (WT)",
-      "rider_url": "rider/andreas-kron",
-      "team_url": "team/uno-x-mobility-2026"
-    },
-    {
       "name": "CHARMIG Anthon",
       "nationality": "DK",
       "number": null,
@@ -490,6 +498,14 @@
       "number": null,
       "team": "Uno-X Mobility (WT)",
       "rider_url": "rider/tobias-halland-johannessen",
+      "team_url": "team/uno-x-mobility-2026"
+    },
+    {
+      "name": "KRON Andreas",
+      "nationality": "DK",
+      "number": null,
+      "team": "Uno-X Mobility (WT)",
+      "rider_url": "rider/andreas-kron",
       "team_url": "team/uno-x-mobility-2026"
     },
     {
@@ -517,19 +533,19 @@
       "team_url": "team/xds-astana-team-2026"
     },
     {
-      "name": "FORTUNATO Lorenzo",
-      "nationality": "IT",
-      "number": null,
-      "team": "XDS Astana Team (WT)",
-      "rider_url": "rider/lorenzo-fortunato",
-      "team_url": "team/xds-astana-team-2026"
-    },
-    {
       "name": "CONCI Nicola",
       "nationality": "IT",
       "number": null,
       "team": "XDS Astana Team (WT)",
       "rider_url": "rider/nicola-conci",
+      "team_url": "team/xds-astana-team-2026"
+    },
+    {
+      "name": "FORTUNATO Lorenzo",
+      "nationality": "IT",
+      "number": null,
+      "team": "XDS Astana Team (WT)",
+      "rider_url": "rider/lorenzo-fortunato",
       "team_url": "team/xds-astana-team-2026"
     },
     {
@@ -621,19 +637,19 @@
       "team_url": "team/caja-rural-seguros-rga-2026"
     },
     {
-      "name": "CASTELLON Jan",
-      "nationality": "ES",
-      "number": null,
-      "team": "Caja Rural - Seguros RGA (PRT)",
-      "rider_url": "rider/jan-castellon",
-      "team_url": "team/caja-rural-seguros-rga-2026"
-    },
-    {
       "name": "DARDER Sergi",
       "nationality": "ES",
       "number": null,
       "team": "Caja Rural - Seguros RGA (PRT)",
       "rider_url": "rider/sergi-darder",
+      "team_url": "team/caja-rural-seguros-rga-2026"
+    },
+    {
+      "name": "CASTELLON Jan",
+      "nationality": "ES",
+      "number": null,
+      "team": "Caja Rural - Seguros RGA (PRT)",
+      "rider_url": "rider/jan-castellon",
       "team_url": "team/caja-rural-seguros-rga-2026"
     },
     {
