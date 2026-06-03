@@ -1,7 +1,7 @@
 {
   "race": "Clásica de San Sebastián",
   "race_slug": "san-sebastian-2026",
-  "updated_at": "2026-06-03T17:57:23.819607",
+  "updated_at": "2026-06-03T19:07:03.975291",
   "total_riders": 12,
   "riders": [
     {
@@ -10,7 +10,17 @@
       "number": null,
       "team": "XDS Astana Team (WT)",
       "rider_url": "rider/clement-champoussin",
-      "team_url": "team/xds-astana-team-2026"
+      "team_url": "team/xds-astana-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1344,
+          "gc": 1087,
+          "tt": 87,
+          "sprint": 30,
+          "climber": 1803,
+          "hills": 1276
+        }
+      }
     },
     {
       "name": "WIDAR Jarno",
@@ -18,7 +28,17 @@
       "number": null,
       "team": "Lotto Intermarché (WT)",
       "rider_url": "rider/jarno-widar",
-      "team_url": "team/lotto-intermarche-2026"
+      "team_url": "team/lotto-intermarche-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 157,
+          "gc": 205,
+          "tt": 40,
+          "sprint": 4,
+          "climber": 276,
+          "hills": 88
+        }
+      }
     },
     {
       "name": "BARRÉ Louis",
@@ -26,7 +46,17 @@
       "number": null,
       "team": "Team Visma | Lease a Bike (WT)",
       "rider_url": "rider/louis-barre",
-      "team_url": "team/team-visma-lease-a-bike-2026"
+      "team_url": "team/team-visma-lease-a-bike-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 652,
+          "gc": 363,
+          "tt": 1,
+          "sprint": 4,
+          "climber": 318,
+          "hills": 484
+        }
+      }
     },
     {
       "name": "GALL Felix",
@@ -34,7 +64,17 @@
       "number": null,
       "team": "Decathlon CMA CGM Team (WT)",
       "rider_url": "rider/felix-gall",
-      "team_url": "team/decathlon-cma-cgm-team-2026"
+      "team_url": "team/decathlon-cma-cgm-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 324,
+          "gc": 2305,
+          "tt": 259,
+          "sprint": 2,
+          "climber": 3348,
+          "hills": 514
+        }
+      }
     },
     {
       "name": "BISIAUX Léo",
@@ -42,7 +82,17 @@
       "number": null,
       "team": "Decathlon CMA CGM Team (WT)",
       "rider_url": "rider/leo-bisiaux",
-      "team_url": "team/decathlon-cma-cgm-team-2026"
+      "team_url": "team/decathlon-cma-cgm-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 266,
+          "gc": 161,
+          "tt": 15,
+          "sprint": 4,
+          "climber": 216,
+          "hills": 101
+        }
+      }
     },
     {
       "name": "RICCITELLO Matthew",
@@ -50,7 +100,17 @@
       "number": null,
       "team": "Decathlon CMA CGM Team (WT)",
       "rider_url": "rider/matthew-riccitello",
-      "team_url": "team/decathlon-cma-cgm-team-2026"
+      "team_url": "team/decathlon-cma-cgm-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 163,
+          "gc": 1145,
+          "tt": 169,
+          "sprint": 8,
+          "climber": 1178,
+          "hills": 152
+        }
+      }
     },
     {
       "name": "PELLIZZARI Giulio",
@@ -58,7 +118,17 @@
       "number": null,
       "team": "Red Bull - BORA - hansgrohe (WT)",
       "rider_url": "rider/giulio-pellizzari",
-      "team_url": "team/red-bull-bora-hansgrohe-2026"
+      "team_url": "team/red-bull-bora-hansgrohe-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 219,
+          "gc": 1261,
+          "tt": 111,
+          "sprint": 0,
+          "climber": 1414,
+          "hills": 374
+        }
+      }
     },
     {
       "name": "BILBAO Pello",
@@ -66,7 +136,17 @@
       "number": null,
       "team": "Bahrain - Victorious (WT)",
       "rider_url": "rider/pello-bilbao",
-      "team_url": "team/bahrain-victorious-2026"
+      "team_url": "team/bahrain-victorious-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1939,
+          "gc": 5093,
+          "tt": 1187,
+          "sprint": 92,
+          "climber": 5320,
+          "hills": 2402
+        }
+      }
     },
     {
       "name": "KULSET Johannes",
@@ -74,7 +154,17 @@
       "number": null,
       "team": "Uno-X Mobility (WT)",
       "rider_url": "rider/johannes-kulset",
-      "team_url": "team/uno-x-mobility-2026"
+      "team_url": "team/uno-x-mobility-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 321,
+          "gc": 563,
+          "tt": 6,
+          "sprint": 3,
+          "climber": 475,
+          "hills": 212
+        }
+      }
     },
     {
       "name": "MOLLEMA Bauke",
@@ -82,7 +172,17 @@
       "number": null,
       "team": "Lidl - Trek (WT)",
       "rider_url": "rider/bauke-mollema",
-      "team_url": "team/lidl-trek-2026"
+      "team_url": "team/lidl-trek-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 5326,
+          "gc": 6063,
+          "tt": 2081,
+          "sprint": 592,
+          "climber": 7737,
+          "hills": 4159
+        }
+      }
     },
     {
       "name": "CHRISTEN Jan",
@@ -90,7 +190,17 @@
       "number": null,
       "team": "UAE Team Emirates - XRG (WT)",
       "rider_url": "rider/jan-christen",
-      "team_url": "team/uae-team-emirates-xrg-2026"
+      "team_url": "team/uae-team-emirates-xrg-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 992,
+          "gc": 632,
+          "tt": 282,
+          "sprint": 32,
+          "climber": 750,
+          "hills": 577
+        }
+      }
     },
     {
       "name": "VERMAERKE Kevin",
@@ -98,7 +208,17 @@
       "number": null,
       "team": "UAE Team Emirates - XRG (WT)",
       "rider_url": "rider/kevin-vermaerke",
-      "team_url": "team/uae-team-emirates-xrg-2026"
+      "team_url": "team/uae-team-emirates-xrg-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 613,
+          "gc": 802,
+          "tt": 29,
+          "sprint": 16,
+          "climber": 664,
+          "hills": 582
+        }
+      }
     }
   ]
 }

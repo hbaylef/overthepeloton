@@ -1,7 +1,7 @@
 {
   "race": "Kuurne-Brussels-Kuurne",
   "race_slug": "kuurne-brussel-kuurne-2026",
-  "updated_at": "2026-06-03T17:55:35.038406",
+  "updated_at": "2026-06-03T19:05:16.712134",
   "total_riders": 199,
   "riders": [
     {
@@ -10,7 +10,17 @@
       "number": 1,
       "team": "Alpecin - Premier Tech (WT)",
       "rider_url": "rider/jasper-philipsen",
-      "team_url": "team/alpecin-premier-tech-2026"
+      "team_url": "team/alpecin-premier-tech-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 5904,
+          "gc": 649,
+          "tt": 155,
+          "sprint": 6401,
+          "climber": 192,
+          "hills": 2571
+        }
+      }
     },
     {
       "name": "DILLIER Silvan",
@@ -18,7 +28,17 @@
       "number": 2,
       "team": "Alpecin - Premier Tech (WT)",
       "rider_url": "rider/silvan-dillier",
-      "team_url": "team/alpecin-premier-tech-2026"
+      "team_url": "team/alpecin-premier-tech-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1261,
+          "gc": 997,
+          "tt": 526,
+          "sprint": 432,
+          "climber": 296,
+          "hills": 530
+        }
+      }
     },
     {
       "name": "GEENS Jonas",
@@ -26,7 +46,17 @@
       "number": 3,
       "team": "Alpecin - Premier Tech (WT)",
       "rider_url": "rider/jonas-geens",
-      "team_url": "team/alpecin-premier-tech-2026"
+      "team_url": "team/alpecin-premier-tech-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 30,
+          "gc": 140,
+          "tt": 3,
+          "sprint": 16,
+          "climber": 38,
+          "hills": 111
+        }
+      }
     },
     {
       "name": "PLANCKAERT Edward",
@@ -34,7 +64,17 @@
       "number": 4,
       "team": "Alpecin - Premier Tech (WT)",
       "rider_url": "rider/edward-planckaert",
-      "team_url": "team/alpecin-premier-tech-2026"
+      "team_url": "team/alpecin-premier-tech-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 590,
+          "gc": 242,
+          "tt": 18,
+          "sprint": 374,
+          "climber": 86,
+          "hills": 488
+        }
+      }
     },
     {
       "name": "VAN DER POEL Mathieu",
@@ -42,7 +82,17 @@
       "number": 4,
       "team": "Alpecin - Premier Tech (WT)",
       "rider_url": "rider/mathieu-van-der-poel",
-      "team_url": "team/alpecin-premier-tech-2026"
+      "team_url": "team/alpecin-premier-tech-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 8836,
+          "gc": 1324,
+          "tt": 1050,
+          "sprint": 1661,
+          "climber": 1165,
+          "hills": 4534
+        }
+      }
     },
     {
       "name": "GROVES Kaden",
@@ -50,7 +100,17 @@
       "number": 5,
       "team": "Alpecin - Premier Tech (WT)",
       "rider_url": "rider/kaden-groves",
-      "team_url": "team/alpecin-premier-tech-2026"
+      "team_url": "team/alpecin-premier-tech-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 531,
+          "gc": 291,
+          "tt": 359,
+          "sprint": 1575,
+          "climber": 225,
+          "hills": 2064
+        }
+      }
     },
     {
       "name": "RICKAERT Jonas",
@@ -58,7 +118,17 @@
       "number": 6,
       "team": "Alpecin - Premier Tech (WT)",
       "rider_url": "rider/jonas-rickaert",
-      "team_url": "team/alpecin-premier-tech-2026"
+      "team_url": "team/alpecin-premier-tech-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 820,
+          "gc": 248,
+          "tt": 128,
+          "sprint": 606,
+          "climber": 10,
+          "hills": 90
+        }
+      }
     },
     {
       "name": "SENTJENS Sente",
@@ -66,7 +136,17 @@
       "number": 7,
       "team": "Alpecin - Premier Tech (WT)",
       "rider_url": "rider/sente-sentjens",
-      "team_url": "team/alpecin-premier-tech-2026"
+      "team_url": "team/alpecin-premier-tech-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 136,
+          "gc": 11,
+          "tt": 2,
+          "sprint": 242,
+          "climber": 10,
+          "hills": 112
+        }
+      }
     },
     {
       "name": "MOHORIČ Matej",
@@ -74,7 +154,17 @@
       "number": 11,
       "team": "Bahrain - Victorious (WT)",
       "rider_url": "rider/matej-mohoric",
-      "team_url": "team/bahrain-victorious-2026"
+      "team_url": "team/bahrain-victorious-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 3238,
+          "gc": 2366,
+          "tt": 352,
+          "sprint": 624,
+          "climber": 1644,
+          "hills": 3004
+        }
+      }
     },
     {
       "name": "BORGO Alessandro",
@@ -82,7 +172,17 @@
       "number": 12,
       "team": "Bahrain - Victorious (WT)",
       "rider_url": "rider/alessandro-borgo",
-      "team_url": "team/bahrain-victorious-2026"
+      "team_url": "team/bahrain-victorious-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 133,
+          "gc": 1,
+          "tt": 4,
+          "sprint": 133,
+          "climber": 15,
+          "hills": 53
+        }
+      }
     },
     {
       "name": "GOVEKAR Matevž",
@@ -90,7 +190,17 @@
       "number": 13,
       "team": "Bahrain - Victorious (WT)",
       "rider_url": "rider/matevz-govekar",
-      "team_url": "team/bahrain-victorious-2026"
+      "team_url": "team/bahrain-victorious-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 318,
+          "gc": 70,
+          "tt": 132,
+          "sprint": 363,
+          "climber": 84,
+          "hills": 466
+        }
+      }
     },
     {
       "name": "GRADEK Kamil",
@@ -98,7 +208,17 @@
       "number": 14,
       "team": "Bahrain - Victorious (WT)",
       "rider_url": "rider/kamil-gradek",
-      "team_url": "team/bahrain-victorious-2026"
+      "team_url": "team/bahrain-victorious-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 251,
+          "gc": 613,
+          "tt": 719,
+          "sprint": 81,
+          "climber": 8,
+          "hills": 37
+        }
+      }
     },
     {
       "name": "BRUTTOMESSO Alberto",
@@ -106,7 +226,17 @@
       "number": 14,
       "team": "Bahrain - Victorious (WT)",
       "rider_url": "rider/alberto-bruttomesso",
-      "team_url": "team/bahrain-victorious-2026"
+      "team_url": "team/bahrain-victorious-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 109,
+          "gc": 6,
+          "tt": 27,
+          "sprint": 206,
+          "climber": 22,
+          "hills": 160
+        }
+      }
     },
     {
       "name": "MIQUEL Pau",
@@ -114,7 +244,17 @@
       "number": 15,
       "team": "Bahrain - Victorious (WT)",
       "rider_url": "rider/pau-miquel-delgado",
-      "team_url": "team/bahrain-victorious-2026"
+      "team_url": "team/bahrain-victorious-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 681,
+          "gc": 60,
+          "tt": 2,
+          "sprint": 112,
+          "climber": 158,
+          "hills": 710
+        }
+      }
     },
     {
       "name": "BAUHAUS Phil",
@@ -122,7 +262,17 @@
       "number": 16,
       "team": "Bahrain - Victorious (WT)",
       "rider_url": "rider/phil-bauhaus",
-      "team_url": "team/bahrain-victorious-2026"
+      "team_url": "team/bahrain-victorious-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1072,
+          "gc": 291,
+          "tt": 1,
+          "sprint": 3188,
+          "climber": 0,
+          "hills": 1687
+        }
+      }
     },
     {
       "name": "SEGAERT Alec",
@@ -130,7 +280,17 @@
       "number": 17,
       "team": "Bahrain - Victorious (WT)",
       "rider_url": "rider/alec-segaert",
-      "team_url": "team/bahrain-victorious-2026"
+      "team_url": "team/bahrain-victorious-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 528,
+          "gc": 451,
+          "tt": 736,
+          "sprint": 176,
+          "climber": 36,
+          "hills": 265
+        }
+      }
     },
     {
       "name": "ANDRESEN Tobias Lund",
@@ -138,7 +298,17 @@
       "number": 21,
       "team": "Decathlon CMA CGM Team (WT)",
       "rider_url": "rider/tobias-lund-andresen",
-      "team_url": "team/decathlon-cma-cgm-team-2026"
+      "team_url": "team/decathlon-cma-cgm-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1309,
+          "gc": 350,
+          "tt": 14,
+          "sprint": 1046,
+          "climber": 190,
+          "hills": 1214
+        }
+      }
     },
     {
       "name": "DEWULF Stan",
@@ -146,7 +316,17 @@
       "number": 22,
       "team": "Decathlon CMA CGM Team (WT)",
       "rider_url": "rider/stan-dewulf",
-      "team_url": "team/decathlon-cma-cgm-team-2026"
+      "team_url": "team/decathlon-cma-cgm-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 903,
+          "gc": 730,
+          "tt": 78,
+          "sprint": 382,
+          "climber": 246,
+          "hills": 584
+        }
+      }
     },
     {
       "name": "BOL Cees",
@@ -154,7 +334,17 @@
       "number": 23,
       "team": "Decathlon CMA CGM Team (WT)",
       "rider_url": "rider/cees-bol",
-      "team_url": "team/decathlon-cma-cgm-team-2026"
+      "team_url": "team/decathlon-cma-cgm-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1015,
+          "gc": 592,
+          "tt": 316,
+          "sprint": 1500,
+          "climber": 39,
+          "hills": 930
+        }
+      }
     },
     {
       "name": "DE PESTEL Sander",
@@ -162,7 +352,17 @@
       "number": 24,
       "team": "Decathlon CMA CGM Team (WT)",
       "rider_url": "rider/sander-de-pestel",
-      "team_url": "team/decathlon-cma-cgm-team-2026"
+      "team_url": "team/decathlon-cma-cgm-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 246,
+          "gc": 79,
+          "tt": 174,
+          "sprint": 94,
+          "climber": 2,
+          "hills": 78
+        }
+      }
     },
     {
       "name": "POLLEFLIET Gianluca",
@@ -170,7 +370,17 @@
       "number": 24,
       "team": "Decathlon CMA CGM Team (WT)",
       "rider_url": "rider/gianluca-pollefliet",
-      "team_url": "team/decathlon-cma-cgm-team-2026"
+      "team_url": "team/decathlon-cma-cgm-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 138,
+          "gc": 20,
+          "tt": 0,
+          "sprint": 376,
+          "climber": 0,
+          "hills": 22
+        }
+      }
     },
     {
       "name": "HOOLE Daan",
@@ -178,7 +388,17 @@
       "number": 25,
       "team": "Decathlon CMA CGM Team (WT)",
       "rider_url": "rider/daan-hoole",
-      "team_url": "team/decathlon-cma-cgm-team-2026"
+      "team_url": "team/decathlon-cma-cgm-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 304,
+          "gc": 187,
+          "tt": 1234,
+          "sprint": 58,
+          "climber": 16,
+          "hills": 132
+        }
+      }
     },
     {
       "name": "NAESEN Oliver",
@@ -186,7 +406,17 @@
       "number": 26,
       "team": "Decathlon CMA CGM Team (WT)",
       "rider_url": "rider/oliver-naesen",
-      "team_url": "team/decathlon-cma-cgm-team-2026"
+      "team_url": "team/decathlon-cma-cgm-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 4419,
+          "gc": 1537,
+          "tt": 49,
+          "sprint": 1326,
+          "climber": 421,
+          "hills": 2410
+        }
+      }
     },
     {
       "name": "PEDERSEN Rasmus Søjberg",
@@ -194,7 +424,17 @@
       "number": 27,
       "team": "Decathlon CMA CGM Team (WT)",
       "rider_url": "rider/rasmus-sojbergpedersen",
-      "team_url": "team/decathlon-cma-cgm-team-2026"
+      "team_url": "team/decathlon-cma-cgm-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 236,
+          "gc": 36,
+          "tt": 46,
+          "sprint": 350,
+          "climber": 8,
+          "hills": 106
+        }
+      }
     },
     {
       "name": "ALBANESE Vincenzo",
@@ -202,7 +442,17 @@
       "number": 31,
       "team": "EF Education - EasyPost (WT)",
       "rider_url": "rider/vincenzo-albanese",
-      "team_url": "team/ef-education-easypost-2026"
+      "team_url": "team/ef-education-easypost-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1443,
+          "gc": 506,
+          "tt": 28,
+          "sprint": 599,
+          "climber": 609,
+          "hills": 1598
+        }
+      }
     },
     {
       "name": "ASGREEN Kasper",
@@ -210,7 +460,17 @@
       "number": 32,
       "team": "EF Education - EasyPost (WT)",
       "rider_url": "rider/kasper-asgreen",
-      "team_url": "team/ef-education-easypost-2026"
+      "team_url": "team/ef-education-easypost-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1690,
+          "gc": 856,
+          "tt": 2474,
+          "sprint": 359,
+          "climber": 504,
+          "hills": 1528
+        }
+      }
     },
     {
       "name": "HOBBS Noah",
@@ -218,7 +478,17 @@
       "number": 33,
       "team": "EF Education - EasyPost (WT)",
       "rider_url": "rider/noah-hobbs",
-      "team_url": "team/ef-education-easypost-2026"
+      "team_url": "team/ef-education-easypost-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 64,
+          "gc": 29,
+          "tt": 1,
+          "sprint": 363,
+          "climber": 2,
+          "hills": 182
+        }
+      }
     },
     {
       "name": "HONORÉ Mikkel Frølich",
@@ -226,7 +496,17 @@
       "number": 34,
       "team": "EF Education - EasyPost (WT)",
       "rider_url": "rider/mikkel-honore",
-      "team_url": "team/ef-education-easypost-2026"
+      "team_url": "team/ef-education-easypost-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1252,
+          "gc": 710,
+          "tt": 133,
+          "sprint": 82,
+          "climber": 676,
+          "hills": 1002
+        }
+      }
     },
     {
       "name": "HEALY Ben",
@@ -234,7 +514,17 @@
       "number": 34,
       "team": "EF Education - EasyPost (WT)",
       "rider_url": "rider/ben-healy",
-      "team_url": "team/ef-education-easypost-2026"
+      "team_url": "team/ef-education-easypost-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1514,
+          "gc": 869,
+          "tt": 548,
+          "sprint": 40,
+          "climber": 1548,
+          "hills": 570
+        }
+      }
     },
     {
       "name": "LAMPERTI Luke",
@@ -242,7 +532,17 @@
       "number": 35,
       "team": "EF Education - EasyPost (WT)",
       "rider_url": "rider/luke-lamperti",
-      "team_url": "team/ef-education-easypost-2026"
+      "team_url": "team/ef-education-easypost-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 667,
+          "gc": 182,
+          "tt": 112,
+          "sprint": 710,
+          "climber": 30,
+          "hills": 627
+        }
+      }
     },
     {
       "name": "SIMMONS Colby",
@@ -250,7 +550,17 @@
       "number": 36,
       "team": "EF Education - EasyPost (WT)",
       "rider_url": "rider/colby-simmons",
-      "team_url": "team/ef-education-easypost-2026"
+      "team_url": "team/ef-education-easypost-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 64,
+          "gc": 56,
+          "tt": 3,
+          "sprint": 136,
+          "climber": 14,
+          "hills": 70
+        }
+      }
     },
     {
       "name": "VAN DEN BERG Marijn",
@@ -258,7 +568,17 @@
       "number": 37,
       "team": "EF Education - EasyPost (WT)",
       "rider_url": "rider/marijn-van-den-berg",
-      "team_url": "team/ef-education-easypost-2026"
+      "team_url": "team/ef-education-easypost-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 885,
+          "gc": 492,
+          "tt": 121,
+          "sprint": 1014,
+          "climber": 184,
+          "hills": 1218
+        }
+      }
     },
     {
       "name": "BARTHE Cyril",
@@ -266,7 +586,17 @@
       "number": 41,
       "team": "Groupama - FDJ United (WT)",
       "rider_url": "rider/cyril-barthe",
-      "team_url": "team/groupama-fdj-united-2026"
+      "team_url": "team/groupama-fdj-united-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 313,
+          "gc": 297,
+          "tt": 9,
+          "sprint": 285,
+          "climber": 103,
+          "hills": 444
+        }
+      }
     },
     {
       "name": "FONTAINE Titouan",
@@ -274,7 +604,17 @@
       "number": 42,
       "team": "Groupama - FDJ United (WT)",
       "rider_url": "rider/titouan-fontaine",
-      "team_url": "team/groupama-fdj-united-2026"
+      "team_url": "team/groupama-fdj-united-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 0,
+          "gc": 0,
+          "tt": 9,
+          "sprint": 1,
+          "climber": 0,
+          "hills": 5
+        }
+      }
     },
     {
       "name": "HUENS Axel",
@@ -282,7 +622,17 @@
       "number": 43,
       "team": "Groupama - FDJ United (WT)",
       "rider_url": "rider/axel-huens",
-      "team_url": "team/groupama-fdj-united-2026"
+      "team_url": "team/groupama-fdj-united-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 370,
+          "gc": 62,
+          "tt": 1,
+          "sprint": 216,
+          "climber": 30,
+          "hills": 133
+        }
+      }
     },
     {
       "name": "JACOBS Johan",
@@ -290,7 +640,17 @@
       "number": 44,
       "team": "Groupama - FDJ United (WT)",
       "rider_url": "rider/johan-jacobs",
-      "team_url": "team/groupama-fdj-united-2026"
+      "team_url": "team/groupama-fdj-united-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 346,
+          "gc": 101,
+          "tt": 15,
+          "sprint": 63,
+          "climber": 22,
+          "hills": 60
+        }
+      }
     },
     {
       "name": "MADOUAS Valentin",
@@ -298,7 +658,17 @@
       "number": 44,
       "team": "Groupama - FDJ United (WT)",
       "rider_url": "rider/valentin-madouas",
-      "team_url": "team/groupama-fdj-united-2026"
+      "team_url": "team/groupama-fdj-united-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 3406,
+          "gc": 1376,
+          "tt": 93,
+          "sprint": 196,
+          "climber": 1676,
+          "hills": 1884
+        }
+      }
     },
     {
       "name": "RUSSO Clément",
@@ -306,7 +676,17 @@
       "number": 45,
       "team": "Groupama - FDJ United (WT)",
       "rider_url": "rider/clement-russo",
-      "team_url": "team/groupama-fdj-united-2026"
+      "team_url": "team/groupama-fdj-united-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 580,
+          "gc": 281,
+          "tt": 68,
+          "sprint": 410,
+          "climber": 5,
+          "hills": 313
+        }
+      }
     },
     {
       "name": "PENHOËT Paul",
@@ -314,7 +694,17 @@
       "number": 46,
       "team": "Groupama - FDJ United (WT)",
       "rider_url": "rider/paul-penhoet",
-      "team_url": "team/groupama-fdj-united-2026"
+      "team_url": "team/groupama-fdj-united-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 972,
+          "gc": 322,
+          "tt": 6,
+          "sprint": 1032,
+          "climber": 34,
+          "hills": 731
+        }
+      }
     },
     {
       "name": "TRONCHON Bastien",
@@ -322,7 +712,17 @@
       "number": 47,
       "team": "Groupama - FDJ United (WT)",
       "rider_url": "rider/bastien-tronchon",
-      "team_url": "team/groupama-fdj-united-2026"
+      "team_url": "team/groupama-fdj-united-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 461,
+          "gc": 296,
+          "tt": 14,
+          "sprint": 119,
+          "climber": 173,
+          "hills": 435
+        }
+      }
     },
     {
       "name": "MILAN Jonathan",
@@ -330,7 +730,17 @@
       "number": 51,
       "team": "Lidl - Trek (WT)",
       "rider_url": "rider/jonathan-milan",
-      "team_url": "team/lidl-trek-2026"
+      "team_url": "team/lidl-trek-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 781,
+          "gc": 175,
+          "tt": 419,
+          "sprint": 2238,
+          "climber": 92,
+          "hills": 1353
+        }
+      }
     },
     {
       "name": "SUNEKÆR NORSGAARD Mathias",
@@ -338,7 +748,17 @@
       "number": 52,
       "team": "Lidl - Trek (WT)",
       "rider_url": "rider/mathias-norsgaard",
-      "team_url": "team/lidl-trek-2026"
+      "team_url": "team/lidl-trek-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 277,
+          "gc": 111,
+          "tt": 515,
+          "sprint": 149,
+          "climber": 2,
+          "hills": 13
+        }
+      }
     },
     {
       "name": "ÁLVAREZ Héctor",
@@ -346,7 +766,17 @@
       "number": 53,
       "team": "Lidl - Trek (WT)",
       "rider_url": "rider/hector-alvarez-martinez",
-      "team_url": "team/lidl-trek-2026"
+      "team_url": "team/lidl-trek-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 137,
+          "gc": 42,
+          "tt": 90,
+          "sprint": 42,
+          "climber": 32,
+          "hills": 98
+        }
+      }
     },
     {
       "name": "SKUJIŅŠ Toms",
@@ -354,7 +784,17 @@
       "number": 54,
       "team": "Lidl - Trek (WT)",
       "rider_url": "rider/toms-skujins",
-      "team_url": "team/lidl-trek-2026"
+      "team_url": "team/lidl-trek-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 3058,
+          "gc": 1103,
+          "tt": 397,
+          "sprint": 197,
+          "climber": 1532,
+          "hills": 1346
+        }
+      }
     },
     {
       "name": "MOLLEMA Bauke",
@@ -362,7 +802,17 @@
       "number": 54,
       "team": "Lidl - Trek (WT)",
       "rider_url": "rider/bauke-mollema",
-      "team_url": "team/lidl-trek-2026"
+      "team_url": "team/lidl-trek-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 5326,
+          "gc": 6063,
+          "tt": 2081,
+          "sprint": 592,
+          "climber": 7737,
+          "hills": 4159
+        }
+      }
     },
     {
       "name": "SÖDERQVIST Jakob",
@@ -370,7 +820,17 @@
       "number": 55,
       "team": "Lidl - Trek (WT)",
       "rider_url": "rider/jakob-soderqvist",
-      "team_url": "team/lidl-trek-2026"
+      "team_url": "team/lidl-trek-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 41,
+          "gc": 392,
+          "tt": 782,
+          "sprint": 92,
+          "climber": 61,
+          "hills": 89
+        }
+      }
     },
     {
       "name": "THEUNS Edward",
@@ -378,7 +838,17 @@
       "number": 56,
       "team": "Lidl - Trek (WT)",
       "rider_url": "rider/edward-theuns",
-      "team_url": "team/lidl-trek-2026"
+      "team_url": "team/lidl-trek-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 2792,
+          "gc": 716,
+          "tt": 131,
+          "sprint": 2206,
+          "climber": 26,
+          "hills": 1007
+        }
+      }
     },
     {
       "name": "WALSCHEID Max",
@@ -386,7 +856,17 @@
       "number": 57,
       "team": "Lidl - Trek (WT)",
       "rider_url": "rider/max-walscheid",
-      "team_url": "team/lidl-trek-2026"
+      "team_url": "team/lidl-trek-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1779,
+          "gc": 353,
+          "tt": 1200,
+          "sprint": 2578,
+          "climber": 17,
+          "hills": 456
+        }
+      }
     },
     {
       "name": "DE LIE Arnaud",
@@ -394,7 +874,17 @@
       "number": 61,
       "team": "Lotto Intermarché (WT)",
       "rider_url": "rider/arnaud-de-lie",
-      "team_url": "team/lotto-intermarche-2026"
+      "team_url": "team/lotto-intermarche-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 4875,
+          "gc": 561,
+          "tt": 1,
+          "sprint": 2072,
+          "climber": 172,
+          "hills": 1984
+        }
+      }
     },
     {
       "name": "VAN BOVEN Luca",
@@ -402,7 +892,17 @@
       "number": 62,
       "team": "Lotto Intermarché (WT)",
       "rider_url": "rider/luca-van-boven",
-      "team_url": "team/lotto-intermarche-2026"
+      "team_url": "team/lotto-intermarche-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 355,
+          "gc": 184,
+          "tt": 2,
+          "sprint": 64,
+          "climber": 64,
+          "hills": 326
+        }
+      }
     },
     {
       "name": "BRAET Vito",
@@ -410,7 +910,17 @@
       "number": 63,
       "team": "Lotto Intermarché (WT)",
       "rider_url": "rider/vito-braet",
-      "team_url": "team/lotto-intermarche-2026"
+      "team_url": "team/lotto-intermarche-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 568,
+          "gc": 71,
+          "tt": 8,
+          "sprint": 270,
+          "climber": 76,
+          "hills": 346
+        }
+      }
     },
     {
       "name": "DE SCHUYTENEER Steffen",
@@ -418,7 +928,17 @@
       "number": 64,
       "team": "Lotto Intermarché (WT)",
       "rider_url": "rider/steffen-de-schuyteneer",
-      "team_url": "team/lotto-intermarche-2026"
+      "team_url": "team/lotto-intermarche-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 395,
+          "gc": 166,
+          "tt": 70,
+          "sprint": 560,
+          "climber": 0,
+          "hills": 191
+        }
+      }
     },
     {
       "name": "DE BUYST Jasper",
@@ -426,7 +946,17 @@
       "number": 64,
       "team": "Lotto Intermarché (WT)",
       "rider_url": "rider/jasper-de-buyst",
-      "team_url": "team/lotto-intermarche-2026"
+      "team_url": "team/lotto-intermarche-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1683,
+          "gc": 710,
+          "tt": 128,
+          "sprint": 1102,
+          "climber": 164,
+          "hills": 887
+        }
+      }
     },
     {
       "name": "ØRN-KRISTOFF Felix",
@@ -434,7 +964,17 @@
       "number": 65,
       "team": "Lotto Intermarché (WT)",
       "rider_url": "rider/felix-orn-kristoff",
-      "team_url": "team/lotto-intermarche-2026"
+      "team_url": "team/lotto-intermarche-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1,
+          "gc": 35,
+          "tt": 0,
+          "sprint": 12,
+          "climber": 0,
+          "hills": 9
+        }
+      }
     },
     {
       "name": "SLOCK Liam",
@@ -442,7 +982,17 @@
       "number": 66,
       "team": "Lotto Intermarché (WT)",
       "rider_url": "rider/liam-slock",
-      "team_url": "team/lotto-intermarche-2026"
+      "team_url": "team/lotto-intermarche-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 134,
+          "gc": 241,
+          "tt": 3,
+          "sprint": 50,
+          "climber": 27,
+          "hills": 160
+        }
+      }
     },
     {
       "name": "BERCKMOES Jenno",
@@ -450,7 +1000,17 @@
       "number": 67,
       "team": "Lotto Intermarché (WT)",
       "rider_url": "rider/jenno-berckmoes",
-      "team_url": "team/lotto-intermarche-2026"
+      "team_url": "team/lotto-intermarche-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 698,
+          "gc": 508,
+          "tt": 58,
+          "sprint": 169,
+          "climber": 140,
+          "hills": 582
+        }
+      }
     },
     {
       "name": "ADRIÀ Roger",
@@ -458,7 +1018,17 @@
       "number": 71,
       "team": "Movistar Team (WT)",
       "rider_url": "rider/roger-adria",
-      "team_url": "team/movistar-team-2026"
+      "team_url": "team/movistar-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1203,
+          "gc": 396,
+          "tt": 43,
+          "sprint": 48,
+          "climber": 722,
+          "hills": 888
+        }
+      }
     },
     {
       "name": "AULAR Orluis",
@@ -466,7 +1036,17 @@
       "number": 72,
       "team": "Movistar Team (WT)",
       "rider_url": "rider/orluis-aular",
-      "team_url": "team/movistar-team-2026"
+      "team_url": "team/movistar-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 829,
+          "gc": 499,
+          "tt": 633,
+          "sprint": 950,
+          "climber": 351,
+          "hills": 1451
+        }
+      }
     },
     {
       "name": "BARRENETXEA Jon",
@@ -474,7 +1054,17 @@
       "number": 73,
       "team": "Movistar Team (WT)",
       "rider_url": "rider/jon-barrenetxea-golzarri",
-      "team_url": "team/movistar-team-2026"
+      "team_url": "team/movistar-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 783,
+          "gc": 197,
+          "tt": 5,
+          "sprint": 44,
+          "climber": 218,
+          "hills": 676
+        }
+      }
     },
     {
       "name": "CANAL Carlos",
@@ -482,7 +1072,17 @@
       "number": 74,
       "team": "Movistar Team (WT)",
       "rider_url": "rider/carlos-canal",
-      "team_url": "team/movistar-team-2026"
+      "team_url": "team/movistar-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 615,
+          "gc": 451,
+          "tt": 115,
+          "sprint": 162,
+          "climber": 229,
+          "hills": 697
+        }
+      }
     },
     {
       "name": "RUBIO Einer",
@@ -490,7 +1090,17 @@
       "number": 74,
       "team": "Movistar Team (WT)",
       "rider_url": "rider/einer-rubio",
-      "team_url": "team/movistar-team-2026"
+      "team_url": "team/movistar-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 214,
+          "gc": 1638,
+          "tt": 64,
+          "sprint": 8,
+          "climber": 1927,
+          "hills": 378
+        }
+      }
     },
     {
       "name": "GARCÍA CORTINA Iván",
@@ -498,7 +1108,17 @@
       "number": 75,
       "team": "Movistar Team (WT)",
       "rider_url": "rider/ivan-garcia-cortina",
-      "team_url": "team/movistar-team-2026"
+      "team_url": "team/movistar-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1949,
+          "gc": 383,
+          "tt": 110,
+          "sprint": 1070,
+          "climber": 309,
+          "hills": 1622
+        }
+      }
     },
     {
       "name": "MACIEJUK Filip",
@@ -506,7 +1126,17 @@
       "number": 76,
       "team": "Movistar Team (WT)",
       "rider_url": "rider/filip-maciejuk",
-      "team_url": "team/movistar-team-2026"
+      "team_url": "team/movistar-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 150,
+          "gc": 256,
+          "tt": 395,
+          "sprint": 37,
+          "climber": 4,
+          "hills": 26
+        }
+      }
     },
     {
       "name": "MORO Manlio",
@@ -514,7 +1144,17 @@
       "number": 77,
       "team": "Movistar Team (WT)",
       "rider_url": "rider/manlio-moro",
-      "team_url": "team/movistar-team-2026"
+      "team_url": "team/movistar-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 55,
+          "gc": 40,
+          "tt": 33,
+          "sprint": 14,
+          "climber": 2,
+          "hills": 7
+        }
+      }
     },
     {
       "name": "GIRMAY Biniam",
@@ -522,7 +1162,17 @@
       "number": 81,
       "team": "NSN Cycling Team (WT)",
       "rider_url": "rider/biniam-girmay",
-      "team_url": "team/nsn-cycling-team-2026"
+      "team_url": "team/nsn-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 3459,
+          "gc": 121,
+          "tt": 112,
+          "sprint": 1542,
+          "climber": 272,
+          "hills": 2179
+        }
+      }
     },
     {
       "name": "ASKEY Lewis",
@@ -530,7 +1180,17 @@
       "number": 82,
       "team": "NSN Cycling Team (WT)",
       "rider_url": "rider/lewis-askey",
-      "team_url": "team/nsn-cycling-team-2026"
+      "team_url": "team/nsn-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 964,
+          "gc": 289,
+          "tt": 11,
+          "sprint": 298,
+          "climber": 78,
+          "hills": 668
+        }
+      }
     },
     {
       "name": "BOIVIN Guillaume",
@@ -538,7 +1198,17 @@
       "number": 83,
       "team": "NSN Cycling Team (WT)",
       "rider_url": "rider/guillaume-boivin",
-      "team_url": "team/nsn-cycling-team-2026"
+      "team_url": "team/nsn-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1490,
+          "gc": 487,
+          "tt": 153,
+          "sprint": 614,
+          "climber": 66,
+          "hills": 380
+        }
+      }
     },
     {
       "name": "HOFSTETTER Hugo",
@@ -546,7 +1216,17 @@
       "number": 84,
       "team": "NSN Cycling Team (WT)",
       "rider_url": "rider/hugo-hofstetter",
-      "team_url": "team/nsn-cycling-team-2026"
+      "team_url": "team/nsn-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 3408,
+          "gc": 175,
+          "tt": 0,
+          "sprint": 2448,
+          "climber": 29,
+          "hills": 1011
+        }
+      }
     },
     {
       "name": "NEILANDS Krists",
@@ -554,7 +1234,17 @@
       "number": 84,
       "team": "NSN Cycling Team (WT)",
       "rider_url": "rider/krists-neilands",
-      "team_url": "team/nsn-cycling-team-2026"
+      "team_url": "team/nsn-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 862,
+          "gc": 790,
+          "tt": 275,
+          "sprint": 262,
+          "climber": 450,
+          "hills": 691
+        }
+      }
     },
     {
       "name": "LOUVEL Matis",
@@ -562,7 +1252,17 @@
       "number": 85,
       "team": "NSN Cycling Team (WT)",
       "rider_url": "rider/matis-louvel",
-      "team_url": "team/nsn-cycling-team-2026"
+      "team_url": "team/nsn-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1166,
+          "gc": 169,
+          "tt": 67,
+          "sprint": 118,
+          "climber": 70,
+          "hills": 635
+        }
+      }
     },
     {
       "name": "MULLEN Ryan",
@@ -570,7 +1270,17 @@
       "number": 86,
       "team": "NSN Cycling Team (WT)",
       "rider_url": "rider/ryan-mullen",
-      "team_url": "team/nsn-cycling-team-2026"
+      "team_url": "team/nsn-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 320,
+          "gc": 254,
+          "tt": 1377,
+          "sprint": 26,
+          "climber": 0,
+          "hills": 58
+        }
+      }
     },
     {
       "name": "SHEEHAN Riley",
@@ -578,7 +1288,17 @@
       "number": 87,
       "team": "NSN Cycling Team (WT)",
       "rider_url": "rider/riley-sheehan",
-      "team_url": "team/nsn-cycling-team-2026"
+      "team_url": "team/nsn-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 731,
+          "gc": 283,
+          "tt": 58,
+          "sprint": 96,
+          "climber": 116,
+          "hills": 415
+        }
+      }
     },
     {
       "name": "MEEUS Jordi",
@@ -586,7 +1306,17 @@
       "number": 91,
       "team": "Red Bull - BORA - hansgrohe (WT)",
       "rider_url": "rider/jordi-meeus",
-      "team_url": "team/red-bull-bora-hansgrohe-2026"
+      "team_url": "team/red-bull-bora-hansgrohe-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 2731,
+          "gc": 116,
+          "tt": 61,
+          "sprint": 2234,
+          "climber": 32,
+          "hills": 1186
+        }
+      }
     },
     {
       "name": "MARIT Arne",
@@ -594,7 +1324,17 @@
       "number": 92,
       "team": "Red Bull - BORA - hansgrohe (WT)",
       "rider_url": "rider/arne-marit",
-      "team_url": "team/red-bull-bora-hansgrohe-2026"
+      "team_url": "team/red-bull-bora-hansgrohe-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 994,
+          "gc": 110,
+          "tt": 4,
+          "sprint": 818,
+          "climber": 12,
+          "hills": 652
+        }
+      }
     },
     {
       "name": "DRIZNERS Jarrad",
@@ -602,7 +1342,17 @@
       "number": 93,
       "team": "Red Bull - BORA - hansgrohe (WT)",
       "rider_url": "rider/jarrad-drizners",
-      "team_url": "team/red-bull-bora-hansgrohe-2026"
+      "team_url": "team/red-bull-bora-hansgrohe-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 62,
+          "gc": 147,
+          "tt": 7,
+          "sprint": 48,
+          "climber": 0,
+          "hills": 65
+        }
+      }
     },
     {
       "name": "PITHIE Laurence",
@@ -610,7 +1360,17 @@
       "number": 94,
       "team": "Red Bull - BORA - hansgrohe (WT)",
       "rider_url": "rider/laurence-pithie",
-      "team_url": "team/red-bull-bora-hansgrohe-2026"
+      "team_url": "team/red-bull-bora-hansgrohe-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1447,
+          "gc": 302,
+          "tt": 205,
+          "sprint": 662,
+          "climber": 60,
+          "hills": 988
+        }
+      }
     },
     {
       "name": "VAN POPPEL Danny",
@@ -618,7 +1378,17 @@
       "number": 94,
       "team": "Red Bull - BORA - hansgrohe (WT)",
       "rider_url": "rider/danny-van-poppel",
-      "team_url": "team/red-bull-bora-hansgrohe-2026"
+      "team_url": "team/red-bull-bora-hansgrohe-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 3474,
+          "gc": 848,
+          "tt": 481,
+          "sprint": 4747,
+          "climber": 198,
+          "hills": 1875
+        }
+      }
     },
     {
       "name": "VAN DIJKE Mick",
@@ -626,7 +1396,17 @@
       "number": 95,
       "team": "Red Bull - BORA - hansgrohe (WT)",
       "rider_url": "rider/mick-van-dijke",
-      "team_url": "team/red-bull-bora-hansgrohe-2026"
+      "team_url": "team/red-bull-bora-hansgrohe-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 381,
+          "gc": 371,
+          "tt": 259,
+          "sprint": 262,
+          "climber": 112,
+          "hills": 300
+        }
+      }
     },
     {
       "name": "VAN DIJKE Tim",
@@ -634,7 +1414,17 @@
       "number": 96,
       "team": "Red Bull - BORA - hansgrohe (WT)",
       "rider_url": "rider/tim-van-dijke",
-      "team_url": "team/red-bull-bora-hansgrohe-2026"
+      "team_url": "team/red-bull-bora-hansgrohe-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 575,
+          "gc": 149,
+          "tt": 357,
+          "sprint": 291,
+          "climber": 92,
+          "hills": 406
+        }
+      }
     },
     {
       "name": "PAJUR Romet",
@@ -642,7 +1432,17 @@
       "number": 97,
       "team": "Red Bull - BORA - hansgrohe (WT)",
       "rider_url": "rider/romet-pajur",
-      "team_url": "team/red-bull-bora-hansgrohe-2026"
+      "team_url": "team/red-bull-bora-hansgrohe-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 0,
+          "gc": 18,
+          "tt": 31,
+          "sprint": 65,
+          "climber": 0,
+          "hills": 0
+        }
+      }
     },
     {
       "name": "LAMPAERT Yves",
@@ -650,7 +1450,17 @@
       "number": 101,
       "team": "Soudal Quick-Step (WT)",
       "rider_url": "rider/yves-lampaert",
-      "team_url": "team/soudal-quick-step-2026"
+      "team_url": "team/soudal-quick-step-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 3527,
+          "gc": 1515,
+          "tt": 2556,
+          "sprint": 1279,
+          "climber": 195,
+          "hills": 1202
+        }
+      }
     },
     {
       "name": "DESAL Ceriel",
@@ -658,7 +1468,17 @@
       "number": 102,
       "team": "Soudal Quick-Step (WT)",
       "rider_url": "rider/ceriel-desal",
-      "team_url": "team/soudal-quick-step-2026"
+      "team_url": "team/soudal-quick-step-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 224,
+          "gc": 55,
+          "tt": 1,
+          "sprint": 94,
+          "climber": 4,
+          "hills": 31
+        }
+      }
     },
     {
       "name": "MAGNIER Paul",
@@ -666,7 +1486,17 @@
       "number": 103,
       "team": "Soudal Quick-Step (WT)",
       "rider_url": "rider/paul-magnier",
-      "team_url": "team/soudal-quick-step-2026"
+      "team_url": "team/soudal-quick-step-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1328,
+          "gc": 82,
+          "tt": 16,
+          "sprint": 1328,
+          "climber": 153,
+          "hills": 1096
+        }
+      }
     },
     {
       "name": "VAN BAARLE Dylan",
@@ -674,7 +1504,17 @@
       "number": 104,
       "team": "Soudal Quick-Step (WT)",
       "rider_url": "rider/dylan-van-baarle",
-      "team_url": "team/soudal-quick-step-2026"
+      "team_url": "team/soudal-quick-step-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 2724,
+          "gc": 1510,
+          "tt": 1346,
+          "sprint": 232,
+          "climber": 534,
+          "hills": 1524
+        }
+      }
     },
     {
       "name": "LECERF Junior",
@@ -682,7 +1522,17 @@
       "number": 104,
       "team": "Soudal Quick-Step (WT)",
       "rider_url": "rider/junior-lecerf",
-      "team_url": "team/soudal-quick-step-2026"
+      "team_url": "team/soudal-quick-step-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 94,
+          "gc": 899,
+          "tt": 62,
+          "sprint": 10,
+          "climber": 714,
+          "hills": 388
+        }
+      }
     },
     {
       "name": "VAN LERBERGHE Bert",
@@ -690,7 +1540,17 @@
       "number": 105,
       "team": "Soudal Quick-Step (WT)",
       "rider_url": "rider/bert-van-lerberghe",
-      "team_url": "team/soudal-quick-step-2026"
+      "team_url": "team/soudal-quick-step-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1219,
+          "gc": 196,
+          "tt": 48,
+          "sprint": 864,
+          "climber": 0,
+          "hills": 140
+        }
+      }
     },
     {
       "name": "REX Laurenz",
@@ -698,7 +1558,17 @@
       "number": 106,
       "team": "Soudal Quick-Step (WT)",
       "rider_url": "rider/laurenz-rex",
-      "team_url": "team/soudal-quick-step-2026"
+      "team_url": "team/soudal-quick-step-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 966,
+          "gc": 100,
+          "tt": 2,
+          "sprint": 504,
+          "climber": 16,
+          "hills": 269
+        }
+      }
     },
     {
       "name": "VAN GESTEL Dries",
@@ -706,7 +1576,17 @@
       "number": 107,
       "team": "Soudal Quick-Step (WT)",
       "rider_url": "rider/dries-van-gestel",
-      "team_url": "team/soudal-quick-step-2026"
+      "team_url": "team/soudal-quick-step-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1636,
+          "gc": 261,
+          "tt": 30,
+          "sprint": 631,
+          "climber": 64,
+          "hills": 554
+        }
+      }
     },
     {
       "name": "ACKERMANN Pascal",
@@ -714,7 +1594,17 @@
       "number": 111,
       "team": "Team Jayco AlUla (WT)",
       "rider_url": "rider/pascal-ackermann",
-      "team_url": "team/team-jayco-alula-2026"
+      "team_url": "team/team-jayco-alula-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 3738,
+          "gc": 380,
+          "tt": 68,
+          "sprint": 4212,
+          "climber": 134,
+          "hills": 2017
+        }
+      }
     },
     {
       "name": "CAPIOT Amaury",
@@ -722,7 +1612,17 @@
       "number": 112,
       "team": "Team Jayco AlUla (WT)",
       "rider_url": "rider/amaury-capiot",
-      "team_url": "team/team-jayco-alula-2026"
+      "team_url": "team/team-jayco-alula-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 2145,
+          "gc": 306,
+          "tt": 58,
+          "sprint": 1424,
+          "climber": 128,
+          "hills": 869
+        }
+      }
     },
     {
       "name": "DE BONDT Dries",
@@ -730,7 +1630,17 @@
       "number": 113,
       "team": "Team Jayco AlUla (WT)",
       "rider_url": "rider/dries-de-bondt",
-      "team_url": "team/team-jayco-alula-2026"
+      "team_url": "team/team-jayco-alula-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1837,
+          "gc": 401,
+          "tt": 1,
+          "sprint": 1279,
+          "climber": 131,
+          "hills": 430
+        }
+      }
     },
     {
       "name": "DONALDSON Robert",
@@ -738,7 +1648,17 @@
       "number": 114,
       "team": "Team Jayco AlUla (WT)",
       "rider_url": "rider/robert-donaldson",
-      "team_url": "team/team-jayco-alula-2026"
+      "team_url": "team/team-jayco-alula-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 193,
+          "gc": 112,
+          "tt": 39,
+          "sprint": 240,
+          "climber": 12,
+          "hills": 188
+        }
+      }
     },
     {
       "name": "SCHMID Mauro",
@@ -746,7 +1666,17 @@
       "number": 114,
       "team": "Team Jayco AlUla (WT)",
       "rider_url": "rider/mauro-schmid",
-      "team_url": "team/team-jayco-alula-2026"
+      "team_url": "team/team-jayco-alula-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1342,
+          "gc": 1306,
+          "tt": 774,
+          "sprint": 8,
+          "climber": 1262,
+          "hills": 1368
+        }
+      }
     },
     {
       "name": "KRIJNSEN Jelte",
@@ -754,7 +1684,17 @@
       "number": 115,
       "team": "Team Jayco AlUla (WT)",
       "rider_url": "rider/jelte-krijnsen",
-      "team_url": "team/team-jayco-alula-2026"
+      "team_url": "team/team-jayco-alula-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 201,
+          "gc": 230,
+          "tt": 6,
+          "sprint": 216,
+          "climber": 16,
+          "hills": 206
+        }
+      }
     },
     {
       "name": "MEZGEC Luka",
@@ -762,7 +1702,17 @@
       "number": 116,
       "team": "Team Jayco AlUla (WT)",
       "rider_url": "rider/luka-mezgec",
-      "team_url": "team/team-jayco-alula-2026"
+      "team_url": "team/team-jayco-alula-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1626,
+          "gc": 675,
+          "tt": 33,
+          "sprint": 1723,
+          "climber": 238,
+          "hills": 2229
+        }
+      }
     },
     {
       "name": "O'BRIEN Kelland",
@@ -770,7 +1720,17 @@
       "number": 117,
       "team": "Team Jayco AlUla (WT)",
       "rider_url": "rider/kelland-brien",
-      "team_url": "team/team-jayco-alula-2026"
+      "team_url": "team/team-jayco-alula-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 290,
+          "gc": 121,
+          "tt": 288,
+          "sprint": 26,
+          "climber": 7,
+          "hills": 128
+        }
+      }
     },
     {
       "name": "DEGENKOLB John",
@@ -778,7 +1738,17 @@
       "number": 121,
       "team": "Team Picnic PostNL (WT)",
       "rider_url": "rider/john-degenkolb",
-      "team_url": "team/team-picnic-postnl-2026"
+      "team_url": "team/team-picnic-postnl-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 6514,
+          "gc": 1236,
+          "tt": 297,
+          "sprint": 6146,
+          "climber": 316,
+          "hills": 3345
+        }
+      }
     },
     {
       "name": "DE JONG Timo",
@@ -786,7 +1756,17 @@
       "number": 122,
       "team": "Team Picnic PostNL (WT)",
       "rider_url": "rider/timo-de-jong",
-      "team_url": "team/team-picnic-postnl-2026"
+      "team_url": "team/team-picnic-postnl-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 90,
+          "gc": 43,
+          "tt": 41,
+          "sprint": 278,
+          "climber": 4,
+          "hills": 97
+        }
+      }
     },
     {
       "name": "BITTNER Pavel",
@@ -794,7 +1774,17 @@
       "number": 123,
       "team": "Team Picnic PostNL (WT)",
       "rider_url": "rider/pavel-bittner",
-      "team_url": "team/team-picnic-postnl-2026"
+      "team_url": "team/team-picnic-postnl-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 804,
+          "gc": 219,
+          "tt": 52,
+          "sprint": 829,
+          "climber": 44,
+          "hills": 721
+        }
+      }
     },
     {
       "name": "BIESTERBOS Frits",
@@ -802,7 +1792,17 @@
       "number": 124,
       "team": "Team Picnic PostNL (WT)",
       "rider_url": "rider/frits-biesterbos",
-      "team_url": "team/team-picnic-postnl-2026"
+      "team_url": "team/team-picnic-postnl-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 156,
+          "gc": 6,
+          "tt": 51,
+          "sprint": 124,
+          "climber": 1,
+          "hills": 34
+        }
+      }
     },
     {
       "name": "POOLE Max",
@@ -810,7 +1810,17 @@
       "number": 124,
       "team": "Team Picnic PostNL (WT)",
       "rider_url": "rider/max-poole",
-      "team_url": "team/team-picnic-postnl-2026"
+      "team_url": "team/team-picnic-postnl-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 0,
+          "gc": 1037,
+          "tt": 207,
+          "sprint": 6,
+          "climber": 898,
+          "hills": 425
+        }
+      }
     },
     {
       "name": "NABERMAN Tim",
@@ -818,7 +1828,17 @@
       "number": 125,
       "team": "Team Picnic PostNL (WT)",
       "rider_url": "rider/tim-naberman",
-      "team_url": "team/team-picnic-postnl-2026"
+      "team_url": "team/team-picnic-postnl-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 25,
+          "gc": 85,
+          "tt": 0,
+          "sprint": 0,
+          "climber": 0,
+          "hills": 5
+        }
+      }
     },
     {
       "name": "MÄRKL Niklas",
@@ -826,7 +1846,17 @@
       "number": 126,
       "team": "Team Picnic PostNL (WT)",
       "rider_url": "rider/niklas-markl",
-      "team_url": "team/team-picnic-postnl-2026"
+      "team_url": "team/team-picnic-postnl-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 211,
+          "gc": 146,
+          "tt": 45,
+          "sprint": 262,
+          "climber": 26,
+          "hills": 170
+        }
+      }
     },
     {
       "name": "ROOSEN Timo",
@@ -834,7 +1864,17 @@
       "number": 127,
       "team": "Team Picnic PostNL (WT)",
       "rider_url": "rider/timo-roosen",
-      "team_url": "team/team-picnic-postnl-2026"
+      "team_url": "team/team-picnic-postnl-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1030,
+          "gc": 447,
+          "tt": 200,
+          "sprint": 390,
+          "climber": 146,
+          "hills": 551
+        }
+      }
     },
     {
       "name": "LAPORTE Christophe",
@@ -842,7 +1882,17 @@
       "number": 131,
       "team": "Team Visma | Lease a Bike (WT)",
       "rider_url": "rider/christophe-laporte",
-      "team_url": "team/team-visma-lease-a-bike-2026"
+      "team_url": "team/team-visma-lease-a-bike-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 4815,
+          "gc": 1055,
+          "tt": 989,
+          "sprint": 2439,
+          "climber": 389,
+          "hills": 2016
+        }
+      }
     },
     {
       "name": "VAN KERCKHOVE Matisse",
@@ -850,7 +1900,17 @@
       "number": 132,
       "team": "Team Visma | Lease a Bike (WT)",
       "rider_url": "rider/matisse-van-kerckhove",
-      "team_url": "team/team-visma-lease-a-bike-2026"
+      "team_url": "team/team-visma-lease-a-bike-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 13,
+          "gc": 151,
+          "tt": 62,
+          "sprint": 29,
+          "climber": 42,
+          "hills": 32
+        }
+      }
     },
     {
       "name": "FIORELLI Filippo",
@@ -858,7 +1918,17 @@
       "number": 133,
       "team": "Team Visma | Lease a Bike (WT)",
       "rider_url": "rider/filippo-fiorelli",
-      "team_url": "team/team-visma-lease-a-bike-2026"
+      "team_url": "team/team-visma-lease-a-bike-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 751,
+          "gc": 308,
+          "tt": 19,
+          "sprint": 586,
+          "climber": 382,
+          "hills": 992
+        }
+      }
     },
     {
       "name": "KIELICH Timo",
@@ -866,7 +1936,17 @@
       "number": 134,
       "team": "Team Visma | Lease a Bike (WT)",
       "rider_url": "rider/timo-kielich",
-      "team_url": "team/team-visma-lease-a-bike-2026"
+      "team_url": "team/team-visma-lease-a-bike-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 663,
+          "gc": 127,
+          "tt": 11,
+          "sprint": 458,
+          "climber": 55,
+          "hills": 344
+        }
+      }
     },
     {
       "name": "HAGENES Per Strand",
@@ -874,7 +1954,17 @@
       "number": 134,
       "team": "Team Visma | Lease a Bike (WT)",
       "rider_url": "rider/per-strand-hagenes",
-      "team_url": "team/team-visma-lease-a-bike-2026"
+      "team_url": "team/team-visma-lease-a-bike-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 684,
+          "gc": 389,
+          "tt": 114,
+          "sprint": 258,
+          "climber": 64,
+          "hills": 348
+        }
+      }
     },
     {
       "name": "MATTIO Pietro",
@@ -882,7 +1972,17 @@
       "number": 135,
       "team": "Team Visma | Lease a Bike (WT)",
       "rider_url": "rider/pietro-mattio",
-      "team_url": "team/team-visma-lease-a-bike-2026"
+      "team_url": "team/team-visma-lease-a-bike-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 22,
+          "gc": 29,
+          "tt": 3,
+          "sprint": 14,
+          "climber": 6,
+          "hills": 44
+        }
+      }
     },
     {
       "name": "BRENNAN Matthew",
@@ -890,7 +1990,17 @@
       "number": 136,
       "team": "Team Visma | Lease a Bike (WT)",
       "rider_url": "rider/matthew-brennan",
-      "team_url": "team/team-visma-lease-a-bike-2026"
+      "team_url": "team/team-visma-lease-a-bike-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 774,
+          "gc": 286,
+          "tt": 112,
+          "sprint": 643,
+          "climber": 154,
+          "hills": 728
+        }
+      }
     },
     {
       "name": "ZINGLE Axel",
@@ -898,7 +2008,17 @@
       "number": 137,
       "team": "Team Visma | Lease a Bike (WT)",
       "rider_url": "rider/axel-zingle",
-      "team_url": "team/team-visma-lease-a-bike-2026"
+      "team_url": "team/team-visma-lease-a-bike-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1835,
+          "gc": 610,
+          "tt": 262,
+          "sprint": 556,
+          "climber": 273,
+          "hills": 1076
+        }
+      }
     },
     {
       "name": "WELLENS Tim",
@@ -906,7 +2026,17 @@
       "number": 141,
       "team": "UAE Team Emirates - XRG (WT)",
       "rider_url": "rider/tim-wellens",
-      "team_url": "team/uae-team-emirates-xrg-2026"
+      "team_url": "team/uae-team-emirates-xrg-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 4255,
+          "gc": 4538,
+          "tt": 1406,
+          "sprint": 221,
+          "climber": 2532,
+          "hills": 3134
+        }
+      }
     },
     {
       "name": "HERREGODTS Rune",
@@ -914,7 +2044,17 @@
       "number": 142,
       "team": "UAE Team Emirates - XRG (WT)",
       "rider_url": "rider/rune-herregodts",
-      "team_url": "team/uae-team-emirates-xrg-2026"
+      "team_url": "team/uae-team-emirates-xrg-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 437,
+          "gc": 296,
+          "tt": 561,
+          "sprint": 180,
+          "climber": 159,
+          "hills": 266
+        }
+      }
     },
     {
       "name": "MOLANO Juan Sebastián",
@@ -922,7 +2062,17 @@
       "number": 143,
       "team": "UAE Team Emirates - XRG (WT)",
       "rider_url": "rider/juan-sebastian-molano",
-      "team_url": "team/uae-team-emirates-xrg-2026"
+      "team_url": "team/uae-team-emirates-xrg-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1161,
+          "gc": 294,
+          "tt": 0,
+          "sprint": 2553,
+          "climber": 86,
+          "hills": 1081
+        }
+      }
     },
     {
       "name": "JOHANSEN Julius",
@@ -930,7 +2080,17 @@
       "number": 144,
       "team": "UAE Team Emirates - XRG (WT)",
       "rider_url": "rider/julius-johansen",
-      "team_url": "team/uae-team-emirates-xrg-2026"
+      "team_url": "team/uae-team-emirates-xrg-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 82,
+          "gc": 238,
+          "tt": 497,
+          "sprint": 94,
+          "climber": 22,
+          "hills": 84
+        }
+      }
     },
     {
       "name": "POGAČAR Tadej",
@@ -938,7 +2098,17 @@
       "number": 144,
       "team": "UAE Team Emirates - XRG (WT)",
       "rider_url": "rider/tadej-pogacar",
-      "team_url": "team/uae-team-emirates-xrg-2026"
+      "team_url": "team/uae-team-emirates-xrg-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 9983,
+          "gc": 7594,
+          "tt": 3287,
+          "sprint": 297,
+          "climber": 9989,
+          "hills": 4368
+        }
+      }
     },
     {
       "name": "POLITT Nils",
@@ -946,7 +2116,17 @@
       "number": 145,
       "team": "UAE Team Emirates - XRG (WT)",
       "rider_url": "rider/nils-politt",
-      "team_url": "team/uae-team-emirates-xrg-2026"
+      "team_url": "team/uae-team-emirates-xrg-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 2415,
+          "gc": 1088,
+          "tt": 1352,
+          "sprint": 516,
+          "climber": 156,
+          "hills": 1481
+        }
+      }
     },
     {
       "name": "VERMEERSCH Florian",
@@ -954,7 +2134,17 @@
       "number": 146,
       "team": "UAE Team Emirates - XRG (WT)",
       "rider_url": "rider/florian-vermeersch",
-      "team_url": "team/uae-team-emirates-xrg-2026"
+      "team_url": "team/uae-team-emirates-xrg-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1865,
+          "gc": 614,
+          "tt": 579,
+          "sprint": 571,
+          "climber": 93,
+          "hills": 632
+        }
+      }
     },
     {
       "name": "OLIVEIRA Rui",
@@ -962,7 +2152,17 @@
       "number": 147,
       "team": "UAE Team Emirates - XRG (WT)",
       "rider_url": "rider/rui-oliveira",
-      "team_url": "team/uae-team-emirates-xrg-2026"
+      "team_url": "team/uae-team-emirates-xrg-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 617,
+          "gc": 166,
+          "tt": 38,
+          "sprint": 576,
+          "climber": 54,
+          "hills": 704
+        }
+      }
     },
     {
       "name": "BÉVORT Carl-Frederik",
@@ -970,7 +2170,17 @@
       "number": 151,
       "team": "Uno-X Mobility (WT)",
       "rider_url": "rider/carl-frederik-bevort",
-      "team_url": "team/uno-x-mobility-2026"
+      "team_url": "team/uno-x-mobility-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 107,
+          "gc": 37,
+          "tt": 116,
+          "sprint": 64,
+          "climber": 2,
+          "hills": 103
+        }
+      }
     },
     {
       "name": "ABRAHAMSEN Jonas",
@@ -978,7 +2188,17 @@
       "number": 152,
       "team": "Uno-X Mobility (WT)",
       "rider_url": "rider/jonas-abrahamsen",
-      "team_url": "team/uno-x-mobility-2026"
+      "team_url": "team/uno-x-mobility-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1250,
+          "gc": 179,
+          "tt": 11,
+          "sprint": 321,
+          "climber": 124,
+          "hills": 597
+        }
+      }
     },
     {
       "name": "HVIDEBERG Jonas Hem",
@@ -986,7 +2206,17 @@
       "number": 153,
       "team": "Uno-X Mobility (WT)",
       "rider_url": "rider/jonas-hem-hvideberg",
-      "team_url": "team/uno-x-mobility-2026"
+      "team_url": "team/uno-x-mobility-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 146,
+          "gc": 58,
+          "tt": 7,
+          "sprint": 38,
+          "climber": 17,
+          "hills": 54
+        }
+      }
     },
     {
       "name": "INGEBRIGTSEN Storm",
@@ -994,7 +2224,17 @@
       "number": 154,
       "team": "Uno-X Mobility (WT)",
       "rider_url": "rider/storm-ingebrigtsen",
-      "team_url": "team/uno-x-mobility-2026"
+      "team_url": "team/uno-x-mobility-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 22,
+          "gc": 12,
+          "tt": 0,
+          "sprint": 46,
+          "climber": 6,
+          "hills": 22
+        }
+      }
     },
     {
       "name": "KULSET Johannes",
@@ -1002,7 +2242,17 @@
       "number": 154,
       "team": "Uno-X Mobility (WT)",
       "rider_url": "rider/johannes-kulset",
-      "team_url": "team/uno-x-mobility-2026"
+      "team_url": "team/uno-x-mobility-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 321,
+          "gc": 563,
+          "tt": 6,
+          "sprint": 3,
+          "climber": 475,
+          "hills": 212
+        }
+      }
     },
     {
       "name": "PEDERSEN Henrik",
@@ -1010,7 +2260,17 @@
       "number": 155,
       "team": "Uno-X Mobility (WT)",
       "rider_url": "rider/henrik-pedersen",
-      "team_url": "team/uno-x-mobility-2026"
+      "team_url": "team/uno-x-mobility-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 107,
+          "gc": 11,
+          "tt": 26,
+          "sprint": 174,
+          "climber": 4,
+          "hills": 26
+        }
+      }
     },
     {
       "name": "RESELL Erik Nordsæter",
@@ -1018,7 +2278,17 @@
       "number": 156,
       "team": "Uno-X Mobility (WT)",
       "rider_url": "rider/erik-nordsaeter-resell",
-      "team_url": "team/uno-x-mobility-2026"
+      "team_url": "team/uno-x-mobility-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 324,
+          "gc": 23,
+          "tt": 66,
+          "sprint": 175,
+          "climber": 15,
+          "hills": 48
+        }
+      }
     },
     {
       "name": "TILLER Rasmus",
@@ -1026,7 +2296,17 @@
       "number": 157,
       "team": "Uno-X Mobility (WT)",
       "rider_url": "rider/rasmus-tiller",
-      "team_url": "team/uno-x-mobility-2026"
+      "team_url": "team/uno-x-mobility-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 2026,
+          "gc": 376,
+          "tt": 118,
+          "sprint": 758,
+          "climber": 116,
+          "hills": 724
+        }
+      }
     },
     {
       "name": "BALLERINI Davide",
@@ -1034,7 +2314,17 @@
       "number": 161,
       "team": "XDS Astana Team (WT)",
       "rider_url": "rider/davide-ballerini",
-      "team_url": "team/xds-astana-team-2026"
+      "team_url": "team/xds-astana-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1835,
+          "gc": 290,
+          "tt": 133,
+          "sprint": 1106,
+          "climber": 276,
+          "hills": 1698
+        }
+      }
     },
     {
       "name": "GATE Aaron",
@@ -1042,7 +2332,17 @@
       "number": 162,
       "team": "XDS Astana Team (WT)",
       "rider_url": "rider/aaron-gate",
-      "team_url": "team/xds-astana-team-2026"
+      "team_url": "team/xds-astana-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 600,
+          "gc": 958,
+          "tt": 649,
+          "sprint": 486,
+          "climber": 167,
+          "hills": 909
+        }
+      }
     },
     {
       "name": "GONOV Lev",
@@ -1050,7 +2350,17 @@
       "number": 163,
       "team": "XDS Astana Team (WT)",
       "rider_url": "rider/lev-gonov",
-      "team_url": "team/xds-astana-team-2026"
+      "team_url": "team/xds-astana-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 12,
+          "gc": 64,
+          "tt": 59,
+          "sprint": 99,
+          "climber": 36,
+          "hills": 85
+        }
+      }
     },
     {
       "name": "KANTER Max",
@@ -1058,7 +2368,17 @@
       "number": 164,
       "team": "XDS Astana Team (WT)",
       "rider_url": "rider/max-kanter",
-      "team_url": "team/xds-astana-team-2026"
+      "team_url": "team/xds-astana-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1307,
+          "gc": 248,
+          "tt": 32,
+          "sprint": 1567,
+          "climber": 124,
+          "hills": 1217
+        }
+      }
     },
     {
       "name": "FEDOROV Yevgeniy",
@@ -1066,7 +2386,17 @@
       "number": 164,
       "team": "XDS Astana Team (WT)",
       "rider_url": "rider/yevgeniy-fedorov",
-      "team_url": "team/xds-astana-team-2026"
+      "team_url": "team/xds-astana-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 946,
+          "gc": 213,
+          "tt": 535,
+          "sprint": 322,
+          "climber": 38,
+          "hills": 209
+        }
+      }
     },
     {
       "name": "ROMELE Alessandro",
@@ -1074,7 +2404,17 @@
       "number": 165,
       "team": "XDS Astana Team (WT)",
       "rider_url": "rider/alessandro-romele",
-      "team_url": "team/xds-astana-team-2026"
+      "team_url": "team/xds-astana-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 146,
+          "gc": 109,
+          "tt": 10,
+          "sprint": 95,
+          "climber": 22,
+          "hills": 146
+        }
+      }
     },
     {
       "name": "SYRITSA Gleb",
@@ -1082,7 +2422,17 @@
       "number": 166,
       "team": "XDS Astana Team (WT)",
       "rider_url": "rider/gleb-syritsa",
-      "team_url": "team/xds-astana-team-2026"
+      "team_url": "team/xds-astana-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 174,
+          "gc": 55,
+          "tt": 112,
+          "sprint": 987,
+          "climber": 24,
+          "hills": 133
+        }
+      }
     },
     {
       "name": "TEUNISSEN Mike",
@@ -1090,7 +2440,17 @@
       "number": 167,
       "team": "XDS Astana Team (WT)",
       "rider_url": "rider/mike-teunissen",
-      "team_url": "team/xds-astana-team-2026"
+      "team_url": "team/xds-astana-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 2640,
+          "gc": 1508,
+          "tt": 338,
+          "sprint": 1845,
+          "climber": 210,
+          "hills": 1600
+        }
+      }
     },
     {
       "name": "ALLENO Clément",
@@ -1098,7 +2458,17 @@
       "number": 171,
       "team": "Burgos Burpellet BH (PRT)",
       "rider_url": "rider/clement-alleno",
-      "team_url": "team/burgos-burpellet-bh-2026"
+      "team_url": "team/burgos-burpellet-bh-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 134,
+          "gc": 212,
+          "tt": 6,
+          "sprint": 87,
+          "climber": 38,
+          "hills": 226
+        }
+      }
     },
     {
       "name": "BOUGLAS Georgios",
@@ -1106,7 +2476,17 @@
       "number": 172,
       "team": "Burgos Burpellet BH (PRT)",
       "rider_url": "rider/georgios-bouglas",
-      "team_url": "team/burgos-burpellet-bh-2026"
+      "team_url": "team/burgos-burpellet-bh-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 203,
+          "gc": 60,
+          "tt": 212,
+          "sprint": 1294,
+          "climber": 33,
+          "hills": 254
+        }
+      }
     },
     {
       "name": "BURNETT Josh",
@@ -1114,7 +2494,17 @@
       "number": 173,
       "team": "Burgos Burpellet BH (PRT)",
       "rider_url": "rider/josh-burnett",
-      "team_url": "team/burgos-burpellet-bh-2026"
+      "team_url": "team/burgos-burpellet-bh-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 61,
+          "gc": 267,
+          "tt": 49,
+          "sprint": 22,
+          "climber": 76,
+          "hills": 120
+        }
+      }
     },
     {
       "name": "CAVIA Daniel",
@@ -1122,7 +2512,17 @@
       "number": 174,
       "team": "Burgos Burpellet BH (PRT)",
       "rider_url": "rider/daniel-cavia-sanz",
-      "team_url": "team/burgos-burpellet-bh-2026"
+      "team_url": "team/burgos-burpellet-bh-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 53,
+          "gc": 136,
+          "tt": 0,
+          "sprint": 128,
+          "climber": 18,
+          "hills": 148
+        }
+      }
     },
     {
       "name": "FAGÚNDEZ Eric Antonio",
@@ -1130,7 +2530,17 @@
       "number": 174,
       "team": "Burgos Burpellet BH (PRT)",
       "rider_url": "rider/eric-antonio-fagundez",
-      "team_url": "team/burgos-burpellet-bh-2026"
+      "team_url": "team/burgos-burpellet-bh-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 532,
+          "gc": 365,
+          "tt": 319,
+          "sprint": 106,
+          "climber": 146,
+          "hills": 346
+        }
+      }
     },
     {
       "name": "MACÍAS César",
@@ -1138,7 +2548,17 @@
       "number": 175,
       "team": "Burgos Burpellet BH (PRT)",
       "rider_url": "rider/cesar-macias-estrada",
-      "team_url": "team/burgos-burpellet-bh-2026"
+      "team_url": "team/burgos-burpellet-bh-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 205,
+          "gc": 0,
+          "tt": 0,
+          "sprint": 207,
+          "climber": 32,
+          "hills": 153
+        }
+      }
     },
     {
       "name": "MAYER Alexandre",
@@ -1146,7 +2566,17 @@
       "number": 176,
       "team": "Burgos Burpellet BH (PRT)",
       "rider_url": "rider/alexandre-mayer",
-      "team_url": "team/burgos-burpellet-bh-2026"
+      "team_url": "team/burgos-burpellet-bh-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 363,
+          "gc": 65,
+          "tt": 388,
+          "sprint": 182,
+          "climber": 17,
+          "hills": 69
+        }
+      }
     },
     {
       "name": "KMÍNEK Vojtěch",
@@ -1154,7 +2584,17 @@
       "number": 177,
       "team": "Burgos Burpellet BH (PRT)",
       "rider_url": "rider/vojtech-kminek",
-      "team_url": "team/burgos-burpellet-bh-2026"
+      "team_url": "team/burgos-burpellet-bh-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 17,
+          "gc": 0,
+          "tt": 0,
+          "sprint": 22,
+          "climber": 0,
+          "hills": 17
+        }
+      }
     },
     {
       "name": "ALLEGAERT Piet",
@@ -1162,7 +2602,17 @@
       "number": 182,
       "team": "Cofidis (PRT)",
       "rider_url": "rider/piet-allegaert",
-      "team_url": "team/cofidis-2026"
+      "team_url": "team/cofidis-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1446,
+          "gc": 147,
+          "tt": 140,
+          "sprint": 826,
+          "climber": 19,
+          "hills": 485
+        }
+      }
     },
     {
       "name": "KIRSCH Alex",
@@ -1170,7 +2620,17 @@
       "number": 183,
       "team": "Cofidis (PRT)",
       "rider_url": "rider/alex-kirsch",
-      "team_url": "team/cofidis-2026"
+      "team_url": "team/cofidis-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 644,
+          "gc": 504,
+          "tt": 746,
+          "sprint": 538,
+          "climber": 127,
+          "hills": 478
+        }
+      }
     },
     {
       "name": "MAAS Jan",
@@ -1178,7 +2638,17 @@
       "number": 184,
       "team": "Cofidis (PRT)",
       "rider_url": "rider/jan-maas",
-      "team_url": "team/cofidis-2026"
+      "team_url": "team/cofidis-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 181,
+          "gc": 205,
+          "tt": 12,
+          "sprint": 15,
+          "climber": 86,
+          "hills": 98
+        }
+      }
     },
     {
       "name": "PAGE Hugo",
@@ -1186,7 +2656,17 @@
       "number": 185,
       "team": "Cofidis (PRT)",
       "rider_url": "rider/hugo-page",
-      "team_url": "team/cofidis-2026"
+      "team_url": "team/cofidis-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 725,
+          "gc": 192,
+          "tt": 77,
+          "sprint": 303,
+          "climber": 53,
+          "hills": 666
+        }
+      }
     },
     {
       "name": "FRETIN Milan",
@@ -1194,7 +2674,17 @@
       "number": 185,
       "team": "Cofidis (PRT)",
       "rider_url": "rider/milan-fretin",
-      "team_url": "team/cofidis-2026"
+      "team_url": "team/cofidis-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1125,
+          "gc": 92,
+          "tt": 15,
+          "sprint": 1135,
+          "climber": 48,
+          "hills": 360
+        }
+      }
     },
     {
       "name": "ANIOŁKOWSKI Stanisław",
@@ -1202,7 +2692,17 @@
       "number": 186,
       "team": "Cofidis (PRT)",
       "rider_url": "rider/stanislaw-aniolkowski",
-      "team_url": "team/cofidis-2026"
+      "team_url": "team/cofidis-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1147,
+          "gc": 407,
+          "tt": 123,
+          "sprint": 1724,
+          "climber": 52,
+          "hills": 758
+        }
+      }
     },
     {
       "name": "RENARD Alexis",
@@ -1210,7 +2710,17 @@
       "number": 187,
       "team": "Cofidis (PRT)",
       "rider_url": "rider/alexis-renard",
-      "team_url": "team/cofidis-2026"
+      "team_url": "team/cofidis-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1031,
+          "gc": 267,
+          "tt": 40,
+          "sprint": 638,
+          "climber": 32,
+          "hills": 224
+        }
+      }
     },
     {
       "name": "BOARDMAN Samuel",
@@ -1218,7 +2728,17 @@
       "number": 191,
       "team": "Modern Adventure Pro Cycling (PRT)",
       "rider_url": "rider/samuel-boardman",
-      "team_url": "team/modern-adventure-pro-cycling-2026"
+      "team_url": "team/modern-adventure-pro-cycling-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 2,
+          "gc": 5,
+          "tt": 63,
+          "sprint": 7,
+          "climber": 1,
+          "hills": 46
+        }
+      }
     },
     {
       "name": "CHRISTIAN Sean",
@@ -1226,7 +2746,17 @@
       "number": 192,
       "team": "Modern Adventure Pro Cycling (PRT)",
       "rider_url": "rider/sean-christian",
-      "team_url": "team/modern-adventure-pro-cycling-2026"
+      "team_url": "team/modern-adventure-pro-cycling-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 15,
+          "gc": 5,
+          "tt": 0,
+          "sprint": 50,
+          "climber": 6,
+          "hills": 55
+        }
+      }
     },
     {
       "name": "KESSLER Cole",
@@ -1234,7 +2764,17 @@
       "number": 193,
       "team": "Modern Adventure Pro Cycling (PRT)",
       "rider_url": "rider/cole-kessler",
-      "team_url": "team/modern-adventure-pro-cycling-2026"
+      "team_url": "team/modern-adventure-pro-cycling-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 6,
+          "gc": 5,
+          "tt": 13,
+          "sprint": 17,
+          "climber": 6,
+          "hills": 12
+        }
+      }
     },
     {
       "name": "CAUDELL Ezra",
@@ -1242,7 +2782,17 @@
       "number": 194,
       "team": "Modern Adventure Pro Cycling (PRT)",
       "rider_url": "rider/ezra-caudell",
-      "team_url": "team/modern-adventure-pro-cycling-2026"
+      "team_url": "team/modern-adventure-pro-cycling-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 5,
+          "gc": 5,
+          "tt": 0,
+          "sprint": 0,
+          "climber": 0,
+          "hills": 0
+        }
+      }
     },
     {
       "name": "CARPENTER Robin",
@@ -1250,7 +2800,17 @@
       "number": 194,
       "team": "Modern Adventure Pro Cycling (PRT)",
       "rider_url": "rider/robin-carpenter",
-      "team_url": "team/modern-adventure-pro-cycling-2026"
+      "team_url": "team/modern-adventure-pro-cycling-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 354,
+          "gc": 255,
+          "tt": 184,
+          "sprint": 249,
+          "climber": 124,
+          "hills": 128
+        }
+      }
     },
     {
       "name": "OLIVER Ben",
@@ -1258,7 +2818,17 @@
       "number": 195,
       "team": "Modern Adventure Pro Cycling (PRT)",
       "rider_url": "rider/ben-oliver",
-      "team_url": "team/modern-adventure-pro-cycling-2026"
+      "team_url": "team/modern-adventure-pro-cycling-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 65,
+          "gc": 22,
+          "tt": 25,
+          "sprint": 104,
+          "climber": 22,
+          "hills": 161
+        }
+      }
     },
     {
       "name": "PICKRELL Riley",
@@ -1266,7 +2836,17 @@
       "number": 196,
       "team": "Modern Adventure Pro Cycling (PRT)",
       "rider_url": "rider/riley-pickrell",
-      "team_url": "team/modern-adventure-pro-cycling-2026"
+      "team_url": "team/modern-adventure-pro-cycling-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 143,
+          "gc": 15,
+          "tt": 42,
+          "sprint": 178,
+          "climber": 30,
+          "hills": 246
+        }
+      }
     },
     {
       "name": "STEWART Mark",
@@ -1274,7 +2854,17 @@
       "number": 197,
       "team": "Modern Adventure Pro Cycling (PRT)",
       "rider_url": "rider/mark-stewart",
-      "team_url": "team/modern-adventure-pro-cycling-2026"
+      "team_url": "team/modern-adventure-pro-cycling-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 147,
+          "gc": 257,
+          "tt": 20,
+          "sprint": 34,
+          "climber": 109,
+          "hills": 224
+        }
+      }
     },
     {
       "name": "DE GENDT Aimé",
@@ -1282,7 +2872,17 @@
       "number": 201,
       "team": "Pinarello Q36.5 Pro Cycling Team (PRT)",
       "rider_url": "rider/aime-de-gendt",
-      "team_url": "team/pinarello-q365-pro-cycling-team-2026"
+      "team_url": "team/pinarello-q365-pro-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1382,
+          "gc": 593,
+          "tt": 141,
+          "sprint": 420,
+          "climber": 80,
+          "hills": 568
+        }
+      }
     },
     {
       "name": "FRISON Frederik",
@@ -1290,7 +2890,17 @@
       "number": 202,
       "team": "Pinarello Q36.5 Pro Cycling Team (PRT)",
       "rider_url": "rider/frederik-frison",
-      "team_url": "team/pinarello-q365-pro-cycling-team-2026"
+      "team_url": "team/pinarello-q365-pro-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 512,
+          "gc": 136,
+          "tt": 323,
+          "sprint": 222,
+          "climber": 1,
+          "hills": 9
+        }
+      }
     },
     {
       "name": "MOSCHETTI Matteo",
@@ -1298,7 +2908,17 @@
       "number": 203,
       "team": "Pinarello Q36.5 Pro Cycling Team (PRT)",
       "rider_url": "rider/matteo-moschetti",
-      "team_url": "team/pinarello-q365-pro-cycling-team-2026"
+      "team_url": "team/pinarello-q365-pro-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1564,
+          "gc": 85,
+          "tt": 28,
+          "sprint": 2046,
+          "climber": 5,
+          "hills": 462
+        }
+      }
     },
     {
       "name": "MAŁECKI Kamil",
@@ -1306,7 +2926,17 @@
       "number": 204,
       "team": "Pinarello Q36.5 Pro Cycling Team (PRT)",
       "rider_url": "rider/kamil-malecki",
-      "team_url": "team/pinarello-q365-pro-cycling-team-2026"
+      "team_url": "team/pinarello-q365-pro-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 237,
+          "gc": 324,
+          "tt": 203,
+          "sprint": 240,
+          "climber": 116,
+          "hills": 158
+        }
+      }
     },
     {
       "name": "CALZONI Walter",
@@ -1314,7 +2944,17 @@
       "number": 204,
       "team": "Pinarello Q36.5 Pro Cycling Team (PRT)",
       "rider_url": "rider/walter-calzoni",
-      "team_url": "team/pinarello-q365-pro-cycling-team-2026"
+      "team_url": "team/pinarello-q365-pro-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 160,
+          "gc": 182,
+          "tt": 2,
+          "sprint": 4,
+          "climber": 171,
+          "hills": 170
+        }
+      }
     },
     {
       "name": "VAN MOER Brent",
@@ -1322,7 +2962,17 @@
       "number": 205,
       "team": "Pinarello Q36.5 Pro Cycling Team (PRT)",
       "rider_url": "rider/brent-van-moer",
-      "team_url": "team/pinarello-q365-pro-cycling-team-2026"
+      "team_url": "team/pinarello-q365-pro-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 697,
+          "gc": 513,
+          "tt": 279,
+          "sprint": 156,
+          "climber": 62,
+          "hills": 454
+        }
+      }
     },
     {
       "name": "WRIGHT Fred",
@@ -1330,7 +2980,17 @@
       "number": 206,
       "team": "Pinarello Q36.5 Pro Cycling Team (PRT)",
       "rider_url": "rider/alfred-wright",
-      "team_url": "team/pinarello-q365-pro-cycling-team-2026"
+      "team_url": "team/pinarello-q365-pro-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1051,
+          "gc": 545,
+          "tt": 466,
+          "sprint": 252,
+          "climber": 375,
+          "hills": 1584
+        }
+      }
     },
     {
       "name": "PARISINI Nicolò",
@@ -1338,7 +2998,17 @@
       "number": 207,
       "team": "Pinarello Q36.5 Pro Cycling Team (PRT)",
       "rider_url": "rider/nicolo-parisini",
-      "team_url": "team/pinarello-q365-pro-cycling-team-2026"
+      "team_url": "team/pinarello-q365-pro-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 167,
+          "gc": 88,
+          "tt": 8,
+          "sprint": 178,
+          "climber": 14,
+          "hills": 234
+        }
+      }
     },
     {
       "name": "CRABBE Tom",
@@ -1346,7 +3016,17 @@
       "number": 211,
       "team": "Team Flanders - Baloise (PRT)",
       "rider_url": "rider/tom-crabbe",
-      "team_url": "team/team-flanders-baloise-2026"
+      "team_url": "team/team-flanders-baloise-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 101,
+          "gc": 0,
+          "tt": 0,
+          "sprint": 271,
+          "climber": 5,
+          "hills": 171
+        }
+      }
     },
     {
       "name": "DEMAN Brem",
@@ -1354,7 +3034,17 @@
       "number": 212,
       "team": "Team Flanders - Baloise (PRT)",
       "rider_url": "rider/brem-deman",
-      "team_url": "team/team-flanders-baloise-2026"
+      "team_url": "team/team-flanders-baloise-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 35,
+          "gc": 1,
+          "tt": 21,
+          "sprint": 2,
+          "climber": 0,
+          "hills": 0
+        }
+      }
     },
     {
       "name": "GEERAERTS Ferre",
@@ -1362,7 +3052,17 @@
       "number": 213,
       "team": "Team Flanders - Baloise (PRT)",
       "rider_url": "rider/ferre-geeraerts",
-      "team_url": "team/team-flanders-baloise-2026"
+      "team_url": "team/team-flanders-baloise-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 10,
+          "gc": 0,
+          "tt": 49,
+          "sprint": 0,
+          "climber": 0,
+          "hills": 1
+        }
+      }
     },
     {
       "name": "HESTERS Jules",
@@ -1370,7 +3070,17 @@
       "number": 214,
       "team": "Team Flanders - Baloise (PRT)",
       "rider_url": "rider/jules-hesters",
-      "team_url": "team/team-flanders-baloise-2026"
+      "team_url": "team/team-flanders-baloise-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 224,
+          "gc": 19,
+          "tt": 0,
+          "sprint": 374,
+          "climber": 0,
+          "hills": 52
+        }
+      }
     },
     {
       "name": "LANHOVE Milan",
@@ -1378,7 +3088,17 @@
       "number": 214,
       "team": "Team Flanders - Baloise (PRT)",
       "rider_url": "rider/milan-lanhove",
-      "team_url": "team/team-flanders-baloise-2026"
+      "team_url": "team/team-flanders-baloise-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 75,
+          "gc": 62,
+          "tt": 47,
+          "sprint": 6,
+          "climber": 6,
+          "hills": 54
+        }
+      }
     },
     {
       "name": "VAN HAUTEGEM Leander",
@@ -1386,7 +3106,17 @@
       "number": 215,
       "team": "Team Flanders - Baloise (PRT)",
       "rider_url": "rider/leander-van-hautegem",
-      "team_url": "team/team-flanders-baloise-2026"
+      "team_url": "team/team-flanders-baloise-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 51,
+          "gc": 18,
+          "tt": 0,
+          "sprint": 44,
+          "climber": 8,
+          "hills": 25
+        }
+      }
     },
     {
       "name": "HUYSMANS Nolan",
@@ -1394,7 +3124,17 @@
       "number": 216,
       "team": "Team Flanders - Baloise (PRT)",
       "rider_url": "rider/nolan-huysmans",
-      "team_url": "team/team-flanders-baloise-2026"
+      "team_url": "team/team-flanders-baloise-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 0,
+          "gc": 0,
+          "tt": 0,
+          "sprint": 11,
+          "climber": 0,
+          "hills": 0
+        }
+      }
     },
     {
       "name": "TORNEY Artuur",
@@ -1402,7 +3142,17 @@
       "number": 217,
       "team": "Team Flanders - Baloise (PRT)",
       "rider_url": "rider/artuur-torney",
-      "team_url": "team/team-flanders-baloise-2026"
+      "team_url": "team/team-flanders-baloise-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 8,
+          "gc": 0,
+          "tt": 0,
+          "sprint": 13,
+          "climber": 5,
+          "hills": 13
+        }
+      }
     },
     {
       "name": "VADIC Baptiste",
@@ -1410,7 +3160,17 @@
       "number": 221,
       "team": "TotalEnergies (PRT)",
       "rider_url": "rider/baptiste-vadic",
-      "team_url": "team/totalenergies-2026"
+      "team_url": "team/totalenergies-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 24,
+          "gc": 71,
+          "tt": 103,
+          "sprint": 41,
+          "climber": 8,
+          "hills": 52
+        }
+      }
     },
     {
       "name": "BOULAHOITE Rayan",
@@ -1418,7 +3178,17 @@
       "number": 222,
       "team": "TotalEnergies (PRT)",
       "rider_url": "rider/rayan-boulahoite",
-      "team_url": "team/totalenergies-2026"
+      "team_url": "team/totalenergies-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 43,
+          "gc": 52,
+          "tt": 0,
+          "sprint": 22,
+          "climber": 13,
+          "hills": 32
+        }
+      }
     },
     {
       "name": "BRUNEL Alexys",
@@ -1426,7 +3196,17 @@
       "number": 223,
       "team": "TotalEnergies (PRT)",
       "rider_url": "rider/alexys-brunel",
-      "team_url": "team/totalenergies-2026"
+      "team_url": "team/totalenergies-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 155,
+          "gc": 88,
+          "tt": 284,
+          "sprint": 162,
+          "climber": 20,
+          "hills": 35
+        }
+      }
     },
     {
       "name": "DAUPHIN Florian",
@@ -1434,7 +3214,17 @@
       "number": 224,
       "team": "TotalEnergies (PRT)",
       "rider_url": "rider/florian-dauphin",
-      "team_url": "team/totalenergies-2026"
+      "team_url": "team/totalenergies-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 239,
+          "gc": 59,
+          "tt": 0,
+          "sprint": 246,
+          "climber": 20,
+          "hills": 86
+        }
+      }
     },
     {
       "name": "DELBOVE Joris",
@@ -1442,7 +3232,17 @@
       "number": 224,
       "team": "TotalEnergies (PRT)",
       "rider_url": "rider/joris-delbove",
-      "team_url": "team/totalenergies-2026"
+      "team_url": "team/totalenergies-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 199,
+          "gc": 339,
+          "tt": 44,
+          "sprint": 36,
+          "climber": 143,
+          "hills": 168
+        }
+      }
     },
     {
       "name": "JEANNIÈRE Emilien",
@@ -1450,7 +3250,17 @@
       "number": 225,
       "team": "TotalEnergies (PRT)",
       "rider_url": "rider/emilien-jeanniere",
-      "team_url": "team/totalenergies-2026"
+      "team_url": "team/totalenergies-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1407,
+          "gc": 316,
+          "tt": 51,
+          "sprint": 802,
+          "climber": 134,
+          "hills": 808
+        }
+      }
     },
     {
       "name": "LEROUX Samuel",
@@ -1458,7 +3268,17 @@
       "number": 226,
       "team": "TotalEnergies (PRT)",
       "rider_url": "rider/samuel-leroux",
-      "team_url": "team/totalenergies-2026"
+      "team_url": "team/totalenergies-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 197,
+          "gc": 224,
+          "tt": 211,
+          "sprint": 196,
+          "climber": 6,
+          "hills": 88
+        }
+      }
     },
     {
       "name": "THIERRY Pierre",
@@ -1466,7 +3286,17 @@
       "number": 227,
       "team": "TotalEnergies (PRT)",
       "rider_url": "rider/pierre-thierry",
-      "team_url": "team/totalenergies-2026"
+      "team_url": "team/totalenergies-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 125,
+          "gc": 60,
+          "tt": 87,
+          "sprint": 40,
+          "climber": 28,
+          "hills": 74
+        }
+      }
     },
     {
       "name": "HALLER Marco",
@@ -1474,7 +3304,17 @@
       "number": 231,
       "team": "Tudor Pro Cycling Team (PRT)",
       "rider_url": "rider/marco-haller",
-      "team_url": "team/tudor-pro-cycling-team-2026"
+      "team_url": "team/tudor-pro-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1385,
+          "gc": 746,
+          "tt": 139,
+          "sprint": 499,
+          "climber": 88,
+          "hills": 614
+        }
+      }
     },
     {
       "name": "FROIDEVAUX Robin",
@@ -1482,7 +3322,17 @@
       "number": 232,
       "team": "Tudor Pro Cycling Team (PRT)",
       "rider_url": "rider/robin-froidevaux",
-      "team_url": "team/tudor-pro-cycling-team-2026"
+      "team_url": "team/tudor-pro-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 147,
+          "gc": 73,
+          "tt": 47,
+          "sprint": 170,
+          "climber": 20,
+          "hills": 196
+        }
+      }
     },
     {
       "name": "MIKUTIS Aivaras",
@@ -1490,7 +3340,17 @@
       "number": 233,
       "team": "Tudor Pro Cycling Team (PRT)",
       "rider_url": "rider/aivaras-mikutis",
-      "team_url": "team/tudor-pro-cycling-team-2026"
+      "team_url": "team/tudor-pro-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 80,
+          "gc": 43,
+          "tt": 187,
+          "sprint": 54,
+          "climber": 3,
+          "hills": 53
+        }
+      }
     },
     {
       "name": "MOZZATO Luca",
@@ -1498,7 +3358,17 @@
       "number": 234,
       "team": "Tudor Pro Cycling Team (PRT)",
       "rider_url": "rider/luca-mozzato",
-      "team_url": "team/tudor-pro-cycling-team-2026"
+      "team_url": "team/tudor-pro-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 2373,
+          "gc": 186,
+          "tt": 0,
+          "sprint": 1380,
+          "climber": 18,
+          "hills": 871
+        }
+      }
     },
     {
       "name": "VOISARD Yannis",
@@ -1506,7 +3376,17 @@
       "number": 234,
       "team": "Tudor Pro Cycling Team (PRT)",
       "rider_url": "rider/yannis-voisard",
-      "team_url": "team/tudor-pro-cycling-team-2026"
+      "team_url": "team/tudor-pro-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 124,
+          "gc": 825,
+          "tt": 179,
+          "sprint": 19,
+          "climber": 532,
+          "hills": 325
+        }
+      }
     },
     {
       "name": "PLUIMERS Rick",
@@ -1514,7 +3394,17 @@
       "number": 235,
       "team": "Tudor Pro Cycling Team (PRT)",
       "rider_url": "rider/rick-pluimers",
-      "team_url": "team/tudor-pro-cycling-team-2026"
+      "team_url": "team/tudor-pro-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 589,
+          "gc": 172,
+          "tt": 82,
+          "sprint": 228,
+          "climber": 161,
+          "hills": 531
+        }
+      }
     },
     {
       "name": "TRENTIN Matteo",
@@ -1522,7 +3412,17 @@
       "number": 236,
       "team": "Tudor Pro Cycling Team (PRT)",
       "rider_url": "rider/matteo-trentin",
-      "team_url": "team/tudor-pro-cycling-team-2026"
+      "team_url": "team/tudor-pro-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 5955,
+          "gc": 1049,
+          "tt": 334,
+          "sprint": 2682,
+          "climber": 1090,
+          "hills": 4464
+        }
+      }
     },
     {
       "name": "KELEMEN Petr",
@@ -1530,7 +3430,17 @@
       "number": 237,
       "team": "Tudor Pro Cycling Team (PRT)",
       "rider_url": "rider/petr-kelemen",
-      "team_url": "team/tudor-pro-cycling-team-2026"
+      "team_url": "team/tudor-pro-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 114,
+          "gc": 60,
+          "tt": 106,
+          "sprint": 62,
+          "climber": 14,
+          "hills": 47
+        }
+      }
     },
     {
       "name": "KOPECKÝ Matyáš",
@@ -1538,7 +3448,17 @@
       "number": 241,
       "team": "Unibet Rose Rockets (PRT)",
       "rider_url": "rider/matyas-kopecky",
-      "team_url": "team/unibet-rose-rockets-2026"
+      "team_url": "team/unibet-rose-rockets-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 447,
+          "gc": 162,
+          "tt": 67,
+          "sprint": 418,
+          "climber": 48,
+          "hills": 316
+        }
+      }
     },
     {
       "name": "DE VRIES Hartthijs",
@@ -1546,7 +3466,17 @@
       "number": 242,
       "team": "Unibet Rose Rockets (PRT)",
       "rider_url": "rider/hartthijs-de-vries",
-      "team_url": "team/unibet-rose-rockets-2026"
+      "team_url": "team/unibet-rose-rockets-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 286,
+          "gc": 153,
+          "tt": 12,
+          "sprint": 298,
+          "climber": 20,
+          "hills": 104
+        }
+      }
     },
     {
       "name": "LARSEN Niklas",
@@ -1554,7 +3484,17 @@
       "number": 243,
       "team": "Unibet Rose Rockets (PRT)",
       "rider_url": "rider/niklas-larsen",
-      "team_url": "team/unibet-rose-rockets-2026"
+      "team_url": "team/unibet-rose-rockets-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 298,
+          "gc": 439,
+          "tt": 504,
+          "sprint": 292,
+          "climber": 20,
+          "hills": 200
+        }
+      }
     },
     {
       "name": "GROENEWEGEN Dylan",
@@ -1562,7 +3502,17 @@
       "number": 244,
       "team": "Unibet Rose Rockets (PRT)",
       "rider_url": "rider/dylan-groenewegen",
-      "team_url": "team/unibet-rose-rockets-2026"
+      "team_url": "team/unibet-rose-rockets-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 4867,
+          "gc": 435,
+          "tt": 15,
+          "sprint": 8500,
+          "climber": 38,
+          "hills": 1067
+        }
+      }
     },
     {
       "name": "JOHANNINK Jelle",
@@ -1570,7 +3520,17 @@
       "number": 244,
       "team": "Unibet Rose Rockets (PRT)",
       "rider_url": "rider/jelle-johannink",
-      "team_url": "team/unibet-rose-rockets-2026"
+      "team_url": "team/unibet-rose-rockets-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 257,
+          "gc": 40,
+          "tt": 26,
+          "sprint": 84,
+          "climber": 56,
+          "hills": 100
+        }
+      }
     },
     {
       "name": "RASENBERG Martijn",
@@ -1578,7 +3538,17 @@
       "number": 245,
       "team": "Unibet Rose Rockets (PRT)",
       "rider_url": "rider/martijn-rasenberg",
-      "team_url": "team/unibet-rose-rockets-2026"
+      "team_url": "team/unibet-rose-rockets-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 48,
+          "gc": 26,
+          "tt": 32,
+          "sprint": 195,
+          "climber": 1,
+          "hills": 61
+        }
+      }
     },
     {
       "name": "REINDERS Elmar",
@@ -1586,7 +3556,17 @@
       "number": 246,
       "team": "Unibet Rose Rockets (PRT)",
       "rider_url": "rider/elmar-reinders",
-      "team_url": "team/unibet-rose-rockets-2026"
+      "team_url": "team/unibet-rose-rockets-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 580,
+          "gc": 201,
+          "tt": 131,
+          "sprint": 411,
+          "climber": 22,
+          "hills": 76
+        }
+      }
     },
     {
       "name": "TOWNSEND Rory",
@@ -1594,7 +3574,17 @@
       "number": 247,
       "team": "Unibet Rose Rockets (PRT)",
       "rider_url": "rider/rory-townsend",
-      "team_url": "team/unibet-rose-rockets-2026"
+      "team_url": "team/unibet-rose-rockets-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 849,
+          "gc": 118,
+          "tt": 159,
+          "sprint": 592,
+          "climber": 34,
+          "hills": 226
+        }
+      }
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "race": "Il Lombardia",
   "race_slug": "il-lombardia-2026",
-  "updated_at": "2026-06-03T17:57:50.129807",
+  "updated_at": "2026-06-03T19:07:30.286995",
   "total_riders": 13,
   "riders": [
     {
@@ -10,7 +10,17 @@
       "number": null,
       "team": "Decathlon CMA CGM Team (WT)",
       "rider_url": "rider/paul-seixas",
-      "team_url": "team/decathlon-cma-cgm-team-2026"
+      "team_url": "team/decathlon-cma-cgm-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 997,
+          "gc": 507,
+          "tt": 318,
+          "sprint": 2,
+          "climber": 933,
+          "hills": 188
+        }
+      }
     },
     {
       "name": "MOLLEMA Bauke",
@@ -18,7 +28,17 @@
       "number": null,
       "team": "Lidl - Trek (WT)",
       "rider_url": "rider/bauke-mollema",
-      "team_url": "team/lidl-trek-2026"
+      "team_url": "team/lidl-trek-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 5326,
+          "gc": 6063,
+          "tt": 2081,
+          "sprint": 592,
+          "climber": 7737,
+          "hills": 4159
+        }
+      }
     },
     {
       "name": "WIDAR Jarno",
@@ -26,7 +46,17 @@
       "number": null,
       "team": "Lotto Intermarché (WT)",
       "rider_url": "rider/jarno-widar",
-      "team_url": "team/lotto-intermarche-2026"
+      "team_url": "team/lotto-intermarche-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 157,
+          "gc": 205,
+          "tt": 40,
+          "sprint": 4,
+          "climber": 276,
+          "hills": 88
+        }
+      }
     },
     {
       "name": "PELLIZZARI Giulio",
@@ -34,7 +64,17 @@
       "number": null,
       "team": "Red Bull - BORA - hansgrohe (WT)",
       "rider_url": "rider/giulio-pellizzari",
-      "team_url": "team/red-bull-bora-hansgrohe-2026"
+      "team_url": "team/red-bull-bora-hansgrohe-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 219,
+          "gc": 1261,
+          "tt": 111,
+          "sprint": 0,
+          "climber": 1414,
+          "hills": 374
+        }
+      }
     },
     {
       "name": "JORGENSON Matteo",
@@ -42,7 +82,17 @@
       "number": null,
       "team": "Team Visma | Lease a Bike (WT)",
       "rider_url": "rider/matteo-jorgenson",
-      "team_url": "team/team-visma-lease-a-bike-2026"
+      "team_url": "team/team-visma-lease-a-bike-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1117,
+          "gc": 2452,
+          "tt": 794,
+          "sprint": 178,
+          "climber": 2121,
+          "hills": 1490
+        }
+      }
     },
     {
       "name": "BARRÉ Louis",
@@ -50,7 +100,17 @@
       "number": null,
       "team": "Team Visma | Lease a Bike (WT)",
       "rider_url": "rider/louis-barre",
-      "team_url": "team/team-visma-lease-a-bike-2026"
+      "team_url": "team/team-visma-lease-a-bike-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 652,
+          "gc": 363,
+          "tt": 1,
+          "sprint": 4,
+          "climber": 318,
+          "hills": 484
+        }
+      }
     },
     {
       "name": "ARMIRAIL Bruno",
@@ -58,7 +118,17 @@
       "number": null,
       "team": "Team Visma | Lease a Bike (WT)",
       "rider_url": "rider/bruno-armirail",
-      "team_url": "team/team-visma-lease-a-bike-2026"
+      "team_url": "team/team-visma-lease-a-bike-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 127,
+          "gc": 806,
+          "tt": 2076,
+          "sprint": 5,
+          "climber": 417,
+          "hills": 264
+        }
+      }
     },
     {
       "name": "PIGANZOLI Davide",
@@ -66,7 +136,17 @@
       "number": null,
       "team": "Team Visma | Lease a Bike (WT)",
       "rider_url": "rider/davide-piganzoli",
-      "team_url": "team/team-visma-lease-a-bike-2026"
+      "team_url": "team/team-visma-lease-a-bike-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 418,
+          "gc": 1026,
+          "tt": 104,
+          "sprint": 0,
+          "climber": 928,
+          "hills": 338
+        }
+      }
     },
     {
       "name": "HAGENES Per Strand",
@@ -74,7 +154,17 @@
       "number": null,
       "team": "Team Visma | Lease a Bike (WT)",
       "rider_url": "rider/per-strand-hagenes",
-      "team_url": "team/team-visma-lease-a-bike-2026"
+      "team_url": "team/team-visma-lease-a-bike-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 684,
+          "gc": 389,
+          "tt": 114,
+          "sprint": 258,
+          "climber": 64,
+          "hills": 348
+        }
+      }
     },
     {
       "name": "TULETT Ben",
@@ -82,7 +172,17 @@
       "number": null,
       "team": "Team Visma | Lease a Bike (WT)",
       "rider_url": "rider/ben-tulett",
-      "team_url": "team/team-visma-lease-a-bike-2026"
+      "team_url": "team/team-visma-lease-a-bike-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 828,
+          "gc": 901,
+          "tt": 485,
+          "sprint": 8,
+          "climber": 798,
+          "hills": 706
+        }
+      }
     },
     {
       "name": "RONDEL Mathys",
@@ -90,7 +190,17 @@
       "number": null,
       "team": "Tudor Pro Cycling Team (PRT)",
       "rider_url": "rider/mathys-rondel",
-      "team_url": "team/tudor-pro-cycling-team-2026"
+      "team_url": "team/tudor-pro-cycling-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 211,
+          "gc": 778,
+          "tt": 31,
+          "sprint": 0,
+          "climber": 632,
+          "hills": 242
+        }
+      }
     },
     {
       "name": "CHRISTEN Jan",
@@ -98,7 +208,17 @@
       "number": null,
       "team": "UAE Team Emirates - XRG (WT)",
       "rider_url": "rider/jan-christen",
-      "team_url": "team/uae-team-emirates-xrg-2026"
+      "team_url": "team/uae-team-emirates-xrg-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 992,
+          "gc": 632,
+          "tt": 282,
+          "sprint": 32,
+          "climber": 750,
+          "hills": 577
+        }
+      }
     },
     {
       "name": "POGAČAR Tadej",
@@ -106,7 +226,17 @@
       "number": null,
       "team": "UAE Team Emirates - XRG (WT)",
       "rider_url": "rider/tadej-pogacar",
-      "team_url": "team/uae-team-emirates-xrg-2026"
+      "team_url": "team/uae-team-emirates-xrg-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 9983,
+          "gc": 7594,
+          "tt": 3287,
+          "sprint": 297,
+          "climber": 9989,
+          "hills": 4368
+        }
+      }
     }
   ]
 }

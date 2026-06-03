@@ -1,7 +1,7 @@
 {
   "race": "Renewi Tour",
   "race_slug": "renewi-tour-2026",
-  "updated_at": "2026-06-03T17:57:32.664298",
+  "updated_at": "2026-06-03T19:07:13.177794",
   "total_riders": 5,
   "riders": [
     {
@@ -10,7 +10,17 @@
       "number": null,
       "team": "Soudal Quick-Step (WT)",
       "rider_url": "rider/tim-merlier",
-      "team_url": "team/soudal-quick-step-2026"
+      "team_url": "team/soudal-quick-step-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 4557,
+          "gc": 144,
+          "tt": 3,
+          "sprint": 6144,
+          "climber": 4,
+          "hills": 521
+        }
+      }
     },
     {
       "name": "MAGNIER Paul",
@@ -18,7 +28,17 @@
       "number": null,
       "team": "Soudal Quick-Step (WT)",
       "rider_url": "rider/paul-magnier",
-      "team_url": "team/soudal-quick-step-2026"
+      "team_url": "team/soudal-quick-step-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1328,
+          "gc": 82,
+          "tt": 16,
+          "sprint": 1328,
+          "climber": 153,
+          "hills": 1096
+        }
+      }
     },
     {
       "name": "MEZGEC Luka",
@@ -26,7 +46,17 @@
       "number": null,
       "team": "Team Jayco AlUla (WT)",
       "rider_url": "rider/luka-mezgec",
-      "team_url": "team/team-jayco-alula-2026"
+      "team_url": "team/team-jayco-alula-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1626,
+          "gc": 675,
+          "tt": 33,
+          "sprint": 1723,
+          "climber": 238,
+          "hills": 2229
+        }
+      }
     },
     {
       "name": "DE BONDT Dries",
@@ -34,7 +64,17 @@
       "number": null,
       "team": "Team Jayco AlUla (WT)",
       "rider_url": "rider/dries-de-bondt",
-      "team_url": "team/team-jayco-alula-2026"
+      "team_url": "team/team-jayco-alula-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1837,
+          "gc": 401,
+          "tt": 1,
+          "sprint": 1279,
+          "climber": 131,
+          "hills": 430
+        }
+      }
     },
     {
       "name": "NAESEN Oliver",
@@ -42,7 +82,17 @@
       "number": null,
       "team": "Decathlon CMA CGM Team (WT)",
       "rider_url": "rider/oliver-naesen",
-      "team_url": "team/decathlon-cma-cgm-team-2026"
+      "team_url": "team/decathlon-cma-cgm-team-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 4419,
+          "gc": 1537,
+          "tt": 49,
+          "sprint": 1326,
+          "climber": 421,
+          "hills": 2410
+        }
+      }
     }
   ]
 }

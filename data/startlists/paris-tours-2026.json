@@ -1,7 +1,7 @@
 {
   "race": "Paris-Tours",
   "race_slug": "paris-tours-2026",
-  "updated_at": "2026-06-03T17:57:54.411280",
+  "updated_at": "2026-06-03T19:07:35.084447",
   "total_riders": 1,
   "riders": [
     {
@@ -10,7 +10,17 @@
       "number": null,
       "team": "Lotto Intermarché (WT)",
       "rider_url": "rider/steffen-de-schuyteneer",
-      "team_url": "team/lotto-intermarche-2026"
+      "team_url": "team/lotto-intermarche-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 395,
+          "gc": 166,
+          "tt": 70,
+          "sprint": 560,
+          "climber": 0,
+          "hills": 191
+        }
+      }
     }
   ]
 }
