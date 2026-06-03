@@ -55,20 +55,20 @@ CALENDAR = {
     # January
     "tour-down-under":           ("tour-down-under",                       "Tour Down Under",                "AU", False, 1),
     # February
-    "tour-of-valencia":          ("volta-a-la-comunitat-valenciana",       "Volta a la Comunitat Valenciana","ES", False, 2),
-    "ruta-del-sol":              ("vuelta-a-andalucia-ruta-del-sol",       "Vuelta a Andalucía",             "ES", False, 2),
+    "tour-of-valencia":          ("setmana-ciclista-valenciana",           "Volta a la Comunitat Valenciana","ES", False, 2),
+    "ruta-del-sol":              ("ruta-del-sol",                          "Vuelta a Andalucía",             "ES", False, 2),
     "volta-ao-algarve":          ("volta-ao-algarve",                      "Volta ao Algarve",               "PT", False, 2),
     "uae-tour":                  ("uae-tour",                              "UAE Tour",                       "AE", False, 2),
     # March
     "omloop-het-nieuwsblad":     ("omloop-het-nieuwsblad",                 "Omloop Het Nieuwsblad",          "BE", True,  3),
     "kuurne-brussels-kuurne":    ("kuurne-brussel-kuurne",                 "Kuurne-Brussels-Kuurne",         "BE", True,  3),
     "strade-bianche":            ("strade-bianche",                        "Strade Bianche",                 "IT", True,  3),
-    "o-gran-camino":             ("o-gran-camino",                         "O Gran Camiño",                  "ES", False, 3),
+    "o-gran-camino":             ("gran-camino",                           "O Gran Camiño",                  "ES", False, 3),
     "paris-nice":                ("paris-nice",                            "Paris-Nice",                     "FR", False, 3),
     "tirreno-adriatico":         ("tirreno-adriatico",                     "Tirreno-Adriatico",              "IT", False, 3),
     "milan-san-remo":            ("milano-sanremo",                        "Milano-Sanremo",                 "IT", True,  3),
     "volta-a-catalunya":         ("volta-a-catalunya",                     "Volta a Catalunya",              "ES", False, 3),
-    "e3-saxo-classic":           ("e3-saxo-classic",                       "E3 Saxo Classic",                "BE", True,  3),
+    "e3-saxo-classic":           ("e3-harelbeke",                          "E3 Saxo Classic",                "BE", True,  3),
     "in-flanders-fields":        ("gent-wevelgem",                         "In Flanders Fields (Gent-Wevelgem)","BE", True, 3),
     "dwars-door-vlaanderen":     ("dwars-door-vlaanderen",                 "Dwars door Vlaanderen",          "BE", True,  3),
     # April
@@ -89,7 +89,7 @@ CALENDAR = {
     # July
     "tour-de-france":            ("tour-de-france",                        "Tour de France",                 "FR", False, 7),
     # August
-    "clasica-de-san-sebastian":  ("clasica-ciclista-san-sebastian",        "Clásica de San Sebastián",       "ES", True,  8),
+    "clasica-de-san-sebastian":  ("san-sebastian",                         "Clásica de San Sebastián",       "ES", True,  8),
     "vuelta":                    ("vuelta-a-espana",                       "Vuelta a España",                "ES", False, 8),
     "renewi-tour":               ("renewi-tour",                           "Renewi Tour",                    "BE", False, 8),
     # September
@@ -234,8 +234,12 @@ def main():
                                          is_one_day, month, YEAR)
             pcs_fail += 1
         else:
-            # Override the cyclingstage_slug from our master mapping
+            # Override the cyclingstage_slug from our master mapping.
+            # Also force the display name from CALENDAR so PCS's verbose titles
+            # (e.g. "Donostia San Sebastian Klasikoa") don't replace our curated
+            # ones (e.g. "Clásica de San Sebastián").
             info["cyclingstage_slug"] = cs_slug
+            info["name"] = name
             pcs_ok += 1
 
         all_races.append(info)
