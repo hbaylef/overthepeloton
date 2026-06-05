@@ -1,0 +1,142 @@
+{
+  "race": "Il Lombardia",
+  "race_slug": "il-lombardia-2026",
+  "is_one_day_race": true,
+  "model": "experimental",
+  "method": {
+    "normalisation": "percentile",
+    "probability": "softmax",
+    "softmax_temperature": 0.15,
+    "blend": "career_only",
+    "career_recent_weights": [
+      0.5,
+      0.5
+    ],
+    "gc_stage_weights": [
+      0.6,
+      0.4
+    ]
+  },
+  "updated_at": "2026-06-05T14:59:41.639984",
+  "scored_rider_count": 13,
+  "unscored_rider_count": 0,
+  "riders": [
+    {
+      "name": "POGAČAR Tadej",
+      "team": "UAE Team Emirates - XRG (WT)",
+      "rider_url": "rider/tadej-pogacar",
+      "score": 2.0,
+      "win_probability": 47.14,
+      "specialties_available": true,
+      "rank": 1
+    },
+    {
+      "name": "MOLLEMA Bauke",
+      "team": "Lidl - Trek (WT)",
+      "rider_url": "rider/bauke-mollema",
+      "score": 1.8333,
+      "win_probability": 26.27,
+      "specialties_available": true,
+      "rank": 2
+    },
+    {
+      "name": "JORGENSON Matteo",
+      "team": "Team Visma | Lease a Bike (WT)",
+      "rider_url": "rider/matteo-jorgenson",
+      "score": 1.6667,
+      "win_probability": 14.64,
+      "specialties_available": true,
+      "rank": 3
+    },
+    {
+      "name": "PELLIZZARI Giulio",
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "rider_url": "rider/giulio-pellizzari",
+      "score": 1.325,
+      "win_probability": 4.41,
+      "specialties_available": true,
+      "rank": 4
+    },
+    {
+      "name": "TULETT Ben",
+      "team": "Team Visma | Lease a Bike (WT)",
+      "rider_url": "rider/ben-tulett",
+      "score": 1.1333,
+      "win_probability": 2.25,
+      "specialties_available": true,
+      "rank": 5
+    },
+    {
+      "name": "PIGANZOLI Davide",
+      "team": "Team Visma | Lease a Bike (WT)",
+      "rider_url": "rider/davide-piganzoli",
+      "score": 1.0833,
+      "win_probability": 1.89,
+      "specialties_available": true,
+      "rank": 6
+    },
+    {
+      "name": "SEIXAS Paul",
+      "team": "Decathlon CMA CGM Team (WT)",
+      "rider_url": "rider/paul-seixas",
+      "score": 0.9667,
+      "win_probability": 1.26,
+      "specialties_available": true,
+      "rank": 7
+    },
+    {
+      "name": "CHRISTEN Jan",
+      "team": "UAE Team Emirates - XRG (WT)",
+      "rider_url": "rider/jan-christen",
+      "score": 0.9167,
+      "win_probability": 1.05,
+      "specialties_available": true,
+      "rank": 8
+    },
+    {
+      "name": "RONDEL Mathys",
+      "team": "Tudor Pro Cycling Team (PRT)",
+      "rider_url": "rider/mathys-rondel",
+      "score": 0.625,
+      "win_probability": 0.38,
+      "specialties_available": true,
+      "rank": 9
+    },
+    {
+      "name": "ARMIRAIL Bruno",
+      "team": "Team Visma | Lease a Bike (WT)",
+      "rider_url": "rider/bruno-armirail",
+      "score": 0.575,
+      "win_probability": 0.32,
+      "specialties_available": true,
+      "rank": 10
+    },
+    {
+      "name": "BARRÉ Louis",
+      "team": "Team Visma | Lease a Bike (WT)",
+      "rider_url": "rider/louis-barre",
+      "score": 0.4667,
+      "win_probability": 0.22,
+      "specialties_available": true,
+      "rank": 11
+    },
+    {
+      "name": "HAGENES Per Strand",
+      "team": "Team Visma | Lease a Bike (WT)",
+      "rider_url": "rider/per-strand-hagenes",
+      "score": 0.3083,
+      "win_probability": 0.12,
+      "specialties_available": true,
+      "rank": 12
+    },
+    {
+      "name": "WIDAR Jarno",
+      "team": "Lotto Intermarché (WT)",
+      "rider_url": "rider/jarno-widar",
+      "score": 0.1,
+      "win_probability": 0.06,
+      "specialties_available": true,
+      "rank": 13
+    }
+  ]
+}

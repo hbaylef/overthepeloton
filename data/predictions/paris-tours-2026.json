@@ -1,0 +1,34 @@
+{
+  "race": "Paris-Tours",
+  "race_slug": "paris-tours-2026",
+  "is_one_day_race": true,
+  "model": "experimental",
+  "method": {
+    "normalisation": "percentile",
+    "probability": "softmax",
+    "softmax_temperature": 0.15,
+    "blend": "career_only",
+    "career_recent_weights": [
+      0.5,
+      0.5
+    ],
+    "gc_stage_weights": [
+      0.6,
+      0.4
+    ]
+  },
+  "updated_at": "2026-06-05T14:59:41.640528",
+  "scored_rider_count": 1,
+  "unscored_rider_count": 0,
+  "riders": [
+    {
+      "name": "DE SCHUYTENEER Steffen",
+      "team": "Lotto Intermarché (WT)",
+      "rider_url": "rider/steffen-de-schuyteneer",
+      "score": 0.65,
+      "win_probability": 100.0,
+      "specialties_available": true,
+      "rank": 1
+    }
+  ]
+}

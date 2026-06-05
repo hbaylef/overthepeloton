@@ -1,0 +1,268 @@
+{
+  "race": "Tour de Suisse",
+  "race_slug": "tour-de-suisse-2026",
+  "is_one_day_race": false,
+  "model": "experimental",
+  "method": {
+    "normalisation": "percentile",
+    "probability": "softmax",
+    "softmax_temperature": 0.15,
+    "blend": "career_only",
+    "career_recent_weights": [
+      0.5,
+      0.5
+    ],
+    "gc_stage_weights": [
+      0.6,
+      0.4
+    ]
+  },
+  "updated_at": "2026-06-05T14:59:41.624567",
+  "scored_rider_count": 27,
+  "unscored_rider_count": 0,
+  "riders": [
+    {
+      "name": "ROGLIČ Primož",
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "rider_url": "rider/primoz-roglic",
+      "score": 0.9846,
+      "win_probability": 23.55,
+      "specialties_available": true,
+      "rank": 1
+    },
+    {
+      "name": "POGAČAR Tadej",
+      "team": "UAE Team Emirates - XRG (WT)",
+      "rider_url": "rider/tadej-pogacar",
+      "score": 0.9769,
+      "win_probability": 22.28,
+      "specialties_available": true,
+      "rank": 2
+    },
+    {
+      "name": "MAS Enric",
+      "team": "Movistar Team (WT)",
+      "rider_url": "rider/enric-mas",
+      "score": 0.8615,
+      "win_probability": 9.68,
+      "specialties_available": true,
+      "rank": 3
+    },
+    {
+      "name": "PIDCOCK Tom",
+      "team": "Pinarello Q36.5 Pro Cycling Team (PRT)",
+      "rider_url": "rider/tom-pidcock",
+      "score": 0.8615,
+      "win_probability": 9.68,
+      "specialties_available": true,
+      "rank": 4
+    },
+    {
+      "name": "CORT Magnus",
+      "team": "Uno-X Mobility (WT)",
+      "rider_url": "rider/magnus-cort-nielsen",
+      "score": 0.8308,
+      "win_probability": 7.75,
+      "specialties_available": true,
+      "rank": 5
+    },
+    {
+      "name": "NAESEN Oliver",
+      "team": "Decathlon CMA CGM Team (WT)",
+      "rider_url": "rider/oliver-naesen",
+      "score": 0.8077,
+      "win_probability": 6.56,
+      "specialties_available": true,
+      "rank": 6
+    },
+    {
+      "name": "TIBERI Antonio",
+      "team": "Bahrain - Victorious (WT)",
+      "rider_url": "rider/antonio-tiberi",
+      "score": 0.7769,
+      "win_probability": 5.25,
+      "specialties_available": true,
+      "rank": 7
+    },
+    {
+      "name": "BETTIOL Alberto",
+      "team": "XDS Astana Team (WT)",
+      "rider_url": "rider/alberto-bettiol",
+      "score": 0.7538,
+      "win_probability": 4.45,
+      "specialties_available": true,
+      "rank": 8
+    },
+    {
+      "name": "MARTINEZ Lenny",
+      "team": "Bahrain - Victorious (WT)",
+      "rider_url": "rider/lenny-martinez",
+      "score": 0.6692,
+      "win_probability": 2.41,
+      "specialties_available": true,
+      "rank": 9
+    },
+    {
+      "name": "CHAMPOUSSIN Clément",
+      "team": "XDS Astana Team (WT)",
+      "rider_url": "rider/clement-champoussin",
+      "score": 0.6538,
+      "win_probability": 2.16,
+      "specialties_available": true,
+      "rank": 10
+    },
+    {
+      "name": "ZINGLE Axel",
+      "team": "Team Visma | Lease a Bike (WT)",
+      "rider_url": "rider/axel-zingle",
+      "score": 0.6154,
+      "win_probability": 1.64,
+      "specialties_available": true,
+      "rank": 11
+    },
+    {
+      "name": "BOUWMAN Koen",
+      "team": "Team Jayco AlUla (WT)",
+      "rider_url": "rider/koen-bouwman",
+      "score": 0.5538,
+      "win_probability": 1.05,
+      "specialties_available": true,
+      "rank": 12
+    },
+    {
+      "name": "DE LIE Arnaud",
+      "team": "Lotto Intermarché (WT)",
+      "rider_url": "rider/arnaud-de-lie",
+      "score": 0.5308,
+      "win_probability": 0.89,
+      "specialties_available": true,
+      "rank": 13
+    },
+    {
+      "name": "DOUBLE Paul",
+      "team": "Team Jayco AlUla (WT)",
+      "rider_url": "rider/paul-double",
+      "score": 0.4385,
+      "win_probability": 0.46,
+      "specialties_available": true,
+      "rank": 14
+    },
+    {
+      "name": "VERVAEKE Louis",
+      "team": "Soudal Quick-Step (WT)",
+      "rider_url": "rider/louis-vervaeke",
+      "score": 0.4231,
+      "win_probability": 0.41,
+      "specialties_available": true,
+      "rank": 15
+    },
+    {
+      "name": "LEMMEN Bart",
+      "team": "Team Visma | Lease a Bike (WT)",
+      "rider_url": "rider/bart-lemmen",
+      "score": 0.4154,
+      "win_probability": 0.39,
+      "specialties_available": true,
+      "rank": 16
+    },
+    {
+      "name": "BRENNER Marco",
+      "team": "Tudor Pro Cycling Team (PRT)",
+      "rider_url": "rider/marco-brenner",
+      "score": 0.3846,
+      "win_probability": 0.31,
+      "specialties_available": true,
+      "rank": 17
+    },
+    {
+      "name": "ADRIÀ Roger",
+      "team": "Movistar Team (WT)",
+      "rider_url": "rider/roger-adria",
+      "score": 0.3769,
+      "win_probability": 0.29,
+      "specialties_available": true,
+      "rank": 18
+    },
+    {
+      "name": "LAPEIRA Paul",
+      "team": "Decathlon CMA CGM Team (WT)",
+      "rider_url": "rider/paul-lapeira",
+      "score": 0.3385,
+      "win_probability": 0.22,
+      "specialties_available": true,
+      "rank": 19
+    },
+    {
+      "name": "BRENNAN Matthew",
+      "team": "Team Visma | Lease a Bike (WT)",
+      "rider_url": "rider/matthew-brennan",
+      "score": 0.2846,
+      "win_probability": 0.15,
+      "specialties_available": true,
+      "rank": 20
+    },
+    {
+      "name": "EULÁLIO Afonso",
+      "team": "Bahrain - Victorious (WT)",
+      "rider_url": "rider/afonso-eulalio",
+      "score": 0.2615,
+      "win_probability": 0.13,
+      "specialties_available": true,
+      "rank": 21
+    },
+    {
+      "name": "NOVAK Domen",
+      "team": "UAE Team Emirates - XRG (WT)",
+      "rider_url": "rider/domen-novak",
+      "score": 0.2231,
+      "win_probability": 0.1,
+      "specialties_available": true,
+      "rank": 22
+    },
+    {
+      "name": "MIQUEL Pau",
+      "team": "Bahrain - Victorious (WT)",
+      "rider_url": "rider/pau-miquel-delgado",
+      "score": 0.1308,
+      "win_probability": 0.05,
+      "specialties_available": true,
+      "rank": 23
+    },
+    {
+      "name": "SÁNCHEZ Pelayo",
+      "team": "Movistar Team (WT)",
+      "rider_url": "rider/pelayo-sanchez-mayo",
+      "score": 0.1385,
+      "win_probability": 0.05,
+      "specialties_available": true,
+      "rank": 24
+    },
+    {
+      "name": "VERSTRYNGE Emiel",
+      "team": "Alpecin - Premier Tech (WT)",
+      "rider_url": "rider/emiel-verstrynge",
+      "score": 0.0769,
+      "win_probability": 0.03,
+      "specialties_available": true,
+      "rank": 25
+    },
+    {
+      "name": "BRUTTOMESSO Alberto",
+      "team": "Bahrain - Victorious (WT)",
+      "rider_url": "rider/alberto-bruttomesso",
+      "score": 0.0615,
+      "win_probability": 0.03,
+      "specialties_available": true,
+      "rank": 26
+    },
+    {
+      "name": "WIDAR Jarno",
+      "team": "Lotto Intermarché (WT)",
+      "rider_url": "rider/jarno-widar",
+      "score": 0.0692,
+      "win_probability": 0.03,
+      "specialties_available": true,
+      "rank": 27
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "race": "Grand Prix de Québec",
+  "race_slug": "gp-quebec-2026",
+  "is_one_day_race": true,
+  "model": "experimental",
+  "method": {
+    "normalisation": "percentile",
+    "probability": "softmax",
+    "softmax_temperature": 0.15,
+    "blend": "career_only",
+    "career_recent_weights": [
+      0.5,
+      0.5
+    ],
+    "gc_stage_weights": [
+      0.6,
+      0.4
+    ]
+  },
+  "updated_at": "2026-06-05T14:59:41.638744",
+  "scored_rider_count": 6,
+  "unscored_rider_count": 0,
+  "riders": [
+    {
+      "name": "PIDCOCK Tom",
+      "team": "Pinarello Q36.5 Pro Cycling Team (PRT)",
+      "rider_url": "rider/tom-pidcock",
+      "score": 1.76,
+      "win_probability": 73.58,
+      "specialties_available": true,
+      "rank": 1
+    },
+    {
+      "name": "EVENEPOEL Remco",
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "rider_url": "rider/remco-evenepoel",
+      "score": 1.38,
+      "win_probability": 13.9,
+      "specialties_available": true,
+      "rank": 2
+    },
+    {
+      "name": "GODON Dorian",
+      "team": "Netcompany INEOS (WT)",
+      "rider_url": "rider/dorian-godon",
+      "score": 1.34,
+      "win_probability": 11.66,
+      "specialties_available": true,
+      "rank": 3
+    },
+    {
+      "name": "LAPEIRA Paul",
+      "team": "Decathlon CMA CGM Team (WT)",
+      "rider_url": "rider/paul-lapeira",
+      "score": 0.68,
+      "win_probability": 0.65,
+      "specialties_available": true,
+      "rank": 4
+    },
+    {
+      "name": "BARRÉ Louis",
+      "team": "Team Visma | Lease a Bike (WT)",
+      "rider_url": "rider/louis-barre",
+      "score": 0.3,
+      "win_probability": 0.12,
+      "specialties_available": true,
+      "rank": 5
+    },
+    {
+      "name": "SEIXAS Paul",
+      "team": "Decathlon CMA CGM Team (WT)",
+      "rider_url": "rider/paul-seixas",
+      "score": 0.24,
+      "win_probability": 0.09,
+      "specialties_available": true,
+      "rank": 6
+    }
+  ]
+}

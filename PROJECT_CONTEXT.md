@@ -364,17 +364,19 @@ a backlog, not in priority order. Several have open design questions noted.
   `ONE_DAY_OVERRIDE` dict supplies a known-correct value when PCS returns
   `p0` (placeholder); override is bypassed automatically once PCS publishes
   a real icon. ITT detection lands in Phase 2 via stage-name regex.
-- ✅ **Phase 2 done (2026-06-05):** `classify_stage` function — pure logic,
-  no scraping. `scrape_races.py` now writes a derived `stage_type` +
-  `stage_type_source` annotation **inside** `races.json` (per stage for
-  stage races, at race level for one-day races) at the end of every scrape.
-  Output values: `sprint`, `sprint_break`, `hills_puncheur`, `climber`,
-  `time_trial`; `cobbles` deferred to R4. ITTs detected by stage-name regex
-  (overrides the icon — 10 of 12 ITTs were icon `p1`). TTT is a documented
-  gap. Standalone `scrapers/classify_stages.py` backfills without scraping.
-- ⏭ **Phase 3 next:** Steps 2–4 — type → specialty weight vector → per-rider
-  score → pseudo win-probability. Career-only blend until R1's `recent`
-  block ships.
+- ✅ **Phase 2 done & live (2026-06-05, commit `519a7db`):** `classify_stage`
+  function — pure logic, no scraping. `scrape_races.py` now writes a derived
+  `stage_type` + `stage_type_source` annotation **inside** `races.json` (per
+  stage for stage races, at race level for one-day races) at the end of every
+  scrape. Output values: `sprint`, `sprint_break`, `hills_puncheur`,
+  `climber`, `time_trial`; `cobbles` deferred to R4. ITTs detected by
+  stage-name regex (overrides the icon — 10 of 12 ITTs were icon `p1`). TTT is
+  a documented gap. Standalone `scrapers/classify_stages.py` backfills without
+  scraping. **Verified on the deployed site:** 175/175 entries annotated, 0
+  missing, 163 `profile_icon` / 12 `stage_name_itt`.
+- 🔨 **Phase 3 in progress:** Steps 2–4 — type → specialty weight vector →
+  per-rider score → pseudo win-probability. Career-only blend until R1's
+  `recent` block ships.
 - Until R1's `recent` block ships, Step 3's blend degrades to `career`-only
   (`blended = career_norm`). Structure preserved so `recent` can drop in later.
 - See `R1_R2_DESIGN.md` for the full 4-step model + weight vectors + Phase 1

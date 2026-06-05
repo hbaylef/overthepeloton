@@ -232,9 +232,64 @@ re-runs of `scrape_races.py` re-derive freshly so there's no drift.
 - **Verified on live `races.json`:** 175 entries annotated (157 stage-race
   stages + 18 one-day races), 0 invariant violations, source split
   163 `profile_icon` / 12 `stage_name_itt` / 0 `fallback_default`.
+- **Pushed & verified live (2026-06-05, commit `519a7db`)** — the deployed
+  `races.json` at hbaylef.github.io carries all annotations; daily scrapes
+  re-derive automatically.
 
-**Phase 3 — NEXT: Steps 2–4 (type → weight vector → rider scores → win
-probability).** See below; career-only blend until R1's `recent` block ships.
+**Phase 3 — IN PROGRESS (2026-06-05): Steps 2–4 (type → weight vector →
+rider scores → win probability).** Career-only blend until R1's `recent`
+block ships. Build decisions for this phase:
+
+- **New script `scrapers/score_riders.py`** — pure logic, no scraping. Reads
+  `races.json` (stage_type) + `startlists/{slug}.json` (specialties.career),
+  writes `data/predictions/{slug}.json` (ordered riders + pseudo-probs).
+  Runs after startlists in the daily pipeline; standalone-runnable.
+- **Normalisation = percentile rank within the startlist** (doc's preferred
+  option — robust to one dominant rider flattening the rest). Applied per
+  specialty, consistently.
+- **Specialty key mapping:** weight-table `one_day` ↔ data `one_day_races`;
+  the other five keys (`gc`, `tt`, `sprint`, `climber`, `hills`) match.
+- **`sprint_break` needs its own weight vector** — the Step 2 table below has
+  no row for it (it predates the 5-way stage_type split). Starting guess
+  (uncalibrated, like the rest): `one_day 0.3, gc 0, tt 0, sprint 0.6,
+  climber 0.1, hills 0.5` — a sprinter-who-survives / breakaway profile,
+  between Sprint and Hilly/puncheur. Tune later.
+- Riders with `specialties.career == null` (no PCS chart) are listed but
+  scored 0 and excluded from the percentile baseline (no-data ≠ zero points).
+- Output is labelled **"experimental"** per the open questions.
+
+*Score → probability fix (2026-06-05):* the first cut converted scores to
+probabilities **linearly** (`score / Σ`), which left every Tour rider at
+~1.5–1.7% (a perfect score is only ~2× the median, spread across 150+ riders).
+The ranking was correct; the conversion destroyed the spread. Fixed with a
+**temperature softmax** (`SOFTMAX_TEMPERATURE = 0.15`, named/tunable): scores
+are min-max normalised to [0,1] within the race, then `prob ∝ exp(score/T)`.
+Favourites now stand out (Pogačar ~6.6% at the Tour, ~47% in small fields).
+This does **not** fix the career-accumulation bias (veterans like Mollema
+still rank high) — that needs the deferred `recent` block.
+
+*Frontend (R2 display), 2026-06-05:* the standalone Win Probability panel was
+removed; win% now lives in a sortable **Specialty Rankings** table (six career
+columns + Win%, nulls shown as "—" and sorted last). Added a collapsible
+**Startlist by Team** section (3-up responsive grid, PCS team order). Sections
+have show/hide toggles (Specialty open, Startlist collapsed by default). Icons:
+nationality **flags via flagcdn** (emoji flags don't render on Windows), team
+**jersey glyphs** tinted by an approximate WT colour map (no kit data exists).
+
+### Future task — swap the rider/specialty data source
+
+The PCS specialty points are an **accumulation** metric and a temporary input;
+the plan is to move rider/specialty data to a **different database** later
+(keeping the model structure). To make that swap cheap:
+
+- The frontend reads through a **data-access layer** (`getRaceRoster(slug)` →
+  normalized `{name, nat, team, teamUrl, riderUrl, career, win}`), so the
+  render code never touches raw JSON field names. Swapping the source = rewrite
+  the adapter + `score_riders.py`'s input read, not the UI.
+- The internal `career` contract is the six keys
+  `{one_day_races, gc, tt, sprint, climber, hills}`; a new source maps onto
+  these. Re-tune `SOFTMAX_TEMPERATURE` and `TYPE_WEIGHTS` once real (non-
+  accumulation) values flow.
 
 **Step 2 — Map type → specialty weight vector.**
 Starting weights (uncalibrated — see open questions):

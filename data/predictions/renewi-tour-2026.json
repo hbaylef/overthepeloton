@@ -1,0 +1,70 @@
+{
+  "race": "Renewi Tour",
+  "race_slug": "renewi-tour-2026",
+  "is_one_day_race": false,
+  "model": "experimental",
+  "method": {
+    "normalisation": "percentile",
+    "probability": "softmax",
+    "softmax_temperature": 0.15,
+    "blend": "career_only",
+    "career_recent_weights": [
+      0.5,
+      0.5
+    ],
+    "gc_stage_weights": [
+      0.6,
+      0.4
+    ]
+  },
+  "updated_at": "2026-06-05T14:59:41.634227",
+  "scored_rider_count": 5,
+  "unscored_rider_count": 0,
+  "riders": [
+    {
+      "name": "MEZGEC Luka",
+      "team": "Team Jayco AlUla (WT)",
+      "rider_url": "rider/luka-mezgec",
+      "score": 0.75,
+      "win_probability": 60.99,
+      "specialties_available": true,
+      "rank": 1
+    },
+    {
+      "name": "NAESEN Oliver",
+      "team": "Decathlon CMA CGM Team (WT)",
+      "rider_url": "rider/oliver-naesen",
+      "score": 0.7,
+      "win_probability": 33.27,
+      "specialties_available": true,
+      "rank": 2
+    },
+    {
+      "name": "MERLIER Tim",
+      "team": "Soudal Quick-Step (WT)",
+      "rider_url": "rider/tim-merlier",
+      "score": 0.55,
+      "win_probability": 5.4,
+      "specialties_available": true,
+      "rank": 3
+    },
+    {
+      "name": "DE BONDT Dries",
+      "team": "Team Jayco AlUla (WT)",
+      "rider_url": "rider/dries-de-bondt",
+      "score": 0.3,
+      "win_probability": 0.26,
+      "specialties_available": true,
+      "rank": 4
+    },
+    {
+      "name": "MAGNIER Paul",
+      "team": "Soudal Quick-Step (WT)",
+      "rider_url": "rider/paul-magnier",
+      "score": 0.2,
+      "win_probability": 0.08,
+      "specialties_available": true,
+      "rank": 5
+    }
+  ]
+}

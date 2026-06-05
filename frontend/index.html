@@ -420,6 +420,120 @@
     font-size: 13px;
   }
 
+  /* experimental tag (used by the Specialty Rankings section) */
+  .odds-source.experimental { background: var(--gold); color: var(--ink); }
+
+  /* ---------- Collapsible section shell ---------- */
+  .sec-card { margin-bottom: 18px; }
+  .sec-head { cursor: pointer; user-select: none; }
+  .sec-head:hover { background: #e3ddcf; }
+  .sec-head-right { display: flex; align-items: center; gap: 10px; }
+  .sec-caret { font-size: 11px; color: var(--rust); width: 12px; text-align: center; }
+
+  /* ---------- Icons: nationality flags + team jerseys ---------- */
+  .flag-img {
+    width: 20px; height: 15px;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(20,19,15,0.12);
+    flex: none;
+    object-fit: cover;
+  }
+  .jersey { flex: none; display: inline-block; vertical-align: middle; }
+
+  /* ---------- Startlist by team (3-up responsive grid, collapsible) ---------- */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 12px 16px;
+    align-items: start;
+  }
+  @media (max-width: 1100px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 680px)  { .team-grid { grid-template-columns: 1fr; } }
+  .team-group {
+    border: 1.5px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--paper);
+  }
+  .team-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 11px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .team-head:hover { background: var(--paper-2); }
+  .team-caret { font-size: 9px; color: var(--rust); width: 9px; flex: none; }
+  .team-name { font-weight: 700; font-size: 13px; flex: 1; line-height: 1.2; }
+  .team-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--grey);
+    background: var(--paper-2);
+    padding: 2px 7px;
+    border-radius: 10px;
+    flex: none;
+  }
+  .team-riders { padding: 2px 11px 8px; border-top: 1px solid var(--line); }
+  .roster-rider {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 3px 0;
+    font-size: 12.5px;
+  }
+  .r-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--grey);
+    width: 24px;
+    text-align: right;
+    flex: none;
+  }
+  .r-name { font-weight: 500; }
+
+  /* ---------- Specialty rankings (sortable table) ---------- */
+  .spec-scroll { overflow-x: auto; }
+  .spec-table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 13px;
+  }
+  .spec-table th, .spec-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  .spec-table thead th {
+    position: sticky;
+    top: 0;
+    background: var(--paper-2);
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 800;
+  }
+  .spec-table th.sortable { cursor: pointer; user-select: none; }
+  .spec-table th.sortable:hover { color: var(--rust-dk); }
+  .spec-table th.sorted { color: var(--rust-dk); background: #e3ddcf; }
+  .spec-table td.num, .spec-table th.num {
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .spec-table tbody tr:hover { background: var(--paper-2); }
+  .r-name-cell { font-weight: 600; }
+  .r-team-cell {
+    display: block;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--grey);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .win-cell { color: var(--moss); font-weight: 700; }
+
   /* scrollbar */
   ::-webkit-scrollbar { width: 10px; height: 10px; }
   ::-webkit-scrollbar-track { background: var(--paper-2); }
@@ -473,6 +587,9 @@ let DATA_BASE = '../data';   // resolved at boot
 let RACES = [];
 let GPX_INDEX = {};
 let ODDS_INDEX = {};
+let PRED_INDEX = {};
+let STARTLISTS = {};    // slug -> startlist json (lazy-loaded, cached)
+let PREDICTIONS = {};   // slug -> prediction json (lazy-loaded, cached)
 let currentRace = null;
 let currentStageFiles = [];
 let map = null;
@@ -530,6 +647,13 @@ async function boot() {
     ODDS_INDEX = {};  // non-fatal: races still show, just no odds
   }
 
+  try {
+    const predData = await fetchJsonFrom(DATA_BASE, 'predictions_index.json');
+    PRED_INDEX = predData.races || {};
+  } catch (e) {
+    PRED_INDEX = {};  // non-fatal: races still show, just no predictions
+  }
+
   RACES = racesData.races || [];
   document.getElementById('updated').textContent =
     'updated ' + new Date(racesData.updated_at).toLocaleDateString();
@@ -558,9 +682,76 @@ function showLoadError(err) {
 // ============================================================
 //  RACE LIST
 // ============================================================
-const FLAGS = { FR:'🇫🇷', ES:'🇪🇸', IT:'🇮🇹', BE:'🇧🇪', NL:'🇳🇱', CH:'🇨🇭',
-  DE:'🇩🇪', GB:'🇬🇧', CA:'🇨🇦', AU:'🇦🇺', CN:'🇨🇳', AE:'🇦🇪', SI:'🇸🇮',
-  DK:'🇩🇰', PL:'🇵🇱', LU:'🇱🇺', JP:'🇯🇵', US:'🇺🇸', NO:'🇳🇴' };
+// ---- Icons: nationality flags + team jerseys ----
+// Flags via flagcdn PNGs — emoji flag glyphs don't render as flags on
+// Windows/Chrome (they show the letter pair). All ISO-2 codes map directly.
+function flagImg(code) {
+  if (!code) return '';
+  const c = String(code).toLowerCase();
+  return `<img class="flag-img" src="https://flagcdn.com/20x15/${c}.png" ` +
+    `width="20" height="15" loading="lazy" alt="${code}" title="${code}">`;
+}
+
+// No kit/colour data exists in our files, so jerseys are an SVG glyph tinted by
+// an approximate team colour. Substring match keeps the lookup robust to tier
+// tags / sponsors / accents; anything unmatched falls back to a hash colour.
+// Cosmetic and easy to tweak.
+const TEAM_COLOURS = [
+  [/uae/, '#d3242b'], [/visma/, '#f3e500'], [/ineos/, '#2a3d77'],
+  [/lidl|trek/, '#d3242b'], [/quick.?step|soudal/, '#0e3a8c'],
+  [/bora|red bull/, '#12224f'], [/alpecin/, '#b01e2e'], [/bahrain/, '#9b1b30'],
+  [/groupama|fdj/, '#0e7bc4'], [/movistar/, '#00a3e0'],
+  [/decathlon|ag2r/, '#0a2d6e'], [/picnic|dsm/, '#00857d'],
+  [/ef education|easypost/, '#e6308c'], [/israel/, '#0a3da3'],
+  [/jayco/, '#e23b3b'], [/astana/, '#14a8e0'], [/cofidis/, '#d4202a'],
+  [/tudor/, '#b51f2a'], [/intermarch|wanty/, '#c8102e'],
+  [/arkea|arkéa/, '#e6308c'], [/lotto/, '#e2001a'], [/uno.?x/, '#e63329'],
+];
+function teamColour(name) {
+  const n = (name || '').toLowerCase();
+  for (const [re, col] of TEAM_COLOURS) if (re.test(n)) return col;
+  let h = 0;
+  for (let i = 0; i < n.length; i++) h = (h * 31 + n.charCodeAt(i)) % 360;
+  return `hsl(${h}, 45%, 42%)`;
+}
+function jerseyIcon(colour) {
+  return `<svg class="jersey" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">` +
+    `<path d="M9 3 L4 6.5 L6.5 10 L8.5 8.8 V21 H15.5 V8.8 L17.5 10 L20 6.5 L15 3 ` +
+    `C15 5 9 5 9 3 Z" fill="${colour}" stroke="rgba(20,19,15,0.3)" stroke-width="0.7" ` +
+    `stroke-linejoin="round"/></svg>`;
+}
+
+// ---- Collapsible section shell (item 3) ----
+// Default open/closed per section, remembered for the session so re-renders
+// (e.g. sorting the table) keep the user's choice.
+const SECTION_DEFAULT_COLLAPSED = { specialty: false, odds: false, startlist: true };
+let SECTION_STATE = {};
+function sectionCollapsed(id) {
+  return (id in SECTION_STATE) ? SECTION_STATE[id] : !!SECTION_DEFAULT_COLLAPSED[id];
+}
+function sectionCard(id, title, tag, tagClass, bodyHtml) {
+  const collapsed = sectionCollapsed(id);
+  return `
+    <div class="odds-card sec-card">
+      <div class="odds-head sec-head" onclick="toggleSection('${id}')">
+        <h3>${title}</h3>
+        <div class="sec-head-right">
+          ${tag ? `<span class="odds-source ${tagClass || ''}">${tag}</span>` : ''}
+          <span class="sec-caret" id="seccaret-${id}">${collapsed ? '▸' : '▾'}</span>
+        </div>
+      </div>
+      <div class="sec-body" id="secbody-${id}" ${collapsed ? 'hidden' : ''}>${bodyHtml}</div>
+    </div>`;
+}
+function toggleSection(id) {
+  const body = document.getElementById('secbody-' + id);
+  const caret = document.getElementById('seccaret-' + id);
+  if (!body) return;
+  const open = !body.hidden;
+  body.hidden = open;
+  SECTION_STATE[id] = open;   // it is now collapsed iff it was previously open
+  if (caret) caret.textContent = open ? '▸' : '▾';
+}
 
 function fmtDate(s) {
   if (!s) return '';
@@ -576,6 +767,8 @@ function renderRaceList() {
     const hasGpx = gpx.gpx_available;
     const odds = ODDS_INDEX[race.slug] || {};
     const hasOdds = odds.odds_available;
+    const pred = PRED_INDEX[race.slug] || {};
+    const hasPred = pred.prediction_available;
     const item = document.createElement('div');
     item.className = 'race-item';
     item.dataset.idx = i;
@@ -588,12 +781,13 @@ function renderRaceList() {
       <div class="race-date">${dateStr}</div>
       <div class="race-name">${race.name}</div>
       <div class="race-meta">
-        <span class="flag">${FLAGS[race.nationality] || '🏳️'}</span>
+        <span class="flag">${flagImg(race.nationality)}</span>
         <span class="badge ${race.is_one_day_race ? 'oneday' : 'stage'}">
           ${race.is_one_day_race ? '1-day' : 'stage'}</span>
         <span class="badge ${hasGpx ? 'gpx' : 'nogpx'}">
           ${hasGpx ? 'GPX' : 'no route'}</span>
         ${hasOdds ? '<span class="badge" style="background:var(--gold);color:var(--ink)">odds</span>' : ''}
+        ${hasPred ? '<span class="badge" style="background:var(--moss);color:var(--paper)">pred</span>' : ''}
       </div>`;
     item.addEventListener('click', () => selectRace(i));
     list.appendChild(item);
@@ -666,7 +860,7 @@ function renderRaceHeader(gpx) {
       <div class="sub">
         <span><b>${r.is_one_day_race ? fmtDate(r.startdate)
           : fmtDate(r.startdate)+' – '+fmtDate(r.enddate)}</b></span>
-        <span>${FLAGS[r.nationality]||''} <b>${r.nationality||''}</b></span>
+        <span>${flagImg(r.nationality)} <b>${r.nationality||''}</b></span>
         <span>${r.category||''}</span>
         ${r.edition ? `<span>edition <b>${r.edition}</b></span>`:''}
         ${!r.is_one_day_race && currentStageFiles.length ?
@@ -674,10 +868,230 @@ function renderRaceHeader(gpx) {
       </div>
     </div>
     ${vizHtml}
-    <div class="viz" style="padding-top:0"><div id="odds-container"></div></div>`;
+    <div class="viz" style="padding-top:0">
+      <div id="specialty-container"></div>
+      <div id="odds-container"></div>
+      <div id="startlist-container"></div>
+    </div>`;
 
   if (hasGpx) initMap();
   loadOdds();
+  loadRosterSections();
+}
+
+// ============================================================
+//  DATA LOADERS (lazy + cached — shared by the panels below)
+// ============================================================
+async function getStartlist(slug) {
+  if (slug in STARTLISTS) return STARTLISTS[slug];
+  try {
+    STARTLISTS[slug] = await fetchJsonFrom(DATA_BASE, `startlists/${slug}.json`);
+  } catch (e) {
+    STARTLISTS[slug] = null;
+  }
+  return STARTLISTS[slug];
+}
+
+async function getPrediction(slug) {
+  if (slug in PREDICTIONS) return PREDICTIONS[slug];
+  const meta = PRED_INDEX[slug] || {};
+  if (!meta.prediction_available) { PREDICTIONS[slug] = null; return null; }
+  try {
+    PREDICTIONS[slug] = await fetchJsonFrom(DATA_BASE, `predictions/${slug}.json`);
+  } catch (e) {
+    PREDICTIONS[slug] = null;
+  }
+  return PREDICTIONS[slug];
+}
+
+// ============================================================
+//  DATA-ACCESS LAYER (item 5)
+//  Isolates the JSON shape from the UI. When we move off procyclingstats for
+//  rider/specialty data, rewrite getRaceRoster — the render code below reads
+//  only the normalized shape and never raw JSON field names.
+// ============================================================
+function normalizeRider(raw, winByUrl, winByName) {
+  const career = (raw.specialties && typeof raw.specialties.career === 'object')
+    ? raw.specialties.career : null;
+  let win = null;
+  if (raw.rider_url && raw.rider_url in winByUrl) win = winByUrl[raw.rider_url];
+  else if (raw.name in winByName) win = winByName[raw.name];
+  return {
+    name: raw.name || '',
+    nat: raw.nationality || '',
+    number: raw.number,
+    team: raw.team || '—',
+    teamUrl: raw.team_url || '',
+    riderUrl: raw.rider_url || '',
+    career,          // {one_day_races, gc, tt, sprint, climber, hills} | null
+    win,             // model win%, or null
+  };
+}
+
+async function getRaceRoster(slug) {
+  const [sl, pred] = await Promise.all([getStartlist(slug), getPrediction(slug)]);
+  // Join the model's win% onto riders by rider_url (fallback: name).
+  const winByUrl = {}, winByName = {};
+  ((pred && pred.riders) || []).forEach(r => {
+    if (typeof r.win_probability === 'number' && r.specialties_available) {
+      if (r.rider_url) winByUrl[r.rider_url] = r.win_probability;
+      if (r.name) winByName[r.name] = r.win_probability;
+    }
+  });
+  const riders = ((sl && sl.riders) || []).map(r => normalizeRider(r, winByUrl, winByName));
+  return { slug, riders, count: riders.length, hasStartlist: riders.length > 0 };
+}
+
+// ============================================================
+//  STARTLIST SECTIONS (specialty table + team groups)
+// ============================================================
+async function loadRosterSections() {
+  if (!currentRace) return;
+  const slug = currentRace.slug;
+  const specC = document.getElementById('specialty-container');
+  const teamC = document.getElementById('startlist-container');
+  if (specC) specC.innerHTML = `<div class="odds-card"><div class="odds-head">
+    <h3>Specialty Rankings</h3></div><div class="odds-empty">Loading…</div></div>`;
+  if (teamC) teamC.innerHTML = '';
+
+  const roster = await getRaceRoster(slug);
+  if (currentRace.slug !== slug) return;   // user switched races mid-fetch
+
+  renderSpecialtyTable(roster);
+  renderTeamSection(roster);
+}
+
+// ---- Team-grouped collapsible startlist (3-up responsive grid) ----
+function renderTeamSection(roster) {
+  const c = document.getElementById('startlist-container');
+  if (!c) return;
+  if (!roster.hasStartlist) {
+    c.innerHTML = sectionCard('startlist', 'Startlist by Team', null, '',
+      `<div class="odds-empty">No startlist published yet for this race.</div>`);
+    return;
+  }
+
+  // Group by team, preserving PCS order (teams in first-seen order, no re-sort).
+  const order = [];
+  const groups = {};
+  roster.riders.forEach(r => {
+    if (!(r.team in groups)) { groups[r.team] = []; order.push(r.team); }
+    groups[r.team].push(r);
+  });
+
+  const teamsHtml = order.map((t, idx) => {
+    const rs = groups[t];
+    const ridersHtml = rs.map(r => `
+      <div class="roster-rider">
+        <span class="r-num">${r.number != null ? r.number : ''}</span>
+        ${flagImg(r.nat)}
+        <span class="r-name">${r.name}</span>
+      </div>`).join('');
+    return `
+      <div class="team-group">
+        <div class="team-head" onclick="toggleTeam(${idx})">
+          <span class="team-caret" id="caret-${idx}">▸</span>
+          ${jerseyIcon(teamColour(t))}
+          <span class="team-name">${t}</span>
+          <span class="team-count">${rs.length}</span>
+        </div>
+        <div class="team-riders" id="team-${idx}" hidden>${ridersHtml}</div>
+      </div>`;
+  }).join('');
+
+  c.innerHTML = sectionCard('startlist', 'Startlist by Team',
+    `${order.length} teams · ${roster.count} riders`, '',
+    `<div class="team-grid">${teamsHtml}</div>`);
+}
+
+function toggleTeam(idx) {
+  const el = document.getElementById('team-' + idx);
+  const caret = document.getElementById('caret-' + idx);
+  if (!el) return;
+  const open = !el.hidden;
+  el.hidden = open;
+  if (caret) caret.textContent = open ? '▸' : '▾';
+}
+
+// ---- Sortable specialty table ----
+const SPEC_COLS = [
+  ['one_day_races', '1-day'], ['gc', 'GC'], ['tt', 'TT'],
+  ['sprint', 'Sprint'], ['climber', 'Climber'], ['hills', 'Hills'],
+];
+let specRows = [];
+let specSort = { key: 'win', dir: -1 };   // default: win% descending
+
+function renderSpecialtyTable(roster) {
+  const c = document.getElementById('specialty-container');
+  if (!c) return;
+  if (!roster.hasStartlist) {
+    c.innerHTML = sectionCard('specialty', 'Specialty Rankings', 'experimental', 'experimental',
+      `<div class="odds-empty">No startlist published yet for this race.</div>`);
+    return;
+  }
+  specRows = roster.riders.map(r => ({ name: r.name, team: r.team, nat: r.nat, car: r.career, win: r.win }));
+  specSort = { key: 'win', dir: -1 };
+  drawSpecTable();
+}
+
+function specArrow(key) {
+  return specSort.key === key ? (specSort.dir < 0 ? ' ▾' : ' ▴') : '';
+}
+
+function drawSpecTable() {
+  const c = document.getElementById('specialty-container');
+  if (!c) return;
+  const rows = specRows.slice().sort(specCompare);
+
+  const header = `
+    <th class="sortable ${specSort.key === 'name' ? 'sorted' : ''}" onclick="sortSpec('name')">Rider${specArrow('name')}</th>
+    ${SPEC_COLS.map(([k, lbl]) =>
+      `<th class="sortable num ${specSort.key === k ? 'sorted' : ''}" onclick="sortSpec('${k}')">${lbl}${specArrow(k)}</th>`
+    ).join('')}
+    <th class="sortable num ${specSort.key === 'win' ? 'sorted' : ''}" onclick="sortSpec('win')">Win%${specArrow('win')}</th>`;
+
+  const body = rows.map(r => {
+    const cells = SPEC_COLS.map(([k]) =>
+      `<td class="num">${r.car && r.car[k] != null ? r.car[k] : '—'}</td>`).join('');
+    const win = r.win != null ? r.win.toFixed(1) + '%' : '—';
+    return `<tr>
+      <td class="r-name-cell">${flagImg(r.nat)} ${r.name}<span class="r-team-cell">${r.team}</span></td>
+      ${cells}<td class="num win-cell">${win}</td></tr>`;
+  }).join('');
+
+  const table = `
+    <div class="spec-scroll">
+      <table class="spec-table"><thead><tr>${header}</tr></thead><tbody>${body}</tbody></table>
+    </div>
+    <div class="odds-note">
+      Click a column header to sort · career PCS specialty points · Win% from the
+      experimental model · — = no data.
+    </div>`;
+
+  c.innerHTML = sectionCard('specialty', 'Specialty Rankings', 'experimental', 'experimental', table);
+}
+
+function sortSpec(key) {
+  if (specSort.key === key) {
+    specSort.dir *= -1;
+  } else {
+    specSort.key = key;
+    specSort.dir = (key === 'name') ? 1 : -1;   // text asc, numbers desc by default
+  }
+  drawSpecTable();
+}
+
+function specCompare(a, b) {
+  const k = specSort.key, d = specSort.dir;
+  if (k === 'name') return d * a.name.localeCompare(b.name);
+  const av = (k === 'win') ? a.win : (a.car ? a.car[k] : null);
+  const bv = (k === 'win') ? b.win : (b.car ? b.car[k] : null);
+  // Missing values always sort to the bottom, regardless of direction.
+  const an = (av == null), bn = (bv == null);
+  if (an && bn) return 0;
+  if (an) return 1;
+  if (bn) return -1;
+  return d * (av - bv);
 }
 
 // ============================================================
@@ -689,30 +1103,22 @@ async function loadOdds() {
 
   const meta = ODDS_INDEX[currentRace.slug] || {};
   if (!meta.odds_available) {
-    container.innerHTML = `
-      <div class="odds-card">
-        <div class="odds-head"><h3>Race Winner Odds</h3></div>
-        <div class="odds-empty">No odds published yet for this race.</div>
-      </div>`;
+    container.innerHTML = sectionCard('odds', 'Race Winner Odds', null, '',
+      `<div class="odds-empty">No odds published yet for this race.</div>`);
     return;
   }
 
   // show a quick loading state
   container.innerHTML = `
-    <div class="odds-card">
-      <div class="odds-head"><h3>Race Winner Odds</h3></div>
-      <div class="odds-empty">Loading odds…</div>
-    </div>`;
+    <div class="odds-card"><div class="odds-head"><h3>Race Winner Odds</h3></div>
+      <div class="odds-empty">Loading odds…</div></div>`;
 
   try {
     const data = await fetchJsonFrom(DATA_BASE, `odds/${currentRace.slug}.json`);
     renderOdds(data);
   } catch (e) {
-    container.innerHTML = `
-      <div class="odds-card">
-        <div class="odds-head"><h3>Race Winner Odds</h3></div>
-        <div class="odds-empty">Could not load odds.</div>
-      </div>`;
+    container.innerHTML = sectionCard('odds', 'Race Winner Odds', null, '',
+      `<div class="odds-empty">Could not load odds.</div>`);
   }
 }
 
@@ -745,19 +1151,14 @@ function renderOdds(data) {
       </div>`;
   }).join('');
 
-  container.innerHTML = `
-    <div class="odds-card">
-      <div class="odds-head">
-        <h3>Race Winner Odds</h3>
-        <span class="odds-source ${src==='manual'?'manual':''}">${src}</span>
-      </div>
-      <div class="odds-list">${rows}</div>
-      <div class="odds-note">
-        Decimal odds · implied probability shown · ${riders.length} riders
-        ${updated ? '· updated '+updated : ''}.
-        Includes bookmaker margin — for information only.
-      </div>
-    </div>`;
+  container.innerHTML = sectionCard('odds', 'Race Winner Odds',
+    src, (src === 'manual' ? 'manual' : ''),
+    `<div class="odds-list">${rows}</div>
+     <div class="odds-note">
+       Decimal odds · implied probability shown · ${riders.length} riders
+       ${updated ? '· updated '+updated : ''}.
+       Includes bookmaker margin — for information only.
+     </div>`);
 }
 
 // ============================================================
