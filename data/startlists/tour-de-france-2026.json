@@ -1,8 +1,8 @@
 {
   "race": "Tour de France",
   "race_slug": "tour-de-france-2026",
-  "updated_at": "2026-06-04T10:07:23.695633",
-  "total_riders": 118,
+  "updated_at": "2026-06-05T10:04:49.501855",
+  "total_riders": 120,
   "riders": [
     {
       "name": "PHILIPSEN Jasper",
@@ -1297,6 +1297,42 @@
           "sprint": 4212,
           "climber": 134,
           "hills": 2017
+        }
+      }
+    },
+    {
+      "name": "O'CONNOR Ben",
+      "nationality": "AU",
+      "number": null,
+      "team": "Team Jayco AlUla (WT)",
+      "rider_url": "rider/ben-o-connor",
+      "team_url": "team/team-jayco-alula-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 795,
+          "gc": 3987,
+          "tt": 730,
+          "sprint": 53,
+          "climber": 3660,
+          "hills": 1026
+        }
+      }
+    },
+    {
+      "name": "SCHMID Mauro",
+      "nationality": "CH",
+      "number": null,
+      "team": "Team Jayco AlUla (WT)",
+      "rider_url": "rider/mauro-schmid",
+      "team_url": "team/team-jayco-alula-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1342,
+          "gc": 1306,
+          "tt": 774,
+          "sprint": 8,
+          "climber": 1262,
+          "hills": 1368
         }
       }
     },

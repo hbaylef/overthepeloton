@@ -1,8 +1,8 @@
 {
   "race": "Tour de Suisse",
   "race_slug": "tour-de-suisse-2026",
-  "updated_at": "2026-06-04T10:07:18.597309",
-  "total_riders": 25,
+  "updated_at": "2026-06-05T10:04:44.952997",
+  "total_riders": 27,
   "riders": [
     {
       "name": "VERSTRYNGE Emiel",
@@ -19,6 +19,24 @@
           "sprint": 22,
           "climber": 278,
           "hills": 83
+        }
+      }
+    },
+    {
+      "name": "EULÁLIO Afonso",
+      "nationality": "PT",
+      "number": null,
+      "team": "Bahrain - Victorious (WT)",
+      "rider_url": "rider/afonso-eulalio",
+      "team_url": "team/bahrain-victorious-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 162,
+          "gc": 447,
+          "tt": 0,
+          "sprint": 6,
+          "climber": 502,
+          "hills": 228
         }
       }
     },
@@ -73,6 +91,24 @@
           "sprint": 4,
           "climber": 2036,
           "hills": 588
+        }
+      }
+    },
+    {
+      "name": "BRUTTOMESSO Alberto",
+      "nationality": "IT",
+      "number": null,
+      "team": "Bahrain - Victorious (WT)",
+      "rider_url": "rider/alberto-bruttomesso",
+      "team_url": "team/bahrain-victorious-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 109,
+          "gc": 6,
+          "tt": 27,
+          "sprint": 206,
+          "climber": 22,
+          "hills": 160
         }
       }
     },

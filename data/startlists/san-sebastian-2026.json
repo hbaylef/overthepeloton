@@ -1,8 +1,8 @@
 {
   "race": "Clásica de San Sebastián",
   "race_slug": "san-sebastian-2026",
-  "updated_at": "2026-06-04T10:07:30.978902",
-  "total_riders": 12,
+  "updated_at": "2026-06-05T10:04:56.117281",
+  "total_riders": 13,
   "riders": [
     {
       "name": "CHAMPOUSSIN Clément",
@@ -217,6 +217,24 @@
           "sprint": 16,
           "climber": 664,
           "hills": 582
+        }
+      }
+    },
+    {
+      "name": "ALMEIDA João",
+      "nationality": "PT",
+      "number": null,
+      "team": "UAE Team Emirates - XRG (WT)",
+      "rider_url": "rider/joao-almeida",
+      "team_url": "team/uae-team-emirates-xrg-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 431,
+          "gc": 5449,
+          "tt": 2996,
+          "sprint": 47,
+          "climber": 4868,
+          "hills": 1494
         }
       }
     }
