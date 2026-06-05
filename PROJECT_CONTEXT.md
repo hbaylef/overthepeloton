@@ -122,7 +122,8 @@ overthepeloton/
 │   ├── scrape_gpx.py            ← STEP 2: GPX routes (crawl-based)
 │   ├── scrape_odds.py           ← STEP 4: Bet365 odds
 │   ├── enter_odds.py            ← STEP 4: manual odds entry
-│   └── scrape_riders.py         ← R1: embeds specialties.career into startlists
+│   ├── scrape_riders.py         ← R1: embeds specialties.career into startlists
+│   └── classify_stages.py       ← R2 Phase 2: backfill stage_type into races.json
 ├── frontend/
 │   └── index.html               ← STEP 3: the whole UI (cache-busted fetches)
 ├── R1_R2_DESIGN.md              ← R1+R2 build spec (Tier 1) + R4/R5 research (Tier 2)
@@ -161,15 +162,18 @@ overthepeloton/
       "uci_tour": "UCI World Tour",
       "is_one_day_race": false,
       "edition": 113,
-      "stages": [ { "stage_url": "...", "date": "...", "departure": "...", "arrival": "...", "distance": 185.0, "profile_icon": "p1" } ],
+      "stages": [ { "stage_url": "...", "date": "...", "stage_name": "Stage 1 (ITT) | ...", "profile_icon": "p1",
+                    "stage_type": "time_trial", "stage_type_source": "stage_name_itt" } ],
       "_pcs_data_missing": false  // historical fallback flag; no longer set after R1 slug fixes
     },
     {
       "slug": "il-lombardia-2026",
       "is_one_day_race": true,
       "stages": [],
-      "profile_icon": "p5",                   // R2 Phase 1: race-level icon for one-day races
-      "profile_icon_source": "manual_override" // "pcs" or "manual_override"
+      "profile_icon": "p5",                    // R2 Phase 1: race-level icon for one-day races
+      "profile_icon_source": "manual_override", // "pcs" or "manual_override"
+      "stage_type": "climber",                 // R2 Phase 2: derived from profile_icon
+      "stage_type_source": "profile_icon"      // "profile_icon" | "stage_name_itt" | "fallback_default"
     }
   ]
 }
@@ -179,7 +183,10 @@ overthepeloton/
 slug fixes). On stage races, each `stages[]` entry carries `profile_icon`
 from PCS. On one-day races (where `Race.stages()` returns `[]`), the
 race-level `profile_icon` + `profile_icon_source` come from R2 Phase 1's
-`/result` scrape; see `R1_R2_DESIGN.md` Step 1 status.
+`/result` scrape; see `R1_R2_DESIGN.md` Step 1 status. R2 Phase 2 then derives
+`stage_type` + `stage_type_source` from those icons (per-stage on stage races,
+race-level on one-day races) — written by `annotate_stage_types()` at the end
+of every scrape.
 
 ### `startlists/{slug}.json`
 ```json
@@ -357,11 +364,17 @@ a backlog, not in priority order. Several have open design questions noted.
   `ONE_DAY_OVERRIDE` dict supplies a known-correct value when PCS returns
   `p0` (placeholder); override is bypassed automatically once PCS publishes
   a real icon. ITT detection lands in Phase 2 via stage-name regex.
-- ⏭ **Phase 2 next:** `classify_stage` function — pure logic, no scraping.
-  Reads `races.json`, writes a derived `stage_type` annotation **inside**
-  `races.json` (per stage for stage races, at race level for one-day
-  races). Output values: `sprint`, `sprint_break`, `hills_puncheur`,
-  `climber`, `time_trial`. `cobbles` deferred to R4 (Tier 2).
+- ✅ **Phase 2 done (2026-06-05):** `classify_stage` function — pure logic,
+  no scraping. `scrape_races.py` now writes a derived `stage_type` +
+  `stage_type_source` annotation **inside** `races.json` (per stage for
+  stage races, at race level for one-day races) at the end of every scrape.
+  Output values: `sprint`, `sprint_break`, `hills_puncheur`, `climber`,
+  `time_trial`; `cobbles` deferred to R4. ITTs detected by stage-name regex
+  (overrides the icon — 10 of 12 ITTs were icon `p1`). TTT is a documented
+  gap. Standalone `scrapers/classify_stages.py` backfills without scraping.
+- ⏭ **Phase 3 next:** Steps 2–4 — type → specialty weight vector → per-rider
+  score → pseudo win-probability. Career-only blend until R1's `recent`
+  block ships.
 - Until R1's `recent` block ships, Step 3's blend degrades to `career`-only
   (`blended = career_norm`). Structure preserved so `recent` can drop in later.
 - See `R1_R2_DESIGN.md` for the full 4-step model + weight vectors + Phase 1

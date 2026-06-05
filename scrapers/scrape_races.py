@@ -266,6 +266,86 @@ def build_fallback_entry(cs_slug: str, pcs_slug: str, name: str,
     }
 
 
+# ---------------------------------------------------------------------------
+# R2 Phase 2 — derived stage-type classification (pure logic, no scraping).
+#
+# Maps a PCS profile_icon (p0..p5) to a stage_type, with an ITT override by
+# name. Annotations are written back INTO races.json (per-stage for stage
+# races, race-level for one-day races) so R2 scoring + the frontend can read
+# them directly. Re-run safe: a full scrape re-derives these every day.
+# ---------------------------------------------------------------------------
+
+# profile_icon → stage_type. `cobbles` is intentionally absent: it's deferred
+# to R4's curated cobble set, which overlays the type at scoring time.
+PROFILE_ICON_TO_STAGE_TYPE = {
+    "p0": "sprint",          # flat (PCS also uses p0 as an unclassified placeholder)
+    "p1": "sprint",          # flat
+    "p2": "sprint_break",    # hilly, flat finish
+    "p3": "hills_puncheur",  # hilly, uphill finish
+    "p4": "climber",         # mountain
+    "p5": "climber",         # mountain
+}
+
+# Individual time trials. The icon can't identify an ITT — most are encoded
+# p1, same as a flat sprint stage — so we detect them by name and override the
+# type. Matches PCS's "(ITT)" and "Prologue" forms plus a spelled-out
+# "Time trial" for robustness.
+#
+# Deliberately does NOT match team time trials "(TTT)": a TTT is a team effort,
+# not an individual TT, so it must not inherit the time_trial weight vector.
+# No TTT exists in the 2026 calendar; classifying TTTs is a KNOWN GAP to fix
+# later (would need its own type/weights).
+ITT_NAME_RE = re.compile(r"\(ITT\)|\bPrologue\b|\bTime[\s-]?trial\b", re.IGNORECASE)
+
+# Used when profile_icon is missing/null/unrecognized (design Step 1:
+# "treat as sprint/break and flag it" — the flag is stage_type_source below).
+FALLBACK_STAGE_TYPE = "sprint_break"
+
+
+def classify_stage(profile_icon: Optional[str], name: Optional[str] = None):
+    """
+    Derive a stage_type from a PCS profile_icon, with an ITT override by name.
+
+    Pure logic — no scraping. Returns ``(stage_type, source)`` where source is
+    one of:
+      - "stage_name_itt"   — name matched the ITT regex (icon ignored)
+      - "profile_icon"     — mapped straight from a valid p0..p5 icon
+      - "fallback_default" — icon missing/unrecognized; guessed sprint_break
+
+    `name` is the stage_name (stage races) or race name (one-day races); pass
+    None when no name is available. ITT detection is checked first because the
+    icon is unreliable for time trials.
+    """
+    if name and ITT_NAME_RE.search(name):
+        return "time_trial", "stage_name_itt"
+    stage_type = PROFILE_ICON_TO_STAGE_TYPE.get(profile_icon)
+    if stage_type is not None:
+        return stage_type, "profile_icon"
+    return FALLBACK_STAGE_TYPE, "fallback_default"
+
+
+def annotate_stage_types(races: list) -> list:
+    """
+    Write derived `stage_type` + `stage_type_source` onto each race in place:
+      - stage races: per-stage, inside each stages[] entry (keyed on stage_name)
+      - one-day races: at the race level (keyed on the race name)
+
+    Mutates and returns the same list. Overwrites any prior annotation so a
+    re-run never drifts.
+    """
+    for race in races:
+        if race.get("is_one_day_race"):
+            stage_type, source = classify_stage(race.get("profile_icon"), race.get("name"))
+            race["stage_type"] = stage_type
+            race["stage_type_source"] = source
+        else:
+            for stage in race.get("stages", []):
+                stage_type, source = classify_stage(stage.get("profile_icon"), stage.get("stage_name"))
+                stage["stage_type"] = stage_type
+                stage["stage_type_source"] = source
+    return races
+
+
 def main():
     # Create output directories
     DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -340,6 +420,9 @@ def main():
 
     # Sort by start date (chronological for the year)
     all_races.sort(key=lambda r: r.get("startdate") or "9999-12-31")
+
+    # R2 Phase 2 — derive stage_type from profile_icon / stage names (in place).
+    annotate_stage_types(all_races)
 
     # Build final output — include ALL races, not just upcoming.
     # The frontend can show past + future together so users browse any race.

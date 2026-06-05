@@ -183,7 +183,7 @@ ONE_DAY_OVERRIDE = {
 by regex on `stage_name` (`(ITT)`, `Prologue`, `Time trial`) and overrides
 the type to `time_trial` regardless of the icon.
 
-**Phase 2 — NEXT: the `classify_stage` function.**
+**Phase 2 — DONE (2026-06-05): the `classify_stage` function.**
 
 Pure logic, no scraping. Reads `races.json` and writes a derived
 `stage_type` annotation **inside** `races.json` (storage choice (a)):
@@ -198,6 +198,43 @@ cobble set will overlay the type at scoring time for the ~3-4 affected races.
 Sidecar file (option b) and function-only (option c) were considered and
 rejected — (a) is simplest to consume from R2 scoring + frontend, and
 re-runs of `scrape_races.py` re-derive freshly so there's no drift.
+
+*What shipped:*
+
+- `classify_stage(profile_icon, name) -> (stage_type, source)` in
+  `scrape_races.py`, with the icon→type map as a named constant
+  (`PROFILE_ICON_TO_STAGE_TYPE`):
+
+  | `profile_icon` | `stage_type` |
+  |---|---|
+  | `p0`, `p1` | `sprint` |
+  | `p2` | `sprint_break` |
+  | `p3` | `hills_puncheur` |
+  | `p4`, `p5` | `climber` |
+
+- **ITT override checked first** (icon can't see ITTs — most are encoded
+  `p1`). `ITT_NAME_RE = (ITT) | Prologue | Time trial`, case-insensitive.
+  Validated: of 12 ITTs in the calendar, 10 were icon `p1`, 1 `p2`, 1 `p3` —
+  all correctly forced to `time_trial`.
+- **TTT is a KNOWN GAP, deferred.** The regex deliberately does *not* match
+  team time trials — a TTT is a team effort, not an individual TT, so it must
+  not inherit the `time_trial` weight vector. No TTT in the 2026 calendar;
+  fix later with its own type/weights.
+- **Missing/unrecognized icon → `sprint_break` fallback**, flagged via a
+  companion provenance field `stage_type_source` ∈ {`profile_icon`,
+  `stage_name_itt`, `fallback_default`}. This field is *additional* to the
+  spec — it lets R2 scoring tell a real classification from an ITT override or
+  a guess.
+- `annotate_stage_types(races)` walks the list in place; called at the end of
+  `scrape_races.py`'s `main()` so daily scrapes re-derive. A thin standalone
+  runner `scrapers/classify_stages.py` applies the same step to an existing
+  `races.json` without scraping (used to backfill the live file now).
+- **Verified on live `races.json`:** 175 entries annotated (157 stage-race
+  stages + 18 one-day races), 0 invariant violations, source split
+  163 `profile_icon` / 12 `stage_name_itt` / 0 `fallback_default`.
+
+**Phase 3 — NEXT: Steps 2–4 (type → weight vector → rider scores → win
+probability).** See below; career-only blend until R1's `recent` block ships.
 
 **Step 2 — Map type → specialty weight vector.**
 Starting weights (uncalibrated — see open questions):
