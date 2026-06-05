@@ -653,6 +653,8 @@ let ODDS_INDEX = {};
 let PRED_INDEX = {};
 let STARTLISTS = {};    // slug -> startlist json (lazy-loaded, cached)
 let PREDICTIONS = {};   // slug -> prediction json (lazy-loaded, cached)
+let SEGMENTS = {};      // slug -> cobble sectors[] (lazy-loaded, cached)
+let currentSegments = [];   // sectors for the selected race (drawn on the profile)
 let currentRace = null;
 let currentStageFiles = [];
 let map = null;
@@ -874,9 +876,23 @@ async function selectRace(idx) {
   document.querySelectorAll('.race-item').forEach(el =>
     el.classList.toggle('active', el.dataset.idx == idx));
 
+  // R4: load this race's curated pavé sectors (if any) and redraw the profile
+  // once they arrive — drawn into the cached static layer.
+  currentSegments = [];
+  const segSlug = currentRace.slug;
+  getSegments(segSlug).then(s => {
+    if (currentRace && currentRace.slug === segSlug) {
+      currentSegments = s;
+      if (canvas && ctx && elevationPoints.length) { baseKey = ''; renderProfile(); }
+    }
+  });
+
   const gpx = GPX_INDEX[currentRace.slug] || {};
+  // Prefer the main route over a women's route file (so e.g. Paris-Roubaix
+  // defaults to the full men's parcours), then order by stage.
+  const isWomen = f => /women|femmes|dames/i.test(f.filename || '');
   currentStageFiles = (gpx.files || []).slice().sort(
-    (a,b) => (a.stage||0) - (b.stage||0));
+    (a,b) => (isWomen(a) - isWomen(b)) || ((a.stage||0) - (b.stage||0)));
 
   renderRaceHeader(gpx);
 
@@ -925,6 +941,7 @@ function renderRaceHeader(gpx) {
             <span><i style="background:#c8442a"></i>6–9%</span>
             <span><i style="background:#9e3320"></i>9–12%</span>
             <span><i style="background:#6e1f14"></i>12%+</span>
+            <span><i style="background:#4a2c12"></i>cobbles</span>
           </div>
           <div class="readout" id="readout">Hover to explore · drag to zoom · double-click to reset.</div>
         </div>
@@ -985,6 +1002,19 @@ async function getPrediction(slug) {
     PREDICTIONS[slug] = null;
   }
   return PREDICTIONS[slug];
+}
+
+// R4: curated pavé sectors. Most races have none (404 → empty), cobbled
+// classics have data/cobbles/{slug}.json.
+async function getSegments(slug) {
+  if (slug in SEGMENTS) return SEGMENTS[slug];
+  try {
+    const d = await fetchJsonFrom(DATA_BASE, `cobbles/${slug}.json`);
+    SEGMENTS[slug] = (d && d.sectors) || [];
+  } catch (e) {
+    SEGMENTS[slug] = [];
+  }
+  return SEGMENTS[slug];
 }
 
 // ============================================================
@@ -1458,6 +1488,13 @@ function gradeColor(g) {
   return '#6e1f14';               // 12%+
 }
 
+// R4: cobbled stretches are coloured brown (overrides the steepness colour).
+const COBBLE_COLOR = '#4a2c12';
+function inCobble(d) {
+  for (const s of currentSegments) if (d >= s.km_start && d <= s.km_end) return true;
+  return false;
+}
+
 // Interaction state for the profile.
 let zoomRange = null;    // {d0,d1} km currently shown, or null = full stage
 let dragStartX = null;   // px at the start of a drag-to-zoom selection
@@ -1571,7 +1608,7 @@ function ensureBase() {
   for (let i = 1; i < elevationPoints.length; i++) {
     const p0 = elevationPoints[i-1], p1 = elevationPoints[i];
     if (p1.dist < dLo || p0.dist > dHi) continue;
-    const col = gradeColor(grades[i]);
+    const col = inCobble((p0.dist + p1.dist) / 2) ? COBBLE_COLOR : gradeColor(grades[i]);
     const x0 = xOf(p0.dist), x1 = xOf(p1.dist), y0 = yOf(p0.ele), y1 = yOf(p1.ele);
     b.beginPath();
     b.moveTo(x0, baseY); b.lineTo(x0, y0); b.lineTo(x1, y1); b.lineTo(x1, baseY); b.closePath();
@@ -1695,10 +1732,12 @@ function onProfileMove(e) {
     hoverMarker.setLatLng([pt.lat, pt.lon]);
     if (!map.hasLayer(hoverMarker)) hoverMarker.addTo(map);
   }
+  const sec = (currentSegments || []).find(s => pt.dist >= s.km_start && pt.dist <= s.km_end);
   document.getElementById('readout').innerHTML =
     `<span><b>${pt.dist.toFixed(1)}</b> km</span>` +
     `<span><b>${Math.round(pt.ele)}</b> m elevation</span>` +
-    `<span>gradient <b>${grad>=0?'+':''}${grad.toFixed(1)}%</b></span>`;
+    `<span>gradient <b>${grad>=0?'+':''}${grad.toFixed(1)}%</b></span>` +
+    (sec ? `<span>pavé <b>${sec.name}</b> ${'★'.repeat(sec.stars)}</span>` : '');
 }
 
 function onProfileUp(e) {

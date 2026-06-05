@@ -408,7 +408,19 @@ a backlog, not in priority order. Several have open design questions noted.
   that segment**, a top-right **badge** shows the selection's distance + average
   gradient; reset via a button or double-click.
 
-### R4 — Highlight key segments (climbs + cobbles)
+### R4 — Highlight key segments (climbs + cobbles)  🔨 **cobbles started (2026-06-06)**
+- ✅ **Cobbles on the profile:** curated `data/cobbles/{slug}.json` (sectors with
+  km_start/km_end + ★ rating) render as **brown segments** on the elevation
+  profile (`#4a2c12`), with a `cobbles` legend swatch and sector name/★ in the
+  hover readout. Seeded `paris-roubaix-2026.json` (26-sector starter — verify vs
+  the official roadbook; real men's PR has ~29–30). Also: races with men+women
+  GPX now default to the main (men's) route.
+- ⏭ **Climbs:** `procyclingstats` `RaceClimbs` confirmed (name, length,
+  steepness, top, km_before_finnish), but PCS is unreachable from this machine
+  (local TLS-intercepting proxy) — the climbs scraper must run in Actions. Not
+  built yet.
+- ⏭ **Map highlights** for pavé stretches, and **R2 cobbles scoring tie-in**
+  (flip Paris-Roubaix `stage_type` → `cobbles`) still to do.
 - Mark the major categorised climbs and cobbled (pavé) sectors on the profile,
   and ideally on the map too — like official roadbooks.
 - **Open question:** where does the segment data come from? PCS lists climbs
