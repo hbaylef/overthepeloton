@@ -7,17 +7,46 @@
 
 ---
 
-## 0. ⚠️ READ THIS FIRST (for the assistant)
+## 0. ⚠️ CURRENT STATUS — START HERE (updated 2026-06-06)
 
-**The user wants to switch to Claude Code for future sessions.** They said:
-> "I can't do it in this session but will do it later, keep in this mind"
+Running in **Claude Code** locally at `C:\Users\PC\Desktop\cycling-dashboard`.
+Site is live; each verified increment is committed + pushed (GitHub Pages).
 
-In a future conversation, if Claude Code isn't already in use, **proactively
-remind them** that this was their plan. The setup is: install Node.js, then
-`npm install -g @anthropic-ai/claude-code`, then `claude` inside the repo.
+**Done & live:**
+- **R1** — startlists for all races + per-rider PCS **career** specialty points.
+- **R2** — stage grading + win-probability: `stage_type` classification, scoring
+  via percentile + **softmax** (`score_riders.py`), **per-stage win% + overall
+  GC**, sortable **Specialty Rankings** table (with a per-stage/GC dropdown),
+  collapsible **Startlist by Team** grid, flags (flagcdn) + jersey glyphs.
+- **R3** — elevation profile **coloured by gradient** + on-graph hover label +
+  **drag-to-zoom** (axes refit + map sync, reset button/double-click) + zoom
+  summary badge. Offscreen-cached for smooth hovering.
+- **R4 (cobbles only)** — pavé sectors render as **brown profile segments** from
+  curated `data/cobbles/{slug}.json` (seeded `paris-roubaix-2026.json`); legend
+  swatch + sector name/★ in hover readout.
 
-Once on Claude Code, the workflow gets much faster — direct file edits, ability
-to run scrapers locally for testing, no more copy-paste-from-chat dance.
+**Scoring input caveat:** still PCS **career** points (accumulation → over-ranks
+veterans). Planned swap to **PCM WorldDB** rider ratings is **PARKED** until the
+user provides a converted `.sqlite` (see `R1_R2_DESIGN.md` "Future task" + the
+`project-data-source-swap` memory). FirstCycling (library *and* scraping) was
+spiked and **ruled out** (exposes no WorldDB points; Cloudflare-blocked).
+
+**Pick up next session — open items:**
+1. **R4 climbs** — write `scrapers/scrape_climbs.py` using `procyclingstats`
+   `RaceClimbs` (fields: name, length, steepness, top, km_before_finnish; place
+   on profile via `x = total_km − km_before_finnish`). **Must run in GitHub
+   Actions** — PCS is unreachable from this machine (local TLS-intercepting
+   proxy breaks Python cert verification; the browser/Actions are fine).
+2. **R4 map highlights** — colour the pavé stretches on the Leaflet route.
+3. **R2 cobbles tie-in** — flip Paris-Roubaix `stage_type` → `cobbles` and add a
+   cobbles weight vector in `score_riders.py` (changes live predictions — get a
+   go-ahead first).
+4. Then **R5** weather (Open-Meteo) / **R6** odds / **R7** non-WT.
+
+**Workflow:** edit → verify on a local server (`python -m http.server 8000`,
+open `/frontend/`) → commit → push. `score_riders.py` is run **manually** (not
+in the daily cron) ahead of the data-source swap. A daily scrape sometimes lands
+on `origin/main` mid-session → `git fetch` + rebase before pushing.
 
 ---
 
