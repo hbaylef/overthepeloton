@@ -374,9 +374,20 @@ a backlog, not in priority order. Several have open design questions noted.
   a documented gap. Standalone `scrapers/classify_stages.py` backfills without
   scraping. **Verified on the deployed site:** 175/175 entries annotated, 0
   missing, 163 `profile_icon` / 12 `stage_name_itt`.
-- 🔨 **Phase 3 in progress:** Steps 2–4 — type → specialty weight vector →
-  per-rider score → pseudo win-probability. Career-only blend until R1's
-  `recent` block ships.
+- ✅ **Phase 3 done & live:** Steps 2–4 — type → specialty weight vector →
+  per-rider score → pseudo win-probability. `scrapers/score_riders.py` writes
+  `data/predictions/*` + `predictions_index.json`. Score→prob via temperature
+  **softmax** (`SOFTMAX_TEMPERATURE=0.15`) so the favourite stands out (the
+  first linear cut flattened everyone to ~1.5%). Stage races carry **per-stage
+  win%** (each stage scored on its own `stage_type`) **plus** overall GC
+  (`0.6·gc + 0.4·stage-mean`); one-day races a single list. Career-only blend
+  until R1's `recent` block ships. Frontend: sortable **Specialty Rankings**
+  table with a per-stage/GC **Win% dropdown**, collapsible **Startlist by Team**
+  grid, section toggles, flagcdn flags, jersey glyphs, rider→PCS links, and a
+  `getRaceRoster` data-access layer (see `R1_R2_DESIGN.md`).
+  ⏸ `score_riders.py` is intentionally NOT in the daily Actions workflow — the
+  rider/specialty data source is being swapped, so predictions stay a manual
+  re-run for now.
 - Until R1's `recent` block ships, Step 3's blend degrades to `career`-only
   (`blended = career_norm`). Structure preserved so `recent` can drop in later.
 - See `R1_R2_DESIGN.md` for the full 4-step model + weight vectors + Phase 1

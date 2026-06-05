@@ -276,6 +276,16 @@ have show/hide toggles (Specialty open, Startlist collapsed by default). Icons:
 nationality **flags via flagcdn** (emoji flags don't render on Windows), team
 **jersey glyphs** tinted by an approximate WT colour map (no kit data exists).
 
+*Per-stage win% + GC + UX (2026-06-05):* stage races now produce **per-stage
+win probabilities** (each stage scored against its own `stage_type`, independent
+softmax) **plus** the overall GC (`0.6·gc + 0.4·stage-mean`). File shape for
+stage races: `stages_meta[]` + per-rider `gc_win`/`gc_rank`/`stage_win[]`;
+one-day races keep the single-list shape. The Specialty Rankings table has a
+**"Win% for: [Overall / GC ▾]" dropdown** (GC + every stage, labelled by type)
+that re-renders the Win% column; default GC, hidden for one-day races. Rider
+names link to PCS via `RIDER_PROFILE_BASE` + `riderProfileHref()` (the single
+swap-point). Opening the Startlist section expands all teams at once.
+
 ### Future task — swap the rider/specialty data source
 
 The PCS specialty points are an **accumulation** metric and a temporary input;

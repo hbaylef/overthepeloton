@@ -26,6 +26,11 @@ The model (see R1_R2_DESIGN.md "R2 — Stage grading"):
   (SOFTMAX_TEMPERATURE) so the favourite stands out instead of the field
   reading near-uniform.
 
+Output: one-day races get a single ranked rider list. Stage races get, per
+rider, an overall `gc_win` plus a `stage_win[]` array (one win% per stage,
+each stage scored against its own stage_type) — so the frontend can show a
+per-stage ranking or the overall GC. See `stages_meta` for stage labels/types.
+
 Output is EXPERIMENTAL — the weights are uncalibrated starting guesses.
 
 Usage:
@@ -176,36 +181,69 @@ def score_one_day(race, scored_riders, blended):
     return [weighted_score(b, weights) for b in blended]
 
 
-def score_stage_race(race, scored_riders, blended):
+def score_stage_race(race, blended):
     """
-    Step 3 per stage + Step 4 aggregation. Returns a final score per rider, or
-    None if the race has no usable stages.
+    Score every stage of a stage race independently against its own stage_type,
+    plus an aggregated overall-GC score (Step 4).
+
+    Returns (stages_meta, per_stage_probs, gc_probs), or None if no usable
+    stages:
+      - stages_meta:     list of {stage, stage_name, stage_type}
+      - per_stage_probs: list (one per stage) of win% lists across riders
+                         (each stage's list sums to ~100)
+      - gc_probs:        win% list across riders for the overall GC ranking
     """
     stages = [s for s in race.get("stages", []) if s.get("stage_type") in TYPE_WEIGHTS]
     if not stages:
         return None
 
-    n = len(scored_riders)
-    # Per-stage score per rider, then the mean across stages.
-    stage_means = []
-    for i in range(n):
-        per_stage = [weighted_score(blended[i], TYPE_WEIGHTS[s["stage_type"]]) for s in stages]
-        stage_means.append(mean(per_stage))
+    n = len(blended)
+    # Raw weighted score per rider, per stage.
+    stage_scores = [
+        [weighted_score(blended[i], TYPE_WEIGHTS[s["stage_type"]]) for i in range(n)]
+        for s in stages
+    ]
+    # Each stage's probabilities: softmax across riders for that stage alone, so
+    # a mountain stage favours climbers, a sprint stage favours sprinters.
+    per_stage_probs = [softmax_probabilities(scores) for scores in stage_scores]
 
-    # Put the stage-mean on the same [0, 1] scale as gc_norm before blending,
-    # so the GC_AGG / STAGE_AGG split is an honest mix and not dominated by the
-    # larger-magnitude weighted sum.
+    # Overall GC (Step 4): 0.6*gc_percentile + 0.4*percentile(mean per-stage
+    # score). The stage-mean is percentile-normalised onto [0,1] so the
+    # GC_AGG / STAGE_AGG split is an honest mix.
+    stage_means = [mean(stage_scores[s][i] for s in range(len(stages))) for i in range(n)]
     stage_mean_norm = percentile_ranks(stage_means)
-    gc_norm = [b["gc"] for b in blended]  # already a percentile in [0, 1]
+    gc_norm = [blended[i]["gc"] for i in range(n)]  # already a percentile in [0,1]
+    gc_final = [GC_AGG_WEIGHT * gc_norm[i] + STAGE_AGG_WEIGHT * stage_mean_norm[i]
+                for i in range(n)]
+    gc_probs = softmax_probabilities(gc_final)
 
-    return [GC_AGG_WEIGHT * gc_norm[i] + STAGE_AGG_WEIGHT * stage_mean_norm[i]
-            for i in range(n)]
+    stages_meta = [
+        {"stage": idx + 1, "stage_name": s.get("stage_name"), "stage_type": s["stage_type"]}
+        for idx, s in enumerate(stages)
+    ]
+    return stages_meta, per_stage_probs, gc_probs
+
+
+def _method_block():
+    return {
+        "normalisation": "percentile",
+        "probability": "softmax",
+        "softmax_temperature": SOFTMAX_TEMPERATURE,
+        "blend": "career_only",
+        "career_recent_weights": [CAREER_WEIGHT, RECENT_WEIGHT],
+        "gc_stage_weights": [GC_AGG_WEIGHT, STAGE_AGG_WEIGHT],
+    }
 
 
 def predict_race(race):
     """
     Produce the prediction payload for one race, or None if it can't be scored
     (no startlist, or no scoreable stage type).
+
+    One-day races: a single rider list with `win_probability` (unchanged shape).
+    Stage races:   per-stage win% (aligned `stage_win` arrays) PLUS an overall
+                   GC win% (`gc_win` / `gc_rank`), with `stages_meta` describing
+                   each stage.
     """
     slug = race["slug"]
     sl_file = STARTLISTS_DIR / f"{slug}.json"
@@ -226,57 +264,81 @@ def predict_race(race):
         return None
 
     blended = build_blended(scored_riders)
+    unscored_riders = [r for r in riders if not has_career(r)]
 
-    if race.get("is_one_day_race"):
-        scores = score_one_day(race, scored_riders, blended)
-    else:
-        scores = score_stage_race(race, scored_riders, blended)
-    if scores is None:
-        return None
-
-    probs = softmax_probabilities(scores)
-
-    scored_out = [{
-        "name": r.get("name"),
-        "team": r.get("team"),
-        "rider_url": r.get("rider_url"),
-        "score": round(scores[i], 4),
-        "win_probability": round(probs[i], 2),
-        "specialties_available": True,
-    } for i, r in enumerate(scored_riders)]
-    scored_out.sort(key=lambda x: x["win_probability"], reverse=True)
-    for rank, row in enumerate(scored_out, 1):
-        row["rank"] = rank
-
-    # Append unscored riders (no career data) at the end, prob 0.
-    unscored_out = [{
-        "name": r.get("name"),
-        "team": r.get("team"),
-        "rider_url": r.get("rider_url"),
-        "score": None,
-        "win_probability": 0.0,
-        "specialties_available": False,
-        "rank": None,
-    } for r in riders if not has_career(r)]
-
-    return {
+    base = {
         "race": race.get("name"),
         "race_slug": slug,
         "is_one_day_race": bool(race.get("is_one_day_race")),
         "model": MODEL_LABEL,
-        "method": {
-            "normalisation": "percentile",
-            "probability": "softmax",
-            "softmax_temperature": SOFTMAX_TEMPERATURE,
-            "blend": "career_only",
-            "career_recent_weights": [CAREER_WEIGHT, RECENT_WEIGHT],
-            "gc_stage_weights": [GC_AGG_WEIGHT, STAGE_AGG_WEIGHT],
-        },
+        "method": _method_block(),
         "updated_at": datetime.now().isoformat(),
-        "scored_rider_count": len(scored_out),
-        "unscored_rider_count": len(unscored_out),
-        "riders": scored_out + unscored_out,
+        "scored_rider_count": len(scored_riders),
+        "unscored_rider_count": len(unscored_riders),
     }
+
+    if race.get("is_one_day_race"):
+        scores = score_one_day(race, scored_riders, blended)
+        if scores is None:
+            return None
+        probs = softmax_probabilities(scores)
+        scored_out = [{
+            "name": r.get("name"),
+            "team": r.get("team"),
+            "rider_url": r.get("rider_url"),
+            "score": round(scores[i], 4),
+            "win_probability": round(probs[i], 2),
+            "specialties_available": True,
+        } for i, r in enumerate(scored_riders)]
+        scored_out.sort(key=lambda x: x["win_probability"], reverse=True)
+        for rank, row in enumerate(scored_out, 1):
+            row["rank"] = rank
+        unscored_out = [{
+            "name": r.get("name"),
+            "team": r.get("team"),
+            "rider_url": r.get("rider_url"),
+            "score": None,
+            "win_probability": 0.0,
+            "specialties_available": False,
+            "rank": None,
+        } for r in unscored_riders]
+        base["riders"] = scored_out + unscored_out
+        return base
+
+    # Stage race: per-stage win% + overall GC.
+    result = score_stage_race(race, blended)
+    if result is None:
+        return None
+    stages_meta, per_stage_probs, gc_probs = result
+    n_stages = len(stages_meta)
+
+    # Order scored riders by GC win% (desc) for a stable, readable file.
+    order = sorted(range(len(scored_riders)), key=lambda i: -gc_probs[i])
+    scored_out = []
+    for rank, i in enumerate(order, 1):
+        r = scored_riders[i]
+        scored_out.append({
+            "name": r.get("name"),
+            "team": r.get("team"),
+            "rider_url": r.get("rider_url"),
+            "specialties_available": True,
+            "gc_win": round(gc_probs[i], 2),
+            "gc_rank": rank,
+            "stage_win": [round(per_stage_probs[s][i], 2) for s in range(n_stages)],
+        })
+    unscored_out = [{
+        "name": r.get("name"),
+        "team": r.get("team"),
+        "rider_url": r.get("rider_url"),
+        "specialties_available": False,
+        "gc_win": 0.0,
+        "gc_rank": None,
+        "stage_win": None,
+    } for r in unscored_riders]
+
+    base["stages_meta"] = stages_meta
+    base["riders"] = scored_out + unscored_out
+    return base
 
 
 def main():

@@ -17,1386 +17,2173 @@
       0.4
     ]
   },
-  "updated_at": "2026-06-05T14:59:41.487122",
+  "updated_at": "2026-06-05T20:02:54.560196",
   "scored_rider_count": 153,
   "unscored_rider_count": 0,
+  "stages_meta": [
+    {
+      "stage": 1,
+      "stage_name": "Stage 1 | Gandia - Gandia",
+      "stage_type": "sprint_break"
+    },
+    {
+      "stage": 2,
+      "stage_name": "Stage 2 | Vila-Real - Vila-Real",
+      "stage_type": "sprint_break"
+    },
+    {
+      "stage": 3,
+      "stage_name": "Stage 3 | Agost - La Nucía",
+      "stage_type": "climber"
+    },
+    {
+      "stage": 4,
+      "stage_name": "Stage 4 | Sagunt - Valencia",
+      "stage_type": "sprint_break"
+    }
+  ],
   "riders": [
     {
       "name": "VOLLERING Demi",
       "team": "FDJ United - SUEZ (WTW)",
       "rider_url": "rider/demi-vollering",
-      "score": 0.9974,
-      "win_probability": 4.6,
       "specialties_available": true,
-      "rank": 1
+      "gc_win": 4.6,
+      "gc_rank": 1,
+      "stage_win": [
+        4.45,
+        4.45,
+        5.09,
+        4.45
+      ]
     },
     {
       "name": "MOOLMAN-PASIO Ashleigh",
       "team": "AG Insurance - Soudal Team (WTW)",
       "rider_url": "rider/ashleigh-moolman",
-      "score": 0.9961,
-      "win_probability": 4.56,
       "specialties_available": true,
-      "rank": 2
+      "gc_win": 4.56,
+      "gc_rank": 2,
+      "stage_win": [
+        5.33,
+        5.33,
+        5.07,
+        5.33
+      ]
     },
     {
       "name": "LUDWIG Cecilie Uttrup",
       "team": "CANYON//SRAM zondacrypto (WTW)",
       "rider_url": "rider/cecilie-uttrup-ludwig",
-      "score": 0.9868,
-      "win_probability": 4.28,
       "specialties_available": true,
-      "rank": 3
+      "gc_win": 4.28,
+      "gc_rank": 3,
+      "stage_win": [
+        3.64,
+        3.64,
+        4.59,
+        3.64
+      ]
     },
     {
       "name": "LIPPERT Liane",
       "team": "Movistar Team (WTW)",
       "rider_url": "rider/liane-lippert",
-      "score": 0.9763,
-      "win_probability": 3.98,
       "specialties_available": true,
-      "rank": 4
+      "gc_win": 3.98,
+      "gc_rank": 4,
+      "stage_win": [
+        3.26,
+        3.26,
+        4.29,
+        3.26
+      ]
     },
     {
       "name": "CHABBEY Elise",
       "team": "FDJ United - SUEZ (WTW)",
       "rider_url": "rider/elise-chabbey",
-      "score": 0.975,
-      "win_probability": 3.95,
       "specialties_available": true,
-      "rank": 5
+      "gc_win": 3.95,
+      "gc_rank": 5,
+      "stage_win": [
+        3.18,
+        3.18,
+        4.17,
+        3.18
+      ]
     },
     {
       "name": "MARKUS Riejanne",
       "team": "Lidl - Trek (WTW)",
       "rider_url": "rider/riejanne-markus",
-      "score": 0.9605,
-      "win_probability": 3.58,
       "specialties_available": true,
-      "rank": 6
+      "gc_win": 3.58,
+      "gc_rank": 6,
+      "stage_win": [
+        3.1,
+        3.1,
+        3.38,
+        3.1
+      ]
     },
     {
       "name": "MUZIC Évita",
       "team": "FDJ United - SUEZ (WTW)",
       "rider_url": "rider/evita-muzic",
-      "score": 0.9461,
-      "win_probability": 3.24,
       "specialties_available": true,
-      "rank": 7
+      "gc_win": 3.24,
+      "gc_rank": 7,
+      "stage_win": [
+        1.47,
+        1.47,
+        4.3,
+        1.47
+      ]
     },
     {
       "name": "DE JONG Thalita",
       "team": "Human Powered Health (WTW)",
       "rider_url": "rider/thalita-de-jong",
-      "score": 0.9421,
-      "win_probability": 3.15,
       "specialties_available": true,
-      "rank": 8
+      "gc_win": 3.15,
+      "gc_rank": 8,
+      "stage_win": [
+        3.93,
+        3.93,
+        2.78,
+        3.93
+      ]
     },
     {
       "name": "BALSAMO Elisa",
       "team": "Lidl - Trek (WTW)",
       "rider_url": "rider/elisa-balsamo",
-      "score": 0.9263,
-      "win_probability": 2.83,
       "specialties_available": true,
-      "rank": 9
+      "gc_win": 2.83,
+      "gc_rank": 9,
+      "stage_win": [
+        4.69,
+        4.69,
+        1.05,
+        4.69
+      ]
     },
     {
       "name": "KERBAOL Cédrine",
       "team": "EF Education-Oatly (WTW)",
       "rider_url": "rider/cedrine-kerbaol",
-      "score": 0.9158,
-      "win_probability": 2.64,
       "specialties_available": true,
-      "rank": 10
+      "gc_win": 2.64,
+      "gc_rank": 10,
+      "stage_win": [
+        1.2,
+        1.2,
+        2.6,
+        1.2
+      ]
     },
     {
       "name": "KASTELIJN Yara",
       "team": "Fenix-Premier Tech (WTW)",
       "rider_url": "rider/yara-kastelijn",
-      "score": 0.9158,
-      "win_probability": 2.64,
       "specialties_available": true,
-      "rank": 11
+      "gc_win": 2.64,
+      "gc_rank": 11,
+      "stage_win": [
+        0.93,
+        0.93,
+        3.21,
+        0.93
+      ]
     },
     {
       "name": "WŁODARCZYK Dominika",
       "team": "UAE Team ADQ (WTW)",
       "rider_url": "rider/dominika-wlodarczyk",
-      "score": 0.9026,
-      "win_probability": 2.41,
       "specialties_available": true,
-      "rank": 12
+      "gc_win": 2.41,
+      "gc_rank": 12,
+      "stage_win": [
+        2.68,
+        2.68,
+        1.87,
+        2.68
+      ]
     },
     {
       "name": "GEORGI Pfeiffer",
       "team": "Team Picnic PostNL (WTW)",
       "rider_url": "rider/pfeiffer-georgi",
-      "score": 0.8934,
-      "win_probability": 2.26,
       "specialties_available": true,
-      "rank": 13
+      "gc_win": 2.26,
+      "gc_rank": 13,
+      "stage_win": [
+        2.34,
+        2.34,
+        0.51,
+        2.34
+      ]
     },
     {
       "name": "AALERUD Katrine",
       "team": "Uno-X Mobility (WTW)",
       "rider_url": "rider/katrine-aalerud",
-      "score": 0.8934,
-      "win_probability": 2.26,
       "specialties_available": true,
-      "rank": 14
+      "gc_win": 2.26,
+      "gc_rank": 14,
+      "stage_win": [
+        0.67,
+        0.67,
+        3.21,
+        0.67
+      ]
     },
     {
       "name": "ROOIJAKKERS Pauliena",
       "team": "UAE Team ADQ (WTW)",
       "rider_url": "rider/pauliena-rooijakkers",
-      "score": 0.8882,
-      "win_probability": 2.18,
       "specialties_available": true,
-      "rank": 15
+      "gc_win": 2.18,
+      "gc_rank": 15,
+      "stage_win": [
+        0.43,
+        0.43,
+        3.51,
+        0.43
+      ]
     },
     {
       "name": "OSTOLAZA Usoa",
       "team": "Laboral Kutxa - Fundación Euskadi (PRW)",
       "rider_url": "rider/usoa-ostolaza",
-      "score": 0.8849,
-      "win_probability": 2.14,
       "specialties_available": true,
-      "rank": 16
+      "gc_win": 2.14,
+      "gc_rank": 16,
+      "stage_win": [
+        1.11,
+        1.11,
+        2.47,
+        1.11
+      ]
     },
     {
       "name": "HENDERSON Anna",
       "team": "Lidl - Trek (WTW)",
       "rider_url": "rider/anna-henderson",
-      "score": 0.8789,
-      "win_probability": 2.05,
       "specialties_available": true,
-      "rank": 17
+      "gc_win": 2.05,
+      "gc_rank": 17,
+      "stage_win": [
+        2.26,
+        2.26,
+        1.06,
+        2.26
+      ]
     },
     {
       "name": "FAULKNER Kristen",
       "team": "EF Education-Oatly (WTW)",
       "rider_url": "rider/kristen-faulkner",
-      "score": 0.8776,
-      "win_probability": 2.03,
       "specialties_available": true,
-      "rank": 18
+      "gc_win": 2.03,
+      "gc_rank": 18,
+      "stage_win": [
+        1.74,
+        1.74,
+        2.17,
+        1.74
+      ]
     },
     {
       "name": "GASPARRINI Eleonora Camilla",
       "team": "UAE Team ADQ (WTW)",
       "rider_url": "rider/eleonora-camilla-gasparrini",
-      "score": 0.8618,
-      "win_probability": 1.83,
       "specialties_available": true,
-      "rank": 19
+      "gc_win": 1.83,
+      "gc_rank": 19,
+      "stage_win": [
+        3.41,
+        3.41,
+        1.23,
+        3.41
+      ]
     },
     {
       "name": "BERTIZZOLO Sofia",
       "team": "FDJ United - SUEZ (WTW)",
       "rider_url": "rider/sofia-bertizzolo",
-      "score": 0.8605,
-      "win_probability": 1.81,
       "specialties_available": true,
-      "rank": 20
+      "gc_win": 1.81,
+      "gc_rank": 20,
+      "stage_win": [
+        3.64,
+        3.64,
+        1.37,
+        3.64
+      ]
     },
     {
       "name": "REALINI Gaia",
       "team": "Lidl - Trek (WTW)",
       "rider_url": "rider/gaia-realini",
-      "score": 0.8566,
-      "win_probability": 1.76,
       "specialties_available": true,
-      "rank": 21
+      "gc_win": 1.76,
+      "gc_rank": 21,
+      "stage_win": [
+        0.36,
+        0.36,
+        2.19,
+        0.36
+      ]
     },
     {
       "name": "OTTESTAD Mie Bjørndal",
       "team": "Uno-X Mobility (WTW)",
       "rider_url": "rider/mie-bjorndal-ottestad",
-      "score": 0.8539,
-      "win_probability": 1.73,
       "specialties_available": true,
-      "rank": 22
+      "gc_win": 1.73,
+      "gc_rank": 22,
+      "stage_win": [
+        0.87,
+        0.87,
+        1.23,
+        0.87
+      ]
     },
     {
       "name": "KRAAK Amber",
       "team": "FDJ United - SUEZ (WTW)",
       "rider_url": "rider/amber-kraak",
-      "score": 0.8395,
-      "win_probability": 1.57,
       "specialties_available": true,
-      "rank": 23
+      "gc_win": 1.57,
+      "gc_rank": 23,
+      "stage_win": [
+        1.16,
+        1.16,
+        0.76,
+        1.16
+      ]
     },
     {
       "name": "SKALNIAK-SÓJKA Agnieszka",
       "team": "CANYON//SRAM zondacrypto (WTW)",
       "rider_url": "rider/agnieszka-skalniak-sojka",
-      "score": 0.8382,
-      "win_probability": 1.55,
       "specialties_available": true,
-      "rank": 24
+      "gc_win": 1.55,
+      "gc_rank": 24,
+      "stage_win": [
+        1.85,
+        1.85,
+        0.69,
+        1.85
+      ]
     },
     {
       "name": "GHEKIERE Justine",
       "team": "AG Insurance - Soudal Team (WTW)",
       "rider_url": "rider/justine-ghekiere",
-      "score": 0.8342,
-      "win_probability": 1.51,
       "specialties_available": true,
-      "rank": 25
+      "gc_win": 1.51,
+      "gc_rank": 25,
+      "stage_win": [
+        0.69,
+        0.69,
+        1.38,
+        0.69
+      ]
     },
     {
       "name": "NIEDERMAIER Antonia",
       "team": "CANYON//SRAM zondacrypto (WTW)",
       "rider_url": "rider/antonia-niedermaier",
-      "score": 0.8316,
-      "win_probability": 1.48,
       "specialties_available": true,
-      "rank": 26
+      "gc_win": 1.48,
+      "gc_rank": 26,
+      "stage_win": [
+        0.36,
+        0.36,
+        1.73,
+        0.36
+      ]
     },
     {
       "name": "BORGHESI Letizia",
       "team": "AG Insurance - Soudal Team (WTW)",
       "rider_url": "rider/letizia-borghesi",
-      "score": 0.8211,
-      "win_probability": 1.38,
       "specialties_available": true,
-      "rank": 27
+      "gc_win": 1.38,
+      "gc_rank": 27,
+      "stage_win": [
+        2.61,
+        2.61,
+        0.9,
+        2.61
+      ]
     },
     {
       "name": "ARZUFFI Alice Maria",
       "team": "Laboral Kutxa - Fundación Euskadi (PRW)",
       "rider_url": "rider/alice-maria-arzuffi",
-      "score": 0.8171,
-      "win_probability": 1.35,
       "specialties_available": true,
-      "rank": 28
+      "gc_win": 1.35,
+      "gc_rank": 28,
+      "stage_win": [
+        1.07,
+        1.07,
+        1.25,
+        1.07
+      ]
     },
     {
       "name": "MEIJER Mareille",
       "team": "Movistar Team (WTW)",
       "rider_url": "rider/mareille-meijer",
-      "score": 0.8105,
-      "win_probability": 1.29,
       "specialties_available": true,
-      "rank": 29
+      "gc_win": 1.29,
+      "gc_rank": 29,
+      "stage_win": [
+        0.65,
+        0.65,
+        1.31,
+        0.65
+      ]
     },
     {
       "name": "SMULDERS Silke",
       "team": "Liv AlUla Jayco (WTW)",
       "rider_url": "rider/silke-smulders",
-      "score": 0.8066,
-      "win_probability": 1.25,
       "specialties_available": true,
-      "rank": 30
+      "gc_win": 1.25,
+      "gc_rank": 30,
+      "stage_win": [
+        0.54,
+        0.54,
+        1.03,
+        0.54
+      ]
     },
     {
       "name": "PATERNOSTER Letizia",
       "team": "Liv AlUla Jayco (WTW)",
       "rider_url": "rider/letizia-paternoster",
-      "score": 0.7974,
-      "win_probability": 1.18,
       "specialties_available": true,
-      "rank": 31
+      "gc_win": 1.18,
+      "gc_rank": 31,
+      "stage_win": [
+        1.87,
+        1.87,
+        0.18,
+        1.87
+      ]
     },
     {
       "name": "ŽIGART Urška",
       "team": "AG Insurance - Soudal Team (WTW)",
       "rider_url": "rider/urska-zigart",
-      "score": 0.7875,
-      "win_probability": 1.1,
       "specialties_available": true,
-      "rank": 32
+      "gc_win": 1.1,
+      "gc_rank": 32,
+      "stage_win": [
+        0.15,
+        0.15,
+        2.02,
+        0.15
+      ]
     },
     {
       "name": "GUTIÉRREZ Sheyla",
       "team": "Movistar Team (WTW)",
       "rider_url": "rider/sheyla-gutierrez",
-      "score": 0.7829,
-      "win_probability": 1.07,
       "specialties_available": true,
-      "rank": 33
+      "gc_win": 1.07,
+      "gc_rank": 33,
+      "stage_win": [
+        2.56,
+        2.56,
+        1.28,
+        2.56
+      ]
     },
     {
       "name": "ANDERSSON Caroline",
       "team": "Liv AlUla Jayco (WTW)",
       "rider_url": "rider/caroline-andersson",
-      "score": 0.7763,
-      "win_probability": 1.02,
       "specialties_available": true,
-      "rank": 34
+      "gc_win": 1.02,
+      "gc_rank": 34,
+      "stage_win": [
+        0.92,
+        0.92,
+        0.89,
+        0.92
+      ]
     },
     {
       "name": "FIDANZA Arianna",
       "team": "Laboral Kutxa - Fundación Euskadi (PRW)",
       "rider_url": "rider/arianna-fidanza",
-      "score": 0.7737,
-      "win_probability": 1.0,
       "specialties_available": true,
-      "rank": 35
+      "gc_win": 1.0,
+      "gc_rank": 35,
+      "stage_win": [
+        3.15,
+        3.15,
+        0.9,
+        3.15
+      ]
     },
     {
       "name": "CLAES Lotte",
       "team": "Fenix-Premier Tech (WTW)",
       "rider_url": "rider/lotte-claes",
-      "score": 0.7697,
-      "win_probability": 0.97,
       "specialties_available": true,
-      "rank": 36
+      "gc_win": 0.97,
+      "gc_rank": 36,
+      "stage_win": [
+        0.48,
+        0.48,
+        1.36,
+        0.48
+      ]
     },
     {
       "name": "SQUIBAN Maeva",
       "team": "UAE Team ADQ (WTW)",
       "rider_url": "rider/maeva-squiban",
-      "score": 0.7658,
-      "win_probability": 0.95,
       "specialties_available": true,
-      "rank": 37
+      "gc_win": 0.95,
+      "gc_rank": 37,
+      "stage_win": [
+        0.89,
+        0.89,
+        1.23,
+        0.89
+      ]
     },
     {
       "name": "STULTIENS Sabrina",
       "team": "VolkerWessels Cycling Team (PRW)",
       "rider_url": "rider/sabrina-stultiens",
-      "score": 0.7566,
-      "win_probability": 0.89,
       "specialties_available": true,
-      "rank": 38
+      "gc_win": 0.89,
+      "gc_rank": 38,
+      "stage_win": [
+        0.44,
+        0.44,
+        1.47,
+        0.44
+      ]
     },
     {
       "name": "NOSKOVÁ Nikola",
       "team": "Cofidis Women Team (PRW)",
       "rider_url": "rider/nikola-noskova",
-      "score": 0.7487,
-      "win_probability": 0.84,
       "specialties_available": true,
-      "rank": 39
+      "gc_win": 0.84,
+      "gc_rank": 39,
+      "stage_win": [
+        0.52,
+        0.52,
+        1.48,
+        0.52
+      ]
     },
     {
       "name": "TON Quinty",
       "team": "Liv AlUla Jayco (WTW)",
       "rider_url": "rider/quinty-ton",
-      "score": 0.7342,
-      "win_probability": 0.76,
       "specialties_available": true,
-      "rank": 40
+      "gc_win": 0.76,
+      "gc_rank": 40,
+      "stage_win": [
+        0.54,
+        0.54,
+        0.21,
+        0.54
+      ]
     },
     {
       "name": "BUNEL Marion",
       "team": "Team Visma | Lease a Bike (WTW)",
       "rider_url": "rider/marion-bunel",
-      "score": 0.7224,
-      "win_probability": 0.71,
       "specialties_available": true,
-      "rank": 41
+      "gc_win": 0.71,
+      "gc_rank": 41,
+      "stage_win": [
+        0.11,
+        0.11,
+        1.16,
+        0.11
+      ]
     },
     {
       "name": "BÄCKSTEDT Zoe",
       "team": "CANYON//SRAM zondacrypto (WTW)",
       "rider_url": "rider/zoe-backstedt",
-      "score": 0.7158,
-      "win_probability": 0.67,
       "specialties_available": true,
-      "rank": 42
+      "gc_win": 0.67,
+      "gc_rank": 42,
+      "stage_win": [
+        0.32,
+        0.32,
+        0.15,
+        0.32
+      ]
     },
     {
       "name": "SCHWEINBERGER Kathrin",
       "team": "Human Powered Health (WTW)",
       "rider_url": "rider/kathrin-schweinberger",
-      "score": 0.7066,
-      "win_probability": 0.63,
       "specialties_available": true,
-      "rank": 43
+      "gc_win": 0.63,
+      "gc_rank": 43,
+      "stage_win": [
+        1.15,
+        1.15,
+        0.16,
+        1.15
+      ]
     },
     {
       "name": "COPPONI Clara",
       "team": "Lidl - Trek (WTW)",
       "rider_url": "rider/clara-copponi",
-      "score": 0.7039,
-      "win_probability": 0.62,
       "specialties_available": true,
-      "rank": 44
+      "gc_win": 0.62,
+      "gc_rank": 44,
+      "stage_win": [
+        0.9,
+        0.9,
+        0.06,
+        0.9
+      ]
     },
     {
       "name": "GÅSKJENN Ingvild",
       "team": "Uno-X Mobility (WTW)",
       "rider_url": "rider/ingvild-gaskjenn",
-      "score": 0.702,
-      "win_probability": 0.61,
       "specialties_available": true,
-      "rank": 45
+      "gc_win": 0.61,
+      "gc_rank": 45,
+      "stage_win": [
+        0.89,
+        0.89,
+        0.52,
+        0.89
+      ]
     },
     {
       "name": "SILVESTRI Debora",
       "team": "Laboral Kutxa - Fundación Euskadi (PRW)",
       "rider_url": "rider/debora-silvestri",
-      "score": 0.6816,
-      "win_probability": 0.53,
       "specialties_available": true,
-      "rank": 46
+      "gc_win": 0.53,
+      "gc_rank": 46,
+      "stage_win": [
+        0.73,
+        0.73,
+        0.94,
+        0.73
+      ]
     },
     {
       "name": "DICKSON Lauren",
       "team": "FDJ United - SUEZ (WTW)",
       "rider_url": "rider/lauren-dickson",
-      "score": 0.6724,
-      "win_probability": 0.5,
       "specialties_available": true,
-      "rank": 47
+      "gc_win": 0.5,
+      "gc_rank": 47,
+      "stage_win": [
+        0.2,
+        0.2,
+        0.65,
+        0.2
+      ]
     },
     {
       "name": "GONTOVA Nadia",
       "team": "Liv AlUla Jayco (WTW)",
       "rider_url": "rider/nadia-gontova",
-      "score": 0.6704,
-      "win_probability": 0.49,
       "specialties_available": true,
-      "rank": 48
+      "gc_win": 0.49,
+      "gc_rank": 48,
+      "stage_win": [
+        0.32,
+        0.32,
+        0.78,
+        0.32
+      ]
     },
     {
       "name": "FERGUSON Cat",
       "team": "Movistar Team (WTW)",
       "rider_url": "rider/cat-ferguson",
-      "score": 0.6618,
-      "win_probability": 0.47,
       "specialties_available": true,
-      "rank": 49
-    },
-    {
-      "name": "VALLIERES Magdeleine",
-      "team": "EF Education-Oatly (WTW)",
-      "rider_url": "rider/magdeleine-vallieres",
-      "score": 0.6553,
-      "win_probability": 0.45,
-      "specialties_available": true,
-      "rank": 50
+      "gc_win": 0.47,
+      "gc_rank": 49,
+      "stage_win": [
+        1.03,
+        1.03,
+        0.16,
+        1.03
+      ]
     },
     {
       "name": "WILLIAMS Lily",
       "team": "Human Powered Health (WTW)",
       "rider_url": "rider/lily-williams",
-      "score": 0.6579,
-      "win_probability": 0.45,
       "specialties_available": true,
-      "rank": 51
+      "gc_win": 0.45,
+      "gc_rank": 50,
+      "stage_win": [
+        1.53,
+        1.53,
+        0.21,
+        1.53
+      ]
+    },
+    {
+      "name": "VALLIERES Magdeleine",
+      "team": "EF Education-Oatly (WTW)",
+      "rider_url": "rider/magdeleine-vallieres",
+      "specialties_available": true,
+      "gc_win": 0.45,
+      "gc_rank": 51,
+      "stage_win": [
+        0.49,
+        0.49,
+        1.08,
+        0.49
+      ]
     },
     {
       "name": "QUAGLIOTTO Nadia",
       "team": "Cofidis Women Team (PRW)",
       "rider_url": "rider/nadia-quagliotto",
-      "score": 0.65,
-      "win_probability": 0.43,
       "specialties_available": true,
-      "rank": 52
+      "gc_win": 0.43,
+      "gc_rank": 52,
+      "stage_win": [
+        1.47,
+        1.47,
+        0.79,
+        1.47
+      ]
     },
     {
       "name": "CURINIER Léa",
       "team": "FDJ United - SUEZ (WTW)",
       "rider_url": "rider/lea-curinier",
-      "score": 0.6461,
-      "win_probability": 0.42,
       "specialties_available": true,
-      "rank": 53
+      "gc_win": 0.42,
+      "gc_rank": 53,
+      "stage_win": [
+        0.32,
+        0.32,
+        0.56,
+        0.32
+      ]
     },
     {
       "name": "NOOIJEN Lieke",
       "team": "Team Visma | Lease a Bike (WTW)",
       "rider_url": "rider/lieke-nooijen",
-      "score": 0.6461,
-      "win_probability": 0.42,
       "specialties_available": true,
-      "rank": 54
+      "gc_win": 0.42,
+      "gc_rank": 54,
+      "stage_win": [
+        0.49,
+        0.49,
+        0.14,
+        0.49
+      ]
     },
     {
       "name": "REIJNHOUT Rosita",
       "team": "Team Visma | Lease a Bike (WTW)",
       "rider_url": "rider/rosita-reijnhout",
-      "score": 0.6342,
-      "win_probability": 0.39,
       "specialties_available": true,
-      "rank": 55
-    },
-    {
-      "name": "BERTEAU Victoire",
-      "team": "Cofidis Women Team (PRW)",
-      "rider_url": "rider/victoire-berteau",
-      "score": 0.6276,
-      "win_probability": 0.37,
-      "specialties_available": true,
-      "rank": 56
+      "gc_win": 0.39,
+      "gc_rank": 55,
+      "stage_win": [
+        0.17,
+        0.17,
+        0.42,
+        0.17
+      ]
     },
     {
       "name": "KNIJNENBURG Anne",
       "team": "VolkerWessels Cycling Team (PRW)",
       "rider_url": "rider/anne-knijnenburg",
-      "score": 0.6289,
-      "win_probability": 0.37,
       "specialties_available": true,
-      "rank": 57
+      "gc_win": 0.37,
+      "gc_rank": 56,
+      "stage_win": [
+        0.23,
+        0.23,
+        0.11,
+        0.23
+      ]
+    },
+    {
+      "name": "BERTEAU Victoire",
+      "team": "Cofidis Women Team (PRW)",
+      "rider_url": "rider/victoire-berteau",
+      "specialties_available": true,
+      "gc_win": 0.37,
+      "gc_rank": 57,
+      "stage_win": [
+        0.97,
+        0.97,
+        0.08,
+        0.97
+      ]
     },
     {
       "name": "MIERMONT Dilyxine",
       "team": "Team Picnic PostNL (WTW)",
       "rider_url": "rider/dilyxine-miermont",
-      "score": 0.6171,
-      "win_probability": 0.34,
       "specialties_available": true,
-      "rank": 58
+      "gc_win": 0.34,
+      "gc_rank": 58,
+      "stage_win": [
+        0.09,
+        0.09,
+        0.65,
+        0.09
+      ]
     },
     {
       "name": "HAUGSET Sigrid Ytterhus",
       "team": "Uno-X Mobility (WTW)",
       "rider_url": "rider/sigrid-ytterhus-haugset",
-      "score": 0.6132,
-      "win_probability": 0.33,
       "specialties_available": true,
-      "rank": 59
+      "gc_win": 0.33,
+      "gc_rank": 59,
+      "stage_win": [
+        0.3,
+        0.3,
+        0.35,
+        0.3
+      ]
     },
     {
       "name": "LUDWIG Hannah",
       "team": "Cofidis Women Team (PRW)",
       "rider_url": "rider/hannah-ludwig",
-      "score": 0.6053,
-      "win_probability": 0.32,
       "specialties_available": true,
-      "rank": 60
+      "gc_win": 0.32,
+      "gc_rank": 60,
+      "stage_win": [
+        0.06,
+        0.06,
+        0.55,
+        0.06
+      ]
     },
     {
       "name": "GRANGIER India",
       "team": "St Michel - Preference Home - Auber93 (PRW)",
       "rider_url": "rider/india-grangier",
-      "score": 0.6026,
-      "win_probability": 0.31,
       "specialties_available": true,
-      "rank": 61
+      "gc_win": 0.31,
+      "gc_rank": 61,
+      "stage_win": [
+        0.55,
+        0.55,
+        0.22,
+        0.55
+      ]
     },
     {
       "name": "FRANZ Heidi",
       "team": "St Michel - Preference Home - Auber93 (PRW)",
       "rider_url": "rider/heidi-franz",
-      "score": 0.5967,
-      "win_probability": 0.3,
       "specialties_available": true,
-      "rank": 62
+      "gc_win": 0.3,
+      "gc_rank": 62,
+      "stage_win": [
+        0.66,
+        0.66,
+        0.4,
+        0.66
+      ]
     },
     {
       "name": "OUDEMAN Maud",
       "team": "Team Visma | Lease a Bike (WTW)",
       "rider_url": "rider/maud-oudeman",
-      "score": 0.5908,
-      "win_probability": 0.29,
       "specialties_available": true,
-      "rank": 63
+      "gc_win": 0.29,
+      "gc_rank": 63,
+      "stage_win": [
+        0.05,
+        0.05,
+        0.25,
+        0.05
+      ]
     },
     {
       "name": "JØRGENSEN Tiril",
       "team": "Laboral Kutxa - Fundación Euskadi (PRW)",
       "rider_url": "rider/tiril-jorgensen",
-      "score": 0.5855,
-      "win_probability": 0.28,
       "specialties_available": true,
-      "rank": 64
+      "gc_win": 0.28,
+      "gc_rank": 64,
+      "stage_win": [
+        0.2,
+        0.2,
+        0.21,
+        0.2
+      ]
     },
     {
       "name": "BLANCO Iurani",
       "team": "Human Powered Health (WTW)",
       "rider_url": "rider/iurani-blanco",
-      "score": 0.5842,
-      "win_probability": 0.27,
       "specialties_available": true,
-      "rank": 65
+      "gc_win": 0.27,
+      "gc_rank": 65,
+      "stage_win": [
+        0.31,
+        0.31,
+        0.55,
+        0.31
+      ]
     },
     {
       "name": "COSTON Morgane",
       "team": "Ma Petite Entreprise (PRW)",
       "rider_url": "rider/morgane-coston",
-      "score": 0.5842,
-      "win_probability": 0.27,
       "specialties_available": true,
-      "rank": 66
+      "gc_win": 0.27,
+      "gc_rank": 66,
+      "stage_win": [
+        0.16,
+        0.16,
+        0.83,
+        0.16
+      ]
     },
     {
       "name": "JASKULSKA Marta",
       "team": "Human Powered Health (WTW)",
       "rider_url": "rider/marta-jaskulska",
-      "score": 0.5757,
-      "win_probability": 0.26,
       "specialties_available": true,
-      "rank": 67
+      "gc_win": 0.26,
+      "gc_rank": 67,
+      "stage_win": [
+        0.5,
+        0.5,
+        0.18,
+        0.5
+      ]
     },
     {
       "name": "PEPERKAMP Esmée",
       "team": "VolkerWessels Cycling Team (PRW)",
       "rider_url": "rider/esmee-peperkamp",
-      "score": 0.5618,
-      "win_probability": 0.24,
       "specialties_available": true,
-      "rank": 68
+      "gc_win": 0.24,
+      "gc_rank": 68,
+      "stage_win": [
+        0.05,
+        0.05,
+        0.28,
+        0.05
+      ]
     },
     {
       "name": "TOWERS Alice",
       "team": "EF Education-Oatly (WTW)",
       "rider_url": "rider/alice-towers",
-      "score": 0.5605,
-      "win_probability": 0.23,
       "specialties_available": true,
-      "rank": 69
+      "gc_win": 0.23,
+      "gc_rank": 69,
+      "stage_win": [
+        0.1,
+        0.1,
+        0.21,
+        0.1
+      ]
     },
     {
       "name": "DE SCHEPPER Lore",
       "team": "AG Insurance - Soudal Team (WTW)",
       "rider_url": "rider/lore-de-schepper",
-      "score": 0.5592,
-      "win_probability": 0.23,
       "specialties_available": true,
-      "rank": 70
-    },
-    {
-      "name": "MARTÍN Sara",
-      "team": "Movistar Team (WTW)",
-      "rider_url": "rider/sara-martin-martin",
-      "score": 0.5276,
-      "win_probability": 0.19,
-      "specialties_available": true,
-      "rank": 71
+      "gc_win": 0.23,
+      "gc_rank": 70,
+      "stage_win": [
+        0.11,
+        0.11,
+        0.51,
+        0.11
+      ]
     },
     {
       "name": "UNEKEN Lonneke",
       "team": "VolkerWessels Cycling Team (PRW)",
       "rider_url": "rider/lonneke-uneken",
-      "score": 0.5303,
-      "win_probability": 0.19,
       "specialties_available": true,
-      "rank": 72
+      "gc_win": 0.19,
+      "gc_rank": 71,
+      "stage_win": [
+        0.29,
+        0.29,
+        0.03,
+        0.29
+      ]
     },
     {
-      "name": "GILLESPIE Lara",
-      "team": "UAE Team ADQ (WTW)",
-      "rider_url": "rider/lara-gillespie",
-      "score": 0.5197,
-      "win_probability": 0.18,
+      "name": "MARTÍN Sara",
+      "team": "Movistar Team (WTW)",
+      "rider_url": "rider/sara-martin-martin",
       "specialties_available": true,
-      "rank": 73
+      "gc_win": 0.19,
+      "gc_rank": 72,
+      "stage_win": [
+        0.22,
+        0.22,
+        0.22,
+        0.22
+      ]
     },
     {
       "name": "ASENCIO Laura",
       "team": "Ma Petite Entreprise (PRW)",
       "rider_url": "rider/laura-asencio",
-      "score": 0.5224,
-      "win_probability": 0.18,
       "specialties_available": true,
-      "rank": 74
+      "gc_win": 0.18,
+      "gc_rank": 73,
+      "stage_win": [
+        0.3,
+        0.3,
+        0.12,
+        0.3
+      ]
+    },
+    {
+      "name": "GILLESPIE Lara",
+      "team": "UAE Team ADQ (WTW)",
+      "rider_url": "rider/lara-gillespie",
+      "specialties_available": true,
+      "gc_win": 0.18,
+      "gc_rank": 74,
+      "stage_win": [
+        0.59,
+        0.59,
+        0.07,
+        0.59
+      ]
     },
     {
       "name": "ANDERSON Solbjørk Minke",
       "team": "EF Education-Oatly (WTW)",
       "rider_url": "rider/solbjork-minke-anderson",
-      "score": 0.5171,
-      "win_probability": 0.17,
       "specialties_available": true,
-      "rank": 75
+      "gc_win": 0.17,
+      "gc_rank": 75,
+      "stage_win": [
+        0.12,
+        0.12,
+        0.22,
+        0.12
+      ]
     },
     {
       "name": "DE WILDE Julie",
       "team": "Fenix-Premier Tech (WTW)",
       "rider_url": "rider/julie-de-wilde",
-      "score": 0.5171,
-      "win_probability": 0.17,
       "specialties_available": true,
-      "rank": 76
+      "gc_win": 0.17,
+      "gc_rank": 76,
+      "stage_win": [
+        0.58,
+        0.58,
+        0.05,
+        0.58
+      ]
     },
     {
       "name": "SOTO Catalina Anais",
       "team": "Laboral Kutxa - Fundación Euskadi (PRW)",
       "rider_url": "rider/catalina-anais-soto-campos",
-      "score": 0.5112,
-      "win_probability": 0.17,
       "specialties_available": true,
-      "rank": 77
+      "gc_win": 0.17,
+      "gc_rank": 77,
+      "stage_win": [
+        1.13,
+        1.13,
+        0.33,
+        1.13
+      ]
     },
     {
       "name": "COUZENS Millie",
       "team": "Fenix-Premier Tech (WTW)",
       "rider_url": "rider/millie-couzens",
-      "score": 0.5092,
-      "win_probability": 0.16,
       "specialties_available": true,
-      "rank": 78
+      "gc_win": 0.16,
+      "gc_rank": 78,
+      "stage_win": [
+        0.35,
+        0.35,
+        0.07,
+        0.35
+      ]
     },
     {
       "name": "KUMIĘGA Karolina",
       "team": "St Michel - Preference Home - Auber93 (PRW)",
       "rider_url": "rider/karolina-kumiega",
-      "score": 0.5079,
-      "win_probability": 0.16,
       "specialties_available": true,
-      "rank": 79
-    },
-    {
-      "name": "KOLESAVA Anastasiya",
-      "team": "CANYON//SRAM zondacrypto (WTW)",
-      "rider_url": "rider/anastasiya-kolesava",
-      "score": 0.4974,
-      "win_probability": 0.15,
-      "specialties_available": true,
-      "rank": 80
-    },
-    {
-      "name": "CHLADOŇOVÁ Viktória",
-      "team": "Team Visma | Lease a Bike (WTW)",
-      "rider_url": "rider/viktoria-chladonova",
-      "score": 0.4921,
-      "win_probability": 0.15,
-      "specialties_available": true,
-      "rank": 81
+      "gc_win": 0.16,
+      "gc_rank": 79,
+      "stage_win": [
+        0.48,
+        0.48,
+        0.07,
+        0.48
+      ]
     },
     {
       "name": "RIEDMANN Linda",
       "team": "Lotto Intermarché Ladies (PRW)",
       "rider_url": "rider/linda-riedmann",
-      "score": 0.4974,
-      "win_probability": 0.15,
       "specialties_available": true,
-      "rank": 82
+      "gc_win": 0.15,
+      "gc_rank": 80,
+      "stage_win": [
+        0.32,
+        0.32,
+        0.05,
+        0.32
+      ]
+    },
+    {
+      "name": "KOLESAVA Anastasiya",
+      "team": "CANYON//SRAM zondacrypto (WTW)",
+      "rider_url": "rider/anastasiya-kolesava",
+      "specialties_available": true,
+      "gc_win": 0.15,
+      "gc_rank": 81,
+      "stage_win": [
+        0.35,
+        0.35,
+        0.2,
+        0.35
+      ]
+    },
+    {
+      "name": "CHLADOŇOVÁ Viktória",
+      "team": "Team Visma | Lease a Bike (WTW)",
+      "rider_url": "rider/viktoria-chladonova",
+      "specialties_available": true,
+      "gc_win": 0.15,
+      "gc_rank": 82,
+      "stage_win": [
+        0.05,
+        0.05,
+        0.3,
+        0.05
+      ]
     },
     {
       "name": "VEENHOVEN Nienke",
       "team": "Team Visma | Lease a Bike (WTW)",
       "rider_url": "rider/nienke-veenhoven",
-      "score": 0.4842,
-      "win_probability": 0.14,
       "specialties_available": true,
-      "rank": 83
+      "gc_win": 0.14,
+      "gc_rank": 83,
+      "stage_win": [
+        0.28,
+        0.28,
+        0.03,
+        0.28
+      ]
     },
     {
       "name": "TONETTI Cristina",
       "team": "Laboral Kutxa - Fundación Euskadi (PRW)",
       "rider_url": "rider/cristina-tonetti",
-      "score": 0.4842,
-      "win_probability": 0.14,
       "specialties_available": true,
-      "rank": 84
-    },
-    {
-      "name": "TALBOT Josie",
-      "team": "Liv AlUla Jayco (WTW)",
-      "rider_url": "rider/josie-talbot",
-      "score": 0.4539,
-      "win_probability": 0.11,
-      "specialties_available": true,
-      "rank": 85
+      "gc_win": 0.14,
+      "gc_rank": 84,
+      "stage_win": [
+        0.46,
+        0.46,
+        0.1,
+        0.46
+      ]
     },
     {
       "name": "SCHREMPF Carina",
       "team": "Fenix-Premier Tech (WTW)",
       "rider_url": "rider/carina-schrempf",
-      "score": 0.4539,
-      "win_probability": 0.11,
       "specialties_available": true,
-      "rank": 86
+      "gc_win": 0.11,
+      "gc_rank": 85,
+      "stage_win": [
+        0.14,
+        0.14,
+        0.07,
+        0.14
+      ]
+    },
+    {
+      "name": "TALBOT Josie",
+      "team": "Liv AlUla Jayco (WTW)",
+      "rider_url": "rider/josie-talbot",
+      "specialties_available": true,
+      "gc_win": 0.11,
+      "gc_rank": 86,
+      "stage_win": [
+        0.24,
+        0.24,
+        0.08,
+        0.24
+      ]
     },
     {
       "name": "RIJNBEEK Maud",
       "team": "VolkerWessels Cycling Team (PRW)",
       "rider_url": "rider/maud-rijnbeek",
-      "score": 0.4434,
-      "win_probability": 0.11,
       "specialties_available": true,
-      "rank": 87
+      "gc_win": 0.11,
+      "gc_rank": 87,
+      "stage_win": [
+        0.2,
+        0.2,
+        0.05,
+        0.2
+      ]
     },
     {
       "name": "MOLENAAR Laura",
       "team": "VolkerWessels Cycling Team (PRW)",
       "rider_url": "rider/laura-molenaar",
-      "score": 0.4211,
-      "win_probability": 0.09,
       "specialties_available": true,
-      "rank": 88
-    },
-    {
-      "name": "VAN DER DUIN Maike",
-      "team": "CANYON//SRAM zondacrypto (WTW)",
-      "rider_url": "rider/maike-van-der-duin",
-      "score": 0.4053,
-      "win_probability": 0.08,
-      "specialties_available": true,
-      "rank": 89
-    },
-    {
-      "name": "BARKER Elinor",
-      "team": "Uno-X Mobility (WTW)",
-      "rider_url": "rider/elinor-barker",
-      "score": 0.4105,
-      "win_probability": 0.08,
-      "specialties_available": true,
-      "rank": 90
+      "gc_win": 0.09,
+      "gc_rank": 88,
+      "stage_win": [
+        0.14,
+        0.14,
+        0.07,
+        0.14
+      ]
     },
     {
       "name": "MUL Malwina",
       "team": "Cofidis Women Team (PRW)",
       "rider_url": "rider/malwina-mul",
-      "score": 0.4118,
-      "win_probability": 0.08,
       "specialties_available": true,
-      "rank": 91
+      "gc_win": 0.08,
+      "gc_rank": 89,
+      "stage_win": [
+        0.3,
+        0.3,
+        0.22,
+        0.3
+      ]
+    },
+    {
+      "name": "BARKER Elinor",
+      "team": "Uno-X Mobility (WTW)",
+      "rider_url": "rider/elinor-barker",
+      "specialties_available": true,
+      "gc_win": 0.08,
+      "gc_rank": 90,
+      "stage_win": [
+        0.1,
+        0.1,
+        0.04,
+        0.1
+      ]
+    },
+    {
+      "name": "VAN DER DUIN Maike",
+      "team": "CANYON//SRAM zondacrypto (WTW)",
+      "rider_url": "rider/maike-van-der-duin",
+      "specialties_available": true,
+      "gc_win": 0.08,
+      "gc_rank": 91,
+      "stage_win": [
+        0.28,
+        0.28,
+        0.02,
+        0.28
+      ]
     },
     {
       "name": "SEGATO Gaia",
       "team": "Vini Fantini - BePink (CTW)",
       "rider_url": "rider/gaia-segato",
-      "score": 0.3947,
-      "win_probability": 0.08,
       "specialties_available": true,
-      "rank": 92
+      "gc_win": 0.08,
+      "gc_rank": 92,
+      "stage_win": [
+        0.1,
+        0.1,
+        0.13,
+        0.1
+      ]
     },
     {
       "name": "STORRIE Becky",
       "team": "Team Picnic PostNL (WTW)",
       "rider_url": "rider/becky-storrie",
-      "score": 0.3908,
-      "win_probability": 0.07,
       "specialties_available": true,
-      "rank": 93
+      "gc_win": 0.07,
+      "gc_rank": 93,
+      "stage_win": [
+        0.01,
+        0.01,
+        0.08,
+        0.01
+      ]
     },
     {
       "name": "BEGO Julie",
       "team": "Cofidis Women Team (PRW)",
       "rider_url": "rider/julie-bego",
-      "score": 0.3842,
-      "win_probability": 0.07,
       "specialties_available": true,
-      "rank": 94
-    },
-    {
-      "name": "MAGALHÃES Ana Vitória",
-      "team": "Movistar Team (WTW)",
-      "rider_url": "rider/ana-vitoria-gouvea-vieira-almeida-magalhaes",
-      "score": 0.3533,
-      "win_probability": 0.06,
-      "specialties_available": true,
-      "rank": 95
-    },
-    {
-      "name": "RYO Titia",
-      "team": "Human Powered Health (WTW)",
-      "rider_url": "rider/titia-ryo",
-      "score": 0.3513,
-      "win_probability": 0.06,
-      "specialties_available": true,
-      "rank": 96
-    },
-    {
-      "name": "APPLETON Talia",
-      "team": "Liv AlUla Jayco (WTW)",
-      "rider_url": "rider/talia-appleton",
-      "score": 0.3579,
-      "win_probability": 0.06,
-      "specialties_available": true,
-      "rank": 97
-    },
-    {
-      "name": "ERASO Idoia",
-      "team": "Laboral Kutxa - Fundación Euskadi (PRW)",
-      "rider_url": "rider/idoia-eraso-lasa",
-      "score": 0.3513,
-      "win_probability": 0.06,
-      "specialties_available": true,
-      "rank": 98
-    },
-    {
-      "name": "COMTE Ema",
-      "team": "Cofidis Women Team (PRW)",
-      "rider_url": "rider/ema-comte",
-      "score": 0.35,
-      "win_probability": 0.06,
-      "specialties_available": true,
-      "rank": 99
+      "gc_win": 0.07,
+      "gc_rank": 94,
+      "stage_win": [
+        0.09,
+        0.09,
+        0.23,
+        0.09
+      ]
     },
     {
       "name": "VALTULINI Elisa",
       "team": "Vini Fantini - BePink (CTW)",
       "rider_url": "rider/elisa-valtulini",
-      "score": 0.3658,
-      "win_probability": 0.06,
       "specialties_available": true,
-      "rank": 100
+      "gc_win": 0.06,
+      "gc_rank": 95,
+      "stage_win": [
+        0.11,
+        0.11,
+        0.13,
+        0.11
+      ]
     },
     {
-      "name": "GERY Célia",
-      "team": "FDJ United - SUEZ (WTW)",
-      "rider_url": "rider/celia-gery",
-      "score": 0.3401,
-      "win_probability": 0.05,
+      "name": "APPLETON Talia",
+      "team": "Liv AlUla Jayco (WTW)",
+      "rider_url": "rider/talia-appleton",
       "specialties_available": true,
-      "rank": 101
+      "gc_win": 0.06,
+      "gc_rank": 96,
+      "stage_win": [
+        0.02,
+        0.02,
+        0.11,
+        0.02
+      ]
     },
     {
-      "name": "BERTON Nina",
-      "team": "EF Education-Oatly (WTW)",
-      "rider_url": "rider/nina-berton",
-      "score": 0.3191,
-      "win_probability": 0.05,
+      "name": "MAGALHÃES Ana Vitória",
+      "team": "Movistar Team (WTW)",
+      "rider_url": "rider/ana-vitoria-gouvea-vieira-almeida-magalhaes",
       "specialties_available": true,
-      "rank": 102
+      "gc_win": 0.06,
+      "gc_rank": 97,
+      "stage_win": [
+        0.08,
+        0.08,
+        0.1,
+        0.08
+      ]
     },
     {
-      "name": "MOERMAN Tess",
-      "team": "AG Insurance - Soudal Team (WTW)",
-      "rider_url": "rider/tess-moerman",
-      "score": 0.3257,
-      "win_probability": 0.05,
+      "name": "RYO Titia",
+      "team": "Human Powered Health (WTW)",
+      "rider_url": "rider/titia-ryo",
       "specialties_available": true,
-      "rank": 103
+      "gc_win": 0.06,
+      "gc_rank": 98,
+      "stage_win": [
+        0.08,
+        0.08,
+        0.08,
+        0.08
+      ]
     },
     {
-      "name": "WOLFF Imogen",
-      "team": "Team Visma | Lease a Bike (WTW)",
-      "rider_url": "rider/imogen-wolff",
-      "score": 0.3395,
-      "win_probability": 0.05,
+      "name": "ERASO Idoia",
+      "team": "Laboral Kutxa - Fundación Euskadi (PRW)",
+      "rider_url": "rider/idoia-eraso-lasa",
       "specialties_available": true,
-      "rank": 104
+      "gc_win": 0.06,
+      "gc_rank": 99,
+      "stage_win": [
+        0.05,
+        0.05,
+        0.16,
+        0.05
+      ]
+    },
+    {
+      "name": "COMTE Ema",
+      "team": "Cofidis Women Team (PRW)",
+      "rider_url": "rider/ema-comte",
+      "specialties_available": true,
+      "gc_win": 0.06,
+      "gc_rank": 100,
+      "stage_win": [
+        0.04,
+        0.04,
+        0.12,
+        0.04
+      ]
     },
     {
       "name": "VAN WERSCH Anna",
       "team": "Lotto Intermarché Ladies (PRW)",
       "rider_url": "rider/anna-van-wersch",
-      "score": 0.3408,
-      "win_probability": 0.05,
       "specialties_available": true,
-      "rank": 105
+      "gc_win": 0.05,
+      "gc_rank": 101,
+      "stage_win": [
+        0.15,
+        0.15,
+        0.03,
+        0.15
+      ]
     },
     {
-      "name": "MOORS Fleur",
-      "team": "Lidl - Trek (WTW)",
-      "rider_url": "rider/fleur-moors",
-      "score": 0.2868,
-      "win_probability": 0.04,
+      "name": "GERY Célia",
+      "team": "FDJ United - SUEZ (WTW)",
+      "rider_url": "rider/celia-gery",
       "specialties_available": true,
-      "rank": 106
+      "gc_win": 0.05,
+      "gc_rank": 102,
+      "stage_win": [
+        0.2,
+        0.2,
+        0.09,
+        0.2
+      ]
     },
     {
-      "name": "KAGEVI Stina",
+      "name": "WOLFF Imogen",
+      "team": "Team Visma | Lease a Bike (WTW)",
+      "rider_url": "rider/imogen-wolff",
+      "specialties_available": true,
+      "gc_win": 0.05,
+      "gc_rank": 103,
+      "stage_win": [
+        0.06,
+        0.06,
+        0.02,
+        0.06
+      ]
+    },
+    {
+      "name": "MOERMAN Tess",
+      "team": "AG Insurance - Soudal Team (WTW)",
+      "rider_url": "rider/tess-moerman",
+      "specialties_available": true,
+      "gc_win": 0.05,
+      "gc_rank": 104,
+      "stage_win": [
+        0.03,
+        0.03,
+        0.16,
+        0.03
+      ]
+    },
+    {
+      "name": "BERTON Nina",
       "team": "EF Education-Oatly (WTW)",
-      "rider_url": "rider/stina-kagevi",
-      "score": 0.302,
-      "win_probability": 0.04,
+      "rider_url": "rider/nina-berton",
       "specialties_available": true,
-      "rank": 107
-    },
-    {
-      "name": "MASETTI Gaia",
-      "team": "Team Picnic PostNL (WTW)",
-      "rider_url": "rider/gaia-masetti",
-      "score": 0.3033,
-      "win_probability": 0.04,
-      "specialties_available": true,
-      "rank": 108
-    },
-    {
-      "name": "VAN SINAEY Xaydée",
-      "team": "Fenix-Premier Tech (WTW)",
-      "rider_url": "rider/xaydee-van-sinaey",
-      "score": 0.2921,
-      "win_probability": 0.04,
-      "specialties_available": true,
-      "rank": 109
-    },
-    {
-      "name": "MEERT Marieke",
-      "team": "Lotto Intermarché Ladies (PRW)",
-      "rider_url": "rider/marieke-meert",
-      "score": 0.2961,
-      "win_probability": 0.04,
-      "specialties_available": true,
-      "rank": 110
+      "gc_win": 0.05,
+      "gc_rank": 105,
+      "stage_win": [
+        0.1,
+        0.1,
+        0.04,
+        0.1
+      ]
     },
     {
       "name": "ABGRALL Noémie",
       "team": "Ma Petite Entreprise (PRW)",
       "rider_url": "rider/noemie-abgrall",
-      "score": 0.3132,
-      "win_probability": 0.04,
       "specialties_available": true,
-      "rank": 111
+      "gc_win": 0.04,
+      "gc_rank": 106,
+      "stage_win": [
+        0.07,
+        0.07,
+        0.12,
+        0.07
+      ]
     },
     {
       "name": "JENČUŠOVÁ Nora",
       "team": "Vini Fantini - BePink (CTW)",
       "rider_url": "rider/nora-jencusova",
-      "score": 0.3092,
-      "win_probability": 0.04,
       "specialties_available": true,
-      "rank": 112
+      "gc_win": 0.04,
+      "gc_rank": 107,
+      "stage_win": [
+        0.06,
+        0.06,
+        0.03,
+        0.06
+      ]
     },
     {
-      "name": "DE KEERSMAEKER Audrey",
+      "name": "MASETTI Gaia",
       "team": "Team Picnic PostNL (WTW)",
-      "rider_url": "rider/audrey-de-keersmaeker",
-      "score": 0.2651,
-      "win_probability": 0.03,
+      "rider_url": "rider/gaia-masetti",
       "specialties_available": true,
-      "rank": 113
+      "gc_win": 0.04,
+      "gc_rank": 108,
+      "stage_win": [
+        0.09,
+        0.09,
+        0.02,
+        0.09
+      ]
     },
     {
-      "name": "LONDOÑO Juliana",
-      "team": "Team Picnic PostNL (WTW)",
-      "rider_url": "rider/juliana-londono-david",
-      "score": 0.2559,
-      "win_probability": 0.03,
+      "name": "KAGEVI Stina",
+      "team": "EF Education-Oatly (WTW)",
+      "rider_url": "rider/stina-kagevi",
       "specialties_available": true,
-      "rank": 114
+      "gc_win": 0.04,
+      "gc_rank": 109,
+      "stage_win": [
+        0.03,
+        0.03,
+        0.03,
+        0.03
+      ]
     },
     {
-      "name": "SADNIK Katharina",
-      "team": "Team Visma | Lease a Bike (WTW)",
-      "rider_url": "rider/katharina-sadnik",
-      "score": 0.2599,
-      "win_probability": 0.03,
-      "specialties_available": true,
-      "rank": 115
-    },
-    {
-      "name": "MORIER Émilie",
-      "team": "St Michel - Preference Home - Auber93 (PRW)",
-      "rider_url": "rider/emilie-morier",
-      "score": 0.2461,
-      "win_probability": 0.03,
-      "specialties_available": true,
-      "rank": 116
-    },
-    {
-      "name": "EBRAS Elisabeth",
+      "name": "MEERT Marieke",
       "team": "Lotto Intermarché Ladies (PRW)",
-      "rider_url": "rider/elisabeth-ebras",
-      "score": 0.2618,
-      "win_probability": 0.03,
+      "rider_url": "rider/marieke-meert",
       "specialties_available": true,
-      "rank": 117
+      "gc_win": 0.04,
+      "gc_rank": 110,
+      "stage_win": [
+        0.19,
+        0.19,
+        0.06,
+        0.19
+      ]
     },
     {
-      "name": "HINOJOSA Romina",
-      "team": "Lotto Intermarché Ladies (PRW)",
-      "rider_url": "rider/romina-hinojosa",
-      "score": 0.2388,
-      "win_probability": 0.03,
+      "name": "VAN SINAEY Xaydée",
+      "team": "Fenix-Premier Tech (WTW)",
+      "rider_url": "rider/xaydee-van-sinaey",
       "specialties_available": true,
-      "rank": 118
+      "gc_win": 0.04,
+      "gc_rank": 111,
+      "stage_win": [
+        0.05,
+        0.05,
+        0.07,
+        0.05
+      ]
     },
     {
-      "name": "MAHÉ Océane",
-      "team": "Ma Petite Entreprise (PRW)",
-      "rider_url": "rider/oceane-mahe",
-      "score": 0.2691,
-      "win_probability": 0.03,
+      "name": "MOORS Fleur",
+      "team": "Lidl - Trek (WTW)",
+      "rider_url": "rider/fleur-moors",
       "specialties_available": true,
-      "rank": 119
+      "gc_win": 0.04,
+      "gc_rank": 112,
+      "stage_win": [
+        0.4,
+        0.4,
+        0.03,
+        0.4
+      ]
     },
     {
       "name": "CAGNAZZO Irene",
       "team": "Vini Fantini - BePink (CTW)",
       "rider_url": "rider/irene-cagnazzo",
-      "score": 0.2711,
-      "win_probability": 0.03,
       "specialties_available": true,
-      "rank": 120
+      "gc_win": 0.03,
+      "gc_rank": 113,
+      "stage_win": [
+        0.05,
+        0.05,
+        0.1,
+        0.05
+      ]
+    },
+    {
+      "name": "MAHÉ Océane",
+      "team": "Ma Petite Entreprise (PRW)",
+      "rider_url": "rider/oceane-mahe",
+      "specialties_available": true,
+      "gc_win": 0.03,
+      "gc_rank": 114,
+      "stage_win": [
+        0.08,
+        0.08,
+        0.05,
+        0.08
+      ]
+    },
+    {
+      "name": "DE KEERSMAEKER Audrey",
+      "team": "Team Picnic PostNL (WTW)",
+      "rider_url": "rider/audrey-de-keersmaeker",
+      "specialties_available": true,
+      "gc_win": 0.03,
+      "gc_rank": 115,
+      "stage_win": [
+        0.05,
+        0.05,
+        0.06,
+        0.05
+      ]
+    },
+    {
+      "name": "EBRAS Elisabeth",
+      "team": "Lotto Intermarché Ladies (PRW)",
+      "rider_url": "rider/elisabeth-ebras",
+      "specialties_available": true,
+      "gc_win": 0.03,
+      "gc_rank": 116,
+      "stage_win": [
+        0.1,
+        0.1,
+        0.01,
+        0.1
+      ]
+    },
+    {
+      "name": "SADNIK Katharina",
+      "team": "Team Visma | Lease a Bike (WTW)",
+      "rider_url": "rider/katharina-sadnik",
+      "specialties_available": true,
+      "gc_win": 0.03,
+      "gc_rank": 117,
+      "stage_win": [
+        0.04,
+        0.04,
+        0.06,
+        0.04
+      ]
+    },
+    {
+      "name": "LONDOÑO Juliana",
+      "team": "Team Picnic PostNL (WTW)",
+      "rider_url": "rider/juliana-londono-david",
+      "specialties_available": true,
+      "gc_win": 0.03,
+      "gc_rank": 118,
+      "stage_win": [
+        0.09,
+        0.09,
+        0.05,
+        0.09
+      ]
+    },
+    {
+      "name": "MORIER Émilie",
+      "team": "St Michel - Preference Home - Auber93 (PRW)",
+      "rider_url": "rider/emilie-morier",
+      "specialties_available": true,
+      "gc_win": 0.03,
+      "gc_rank": 119,
+      "stage_win": [
+        0.02,
+        0.02,
+        0.09,
+        0.02
+      ]
+    },
+    {
+      "name": "HINOJOSA Romina",
+      "team": "Lotto Intermarché Ladies (PRW)",
+      "rider_url": "rider/romina-hinojosa",
+      "specialties_available": true,
+      "gc_win": 0.03,
+      "gc_rank": 120,
+      "stage_win": [
+        0.1,
+        0.1,
+        0.06,
+        0.1
+      ]
     },
     {
       "name": "RUIZ PÉREZ Laura",
       "team": "Movistar Team (WTW)",
       "rider_url": "rider/laura-ruiz-perez",
-      "score": 0.2217,
-      "win_probability": 0.02,
       "specialties_available": true,
-      "rank": 121
-    },
-    {
-      "name": "CASTRIQUE Alana",
-      "team": "AG Insurance - Soudal Team (WTW)",
-      "rider_url": "rider/alana-castrique",
-      "score": 0.1664,
-      "win_probability": 0.02,
-      "specialties_available": true,
-      "rank": 122
-    },
-    {
-      "name": "SHAW Eilidh",
-      "team": "UAE Team ADQ (WTW)",
-      "rider_url": "rider/eilidh-shaw",
-      "score": 0.1901,
-      "win_probability": 0.02,
-      "specialties_available": true,
-      "rank": 123
-    },
-    {
-      "name": "GREVE Alberte",
-      "team": "Uno-X Mobility (WTW)",
-      "rider_url": "rider/alberte-greve",
-      "score": 0.1586,
-      "win_probability": 0.02,
-      "specialties_available": true,
-      "rank": 124
-    },
-    {
-      "name": "MULLER Solène",
-      "team": "St Michel - Preference Home - Auber93 (PRW)",
-      "rider_url": "rider/solene-muller",
-      "score": 0.1796,
-      "win_probability": 0.02,
-      "specialties_available": true,
-      "rank": 125
-    },
-    {
-      "name": "DE CLERCQ Katrijn",
-      "team": "Lotto Intermarché Ladies (PRW)",
-      "rider_url": "rider/katrijn-de-clercq",
-      "score": 0.1664,
-      "win_probability": 0.02,
-      "specialties_available": true,
-      "rank": 126
+      "gc_win": 0.02,
+      "gc_rank": 121,
+      "stage_win": [
+        0.04,
+        0.04,
+        0.02,
+        0.04
+      ]
     },
     {
       "name": "LATIMIER Clémence",
       "team": "Ma Petite Entreprise (PRW)",
       "rider_url": "rider/clemence-latimier",
-      "score": 0.2086,
-      "win_probability": 0.02,
       "specialties_available": true,
-      "rank": 127
+      "gc_win": 0.02,
+      "gc_rank": 122,
+      "stage_win": [
+        0.03,
+        0.03,
+        0.05,
+        0.03
+      ]
+    },
+    {
+      "name": "SHAW Eilidh",
+      "team": "UAE Team ADQ (WTW)",
+      "rider_url": "rider/eilidh-shaw",
+      "specialties_available": true,
+      "gc_win": 0.02,
+      "gc_rank": 123,
+      "stage_win": [
+        0.16,
+        0.16,
+        0.03,
+        0.16
+      ]
+    },
+    {
+      "name": "MULLER Solène",
+      "team": "St Michel - Preference Home - Auber93 (PRW)",
+      "rider_url": "rider/solene-muller",
+      "specialties_available": true,
+      "gc_win": 0.02,
+      "gc_rank": 124,
+      "stage_win": [
+        0.02,
+        0.02,
+        0.06,
+        0.02
+      ]
     },
     {
       "name": "LAPORTA Linda",
       "team": "Vini Fantini - BePink (CTW)",
       "rider_url": "rider/linda-laporta",
-      "score": 0.175,
-      "win_probability": 0.02,
       "specialties_available": true,
-      "rank": 128
+      "gc_win": 0.02,
+      "gc_rank": 125,
+      "stage_win": [
+        0.02,
+        0.02,
+        0.03,
+        0.02
+      ]
+    },
+    {
+      "name": "CASTRIQUE Alana",
+      "team": "AG Insurance - Soudal Team (WTW)",
+      "rider_url": "rider/alana-castrique",
+      "specialties_available": true,
+      "gc_win": 0.02,
+      "gc_rank": 126,
+      "stage_win": [
+        0.04,
+        0.04,
+        0.01,
+        0.04
+      ]
+    },
+    {
+      "name": "DE CLERCQ Katrijn",
+      "team": "Lotto Intermarché Ladies (PRW)",
+      "rider_url": "rider/katrijn-de-clercq",
+      "specialties_available": true,
+      "gc_win": 0.02,
+      "gc_rank": 127,
+      "stage_win": [
+        0.17,
+        0.17,
+        0.01,
+        0.17
+      ]
+    },
+    {
+      "name": "GREVE Alberte",
+      "team": "Uno-X Mobility (WTW)",
+      "rider_url": "rider/alberte-greve",
+      "specialties_available": true,
+      "gc_win": 0.02,
+      "gc_rank": 128,
+      "stage_win": [
+        0.01,
+        0.01,
+        0.01,
+        0.01
+      ]
     },
     {
       "name": "DIXON Emily",
       "team": "CANYON//SRAM zondacrypto (WTW)",
       "rider_url": "rider/emily-dixon",
-      "score": 0.1526,
-      "win_probability": 0.01,
       "specialties_available": true,
-      "rank": 129
-    },
-    {
-      "name": "CORVI Valentina",
-      "team": "CANYON//SRAM zondacrypto (WTW)",
-      "rider_url": "rider/valentina-corvi",
-      "score": 0.0382,
-      "win_probability": 0.01,
-      "specialties_available": true,
-      "rank": 130
+      "gc_win": 0.01,
+      "gc_rank": 129,
+      "stage_win": [
+        0.02,
+        0.02,
+        0.06,
+        0.02
+      ]
     },
     {
       "name": "HOLMGREN Ava",
       "team": "Lidl - Trek (WTW)",
       "rider_url": "rider/ava-holmgren",
-      "score": 0.15,
-      "win_probability": 0.01,
       "specialties_available": true,
-      "rank": 131
-    },
-    {
-      "name": "WILSON-HAFFENDEN Felicity",
-      "team": "Lidl - Trek (WTW)",
-      "rider_url": "rider/felicity-wilson-haffenden",
-      "score": 0.1329,
-      "win_probability": 0.01,
-      "specialties_available": true,
-      "rank": 132
-    },
-    {
-      "name": "O'BRIEN Caoimhe",
-      "team": "EF Education-Oatly (WTW)",
-      "rider_url": "rider/caoimhe-o-brien",
-      "score": 0.1257,
-      "win_probability": 0.01,
-      "specialties_available": true,
-      "rank": 133
-    },
-    {
-      "name": "PIKULIK Wiktoria",
-      "team": "Human Powered Health (WTW)",
-      "rider_url": "rider/wiktoria-pikulik",
-      "score": 0.1263,
-      "win_probability": 0.01,
-      "specialties_available": true,
-      "rank": 134
-    },
-    {
-      "name": "THOMAS Anabelle",
-      "team": "Liv AlUla Jayco (WTW)",
-      "rider_url": "rider/anabelle-thomas",
-      "score": 0.1421,
-      "win_probability": 0.01,
-      "specialties_available": true,
-      "rank": 135
-    },
-    {
-      "name": "SIEGERS Emma",
-      "team": "AG Insurance - Soudal Team (WTW)",
-      "rider_url": "rider/emma-siegers",
-      "score": 0.1092,
-      "win_probability": 0.01,
-      "specialties_available": true,
-      "rank": 136
-    },
-    {
-      "name": "HEREMANS Ella",
-      "team": "Team Picnic PostNL (WTW)",
-      "rider_url": "rider/ella-heremans",
-      "score": 0.0993,
-      "win_probability": 0.01,
-      "specialties_available": true,
-      "rank": 137
-    },
-    {
-      "name": "HEZINOVÁ Daniela",
-      "team": "Team Picnic PostNL (WTW)",
-      "rider_url": "rider/daniela-hezinova",
-      "score": 0.0375,
-      "win_probability": 0.01,
-      "specialties_available": true,
-      "rank": 138
-    },
-    {
-      "name": "SILO Giada",
-      "team": "UAE Team ADQ (WTW)",
-      "rider_url": "rider/giada-silo",
-      "score": 0.0434,
-      "win_probability": 0.01,
-      "specialties_available": true,
-      "rank": 139
+      "gc_win": 0.01,
+      "gc_rank": 130,
+      "stage_win": [
+        0.03,
+        0.03,
+        0.02,
+        0.03
+      ]
     },
     {
       "name": "JOORIS Febe",
       "team": "UAE Team ADQ (WTW)",
       "rider_url": "rider/febe-jooris",
-      "score": 0.1447,
-      "win_probability": 0.01,
       "specialties_available": true,
-      "rank": 140
-    },
-    {
-      "name": "VERCRUYSSE Olivia",
-      "team": "Fenix-Premier Tech (WTW)",
-      "rider_url": "rider/olivia-vercruysse",
-      "score": 0.0461,
-      "win_probability": 0.01,
-      "specialties_available": true,
-      "rank": 141
-    },
-    {
-      "name": "PAPADIMITRIOU Eirini",
-      "team": "Fenix-Premier Tech (WTW)",
-      "rider_url": "rider/eirini-papadimitriou",
-      "score": 0.0197,
-      "win_probability": 0.01,
-      "specialties_available": true,
-      "rank": 142
-    },
-    {
-      "name": "GJERTSEN Mia",
-      "team": "Uno-X Mobility (WTW)",
-      "rider_url": "rider/mia-gjertsen",
-      "score": 0.0704,
-      "win_probability": 0.01,
-      "specialties_available": true,
-      "rank": 143
-    },
-    {
-      "name": "WRESZIN Caroline",
-      "team": "St Michel - Preference Home - Auber93 (PRW)",
-      "rider_url": "rider/caroline-wreszin",
-      "score": 0.0862,
-      "win_probability": 0.01,
-      "specialties_available": true,
-      "rank": 144
-    },
-    {
-      "name": "CHEREAU Clémence",
-      "team": "St Michel - Preference Home - Auber93 (PRW)",
-      "rider_url": "rider/clemence-chereau",
-      "score": 0.0743,
-      "win_probability": 0.01,
-      "specialties_available": true,
-      "rank": 145
+      "gc_win": 0.01,
+      "gc_rank": 131,
+      "stage_win": [
+        0.02,
+        0.02,
+        0.02,
+        0.02
+      ]
     },
     {
       "name": "BOELS Dina",
       "team": "Lotto Intermarché Ladies (PRW)",
       "rider_url": "rider/dina-boels",
-      "score": 0.1434,
-      "win_probability": 0.01,
       "specialties_available": true,
-      "rank": 146
+      "gc_win": 0.01,
+      "gc_rank": 132,
+      "stage_win": [
+        0.01,
+        0.01,
+        0.01,
+        0.01
+      ]
     },
     {
-      "name": "NIJSSEN Annelies",
-      "team": "Lotto Intermarché Ladies (PRW)",
-      "rider_url": "rider/annelies-nijssen",
-      "score": 0.0671,
-      "win_probability": 0.01,
+      "name": "THOMAS Anabelle",
+      "team": "Liv AlUla Jayco (WTW)",
+      "rider_url": "rider/anabelle-thomas",
       "specialties_available": true,
-      "rank": 147
-    },
-    {
-      "name": "MARASCO Margot",
-      "team": "Ma Petite Entreprise (PRW)",
-      "rider_url": "rider/margot-marasco",
-      "score": 0.0566,
-      "win_probability": 0.01,
-      "specialties_available": true,
-      "rank": 148
-    },
-    {
-      "name": "ROUAT Ilona",
-      "team": "Ma Petite Entreprise (PRW)",
-      "rider_url": "rider/ilona-rouat",
-      "score": 0.0592,
-      "win_probability": 0.01,
-      "specialties_available": true,
-      "rank": 149
-    },
-    {
-      "name": "EISEN Malou",
-      "team": "VolkerWessels Cycling Team (PRW)",
-      "rider_url": "rider/malou-eisen",
-      "score": 0.0408,
-      "win_probability": 0.01,
-      "specialties_available": true,
-      "rank": 150
-    },
-    {
-      "name": "FERRARI Linda",
-      "team": "Vini Fantini - BePink (CTW)",
-      "rider_url": "rider/linda-ferrari",
-      "score": 0.0612,
-      "win_probability": 0.01,
-      "specialties_available": true,
-      "rank": 151
+      "gc_win": 0.01,
+      "gc_rank": 133,
+      "stage_win": [
+        0.03,
+        0.03,
+        0.05,
+        0.03
+      ]
     },
     {
       "name": "HASHIMI Fariba",
       "team": "Vini Fantini - BePink (CTW)",
       "rider_url": "rider/fariba-hashimi",
-      "score": 0.1414,
-      "win_probability": 0.01,
       "specialties_available": true,
-      "rank": 152
+      "gc_win": 0.01,
+      "gc_rank": 134,
+      "stage_win": [
+        0.02,
+        0.02,
+        0.05,
+        0.02
+      ]
+    },
+    {
+      "name": "WILSON-HAFFENDEN Felicity",
+      "team": "Lidl - Trek (WTW)",
+      "rider_url": "rider/felicity-wilson-haffenden",
+      "specialties_available": true,
+      "gc_win": 0.01,
+      "gc_rank": 135,
+      "stage_win": [
+        0.01,
+        0.01,
+        0.01,
+        0.01
+      ]
+    },
+    {
+      "name": "PIKULIK Wiktoria",
+      "team": "Human Powered Health (WTW)",
+      "rider_url": "rider/wiktoria-pikulik",
+      "specialties_available": true,
+      "gc_win": 0.01,
+      "gc_rank": 136,
+      "stage_win": [
+        0.02,
+        0.02,
+        0.01,
+        0.02
+      ]
+    },
+    {
+      "name": "O'BRIEN Caoimhe",
+      "team": "EF Education-Oatly (WTW)",
+      "rider_url": "rider/caoimhe-o-brien",
+      "specialties_available": true,
+      "gc_win": 0.01,
+      "gc_rank": 137,
+      "stage_win": [
+        0.04,
+        0.04,
+        0.01,
+        0.04
+      ]
     },
     {
       "name": "MILESI Silvia",
       "team": "Vini Fantini - BePink (CTW)",
       "rider_url": "rider/silvia-milesi",
-      "score": 0.1112,
-      "win_probability": 0.01,
       "specialties_available": true,
-      "rank": 153
+      "gc_win": 0.01,
+      "gc_rank": 138,
+      "stage_win": [
+        0.03,
+        0.03,
+        0.02,
+        0.03
+      ]
+    },
+    {
+      "name": "SIEGERS Emma",
+      "team": "AG Insurance - Soudal Team (WTW)",
+      "rider_url": "rider/emma-siegers",
+      "specialties_available": true,
+      "gc_win": 0.01,
+      "gc_rank": 139,
+      "stage_win": [
+        0.01,
+        0.01,
+        0.04,
+        0.01
+      ]
+    },
+    {
+      "name": "HEREMANS Ella",
+      "team": "Team Picnic PostNL (WTW)",
+      "rider_url": "rider/ella-heremans",
+      "specialties_available": true,
+      "gc_win": 0.01,
+      "gc_rank": 140,
+      "stage_win": [
+        0.01,
+        0.01,
+        0.01,
+        0.01
+      ]
+    },
+    {
+      "name": "WRESZIN Caroline",
+      "team": "St Michel - Preference Home - Auber93 (PRW)",
+      "rider_url": "rider/caroline-wreszin",
+      "specialties_available": true,
+      "gc_win": 0.01,
+      "gc_rank": 141,
+      "stage_win": [
+        0.01,
+        0.01,
+        0.01,
+        0.01
+      ]
+    },
+    {
+      "name": "CHEREAU Clémence",
+      "team": "St Michel - Preference Home - Auber93 (PRW)",
+      "rider_url": "rider/clemence-chereau",
+      "specialties_available": true,
+      "gc_win": 0.01,
+      "gc_rank": 142,
+      "stage_win": [
+        0.02,
+        0.02,
+        0.01,
+        0.02
+      ]
+    },
+    {
+      "name": "GJERTSEN Mia",
+      "team": "Uno-X Mobility (WTW)",
+      "rider_url": "rider/mia-gjertsen",
+      "specialties_available": true,
+      "gc_win": 0.01,
+      "gc_rank": 143,
+      "stage_win": [
+        0.01,
+        0.01,
+        0.01,
+        0.01
+      ]
+    },
+    {
+      "name": "NIJSSEN Annelies",
+      "team": "Lotto Intermarché Ladies (PRW)",
+      "rider_url": "rider/annelies-nijssen",
+      "specialties_available": true,
+      "gc_win": 0.01,
+      "gc_rank": 144,
+      "stage_win": [
+        0.01,
+        0.01,
+        0.01,
+        0.01
+      ]
+    },
+    {
+      "name": "FERRARI Linda",
+      "team": "Vini Fantini - BePink (CTW)",
+      "rider_url": "rider/linda-ferrari",
+      "specialties_available": true,
+      "gc_win": 0.01,
+      "gc_rank": 145,
+      "stage_win": [
+        0.01,
+        0.01,
+        0.01,
+        0.01
+      ]
+    },
+    {
+      "name": "ROUAT Ilona",
+      "team": "Ma Petite Entreprise (PRW)",
+      "rider_url": "rider/ilona-rouat",
+      "specialties_available": true,
+      "gc_win": 0.01,
+      "gc_rank": 146,
+      "stage_win": [
+        0.03,
+        0.03,
+        0.01,
+        0.03
+      ]
+    },
+    {
+      "name": "MARASCO Margot",
+      "team": "Ma Petite Entreprise (PRW)",
+      "rider_url": "rider/margot-marasco",
+      "specialties_available": true,
+      "gc_win": 0.01,
+      "gc_rank": 147,
+      "stage_win": [
+        0.03,
+        0.03,
+        0.01,
+        0.03
+      ]
+    },
+    {
+      "name": "VERCRUYSSE Olivia",
+      "team": "Fenix-Premier Tech (WTW)",
+      "rider_url": "rider/olivia-vercruysse",
+      "specialties_available": true,
+      "gc_win": 0.01,
+      "gc_rank": 148,
+      "stage_win": [
+        0.01,
+        0.01,
+        0.01,
+        0.01
+      ]
+    },
+    {
+      "name": "SILO Giada",
+      "team": "UAE Team ADQ (WTW)",
+      "rider_url": "rider/giada-silo",
+      "specialties_available": true,
+      "gc_win": 0.01,
+      "gc_rank": 149,
+      "stage_win": [
+        0.01,
+        0.01,
+        0.01,
+        0.01
+      ]
+    },
+    {
+      "name": "EISEN Malou",
+      "team": "VolkerWessels Cycling Team (PRW)",
+      "rider_url": "rider/malou-eisen",
+      "specialties_available": true,
+      "gc_win": 0.01,
+      "gc_rank": 150,
+      "stage_win": [
+        0.01,
+        0.01,
+        0.01,
+        0.01
+      ]
+    },
+    {
+      "name": "CORVI Valentina",
+      "team": "CANYON//SRAM zondacrypto (WTW)",
+      "rider_url": "rider/valentina-corvi",
+      "specialties_available": true,
+      "gc_win": 0.01,
+      "gc_rank": 151,
+      "stage_win": [
+        0.01,
+        0.01,
+        0.02,
+        0.01
+      ]
+    },
+    {
+      "name": "HEZINOVÁ Daniela",
+      "team": "Team Picnic PostNL (WTW)",
+      "rider_url": "rider/daniela-hezinova",
+      "specialties_available": true,
+      "gc_win": 0.01,
+      "gc_rank": 152,
+      "stage_win": [
+        0.01,
+        0.01,
+        0.01,
+        0.01
+      ]
+    },
+    {
+      "name": "PAPADIMITRIOU Eirini",
+      "team": "Fenix-Premier Tech (WTW)",
+      "rider_url": "rider/eirini-papadimitriou",
+      "specialties_available": true,
+      "gc_win": 0.01,
+      "gc_rank": 153,
+      "stage_win": [
+        0.01,
+        0.01,
+        0.01,
+        0.01
+      ]
     }
   ]
 }

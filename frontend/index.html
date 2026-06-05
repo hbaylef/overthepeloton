@@ -534,6 +534,35 @@
   }
   .win-cell { color: var(--moss); font-weight: 700; }
 
+  /* stage / GC win% selector */
+  .spec-toolbar {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+  }
+  .win-select-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    color: var(--grey);
+  }
+  .win-select {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    margin-left: 8px;
+    padding: 4px 8px;
+    border: 1.5px solid var(--ink);
+    border-radius: 4px;
+    background: var(--paper);
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  /* rider name → PCS profile link */
+  .rider-link { color: inherit; text-decoration: none; }
+  .rider-link:hover { color: var(--rust-dk); text-decoration: underline; }
+
   /* scrollbar */
   ::-webkit-scrollbar { width: 10px; height: 10px; }
   ::-webkit-scrollbar-track { background: var(--paper-2); }
@@ -751,6 +780,15 @@ function toggleSection(id) {
   body.hidden = open;
   SECTION_STATE[id] = open;   // it is now collapsed iff it was previously open
   if (caret) caret.textContent = open ? '▸' : '▾';
+  // #1: revealing the Startlist section expands every team at once.
+  if (id === 'startlist' && !open) expandAllTeams();
+}
+
+function expandAllTeams() {
+  document.querySelectorAll('#startlist-container .team-riders')
+    .forEach(el => { el.hidden = false; });
+  document.querySelectorAll('#startlist-container .team-caret')
+    .forEach(el => { el.textContent = '▾'; });
 }
 
 function fmtDate(s) {
@@ -907,15 +945,39 @@ async function getPrediction(slug) {
 // ============================================================
 //  DATA-ACCESS LAYER (item 5)
 //  Isolates the JSON shape from the UI. When we move off procyclingstats for
-//  rider/specialty data, rewrite getRaceRoster — the render code below reads
-//  only the normalized shape and never raw JSON field names.
+//  rider/specialty data, rewrite getRaceRoster + RIDER_PROFILE_BASE — the
+//  render code below reads only the normalized shape, never raw field names.
 // ============================================================
+// Single swap-point for the rider profile link base (change #2 / item 5).
+const RIDER_PROFILE_BASE = 'https://www.procyclingstats.com/';
+function riderProfileHref(riderUrl) {
+  return riderUrl ? RIDER_PROFILE_BASE + riderUrl : '';
+}
+// Rider name as a PCS link (new tab), or plain text when there's no url.
+function riderNameHtml(rider) {
+  const href = riderProfileHref(rider.riderUrl);
+  return href
+    ? `<a class="rider-link" href="${href}" target="_blank" rel="noopener">${rider.name}</a>`
+    : rider.name;
+}
+
+// Label for a stage (from stages_meta) used in the win% selector.
+function stageShortLabel(meta) {
+  const head = String(meta.stage_name || ('Stage ' + meta.stage)).split('|')[0].trim();
+  return `${head} · ${meta.stage_type}`;
+}
+// Short tag appended to the Win% column header for the selected context.
+function contextHeaderLabel(key) {
+  if (key === 'gc') return 'GC';
+  const m = (key || '').match(/^stage:(\d+)$/);
+  return m ? 'S' + (Number(m[1]) + 1) : '';
+}
+
 function normalizeRider(raw, winByUrl, winByName) {
   const career = (raw.specialties && typeof raw.specialties.career === 'object')
     ? raw.specialties.career : null;
-  let win = null;
-  if (raw.rider_url && raw.rider_url in winByUrl) win = winByUrl[raw.rider_url];
-  else if (raw.name in winByName) win = winByName[raw.name];
+  const winByContext = (raw.rider_url && winByUrl[raw.rider_url])
+    || winByName[raw.name] || {};
   return {
     name: raw.name || '',
     nat: raw.nationality || '',
@@ -924,27 +986,48 @@ function normalizeRider(raw, winByUrl, winByName) {
     teamUrl: raw.team_url || '',
     riderUrl: raw.rider_url || '',
     career,          // {one_day_races, gc, tt, sprint, climber, hills} | null
-    win,             // model win%, or null
+    winByContext,    // stage races: { gc, 'stage:0', ... } · one-day: { race }
   };
 }
 
 async function getRaceRoster(slug) {
   const [sl, pred] = await Promise.all([getStartlist(slug), getPrediction(slug)]);
-  // Join the model's win% onto riders by rider_url (fallback: name).
+
+  // Build per-rider win% keyed by context, plus the selectable context list.
   const winByUrl = {}, winByName = {};
-  ((pred && pred.riders) || []).forEach(r => {
-    if (typeof r.win_probability === 'number' && r.specialties_available) {
-      if (r.rider_url) winByUrl[r.rider_url] = r.win_probability;
-      if (r.name) winByName[r.name] = r.win_probability;
-    }
-  });
+  let contexts = [];
+  if (pred && pred.is_one_day_race) {
+    contexts = [{ key: 'race', label: 'Win %' }];
+    (pred.riders || []).forEach(r => {
+      if (r.specialties_available && typeof r.win_probability === 'number') {
+        const v = { race: r.win_probability };
+        if (r.rider_url) winByUrl[r.rider_url] = v;
+        if (r.name) winByName[r.name] = v;
+      }
+    });
+  } else if (pred) {
+    const meta = pred.stages_meta || [];
+    contexts = [{ key: 'gc', label: 'Overall / GC' }]
+      .concat(meta.map((m, i) => ({ key: 'stage:' + i, label: stageShortLabel(m) })));
+    (pred.riders || []).forEach(r => {
+      if (!r.specialties_available) return;
+      const v = { gc: r.gc_win };
+      (r.stage_win || []).forEach((w, i) => { v['stage:' + i] = w; });
+      if (r.rider_url) winByUrl[r.rider_url] = v;
+      if (r.name) winByName[r.name] = v;
+    });
+  }
+
   const riders = ((sl && sl.riders) || []).map(r => normalizeRider(r, winByUrl, winByName));
-  return { slug, riders, count: riders.length, hasStartlist: riders.length > 0 };
+  return { slug, riders, count: riders.length, hasStartlist: riders.length > 0, contexts };
 }
 
 // ============================================================
 //  STARTLIST SECTIONS (specialty table + team groups)
 // ============================================================
+let currentRoster = null;
+let currentWinContext = null;
+
 async function loadRosterSections() {
   if (!currentRace) return;
   const slug = currentRace.slug;
@@ -956,6 +1039,10 @@ async function loadRosterSections() {
 
   const roster = await getRaceRoster(slug);
   if (currentRace.slug !== slug) return;   // user switched races mid-fetch
+
+  currentRoster = roster;
+  // Default context: GC for stage races, the single 'race' context for one-day.
+  currentWinContext = roster.contexts.length ? roster.contexts[0].key : null;
 
   renderSpecialtyTable(roster);
   renderTeamSection(roster);
@@ -985,7 +1072,7 @@ function renderTeamSection(roster) {
       <div class="roster-rider">
         <span class="r-num">${r.number != null ? r.number : ''}</span>
         ${flagImg(r.nat)}
-        <span class="r-name">${r.name}</span>
+        <span class="r-name">${riderNameHtml(r)}</span>
       </div>`).join('');
     return `
       <div class="team-group">
@@ -1029,7 +1116,10 @@ function renderSpecialtyTable(roster) {
       `<div class="odds-empty">No startlist published yet for this race.</div>`);
     return;
   }
-  specRows = roster.riders.map(r => ({ name: r.name, team: r.team, nat: r.nat, car: r.career, win: r.win }));
+  specRows = roster.riders.map(r => ({
+    name: r.name, team: r.team, nat: r.nat, riderUrl: r.riderUrl,
+    car: r.career, winCtx: r.winByContext,
+  }));
   specSort = { key: 'win', dir: -1 };
   drawSpecTable();
 }
@@ -1038,34 +1128,62 @@ function specArrow(key) {
   return specSort.key === key ? (specSort.dir < 0 ? ' ▾' : ' ▴') : '';
 }
 
+// Win% for the currently selected stage/GC context.
+function rowWin(r) {
+  return (r.winCtx && currentWinContext != null) ? r.winCtx[currentWinContext] : null;
+}
+
+function setWinContext(key) {
+  currentWinContext = key;
+  drawSpecTable();
+}
+
 function drawSpecTable() {
   const c = document.getElementById('specialty-container');
   if (!c) return;
   const rows = specRows.slice().sort(specCompare);
+
+  const ctxTag = contextHeaderLabel(currentWinContext);
+  const winHead = 'Win%' + (ctxTag ? ' · ' + ctxTag : '');
 
   const header = `
     <th class="sortable ${specSort.key === 'name' ? 'sorted' : ''}" onclick="sortSpec('name')">Rider${specArrow('name')}</th>
     ${SPEC_COLS.map(([k, lbl]) =>
       `<th class="sortable num ${specSort.key === k ? 'sorted' : ''}" onclick="sortSpec('${k}')">${lbl}${specArrow(k)}</th>`
     ).join('')}
-    <th class="sortable num ${specSort.key === 'win' ? 'sorted' : ''}" onclick="sortSpec('win')">Win%${specArrow('win')}</th>`;
+    <th class="sortable num ${specSort.key === 'win' ? 'sorted' : ''}" onclick="sortSpec('win')">${winHead}${specArrow('win')}</th>`;
 
   const body = rows.map(r => {
     const cells = SPEC_COLS.map(([k]) =>
       `<td class="num">${r.car && r.car[k] != null ? r.car[k] : '—'}</td>`).join('');
-    const win = r.win != null ? r.win.toFixed(1) + '%' : '—';
+    const wv = rowWin(r);
+    const win = (wv != null) ? wv.toFixed(1) + '%' : '—';
     return `<tr>
-      <td class="r-name-cell">${flagImg(r.nat)} ${r.name}<span class="r-team-cell">${r.team}</span></td>
+      <td class="r-name-cell">${flagImg(r.nat)} ${riderNameHtml(r)}<span class="r-team-cell">${r.team}</span></td>
       ${cells}<td class="num win-cell">${win}</td></tr>`;
   }).join('');
 
+  // Stage / GC selector — only for stage races (more than one win context).
+  const contexts = (currentRoster && currentRoster.contexts) || [];
+  const selectorHtml = contexts.length > 1 ? `
+    <div class="spec-toolbar">
+      <label class="win-select-label">Win% for:
+        <select class="win-select" onchange="setWinContext(this.value)">
+          ${contexts.map(cx =>
+            `<option value="${cx.key}" ${cx.key === currentWinContext ? 'selected' : ''}>${cx.label}</option>`
+          ).join('')}
+        </select>
+      </label>
+    </div>` : '';
+
   const table = `
+    ${selectorHtml}
     <div class="spec-scroll">
       <table class="spec-table"><thead><tr>${header}</tr></thead><tbody>${body}</tbody></table>
     </div>
     <div class="odds-note">
       Click a column header to sort · career PCS specialty points · Win% from the
-      experimental model · — = no data.
+      experimental model${contexts.length > 1 ? ' (per stage or overall GC, selected above)' : ''} · — = no data.
     </div>`;
 
   c.innerHTML = sectionCard('specialty', 'Specialty Rankings', 'experimental', 'experimental', table);
@@ -1084,8 +1202,8 @@ function sortSpec(key) {
 function specCompare(a, b) {
   const k = specSort.key, d = specSort.dir;
   if (k === 'name') return d * a.name.localeCompare(b.name);
-  const av = (k === 'win') ? a.win : (a.car ? a.car[k] : null);
-  const bv = (k === 'win') ? b.win : (b.car ? b.car[k] : null);
+  const av = (k === 'win') ? rowWin(a) : (a.car ? a.car[k] : null);
+  const bv = (k === 'win') ? rowWin(b) : (b.car ? b.car[k] : null);
   // Missing values always sort to the bottom, regardless of direction.
   const an = (av == null), bn = (bv == null);
   if (an && bn) return 0;

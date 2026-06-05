@@ -17,54 +17,111 @@
       0.4
     ]
   },
-  "updated_at": "2026-06-05T14:59:41.634227",
+  "updated_at": "2026-06-05T20:02:54.758641",
   "scored_rider_count": 5,
   "unscored_rider_count": 0,
+  "stages_meta": [
+    {
+      "stage": 1,
+      "stage_name": "Stage 1 | Diest - Diest",
+      "stage_type": "sprint"
+    },
+    {
+      "stage": 2,
+      "stage_name": "Stage 2 | Blankenberge - Ardooie",
+      "stage_type": "sprint"
+    },
+    {
+      "stage": 3,
+      "stage_name": "Stage 3 | Celles - Geraardsbergen",
+      "stage_type": "sprint"
+    },
+    {
+      "stage": 4,
+      "stage_name": "Stage 4 | Riemst - Bilzen-Hoeselt",
+      "stage_type": "sprint"
+    },
+    {
+      "stage": 5,
+      "stage_name": "Stage 5 | Leuven - Leuven",
+      "stage_type": "sprint"
+    }
+  ],
   "riders": [
     {
       "name": "MEZGEC Luka",
       "team": "Team Jayco AlUla (WT)",
       "rider_url": "rider/luka-mezgec",
-      "score": 0.75,
-      "win_probability": 60.99,
       "specialties_available": true,
-      "rank": 1
+      "gc_win": 60.99,
+      "gc_rank": 1,
+      "stage_win": [
+        19.44,
+        19.44,
+        19.44,
+        19.44,
+        19.44
+      ]
     },
     {
       "name": "NAESEN Oliver",
       "team": "Decathlon CMA CGM Team (WT)",
       "rider_url": "rider/oliver-naesen",
-      "score": 0.7,
-      "win_probability": 33.27,
       "specialties_available": true,
-      "rank": 2
+      "gc_win": 33.27,
+      "gc_rank": 2,
+      "stage_win": [
+        1.72,
+        1.72,
+        1.72,
+        1.72,
+        1.72
+      ]
     },
     {
       "name": "MERLIER Tim",
       "team": "Soudal Quick-Step (WT)",
       "rider_url": "rider/tim-merlier",
-      "score": 0.55,
-      "win_probability": 5.4,
       "specialties_available": true,
-      "rank": 3
+      "gc_win": 5.4,
+      "gc_rank": 3,
+      "stage_win": [
+        76.03,
+        76.03,
+        76.03,
+        76.03,
+        76.03
+      ]
     },
     {
       "name": "DE BONDT Dries",
       "team": "Team Jayco AlUla (WT)",
       "rider_url": "rider/dries-de-bondt",
-      "score": 0.3,
-      "win_probability": 0.26,
       "specialties_available": true,
-      "rank": 4
+      "gc_win": 0.26,
+      "gc_rank": 4,
+      "stage_win": [
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.1
+      ]
     },
     {
       "name": "MAGNIER Paul",
       "team": "Soudal Quick-Step (WT)",
       "rider_url": "rider/paul-magnier",
-      "score": 0.2,
-      "win_probability": 0.08,
       "specialties_available": true,
-      "rank": 5
+      "gc_win": 0.08,
+      "gc_rank": 5,
+      "stage_win": [
+        2.71,
+        2.71,
+        2.71,
+        2.71,
+        2.71
+      ]
     }
   ]
 }
