@@ -397,12 +397,16 @@ a backlog, not in priority order. Several have open design questions noted.
   predictions/startlist-quality; (c) both, compared. **Planned path:** ship (a)
   → calibrate against (b) → (c).
 
-### R3 — Elevation profile shows gradient changes
-- Improve the canvas elevation profile to reflect **steepness** — e.g. colour
-  segments by gradient so a 12% ramp looks visibly different from a false flat,
-  like TV-broadcast / roadbook profiles.
-- Data is already available (we compute per-point gradient on hover); needs to
-  be rendered along the whole profile, not just at the cursor.
+### R3 — Elevation profile shows gradient changes  ✅ **DONE & live (2026-06-05)**
+- Profile is coloured **segment-by-segment by steepness** (stepped roadbook
+  palette: blue-grey descent → moss → gold → rust → maroon 12%+), with a legend.
+  Grade is smoothed over a ~250 m window (`GRADE_WINDOW_KM`), precomputed once
+  per stage; the static profile is cached to an offscreen canvas so hover only
+  redraws a light overlay (smooth).
+- **On-graph hover label** pinned near the top showing `dist · grade% · elev`.
+- **Drag-to-zoom**: select a range to zoom (refits both axes), the **map fits
+  that segment**, a top-right **badge** shows the selection's distance + average
+  gradient; reset via a button or double-click.
 
 ### R4 — Highlight key segments (climbs + cobbles)
 - Mark the major categorised climbs and cobbled (pavé) sectors on the profile,

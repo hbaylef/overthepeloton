@@ -297,6 +297,40 @@
   }
   .readout b { color: var(--ink); }
 
+  /* zoom reset button (R3 drag-to-zoom) */
+  .profile-title { display: flex; align-items: center; gap: 10px; }
+  .zoom-reset {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1.5px solid var(--ink);
+    background: var(--paper);
+    color: var(--ink);
+    padding: 3px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .zoom-reset:hover { background: var(--paper-2); }
+
+  /* gradient legend (R3) */
+  .grad-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 7px 18px;
+    border-top: 1.5px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--grey);
+  }
+  .grad-legend span { display: inline-flex; align-items: center; gap: 5px; }
+  .grad-legend i {
+    width: 14px; height: 9px; border-radius: 2px;
+    display: inline-block;
+    box-shadow: 0 0 0 1px rgba(20,19,15,0.08);
+  }
+
   /* empty / loading states */
   .placeholder {
     flex: 1;
@@ -873,7 +907,10 @@ function renderRaceHeader(gpx) {
         <div id="map"></div>
         <div class="profile-card">
           <div class="profile-head">
-            <h3>Elevation Profile</h3>
+            <div class="profile-title">
+              <h3>Elevation Profile</h3>
+              <button id="zoom-reset" class="zoom-reset" style="display:none" onclick="resetZoom()">⤢ reset zoom</button>
+            </div>
             <div class="profile-stats">
               <div class="stat"><b id="st-dist">–</b><span>distance</span></div>
               <div class="stat"><b id="st-gain">–</b><span>elev gain</span></div>
@@ -881,7 +918,15 @@ function renderRaceHeader(gpx) {
             </div>
           </div>
           <canvas id="elevation"></canvas>
-          <div class="readout" id="readout">Hover over the profile to explore the route.</div>
+          <div class="grad-legend">
+            <span><i style="background:#5a7fa0"></i>descent</span>
+            <span><i style="background:#6f8f3f"></i>0–3%</span>
+            <span><i style="background:#d99e2b"></i>3–6%</span>
+            <span><i style="background:#c8442a"></i>6–9%</span>
+            <span><i style="background:#9e3320"></i>9–12%</span>
+            <span><i style="background:#6e1f14"></i>12%+</span>
+          </div>
+          <div class="readout" id="readout">Hover to explore · drag to zoom · double-click to reset.</div>
         </div>
       </div>`;
   } else {
@@ -1391,11 +1436,50 @@ function drawRouteOnMap() {
 // ============================================================
 //  DRAW ELEVATION PROFILE  (canvas)
 // ============================================================
+// R3 gradient colouring ------------------------------------------------------
+// Smoothed grade (%) for the segment ending at point i, measured over a ~250 m
+// window so noisy point-to-point GPX deltas don't produce confetti colouring.
+// Raise this (e.g. 0.5 / 1.0) for broader, smoother banding.
+const GRADE_WINDOW_KM = 0.25;
+function smoothGradeAt(i) {
+  let j = i;
+  while (j > 0 && (elevationPoints[i].dist - elevationPoints[j-1].dist) < GRADE_WINDOW_KM) j--;
+  const dd = elevationPoints[i].dist - elevationPoints[j].dist;
+  const de = elevationPoints[i].ele - elevationPoints[j].ele;
+  return dd > 0 ? (de / (dd * 1000)) * 100 : 0;
+}
+// Stepped roadbook palette (on-brand: blue-grey → moss → gold → rust → maroon).
+function gradeColor(g) {
+  if (g < -3) return '#5a7fa0';   // descent
+  if (g <  3) return '#6f8f3f';   // flat / gentle
+  if (g <  6) return '#d99e2b';   // 3–6%
+  if (g <  9) return '#c8442a';   // 6–9%
+  if (g < 12) return '#9e3320';   // 9–12%
+  return '#6e1f14';               // 12%+
+}
+
+// Interaction state for the profile.
+let zoomRange = null;    // {d0,d1} km currently shown, or null = full stage
+let dragStartX = null;   // px at the start of a drag-to-zoom selection
+let grades = [];         // precomputed smoothed grade % per point (perf)
+// Offscreen cache of the static coloured profile + axes — rebuilt only when the
+// size or zoom range changes, so hovering only redraws a light overlay.
+let baseCanvas = null, baseCtx = null, baseKey = '';
+
 function drawElevation() {
   canvas = document.getElementById('elevation');
   ctx = canvas.getContext('2d');
 
-  // stats
+  zoomRange = null;       // a (new) stage always starts at full view
+  const rb = document.getElementById('zoom-reset');
+  if (rb) rb.style.display = 'none';
+
+  // Precompute smoothed grades once per stage (not per mouse move), and force
+  // the static-profile cache to rebuild for this stage.
+  grades = elevationPoints.map((_, i) => i ? smoothGradeAt(i) : 0);
+  baseKey = '';
+
+  // stats (always for the full stage)
   const totalDist = elevationPoints[elevationPoints.length-1].dist;
   let gain = 0;
   for (let i=1;i<elevationPoints.length;i++){
@@ -1408,126 +1492,252 @@ function drawElevation() {
   document.getElementById('st-max').textContent = Math.round(maxEle)+' m';
 
   renderProfile();
-  window.addEventListener('resize', renderProfile);
 
-  canvas.addEventListener('mousemove', onProfileHover);
-  canvas.addEventListener('mouseleave', () => {
-    if (map && hoverMarker) map.removeLayer(hoverMarker);
-    renderProfile();
-    document.getElementById('readout').innerHTML =
-      'Hover over the profile to explore the route.';
-  });
+  // Resize handler once globally; interaction handlers once per canvas element.
+  if (!window._elevResizeWired) {
+    window.addEventListener('resize', () => { if (canvas && ctx) renderProfile(); });
+    window._elevResizeWired = true;
+  }
+  if (!canvas._wired) {
+    canvas.addEventListener('mousedown', onProfileDown);
+    canvas.addEventListener('mousemove', onProfileMove);
+    canvas.addEventListener('mouseup', onProfileUp);
+    canvas.addEventListener('dblclick', resetZoom);
+    canvas.addEventListener('mouseleave', onProfileLeave);
+    canvas._wired = true;
+  }
 }
 
-function renderProfile(hoverX = null) {
+function activeRange() {
+  const maxD = elevationPoints[elevationPoints.length-1].dist;
+  return zoomRange ? [zoomRange.d0, zoomRange.d1] : [0, maxD];
+}
+
+// Rebuild the static profile (axes + coloured segments) into the offscreen
+// cache only when size/zoom changes. Heavy work happens here, not on hover.
+function ensureBase() {
   const dpr = window.devicePixelRatio || 1;
   const W = canvas.clientWidth, H = canvas.clientHeight;
-  canvas.width = W*dpr; canvas.height = H*dpr;
-  ctx.setTransform(dpr,0,0,dpr,0,0);
-  ctx.clearRect(0,0,W,H);
+  const [dLo, dHi] = activeRange();
+  const key = `${W}x${H}x${dpr}x${dLo.toFixed(3)}-${dHi.toFixed(3)}`;
+  if (key === baseKey && baseCanvas) return;
+  baseKey = key;
+
+  if (!baseCanvas) { baseCanvas = document.createElement('canvas'); baseCtx = baseCanvas.getContext('2d'); }
+  baseCanvas.width = W*dpr; baseCanvas.height = H*dpr;
+  if (canvas.width !== W*dpr) canvas.width = W*dpr;
+  if (canvas.height !== H*dpr) canvas.height = H*dpr;
+
+  const b = baseCtx;
+  b.setTransform(dpr,0,0,dpr,0,0);
+  b.clearRect(0,0,W,H);
 
   const pad = { l: 44, r: 12, t: 14, b: 24 };
   const plotW = W - pad.l - pad.r;
   const plotH = H - pad.t - pad.b;
+  const baseY = pad.t + plotH;
+  const dSpan = (dHi - dLo) || 1;
 
-  const dists = elevationPoints.map(p=>p.dist);
-  const eles = elevationPoints.map(p=>p.ele);
-  const maxD = Math.max(...dists);
-  const minE = Math.min(...eles);
-  const maxE = Math.max(...eles);
+  // Re-fit the elevation axis to the visible window (so a zoom uses full height).
+  let minE = Infinity, maxE = -Infinity;
+  for (const p of elevationPoints) {
+    if (p.dist < dLo || p.dist > dHi) continue;
+    if (p.ele < minE) minE = p.ele;
+    if (p.ele > maxE) maxE = p.ele;
+  }
+  if (!isFinite(minE)) { minE = 0; maxE = 1; }
   const eRange = (maxE - minE) || 1;
-  // pad elevation range a bit
   const eLo = minE - eRange*0.1;
   const eHi = maxE + eRange*0.15;
 
-  const xOf = d => pad.l + (d/maxD)*plotW;
+  const xOf = d => pad.l + ((d - dLo)/dSpan)*plotW;
   const yOf = e => pad.t + plotH - ((e-eLo)/(eHi-eLo))*plotH;
 
   // grid + y labels
-  ctx.font = '10px "JetBrains Mono", monospace';
-  ctx.fillStyle = '#7c7668';
-  ctx.strokeStyle = '#e4dfd2';
-  ctx.lineWidth = 1;
-  const ticks = 4;
-  for (let i=0;i<=ticks;i++){
-    const e = eLo + (eHi-eLo)*(i/ticks);
-    const y = yOf(e);
-    ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(W-pad.r,y); ctx.stroke();
-    ctx.fillText(Math.round(e)+'m', 6, y+3);
+  b.font = '10px "JetBrains Mono", monospace';
+  b.fillStyle = '#7c7668'; b.strokeStyle = '#e4dfd2'; b.lineWidth = 1;
+  b.textBaseline = 'alphabetic';
+  for (let i=0;i<=4;i++){
+    const e = eLo + (eHi-eLo)*(i/4), y = yOf(e);
+    b.beginPath(); b.moveTo(pad.l,y); b.lineTo(W-pad.r,y); b.stroke();
+    b.fillText(Math.round(e)+'m', 6, y+3);
   }
-  // x labels
-  const xticks = 5;
-  for (let i=0;i<=xticks;i++){
-    const d = maxD*(i/xticks);
-    ctx.fillText(d.toFixed(0), xOf(d)-6, H-8);
+  const dec = dSpan < 8 ? 1 : 0;
+  for (let i=0;i<=5;i++){ const d = dLo + dSpan*(i/5); b.fillText(d.toFixed(dec), xOf(d)-6, H-8); }
+
+  // coloured segments (precomputed grades), clipped to the plot area
+  b.save();
+  b.beginPath(); b.rect(pad.l, pad.t, plotW, plotH); b.clip();
+  for (let i = 1; i < elevationPoints.length; i++) {
+    const p0 = elevationPoints[i-1], p1 = elevationPoints[i];
+    if (p1.dist < dLo || p0.dist > dHi) continue;
+    const col = gradeColor(grades[i]);
+    const x0 = xOf(p0.dist), x1 = xOf(p1.dist), y0 = yOf(p0.ele), y1 = yOf(p1.ele);
+    b.beginPath();
+    b.moveTo(x0, baseY); b.lineTo(x0, y0); b.lineTo(x1, y1); b.lineTo(x1, baseY); b.closePath();
+    b.fillStyle = col + '66'; b.fill();
+    b.beginPath(); b.moveTo(x0, y0); b.lineTo(x1, y1);
+    b.strokeStyle = col; b.lineWidth = 2; b.lineCap = 'round'; b.stroke();
   }
+  b.restore();
 
-  // area fill
-  ctx.beginPath();
-  ctx.moveTo(xOf(0), yOf(eles[0]));
-  elevationPoints.forEach(p => ctx.lineTo(xOf(p.dist), yOf(p.ele)));
-  ctx.lineTo(xOf(maxD), pad.t+plotH);
-  ctx.lineTo(xOf(0), pad.t+plotH);
-  ctx.closePath();
-  const grad = ctx.createLinearGradient(0,pad.t,0,pad.t+plotH);
-  grad.addColorStop(0,'rgba(200,68,42,0.35)');
-  grad.addColorStop(1,'rgba(200,68,42,0.04)');
-  ctx.fillStyle = grad; ctx.fill();
-
-  // line
-  ctx.beginPath();
-  ctx.moveTo(xOf(0), yOf(eles[0]));
-  elevationPoints.forEach(p => ctx.lineTo(xOf(p.dist), yOf(p.ele)));
-  ctx.strokeStyle = '#9e3320'; ctx.lineWidth = 2; ctx.stroke();
-
-  // hover line
-  if (hoverX !== null) {
-    ctx.beginPath();
-    ctx.moveTo(hoverX, pad.t); ctx.lineTo(hoverX, pad.t+plotH);
-    ctx.strokeStyle = '#14130f'; ctx.lineWidth = 1; ctx.setLineDash([4,3]);
-    ctx.stroke(); ctx.setLineDash([]);
-  }
-
-  // store transform for hover math
-  canvas._x = { pad, plotW, plotH, maxD, xOf, eLo, eHi };
+  canvas._x = { pad, plotW, plotH, dLo, dHi, dSpan, xOf, yOf, baseY, W };
 }
 
-function onProfileHover(e) {
+// Cheap per-frame draw: blit the cached profile, then the hover/selection overlay.
+function renderProfile(hover = null, selection = null) {
+  ensureBase();
+  const dpr = window.devicePixelRatio || 1;
+  const W = canvas.clientWidth, H = canvas.clientHeight;
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.clearRect(0,0,W,H);
+  ctx.drawImage(baseCanvas, 0, 0, W, H);
+
+  const t = canvas._x; if (!t) return;
+  const pad = t.pad, baseY = t.baseY;
+
+  // zoom summary badge (top-right): distance + net average gradient of the
+  // currently-zoomed selection. Persists while zoomed.
+  let badgeBox = null;
+  if (zoomRange) {
+    const i0 = nearestIndex(t.dLo), i1 = nearestIndex(t.dHi);
+    const ddist = elevationPoints[i1].dist - elevationPoints[i0].dist;
+    const dele  = elevationPoints[i1].ele  - elevationPoints[i0].ele;
+    const avg = ddist > 0 ? (dele/(ddist*1000))*100 : 0;
+    const btxt = `${(t.dHi - t.dLo).toFixed(1)} km · avg ${avg>=0?'+':''}${avg.toFixed(1)}%`;
+    ctx.font = '11px "JetBrains Mono", monospace';
+    const bw = ctx.measureText(btxt).width + 18, bh = 18;
+    const bx = t.W - pad.r - bw, by = pad.t + 2;
+    ctx.fillStyle = '#14130f';
+    if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(bx, by, bw, bh, 3); ctx.fill(); }
+    else ctx.fillRect(bx, by, bw, bh);
+    ctx.fillStyle = gradeColor(avg); ctx.fillRect(bx, by+3, 3, bh-6);   // band stripe
+    ctx.fillStyle = '#f4f1ea'; ctx.textBaseline = 'middle';
+    ctx.fillText(btxt, bx + 9, by + bh/2 + 0.5); ctx.textBaseline = 'alphabetic';
+    badgeBox = { x: bx, y: by, w: bw, h: bh };
+  }
+
+  // drag-to-zoom selection rectangle
+  if (selection) {
+    const sx0 = Math.min(selection.x0, selection.x1), sx1 = Math.max(selection.x0, selection.x1);
+    ctx.fillStyle = 'rgba(20,19,15,0.12)';
+    ctx.fillRect(sx0, pad.t, sx1-sx0, t.plotH);
+    ctx.strokeStyle = 'rgba(20,19,15,0.5)'; ctx.lineWidth = 1;
+    ctx.strokeRect(sx0, pad.t, sx1-sx0, t.plotH);
+  }
+
+  // hover: vertical line + dot + floating label (dist · grade · elev)
+  if (hover) {
+    const hx = t.xOf(hover.dist), hy = t.yOf(hover.ele);
+    const col = gradeColor(hover.grade);
+    ctx.beginPath();
+    ctx.moveTo(hx, pad.t); ctx.lineTo(hx, baseY);
+    ctx.strokeStyle = '#14130f'; ctx.lineWidth = 1; ctx.setLineDash([4,3]);
+    ctx.stroke(); ctx.setLineDash([]);
+    ctx.beginPath(); ctx.arc(hx, hy, 4, 0, Math.PI*2);
+    ctx.fillStyle = col; ctx.strokeStyle = '#14130f'; ctx.lineWidth = 1.5;
+    ctx.fill(); ctx.stroke();
+
+    const txt = `${hover.dist.toFixed(1)}km · ${hover.grade>=0?'+':''}${hover.grade.toFixed(1)}% · ${Math.round(hover.ele)}m`;
+    ctx.font = '11px "JetBrains Mono", monospace';
+    const bw = ctx.measureText(txt).width + 16, bh = 18;
+    let bx = hx + 10, by = pad.t + 2;     // pinned near the top of the chart
+    if (bx + bw > t.W - pad.r) bx = hx - bw - 10;   // flip left near right edge
+    if (bx < pad.l) bx = pad.l;
+    // if it would collide with the zoom badge, drop it to a second row
+    if (badgeBox && by < badgeBox.y + badgeBox.h &&
+        bx + bw > badgeBox.x && bx < badgeBox.x + badgeBox.w) {
+      by = badgeBox.y + badgeBox.h + 4;
+    }
+    ctx.fillStyle = '#14130f';
+    if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(bx, by, bw, bh, 3); ctx.fill(); }
+    else ctx.fillRect(bx, by, bw, bh);
+    ctx.fillStyle = col; ctx.fillRect(bx, by+3, 3, bh-6);   // steepness-band stripe
+    ctx.fillStyle = '#f4f1ea'; ctx.textBaseline = 'middle';
+    ctx.fillText(txt, bx + 9, by + bh/2 + 0.5);
+    ctx.textBaseline = 'alphabetic';
+  }
+}
+
+function xToDist(x) {
+  const t = canvas._x; if (!t) return 0;
+  const frac = Math.max(0, Math.min(1, (x - t.pad.l)/t.plotW));
+  return t.dLo + frac * t.dSpan;
+}
+
+function nearestIndex(d) {
+  let lo=0, hi=elevationPoints.length-1;
+  while (lo<hi){ const m=(lo+hi)>>1; if (elevationPoints[m].dist < d) lo=m+1; else hi=m; }
+  return lo;
+}
+
+function onProfileDown(e) {
+  const rect = canvas.getBoundingClientRect();
+  dragStartX = e.clientX - rect.left;
+}
+
+function onProfileMove(e) {
   const rect = canvas.getBoundingClientRect();
   const x = e.clientX - rect.left;
-  const t = canvas._x;
-  if (!t) return;
+  if (!canvas._x) return;
 
-  // distance at cursor
-  const frac = Math.max(0, Math.min(1, (x - t.pad.l)/t.plotW));
-  const targetD = frac * t.maxD;
+  if (dragStartX !== null) {           // a drag-to-zoom is in progress
+    renderProfile(null, { x0: dragStartX, x1: x });
+    return;
+  }
 
-  // find nearest point
-  let lo=0, hi=elevationPoints.length-1;
-  while (lo<hi){ const m=(lo+hi)>>1;
-    if (elevationPoints[m].dist < targetD) lo=m+1; else hi=m; }
+  const lo = nearestIndex(xToDist(x));
   const pt = elevationPoints[lo];
+  const grad = grades[lo] || 0;   // precomputed (no per-move recompute)
+  renderProfile({ dist: pt.dist, ele: pt.ele, grade: grad });
 
-  renderProfile(t.xOf(pt.dist));
-
-  // marker on map
   if (map && hoverMarker) {
     hoverMarker.setLatLng([pt.lat, pt.lon]);
     if (!map.hasLayer(hoverMarker)) hoverMarker.addTo(map);
   }
-
-  // gradient calc
-  let grad = 0;
-  if (lo>0){
-    const dd = (pt.dist - elevationPoints[lo-1].dist);
-    const de = (pt.ele - elevationPoints[lo-1].ele);
-    if (dd>0) grad = (de/(dd*1000))*100;
-  }
-
   document.getElementById('readout').innerHTML =
     `<span><b>${pt.dist.toFixed(1)}</b> km</span>` +
     `<span><b>${Math.round(pt.ele)}</b> m elevation</span>` +
     `<span>gradient <b>${grad>=0?'+':''}${grad.toFixed(1)}%</b></span>`;
+}
+
+function onProfileUp(e) {
+  if (dragStartX === null) return;
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const start = dragStartX; dragStartX = null;
+  if (Math.abs(x - start) < 6) { renderProfile(); return; }   // a click, not a drag
+  const d0 = xToDist(Math.min(start, x));
+  const d1 = xToDist(Math.max(start, x));
+  if (d1 - d0 < 0.2) { renderProfile(); return; }             // selection too narrow
+  zoomRange = { d0, d1 };
+  const rb = document.getElementById('zoom-reset'); if (rb) rb.style.display = '';
+  renderProfile();
+  fitMapToRange(d0, d1);
+}
+
+function onProfileLeave() {
+  dragStartX = null;
+  if (map && hoverMarker) map.removeLayer(hoverMarker);
+  renderProfile();
+  document.getElementById('readout').innerHTML =
+    'Hover to explore · drag to zoom · double-click to reset.';
+}
+
+function fitMapToRange(d0, d1) {
+  if (!map || typeof L === 'undefined' || !routeLayer) return;
+  const pts = elevationPoints.filter(p => p.dist >= d0 && p.dist <= d1).map(p => [p.lat, p.lon]);
+  if (pts.length > 1) map.fitBounds(L.latLngBounds(pts), { padding:[20,20] });
+}
+
+function resetZoom() {
+  if (!zoomRange) return;
+  zoomRange = null;
+  const rb = document.getElementById('zoom-reset'); if (rb) rb.style.display = 'none';
+  renderProfile();
+  if (map && typeof L !== 'undefined' && routeLayer) {
+    map.fitBounds(routeLayer.getBounds(), { padding:[30,30] });
+  }
 }
 
 boot();
