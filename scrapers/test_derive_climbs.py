@@ -105,6 +105,51 @@ def test_stage_files_skips_one_day_route():
     assert [f["stage"] for f in dc.stage_files(entry)] == [1]
 
 
+def test_normalize_pool_keeps_named_with_altitude():
+    raw = [
+        {"climb_name": "Chommle", "top": 684, "length": 3.0},
+        {"climb_name": None, "top": 700, "length": 2.0},      # no name → drop
+        {"climb_name": "NoTop", "top": None, "length": 1.0},  # no altitude → drop
+    ]
+    pool = dc.normalize_pool(raw)
+    assert [p["name"] for p in pool] == ["Chommle"], pool
+    assert pool[0]["top_m"] == 684.0
+
+
+def test_assign_names_matches_by_altitude():
+    climbs = [
+        {"name": "Climb", "top_m": 686, "length_km": 3.1},   # ~Chommle 684
+        {"name": "Climb", "top_m": 730, "length_km": 3.0},   # ~Oberarig 727
+        {"name": "Climb", "top_m": 300, "length_km": 2.0},   # no pool match
+    ]
+    pool = [
+        {"name": "Chommle", "top_m": 684, "length_km": 3.0},
+        {"name": "Oberarig", "top_m": 727, "length_km": 3.2},
+    ]
+    out = dc.assign_names(climbs, pool)
+    assert [c["name"] for c in out] == ["Chommle", "Oberarig", "Climb"], out
+
+
+def test_assign_names_no_double_use_of_pool_entry():
+    # two detected climbs near one pool altitude -> only the closest gets the name
+    climbs = [{"name": "Climb", "top_m": 700, "length_km": 2.0},
+              {"name": "Climb", "top_m": 690, "length_km": 2.0}]
+    pool = [{"name": "Solo", "top_m": 695, "length_km": 2.0}]
+    out = dc.assign_names(climbs, pool)
+    assert sorted(c["name"] for c in out) == ["Climb", "Solo"], out
+
+
+def test_assign_names_respects_tolerance():
+    climbs = [{"name": "Climb", "top_m": 500, "length_km": 2.0}]
+    pool = [{"name": "FarAway", "top_m": 800, "length_km": 2.0}]  # 300 m gap
+    assert dc.assign_names(climbs, pool)[0]["name"] == "Climb"
+
+
+def test_assign_names_empty_pool_is_noop():
+    climbs = [{"name": "Climb", "top_m": 500, "length_km": 2.0}]
+    assert dc.assign_names(climbs, [])[0]["name"] == "Climb"
+
+
 def test_climbs_to_output_shape():
     detected = [{"km_start": 4.0, "km_top": 9.0, "length_km": 5.0,
                  "gain_m": 300.0, "avg_grade": 6.0, "top_m": 400.0}]
