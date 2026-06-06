@@ -48,6 +48,7 @@ from statistics import mean
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 RACES_FILE = DATA_DIR / "races.json"
 STARTLISTS_DIR = DATA_DIR / "startlists"
+COBBLES_DIR = DATA_DIR / "cobbles"
 PREDICTIONS_DIR = DATA_DIR / "predictions"
 PREDICTIONS_INDEX = DATA_DIR / "predictions_index.json"
 
@@ -65,10 +66,13 @@ SPECIALTIES = ["one_day_races", "gc", "tt", "sprint", "climber", "hills"]
 #
 # Named constant (uncalibrated starting guesses — output is "experimental").
 # Keys use the DATA specialty names (one_day_races, not the doc's "one_day").
-# `cobbles` is deferred to R4 (curated set overlays the type at scoring time).
 # `sprint_break` has no row in the original design table (it predates the
 # 5-way stage_type split) — this is a fresh starting guess: a sprinter who
 # survives / breakaway profile sitting between Sprint and Hilly/puncheur.
+# `cobbles` (R4): pavé classics. PCS has no cobbles specialty, so we proxy with
+# classics pedigree (one_day_races, dominant) + raw power (sprint) + engine (tt)
+# + durability (hills). climber/gc ~0 — Roubaix is pan-flat. A race is promoted
+# to this type at scoring time when it has a curated data/cobbles/{slug}.json.
 # ---------------------------------------------------------------------------
 TYPE_WEIGHTS = {
     "sprint":         {"one_day_races": 0.1, "gc": 0.0, "tt": 0.0, "sprint": 1.0, "climber": 0.0, "hills": 0.2},
@@ -76,6 +80,7 @@ TYPE_WEIGHTS = {
     "hills_puncheur": {"one_day_races": 0.4, "gc": 0.1, "tt": 0.0, "sprint": 0.2, "climber": 0.2, "hills": 1.0},
     "climber":        {"one_day_races": 0.2, "gc": 0.5, "tt": 0.0, "sprint": 0.0, "climber": 1.0, "hills": 0.3},
     "time_trial":     {"one_day_races": 0.0, "gc": 0.3, "tt": 1.0, "sprint": 0.0, "climber": 0.0, "hills": 0.0},
+    "cobbles":        {"one_day_races": 1.0, "gc": 0.0, "tt": 0.3, "sprint": 0.4, "climber": 0.0, "hills": 0.4},
 }
 
 # Step 3 blend: 50/50 career/recent — but `recent` is deferred, so the blend
@@ -173,12 +178,29 @@ def build_blended(scored_riders):
     return blended
 
 
+def one_day_stage_type(race):
+    """
+    Effective stage_type for a one-day race. A curated cobbles set
+    (data/cobbles/{slug}.json) promotes the race to the `cobbles` type (R4
+    tie-in) — so e.g. Paris-Roubaix is scored on pavé weights rather than its
+    profile-icon classification. Otherwise the race's own stage_type is used.
+    """
+    if (COBBLES_DIR / f"{race['slug']}.json").exists():
+        return "cobbles"
+    return race.get("stage_type")
+
+
 def score_one_day(race, scored_riders, blended):
-    """Step 3 only: single race-level stage_type → score per rider."""
-    weights = TYPE_WEIGHTS.get(race.get("stage_type"))
+    """Step 3 only: single race-level stage_type → score per rider.
+
+    Returns (scores, stage_type_used); scores is None when the type has no
+    weight vector.
+    """
+    stype = one_day_stage_type(race)
+    weights = TYPE_WEIGHTS.get(stype)
     if weights is None:
-        return None
-    return [weighted_score(b, weights) for b in blended]
+        return None, stype
+    return [weighted_score(b, weights) for b in blended], stype
 
 
 def score_stage_race(race, blended):
@@ -278,9 +300,10 @@ def predict_race(race):
     }
 
     if race.get("is_one_day_race"):
-        scores = score_one_day(race, scored_riders, blended)
+        scores, stype = score_one_day(race, scored_riders, blended)
         if scores is None:
             return None
+        base["stage_type"] = stype          # effective type (may be promoted to cobbles)
         probs = softmax_probabilities(scores)
         scored_out = [{
             "name": r.get("name"),

@@ -17,8 +17,8 @@
       0.4
     ]
   },
-  "updated_at": "2026-06-05T20:02:54.743754",
-  "scored_rider_count": 27,
+  "updated_at": "2026-06-06T21:06:29.704386",
+  "scored_rider_count": 30,
   "unscored_rider_count": 0,
   "stages_meta": [
     {
@@ -49,48 +49,33 @@
   ],
   "riders": [
     {
-      "name": "ROGLIČ Primož",
-      "team": "Red Bull - BORA - hansgrohe (WT)",
-      "rider_url": "rider/primoz-roglic",
-      "specialties_available": true,
-      "gc_win": 23.55,
-      "gc_rank": 1,
-      "stage_win": [
-        6.06,
-        6.06,
-        6.06,
-        25.66,
-        20.47
-      ]
-    },
-    {
       "name": "POGAČAR Tadej",
       "team": "UAE Team Emirates - XRG (WT)",
       "rider_url": "rider/tadej-pogacar",
       "specialties_available": true,
-      "gc_win": 22.28,
-      "gc_rank": 2,
+      "gc_win": 21.41,
+      "gc_rank": 1,
       "stage_win": [
-        19.43,
-        19.43,
-        19.43,
-        19.49,
-        26.0
+        12.97,
+        12.97,
+        12.97,
+        18.67,
+        23.92
       ]
     },
     {
-      "name": "MAS Enric",
-      "team": "Movistar Team (WT)",
-      "rider_url": "rider/enric-mas",
+      "name": "ROGLIČ Primož",
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "rider_url": "rider/primoz-roglic",
       "specialties_available": true,
-      "gc_win": 9.68,
-      "gc_rank": 3,
+      "gc_win": 20.37,
+      "gc_rank": 2,
       "stage_win": [
-        1.97,
-        1.97,
-        1.97,
-        7.84,
-        10.26
+        3.89,
+        3.89,
+        3.89,
+        23.85,
+        18.4
       ]
     },
     {
@@ -98,14 +83,29 @@
       "team": "Pinarello Q36.5 Pro Cycling Team (PRT)",
       "rider_url": "rider/tom-pidcock",
       "specialties_available": true,
-      "gc_win": 9.68,
+      "gc_win": 9.19,
+      "gc_rank": 3,
+      "stage_win": [
+        6.6,
+        6.6,
+        6.6,
+        1.36,
+        10.38
+      ]
+    },
+    {
+      "name": "MAS Enric",
+      "team": "Movistar Team (WT)",
+      "rider_url": "rider/enric-mas",
+      "specialties_available": true,
+      "gc_win": 8.32,
       "gc_rank": 4,
       "stage_win": [
-        11.09,
-        11.09,
-        11.09,
-        1.94,
-        11.26
+        1.37,
+        1.37,
+        1.37,
+        5.7,
+        9.55
       ]
     },
     {
@@ -113,14 +113,29 @@
       "team": "Uno-X Mobility (WT)",
       "rider_url": "rider/magnus-cort-nielsen",
       "specialties_available": true,
-      "gc_win": 7.75,
+      "gc_win": 7.53,
       "gc_rank": 5,
       "stage_win": [
-        14.37,
-        14.37,
-        14.37,
-        7.52,
-        5.65
+        9.0,
+        9.0,
+        9.0,
+        6.63,
+        5.79
+      ]
+    },
+    {
+      "name": "VAN DER POEL Mathieu",
+      "team": "Alpecin - Premier Tech (WT)",
+      "rider_url": "rider/mathieu-van-der-poel",
+      "specialties_available": true,
+      "gc_win": 6.82,
+      "gc_rank": 6,
+      "stage_win": [
+        22.44,
+        22.44,
+        22.44,
+        8.63,
+        6.14
       ]
     },
     {
@@ -128,14 +143,14 @@
       "team": "Decathlon CMA CGM Team (WT)",
       "rider_url": "rider/oliver-naesen",
       "specialties_available": true,
-      "gc_win": 6.56,
-      "gc_rank": 6,
+      "gc_win": 5.87,
+      "gc_rank": 7,
       "stage_win": [
-        16.71,
-        16.71,
-        16.71,
-        0.51,
-        2.0
+        9.17,
+        9.17,
+        9.17,
+        0.42,
+        1.95
       ]
     },
     {
@@ -143,14 +158,14 @@
       "team": "Bahrain - Victorious (WT)",
       "rider_url": "rider/antonio-tiberi",
       "specialties_available": true,
-      "gc_win": 5.25,
-      "gc_rank": 7,
+      "gc_win": 4.81,
+      "gc_rank": 8,
       "stage_win": [
-        0.18,
-        0.18,
-        0.18,
-        11.24,
-        4.39
+        0.17,
+        0.17,
+        0.17,
+        9.48,
+        4.35
       ]
     },
     {
@@ -158,14 +173,14 @@
       "team": "XDS Astana Team (WT)",
       "rider_url": "rider/alberto-bettiol",
       "specialties_available": true,
-      "gc_win": 4.45,
-      "gc_rank": 8,
+      "gc_win": 3.95,
+      "gc_rank": 9,
       "stage_win": [
-        6.47,
-        6.47,
-        6.47,
-        10.11,
-        4.16
+        4.1,
+        4.1,
+        4.1,
+        9.84,
+        3.55
       ]
     },
     {
@@ -173,14 +188,29 @@
       "team": "Bahrain - Victorious (WT)",
       "rider_url": "rider/lenny-martinez",
       "specialties_available": true,
-      "gc_win": 2.41,
-      "gc_rank": 9,
+      "gc_win": 2.4,
+      "gc_rank": 10,
       "stage_win": [
-        0.23,
-        0.23,
-        0.23,
-        3.74,
-        4.44
+        0.22,
+        0.22,
+        0.22,
+        2.95,
+        4.5
+      ]
+    },
+    {
+      "name": "PHILIPSEN Jasper",
+      "team": "Alpecin - Premier Tech (WT)",
+      "rider_url": "rider/jasper-philipsen",
+      "specialties_available": true,
+      "gc_win": 1.97,
+      "gc_rank": 11,
+      "stage_win": [
+        13.7,
+        13.7,
+        13.7,
+        0.99,
+        0.57
       ]
     },
     {
@@ -188,14 +218,14 @@
       "team": "XDS Astana Team (WT)",
       "rider_url": "rider/clement-champoussin",
       "specialties_available": true,
-      "gc_win": 2.16,
-      "gc_rank": 10,
+      "gc_win": 1.87,
+      "gc_rank": 12,
       "stage_win": [
-        1.37,
-        1.37,
-        1.37,
-        0.61,
-        4.63
+        1.01,
+        1.01,
+        1.01,
+        0.46,
+        4.4
       ]
     },
     {
@@ -203,14 +233,14 @@
       "team": "Team Visma | Lease a Bike (WT)",
       "rider_url": "rider/axel-zingle",
       "specialties_available": true,
-      "gc_win": 1.64,
-      "gc_rank": 11,
+      "gc_win": 1.26,
+      "gc_rank": 13,
       "stage_win": [
-        4.02,
-        4.02,
-        4.02,
-        2.2,
-        0.4
+        2.75,
+        2.75,
+        2.75,
+        1.64,
+        0.41
       ]
     },
     {
@@ -218,14 +248,14 @@
       "team": "Team Jayco AlUla (WT)",
       "rider_url": "rider/koen-bouwman",
       "specialties_available": true,
-      "gc_win": 1.05,
-      "gc_rank": 12,
+      "gc_win": 1.08,
+      "gc_rank": 14,
       "stage_win": [
-        0.25,
-        0.25,
-        0.25,
-        3.82,
-        1.23
+        0.22,
+        0.22,
+        0.22,
+        2.84,
+        1.16
       ]
     },
     {
@@ -233,14 +263,14 @@
       "team": "Lotto Intermarché (WT)",
       "rider_url": "rider/arnaud-de-lie",
       "specialties_available": true,
-      "gc_win": 0.89,
-      "gc_rank": 13,
+      "gc_win": 0.73,
+      "gc_rank": 15,
       "stage_win": [
-        12.62,
-        12.62,
-        12.62,
+        7.92,
+        7.92,
+        7.92,
         0.05,
-        0.37
+        0.34
       ]
     },
     {
@@ -248,14 +278,14 @@
       "team": "Team Jayco AlUla (WT)",
       "rider_url": "rider/paul-double",
       "specialties_available": true,
-      "gc_win": 0.46,
-      "gc_rank": 14,
+      "gc_win": 0.42,
+      "gc_rank": 16,
       "stage_win": [
-        0.06,
-        0.06,
-        0.06,
-        0.1,
-        0.55
+        0.07,
+        0.07,
+        0.07,
+        0.09,
+        0.57
       ]
     },
     {
@@ -263,14 +293,14 @@
       "team": "Soudal Quick-Step (WT)",
       "rider_url": "rider/louis-vervaeke",
       "specialties_available": true,
-      "gc_win": 0.41,
-      "gc_rank": 15,
+      "gc_win": 0.34,
+      "gc_rank": 17,
       "stage_win": [
         0.07,
         0.07,
         0.07,
-        1.35,
-        0.86
+        1.07,
+        0.79
       ]
     },
     {
@@ -278,13 +308,13 @@
       "team": "Team Visma | Lease a Bike (WT)",
       "rider_url": "rider/bart-lemmen",
       "specialties_available": true,
-      "gc_win": 0.39,
-      "gc_rank": 16,
+      "gc_win": 0.3,
+      "gc_rank": 18,
       "stage_win": [
-        0.15,
-        0.15,
-        0.15,
-        0.83,
+        0.14,
+        0.14,
+        0.14,
+        0.57,
         0.33
       ]
     },
@@ -293,14 +323,14 @@
       "team": "Tudor Pro Cycling Team (PRT)",
       "rider_url": "rider/marco-brenner",
       "specialties_available": true,
-      "gc_win": 0.31,
-      "gc_rank": 17,
+      "gc_win": 0.26,
+      "gc_rank": 19,
       "stage_win": [
-        0.15,
-        0.15,
-        0.15,
-        1.38,
-        0.52
+        0.14,
+        0.14,
+        0.14,
+        1.09,
+        0.5
       ]
     },
     {
@@ -308,14 +338,29 @@
       "team": "Movistar Team (WT)",
       "rider_url": "rider/roger-adria",
       "specialties_available": true,
-      "gc_win": 0.29,
-      "gc_rank": 18,
+      "gc_win": 0.23,
+      "gc_rank": 20,
       "stage_win": [
-        0.89,
-        0.89,
-        0.89,
-        0.17,
-        1.03
+        0.69,
+        0.69,
+        0.69,
+        0.13,
+        0.9
+      ]
+    },
+    {
+      "name": "SEGAERT Alec",
+      "team": "Bahrain - Victorious (WT)",
+      "rider_url": "rider/alec-segaert",
+      "specialties_available": true,
+      "gc_win": 0.21,
+      "gc_rank": 21,
+      "stage_win": [
+        0.3,
+        0.3,
+        0.3,
+        2.49,
+        0.08
       ]
     },
     {
@@ -323,13 +368,13 @@
       "team": "Decathlon CMA CGM Team (WT)",
       "rider_url": "rider/paul-lapeira",
       "specialties_available": true,
-      "gc_win": 0.22,
-      "gc_rank": 19,
+      "gc_win": 0.16,
+      "gc_rank": 22,
       "stage_win": [
-        1.18,
-        1.18,
-        1.18,
-        0.46,
+        0.87,
+        0.87,
+        0.87,
+        0.32,
         0.27
       ]
     },
@@ -338,14 +383,14 @@
       "team": "Team Visma | Lease a Bike (WT)",
       "rider_url": "rider/matthew-brennan",
       "specialties_available": true,
-      "gc_win": 0.15,
-      "gc_rank": 20,
+      "gc_win": 0.13,
+      "gc_rank": 23,
       "stage_win": [
-        1.77,
-        1.77,
-        1.77,
-        0.35,
-        0.11
+        1.35,
+        1.35,
+        1.35,
+        0.25,
+        0.1
       ]
     },
     {
@@ -353,14 +398,14 @@
       "team": "Bahrain - Victorious (WT)",
       "rider_url": "rider/afonso-eulalio",
       "specialties_available": true,
-      "gc_win": 0.13,
-      "gc_rank": 21,
+      "gc_win": 0.1,
+      "gc_rank": 24,
       "stage_win": [
         0.06,
         0.06,
         0.06,
         0.03,
-        0.42
+        0.38
       ]
     },
     {
@@ -368,14 +413,14 @@
       "team": "UAE Team Emirates - XRG (WT)",
       "rider_url": "rider/domen-novak",
       "specialties_available": true,
-      "gc_win": 0.1,
-      "gc_rank": 22,
+      "gc_win": 0.09,
+      "gc_rank": 25,
       "stage_win": [
         0.03,
         0.03,
         0.03,
-        0.1,
-        0.15
+        0.09,
+        0.16
       ]
     },
     {
@@ -383,14 +428,14 @@
       "team": "Movistar Team (WT)",
       "rider_url": "rider/pelayo-sanchez-mayo",
       "specialties_available": true,
-      "gc_win": 0.05,
-      "gc_rank": 23,
+      "gc_win": 0.04,
+      "gc_rank": 26,
       "stage_win": [
         0.03,
         0.03,
         0.03,
-        0.21,
-        0.22
+        0.16,
+        0.21
       ]
     },
     {
@@ -398,12 +443,12 @@
       "team": "Bahrain - Victorious (WT)",
       "rider_url": "rider/pau-miquel-delgado",
       "specialties_available": true,
-      "gc_win": 0.05,
-      "gc_rank": 24,
+      "gc_win": 0.04,
+      "gc_rank": 27,
       "stage_win": [
-        0.62,
-        0.62,
-        0.62,
+        0.49,
+        0.49,
+        0.49,
         0.03,
         0.09
       ]
@@ -414,13 +459,13 @@
       "rider_url": "rider/emiel-verstrynge",
       "specialties_available": true,
       "gc_win": 0.03,
-      "gc_rank": 25,
+      "gc_rank": 28,
       "stage_win": [
         0.06,
         0.06,
         0.06,
-        0.08,
-        0.09
+        0.07,
+        0.1
       ]
     },
     {
@@ -429,12 +474,12 @@
       "rider_url": "rider/jarno-widar",
       "specialties_available": true,
       "gc_win": 0.03,
-      "gc_rank": 26,
+      "gc_rank": 29,
       "stage_win": [
-        0.02,
-        0.02,
-        0.02,
-        0.11,
+        0.03,
+        0.03,
+        0.03,
+        0.09,
         0.08
       ]
     },
@@ -444,12 +489,12 @@
       "rider_url": "rider/alberto-bruttomesso",
       "specialties_available": true,
       "gc_win": 0.03,
-      "gc_rank": 27,
+      "gc_rank": 30,
       "stage_win": [
-        0.15,
-        0.15,
-        0.15,
-        0.05,
+        0.14,
+        0.14,
+        0.14,
+        0.04,
         0.03
       ]
     }

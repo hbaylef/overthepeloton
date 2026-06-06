@@ -694,6 +694,8 @@ let currentRace = null;
 let currentStageFiles = [];
 let map = null;
 let routeLayer = null;
+let endpointMarkers = null;  // start/finish markers (tracked so stage switches don't stack them)
+let highlightLayer = null;  // R4: pavé + climb overlays on the route (cleared/redrawn together)
 let hoverMarker = null;
 let elevationPoints = [];   // [{lat, lon, ele, dist}]
 let canvas, ctx;
@@ -918,6 +920,7 @@ async function selectRace(idx) {
   getSegments(segSlug).then(s => {
     if (currentRace && currentRace.slug === segSlug) {
       currentSegments = s;
+      drawHighlightsOnMap();
       if (canvas && ctx && elevationPoints.length) { baseKey = ''; renderProfile(); }
     }
   });
@@ -1503,6 +1506,7 @@ async function loadStage(stageIdx) {
         if (currentRace && currentRace.slug === slug) {
           currentClimbs = climbs;
           renderClimbList(climbs);
+          drawHighlightsOnMap();
           if (canvas && ctx && elevationPoints.length) { baseKey = ''; renderProfile(); }
         }
       });
@@ -1552,6 +1556,7 @@ function drawRouteOnMap() {
   if (!map || typeof L === 'undefined') return;  // map unavailable — skip gracefully
   if (routeLayer) { map.removeLayer(routeLayer); routeLayer = null; }
   if (hoverMarker) { map.removeLayer(hoverMarker); hoverMarker = null; }
+  if (endpointMarkers) { map.removeLayer(endpointMarkers); endpointMarkers = null; }
 
   const latlngs = elevationPoints.map(p => [p.lat, p.lon]);
 
@@ -1568,8 +1573,10 @@ function drawRouteOnMap() {
     '<div style="background:#14130f;width:14px;height:14px;border-radius:50%;border:2.5px solid #f4f1ea;box-shadow:0 0 0 1px #14130f"></div>',
     iconSize:[14,14], iconAnchor:[7,7] });
 
-  L.marker(latlngs[0], {icon:startIco}).addTo(map).bindTooltip('Start');
-  L.marker(latlngs[latlngs.length-1], {icon:endIco}).addTo(map).bindTooltip('Finish');
+  endpointMarkers = L.layerGroup([
+    L.marker(latlngs[0], {icon:startIco}).bindTooltip('Start'),
+    L.marker(latlngs[latlngs.length-1], {icon:endIco}).bindTooltip('Finish'),
+  ]).addTo(map);
 
   // moving hover marker
   hoverMarker = L.circleMarker(latlngs[0], {
@@ -1577,6 +1584,46 @@ function drawRouteOnMap() {
   });
 
   map.fitBounds(routeLayer.getBounds(), { padding:[30,30] });
+
+  drawHighlightsOnMap();   // overlay any pavé / climbs we already have for this stage
+}
+
+// R4: overlay pavé sectors (brown) and climbs (steepness colour, numbered summit
+// marker) on top of the route. Rebuilt whenever the route, cobbles or climbs
+// change. Each highlight has a light casing so it reads over the rust route line.
+function drawHighlightsOnMap() {
+  if (!map || typeof L === 'undefined') return;
+  if (highlightLayer) { map.removeLayer(highlightLayer); highlightLayer = null; }
+  if (!elevationPoints.length) return;
+
+  const llBetween = (d0, d1) =>
+    elevationPoints.filter(p => p.dist >= d0 && p.dist <= d1).map(p => [p.lat, p.lon]);
+  const layers = [];
+  const addStretch = (d0, d1, color, tip) => {
+    const ll = llBetween(d0, d1);
+    if (ll.length < 2) return;
+    layers.push(L.polyline(ll, { color:'#f4f1ea', weight:9, opacity:0.9, lineCap:'round' }));        // casing
+    layers.push(L.polyline(ll, { color, weight:6, opacity:0.95, lineCap:'round' }).bindTooltip(tip)); // core
+  };
+
+  for (const s of (currentSegments || []))
+    addStretch(s.km_start, s.km_end, '#4a2c12', `pavé: ${s.name} ${'★'.repeat(s.stars || 0)}`);
+
+  for (const c of (currentClimbs || [])) {
+    const col = gradeColor(c.steepness || 0);
+    const stats = (c.length_km && c.steepness) ? ` · ${c.length_km}km @ ${c.steepness}%` : '';
+    addStretch(c.kmStart, c.km, col, `${c.num}. ${c.name}${stats}`);
+    const p = elevationPoints[nearestIndex(c.km)];
+    if (p) {
+      const ico = L.divIcon({ className:'', iconSize:[18,18], iconAnchor:[9,9], html:
+        `<div style="display:flex;align-items:center;justify-content:center;width:18px;height:18px;` +
+        `border-radius:50%;background:${col};color:#f4f1ea;border:2px solid #14130f;` +
+        `box-shadow:0 0 0 1px #f4f1ea;font:700 10px 'JetBrains Mono',monospace">${c.num}</div>` });
+      layers.push(L.marker([p.lat, p.lon], { icon: ico }).bindTooltip(`${c.num}. ${c.name}${stats}`));
+    }
+  }
+
+  if (layers.length) highlightLayer = L.layerGroup(layers).addTo(map);
 }
 
 // ============================================================
