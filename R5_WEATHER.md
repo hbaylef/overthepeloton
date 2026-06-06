@@ -114,8 +114,11 @@ weather via a scraper to guard against archive changes — not needed for v1.)
 
 ## 8. Build order (turnkey)
 
-1. **Scraper:** `start_time` enrichment + cache (§4); writes `races.json`. Validate
-   via an Actions run (PCS unreachable locally).
+1. ✅ **DONE (`a0fcf7e`) — Scraper:** `scrapers/scrape_start_times.py` +
+   `test_scrape_start_times.py` (9/9) + workflow step + `start_times_cache.json`.
+   Writes `stages[].start_time` / race-level `start_time` + `start_time_source`
+   ("pcs" | "default" | "pending"); date-gated to the weather window (past +
+   18 d). **Real times populate on the next Actions run** (PCS unreachable here).
 2. **Frontend weather module:** fetch + pass-time (§5,§6) — unit-testable math
    (sampling, pass-hour) in isolation; verify the live fetch in the browser.
 3. **Wind layer** (arrows + speed), then **Rain layer**, then **toggles + legend**.
