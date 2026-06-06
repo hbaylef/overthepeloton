@@ -330,6 +330,39 @@
     display: inline-block;
     box-shadow: 0 0 0 1px rgba(20,19,15,0.08);
   }
+  /* climb legend marker: a small ▲ matching the on-profile climb glyph */
+  .grad-legend i.climb-mark {
+    width: 0; height: 0; border-radius: 0; box-shadow: none;
+    border-left: 5px solid transparent; border-right: 5px solid transparent;
+    border-bottom: 9px solid var(--ink);
+  }
+
+  /* R4: climbs list under the profile (numbers key the ▲ markers on the chart) */
+  .climb-list {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+    padding: 9px 18px; border-top: 1.5px solid var(--line);
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  }
+  .climb-list-head {
+    font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 10px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey);
+    margin-right: 4px;
+  }
+  .climb-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 3px 8px; cursor: pointer; color: var(--ink);
+    background: var(--paper); border: 1.5px solid var(--line); border-radius: 3px;
+    font: inherit; line-height: 1.4;
+    box-shadow: 1.5px 1.5px 0 rgba(20,19,15,0.06);
+  }
+  .climb-chip:hover { border-color: var(--rust); box-shadow: 1.5px 1.5px 0 var(--rust); }
+  .climb-chip i {
+    width: 0; height: 0;
+    border-left: 4px solid transparent; border-right: 4px solid transparent;
+    border-bottom: 8px solid var(--ink);
+  }
+  .climb-chip b { font-weight: 700; }
+  .climb-chip span { color: var(--grey); }
 
   /* empty / loading states */
   .placeholder {
@@ -655,6 +688,8 @@ let STARTLISTS = {};    // slug -> startlist json (lazy-loaded, cached)
 let PREDICTIONS = {};   // slug -> prediction json (lazy-loaded, cached)
 let SEGMENTS = {};      // slug -> cobble sectors[] (lazy-loaded, cached)
 let currentSegments = [];   // sectors for the selected race (drawn on the profile)
+let CLIMBS = {};        // slug -> climbs payload (lazy-loaded, cached)
+let currentClimbs = [];     // resolved climbs for the displayed stage (drawn on the profile)
 let currentRace = null;
 let currentStageFiles = [];
 let map = null;
@@ -942,8 +977,10 @@ function renderRaceHeader(gpx) {
             <span><i style="background:#9e3320"></i>9–12%</span>
             <span><i style="background:#6e1f14"></i>12%+</span>
             <span><i style="background:#4a2c12"></i>cobbles</span>
+            <span><i class="climb-mark"></i>climb</span>
           </div>
-          <div class="readout" id="readout">Hover to explore · drag to zoom · double-click to reset.</div>
+          <div class="readout" id="readout">Hover to explore · drag or click a ▲ climb to zoom · double-click to reset.</div>
+          <div class="climb-list" id="climb-list" style="display:none"></div>
         </div>
       </div>`;
   } else {
@@ -1015,6 +1052,66 @@ async function getSegments(slug) {
     SEGMENTS[slug] = [];
   }
   return SEGMENTS[slug];
+}
+
+// R4: categorised climbs (scraped from PCS by scrape_climbs.py). The payload is
+// per-race: one-day races carry a flat `climbs[]`; stage races carry a
+// `stages{}` map keyed by stage number. 404 / no data → null.
+async function getClimbsData(slug) {
+  if (slug in CLIMBS) return CLIMBS[slug];
+  try {
+    CLIMBS[slug] = await fetchJsonFrom(DATA_BASE, `climbs/${slug}.json`);
+  } catch (e) {
+    CLIMBS[slug] = null;
+  }
+  return CLIMBS[slug];
+}
+
+// Resolve the climb list for one displayed stage and turn each climb's
+// km_before_finish into an absolute position on THIS profile (x = totalKm −
+// km_before_finish), so it lands correctly against the drawn GPX length even
+// when PCS's route distance differs slightly. `stageNum` is ignored for one-day.
+async function resolveClimbs(slug, stageNum, totalKm) {
+  const data = await getClimbsData(slug);
+  if (!data) return [];
+  const list = data.is_one_day_race
+    ? (data.climbs || [])
+    : ((data.stages || {})[String(stageNum)] || []);
+  const resolved = list.map(c => {
+    const km = totalKm - c.km_before_finish;   // top of the climb, in profile km
+    const len = c.length_km || 0;
+    return {
+      name: c.name,
+      km,
+      kmStart: Math.max(0, km - len),          // climb runs uphill to its top
+      length_km: c.length_km,
+      steepness: c.steepness,
+      top_m: c.top_m,
+    };
+  }).filter(c => c.km > 0 && c.km <= totalKm);  // drop climbs outside this profile
+
+  resolved.sort((a, b) => a.km - b.km);         // number them in race order (start → finish)
+  resolved.forEach((c, i) => { c.num = i + 1; });
+  return resolved;
+}
+
+// R4: the climbs list below the profile — full name · length · avg gradient for
+// each numbered ▲, each row clickable to zoom that climb (foot → summit).
+function renderClimbList(climbs) {
+  const el = document.getElementById('climb-list');
+  if (!el) return;
+  if (!climbs || !climbs.length) { el.innerHTML = ''; el.style.display = 'none'; return; }
+  el.style.display = '';
+  el.innerHTML = '<span class="climb-list-head">Climbs</span>' + climbs.map(c => {
+    const stats = (c.length_km && c.steepness) ? `<span>${c.length_km} km · ${c.steepness}%</span>` : '';
+    const col = gradeColor(c.steepness || 0);
+    return `<button class="climb-chip" data-num="${c.num}" title="zoom to this climb">` +
+      `<i style="border-bottom-color:${col}"></i><b>${c.num}</b> ${c.name}${stats}</button>`;
+  }).join('');
+  el.querySelectorAll('.climb-chip').forEach(btn => btn.addEventListener('click', () => {
+    const c = (currentClimbs || []).find(x => x.num === Number(btn.dataset.num));
+    if (c) zoomToClimb(c);
+  }));
 }
 
 // ============================================================
@@ -1385,12 +1482,31 @@ async function loadStage(stageIdx) {
   const file = currentStageFiles[stageIdx];
   const url = `${DATA_BASE}/${file.local_path}?t=${Date.now()}`;
 
+  currentClimbs = [];   // cleared until this stage's climbs resolve (async, below)
+  renderClimbList([]);
+
   try {
     const res = await fetch(url, { cache: 'no-store' });
     const text = await res.text();
     parseGpx(text);
     drawRouteOnMap();
     drawElevation();
+
+    // R4: place this stage's climbs on the (now-known) profile length, then
+    // redraw into the cached static layer. stage number matches scrape_climbs.py's
+    // per-stage keys (GPX file.stage, falling back to the tab index).
+    if (elevationPoints.length) {
+      const slug = currentRace.slug;
+      const stageNum = file.stage || (stageIdx + 1);
+      const totalKm = elevationPoints[elevationPoints.length - 1].dist;
+      resolveClimbs(slug, stageNum, totalKm).then(climbs => {
+        if (currentRace && currentRace.slug === slug) {
+          currentClimbs = climbs;
+          renderClimbList(climbs);
+          if (canvas && ctx && elevationPoints.length) { baseKey = ''; renderProfile(); }
+        }
+      });
+    }
   } catch (e) {
     document.getElementById('readout').textContent = 'Failed to load GPX: ' + e.message;
   }
@@ -1498,6 +1614,7 @@ function inCobble(d) {
 // Interaction state for the profile.
 let zoomRange = null;    // {d0,d1} km currently shown, or null = full stage
 let dragStartX = null;   // px at the start of a drag-to-zoom selection
+let pendingClimb = null; // climb whose ▲ was pressed (mousedown) → zoom on release
 let grades = [];         // precomputed smoothed grade % per point (perf)
 // Offscreen cache of the static coloured profile + axes — rebuilt only when the
 // size or zoom range changes, so hovering only redraws a light overlay.
@@ -1569,7 +1686,7 @@ function ensureBase() {
   b.setTransform(dpr,0,0,dpr,0,0);
   b.clearRect(0,0,W,H);
 
-  const pad = { l: 44, r: 12, t: 14, b: 24 };
+  const pad = { l: 44, r: 12, t: currentClimbs.length ? 24 : 14, b: 24 };
   const plotW = W - pad.l - pad.r;
   const plotH = H - pad.t - pad.b;
   const baseY = pad.t + plotH;
@@ -1617,6 +1734,40 @@ function ensureBase() {
     b.strokeStyle = col; b.lineWidth = 2; b.lineCap = 'round'; b.stroke();
   }
   b.restore();
+
+  // R4: climb markers — a ▲ just above the plot with a dashed drop line to the
+  // summit (coloured by steepness) and a small number; the full name · length ·
+  // avg gradient live in the climb list below the chart. Static cache (per stage).
+  b.font = '9px "JetBrains Mono", monospace';
+  const my = pad.t - 7;                         // ▲ row, just above the plot top
+  for (const c of currentClimbs) {
+    if (c.km < dLo || c.km > dHi) continue;
+    const xc = xOf(c.km);
+    const ei = nearestIndex(c.km);
+    const yTop = yOf(elevationPoints[ei].ele);
+    const col = gradeColor(c.steepness || 0);
+
+    b.beginPath();                              // dashed drop line summit → marker
+    b.setLineDash([3, 3]); b.moveTo(xc, my + 4); b.lineTo(xc, yTop);
+    b.strokeStyle = '#14130f'; b.globalAlpha = 0.45; b.lineWidth = 1; b.stroke();
+    b.setLineDash([]); b.globalAlpha = 1;
+
+    b.beginPath();                              // ▲ triangle
+    b.moveTo(xc, my - 5); b.lineTo(xc - 5, my + 4); b.lineTo(xc + 5, my + 4); b.closePath();
+    b.fillStyle = col; b.fill();
+    b.strokeStyle = '#14130f'; b.lineWidth = 1; b.stroke();
+
+    // number + length·gradient above the ▲ (full name is in the list below)
+    const lbl = (c.length_km && c.steepness)
+      ? `${c.num}  ${c.length_km}km ${c.steepness}%` : String(c.num);
+    b.textAlign = 'center'; b.textBaseline = 'middle';
+    const lw = b.measureText(lbl).width;
+    b.fillStyle = 'rgba(244,241,234,0.85)';
+    b.fillRect(xc - lw / 2 - 2, my - 17, lw + 4, 11);   // backing for legibility
+    b.fillStyle = '#14130f';
+    b.fillText(lbl, xc, my - 12);
+  }
+  b.textAlign = 'left';
 
   canvas._x = { pad, plotW, plotH, dLo, dHi, dSpan, xOf, yOf, baseY, W };
 }
@@ -1710,7 +1861,10 @@ function nearestIndex(d) {
 
 function onProfileDown(e) {
   const rect = canvas.getBoundingClientRect();
-  dragStartX = e.clientX - rect.left;
+  const x = e.clientX - rect.left, y = e.clientY - rect.top;
+  const climb = climbAtMarker(x, y);
+  if (climb) { pendingClimb = climb; return; }   // press on a ▲ → climb zoom (not a drag)
+  dragStartX = x;
 }
 
 function onProfileMove(e) {
@@ -1723,6 +1877,9 @@ function onProfileMove(e) {
     return;
   }
 
+  // pointer cursor over a climb ▲ (it's clickable → zoom to that climb)
+  canvas.style.cursor = climbAtMarker(x, e.clientY - rect.top) ? 'pointer' : 'crosshair';
+
   const lo = nearestIndex(xToDist(x));
   const pt = elevationPoints[lo];
   const grad = grades[lo] || 0;   // precomputed (no per-move recompute)
@@ -1733,14 +1890,49 @@ function onProfileMove(e) {
     if (!map.hasLayer(hoverMarker)) hoverMarker.addTo(map);
   }
   const sec = (currentSegments || []).find(s => pt.dist >= s.km_start && pt.dist <= s.km_end);
+  const climb = (currentClimbs || []).find(c => pt.dist >= c.kmStart && pt.dist <= c.km);
+  const climbStats = climb && climb.length_km && climb.steepness
+    ? ` · ${climb.length_km} km @ ${climb.steepness}%` : '';
   document.getElementById('readout').innerHTML =
     `<span><b>${pt.dist.toFixed(1)}</b> km</span>` +
     `<span><b>${Math.round(pt.ele)}</b> m elevation</span>` +
     `<span>gradient <b>${grad>=0?'+':''}${grad.toFixed(1)}%</b></span>` +
-    (sec ? `<span>pavé <b>${sec.name}</b> ${'★'.repeat(sec.stars)}</span>` : '');
+    (sec ? `<span>pavé <b>${sec.name}</b> ${'★'.repeat(sec.stars)}</span>` : '') +
+    (climb ? `<span>climb <b>${climb.name}</b>${climbStats}</span>` : '');
+}
+
+// A climb whose ▲ / label sits under (x,y), or null. Limited to the top marker
+// band so ordinary clicks on the profile body don't trigger a zoom.
+function climbAtMarker(x, y) {
+  const t = canvas._x;
+  if (!t || !currentClimbs.length || y > t.pad.t) return null;
+  let best = null, bestDx = 10;
+  for (const c of currentClimbs) {
+    if (c.km < t.dLo || c.km > t.dHi) continue;
+    const dx = Math.abs(t.xOf(c.km) - x);
+    if (dx < bestDx) { bestDx = dx; best = c; }
+  }
+  return best;
+}
+
+// Zoom the profile + map to one climb: from the foot of the climb to its summit.
+function zoomToClimb(c) {
+  const totalKm = elevationPoints[elevationPoints.length - 1].dist;
+  let d0 = c.kmStart, d1 = Math.min(totalKm, c.km);   // start of climb → top
+  if (d1 - d0 < 0.3) d0 = Math.max(0, c.km - 2);       // fallback if length unknown
+  if (d1 - d0 < 0.2) return;
+  zoomRange = { d0, d1 };
+  const rb = document.getElementById('zoom-reset'); if (rb) rb.style.display = '';
+  renderProfile();
+  fitMapToRange(d0, d1);
 }
 
 function onProfileUp(e) {
+  if (pendingClimb) {                                  // ▲ was pressed → zoom that climb
+    const c = pendingClimb; pendingClimb = null;
+    zoomToClimb(c);
+    return;
+  }
   if (dragStartX === null) return;
   const rect = canvas.getBoundingClientRect();
   const x = e.clientX - rect.left;
@@ -1756,11 +1948,11 @@ function onProfileUp(e) {
 }
 
 function onProfileLeave() {
-  dragStartX = null;
+  dragStartX = null; pendingClimb = null;
   if (map && hoverMarker) map.removeLayer(hoverMarker);
   renderProfile();
   document.getElementById('readout').innerHTML =
-    'Hover to explore · drag to zoom · double-click to reset.';
+    'Hover to explore · drag or click a ▲ climb to zoom · double-click to reset.';
 }
 
 function fitMapToRange(d0, d1) {
