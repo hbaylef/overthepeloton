@@ -1,8 +1,108 @@
 {
   "race": "Volta a la Comunitat Valenciana",
   "race_slug": "setmana-ciclista-valenciana-2026",
-  "source": "procyclingstats",
-  "updated_at": "2026-06-06T08:52:55.881111",
+  "source": "gpx_derived",
+  "updated_at": "2026-06-06T21:43:29.789164",
   "is_one_day_race": false,
-  "stages": {}
+  "stages": {
+    "1": [
+      {
+        "name": "Climb",
+        "km_before_finish": 87.0,
+        "length_km": 3.5,
+        "steepness": 3.3,
+        "top_m": 315
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 39.6,
+        "length_km": 4.6,
+        "steepness": 4.0,
+        "top_m": 330
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 24.5,
+        "length_km": 2.9,
+        "steepness": 3.4,
+        "top_m": 112
+      }
+    ],
+    "3": [
+      {
+        "name": "Climb",
+        "km_before_finish": 26.8,
+        "length_km": 5.7,
+        "steepness": 3.8,
+        "top_m": 669
+      }
+    ],
+    "4": [
+      {
+        "name": "Climb",
+        "km_before_finish": 168.2,
+        "length_km": 1.7,
+        "steepness": 6.4,
+        "top_m": 235
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 156.2,
+        "length_km": 8.8,
+        "steepness": 4.8,
+        "top_m": 591
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 149.3,
+        "length_km": 2.6,
+        "steepness": 3.6,
+        "top_m": 625
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 118.8,
+        "length_km": 8.4,
+        "steepness": 6.4,
+        "top_m": 626
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 113.8,
+        "length_km": 2.2,
+        "steepness": 3.7,
+        "top_m": 630
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 103.2,
+        "length_km": 2.1,
+        "steepness": 3.2,
+        "top_m": 626
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 27.4,
+        "length_km": 6.4,
+        "steepness": 3.4,
+        "top_m": 243
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 12.4,
+        "length_km": 7.3,
+        "steepness": 3.5,
+        "top_m": 270
+      }
+    ],
+    "5": [
+      {
+        "name": "Climb",
+        "km_before_finish": 43.2,
+        "length_km": 10.6,
+        "steepness": 4.6,
+        "top_m": 594
+      }
+    ]
+  }
 }

@@ -1,8 +1,150 @@
 {
   "race": "Tour of the Alps",
   "race_slug": "tour-of-the-alps-2026",
-  "source": "procyclingstats",
-  "updated_at": "2026-06-06T08:55:05.369813",
+  "source": "gpx_derived",
+  "updated_at": "2026-06-06T21:43:31.345171",
   "is_one_day_race": false,
-  "stages": {}
+  "stages": {
+    "2": [
+      {
+        "name": "Climb",
+        "km_before_finish": 124.9,
+        "length_km": 2.7,
+        "steepness": 4.3,
+        "top_m": 826
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 105.2,
+        "length_km": 17.3,
+        "steepness": 4.7,
+        "top_m": 1572
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 89.3,
+        "length_km": 2.2,
+        "steepness": 3.1,
+        "top_m": 944
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 0.7,
+        "length_km": 9.1,
+        "steepness": 5.6,
+        "top_m": 1163
+      }
+    ],
+    "3": [
+      {
+        "name": "Climb",
+        "km_before_finish": 141.6,
+        "length_km": 9.8,
+        "steepness": 5.2,
+        "top_m": 791
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 123.8,
+        "length_km": 15.8,
+        "steepness": 6.1,
+        "top_m": 1689
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 66.4,
+        "length_km": 14.4,
+        "steepness": 5.3,
+        "top_m": 1027
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 15.0,
+        "length_km": 5.8,
+        "steepness": 3.7,
+        "top_m": 597
+      }
+    ],
+    "4": [
+      {
+        "name": "Climb",
+        "km_before_finish": 144.5,
+        "length_km": 17.1,
+        "steepness": 6.0,
+        "top_m": 1254
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 112.7,
+        "length_km": 12.6,
+        "steepness": 4.2,
+        "top_m": 714
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 82.5,
+        "length_km": 15.4,
+        "steepness": 6.2,
+        "top_m": 1458
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 53.1,
+        "length_km": 3.6,
+        "steepness": 4.6,
+        "top_m": 778
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 43.7,
+        "length_km": 9.1,
+        "steepness": 3.9,
+        "top_m": 1106
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 20.4,
+        "length_km": 4.5,
+        "steepness": 5.2,
+        "top_m": 764
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 14.7,
+        "length_km": 1.0,
+        "steepness": 6.7,
+        "top_m": 503
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 9.3,
+        "length_km": 1.7,
+        "steepness": 5.9,
+        "top_m": 375
+      }
+    ],
+    "5": [
+      {
+        "name": "Climb",
+        "km_before_finish": 115.5,
+        "length_km": 12.8,
+        "steepness": 3.3,
+        "top_m": 612
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 35.2,
+        "length_km": 9.5,
+        "steepness": 6.9,
+        "top_m": 1203
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 16.3,
+        "length_km": 8.9,
+        "steepness": 6.3,
+        "top_m": 1203
+      }
+    ]
+  }
 }

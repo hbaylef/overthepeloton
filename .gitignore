@@ -5,3 +5,7 @@ Thumbs.db
 .vscode/
 .idea/
 *.log
+
+# Saved reference pages used to inspect source HTML structure (not needed by tests)
+scrapers/fixture/
+scrapers/fixtures/

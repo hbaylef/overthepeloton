@@ -1,8 +1,108 @@
 {
   "race": "Vuelta a Andalucía",
   "race_slug": "ruta-del-sol-2026",
-  "source": "procyclingstats",
-  "updated_at": "2026-06-06T08:53:21.409586",
+  "source": "gpx_derived",
+  "updated_at": "2026-06-06T21:43:30.009976",
   "is_one_day_race": false,
-  "stages": {}
+  "stages": {
+    "1": [
+      {
+        "name": "Climb",
+        "km_before_finish": 124.7,
+        "length_km": 23.3,
+        "steepness": 4.3,
+        "top_m": 1064
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 83.9,
+        "length_km": 2.6,
+        "steepness": 3.6,
+        "top_m": 977
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 69.8,
+        "length_km": 4.9,
+        "steepness": 5.0,
+        "top_m": 820
+      }
+    ],
+    "2": [
+      {
+        "name": "Climb",
+        "km_before_finish": 113.4,
+        "length_km": 3.1,
+        "steepness": 4.0,
+        "top_m": 150
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 74.3,
+        "length_km": 34.7,
+        "steepness": 3.8,
+        "top_m": 1328
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 33.7,
+        "length_km": 5.5,
+        "steepness": 5.5,
+        "top_m": 1131
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 13.2,
+        "length_km": 2.5,
+        "steepness": 4.5,
+        "top_m": 822
+      }
+    ],
+    "3": [
+      {
+        "name": "Climb",
+        "km_before_finish": 103.5,
+        "length_km": 4.6,
+        "steepness": 3.1,
+        "top_m": 385
+      }
+    ],
+    "5": [
+      {
+        "name": "Climb",
+        "km_before_finish": 149.7,
+        "length_km": 5.4,
+        "steepness": 4.6,
+        "top_m": 661
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 116.0,
+        "length_km": 2.3,
+        "steepness": 3.2,
+        "top_m": 291
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 111.6,
+        "length_km": 2.2,
+        "steepness": 3.2,
+        "top_m": 274
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 63.3,
+        "length_km": 4.3,
+        "steepness": 3.3,
+        "top_m": 390
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 22.6,
+        "length_km": 1.1,
+        "steepness": 6.2,
+        "top_m": 569
+      }
+    ]
+  }
 }

@@ -1,8 +1,178 @@
 {
   "race": "Tirreno-Adriatico",
   "race_slug": "tirreno-adriatico-2026",
-  "source": "procyclingstats",
-  "updated_at": "2026-06-06T08:54:04.235676",
+  "source": "gpx_derived",
+  "updated_at": "2026-06-06T21:43:30.576655",
   "is_one_day_race": false,
-  "stages": {}
+  "stages": {
+    "2": [
+      {
+        "name": "Climb",
+        "km_before_finish": 63.5,
+        "length_km": 4.1,
+        "steepness": 3.7,
+        "top_m": 428
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 60.7,
+        "length_km": 2.0,
+        "steepness": 4.7,
+        "top_m": 485
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 57.4,
+        "length_km": 2.1,
+        "steepness": 7.3,
+        "top_m": 609
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 34.1,
+        "length_km": 4.2,
+        "steepness": 5.2,
+        "top_m": 381
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 30.8,
+        "length_km": 1.3,
+        "steepness": 5.5,
+        "top_m": 405
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 24.2,
+        "length_km": 2.4,
+        "steepness": 5.1,
+        "top_m": 374
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 4.9,
+        "length_km": 3.2,
+        "steepness": 3.6,
+        "top_m": 225
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 0.0,
+        "length_km": 4.2,
+        "steepness": 3.1,
+        "top_m": 329
+      }
+    ],
+    "4": [
+      {
+        "name": "Climb",
+        "km_before_finish": 173.1,
+        "length_km": 17.5,
+        "steepness": 3.9,
+        "top_m": 1370
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 16.6,
+        "length_km": 3.8,
+        "steepness": 3.6,
+        "top_m": 158
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 12.1,
+        "length_km": 1.7,
+        "steepness": 8.3,
+        "top_m": 180
+      }
+    ],
+    "6": [
+      {
+        "name": "Climb",
+        "km_before_finish": 183.2,
+        "length_km": 4.9,
+        "steepness": 3.1,
+        "top_m": 376
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 124.3,
+        "length_km": 10.1,
+        "steepness": 7.6,
+        "top_m": 1261
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 121.1,
+        "length_km": 2.9,
+        "steepness": 7.4,
+        "top_m": 1451
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 101.1,
+        "length_km": 4.4,
+        "steepness": 3.7,
+        "top_m": 805
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 82.9,
+        "length_km": 8.9,
+        "steepness": 3.0,
+        "top_m": 626
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 78.8,
+        "length_km": 2.7,
+        "steepness": 4.0,
+        "top_m": 679
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 56.5,
+        "length_km": 10.8,
+        "steepness": 3.2,
+        "top_m": 636
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 50.6,
+        "length_km": 2.7,
+        "steepness": 4.0,
+        "top_m": 679
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 28.3,
+        "length_km": 10.8,
+        "steepness": 3.2,
+        "top_m": 636
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 22.3,
+        "length_km": 2.7,
+        "steepness": 4.0,
+        "top_m": 679
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 0.0,
+        "length_km": 10.8,
+        "steepness": 3.3,
+        "top_m": 652
+      }
+    ],
+    "7": [
+      {
+        "name": "Climb",
+        "km_before_finish": 89.9,
+        "length_km": 9.2,
+        "steepness": 4.3,
+        "top_m": 482
+      }
+    ]
+  }
 }

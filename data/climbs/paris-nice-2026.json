@@ -1,8 +1,140 @@
 {
   "race": "Paris-Nice",
   "race_slug": "paris-nice-2026",
-  "source": "procyclingstats",
-  "updated_at": "2026-06-06T08:53:45.542076",
+  "source": "gpx_derived",
+  "updated_at": "2026-06-06T21:43:30.380593",
   "is_one_day_race": false,
-  "stages": {}
+  "stages": {
+    "1": [
+      {
+        "name": "Climb",
+        "km_before_finish": 79.9,
+        "length_km": 2.4,
+        "steepness": 4.3,
+        "top_m": 149
+      }
+    ],
+    "4": [
+      {
+        "name": "Climb",
+        "km_before_finish": 26.6,
+        "length_km": 2.4,
+        "steepness": 4.8,
+        "top_m": 422
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 21.9,
+        "length_km": 3.9,
+        "steepness": 5.2,
+        "top_m": 592
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 2.5,
+        "length_km": 1.7,
+        "steepness": 5.3,
+        "top_m": 486
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 0.0,
+        "length_km": 1.7,
+        "steepness": 10.6,
+        "top_m": 629
+      }
+    ],
+    "5": [
+      {
+        "name": "Climb",
+        "km_before_finish": 97.7,
+        "length_km": 9.9,
+        "steepness": 3.1,
+        "top_m": 498
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 19.2,
+        "length_km": 7.2,
+        "steepness": 3.6,
+        "top_m": 387
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 9.0,
+        "length_km": 5.0,
+        "steepness": 5.5,
+        "top_m": 422
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 0.0,
+        "length_km": 4.8,
+        "steepness": 3.4,
+        "top_m": 420
+      }
+    ],
+    "6": [
+      {
+        "name": "Climb",
+        "km_before_finish": 33.2,
+        "length_km": 9.7,
+        "steepness": 3.0,
+        "top_m": 692
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 4.6,
+        "length_km": 5.9,
+        "steepness": 3.4,
+        "top_m": 462
+      }
+    ],
+    "7": [
+      {
+        "name": "Climb",
+        "km_before_finish": 114.1,
+        "length_km": 3.5,
+        "steepness": 3.7,
+        "top_m": 628
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 0.0,
+        "length_km": 36.0,
+        "steepness": 3.1,
+        "top_m": 1600
+      }
+    ],
+    "8": [
+      {
+        "name": "Climb",
+        "km_before_finish": 124.7,
+        "length_km": 6.8,
+        "steepness": 3.4,
+        "top_m": 544
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 78.6,
+        "length_km": 7.4,
+        "steepness": 6.6,
+        "top_m": 1059
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 46.0,
+        "length_km": 10.7,
+        "steepness": 4.6,
+        "top_m": 624
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 18.4,
+        "length_km": 6.0,
+        "steepness": 4.8,
+        "top_m": 360
+      }
+    ]
+  }
 }

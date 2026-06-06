@@ -45,6 +45,10 @@ jobs:
         run: python scrapers/scrape_climbs.py
         continue-on-error: true
 
+      - name: Derive stage-race climbs from GPX (R4)
+        run: python scrapers/derive_climbs.py
+        continue-on-error: true
+
       - name: Commit & push updated data
         run: |
           git config user.name  "github-actions[bot]"

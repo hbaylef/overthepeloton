@@ -1,8 +1,94 @@
 {
   "race": "O Gran Camiño",
   "race_slug": "gran-camino-2026",
-  "source": "procyclingstats",
-  "updated_at": "2026-06-06T08:54:53.630779",
+  "source": "gpx_derived",
+  "updated_at": "2026-06-06T21:43:31.177571",
   "is_one_day_race": false,
-  "stages": {}
+  "stages": {
+    "2": [
+      {
+        "name": "Climb",
+        "km_before_finish": 123.9,
+        "length_km": 3.9,
+        "steepness": 4.9,
+        "top_m": 711
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 21.7,
+        "length_km": 3.6,
+        "steepness": 6.3,
+        "top_m": 280
+      }
+    ],
+    "3": [
+      {
+        "name": "Climb",
+        "km_before_finish": 159.2,
+        "length_km": 9.4,
+        "steepness": 3.3,
+        "top_m": 409
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 16.9,
+        "length_km": 2.2,
+        "steepness": 4.6,
+        "top_m": 155
+      }
+    ],
+    "4": [
+      {
+        "name": "Climb",
+        "km_before_finish": 122.0,
+        "length_km": 6.4,
+        "steepness": 3.1,
+        "top_m": 628
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 35.0,
+        "length_km": 21.6,
+        "steepness": 4.6,
+        "top_m": 1142
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 10.9,
+        "length_km": 7.3,
+        "steepness": 4.5,
+        "top_m": 872
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 0.0,
+        "length_km": 6.2,
+        "steepness": 8.3,
+        "top_m": 1141
+      }
+    ],
+    "5": [
+      {
+        "name": "Climb",
+        "km_before_finish": 137.1,
+        "length_km": 1.9,
+        "steepness": 4.4,
+        "top_m": 141
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 124.8,
+        "length_km": 1.8,
+        "steepness": 3.8,
+        "top_m": 83
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 0.0,
+        "length_km": 5.4,
+        "steepness": 5.7,
+        "top_m": 318
+      }
+    ]
+  }
 }

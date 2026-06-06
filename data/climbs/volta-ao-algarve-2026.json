@@ -1,8 +1,92 @@
 {
   "race": "Volta ao Algarve",
   "race_slug": "volta-ao-algarve-2026",
-  "source": "procyclingstats",
-  "updated_at": "2026-06-06T08:53:32.732898",
+  "source": "gpx_derived",
+  "updated_at": "2026-06-06T21:43:30.127709",
   "is_one_day_race": false,
-  "stages": {}
+  "stages": {
+    "1": [
+      {
+        "name": "Climb",
+        "km_before_finish": 85.1,
+        "length_km": 6.4,
+        "steepness": 4.4,
+        "top_m": 438
+      }
+    ],
+    "2": [
+      {
+        "name": "Climb",
+        "km_before_finish": 116.2,
+        "length_km": 2.2,
+        "steepness": 3.5,
+        "top_m": 131
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 107.9,
+        "length_km": 7.1,
+        "steepness": 3.1,
+        "top_m": 308
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 99.4,
+        "length_km": 3.8,
+        "steepness": 4.1,
+        "top_m": 253
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 59.7,
+        "length_km": 2.0,
+        "steepness": 6.6,
+        "top_m": 244
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 52.2,
+        "length_km": 3.4,
+        "steepness": 6.7,
+        "top_m": 337
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 44.5,
+        "length_km": 5.3,
+        "steepness": 5.0,
+        "top_m": 416
+      }
+    ],
+    "5": [
+      {
+        "name": "Climb",
+        "km_before_finish": 56.3,
+        "length_km": 3.3,
+        "steepness": 4.7,
+        "top_m": 337
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 42.8,
+        "length_km": 5.3,
+        "steepness": 4.7,
+        "top_m": 505
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 13.6,
+        "length_km": 3.3,
+        "steepness": 4.7,
+        "top_m": 337
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 0.0,
+        "length_km": 5.4,
+        "steepness": 4.7,
+        "top_m": 511
+      }
+    ]
+  }
 }

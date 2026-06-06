@@ -51,34 +51,44 @@ scrapers/score_riders.py` on the fresh data, then commit + push **frontend +
 score_riders.py + test_score_riders.py + regenerated `data/predictions/*`**.
 This **changes live predictions** — that's expected and approved.
 
-**❌ R4 climbs — STAGE RACES return ZERO climbs (the open problem).** My
-per-stage URL guess `{stage_url}/route/climbs` returns nothing for *every* stage
-race, including already-completed ones (Paris-Nice, Tirreno, UAE, Catalunya,
-Itzulia) → so it's the approach, not "route not published yet". Findings:
-- Whole-race `race/{slug}/{year}/route/climbs` IS library-supported (`RaceClimbs`)
-  and lists all climbs, **but has NO stage column** (user checked) → can't bucket
-  per stage from it.
-- The per-stage detailed climbs live at
-  `race/{slug}/{year}/stage-N/info/profiles` (user-confirmed). `RaceClimbs`
-  **won't parse it** (its `_html_valid` requires the page `<h2>` == "Climbs";
-  this page's heading is "Profiles"). → **Next step: write a CUSTOM parser for
-  the `/info/profiles` page** in `scrape_climbs.py` for stage races.
-- **Untestable locally**: PCS 403s Claude's WebFetch *and* the local TLS proxy
-  breaks Python cert verification, so this can only be validated via an **Actions
-  run** (or by the user pasting page structure from their browser). Iterate there.
-- Stage races currently show **no climbs** on the site (the frontend handles this
-  gracefully — user's chosen behaviour; no "coming soon" note).
+**✅ R4 climbs — STAGE RACES now have climbs, DERIVED FROM GPX (UNCOMMITTED,
+solved 2026-06-06).** The earlier "custom `/info/profiles` parser" plan is
+**dead — that page has no climb data**. Verified against real saved pages
+(`scrapers/fixture/`, gitignored):
+- PCS `…/stage-N/info/profiles` is **images only** — a stage-profile JPG + N
+  unnamed "Climb" JPGs. No table, no names, no length/steepness/km. `RaceClimbs`
+  rejecting it (`<h2>` is "Profiles" not "Climbs") was a red herring; there's
+  nothing to parse.
+- **cyclingstage** `…-{year}-gpx/` is the same story: one table (stage #,
+  start–finish, km, type, GPX link) + per-stage profile JPGs with the climbs
+  **painted into the image**. No climb text anywhere. Extracting them = OCR
+  (rejected: fragile, not pipeline-viable).
+- **Solution — `scrapers/derive_climbs.py`**: detect climbs from the GPX we
+  already download (hysteresis foot→summit walk; 6371 km haversine + 200 m
+  elevation smoothing to match the frontend; thresholds ≥1 km, ≥60 m gain,
+  ≥3 % avg). Writes `data/climbs/{slug}.json` `stages{}` in the **same shape the
+  frontend already renders** (`name/km_before_finish/length_km/steepness/top_m`)
+  → **no frontend change**. One-day races keep their named PCS climbs.
+  **No network** → runs + tests locally and in Actions. Climbs are unnamed
+  ("Climb"); stats carry the meaning.
+- **Ran locally: 13 stage races, 385 climbs.** Covered by
+  `scrapers/test_derive_climbs.py` (synthetic GPX, 10/10). Wired into the daily
+  workflow as a step after `scrape_climbs.py`.
+- ⏳ **Browser pass still pending** (sandbox can't render Leaflet) — contract is
+  identical to one-day PCS climbs that already render live, so expected to "just
+  work", but eyeball a stage-race profile/map.
 
 **Scoring input caveat (unchanged):** still PCS **career** points; swap to **PCM
 WorldDB** is **PARKED** pending a user `.sqlite` (see `project-data-source-swap`).
 
 **Pick up next session — open items (in order):**
-1. **Verify** the uncommitted frontend (climbs markers/list/zoom + map
-   highlights) in a browser vs the real climbs data; tweak if needed.
-2. **Ship the cobbles tie-in**: re-run `score_riders.py` → commit + push frontend
-   + scoring + predictions (see "To finish" above).
-3. **R4 stage-race climbs**: custom parser for `…/stage-N/info/profiles`; validate
-   via an Actions run.
+1. ✅ DONE — cobbles tie-in shipped (commit `5fd1e19`): scorer + tests + frontend
+   highlights + regenerated predictions pushed live.
+2. **Push the GPX-derived stage climbs** — committed locally this session (NOT
+   pushed, user's choice): `derive_climbs.py` + `test_derive_climbs.py` + workflow
+   step + 13 stage-race climbs files + index + `.gitignore`. `git push` to go live.
+3. **Browser pass** — eyeball the climbs/highlights (one-day *and* stage races) on
+   a local server / the live site; tweak detection thresholds if needed.
 4. Then **R5** weather (Open-Meteo) / **R6** odds / **R7** non-WT.
 
 **Workflow:** edit → verify on a local server (`python -m http.server 8000`,
@@ -192,10 +202,12 @@ overthepeloton/
 │   ├── enter_odds.py            ← STEP 4: manual odds entry
 │   ├── scrape_riders.py         ← R1: embeds specialties.career into startlists
 │   ├── classify_stages.py       ← R2 Phase 2: backfill stage_type into races.json
-│   ├── score_riders.py          ← R2 Phase 3: predictions (R4 cobbles tie-in UNCOMMITTED)
-│   ├── scrape_climbs.py         ← R4: climbs via RaceClimbs (one-day OK; stage races TODO)
+│   ├── score_riders.py          ← R2 Phase 3: predictions (R4 cobbles tie-in shipped)
+│   ├── scrape_climbs.py         ← R4: one-day climbs via RaceClimbs (PCS, named)
+│   ├── derive_climbs.py         ← R4: stage-race climbs DERIVED from GPX (no network)
 │   ├── test_scrape_climbs.py    ← R4: no-network tests for the climbs scraper (7/7)
-│   └── test_score_riders.py     ← R4: no-network tests for scoring + cobbles (UNCOMMITTED, 7/7)
+│   ├── test_derive_climbs.py    ← R4: no-network tests for GPX climb detection (10/10)
+│   └── test_score_riders.py     ← R4: no-network tests for scoring + cobbles (7/7)
 ├── frontend/
 │   └── index.html               ← STEP 3: whole UI (R4 climbs + map highlights UNCOMMITTED)
 ├── R1_R2_DESIGN.md              ← R1+R2 build spec (Tier 1) + R4/R5 research (Tier 2)
@@ -506,11 +518,12 @@ a backlog, not in priority order. Several have open design questions noted.
 - ✅ **R2 cobbles scoring tie-in (UNCOMMITTED, see §0):** `cobbles` weight vector;
   a curated cobbles file promotes the race to `cobbles` at scoring time. Needs a
   `score_riders.py` re-run + push to reach live predictions.
-- ❌ **Stage-race climbs (THE open problem):** per-stage URL approach returns 0
-  for all stage races. Whole-race `…/route/climbs` has no stage column; per-stage
-  climbs are at `…/stage-N/info/profiles` which `RaceClimbs` can't parse →
-  **need a custom parser for `/info/profiles`**, validated via an Actions run
-  (PCS is unreachable from here). See §0 for the full diagnosis.
+- ✅ **Stage-race climbs — SOLVED by deriving from GPX (`derive_climbs.py`,
+  2026-06-06, committed locally / not yet pushed).** Both PCS `/info/profiles`
+  and cyclingstage publish per-stage climbs **as images only** (no parseable
+  text), so we detect climbs from the GPX elevation instead — same data shape,
+  no frontend change, no network (runs/tests locally + in Actions). 13 stage
+  races, 385 climbs; climbs are unnamed. See §0 for the full diagnosis.
 
 ### R5 — Weather on the map (wind / rain)
 - Overlay wind (direction + strength) and rain conditions along the route.

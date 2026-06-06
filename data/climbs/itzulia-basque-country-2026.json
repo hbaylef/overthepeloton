@@ -1,8 +1,231 @@
 {
   "race": "Itzulia Basque Country",
   "race_slug": "itzulia-basque-country-2026",
-  "source": "procyclingstats",
-  "updated_at": "2026-06-06T08:54:36.944960",
+  "source": "gpx_derived",
+  "updated_at": "2026-06-06T21:43:31.052531",
   "is_one_day_race": false,
-  "stages": {}
+  "stages": {
+    "1": [
+      {
+        "name": "Climb",
+        "km_before_finish": 11.4,
+        "length_km": 2.4,
+        "steepness": 7.1,
+        "top_m": 262
+      }
+    ],
+    "2": [
+      {
+        "name": "Climb",
+        "km_before_finish": 150.0,
+        "length_km": 14.5,
+        "steepness": 3.1,
+        "top_m": 841
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 76.7,
+        "length_km": 7.9,
+        "steepness": 4.6,
+        "top_m": 797
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 62.4,
+        "length_km": 7.3,
+        "steepness": 3.1,
+        "top_m": 788
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 52.7,
+        "length_km": 2.1,
+        "steepness": 3.8,
+        "top_m": 604
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 19.4,
+        "length_km": 15.6,
+        "steepness": 4.9,
+        "top_m": 1204
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 0.0,
+        "length_km": 3.7,
+        "steepness": 5.1,
+        "top_m": 752
+      }
+    ],
+    "3": [
+      {
+        "name": "Climb",
+        "km_before_finish": 108.2,
+        "length_km": 4.1,
+        "steepness": 3.0,
+        "top_m": 282
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 103.0,
+        "length_km": 3.3,
+        "steepness": 5.2,
+        "top_m": 366
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 98.1,
+        "length_km": 1.7,
+        "steepness": 4.5,
+        "top_m": 236
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 94.3,
+        "length_km": 2.6,
+        "steepness": 4.6,
+        "top_m": 301
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 87.9,
+        "length_km": 1.4,
+        "steepness": 4.5,
+        "top_m": 287
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 32.0,
+        "length_km": 9.0,
+        "steepness": 4.5,
+        "top_m": 561
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 24.9,
+        "length_km": 2.0,
+        "steepness": 5.8,
+        "top_m": 256
+      }
+    ],
+    "4": [
+      {
+        "name": "Climb",
+        "km_before_finish": 118.8,
+        "length_km": 8.1,
+        "steepness": 3.5,
+        "top_m": 300
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 108.0,
+        "length_km": 5.9,
+        "steepness": 4.7,
+        "top_m": 277
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 78.3,
+        "length_km": 7.5,
+        "steepness": 3.3,
+        "top_m": 246
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 28.7,
+        "length_km": 11.1,
+        "steepness": 3.0,
+        "top_m": 398
+      }
+    ],
+    "5": [
+      {
+        "name": "Climb",
+        "km_before_finish": 152.1,
+        "length_km": 9.8,
+        "steepness": 5.6,
+        "top_m": 672
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 89.5,
+        "length_km": 3.2,
+        "steepness": 5.8,
+        "top_m": 230
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 67.5,
+        "length_km": 17.2,
+        "steepness": 3.3,
+        "top_m": 583
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 45.5,
+        "length_km": 8.7,
+        "steepness": 3.5,
+        "top_m": 392
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 38.5,
+        "length_km": 1.3,
+        "steepness": 5.1,
+        "top_m": 309
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 27.0,
+        "length_km": 4.1,
+        "steepness": 9.0,
+        "top_m": 542
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 12.0,
+        "length_km": 6.2,
+        "steepness": 4.0,
+        "top_m": 348
+      }
+    ],
+    "6": [
+      {
+        "name": "Climb",
+        "km_before_finish": 128.4,
+        "length_km": 7.5,
+        "steepness": 5.4,
+        "top_m": 570
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 101.9,
+        "length_km": 10.5,
+        "steepness": 5.1,
+        "top_m": 685
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 85.7,
+        "length_km": 5.5,
+        "steepness": 4.7,
+        "top_m": 378
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 56.8,
+        "length_km": 14.2,
+        "steepness": 4.0,
+        "top_m": 684
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 40.5,
+        "length_km": 5.5,
+        "steepness": 4.7,
+        "top_m": 378
+      }
+    ]
+  }
 }

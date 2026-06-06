@@ -1,8 +1,57 @@
 {
   "race": "UAE Tour",
   "race_slug": "uae-tour-2026",
-  "source": "procyclingstats",
-  "updated_at": "2026-06-06T08:53:04.909645",
+  "source": "gpx_derived",
+  "updated_at": "2026-06-06T21:43:29.873256",
   "is_one_day_race": false,
-  "stages": {}
+  "stages": {
+    "1": [
+      {
+        "name": "Climb",
+        "km_before_finish": 74.8,
+        "length_km": 1.1,
+        "steepness": 5.5,
+        "top_m": 154
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 49.1,
+        "length_km": 3.1,
+        "steepness": 3.6,
+        "top_m": 200
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 31.0,
+        "length_km": 3.1,
+        "steepness": 3.6,
+        "top_m": 200
+      }
+    ],
+    "3": [
+      {
+        "name": "Climb",
+        "km_before_finish": 8.4,
+        "length_km": 8.4,
+        "steepness": 4.2,
+        "top_m": 522
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 0.0,
+        "length_km": 7.1,
+        "steepness": 11.3,
+        "top_m": 1226
+      }
+    ],
+    "4": [
+      {
+        "name": "Climb",
+        "km_before_finish": 166.9,
+        "length_km": 2.4,
+        "steepness": 5.5,
+        "top_m": 484
+      }
+    ]
+  }
 }
