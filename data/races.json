@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-06T20:15:04.980715",
+  "updated_at": "2026-06-06T21:08:08.538248",
   "year": 2026,
   "total_races": 37,
   "races": [
@@ -24,7 +24,9 @@
           "stage_url": "race/tour-down-under/2026/prologue",
           "date": "01-20",
           "stage_type": "time_trial",
-          "stage_type_source": "stage_name_itt"
+          "stage_type_source": "stage_name_itt",
+          "start_time": "18:00",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -32,7 +34,9 @@
           "stage_url": "race/tour-down-under/2026/stage-1",
           "date": "01-21",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "11:19",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -40,7 +44,9 @@
           "stage_url": "race/tour-down-under/2026/stage-2",
           "date": "01-22",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "11:20",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -48,7 +54,9 @@
           "stage_url": "race/tour-down-under/2026/stage-3",
           "date": "01-23",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "11:40",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p3",
@@ -56,7 +64,9 @@
           "stage_url": "race/tour-down-under/2026/stage-4",
           "date": "01-24",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "10:15",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p3",
@@ -64,7 +74,9 @@
           "stage_url": "race/tour-down-under/2026/stage-5",
           "date": "01-25",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "11:11",
+          "start_time_source": "pcs"
         }
       ]
     },
@@ -89,7 +101,9 @@
           "stage_url": "race/setmana-ciclista-valenciana/2026/stage-1",
           "date": "02-12",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "14:15",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -97,7 +111,9 @@
           "stage_url": "race/setmana-ciclista-valenciana/2026/stage-2",
           "date": "02-13",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:35",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p4",
@@ -105,7 +121,9 @@
           "stage_url": "race/setmana-ciclista-valenciana/2026/stage-3",
           "date": "02-14",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:05",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -113,7 +131,9 @@
           "stage_url": "race/setmana-ciclista-valenciana/2026/stage-4",
           "date": "02-15",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "11:16",
+          "start_time_source": "pcs"
         }
       ]
     },
@@ -138,7 +158,9 @@
           "stage_url": "race/uae-tour/2026/stage-1",
           "date": "02-16",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:10",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p1",
@@ -146,7 +168,9 @@
           "stage_url": "race/uae-tour/2026/stage-2",
           "date": "02-17",
           "stage_type": "time_trial",
-          "stage_type_source": "stage_name_itt"
+          "stage_type_source": "stage_name_itt",
+          "start_time": "12:50",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -154,7 +178,9 @@
           "stage_url": "race/uae-tour/2026/stage-3",
           "date": "02-18",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:30",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -162,7 +188,9 @@
           "stage_url": "race/uae-tour/2026/stage-4",
           "date": "02-19",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:00",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p1",
@@ -170,7 +198,9 @@
           "stage_url": "race/uae-tour/2026/stage-5",
           "date": "02-20",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:30",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -178,7 +208,9 @@
           "stage_url": "race/uae-tour/2026/stage-6",
           "date": "02-21",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:00",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p1",
@@ -186,7 +218,9 @@
           "stage_url": "race/uae-tour/2026/stage-7",
           "date": "02-22",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:15",
+          "start_time_source": "pcs"
         }
       ]
     },
@@ -211,7 +245,9 @@
           "stage_url": "race/ruta-del-sol/2026/stage-1",
           "date": "02-18",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:00",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p3",
@@ -219,7 +255,9 @@
           "stage_url": "race/ruta-del-sol/2026/stage-2",
           "date": "02-19",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:20",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -227,7 +265,9 @@
           "stage_url": "race/ruta-del-sol/2026/stage-3",
           "date": "02-20",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "11:15",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p3",
@@ -235,7 +275,9 @@
           "stage_url": "race/ruta-del-sol/2026/stage-4",
           "date": "02-21",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "11:10",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -243,7 +285,9 @@
           "stage_url": "race/ruta-del-sol/2026/stage-5",
           "date": "02-22",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "11:00",
+          "start_time_source": "pcs"
         }
       ]
     },
@@ -268,7 +312,9 @@
           "stage_url": "race/volta-ao-algarve/2026/stage-1",
           "date": "02-18",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:05",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -276,7 +322,9 @@
           "stage_url": "race/volta-ao-algarve/2026/stage-2",
           "date": "02-19",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:55",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p1",
@@ -284,7 +332,9 @@
           "stage_url": "race/volta-ao-algarve/2026/stage-3",
           "date": "02-20",
           "stage_type": "time_trial",
-          "stage_type_source": "stage_name_itt"
+          "stage_type_source": "stage_name_itt",
+          "start_time": "13:11",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -292,7 +342,9 @@
           "stage_url": "race/volta-ao-algarve/2026/stage-4",
           "date": "02-21",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "11:10",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -300,7 +352,9 @@
           "stage_url": "race/volta-ao-algarve/2026/stage-5",
           "date": "02-22",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:10",
+          "start_time_source": "pcs"
         }
       ]
     },
@@ -322,7 +376,9 @@
       "profile_icon": "p2",
       "profile_icon_source": "pcs",
       "stage_type": "sprint_break",
-      "stage_type_source": "profile_icon"
+      "stage_type_source": "profile_icon",
+      "start_time": "12:00",
+      "start_time_source": "default"
     },
     {
       "pcs_url": "race/kuurne-brussel-kuurne/2026",
@@ -342,7 +398,9 @@
       "profile_icon": "p2",
       "profile_icon_source": "pcs",
       "stage_type": "sprint_break",
-      "stage_type_source": "profile_icon"
+      "stage_type_source": "profile_icon",
+      "start_time": "12:00",
+      "start_time_source": "default"
     },
     {
       "pcs_url": "race/strade-bianche/2026",
@@ -362,7 +420,9 @@
       "profile_icon": "p3",
       "profile_icon_source": "pcs",
       "stage_type": "hills_puncheur",
-      "stage_type_source": "profile_icon"
+      "stage_type_source": "profile_icon",
+      "start_time": "12:00",
+      "start_time_source": "default"
     },
     {
       "pcs_url": "race/paris-nice/2026",
@@ -385,7 +445,9 @@
           "stage_url": "race/paris-nice/2026/stage-1",
           "date": "03-08",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:10",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p1",
@@ -393,7 +455,9 @@
           "stage_url": "race/paris-nice/2026/stage-2",
           "date": "03-09",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:50",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -401,7 +465,9 @@
           "stage_url": "race/paris-nice/2026/stage-3",
           "date": "03-10",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "15:10",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p3",
@@ -409,7 +475,9 @@
           "stage_url": "race/paris-nice/2026/stage-4",
           "date": "03-11",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:25",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p3",
@@ -417,7 +485,9 @@
           "stage_url": "race/paris-nice/2026/stage-5",
           "date": "03-12",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:05",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -425,7 +495,9 @@
           "stage_url": "race/paris-nice/2026/stage-6",
           "date": "03-13",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:50",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -433,7 +505,9 @@
           "stage_url": "race/paris-nice/2026/stage-7",
           "date": "03-14",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:50",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -441,7 +515,9 @@
           "stage_url": "race/paris-nice/2026/stage-8",
           "date": "03-15",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:30",
+          "start_time_source": "pcs"
         }
       ]
     },
@@ -466,7 +542,9 @@
           "stage_url": "race/tirreno-adriatico/2026/stage-1",
           "date": "03-09",
           "stage_type": "time_trial",
-          "stage_type_source": "stage_name_itt"
+          "stage_type_source": "stage_name_itt",
+          "start_time": "12:40",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p3",
@@ -474,7 +552,9 @@
           "stage_url": "race/tirreno-adriatico/2026/stage-2",
           "date": "03-10",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "10:55",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p1",
@@ -482,7 +562,9 @@
           "stage_url": "race/tirreno-adriatico/2026/stage-3",
           "date": "03-11",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "10:40",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -490,7 +572,9 @@
           "stage_url": "race/tirreno-adriatico/2026/stage-4",
           "date": "03-12",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "10:25",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -498,7 +582,9 @@
           "stage_url": "race/tirreno-adriatico/2026/stage-5",
           "date": "03-13",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "10:55",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p3",
@@ -506,7 +592,9 @@
           "stage_url": "race/tirreno-adriatico/2026/stage-6",
           "date": "03-14",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "10:45",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p1",
@@ -514,7 +602,9 @@
           "stage_url": "race/tirreno-adriatico/2026/stage-7",
           "date": "03-15",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:30",
+          "start_time_source": "pcs"
         }
       ]
     },
@@ -536,7 +626,9 @@
       "profile_icon": "p2",
       "profile_icon_source": "pcs",
       "stage_type": "sprint_break",
-      "stage_type_source": "profile_icon"
+      "stage_type_source": "profile_icon",
+      "start_time": "12:00",
+      "start_time_source": "default"
     },
     {
       "pcs_url": "race/volta-a-catalunya/2026",
@@ -559,7 +651,9 @@
           "stage_url": "race/volta-a-catalunya/2026/stage-1",
           "date": "03-23",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:00",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p3",
@@ -567,7 +661,9 @@
           "stage_url": "race/volta-a-catalunya/2026/stage-2",
           "date": "03-24",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:10",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p4",
@@ -575,7 +671,9 @@
           "stage_url": "race/volta-a-catalunya/2026/stage-3",
           "date": "03-25",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:40",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -583,7 +681,9 @@
           "stage_url": "race/volta-a-catalunya/2026/stage-4",
           "date": "03-26",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:15",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -591,7 +691,9 @@
           "stage_url": "race/volta-a-catalunya/2026/stage-5",
           "date": "03-27",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "11:40",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -599,7 +701,9 @@
           "stage_url": "race/volta-a-catalunya/2026/stage-6",
           "date": "03-28",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:50",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -607,7 +711,9 @@
           "stage_url": "race/volta-a-catalunya/2026/stage-7",
           "date": "03-29",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "11:50",
+          "start_time_source": "pcs"
         }
       ]
     },
@@ -629,7 +735,9 @@
       "profile_icon": "p2",
       "profile_icon_source": "pcs",
       "stage_type": "sprint_break",
-      "stage_type_source": "profile_icon"
+      "stage_type_source": "profile_icon",
+      "start_time": "12:00",
+      "start_time_source": "default"
     },
     {
       "pcs_url": "race/gent-wevelgem/2026",
@@ -649,7 +757,9 @@
       "profile_icon": "p2",
       "profile_icon_source": "pcs",
       "stage_type": "sprint_break",
-      "stage_type_source": "profile_icon"
+      "stage_type_source": "profile_icon",
+      "start_time": "12:00",
+      "start_time_source": "default"
     },
     {
       "pcs_url": "race/dwars-door-vlaanderen/2026",
@@ -669,7 +779,9 @@
       "profile_icon": "p2",
       "profile_icon_source": "pcs",
       "stage_type": "sprint_break",
-      "stage_type_source": "profile_icon"
+      "stage_type_source": "profile_icon",
+      "start_time": "12:00",
+      "start_time_source": "default"
     },
     {
       "pcs_url": "race/ronde-van-vlaanderen/2026",
@@ -689,7 +801,9 @@
       "profile_icon": "p2",
       "profile_icon_source": "pcs",
       "stage_type": "sprint_break",
-      "stage_type_source": "profile_icon"
+      "stage_type_source": "profile_icon",
+      "start_time": "12:00",
+      "start_time_source": "default"
     },
     {
       "pcs_url": "race/itzulia-basque-country/2026",
@@ -712,7 +826,9 @@
           "stage_url": "race/itzulia-basque-country/2026/stage-1",
           "date": "04-06",
           "stage_type": "time_trial",
-          "stage_type_source": "stage_name_itt"
+          "stage_type_source": "stage_name_itt",
+          "start_time": "14:30",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -720,7 +836,9 @@
           "stage_url": "race/itzulia-basque-country/2026/stage-2",
           "date": "04-07",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:35",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p3",
@@ -728,7 +846,9 @@
           "stage_url": "race/itzulia-basque-country/2026/stage-3",
           "date": "04-08",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:40",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p3",
@@ -736,7 +856,9 @@
           "stage_url": "race/itzulia-basque-country/2026/stage-4",
           "date": "04-09",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:19",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p4",
@@ -744,7 +866,9 @@
           "stage_url": "race/itzulia-basque-country/2026/stage-5",
           "date": "04-10",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:05",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p4",
@@ -752,7 +876,9 @@
           "stage_url": "race/itzulia-basque-country/2026/stage-6",
           "date": "04-11",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "14:07",
+          "start_time_source": "pcs"
         }
       ]
     },
@@ -774,7 +900,9 @@
       "profile_icon": "p1",
       "profile_icon_source": "pcs",
       "stage_type": "sprint",
-      "stage_type_source": "profile_icon"
+      "stage_type_source": "profile_icon",
+      "start_time": "12:00",
+      "start_time_source": "default"
     },
     {
       "pcs_url": "race/gran-camino/2026",
@@ -797,7 +925,9 @@
           "stage_url": "race/gran-camino/2026/stage-1",
           "date": "04-14",
           "stage_type": "time_trial",
-          "stage_type_source": "stage_name_itt"
+          "stage_type_source": "stage_name_itt",
+          "start_time": "14:51",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -805,7 +935,9 @@
           "stage_url": "race/gran-camino/2026/stage-2",
           "date": "04-15",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "11:35",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -813,7 +945,9 @@
           "stage_url": "race/gran-camino/2026/stage-3",
           "date": "04-16",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:20",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -821,7 +955,9 @@
           "stage_url": "race/gran-camino/2026/stage-4",
           "date": "04-17",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "11:55",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -829,7 +965,9 @@
           "stage_url": "race/gran-camino/2026/stage-5",
           "date": "04-18",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:35",
+          "start_time_source": "pcs"
         }
       ]
     },
@@ -851,7 +989,9 @@
       "profile_icon": "p3",
       "profile_icon_source": "pcs",
       "stage_type": "hills_puncheur",
-      "stage_type_source": "profile_icon"
+      "stage_type_source": "profile_icon",
+      "start_time": "12:00",
+      "start_time_source": "default"
     },
     {
       "pcs_url": "race/amstel-gold-race/2026",
@@ -871,7 +1011,9 @@
       "profile_icon": "p2",
       "profile_icon_source": "pcs",
       "stage_type": "sprint_break",
-      "stage_type_source": "profile_icon"
+      "stage_type_source": "profile_icon",
+      "start_time": "12:00",
+      "start_time_source": "default"
     },
     {
       "pcs_url": "race/tour-of-the-alps/2026",
@@ -894,7 +1036,9 @@
           "stage_url": "race/tour-of-the-alps/2026/stage-1",
           "date": "04-20",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "11:55",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -902,7 +1046,9 @@
           "stage_url": "race/tour-of-the-alps/2026/stage-2",
           "date": "04-21",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "11:35",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p4",
@@ -910,7 +1056,9 @@
           "stage_url": "race/tour-of-the-alps/2026/stage-3",
           "date": "04-22",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "10:00",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p4",
@@ -918,7 +1066,9 @@
           "stage_url": "race/tour-of-the-alps/2026/stage-4",
           "date": "04-23",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "10:45",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p4",
@@ -926,7 +1076,9 @@
           "stage_url": "race/tour-of-the-alps/2026/stage-5",
           "date": "04-24",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:00",
+          "start_time_source": "pcs"
         }
       ]
     },
@@ -948,7 +1100,9 @@
       "profile_icon": "p3",
       "profile_icon_source": "pcs",
       "stage_type": "hills_puncheur",
-      "stage_type_source": "profile_icon"
+      "stage_type_source": "profile_icon",
+      "start_time": "12:00",
+      "start_time_source": "default"
     },
     {
       "pcs_url": "race/liege-bastogne-liege/2026",
@@ -968,7 +1122,9 @@
       "profile_icon": "p2",
       "profile_icon_source": "pcs",
       "stage_type": "sprint_break",
-      "stage_type_source": "profile_icon"
+      "stage_type_source": "profile_icon",
+      "start_time": "12:00",
+      "start_time_source": "default"
     },
     {
       "pcs_url": "race/tour-de-romandie/2026",
@@ -991,7 +1147,9 @@
           "stage_url": "race/tour-de-romandie/2026/prologue",
           "date": "04-28",
           "stage_type": "time_trial",
-          "stage_type_source": "stage_name_itt"
+          "stage_type_source": "stage_name_itt",
+          "start_time": "15:28",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p4",
@@ -999,7 +1157,9 @@
           "stage_url": "race/tour-de-romandie/2026/stage-1",
           "date": "04-29",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:30",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -1007,7 +1167,9 @@
           "stage_url": "race/tour-de-romandie/2026/stage-2",
           "date": "04-30",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:20",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p4",
@@ -1015,7 +1177,9 @@
           "stage_url": "race/tour-de-romandie/2026/stage-3",
           "date": "05-01",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:45",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p4",
@@ -1023,7 +1187,9 @@
           "stage_url": "race/tour-de-romandie/2026/stage-4",
           "date": "05-02",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:10",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -1031,7 +1197,9 @@
           "stage_url": "race/tour-de-romandie/2026/stage-5",
           "date": "05-03",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "11:50",
+          "start_time_source": "pcs"
         }
       ]
     },
@@ -1056,7 +1224,9 @@
           "stage_url": "race/giro-d-italia/2026/stage-1",
           "date": "05-08",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "14:00",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p4",
@@ -1064,7 +1234,9 @@
           "stage_url": "race/giro-d-italia/2026/stage-2",
           "date": "05-09",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:05",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -1072,7 +1244,9 @@
           "stage_url": "race/giro-d-italia/2026/stage-3",
           "date": "05-10",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:15",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p4",
@@ -1080,7 +1254,9 @@
           "stage_url": "race/giro-d-italia/2026/stage-4",
           "date": "05-12",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "14:00",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -1088,7 +1264,9 @@
           "stage_url": "race/giro-d-italia/2026/stage-5",
           "date": "05-13",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:25",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -1096,7 +1274,9 @@
           "stage_url": "race/giro-d-italia/2026/stage-6",
           "date": "05-14",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "14:05",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -1104,7 +1284,9 @@
           "stage_url": "race/giro-d-italia/2026/stage-7",
           "date": "05-15",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "10:55",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p3",
@@ -1112,7 +1294,9 @@
           "stage_url": "race/giro-d-italia/2026/stage-8",
           "date": "05-16",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:35",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -1120,7 +1304,9 @@
           "stage_url": "race/giro-d-italia/2026/stage-9",
           "date": "05-17",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:50",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p1",
@@ -1128,7 +1314,9 @@
           "stage_url": "race/giro-d-italia/2026/stage-10",
           "date": "05-19",
           "stage_type": "time_trial",
-          "stage_type_source": "stage_name_itt"
+          "stage_type_source": "stage_name_itt",
+          "start_time": "13:15",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -1136,7 +1324,9 @@
           "stage_url": "race/giro-d-italia/2026/stage-11",
           "date": "05-20",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:30",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -1144,7 +1334,9 @@
           "stage_url": "race/giro-d-italia/2026/stage-12",
           "date": "05-21",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:15",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -1152,7 +1344,9 @@
           "stage_url": "race/giro-d-italia/2026/stage-13",
           "date": "05-22",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:55",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -1160,7 +1354,9 @@
           "stage_url": "race/giro-d-italia/2026/stage-14",
           "date": "05-23",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:05",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p1",
@@ -1168,7 +1364,9 @@
           "stage_url": "race/giro-d-italia/2026/stage-15",
           "date": "05-24",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:55",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -1176,7 +1374,9 @@
           "stage_url": "race/giro-d-italia/2026/stage-16",
           "date": "05-26",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "14:00",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p3",
@@ -1184,7 +1384,9 @@
           "stage_url": "race/giro-d-italia/2026/stage-17",
           "date": "05-27",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:20",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -1192,7 +1394,9 @@
           "stage_url": "race/giro-d-italia/2026/stage-18",
           "date": "05-28",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:30",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -1200,7 +1404,9 @@
           "stage_url": "race/giro-d-italia/2026/stage-19",
           "date": "05-29",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:45",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -1208,7 +1414,9 @@
           "stage_url": "race/giro-d-italia/2026/stage-20",
           "date": "05-30",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "11:00",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p1",
@@ -1216,7 +1424,9 @@
           "stage_url": "race/giro-d-italia/2026/stage-21",
           "date": "05-31",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "15:45",
+          "start_time_source": "pcs"
         }
       ]
     },
@@ -1241,7 +1451,9 @@
           "stage_url": "race/tour-auvergne-rhone-alpes/2026/stage-1",
           "date": "06-07",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "11:15",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -1249,7 +1461,9 @@
           "stage_url": "race/tour-auvergne-rhone-alpes/2026/stage-2",
           "date": "06-08",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "11:30",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p3",
@@ -1257,7 +1471,9 @@
           "stage_url": "race/tour-auvergne-rhone-alpes/2026/stage-3",
           "date": "06-09",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "15:05",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -1265,7 +1481,9 @@
           "stage_url": "race/tour-auvergne-rhone-alpes/2026/stage-4",
           "date": "06-10",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:15",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p1",
@@ -1273,7 +1491,9 @@
           "stage_url": "race/tour-auvergne-rhone-alpes/2026/stage-5",
           "date": "06-11",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:45",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -1281,7 +1501,9 @@
           "stage_url": "race/tour-auvergne-rhone-alpes/2026/stage-6",
           "date": "06-12",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:45",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -1289,7 +1511,9 @@
           "stage_url": "race/tour-auvergne-rhone-alpes/2026/stage-7",
           "date": "06-13",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "12:25",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -1297,7 +1521,9 @@
           "stage_url": "race/tour-auvergne-rhone-alpes/2026/stage-8",
           "date": "06-14",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:30",
+          "start_time_source": "pcs"
         }
       ]
     },
@@ -1322,7 +1548,9 @@
           "stage_url": "race/tour-de-suisse/2026/stage-1",
           "date": "06-17",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "14:19",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -1330,7 +1558,9 @@
           "stage_url": "race/tour-de-suisse/2026/stage-2",
           "date": "06-18",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "14:09",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p2",
@@ -1338,7 +1568,9 @@
           "stage_url": "race/tour-de-suisse/2026/stage-3",
           "date": "06-19",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:53",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p1",
@@ -1346,7 +1578,9 @@
           "stage_url": "race/tour-de-suisse/2026/stage-4",
           "date": "06-20",
           "stage_type": "time_trial",
-          "stage_type_source": "stage_name_itt"
+          "stage_type_source": "stage_name_itt",
+          "start_time": "15:04",
+          "start_time_source": "pcs"
         },
         {
           "profile_icon": "p5",
@@ -1354,7 +1588,9 @@
           "stage_url": "race/tour-de-suisse/2026/stage-5",
           "date": "06-21",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": "13:34",
+          "start_time_source": "pcs"
         }
       ]
     },
@@ -1379,7 +1615,9 @@
           "stage_url": "race/tour-de-france/2026/stage-1",
           "date": "07-04",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p3",
@@ -1387,7 +1625,9 @@
           "stage_url": "race/tour-de-france/2026/stage-2",
           "date": "07-05",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p5",
@@ -1395,7 +1635,9 @@
           "stage_url": "race/tour-de-france/2026/stage-3",
           "date": "07-06",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p2",
@@ -1403,7 +1645,9 @@
           "stage_url": "race/tour-de-france/2026/stage-4",
           "date": "07-07",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p1",
@@ -1411,7 +1655,9 @@
           "stage_url": "race/tour-de-france/2026/stage-5",
           "date": "07-08",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p5",
@@ -1419,7 +1665,9 @@
           "stage_url": "race/tour-de-france/2026/stage-6",
           "date": "07-09",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p1",
@@ -1427,7 +1675,9 @@
           "stage_url": "race/tour-de-france/2026/stage-7",
           "date": "07-10",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p1",
@@ -1435,7 +1685,9 @@
           "stage_url": "race/tour-de-france/2026/stage-8",
           "date": "07-11",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p3",
@@ -1443,7 +1695,9 @@
           "stage_url": "race/tour-de-france/2026/stage-9",
           "date": "07-12",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p3",
@@ -1451,7 +1705,9 @@
           "stage_url": "race/tour-de-france/2026/stage-10",
           "date": "07-14",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p1",
@@ -1459,7 +1715,9 @@
           "stage_url": "race/tour-de-france/2026/stage-11",
           "date": "07-15",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p1",
@@ -1467,7 +1725,9 @@
           "stage_url": "race/tour-de-france/2026/stage-12",
           "date": "07-16",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p2",
@@ -1475,7 +1735,9 @@
           "stage_url": "race/tour-de-france/2026/stage-13",
           "date": "07-17",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p5",
@@ -1483,7 +1745,9 @@
           "stage_url": "race/tour-de-france/2026/stage-14",
           "date": "07-18",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p5",
@@ -1491,7 +1755,9 @@
           "stage_url": "race/tour-de-france/2026/stage-15",
           "date": "07-19",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p2",
@@ -1499,7 +1765,9 @@
           "stage_url": "race/tour-de-france/2026/stage-16",
           "date": "07-21",
           "stage_type": "time_trial",
-          "stage_type_source": "stage_name_itt"
+          "stage_type_source": "stage_name_itt",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p2",
@@ -1507,7 +1775,9 @@
           "stage_url": "race/tour-de-france/2026/stage-17",
           "date": "07-22",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p5",
@@ -1515,7 +1785,9 @@
           "stage_url": "race/tour-de-france/2026/stage-18",
           "date": "07-23",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p5",
@@ -1523,7 +1795,9 @@
           "stage_url": "race/tour-de-france/2026/stage-19",
           "date": "07-24",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p5",
@@ -1531,7 +1805,9 @@
           "stage_url": "race/tour-de-france/2026/stage-20",
           "date": "07-25",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p1",
@@ -1539,7 +1815,9 @@
           "stage_url": "race/tour-de-france/2026/stage-21",
           "date": "07-26",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         }
       ]
     },
@@ -1561,7 +1839,9 @@
       "profile_icon": "p3",
       "profile_icon_source": "manual_override",
       "stage_type": "hills_puncheur",
-      "stage_type_source": "profile_icon"
+      "stage_type_source": "profile_icon",
+      "start_time": null,
+      "start_time_source": "pending"
     },
     {
       "pcs_url": "race/renewi-tour/2026",
@@ -1584,7 +1864,9 @@
           "stage_url": "race/renewi-tour/2026/stage-1",
           "date": "08-19",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p0",
@@ -1592,7 +1874,9 @@
           "stage_url": "race/renewi-tour/2026/stage-2",
           "date": "08-20",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p0",
@@ -1600,7 +1884,9 @@
           "stage_url": "race/renewi-tour/2026/stage-3",
           "date": "08-21",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p0",
@@ -1608,7 +1894,9 @@
           "stage_url": "race/renewi-tour/2026/stage-4",
           "date": "08-22",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p0",
@@ -1616,7 +1904,9 @@
           "stage_url": "race/renewi-tour/2026/stage-5",
           "date": "08-23",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         }
       ]
     },
@@ -1641,7 +1931,9 @@
           "stage_url": "race/vuelta-a-espana/2026/stage-1",
           "date": "08-22",
           "stage_type": "time_trial",
-          "stage_type_source": "stage_name_itt"
+          "stage_type_source": "stage_name_itt",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p2",
@@ -1649,7 +1941,9 @@
           "stage_url": "race/vuelta-a-espana/2026/stage-2",
           "date": "08-23",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p5",
@@ -1657,7 +1951,9 @@
           "stage_url": "race/vuelta-a-espana/2026/stage-3",
           "date": "08-24",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p4",
@@ -1665,7 +1961,9 @@
           "stage_url": "race/vuelta-a-espana/2026/stage-4",
           "date": "08-25",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p1",
@@ -1673,7 +1971,9 @@
           "stage_url": "race/vuelta-a-espana/2026/stage-5",
           "date": "08-26",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p2",
@@ -1681,7 +1981,9 @@
           "stage_url": "race/vuelta-a-espana/2026/stage-6",
           "date": "08-27",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p5",
@@ -1689,7 +1991,9 @@
           "stage_url": "race/vuelta-a-espana/2026/stage-7",
           "date": "08-28",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p1",
@@ -1697,7 +2001,9 @@
           "stage_url": "race/vuelta-a-espana/2026/stage-8",
           "date": "08-29",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p5",
@@ -1705,7 +2011,9 @@
           "stage_url": "race/vuelta-a-espana/2026/stage-9",
           "date": "08-30",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p2",
@@ -1713,7 +2021,9 @@
           "stage_url": "race/vuelta-a-espana/2026/stage-10",
           "date": "09-01",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p1",
@@ -1721,7 +2031,9 @@
           "stage_url": "race/vuelta-a-espana/2026/stage-11",
           "date": "09-02",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p5",
@@ -1729,7 +2041,9 @@
           "stage_url": "race/vuelta-a-espana/2026/stage-12",
           "date": "09-03",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p2",
@@ -1737,7 +2051,9 @@
           "stage_url": "race/vuelta-a-espana/2026/stage-13",
           "date": "09-04",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p5",
@@ -1745,7 +2061,9 @@
           "stage_url": "race/vuelta-a-espana/2026/stage-14",
           "date": "09-05",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p2",
@@ -1753,7 +2071,9 @@
           "stage_url": "race/vuelta-a-espana/2026/stage-15",
           "date": "09-06",
           "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p1",
@@ -1761,7 +2081,9 @@
           "stage_url": "race/vuelta-a-espana/2026/stage-16",
           "date": "09-08",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p1",
@@ -1769,7 +2091,9 @@
           "stage_url": "race/vuelta-a-espana/2026/stage-17",
           "date": "09-09",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p1",
@@ -1777,7 +2101,9 @@
           "stage_url": "race/vuelta-a-espana/2026/stage-18",
           "date": "09-10",
           "stage_type": "time_trial",
-          "stage_type_source": "stage_name_itt"
+          "stage_type_source": "stage_name_itt",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p3",
@@ -1785,7 +2111,9 @@
           "stage_url": "race/vuelta-a-espana/2026/stage-19",
           "date": "09-11",
           "stage_type": "hills_puncheur",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p5",
@@ -1793,7 +2121,9 @@
           "stage_url": "race/vuelta-a-espana/2026/stage-20",
           "date": "09-12",
           "stage_type": "climber",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p1",
@@ -1801,7 +2131,9 @@
           "stage_url": "race/vuelta-a-espana/2026/stage-21",
           "date": "09-13",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         }
       ]
     },
@@ -1826,7 +2158,9 @@
           "stage_url": "race/tour-of-britain/2026/stage-1",
           "date": "09-02",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p0",
@@ -1834,7 +2168,9 @@
           "stage_url": "race/tour-of-britain/2026/stage-2",
           "date": "09-03",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p0",
@@ -1842,7 +2178,9 @@
           "stage_url": "race/tour-of-britain/2026/stage-3",
           "date": "09-04",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p0",
@@ -1850,7 +2188,9 @@
           "stage_url": "race/tour-of-britain/2026/stage-4",
           "date": "09-05",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         },
         {
           "profile_icon": "p0",
@@ -1858,7 +2198,9 @@
           "stage_url": "race/tour-of-britain/2026/stage-5",
           "date": "09-06",
           "stage_type": "sprint",
-          "stage_type_source": "profile_icon"
+          "stage_type_source": "profile_icon",
+          "start_time": null,
+          "start_time_source": "pending"
         }
       ]
     },
@@ -1880,7 +2222,9 @@
       "profile_icon": "p3",
       "profile_icon_source": "manual_override",
       "stage_type": "hills_puncheur",
-      "stage_type_source": "profile_icon"
+      "stage_type_source": "profile_icon",
+      "start_time": null,
+      "start_time_source": "pending"
     },
     {
       "pcs_url": "race/gp-montreal/2026",
@@ -1900,7 +2244,9 @@
       "profile_icon": "p3",
       "profile_icon_source": "manual_override",
       "stage_type": "hills_puncheur",
-      "stage_type_source": "profile_icon"
+      "stage_type_source": "profile_icon",
+      "start_time": null,
+      "start_time_source": "pending"
     },
     {
       "pcs_url": "race/il-lombardia/2026",
@@ -1920,7 +2266,9 @@
       "profile_icon": "p5",
       "profile_icon_source": "manual_override",
       "stage_type": "climber",
-      "stage_type_source": "profile_icon"
+      "stage_type_source": "profile_icon",
+      "start_time": null,
+      "start_time_source": "pending"
     },
     {
       "pcs_url": "race/paris-tours/2026",
@@ -1940,7 +2288,9 @@
       "profile_icon": "p0",
       "profile_icon_source": "pcs",
       "stage_type": "sprint",
-      "stage_type_source": "profile_icon"
+      "stage_type_source": "profile_icon",
+      "start_time": null,
+      "start_time_source": "pending"
     }
   ]
 }
