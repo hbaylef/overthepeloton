@@ -51,8 +51,9 @@ scrapers/score_riders.py` on the fresh data, then commit + push **frontend +
 score_riders.py + test_score_riders.py + regenerated `data/predictions/*`**.
 This **changes live predictions** — that's expected and approved.
 
-**✅ R4 climbs — STAGE RACES now have climbs, DERIVED FROM GPX (UNCOMMITTED,
-solved 2026-06-06).** The earlier "custom `/info/profiles` parser" plan is
+**✅ R4 climbs — STAGE RACES now have climbs, DERIVED FROM GPX + NAMED FROM PCS
+(LIVE on origin/main `d8c0b57`, 2026-06-06).** The earlier "custom
+`/info/profiles` parser" plan is
 **dead — that page has no climb data**. Verified against real saved pages
 (`scrapers/fixture/`, gitignored):
 - PCS `…/stage-N/info/profiles` is **images only** — a stage-profile JPG + N
@@ -69,27 +70,34 @@ solved 2026-06-06).** The earlier "custom `/info/profiles` parser" plan is
   ≥3 % avg). Writes `data/climbs/{slug}.json` `stages{}` in the **same shape the
   frontend already renders** (`name/km_before_finish/length_km/steepness/top_m`)
   → **no frontend change**. One-day races keep their named PCS climbs.
-  **No network** → runs + tests locally and in Actions. Climbs are unnamed
-  ("Climb"); stats carry the meaning.
-- **Ran locally: 13 stage races, 385 climbs.** Covered by
-  `scrapers/test_derive_climbs.py` (synthetic GPX, 10/10). Wired into the daily
-  workflow as a step after `scrape_climbs.py`.
-- ⏳ **Browser pass still pending** (sandbox can't render Leaflet) — contract is
-  identical to one-day PCS climbs that already render live, so expected to "just
-  work", but eyeball a stage-race profile/map.
+  GPX detection is **no-network** (runs + tests locally and in Actions).
+- **NAMES (`d8c0b57`):** PCS publishes the race's climbs (with altitude) on the
+  race-level `route/climbs` page — the SAME `RaceClimbs` call one-day races use.
+  `derive_climbs.py` fetches that pool once per race and attaches a name to each
+  detected climb by **matching on altitude** (`top_m`, ±40 m tol; greedy, no pool
+  reuse, length breaks ties). Unmatched climbs stay "Climb". Pool cached in
+  `data/climbs_names_cache.json`. **PCS is only reachable from Actions** (this
+  machine's TLS proxy), so names populate when the workflow runs — GPX detection
+  works everywhere, naming needs an Actions run.
+- **Ran locally: 13 stage races, 385 climbs** (named: 0 locally — PCS blocked;
+  names fill in on Actions). Tests `scrapers/test_derive_climbs.py` 15/15
+  (synthetic GPX + mock name pools). Wired into the daily workflow after
+  `scrape_climbs.py`. Browser pass: GPX climbs verified rendering on the local
+  server (showed "Climb"); re-check names after the workflow run.
+- ⏳ **AFTER the next Actions run:** verify names on the live site; if many
+  climbs stay "Climb", widen `TOP_MATCH_TOL_M` in `derive_climbs.py`.
 
 **Scoring input caveat (unchanged):** still PCS **career** points; swap to **PCM
 WorldDB** is **PARKED** pending a user `.sqlite` (see `project-data-source-swap`).
 
 **Pick up next session — open items (in order):**
-1. ✅ DONE — cobbles tie-in shipped (commit `5fd1e19`): scorer + tests + frontend
-   highlights + regenerated predictions pushed live.
-2. **Push the GPX-derived stage climbs** — committed locally this session (NOT
-   pushed, user's choice): `derive_climbs.py` + `test_derive_climbs.py` + workflow
-   step + 13 stage-race climbs files + index + `.gitignore`. `git push` to go live.
-3. **Browser pass** — eyeball the climbs/highlights (one-day *and* stage races) on
-   a local server / the live site; tweak detection thresholds if needed.
-4. Then **R5** weather (Open-Meteo) / **R6** odds / **R7** non-WT.
+1. ✅ DONE — cobbles tie-in shipped (`5fd1e19`); GPX-derived stage climbs +
+   PCS-altitude naming shipped (`74dcb29`, `d8c0b57`). All live on origin/main.
+2. **Verify climb NAMES after an Actions run** — a "Daily scrape" workflow run was
+   triggered 2026-06-06; once green, `git pull` and check the live site shows real
+   names (Chommle, Oberarig…) on stage races. If many stay "Climb", widen
+   `TOP_MATCH_TOL_M` in `derive_climbs.py` and re-run the workflow.
+3. Then **R5** weather (Open-Meteo) / **R6** odds / **R7** non-WT.
 
 **Workflow:** edit → verify on a local server (`python -m http.server 8000`,
 open `/frontend/`) → commit → push. `score_riders.py` is run **manually** (not in
@@ -518,12 +526,13 @@ a backlog, not in priority order. Several have open design questions noted.
 - ✅ **R2 cobbles scoring tie-in (UNCOMMITTED, see §0):** `cobbles` weight vector;
   a curated cobbles file promotes the race to `cobbles` at scoring time. Needs a
   `score_riders.py` re-run + push to reach live predictions.
-- ✅ **Stage-race climbs — SOLVED by deriving from GPX (`derive_climbs.py`,
-  2026-06-06, committed locally / not yet pushed).** Both PCS `/info/profiles`
-  and cyclingstage publish per-stage climbs **as images only** (no parseable
-  text), so we detect climbs from the GPX elevation instead — same data shape,
-  no frontend change, no network (runs/tests locally + in Actions). 13 stage
-  races, 385 climbs; climbs are unnamed. See §0 for the full diagnosis.
+- ✅ **Stage-race climbs — SOLVED & LIVE (`derive_climbs.py`, `74dcb29` +
+  `d8c0b57`, 2026-06-06).** Both PCS `/info/profiles` and cyclingstage publish
+  per-stage climbs **as images only** (no parseable text), so we **detect** climbs
+  from the GPX elevation (same data shape, no frontend change, no network) and
+  **name** them from PCS's race-level `route/climbs` pool by altitude match (names
+  populate via Actions; this machine can't reach PCS). 13 stage races, 385 climbs.
+  See §0 for the full diagnosis.
 
 ### R5 — Weather on the map (wind / rain)
 - Overlay wind (direction + strength) and rain conditions along the route.
