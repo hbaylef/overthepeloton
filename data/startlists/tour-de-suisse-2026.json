@@ -1,9 +1,45 @@
 {
   "race": "Tour de Suisse",
   "race_slug": "tour-de-suisse-2026",
-  "updated_at": "2026-06-05T10:04:44.952997",
-  "total_riders": 27,
+  "updated_at": "2026-06-06T07:49:39.865606",
+  "total_riders": 30,
   "riders": [
+    {
+      "name": "PHILIPSEN Jasper",
+      "nationality": "BE",
+      "number": null,
+      "team": "Alpecin - Premier Tech (WT)",
+      "rider_url": "rider/jasper-philipsen",
+      "team_url": "team/alpecin-premier-tech-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 5904,
+          "gc": 649,
+          "tt": 155,
+          "sprint": 6401,
+          "climber": 192,
+          "hills": 2571
+        }
+      }
+    },
+    {
+      "name": "VAN DER POEL Mathieu",
+      "nationality": "NL",
+      "number": null,
+      "team": "Alpecin - Premier Tech (WT)",
+      "rider_url": "rider/mathieu-van-der-poel",
+      "team_url": "team/alpecin-premier-tech-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 8836,
+          "gc": 1324,
+          "tt": 1050,
+          "sprint": 1661,
+          "climber": 1165,
+          "hills": 4534
+        }
+      }
+    },
     {
       "name": "VERSTRYNGE Emiel",
       "nationality": "BE",
@@ -19,6 +55,24 @@
           "sprint": 22,
           "climber": 278,
           "hills": 83
+        }
+      }
+    },
+    {
+      "name": "SEGAERT Alec",
+      "nationality": "BE",
+      "number": null,
+      "team": "Bahrain - Victorious (WT)",
+      "rider_url": "rider/alec-segaert",
+      "team_url": "team/bahrain-victorious-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 528,
+          "gc": 451,
+          "tt": 736,
+          "sprint": 176,
+          "climber": 36,
+          "hills": 265
         }
       }
     },
@@ -77,24 +131,6 @@
       }
     },
     {
-      "name": "MARTINEZ Lenny",
-      "nationality": "FR",
-      "number": null,
-      "team": "Bahrain - Victorious (WT)",
-      "rider_url": "rider/lenny-martinez",
-      "team_url": "team/bahrain-victorious-2026",
-      "specialties": {
-        "career": {
-          "one_day_races": 1293,
-          "gc": 1461,
-          "tt": 290,
-          "sprint": 4,
-          "climber": 2036,
-          "hills": 588
-        }
-      }
-    },
-    {
       "name": "BRUTTOMESSO Alberto",
       "nationality": "IT",
       "number": null,
@@ -109,6 +145,24 @@
           "sprint": 206,
           "climber": 22,
           "hills": 160
+        }
+      }
+    },
+    {
+      "name": "MARTINEZ Lenny",
+      "nationality": "FR",
+      "number": null,
+      "team": "Bahrain - Victorious (WT)",
+      "rider_url": "rider/lenny-martinez",
+      "team_url": "team/bahrain-victorious-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1293,
+          "gc": 1461,
+          "tt": 290,
+          "sprint": 4,
+          "climber": 2036,
+          "hills": 588
         }
       }
     },

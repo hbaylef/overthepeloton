@@ -1,0 +1,161 @@
+{
+  "race": "Tour of Flanders",
+  "race_slug": "ronde-van-vlaanderen-2026",
+  "source": "procyclingstats",
+  "updated_at": "2026-06-06T08:01:27.743992",
+  "is_one_day_race": true,
+  "climbs": [
+    {
+      "name": "Oude Kruisberg/Hotond",
+      "climb_url": "location/kruisberg-hotond",
+      "km_before_finish": 26,
+      "length_km": 2.6,
+      "steepness": 4.2,
+      "top_m": 150
+    },
+    {
+      "name": "Nieuwe Kruisberg/Hotond",
+      "climb_url": "location/kruisberg-hotond",
+      "km_before_finish": 65,
+      "length_km": 2.6,
+      "steepness": 4.2,
+      "top_m": 134
+    },
+    {
+      "name": "Oude Kwaremont",
+      "climb_url": "location/oude-kwaremont",
+      "km_before_finish": 136,
+      "length_km": 2.1,
+      "steepness": 4.3,
+      "top_m": 101
+    },
+    {
+      "name": "Oude Kwaremont",
+      "climb_url": "location/oude-kwaremont",
+      "km_before_finish": 16,
+      "length_km": 2.1,
+      "steepness": 4.3,
+      "top_m": 91
+    },
+    {
+      "name": "Oude Kwaremont",
+      "climb_url": "location/oude-kwaremont",
+      "km_before_finish": 55,
+      "length_km": 2.1,
+      "steepness": 4.3,
+      "top_m": 97
+    },
+    {
+      "name": "Marlboroughstraat",
+      "climb_url": "location/marlboroughstraat",
+      "km_before_finish": 99,
+      "length_km": 1.9,
+      "steepness": 3.0,
+      "top_m": 95
+    },
+    {
+      "name": "Nieuwe Kruisberg",
+      "climb_url": "location/nieuwe-kruisberg",
+      "km_before_finish": 66,
+      "length_km": 1.3,
+      "steepness": 5.1,
+      "top_m": 111
+    },
+    {
+      "name": "Eikenberg",
+      "climb_url": "location/eikenberg",
+      "km_before_finish": 120,
+      "length_km": 1.2,
+      "steepness": 5.1,
+      "top_m": 68
+    },
+    {
+      "name": "Berg Ten Houte",
+      "climb_url": "location/berg-ten-houte",
+      "km_before_finish": 74,
+      "length_km": 1.1,
+      "steepness": 5.2,
+      "top_m": 102
+    },
+    {
+      "name": "Berendries",
+      "climb_url": "location/berendries",
+      "km_before_finish": 95,
+      "length_km": 0.9,
+      "steepness": 7.2,
+      "top_m": 68
+    },
+    {
+      "name": "Hotond",
+      "climb_url": "location/hotond",
+      "km_before_finish": 65,
+      "length_km": 0.77,
+      "steepness": 4.1,
+      "top_m": 0
+    },
+    {
+      "name": "Hotond",
+      "climb_url": "location/hotond",
+      "km_before_finish": 26,
+      "length_km": 0.77,
+      "steepness": 4.15,
+      "top_m": 0
+    },
+    {
+      "name": "Koppenberg",
+      "climb_url": "location/koppenberg",
+      "km_before_finish": 45,
+      "length_km": 0.6,
+      "steepness": 8.7,
+      "top_m": 29
+    },
+    {
+      "name": "Taaienberg",
+      "climb_url": "location/taaienberg",
+      "km_before_finish": 36,
+      "length_km": 0.6,
+      "steepness": 6.7,
+      "top_m": 81
+    },
+    {
+      "name": "Wolvenberg",
+      "climb_url": "location/wolvenberg",
+      "km_before_finish": 115,
+      "length_km": 0.6,
+      "steepness": 5.5,
+      "top_m": 31
+    },
+    {
+      "name": "Valkenberg",
+      "climb_url": "location/valkenberg",
+      "km_before_finish": 87,
+      "length_km": 0.5,
+      "steepness": 7.5,
+      "top_m": 57
+    },
+    {
+      "name": "Paterberg",
+      "climb_url": "location/paterberg",
+      "km_before_finish": 51,
+      "length_km": 0.4,
+      "steepness": 8.4,
+      "top_m": 71
+    },
+    {
+      "name": "Molenberg",
+      "climb_url": "location/molenberg",
+      "km_before_finish": 103,
+      "length_km": 0.4,
+      "steepness": 6.9,
+      "top_m": 62
+    },
+    {
+      "name": "Paterberg",
+      "climb_url": "location/paterberg",
+      "km_before_finish": 13,
+      "length_km": 0.4,
+      "steepness": 8.4,
+      "top_m": 65
+    }
+  ]
+}

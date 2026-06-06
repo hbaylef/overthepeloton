@@ -1,0 +1,97 @@
+{
+  "race": "Kuurne-Brussels-Kuurne",
+  "race_slug": "kuurne-brussel-kuurne-2026",
+  "source": "procyclingstats",
+  "updated_at": "2026-06-06T08:00:23.275428",
+  "is_one_day_race": true,
+  "climbs": [
+    {
+      "name": "Kruisberg/Hotond",
+      "climb_url": "location/kruisberg-hotond",
+      "km_before_finish": 76,
+      "length_km": 2.7,
+      "steepness": 3.9,
+      "top_m": 123
+    },
+    {
+      "name": "Lepelstraat",
+      "climb_url": "location/lepelstraat-elst-michelbeke",
+      "km_before_finish": 145,
+      "length_km": 2.2,
+      "steepness": 3.4,
+      "top_m": 89
+    },
+    {
+      "name": "La Houppe",
+      "climb_url": "location/la-houppe",
+      "km_before_finish": 118,
+      "length_km": 1.8,
+      "steepness": 3.9,
+      "top_m": 125
+    },
+    {
+      "name": "Tiegemberg",
+      "climb_url": "location/tiegemberg",
+      "km_before_finish": 178,
+      "length_km": 1.4,
+      "steepness": 3.6,
+      "top_m": 76
+    },
+    {
+      "name": "Le Bourliquet",
+      "climb_url": "location/le-bourliquet",
+      "km_before_finish": 91,
+      "length_km": 1.3,
+      "steepness": 6.2,
+      "top_m": 100
+    },
+    {
+      "name": "Mont Saint-Laurent",
+      "climb_url": "location/mont-saint-laurent",
+      "km_before_finish": 86,
+      "length_km": 1.3,
+      "steepness": 7.0,
+      "top_m": 135
+    },
+    {
+      "name": "Hameau des Papins",
+      "climb_url": "location/humeau-des-papins",
+      "km_before_finish": 100,
+      "length_km": 1.2,
+      "steepness": 5.6,
+      "top_m": 128
+    },
+    {
+      "name": "Côte du Trieu",
+      "climb_url": "location/knokteberg-trieu",
+      "km_before_finish": 68,
+      "length_km": 1.1,
+      "steepness": 7.2,
+      "top_m": 107
+    },
+    {
+      "name": "Kluisberg",
+      "climb_url": "location/kluisberg",
+      "km_before_finish": 61,
+      "length_km": 1.1,
+      "steepness": 5.9,
+      "top_m": 78
+    },
+    {
+      "name": "Volkegemberg",
+      "climb_url": "location/volkegemberg",
+      "km_before_finish": 160,
+      "length_km": 1.0,
+      "steepness": 3.9,
+      "top_m": 73
+    },
+    {
+      "name": "Berg Ten Houte",
+      "climb_url": "location/berg-ten-houte",
+      "km_before_finish": 125,
+      "length_km": 1.0,
+      "steepness": 5.2,
+      "top_m": 122
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "race": "Dwars door Vlaanderen",
+  "race_slug": "dwars-door-vlaanderen-2026",
+  "source": "procyclingstats",
+  "updated_at": "2026-06-06T08:01:25.602853",
+  "is_one_day_race": true,
+  "climbs": [
+    {
+      "name": "Onderbossenaarstraat",
+      "climb_url": "location/onderbossenaarstraat",
+      "km_before_finish": 78,
+      "length_km": 1.4,
+      "steepness": 4.9,
+      "top_m": 84
+    },
+    {
+      "name": "Hellestraat",
+      "climb_url": "location/hellestraat",
+      "km_before_finish": 137,
+      "length_km": 1.3,
+      "steepness": 3.7,
+      "top_m": 75
+    },
+    {
+      "name": "Hotond",
+      "climb_url": "location/hotondberg",
+      "km_before_finish": 88,
+      "length_km": 1.2,
+      "steepness": 3.4,
+      "top_m": 147
+    },
+    {
+      "name": "Hotondberg",
+      "climb_url": "location/hotondberg",
+      "km_before_finish": 51,
+      "length_km": 1.2,
+      "steepness": 3.4,
+      "top_m": 142
+    },
+    {
+      "name": "Eikenberg",
+      "climb_url": "location/eikenberg",
+      "km_before_finish": 39,
+      "length_km": 1.2,
+      "steepness": 4.9,
+      "top_m": 70
+    },
+    {
+      "name": "Volkegemberg",
+      "climb_url": "location/volkegemberg",
+      "km_before_finish": 119,
+      "length_km": 1.1,
+      "steepness": 4.1,
+      "top_m": 75
+    },
+    {
+      "name": "Knokteberg-Trieu",
+      "climb_url": "location/knokteberg-trieu",
+      "km_before_finish": 92,
+      "length_km": 1.1,
+      "steepness": 7.9,
+      "top_m": 114
+    },
+    {
+      "name": "Knokteberg-Trieu",
+      "climb_url": "location/knokteberg-trieu",
+      "km_before_finish": 55,
+      "length_km": 1.1,
+      "steepness": 7.9,
+      "top_m": 110
+    },
+    {
+      "name": "Berg Ten Houte",
+      "climb_url": "location/berg-ten-houte",
+      "km_before_finish": 108,
+      "length_km": 1.0,
+      "steepness": 5.6,
+      "top_m": 102
+    },
+    {
+      "name": "Berg Ten Houte",
+      "climb_url": "location/berg-ten-houte",
+      "km_before_finish": 71,
+      "length_km": 1.0,
+      "steepness": 5.6,
+      "top_m": 100
+    },
+    {
+      "name": "Nokereberg",
+      "climb_url": "location/nokereberg",
+      "km_before_finish": 9,
+      "length_km": 0.7,
+      "steepness": 4.2,
+      "top_m": 58
+    },
+    {
+      "name": "Nokereberg",
+      "climb_url": "location/nokereberg",
+      "km_before_finish": 22,
+      "length_km": 0.4,
+      "steepness": 3.0,
+      "top_m": 53
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "race": "In Flanders Fields (Gent-Wevelgem)",
+  "race_slug": "gent-wevelgem-2026",
+  "source": "procyclingstats",
+  "updated_at": "2026-06-06T08:01:23.468405",
+  "is_one_day_race": true,
+  "climbs": [
+    {
+      "name": "Scherpenberg",
+      "climb_url": "location/scherpenberg",
+      "km_before_finish": 50,
+      "length_km": 2.2,
+      "steepness": 1.8,
+      "top_m": 89
+    },
+    {
+      "name": "Scherpenberg",
+      "climb_url": "location/scherpenberg",
+      "km_before_finish": 106,
+      "length_km": 1.4,
+      "steepness": 2.3,
+      "top_m": 78
+    },
+    {
+      "name": "Baneberg",
+      "climb_url": "location/baneberg",
+      "km_before_finish": 97,
+      "length_km": 1.0,
+      "steepness": 7.1,
+      "top_m": 137
+    },
+    {
+      "name": "Monteberg",
+      "climb_url": "location/monteberg",
+      "km_before_finish": 91,
+      "length_km": 1.0,
+      "steepness": 5.0,
+      "top_m": 97
+    },
+    {
+      "name": "Monteberg",
+      "climb_url": "location/monteberg",
+      "km_before_finish": 59,
+      "length_km": 1.0,
+      "steepness": 5.0,
+      "top_m": 94
+    },
+    {
+      "name": "Baneberg",
+      "climb_url": "location/baneberg",
+      "km_before_finish": 41,
+      "length_km": 1.0,
+      "steepness": 7.1,
+      "top_m": 136
+    },
+    {
+      "name": "Kemmelberg (Ossuaire)",
+      "climb_url": "location/kemmelberg",
+      "km_before_finish": 36,
+      "length_km": 0.8,
+      "steepness": 9.7,
+      "top_m": 131
+    },
+    {
+      "name": "Kemmelberg (Belvedère)",
+      "climb_url": "location/kemmelberg",
+      "km_before_finish": 89,
+      "length_km": 0.4,
+      "steepness": 10.0,
+      "top_m": 141
+    },
+    {
+      "name": "Kemmelberg (Belvedère)",
+      "climb_url": "location/kemmelberg",
+      "km_before_finish": 57,
+      "length_km": 0.4,
+      "steepness": 10.0,
+      "top_m": 153
+    }
+  ]
+}

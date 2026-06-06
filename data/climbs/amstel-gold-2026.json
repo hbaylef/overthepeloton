@@ -1,0 +1,273 @@
+{
+  "race": "Amstel Gold Race",
+  "race_slug": "amstel-gold-2026",
+  "source": "procyclingstats",
+  "updated_at": "2026-06-06T08:01:59.850105",
+  "is_one_day_race": true,
+  "climbs": [
+    {
+      "name": "Camerig",
+      "climb_url": "location/camerig",
+      "km_before_finish": 147,
+      "length_km": 3.5,
+      "steepness": 4.1,
+      "top_m": 270
+    },
+    {
+      "name": "Vaalserberg/Drielandenpunt",
+      "climb_url": "location/vaalserberg",
+      "km_before_finish": 136,
+      "length_km": 3.4,
+      "steepness": 4.2,
+      "top_m": 323
+    },
+    {
+      "name": "Bergseweg",
+      "climb_url": "location/bergseweg",
+      "km_before_finish": 208,
+      "length_km": 2.6,
+      "steepness": 3.3,
+      "top_m": 183
+    },
+    {
+      "name": "Eperheide",
+      "climb_url": "location/epenheide",
+      "km_before_finish": 120,
+      "length_km": 2.6,
+      "steepness": 4.1,
+      "top_m": 222
+    },
+    {
+      "name": "Schweibergerweg",
+      "climb_url": "location/schweibergerweg",
+      "km_before_finish": 154,
+      "length_km": 2.6,
+      "steepness": 4.0,
+      "top_m": 223
+    },
+    {
+      "name": "Rijksweg N278",
+      "climb_url": "location/rijksweg-n278",
+      "km_before_finish": 190,
+      "length_km": 2.2,
+      "steepness": 3.5,
+      "top_m": 174
+    },
+    {
+      "name": "Eyserweg",
+      "climb_url": "location/eyserweg",
+      "km_before_finish": 105,
+      "length_km": 2.1,
+      "steepness": 4.3,
+      "top_m": 201
+    },
+    {
+      "name": "Keerderberg",
+      "climb_url": "location/keerderberg",
+      "km_before_finish": 73,
+      "length_km": 1.8,
+      "steepness": 3.5,
+      "top_m": 114
+    },
+    {
+      "name": "Sibbergrubbe",
+      "climb_url": "location/sibbergrubbe",
+      "km_before_finish": 88,
+      "length_km": 1.8,
+      "steepness": 3.8,
+      "top_m": 151
+    },
+    {
+      "name": "Fromberg",
+      "climb_url": "location/fromberg",
+      "km_before_finish": 36,
+      "length_km": 1.6,
+      "steepness": 3.0,
+      "top_m": 145
+    },
+    {
+      "name": "Loorberg",
+      "climb_url": "location/loorberg",
+      "km_before_finish": 167,
+      "length_km": 1.5,
+      "steepness": 5.3,
+      "top_m": 213
+    },
+    {
+      "name": "Loorberg",
+      "climb_url": "location/loorberg",
+      "km_before_finish": 54,
+      "length_km": 1.5,
+      "steepness": 5.4,
+      "top_m": 214
+    },
+    {
+      "name": "Keutenberg",
+      "climb_url": "location/keutenberg",
+      "km_before_finish": 32,
+      "length_km": 1.3,
+      "steepness": 6.0,
+      "top_m": 143
+    },
+    {
+      "name": "Epenerbaan/Vijlenerbos",
+      "climb_url": "location/vijlenerbos",
+      "km_before_finish": 129,
+      "length_km": 1.3,
+      "steepness": 5.7,
+      "top_m": 275
+    },
+    {
+      "name": "Wolfsberg",
+      "climb_url": "location/wolfsberg-limburg",
+      "km_before_finish": 170,
+      "length_km": 1.2,
+      "steepness": 3.2,
+      "top_m": 185
+    },
+    {
+      "name": "Plettenberg",
+      "climb_url": "location/plettenbergweg",
+      "km_before_finish": 108,
+      "length_km": 1.1,
+      "steepness": 3.6,
+      "top_m": 121
+    },
+    {
+      "name": "Schanternelsweg",
+      "climb_url": "location/schanternelsweg",
+      "km_before_finish": 102,
+      "length_km": 1.0,
+      "steepness": 4.6,
+      "top_m": 196
+    },
+    {
+      "name": "Cauberg",
+      "climb_url": "location/cauberg",
+      "km_before_finish": 85,
+      "length_km": 0.9,
+      "steepness": 6.0,
+      "top_m": 133
+    },
+    {
+      "name": "Geulhemmerberg",
+      "climb_url": "location/geulhemmerberg",
+      "km_before_finish": 80,
+      "length_km": 0.9,
+      "steepness": 5.6,
+      "top_m": 122
+    },
+    {
+      "name": "Bemelerberg",
+      "climb_url": "location/bemelerberg",
+      "km_before_finish": 70,
+      "length_km": 0.9,
+      "steepness": 4.0,
+      "top_m": 121
+    },
+    {
+      "name": "Gulperberg",
+      "climb_url": "location/gulperberg",
+      "km_before_finish": 47,
+      "length_km": 0.9,
+      "steepness": 5.4,
+      "top_m": 135
+    },
+    {
+      "name": "Eyserbosweg",
+      "climb_url": "location/eyserbosweg",
+      "km_before_finish": 40,
+      "length_km": 0.9,
+      "steepness": 9.3,
+      "top_m": 191
+    },
+    {
+      "name": "Korenweg",
+      "climb_url": "location/korenweg",
+      "km_before_finish": 205,
+      "length_km": 0.9,
+      "steepness": 3.6,
+      "top_m": 202
+    },
+    {
+      "name": "Cauberg",
+      "climb_url": "location/cauberg",
+      "km_before_finish": 22,
+      "length_km": 0.9,
+      "steepness": 6.0,
+      "top_m": 134
+    },
+    {
+      "name": "Geulhemmerberg",
+      "climb_url": "location/geulhemmerberg",
+      "km_before_finish": 17,
+      "length_km": 0.9,
+      "steepness": 5.6,
+      "top_m": 112
+    },
+    {
+      "name": "Bemelerberg",
+      "climb_url": "location/bemelerberg",
+      "km_before_finish": 10,
+      "length_km": 0.9,
+      "steepness": 4.3,
+      "top_m": 116
+    },
+    {
+      "name": "Cauberg",
+      "climb_url": "location/cauberg",
+      "km_before_finish": 2,
+      "length_km": 0.9,
+      "steepness": 6.0,
+      "top_m": 113
+    },
+    {
+      "name": "Gemmenich",
+      "climb_url": "location/gemmenich",
+      "km_before_finish": 133,
+      "length_km": 0.8,
+      "steepness": 6.2,
+      "top_m": 244
+    },
+    {
+      "name": "Nijswillerweg",
+      "climb_url": "location/nijswillerweg",
+      "km_before_finish": 201,
+      "length_km": 0.8,
+      "steepness": 2.5,
+      "top_m": 179
+    },
+    {
+      "name": "Kruisberg",
+      "climb_url": "location/kruisberg",
+      "km_before_finish": 42,
+      "length_km": 0.7,
+      "steepness": 7.2,
+      "top_m": 137
+    },
+    {
+      "name": "Vrakelberg",
+      "climb_url": "location/vrakelberg",
+      "km_before_finish": 97,
+      "length_km": 0.5,
+      "steepness": 7.1,
+      "top_m": 164
+    },
+    {
+      "name": "Gulperberg",
+      "climb_url": "location/gulperberg",
+      "km_before_finish": 112,
+      "length_km": 0.4,
+      "steepness": 11.2,
+      "top_m": 151
+    },
+    {
+      "name": "Maasberg",
+      "climb_url": "location/maasberg",
+      "km_before_finish": 244,
+      "length_km": 0.3,
+      "steepness": 4.1,
+      "top_m": 68
+    }
+  ]
+}

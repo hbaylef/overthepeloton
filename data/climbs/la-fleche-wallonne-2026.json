@@ -1,0 +1,105 @@
+{
+  "race": "La Flèche Wallonne",
+  "race_slug": "la-fleche-wallonne-2026",
+  "source": "procyclingstats",
+  "updated_at": "2026-06-06T08:02:13.460538",
+  "is_one_day_race": true,
+  "climbs": [
+    {
+      "name": "Côte de Trasenster",
+      "climb_url": "location/cote-de-trasenster",
+      "km_before_finish": 169,
+      "length_km": 3.3,
+      "steepness": 5.3,
+      "top_m": 283
+    },
+    {
+      "name": "Côte d'Ereffe",
+      "climb_url": "location/cote-d-ereffe",
+      "km_before_finish": 93,
+      "length_km": 2.2,
+      "steepness": 5.2,
+      "top_m": 251
+    },
+    {
+      "name": "Côte d'Ereffe",
+      "climb_url": "location/cote-d-ereffe",
+      "km_before_finish": 56,
+      "length_km": 2.2,
+      "steepness": 5.2,
+      "top_m": 252
+    },
+    {
+      "name": "Côte d'Ereffe",
+      "climb_url": "location/cote-d-ereffe",
+      "km_before_finish": 18,
+      "length_km": 2.2,
+      "steepness": 5.2,
+      "top_m": 254
+    },
+    {
+      "name": "Côte de Hermanne",
+      "climb_url": "location/cote-de-hermanne",
+      "km_before_finish": 123,
+      "length_km": 2.1,
+      "steepness": 5.5,
+      "top_m": 245
+    },
+    {
+      "name": "Côte de Cherave",
+      "climb_url": "location/cote-de-cherave",
+      "km_before_finish": 80,
+      "length_km": 1.4,
+      "steepness": 7.6,
+      "top_m": 188
+    },
+    {
+      "name": "Mur de Huy",
+      "climb_url": "location/mur-de-huy",
+      "km_before_finish": 74,
+      "length_km": 1.4,
+      "steepness": 9.1,
+      "top_m": 208
+    },
+    {
+      "name": "Côte de Cherave",
+      "climb_url": "location/cote-de-cherave",
+      "km_before_finish": 42,
+      "length_km": 1.4,
+      "steepness": 7.6,
+      "top_m": 189
+    },
+    {
+      "name": "Mur de Huy",
+      "climb_url": "location/mur-de-huy",
+      "km_before_finish": 37,
+      "length_km": 1.4,
+      "steepness": 9.1,
+      "top_m": 211
+    },
+    {
+      "name": "Côte de Cherave",
+      "climb_url": "location/cote-de-cherave",
+      "km_before_finish": 5,
+      "length_km": 1.4,
+      "steepness": 7.6,
+      "top_m": 182
+    },
+    {
+      "name": "Mur de Huy",
+      "climb_url": "location/mur-de-huy",
+      "km_before_finish": 0,
+      "length_km": 1.4,
+      "steepness": 9.1,
+      "top_m": 131
+    },
+    {
+      "name": "Côte des Forges",
+      "climb_url": "location/cote-des-forges-liege",
+      "km_before_finish": 160,
+      "length_km": 1.3,
+      "steepness": 7.0,
+      "top_m": 272
+    }
+  ]
+}

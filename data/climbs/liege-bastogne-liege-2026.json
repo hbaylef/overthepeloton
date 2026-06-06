@@ -1,0 +1,105 @@
+{
+  "race": "Liège-Bastogne-Liège",
+  "race_slug": "liege-bastogne-liege-2026",
+  "source": "procyclingstats",
+  "updated_at": "2026-06-06T08:02:15.601501",
+  "is_one_day_race": true,
+  "climbs": [
+    {
+      "name": "Col du Rosier",
+      "climb_url": "location/col-du-rosier",
+      "km_before_finish": 64,
+      "length_km": 4.4,
+      "steepness": 5.7,
+      "top_m": 564
+    },
+    {
+      "name": "Col de Haussire",
+      "climb_url": "location/col-de-haussire",
+      "km_before_finish": 127,
+      "length_km": 3.9,
+      "steepness": 7.2,
+      "top_m": 481
+    },
+    {
+      "name": "Col du Maquisard",
+      "climb_url": "location/col-du-maquisard",
+      "km_before_finish": 51,
+      "length_km": 2.5,
+      "steepness": 5.3,
+      "top_m": 364
+    },
+    {
+      "name": "Côte de la Haute-Levée",
+      "climb_url": "location/cote-de-la-haute-levee",
+      "km_before_finish": 78,
+      "length_km": 2.3,
+      "steepness": 7.4,
+      "top_m": 464
+    },
+    {
+      "name": "Côte de Wanne",
+      "climb_url": "location/cote-de-wanne",
+      "km_before_finish": 89,
+      "length_km": 2.2,
+      "steepness": 7.1,
+      "top_m": 489
+    },
+    {
+      "name": "Cornemont",
+      "climb_url": "location/cornemont",
+      "km_before_finish": 30,
+      "length_km": 1.8,
+      "steepness": 4.0,
+      "top_m": 294
+    },
+    {
+      "name": "Côte de Desnié",
+      "climb_url": "location/cote-de-desnie",
+      "km_before_finish": 47,
+      "length_km": 1.7,
+      "steepness": 6.9,
+      "top_m": 385
+    },
+    {
+      "name": "Côte de la Redoute",
+      "climb_url": "location/la-redoute",
+      "km_before_finish": 34,
+      "length_km": 1.6,
+      "steepness": 9.1,
+      "top_m": 264
+    },
+    {
+      "name": "Côte des Forges",
+      "climb_url": "location/cote-des-forges-liege",
+      "km_before_finish": 23,
+      "length_km": 1.3,
+      "steepness": 6.8,
+      "top_m": 277
+    },
+    {
+      "name": "Côte de la Roche-aux-Faucons",
+      "climb_url": "location/cote-de-la-roche-aux-faucons",
+      "km_before_finish": 14,
+      "length_km": 1.3,
+      "steepness": 10.1,
+      "top_m": 208
+    },
+    {
+      "name": "Côte de Saint-Roch",
+      "climb_url": "location/cote-de-saint-roch",
+      "km_before_finish": 176,
+      "length_km": 1.0,
+      "steepness": 10.5,
+      "top_m": 448
+    },
+    {
+      "name": "Côte de Stockeu",
+      "climb_url": "location/stockeu",
+      "km_before_finish": 82,
+      "length_km": 1.0,
+      "steepness": 11.4,
+      "top_m": 377
+    }
+  ]
+}

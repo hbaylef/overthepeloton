@@ -1,0 +1,137 @@
+{
+  "race": "E3 Saxo Classic",
+  "race_slug": "e3-harelbeke-2026",
+  "source": "procyclingstats",
+  "updated_at": "2026-06-06T08:01:21.332234",
+  "is_one_day_race": true,
+  "climbs": [
+    {
+      "name": "Keuzelingsstr. - Oude Kwaremont",
+      "climb_url": "location/oude-kwaremont",
+      "km_before_finish": 85,
+      "length_km": 2.5,
+      "steepness": 3.1,
+      "top_m": 80
+    },
+    {
+      "name": "La Houppe",
+      "climb_url": "location/la-houppe",
+      "km_before_finish": 132,
+      "length_km": 1.9,
+      "steepness": 4.6,
+      "top_m": 127
+    },
+    {
+      "name": "Oude Kwaremont",
+      "climb_url": "location/oude-kwaremont",
+      "km_before_finish": 37,
+      "length_km": 1.9,
+      "steepness": 4.3,
+      "top_m": 81
+    },
+    {
+      "name": "E3-COL Karnemelkbeekstraat",
+      "climb_url": "location/karnemelkbeekstraat",
+      "km_before_finish": 94,
+      "length_km": 1.5,
+      "steepness": 5.4,
+      "top_m": 124
+    },
+    {
+      "name": "E3-COL Karnemelkbeekstraat",
+      "climb_url": "location/karnemelkbeekstraat",
+      "km_before_finish": 31,
+      "length_km": 1.5,
+      "steepness": 5.4,
+      "top_m": 126
+    },
+    {
+      "name": "Berg ten Stene",
+      "climb_url": "location/berg-ten-stene",
+      "km_before_finish": 123,
+      "length_km": 1.3,
+      "steepness": 5.2,
+      "top_m": 96
+    },
+    {
+      "name": "Hotondberg",
+      "climb_url": "location/hotondberg",
+      "km_before_finish": 82,
+      "length_km": 1.2,
+      "steepness": 3.2,
+      "top_m": 150
+    },
+    {
+      "name": "Eikenberg",
+      "climb_url": "location/eikenberg",
+      "km_before_finish": 59,
+      "length_km": 1.2,
+      "steepness": 4.9,
+      "top_m": 74
+    },
+    {
+      "name": "Kortekeer",
+      "climb_url": "location/kortekeer",
+      "km_before_finish": 75,
+      "length_km": 1.0,
+      "steepness": 5.5,
+      "top_m": 81
+    },
+    {
+      "name": "Boigneberg",
+      "climb_url": "location/boigneberg",
+      "km_before_finish": 64,
+      "length_km": 1.0,
+      "steepness": 5.0,
+      "top_m": 73
+    },
+    {
+      "name": "Tiegemberg",
+      "climb_url": "location/tiegemberg",
+      "km_before_finish": 20,
+      "length_km": 0.9,
+      "steepness": 4.5,
+      "top_m": 76
+    },
+    {
+      "name": "Oude Kruisberg",
+      "climb_url": "location/oude-kruisberg",
+      "km_before_finish": 101,
+      "length_km": 0.8,
+      "steepness": 6.8,
+      "top_m": 54
+    },
+    {
+      "name": "Katteberg",
+      "climb_url": "location/katteberg",
+      "km_before_finish": 176,
+      "length_km": 0.7,
+      "steepness": 5.9,
+      "top_m": 53
+    },
+    {
+      "name": "Taaienberg",
+      "climb_url": "location/taaienberg",
+      "km_before_finish": 71,
+      "length_km": 0.7,
+      "steepness": 6.2,
+      "top_m": 63
+    },
+    {
+      "name": "Kapelberg",
+      "climb_url": "location/kapelberg",
+      "km_before_finish": 46,
+      "length_km": 0.7,
+      "steepness": 4.9,
+      "top_m": 66
+    },
+    {
+      "name": "Paterberg",
+      "climb_url": "location/paterberg",
+      "km_before_finish": 42,
+      "length_km": 0.4,
+      "steepness": 9.2,
+      "top_m": 66
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "race": "Omloop Het Nieuwsblad",
+  "race_slug": "omloop-het-nieuwsblad-2026",
+  "source": "procyclingstats",
+  "updated_at": "2026-06-06T08:00:20.996185",
+  "is_one_day_race": true,
+  "climbs": [
+    {
+      "name": "Eikenberg",
+      "climb_url": "location/eikenberg",
+      "km_before_finish": 133,
+      "length_km": 1.2,
+      "steepness": 5.2,
+      "top_m": 69
+    },
+    {
+      "name": "Eikenberg",
+      "climb_url": "location/eikenberg",
+      "km_before_finish": 61,
+      "length_km": 1.2,
+      "steepness": 5.2,
+      "top_m": 81
+    },
+    {
+      "name": "Muur - Kapelmuur",
+      "climb_url": "location/muur-van-geraardsbergen",
+      "km_before_finish": 15,
+      "length_km": 1.1,
+      "steepness": 7.3,
+      "top_m": 101
+    },
+    {
+      "name": "Leberg",
+      "climb_url": "location/leberg",
+      "km_before_finish": 146,
+      "length_km": 0.9,
+      "steepness": 3.7,
+      "top_m": 92
+    },
+    {
+      "name": "Leberg",
+      "climb_url": "location/leberg",
+      "km_before_finish": 74,
+      "length_km": 0.9,
+      "steepness": 3.7,
+      "top_m": 83
+    },
+    {
+      "name": "Leberg",
+      "climb_url": "location/leberg",
+      "km_before_finish": 37,
+      "length_km": 0.9,
+      "steepness": 3.7,
+      "top_m": 90
+    },
+    {
+      "name": "Berendries",
+      "climb_url": "location/berendries",
+      "km_before_finish": 33,
+      "length_km": 0.9,
+      "steepness": 6.7,
+      "top_m": 89
+    },
+    {
+      "name": "Bosberg",
+      "climb_url": "location/bosberg",
+      "km_before_finish": 11,
+      "length_km": 0.9,
+      "steepness": 6.4,
+      "top_m": 101
+    },
+    {
+      "name": "Parikeberg",
+      "climb_url": "location/parikeberg",
+      "km_before_finish": 22,
+      "length_km": 0.7,
+      "steepness": 5.3,
+      "top_m": 60
+    },
+    {
+      "name": "Wolvenberg",
+      "climb_url": "location/wolvenberg",
+      "km_before_finish": 57,
+      "length_km": 0.5,
+      "steepness": 5.7,
+      "top_m": 64
+    },
+    {
+      "name": "Molenberg",
+      "climb_url": "location/molenberg",
+      "km_before_finish": 44,
+      "length_km": 0.4,
+      "steepness": 7.2,
+      "top_m": 60
+    },
+    {
+      "name": "Tenbossestraat",
+      "climb_url": "location/tenbossestraat",
+      "km_before_finish": 25,
+      "length_km": 0.4,
+      "steepness": 6.0,
+      "top_m": 67
+    }
+  ]
+}

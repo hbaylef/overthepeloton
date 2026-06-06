@@ -1,0 +1,177 @@
+{
+  "race": "Brabantse Pijl",
+  "race_slug": "brabantse-pijl-2026",
+  "source": "procyclingstats",
+  "updated_at": "2026-06-06T08:01:57.704225",
+  "is_one_day_race": true,
+  "climbs": [
+    {
+      "name": "Alsemberg",
+      "climb_url": "location/alsemberg",
+      "km_before_finish": 157,
+      "length_km": 1.6,
+      "steepness": 2.8,
+      "top_m": 111
+    },
+    {
+      "name": "Chemin dit le Bois",
+      "climb_url": "location/chemin-dit-le-bois",
+      "km_before_finish": 95,
+      "length_km": 1.4,
+      "steepness": 3.4,
+      "top_m": 129
+    },
+    {
+      "name": "S-Bocht Overijse",
+      "climb_url": "location/taymanstraat",
+      "km_before_finish": 0,
+      "length_km": 1.3,
+      "steepness": 3.8,
+      "top_m": 105
+    },
+    {
+      "name": "S-Bocht Overijse",
+      "climb_url": "location/taymanstraat",
+      "km_before_finish": 20,
+      "length_km": 1.3,
+      "steepness": 3.8,
+      "top_m": 108
+    },
+    {
+      "name": "S-Bocht Overijse",
+      "climb_url": "location/taymanstraat",
+      "km_before_finish": 40,
+      "length_km": 1.3,
+      "steepness": 3.8,
+      "top_m": 106
+    },
+    {
+      "name": "S-Bocht Overijse",
+      "climb_url": "location/taymanstraat",
+      "km_before_finish": 60,
+      "length_km": 1.3,
+      "steepness": 3.8,
+      "top_m": 108
+    },
+    {
+      "name": "Bruineput",
+      "climb_url": "location/bruineput",
+      "km_before_finish": 149,
+      "length_km": 1.2,
+      "steepness": 5.9,
+      "top_m": 111
+    },
+    {
+      "name": "Bruineput",
+      "climb_url": "location/bruineput",
+      "km_before_finish": 107,
+      "length_km": 1.2,
+      "steepness": 5.9,
+      "top_m": 104
+    },
+    {
+      "name": "Holstheide",
+      "climb_url": "location/holstheide",
+      "km_before_finish": 67,
+      "length_km": 1.0,
+      "steepness": 4.9,
+      "top_m": 76
+    },
+    {
+      "name": "Holstheide",
+      "climb_url": "location/holstheide",
+      "km_before_finish": 47,
+      "length_km": 1.0,
+      "steepness": 4.9,
+      "top_m": 91
+    },
+    {
+      "name": "Holstheide",
+      "climb_url": "location/holstheide",
+      "km_before_finish": 27,
+      "length_km": 1.0,
+      "steepness": 4.9,
+      "top_m": 84
+    },
+    {
+      "name": "Holstheide",
+      "climb_url": "location/holstheide",
+      "km_before_finish": 7,
+      "length_km": 1.0,
+      "steepness": 4.9,
+      "top_m": 87
+    },
+    {
+      "name": "Rue François Dubois",
+      "climb_url": "location/rue-francois-dubois",
+      "km_before_finish": 78,
+      "length_km": 0.9,
+      "steepness": 4.4,
+      "top_m": 98
+    },
+    {
+      "name": "Eigenbrakelsesteenweg",
+      "climb_url": "location/eigenbrakelsesteenweg",
+      "km_before_finish": 102,
+      "length_km": 0.9,
+      "steepness": 4.3,
+      "top_m": 102
+    },
+    {
+      "name": "Hertstraat",
+      "climb_url": "location/hertstraat",
+      "km_before_finish": 56,
+      "length_km": 0.7,
+      "steepness": 4.3,
+      "top_m": 87
+    },
+    {
+      "name": "Hertstraat",
+      "climb_url": "location/hertstraat",
+      "km_before_finish": 36,
+      "length_km": 0.7,
+      "steepness": 4.3,
+      "top_m": 85
+    },
+    {
+      "name": "Hertstraat",
+      "climb_url": "location/hertstraat",
+      "km_before_finish": 16,
+      "length_km": 0.7,
+      "steepness": 4.3,
+      "top_m": 87
+    },
+    {
+      "name": "Moskesstraat",
+      "climb_url": "location/moskesstraat",
+      "km_before_finish": 50,
+      "length_km": 0.5,
+      "steepness": 8.1,
+      "top_m": 81
+    },
+    {
+      "name": "Moskesstraat",
+      "climb_url": "location/moskesstraat",
+      "km_before_finish": 30,
+      "length_km": 0.5,
+      "steepness": 8.1,
+      "top_m": 71
+    },
+    {
+      "name": "Moskesstraat",
+      "climb_url": "location/moskesstraat",
+      "km_before_finish": 10,
+      "length_km": 0.5,
+      "steepness": 8.1,
+      "top_m": 85
+    },
+    {
+      "name": "Beerselberg",
+      "climb_url": "location/beerselberg",
+      "km_before_finish": 114,
+      "length_km": 0.5,
+      "steepness": 6.5,
+      "top_m": 80
+    }
+  ]
+}
