@@ -2,12 +2,12 @@
   "race": "Volta a Catalunya",
   "race_slug": "volta-a-catalunya-2026",
   "source": "gpx_derived",
-  "updated_at": "2026-06-06T21:43:30.847346",
+  "updated_at": "2026-06-06T20:30:05.205968",
   "is_one_day_race": false,
   "stages": {
     "1": [
       {
-        "name": "Climb",
+        "name": "Alt del Purgatori",
         "km_before_finish": 7.6,
         "length_km": 2.1,
         "steepness": 4.2,
@@ -16,7 +16,7 @@
     ],
     "2": [
       {
-        "name": "Climb",
+        "name": "Coll de Parpers",
         "km_before_finish": 45.8,
         "length_km": 2.0,
         "steepness": 4.3,
@@ -25,14 +25,14 @@
     ],
     "3": [
       {
-        "name": "Climb",
+        "name": "Alt de la Mussara - Coll de les Llebres",
         "km_before_finish": 125.2,
         "length_km": 10.6,
         "steepness": 5.9,
         "top_m": 979
       },
       {
-        "name": "Climb",
+        "name": "Coll de Capafons",
         "km_before_finish": 109.3,
         "length_km": 4.6,
         "steepness": 4.4,
@@ -53,14 +53,14 @@
         "top_m": 351
       },
       {
-        "name": "Climb",
+        "name": "Falset",
         "km_before_finish": 57.5,
         "length_km": 6.4,
         "steepness": 3.3,
         "top_m": 369
       },
       {
-        "name": "Climb",
+        "name": "Coll Roig",
         "km_before_finish": 44.9,
         "length_km": 9.1,
         "steepness": 3.3,
@@ -76,7 +76,7 @@
         "top_m": 696
       },
       {
-        "name": "Climb",
+        "name": "Alt de Sant Feliu de Codines",
         "km_before_finish": 84.0,
         "length_km": 2.2,
         "steepness": 3.4,
@@ -85,49 +85,49 @@
     ],
     "5": [
       {
-        "name": "Climb",
+        "name": "Coll de la Batallola",
         "km_before_finish": 127.5,
         "length_km": 11.1,
         "steepness": 5.5,
         "top_m": 1178
       },
       {
-        "name": "Climb",
+        "name": "Port Colldarnat",
         "km_before_finish": 122.7,
         "length_km": 3.9,
         "steepness": 4.7,
         "top_m": 1329
       },
       {
-        "name": "Climb",
+        "name": "Coll de Josa",
         "km_before_finish": 90.2,
         "length_km": 23.1,
         "steepness": 3.3,
         "top_m": 1633
       },
       {
-        "name": "Climb",
+        "name": "Maçaners",
         "km_before_finish": 74.2,
         "length_km": 3.3,
         "steepness": 4.3,
         "top_m": 1270
       },
       {
-        "name": "Climb",
+        "name": "Coll de Fumanya",
         "km_before_finish": 62.2,
         "length_km": 5.6,
         "steepness": 8.8,
         "top_m": 1564
       },
       {
-        "name": "Climb",
+        "name": "Collada Sobirana",
         "km_before_finish": 35.9,
         "length_km": 14.6,
         "steepness": 3.9,
         "top_m": 1217
       },
       {
-        "name": "Climb",
+        "name": "Coll de Pal",
         "km_before_finish": 0.0,
         "length_km": 24.1,
         "steepness": 5.6,
@@ -136,56 +136,56 @@
     ],
     "6": [
       {
-        "name": "Climb",
+        "name": "Alt de Sant Feliu de Codines",
         "km_before_finish": 139.0,
         "length_km": 5.9,
         "steepness": 3.7,
         "top_m": 626
       },
       {
-        "name": "Climb",
+        "name": "Santuari de Queralt",
         "km_before_finish": 98.7,
         "length_km": 8.1,
         "steepness": 3.7,
         "top_m": 1114
       },
       {
-        "name": "Climb",
+        "name": "Coll de la Batallola",
         "km_before_finish": 94.8,
         "length_km": 2.6,
         "steepness": 4.9,
         "top_m": 1196
       },
       {
-        "name": "Climb",
+        "name": "Collada de Sant Isidre",
         "km_before_finish": 67.2,
         "length_km": 9.2,
         "steepness": 4.2,
         "top_m": 1109
       },
       {
-        "name": "Climb",
+        "name": "Coll de Pradell",
         "km_before_finish": 59.6,
         "length_km": 6.7,
         "steepness": 9.9,
         "top_m": 1734
       },
       {
-        "name": "Climb",
+        "name": "Maçaners",
         "km_before_finish": 46.2,
         "length_km": 3.4,
         "steepness": 4.3,
         "top_m": 1270
       },
       {
-        "name": "Climb",
+        "name": "Maçaners",
         "km_before_finish": 26.6,
         "length_km": 6.3,
         "steepness": 6.8,
         "top_m": 1116
       },
       {
-        "name": "Climb",
+        "name": "Alt de Sant Hilari",
         "km_before_finish": 11.5,
         "length_km": 2.5,
         "steepness": 5.4,
@@ -201,42 +201,42 @@
     ],
     "7": [
       {
-        "name": "Climb",
+        "name": "Alt del Castell de Montjuïc",
         "km_before_finish": 43.8,
         "length_km": 3.6,
         "steepness": 3.1,
         "top_m": 172
       },
       {
-        "name": "Climb",
+        "name": "Alt del Castell de Montjuïc",
         "km_before_finish": 36.0,
         "length_km": 3.6,
         "steepness": 3.1,
         "top_m": 172
       },
       {
-        "name": "Climb",
+        "name": "Alt del Castell de Montjuïc",
         "km_before_finish": 28.2,
         "length_km": 3.6,
         "steepness": 3.1,
         "top_m": 172
       },
       {
-        "name": "Climb",
+        "name": "Alt del Castell de Montjuïc",
         "km_before_finish": 20.3,
         "length_km": 3.6,
         "steepness": 3.1,
         "top_m": 172
       },
       {
-        "name": "Climb",
+        "name": "Alt del Castell de Montjuïc",
         "km_before_finish": 12.5,
         "length_km": 3.6,
         "steepness": 3.1,
         "top_m": 172
       },
       {
-        "name": "Climb",
+        "name": "Alt del Castell de Montjuïc",
         "km_before_finish": 4.7,
         "length_km": 3.7,
         "steepness": 3.1,

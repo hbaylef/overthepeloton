@@ -2,12 +2,12 @@
   "race": "Vuelta a Andalucía",
   "race_slug": "ruta-del-sol-2026",
   "source": "gpx_derived",
-  "updated_at": "2026-06-06T21:43:30.009976",
+  "updated_at": "2026-06-06T20:30:03.644417",
   "is_one_day_race": false,
   "stages": {
     "1": [
       {
-        "name": "Climb",
+        "name": "Puerto del Madroño",
         "km_before_finish": 124.7,
         "length_km": 23.3,
         "steepness": 4.3,
@@ -21,7 +21,7 @@
         "top_m": 977
       },
       {
-        "name": "Climb",
+        "name": "Alto de la Malahá",
         "km_before_finish": 69.8,
         "length_km": 4.9,
         "steepness": 5.0,
@@ -51,7 +51,7 @@
         "top_m": 1131
       },
       {
-        "name": "Climb",
+        "name": "Alto de la Malahá",
         "km_before_finish": 13.2,
         "length_km": 2.5,
         "steepness": 4.5,
@@ -60,7 +60,7 @@
     ],
     "3": [
       {
-        "name": "Climb",
+        "name": "Guaro",
         "km_before_finish": 103.5,
         "length_km": 4.6,
         "steepness": 3.1,
@@ -90,14 +90,14 @@
         "top_m": 274
       },
       {
-        "name": "Climb",
+        "name": "Guaro",
         "km_before_finish": 63.3,
         "length_km": 4.3,
         "steepness": 3.3,
         "top_m": 390
       },
       {
-        "name": "Climb",
+        "name": "Lucena",
         "km_before_finish": 22.6,
         "length_km": 1.1,
         "steepness": 6.2,

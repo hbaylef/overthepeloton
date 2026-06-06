@@ -2,19 +2,19 @@
   "race": "Volta a la Comunitat Valenciana",
   "race_slug": "setmana-ciclista-valenciana-2026",
   "source": "gpx_derived",
-  "updated_at": "2026-06-06T21:43:29.789164",
+  "updated_at": "2026-06-06T20:30:03.168305",
   "is_one_day_race": false,
   "stages": {
     "1": [
       {
-        "name": "Climb",
+        "name": "Alt de Barxeta",
         "km_before_finish": 87.0,
         "length_km": 3.5,
         "steepness": 3.3,
         "top_m": 315
       },
       {
-        "name": "Climb",
+        "name": "Alt de Barx",
         "km_before_finish": 39.6,
         "length_km": 4.6,
         "steepness": 4.0,
@@ -30,7 +30,7 @@
     ],
     "3": [
       {
-        "name": "Climb",
+        "name": "Alt de Eslida",
         "km_before_finish": 26.8,
         "length_km": 5.7,
         "steepness": 3.8,
@@ -46,7 +46,7 @@
         "top_m": 235
       },
       {
-        "name": "Climb",
+        "name": "Alt de Aín",
         "km_before_finish": 156.2,
         "length_km": 8.8,
         "steepness": 4.8,
@@ -60,14 +60,14 @@
         "top_m": 625
       },
       {
-        "name": "Climb",
+        "name": "Alt de Eslida",
         "km_before_finish": 118.8,
         "length_km": 8.4,
         "steepness": 6.4,
         "top_m": 626
       },
       {
-        "name": "Climb",
+        "name": "Collado de la Horna",
         "km_before_finish": 113.8,
         "length_km": 2.2,
         "steepness": 3.7,
@@ -81,14 +81,14 @@
         "top_m": 626
       },
       {
-        "name": "Climb",
+        "name": "Alt de Serra Grossa",
         "km_before_finish": 27.4,
         "length_km": 6.4,
         "steepness": 3.4,
         "top_m": 243
       },
       {
-        "name": "Climb",
+        "name": "Alt de Barxeta",
         "km_before_finish": 12.4,
         "length_km": 7.3,
         "steepness": 3.5,
@@ -97,7 +97,7 @@
     ],
     "5": [
       {
-        "name": "Climb",
+        "name": "Alt de Aín",
         "km_before_finish": 43.2,
         "length_km": 10.6,
         "steepness": 4.6,
