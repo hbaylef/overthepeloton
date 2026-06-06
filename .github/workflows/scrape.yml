@@ -33,6 +33,10 @@ jobs:
         run: python scrapers/scrape_races.py
         continue-on-error: true   # Don't fail the whole run if this misbehaves
 
+      - name: Scrape per-stage start times (R5)
+        run: python scrapers/scrape_start_times.py
+        continue-on-error: true
+
       - name: Scrape GPX routes
         run: python scrapers/scrape_gpx.py
         continue-on-error: true
