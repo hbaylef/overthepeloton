@@ -7,46 +7,85 @@
 
 ---
 
-## 0. ⚠️ CURRENT STATUS — START HERE (updated 2026-06-06)
+## 0. ⚠️ CURRENT STATUS — START HERE (updated 2026-06-06, end of session)
 
 Running in **Claude Code** locally at `C:\Users\PC\Desktop\cycling-dashboard`.
 Site is live; each verified increment is committed + pushed (GitHub Pages).
 
 **Done & live:**
 - **R1** — startlists for all races + per-rider PCS **career** specialty points.
-- **R2** — stage grading + win-probability: `stage_type` classification, scoring
-  via percentile + **softmax** (`score_riders.py`), **per-stage win% + overall
-  GC**, sortable **Specialty Rankings** table (with a per-stage/GC dropdown),
-  collapsible **Startlist by Team** grid, flags (flagcdn) + jersey glyphs.
-- **R3** — elevation profile **coloured by gradient** + on-graph hover label +
-  **drag-to-zoom** (axes refit + map sync, reset button/double-click) + zoom
-  summary badge. Offscreen-cached for smooth hovering.
-- **R4 (cobbles only)** — pavé sectors render as **brown profile segments** from
-  curated `data/cobbles/{slug}.json` (seeded `paris-roubaix-2026.json`); legend
-  swatch + sector name/★ in hover readout.
+- **R2** — stage grading + win-probability (percentile + **softmax**,
+  `score_riders.py`); per-stage win% + GC, Specialty Rankings table, team grid.
+- **R3** — gradient-coloured elevation profile + hover label + drag-to-zoom.
+- **R4 cobbles** — pavé sectors as **brown profile segments** from curated
+  `data/cobbles/{slug}.json`.
+- **R4 climbs scraper (LIVE on origin/main)** — `scrapers/scrape_climbs.py`
+  (commit `62186c1`) + the daily Actions step; **the 2026-06-06 08:05 UTC scrape
+  ran and committed real data** (`data/climbs/{slug}.json` + `climbs_index.json`
+  + `climbs_cache.json`). **One-day races: 12 races, 164 real climbs** (Liège,
+  Lombardia, Flanders, etc. — name/length/steepness/top/km_before_finish).
+  Covered by `scrapers/test_scrape_climbs.py` (no-network, 7/7).
 
-**Scoring input caveat:** still PCS **career** points (accumulation → over-ranks
-veterans). Planned swap to **PCM WorldDB** rider ratings is **PARKED** until the
-user provides a converted `.sqlite` (see `R1_R2_DESIGN.md` "Future task" + the
-`project-data-source-swap` memory). FirstCycling (library *and* scraping) was
-spiked and **ruled out** (exposes no WorldDB points; Cloudflare-blocked).
+**⚠️ UNCOMMITTED in the working tree (built + tested this session, NOT pushed —
+verify, then commit next session):**
+- `frontend/index.html` — **climbs rendering** (numbered ▲ markers with
+  length·gradient labels, a clickable **Climbs list** below the profile, ▲/list
+  click = **foot→summit zoom**, hover readout) + **map highlights**
+  (`drawHighlightsOnMap`: pavé = brown, climbs = steepness-coloured stretches +
+  numbered summit markers, with casing) + a **fix** for Start/Finish markers
+  stacking on stage switch. JS syntax-checked; **NOT yet eyeballed in a browser**
+  (Leaflet CDN is blocked in Claude's sandbox — verify on the live-ish local
+  server against the REAL climbs data now present locally).
+- `scrapers/score_riders.py` — **R4 cobbles scoring tie-in**: new `cobbles`
+  weight vector (`one_day_races 1.0 · sprint 0.4 · tt 0.3 · hills 0.4`, weights
+  **signed off by the user**) + `one_day_stage_type()` that promotes any race
+  with a curated `data/cobbles/{slug}.json` to `cobbles` at scoring time (no
+  `races.json` mutation), + `base["stage_type"]` added to one-day output.
+- `scrapers/test_score_riders.py` — **new** no-network tests (7/7).
+- Smoke-tested end-to-end (`main()` to a temp dir): 36 predictions write
+  cleanly; Paris-Roubaix → `cobbles`, top5 Van Aert/Pedersen/Van der Poel/
+  Degenkolb/Laporte (vs sprinters under the old `sprint` mis-classification).
 
-**Pick up next session — open items:**
-1. **R4 climbs** — write `scrapers/scrape_climbs.py` using `procyclingstats`
-   `RaceClimbs` (fields: name, length, steepness, top, km_before_finnish; place
-   on profile via `x = total_km − km_before_finnish`). **Must run in GitHub
-   Actions** — PCS is unreachable from this machine (local TLS-intercepting
-   proxy breaks Python cert verification; the browser/Actions are fine).
-2. **R4 map highlights** — colour the pavé stretches on the Leaflet route.
-3. **R2 cobbles tie-in** — flip Paris-Roubaix `stage_type` → `cobbles` and add a
-   cobbles weight vector in `score_riders.py` (changes live predictions — get a
-   go-ahead first).
+**To finish the cobbles tie-in (next session):** re-run `python
+scrapers/score_riders.py` on the fresh data, then commit + push **frontend +
+score_riders.py + test_score_riders.py + regenerated `data/predictions/*`**.
+This **changes live predictions** — that's expected and approved.
+
+**❌ R4 climbs — STAGE RACES return ZERO climbs (the open problem).** My
+per-stage URL guess `{stage_url}/route/climbs` returns nothing for *every* stage
+race, including already-completed ones (Paris-Nice, Tirreno, UAE, Catalunya,
+Itzulia) → so it's the approach, not "route not published yet". Findings:
+- Whole-race `race/{slug}/{year}/route/climbs` IS library-supported (`RaceClimbs`)
+  and lists all climbs, **but has NO stage column** (user checked) → can't bucket
+  per stage from it.
+- The per-stage detailed climbs live at
+  `race/{slug}/{year}/stage-N/info/profiles` (user-confirmed). `RaceClimbs`
+  **won't parse it** (its `_html_valid` requires the page `<h2>` == "Climbs";
+  this page's heading is "Profiles"). → **Next step: write a CUSTOM parser for
+  the `/info/profiles` page** in `scrape_climbs.py` for stage races.
+- **Untestable locally**: PCS 403s Claude's WebFetch *and* the local TLS proxy
+  breaks Python cert verification, so this can only be validated via an **Actions
+  run** (or by the user pasting page structure from their browser). Iterate there.
+- Stage races currently show **no climbs** on the site (the frontend handles this
+  gracefully — user's chosen behaviour; no "coming soon" note).
+
+**Scoring input caveat (unchanged):** still PCS **career** points; swap to **PCM
+WorldDB** is **PARKED** pending a user `.sqlite` (see `project-data-source-swap`).
+
+**Pick up next session — open items (in order):**
+1. **Verify** the uncommitted frontend (climbs markers/list/zoom + map
+   highlights) in a browser vs the real climbs data; tweak if needed.
+2. **Ship the cobbles tie-in**: re-run `score_riders.py` → commit + push frontend
+   + scoring + predictions (see "To finish" above).
+3. **R4 stage-race climbs**: custom parser for `…/stage-N/info/profiles`; validate
+   via an Actions run.
 4. Then **R5** weather (Open-Meteo) / **R6** odds / **R7** non-WT.
 
 **Workflow:** edit → verify on a local server (`python -m http.server 8000`,
-open `/frontend/`) → commit → push. `score_riders.py` is run **manually** (not
-in the daily cron) ahead of the data-source swap. A daily scrape sometimes lands
-on `origin/main` mid-session → `git fetch` + rebase before pushing.
+open `/frontend/`) → commit → push. `score_riders.py` is run **manually** (not in
+cron). The daily scrape lands data commits on `origin/main` → `git fetch` +
+fast-forward/rebase before pushing (done already this session: local is at
+`55f62f8`).
 
 ---
 
@@ -152,15 +191,24 @@ overthepeloton/
 │   ├── scrape_odds.py           ← STEP 4: Bet365 odds
 │   ├── enter_odds.py            ← STEP 4: manual odds entry
 │   ├── scrape_riders.py         ← R1: embeds specialties.career into startlists
-│   └── classify_stages.py       ← R2 Phase 2: backfill stage_type into races.json
+│   ├── classify_stages.py       ← R2 Phase 2: backfill stage_type into races.json
+│   ├── score_riders.py          ← R2 Phase 3: predictions (R4 cobbles tie-in UNCOMMITTED)
+│   ├── scrape_climbs.py         ← R4: climbs via RaceClimbs (one-day OK; stage races TODO)
+│   ├── test_scrape_climbs.py    ← R4: no-network tests for the climbs scraper (7/7)
+│   └── test_score_riders.py     ← R4: no-network tests for scoring + cobbles (UNCOMMITTED, 7/7)
 ├── frontend/
-│   └── index.html               ← STEP 3: the whole UI (cache-busted fetches)
+│   └── index.html               ← STEP 3: whole UI (R4 climbs + map highlights UNCOMMITTED)
 ├── R1_R2_DESIGN.md              ← R1+R2 build spec (Tier 1) + R4/R5 research (Tier 2)
 └── data/                        ← REAL scraped data (live)
     ├── races.json               ← 37 races
     ├── gpx_index.json
     ├── odds_index.json          ← sample odds for 3 races
     ├── riders_cache.json        ← R1: career specialty points (7-day cache)
+    ├── climbs_index.json        ← R4: which races have climbs (12 one-day; stage=0)
+    ├── climbs_cache.json        ← R4: per-URL climbs cache (7-day, retries empties)
+    ├── cobbles/{slug}.json      ← R4: curated pavé sectors (paris-roubaix)
+    ├── climbs/{slug}.json       ← R4: scraped climbs (one-day populated; stage races empty)
+    ├── predictions/{slug}.json  ← R2: win-prob (re-run score_riders to apply cobbles tie-in)
     ├── startlists/{slug}.json   ← 36 startlists (riders carry specialties.career)
     ├── gpx/{slug}/*.gpx         ← real GPX for ~23 races (TdF, Giro, Vuelta, classics)
     └── odds/{slug}.json
@@ -437,23 +485,32 @@ a backlog, not in priority order. Several have open design questions noted.
   that segment**, a top-right **badge** shows the selection's distance + average
   gradient; reset via a button or double-click.
 
-### R4 — Highlight key segments (climbs + cobbles)  🔨 **cobbles started (2026-06-06)**
+### R4 — Highlight key segments (climbs + cobbles)  🔨 **mostly done (2026-06-06)**
 - ✅ **Cobbles on the profile:** curated `data/cobbles/{slug}.json` (sectors with
   km_start/km_end + ★ rating) render as **brown segments** on the elevation
   profile (`#4a2c12`), with a `cobbles` legend swatch and sector name/★ in the
   hover readout. Seeded `paris-roubaix-2026.json` (26-sector starter — verify vs
   the official roadbook; real men's PR has ~29–30). Also: races with men+women
   GPX now default to the main (men's) route.
-- ⏭ **Climbs:** `procyclingstats` `RaceClimbs` confirmed (name, length,
-  steepness, top, km_before_finnish), but PCS is unreachable from this machine
-  (local TLS-intercepting proxy) — the climbs scraper must run in Actions. Not
-  built yet.
-- ⏭ **Map highlights** for pavé stretches, and **R2 cobbles scoring tie-in**
-  (flip Paris-Roubaix `stage_type` → `cobbles`) still to do.
-- Mark the major categorised climbs and cobbled (pavé) sectors on the profile,
-  and ideally on the map too — like official roadbooks.
-- **Open question:** where does the segment data come from? PCS lists climbs
-  with KM marks; cobbled sectors may need another source. TBD.
+- ✅ **Climbs scraper (LIVE):** `scrapers/scrape_climbs.py` fetches
+  `procyclingstats` `RaceClimbs` and writes `data/climbs/{slug}.json` +
+  `climbs_index.json` (+ a 7-day `climbs_cache.json` that retries empty routes).
+  Stores raw `km_before_finish`; the frontend places each climb at
+  `x = total_km − km_before_finish` (anchored to the GPX finish). Runs in the
+  daily Actions workflow. **One-day races populated (12 races, 164 climbs);
+  stage races empty — see below.**
+- ✅ **Climbs on the profile + map (UNCOMMITTED, see §0):** numbered ▲ markers
+  (length·gradient) + clickable Climbs list + foot→summit zoom; map highlights
+  (`drawHighlightsOnMap`) for pavé + climbs. Built + syntax-checked, **needs a
+  browser pass**.
+- ✅ **R2 cobbles scoring tie-in (UNCOMMITTED, see §0):** `cobbles` weight vector;
+  a curated cobbles file promotes the race to `cobbles` at scoring time. Needs a
+  `score_riders.py` re-run + push to reach live predictions.
+- ❌ **Stage-race climbs (THE open problem):** per-stage URL approach returns 0
+  for all stage races. Whole-race `…/route/climbs` has no stage column; per-stage
+  climbs are at `…/stage-N/info/profiles` which `RaceClimbs` can't parse →
+  **need a custom parser for `/info/profiles`**, validated via an Actions run
+  (PCS is unreachable from here). See §0 for the full diagnosis.
 
 ### R5 — Weather on the map (wind / rain)
 - Overlay wind (direction + strength) and rain conditions along the route.
