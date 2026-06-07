@@ -1,8 +1,155 @@
 {
   "race": "Tour Down Under",
   "race_slug": "tour-down-under-2026",
-  "source": "procyclingstats",
-  "updated_at": "2026-06-06T21:22:46.234948",
+  "source": "gpx_derived",
+  "updated_at": "2026-06-07T09:54:43.706590",
   "is_one_day_race": false,
-  "stages": {}
+  "stages": {
+    "3": [
+      {
+        "name": "Climb",
+        "km_before_finish": 121.2,
+        "length_km": 1.9,
+        "steepness": 4.5,
+        "top_m": 258
+      },
+      {
+        "name": "Chandlers Hill",
+        "km_before_finish": 50.8,
+        "length_km": 2.4,
+        "steepness": 4.4,
+        "top_m": 358
+      }
+    ],
+    "4": [
+      {
+        "name": "Climb",
+        "km_before_finish": 153.5,
+        "length_km": 1.9,
+        "steepness": 4.5,
+        "top_m": 258
+      },
+      {
+        "name": "Mount Barker",
+        "km_before_finish": 0.0,
+        "length_km": 8.3,
+        "steepness": 3.7,
+        "top_m": 375
+      }
+    ],
+    "5": [
+      {
+        "name": "Stirling",
+        "km_before_finish": 152.3,
+        "length_km": 4.6,
+        "steepness": 3.2,
+        "top_m": 458
+      },
+      {
+        "name": "Stirling",
+        "km_before_finish": 148.0,
+        "length_km": 3.0,
+        "steepness": 3.5,
+        "top_m": 528
+      },
+      {
+        "name": "Menglers Hill",
+        "km_before_finish": 131.0,
+        "length_km": 4.6,
+        "steepness": 3.2,
+        "top_m": 458
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 126.8,
+        "length_km": 3.0,
+        "steepness": 3.5,
+        "top_m": 528
+      },
+      {
+        "name": "Menglers Hill",
+        "km_before_finish": 109.8,
+        "length_km": 4.6,
+        "steepness": 3.2,
+        "top_m": 458
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 105.5,
+        "length_km": 3.0,
+        "steepness": 3.5,
+        "top_m": 528
+      },
+      {
+        "name": "Stirling",
+        "km_before_finish": 88.5,
+        "length_km": 4.6,
+        "steepness": 3.2,
+        "top_m": 458
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 84.2,
+        "length_km": 3.0,
+        "steepness": 3.6,
+        "top_m": 528
+      },
+      {
+        "name": "Menglers Hill",
+        "km_before_finish": 67.2,
+        "length_km": 4.6,
+        "steepness": 3.2,
+        "top_m": 458
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 62.9,
+        "length_km": 3.0,
+        "steepness": 3.5,
+        "top_m": 528
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 45.9,
+        "length_km": 4.6,
+        "steepness": 3.2,
+        "top_m": 458
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 41.7,
+        "length_km": 3.0,
+        "steepness": 3.5,
+        "top_m": 528
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 24.6,
+        "length_km": 4.6,
+        "steepness": 3.2,
+        "top_m": 458
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 20.4,
+        "length_km": 3.0,
+        "steepness": 3.5,
+        "top_m": 528
+      },
+      {
+        "name": "Climb",
+        "km_before_finish": 3.3,
+        "length_km": 4.6,
+        "steepness": 3.2,
+        "top_m": 458
+      },
+      {
+        "name": "Stirling",
+        "km_before_finish": 0.0,
+        "length_km": 2.1,
+        "steepness": 3.5,
+        "top_m": 496
+      }
+    ]
+  }
 }

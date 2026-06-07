@@ -1,11 +1,12 @@
 {
-  "updated_at": "2026-06-07T09:57:29.805522",
+  "updated_at": "2026-06-07T09:54:47.740873",
   "source": "mixed",
   "races": {
     "tour-down-under-2026": {
       "name": "Tour Down Under",
-      "climbs_available": false,
-      "total_climbs": 0
+      "climbs_available": true,
+      "total_climbs": 20,
+      "source": "gpx_derived"
     },
     "setmana-ciclista-valenciana-2026": {
       "name": "Volta a la Comunitat Valenciana",
@@ -55,7 +56,7 @@
     "tirreno-adriatico-2026": {
       "name": "Tirreno-Adriatico",
       "climbs_available": true,
-      "total_climbs": 23,
+      "total_climbs": 33,
       "source": "gpx_derived"
     },
     "milano-sanremo-2026": {
@@ -146,7 +147,7 @@
     "criterium-du-dauphine-2026": {
       "name": "Tour Auvergne-Rhône-Alpes",
       "climbs_available": true,
-      "total_climbs": 32,
+      "total_climbs": 29,
       "source": "gpx_derived"
     },
     "tour-de-suisse-2026": {
