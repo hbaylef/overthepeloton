@@ -65,13 +65,13 @@ aid — declined for now). See `R5_WEATHER.md` §8–9.
 - **Focus area 1 — UI/UX fine-tuning.** Polish the existing site (the editorial
   aesthetic, the map/profile/weather/tables interactions). Open-ended; user drives
   specific tweaks. We just did a live tuning pass on the R5 weather overlay.
-- **Focus area 2 — close the GPX coverage gap.** Find a way to get the GPX we're
-  still missing (~14 races without routes — past races archived differently, plus
-  upcoming races whose 2026 routes aren't published yet). The Auvergne fix
-  (`construct_cdn_gpx_urls()` + crawl the main race page) already recovered one;
-  next is a systematic pass: re-audit which races lack GPX and why, and consider
-  the **La Flamme Rouge** supplemental source (deferred; login-gated, local-only —
-  see §9 "Deferred").
+- **Focus area 2 — close the GPX coverage gap.** ~14 races without routes (past
+  races archived differently + upcoming 2026 routes not yet published). The
+  Auvergne fix (`construct_cdn_gpx_urls()` + crawl the main race page) recovered
+  one. The **La Flamme Rouge fallback** (`scrape_lfr.py`, WT+ProSeries) is built
+  but ⛔ **PAUSED** — LFR is behind a Cloudflare managed challenge no HTTP scraper
+  can pass; **user is contacting the LFR admin** for blessed access. See §9 "La
+  Flamme Rouge" for the full diagnosis + resume options.
 - **R7 non-WT** stays a later-stage goal (the filter bar already buckets "the rest").
 
 ---
@@ -636,10 +636,26 @@ confirmed against the open-source `jalnichols/p-c` LFR scraper). Mechanics:
   This machine's TLS proxy → use `--insecure` (or `LFR_INSECURE=1`). Start with
   `--dry-run` to see resolved races/track ids; pin a race via `LFR_RACE_OVERRIDES`
   if name auto-match misses. ToS likely prohibits scraping; user accepted the risk.
-- ⏳ **Calibration pending:** LFR's real HTML couldn't be inspected from the dev
-  sandbox (it 403s crawlers), so the first local run validates/adjusts the parsing.
-  11 WT+ProSeries races currently lack GPX (TDU, Flèche W., Romandie, Suisse, San
-  Sebastián, Renewi, Britain, Québec, Montréal, Lombardia, Paris-Tours).
+- ⛔ **BLOCKED by Cloudflare (diagnosed 2026-06-07).** LFR sits behind a Cloudflare
+  **managed challenge** (`Cf-Mitigated: challenge`, "Just a moment…", `_cf_chl_opt`
+  on the homepage itself — i.e. pre-login). HTTP scrapers **cannot** pass it:
+  plain `requests` → 403; `cloudscraper` (1.2.71) only beats the retired `jschl`
+  challenge, not managed/Turnstile; and on this machine its TLS-fingerprint context
+  also collides with the corporate TLS proxy. **Login secrets do NOT help** — the
+  challenge is in front of login, and LFR's public GPX needs no login anyway.
+- ➡️ **Resume options when we return to LFR:** (1) **admin cooperation** — user is
+  contacting the LFR admin for a data export / blessed access (PREFERRED; pending
+  reply); (2) **`cf_clearance` cookie** — paste a browser-obtained Cloudflare
+  clearance cookie + matching UA into the scraper's fetch layer (IP/UA-bound,
+  expires in ~30 min–hours, semi-manual refresh); (3) **Playwright** headed real
+  browser (heavier, may still be flagged); (4) **browser-assisted import** (user
+  downloads `/maps/viewtrack/gpx/{id}` via their browser, a script ingests).
+- **STATUS: PAUSED pending the LFR admin's reply.** The scraper scaffolding
+  (`scrape_lfr.py`: target selection, parsing, GPX validation, index merge +
+  `scrape_gpx.py` preserve-logic) is built and unit-tested (9/9) — only the *fetch
+  layer* needs swapping for whichever resume option we pick. 11 WT+ProSeries races
+  still lack GPX (TDU, Flèche W., Romandie, Suisse, San Sebastián, Renewi, Britain,
+  Québec, Montréal, Lombardia, Paris-Tours).
 
 ### Smaller polish ideas (not committed to)
 - Search/filter box on the race list.
