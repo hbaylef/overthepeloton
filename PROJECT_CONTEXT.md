@@ -37,17 +37,42 @@ Site is live; each verified increment is committed + pushed (GitHub Pages).
   `construct_cdn_gpx_urls()` fallback (predictable CDN paths from stage count;
   `download_gpx` still content-validates). General — any future race in this
   situation now works automatically.
+- **R4 climb naming fix shipped** (`20b7869`, `derive_climbs.py`). The name matcher
+  only matched the PCS `route/climbs` pool by **altitude**, but some races (e.g.
+  the **Tour de France**) publish that pool with names + lengths and `top=0`, so
+  every climb stayed "Climb". Added a **length-matching fallback** (altitude still
+  wins when present; `LEN_MATCH_TOL_KM=2.0`). Re-derived: **TdF 0→48 named**,
+  **Tour Auvergne-Rhône-Alpes 0→32 climbs** (its GPX only just landed; names are
+  unnamed locally — fill in on the next Actions run). Tests 17/17.
 - ⚠️ **Local SSL caveat unchanged:** TLS-intercepting proxy here breaks Python
   cert verification, so live scraping runs in Actions / browser only. The one-off
   Auvergne download used `verify=False`; **the scraper itself was left untouched** —
   don't "fix" scrape_gpx.py to disable verification.
+- ⏳ **Pending Actions run:** trigger the "Daily scrape" workflow to (a) name
+  Auvergne's 32 climbs and (b) apply the climb length-match to other uncached
+  races (e.g. Vuelta). GPX detection works everywhere; PCS naming needs Actions.
 
 **R5 open / tunable (not blockers):** avg-speed table + start-time default hour are
 guesses; wind-arrow density (24) / offset (2%) and rain thresholds are tuned but
 adjustable; **wind FROM-direction not yet in the tooltip** (offered as a self-check
 aid — declined for now). See `R5_WEATHER.md` §8–9.
 
-**Next up:** R6 real Bet365 odds · R7 non-WT races. R5 is functionally done & live.
+### 🎯 DIRECTION (set by the user 2026-06-07) — what we focus on next
+
+- **R6 odds is PARKED** — not abandoned, deferred until the user finds a viable
+  data solution. Access is blocked both ways (Bet365 blocks Actions IPs; the local
+  TLS proxy breaks Python scraping). Do NOT build odds until the user revisits it.
+- **Focus area 1 — UI/UX fine-tuning.** Polish the existing site (the editorial
+  aesthetic, the map/profile/weather/tables interactions). Open-ended; user drives
+  specific tweaks. We just did a live tuning pass on the R5 weather overlay.
+- **Focus area 2 — close the GPX coverage gap.** Find a way to get the GPX we're
+  still missing (~14 races without routes — past races archived differently, plus
+  upcoming races whose 2026 routes aren't published yet). The Auvergne fix
+  (`construct_cdn_gpx_urls()` + crawl the main race page) already recovered one;
+  next is a systematic pass: re-audit which races lack GPX and why, and consider
+  the **La Flamme Rouge** supplemental source (deferred; login-gated, local-only —
+  see §9 "Deferred").
+- **R7 non-WT** stays a later-stage goal (the filter bar already buckets "the rest").
 
 ---
 
@@ -578,12 +603,16 @@ a backlog, not in priority order. Several have open design questions noted.
 - **Needs a weather API — TBD.** (Open-Meteo is a likely free candidate but not
   yet researched/chosen.) Forecasts only meaningful close to race day.
 
-### R6 — Odds: actually scrape and show them
+### R6 — Odds: actually scrape and show them  ⏸ **PARKED (2026-06-07)**
+- **Deferred by the user** until a viable data solution is found. Access is
+  blocked both ways: Bet365 blocks GitHub Actions IPs, and this machine's
+  TLS-intercepting proxy breaks Python cert verification, so neither path reaches
+  live odds cleanly today. Do not build odds until the user revisits it.
 - The odds code exists (`scrape_odds.py`, `enter_odds.py`, frontend panel) but
   has **not been run successfully against live Bet365 data yet**.
-- Goal: get real odds flowing and displayed. May require running locally,
-  finding a more scrapable source, or the manual paste tool as the practical
-  fallback. Still the "hardest part" of the project.
+- Goal (when un-parked): get real odds flowing and displayed. May require a
+  non-proxied machine, a more scrapable source, or the manual paste tool as the
+  practical fallback. Still the "hardest part" of the project.
 
 ### R7 — Extend to non-World-Tour races (later stage)
 - Broaden coverage beyond UCI World Tour: ProSeries, Continental, women's
