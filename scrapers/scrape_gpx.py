@@ -312,6 +312,20 @@ def main():
 
     GPX_DIR.mkdir(parents=True, exist_ok=True)
 
+    # Preserve La Flamme Rouge fallback entries: scrape_lfr.py runs locally only
+    # (not in Actions), so this daily rebuild must not wipe the GPX it filled for
+    # races cyclingstage misses. We keep an LFR entry when cyclingstage still finds
+    # nothing AND the LFR files are still on disk.
+    prior_lfr = {}
+    if GPX_INDEX_FILE.exists():
+        try:
+            prior = json.loads(GPX_INDEX_FILE.read_text(encoding="utf-8"))
+            for slug, e in prior.get("races", {}).items():
+                if e.get("source") == "la_flamme_rouge" and e.get("gpx_available"):
+                    prior_lfr[slug] = e
+        except Exception:
+            pass
+
     year = races_data.get("year", datetime.now().year)
     gpx_index = {
         "updated_at": datetime.now().isoformat(),
@@ -343,6 +357,16 @@ def main():
 
         num_stages = len(race.get("stages", []))
         files = scrape_race_gpx(cs_slug, year, race_slug, is_one_day, num_stages)
+
+        # cyclingstage found nothing → keep the LFR fallback if its files remain.
+        if not files and race_slug in prior_lfr:
+            e = prior_lfr[race_slug]
+            if all((DATA_DIR / f["local_path"]).exists() for f in e.get("files", [])):
+                gpx_index["races"][race_slug] = e
+                total_gpx_files += e.get("total_files", 0)
+                log.info(f"  → preserved {e.get('total_files', 0)} La Flamme Rouge "
+                         f"file(s) for {race_name}")
+                continue
 
         gpx_index["races"][race_slug] = {
             "name": race_name,

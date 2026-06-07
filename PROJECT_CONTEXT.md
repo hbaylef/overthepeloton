@@ -269,7 +269,9 @@ overthepeloton/
 ├── requirements.txt             ← Python deps
 ├── scrapers/
 │   ├── scrape_races.py          ← STEP 1: races + startlists
-│   ├── scrape_gpx.py            ← STEP 2: GPX routes (crawl-based)
+│   ├── scrape_gpx.py            ← STEP 2: GPX routes (crawl-based; preserves LFR entries)
+│   ├── scrape_lfr.py            ← GPX FALLBACK: La Flamme Rouge (WT+ProSeries, local-only)
+│   ├── test_scrape_lfr.py       ← no-network tests for the LFR fallback (9/9)
 │   ├── scrape_odds.py           ← STEP 4: Bet365 odds
 │   ├── enter_odds.py            ← STEP 4: manual odds entry
 │   ├── scrape_riders.py         ← R1: embeds specialties.career into startlists
@@ -618,19 +620,26 @@ a backlog, not in priority order. Several have open design questions noted.
 - Broaden coverage beyond UCI World Tour: ProSeries, Continental, women's
   racing, etc. Explicitly a **later-stage** goal once the above are solid.
 
-### Deferred — La Flamme Rouge supplemental GPX source
-User wanted to add LFR for races cyclingstage misses. We agreed on a **hybrid**
-approach: keep cyclingstage as primary, add LFR as fallback for races without
-GPX. Run LFR scraping **locally only** (it requires login, GH Actions IPs would
-get blocked). Key constraints:
-- LFR requires user login → store creds as GitHub Secrets if ever moved to Actions.
-- LFR session IDs (`sid=...`) appear in URLs — those expire and must not be
-  shared publicly.
-- LFR's ToS likely prohibits scraping; user accepted the small ban risk.
-
-**Why we deferred:** user wanted to lock in the working cyclingstage deployment
-first, then add LFR as a non-breaking supplement. (Relevant to R4/R7 — LFR may
-help with both extra races and segment data.)
+### La Flamme Rouge supplemental GPX source — 🔨 TOOL BUILT (2026-06-07), calibrating
+Fallback for the GPX cyclingstage misses, **scoped to WorldTour + ProSeries** (user
+decision). `scrapers/scrape_lfr.py` + `test_scrape_lfr.py` (9/9). **No login needed**
+for LFR's public maps section (the old "requires login / sid" worry was overstated —
+confirmed against the open-source `jalnichols/p-c` LFR scraper). Mechanics:
+- Race listing: `/maps/races?count=0&page={p}&calendar[0]={cal}&year[0]={yr}&name={q}`
+  (cal 1=UWT, 2=Europe, 3=Americas, 4=Asia). Race page: `/maps/races/view/{id}/{name}`
+  lists the stage tracks. GPX: `/maps/viewtrack/gpx/{track_id}`.
+- **Fallback discipline:** only fills races still `gpx_available:false`; MERGES into
+  `gpx_index.json` tagging `"source":"la_flamme_rouge"`; never rebuilds it.
+- **scrape_gpx.py now PRESERVES** LFR entries on its daily rebuild (LFR runs locally
+  only, not in Actions — otherwise the cron would wipe them).
+- **Run locally only** (LFR blocks bots/Actions IPs; polite 3–7 s random delays).
+  This machine's TLS proxy → use `--insecure` (or `LFR_INSECURE=1`). Start with
+  `--dry-run` to see resolved races/track ids; pin a race via `LFR_RACE_OVERRIDES`
+  if name auto-match misses. ToS likely prohibits scraping; user accepted the risk.
+- ⏳ **Calibration pending:** LFR's real HTML couldn't be inspected from the dev
+  sandbox (it 403s crawlers), so the first local run validates/adjusts the parsing.
+  11 WT+ProSeries races currently lack GPX (TDU, Flèche W., Romandie, Suisse, San
+  Sebastián, Renewi, Britain, Québec, Montréal, Lombardia, Paris-Tours).
 
 ### Smaller polish ideas (not committed to)
 - Search/filter box on the race list.
