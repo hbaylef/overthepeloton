@@ -1,7 +1,7 @@
 {
   "race": "Clásica de San Sebastián",
   "race_slug": "san-sebastian-2026",
-  "updated_at": "2026-06-07T09:26:31.161610",
+  "updated_at": "2026-06-07T17:08:05.138506",
   "total_riders": 13,
   "riders": [
     {
@@ -20,7 +20,11 @@
           "climber": 1803,
           "hills": 1276
         }
-      }
+      },
+      "birthdate": "1998-5-29",
+      "place_of_birth": "France",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335
     },
     {
       "name": "WIDAR Jarno",
@@ -38,7 +42,11 @@
           "climber": 276,
           "hills": 88
         }
-      }
+      },
+      "birthdate": "2005-11-13",
+      "place_of_birth": "Hasselt",
+      "birthplace_lat": 50.9303735,
+      "birthplace_lon": 5.3378043
     },
     {
       "name": "BARRÉ Louis",
@@ -56,7 +64,11 @@
           "climber": 318,
           "hills": 484
         }
-      }
+      },
+      "birthdate": "2000-4-6",
+      "place_of_birth": "France",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335
     },
     {
       "name": "GALL Felix",
@@ -74,7 +86,11 @@
           "climber": 3348,
           "hills": 514
         }
-      }
+      },
+      "birthdate": "1998-2-27",
+      "place_of_birth": "Austria",
+      "birthplace_lat": 47.59397,
+      "birthplace_lon": 14.12456
     },
     {
       "name": "BISIAUX Léo",
@@ -89,10 +105,14 @@
           "gc": 161,
           "tt": 15,
           "sprint": 4,
-          "climber": 216,
+          "climber": 261,
           "hills": 101
         }
-      }
+      },
+      "birthdate": "2005-2-14",
+      "place_of_birth": "France",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335
     },
     {
       "name": "RICCITELLO Matthew",
@@ -110,7 +130,11 @@
           "climber": 1178,
           "hills": 152
         }
-      }
+      },
+      "birthdate": "2002-3-5",
+      "place_of_birth": "United States",
+      "birthplace_lat": 39.7837304,
+      "birthplace_lon": -100.445882
     },
     {
       "name": "PELLIZZARI Giulio",
@@ -128,7 +152,11 @@
           "climber": 1414,
           "hills": 374
         }
-      }
+      },
+      "birthdate": "2003-11-21",
+      "place_of_birth": "Italy",
+      "birthplace_lat": 42.6384261,
+      "birthplace_lon": 12.674297
     },
     {
       "name": "BILBAO Pello",
@@ -146,7 +174,11 @@
           "climber": 5320,
           "hills": 2402
         }
-      }
+      },
+      "birthdate": "1990-2-25",
+      "place_of_birth": "Spain",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "KULSET Johannes",
@@ -164,7 +196,11 @@
           "climber": 475,
           "hills": 212
         }
-      }
+      },
+      "birthdate": "2004-4-14",
+      "place_of_birth": "Oslo",
+      "birthplace_lat": 59.9133301,
+      "birthplace_lon": 10.7389701
     },
     {
       "name": "MOLLEMA Bauke",
@@ -182,7 +218,11 @@
           "climber": 7737,
           "hills": 4159
         }
-      }
+      },
+      "birthdate": "1986-11-26",
+      "place_of_birth": "Groningen",
+      "birthplace_lat": 53.2190652,
+      "birthplace_lon": 6.5680077
     },
     {
       "name": "CHRISTEN Jan",
@@ -200,7 +240,11 @@
           "climber": 750,
           "hills": 577
         }
-      }
+      },
+      "birthdate": "2004-6-26",
+      "place_of_birth": "Leuggern",
+      "birthplace_lat": 47.5798217,
+      "birthplace_lon": 8.217218
     },
     {
       "name": "VERMAERKE Kevin",
@@ -215,10 +259,14 @@
           "gc": 802,
           "tt": 29,
           "sprint": 16,
-          "climber": 664,
+          "climber": 704,
           "hills": 582
         }
-      }
+      },
+      "birthdate": "2000-10-16",
+      "place_of_birth": "United States",
+      "birthplace_lat": 39.7837304,
+      "birthplace_lon": -100.445882
     },
     {
       "name": "ALMEIDA João",
@@ -236,7 +284,11 @@
           "climber": 4868,
           "hills": 1494
         }
-      }
+      },
+      "birthdate": "1998-8-5",
+      "place_of_birth": "Caldas da Rainha",
+      "birthplace_lat": 39.4071857,
+      "birthplace_lon": -9.1346004
     }
   ]
 }

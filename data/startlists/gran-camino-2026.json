@@ -1,7 +1,7 @@
 {
   "race": "O Gran Camiño",
   "race_slug": "gran-camino-2026",
-  "updated_at": "2026-06-07T09:24:19.575083",
+  "updated_at": "2026-06-07T17:06:03.897968",
   "total_riders": 110,
   "riders": [
     {
@@ -20,7 +20,11 @@
           "climber": 22,
           "hills": 84
         }
-      }
+      },
+      "birthdate": "1999-9-13",
+      "place_of_birth": "Blovstrød",
+      "birthplace_lat": 55.8678298,
+      "birthplace_lon": 12.3869272
     },
     {
       "name": "LAENGEN Vegard Stake",
@@ -38,7 +42,11 @@
           "climber": 271,
           "hills": 175
         }
-      }
+      },
+      "birthdate": "1989-2-7",
+      "place_of_birth": "Fredrikstad",
+      "birthplace_lat": 59.1862013,
+      "birthplace_lon": 10.8680241
     },
     {
       "name": "VERMAERKE Kevin",
@@ -53,10 +61,14 @@
           "gc": 802,
           "tt": 29,
           "sprint": 16,
-          "climber": 664,
+          "climber": 704,
           "hills": 582
         }
-      }
+      },
+      "birthdate": "2000-10-16",
+      "place_of_birth": "United States",
+      "birthplace_lat": 39.7837304,
+      "birthplace_lon": -100.445882
     },
     {
       "name": "YATES Adam",
@@ -74,7 +86,11 @@
           "climber": 7690,
           "hills": 2123
         }
-      }
+      },
+      "birthdate": "1992-8-7",
+      "place_of_birth": "Bury",
+      "birthplace_lat": 52.2460367,
+      "birthplace_lon": 0.7125173
     },
     {
       "name": "ALMUTAIWEI Mohammad",
@@ -92,7 +108,11 @@
           "climber": 2,
           "hills": 10
         }
-      }
+      },
+      "birthdate": "2003-11-28",
+      "place_of_birth": "Dubai",
+      "birthplace_lat": 25.0742823,
+      "birthplace_lon": 55.1885387
     },
     {
       "name": "JASIM AL-ALI Abdulla",
@@ -110,7 +130,11 @@
           "climber": 20,
           "hills": 39
         }
-      }
+      },
+      "birthdate": "2003-1-17",
+      "place_of_birth": "Umm-al-Quwain",
+      "birthplace_lat": 25.5144944,
+      "birthplace_lon": 55.718292
     },
     {
       "name": "MERNIK Sven Aleksander",
@@ -125,10 +149,12 @@
           "gc": 2,
           "tt": 0,
           "sprint": 0,
-          "climber": 4,
-          "hills": 14
+          "climber": 6,
+          "hills": 16
         }
-      }
+      },
+      "birthdate": "2006-6-14",
+      "place_of_birth": "Onedayraces"
     },
     {
       "name": "GRAAT Tijmen",
@@ -146,7 +172,11 @@
           "climber": 195,
           "hills": 94
         }
-      }
+      },
+      "birthdate": "2003-1-10",
+      "place_of_birth": "Netherlands",
+      "birthplace_lat": 52.2434979,
+      "birthplace_lon": 5.6343227
     },
     {
       "name": "SCHIFFER Anton",
@@ -164,7 +194,11 @@
           "climber": 116,
           "hills": 74
         }
-      }
+      },
+      "birthdate": "1999-9-1",
+      "place_of_birth": "Germany",
+      "birthplace_lat": 51.1638175,
+      "birthplace_lon": 10.4478313
     },
     {
       "name": "GOSZCZURNY Patryk",
@@ -182,7 +216,11 @@
           "climber": 18,
           "hills": 32
         }
-      }
+      },
+      "birthdate": "2006-3-14",
+      "place_of_birth": "Poland",
+      "birthplace_lat": 52.215933,
+      "birthplace_lon": 19.134422
     },
     {
       "name": "SMITH William",
@@ -200,7 +238,11 @@
           "climber": 38,
           "hills": 12
         }
-      }
+      },
+      "birthdate": "2004-3-21",
+      "place_of_birth": "Hillingdon",
+      "birthplace_lat": 51.5425193,
+      "birthplace_lon": -0.4483349
     },
     {
       "name": "NORDHAGEN Jørgen",
@@ -214,11 +256,15 @@
           "one_day_races": 86,
           "gc": 630,
           "tt": 130,
-          "sprint": 0,
-          "climber": 371,
+          "sprint": 8,
+          "climber": 372,
           "hills": 129
         }
-      }
+      },
+      "birthdate": "2005-1-10",
+      "place_of_birth": "Norway",
+      "birthplace_lat": 61.1529386,
+      "birthplace_lon": 8.7876653
     },
     {
       "name": "BENNETT George",
@@ -232,11 +278,15 @@
           "one_day_races": 899,
           "gc": 3650,
           "tt": 276,
-          "sprint": 26,
+          "sprint": 56,
           "climber": 3034,
           "hills": 1121
         }
-      }
+      },
+      "birthdate": "1990-4-7",
+      "place_of_birth": "Nelson",
+      "birthplace_lat": -41.2710849,
+      "birthplace_lon": 173.2836756
     },
     {
       "name": "PINARELLO Alessandro",
@@ -254,7 +304,11 @@
           "climber": 269,
           "hills": 332
         }
-      }
+      },
+      "birthdate": "2003-7-12",
+      "place_of_birth": "Conegliano",
+      "birthplace_lat": 45.9037297,
+      "birthplace_lon": 12.2653108
     },
     {
       "name": "RAISBERG Nadav",
@@ -272,7 +326,11 @@
           "climber": 6,
           "hills": 77
         }
-      }
+      },
+      "birthdate": null,
+      "place_of_birth": "Dafna",
+      "birthplace_lat": 33.2303715,
+      "birthplace_lon": 35.6392634
     },
     {
       "name": "CASEY Patrick",
@@ -290,7 +348,9 @@
           "climber": 0,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2006-3-21",
+      "place_of_birth": "Onedayraces"
     },
     {
       "name": "GARCÍA Álvaro",
@@ -308,7 +368,11 @@
           "climber": 0,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2005-4-6",
+      "place_of_birth": "Spain",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "MARRIAGE Zac",
@@ -326,7 +390,11 @@
           "climber": 54,
           "hills": 62
         }
-      }
+      },
+      "birthdate": "2003-11-12",
+      "place_of_birth": "Adelaide",
+      "birthplace_lat": -34.9281805,
+      "birthplace_lon": 138.5999312
     },
     {
       "name": "TARLING Finlay",
@@ -344,7 +412,9 @@
           "climber": 14,
           "hills": 26
         }
-      }
+      },
+      "birthdate": "2006-10-2",
+      "place_of_birth": "Onedayraces"
     },
     {
       "name": "ARCAS Jorge",
@@ -362,7 +432,11 @@
           "climber": 86,
           "hills": 104
         }
-      }
+      },
+      "birthdate": "1992-7-8",
+      "place_of_birth": "Sabiñánigo",
+      "birthplace_lat": 42.518364,
+      "birthplace_lon": -0.3647899
     },
     {
       "name": "CANAL Carlos",
@@ -374,13 +448,17 @@
       "specialties": {
         "career": {
           "one_day_races": 615,
-          "gc": 451,
+          "gc": 501,
           "tt": 115,
           "sprint": 162,
-          "climber": 229,
-          "hills": 697
+          "climber": 242,
+          "hills": 725
         }
-      }
+      },
+      "birthdate": "2001-6-28",
+      "place_of_birth": "Xinzo de Limia",
+      "birthplace_lat": 42.0357304,
+      "birthplace_lon": -7.7392082
     },
     {
       "name": "POMBO Tomás",
@@ -398,7 +476,11 @@
           "climber": 4,
           "hills": 2
         }
-      }
+      },
+      "birthdate": "2006-4-28",
+      "place_of_birth": "Spain",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "FORMOLO Davide",
@@ -416,7 +498,11 @@
           "climber": 2744,
           "hills": 1346
         }
-      }
+      },
+      "birthdate": "1992-10-25",
+      "place_of_birth": "Italy",
+      "birthplace_lat": 42.6384261,
+      "birthplace_lon": 12.674297
     },
     {
       "name": "ROMEO Iván",
@@ -434,7 +520,11 @@
           "climber": 298,
           "hills": 324
         }
-      }
+      },
+      "birthdate": "2003-8-16",
+      "place_of_birth": "Valladolid",
+      "birthplace_lat": 41.6200024,
+      "birthplace_lon": -4.7259906
     },
     {
       "name": "OLIVEIRA Nelson",
@@ -452,7 +542,11 @@
           "climber": 594,
           "hills": 890
         }
-      }
+      },
+      "birthdate": "1989-3-6",
+      "place_of_birth": "Anadia",
+      "birthplace_lat": 40.4426833,
+      "birthplace_lon": -8.4359581
     },
     {
       "name": "NOVÁK Filip",
@@ -470,7 +564,9 @@
           "climber": 3,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2007-11-12",
+      "place_of_birth": "Onedayraces"
     },
     {
       "name": "BALDERSTONE Abel",
@@ -488,7 +584,11 @@
           "climber": 250,
           "hills": 98
         }
-      }
+      },
+      "birthdate": "2000-7-7",
+      "place_of_birth": "Spain",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "PARRA José Félix",
@@ -503,10 +603,14 @@
           "gc": 537,
           "tt": 0,
           "sprint": 0,
-          "climber": 440,
+          "climber": 442,
           "hills": 116
         }
-      }
+      },
+      "birthdate": "1997-1-16",
+      "place_of_birth": "Spain",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "SORARRAIN Gorka",
@@ -524,7 +628,11 @@
           "climber": 34,
           "hills": 126
         }
-      }
+      },
+      "birthdate": "1996-5-21",
+      "place_of_birth": "Spain",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "CASTELLON Jan",
@@ -539,10 +647,14 @@
           "gc": 267,
           "tt": 13,
           "sprint": 2,
-          "climber": 106,
+          "climber": 107,
           "hills": 46
         }
-      }
+      },
+      "birthdate": "2003-7-31",
+      "place_of_birth": "Spain",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "FERNÁNDEZ Samuel",
@@ -560,7 +672,11 @@
           "climber": 70,
           "hills": 35
         }
-      }
+      },
+      "birthdate": "2003-7-11",
+      "place_of_birth": "Spain",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "OTRUBA Jakub",
@@ -578,7 +694,11 @@
           "climber": 184,
           "hills": 160
         }
-      }
+      },
+      "birthdate": "1998-1-30",
+      "place_of_birth": "Czech Republic",
+      "birthplace_lat": 49.7439047,
+      "birthplace_lon": 15.3381061
     },
     {
       "name": "LOSPITAO Pablo",
@@ -596,7 +716,11 @@
           "climber": 0,
           "hills": 1
         }
-      }
+      },
+      "birthdate": "2005-7-19",
+      "place_of_birth": "Spain",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "FAGÚNDEZ Eric Antonio",
@@ -614,7 +738,11 @@
           "climber": 146,
           "hills": 346
         }
-      }
+      },
+      "birthdate": "1998-8-19",
+      "place_of_birth": "Uruguay",
+      "birthplace_lat": -32.8755548,
+      "birthplace_lon": -56.0201525
     },
     {
       "name": "GARCÍA PIERNA Carlos",
@@ -632,7 +760,11 @@
           "climber": 44,
           "hills": 35
         }
-      }
+      },
+      "birthdate": "1999-7-23",
+      "place_of_birth": "Spain",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "CHUMIL Sergio Geovani",
@@ -650,7 +782,11 @@
           "climber": 276,
           "hills": 172
         }
-      }
+      },
+      "birthdate": "2000-10-8",
+      "place_of_birth": "Guatemala",
+      "birthplace_lat": 15.5855545,
+      "birthplace_lon": -90.345759
     },
     {
       "name": "APARICIO Mario",
@@ -668,7 +804,11 @@
           "climber": 122,
           "hills": 102
         }
-      }
+      },
+      "birthdate": "2000-4-23",
+      "place_of_birth": "Spain",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "HERRADA Jesús",
@@ -686,7 +826,11 @@
           "climber": 2218,
           "hills": 1460
         }
-      }
+      },
+      "birthdate": "1990-7-26",
+      "place_of_birth": "Spain",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "REY Martín",
@@ -704,7 +848,11 @@
           "climber": 0,
           "hills": 2
         }
-      }
+      },
+      "birthdate": "2003-3-11",
+      "place_of_birth": "Spain",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "FERNÁNDEZ Sinuhé",
@@ -722,7 +870,11 @@
           "climber": 23,
           "hills": 1
         }
-      }
+      },
+      "birthdate": "2000-6-15",
+      "place_of_birth": "Spain",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "URIARTE Diego",
@@ -740,7 +892,11 @@
           "climber": 15,
           "hills": 35
         }
-      }
+      },
+      "birthdate": "2001-10-26",
+      "place_of_birth": "Barañáin",
+      "birthplace_lat": 42.8048344,
+      "birthplace_lon": -1.6810202
     },
     {
       "name": "WENZEL Mats",
@@ -758,7 +914,11 @@
           "climber": 122,
           "hills": 150
         }
-      }
+      },
+      "birthdate": "2002-12-19",
+      "place_of_birth": "Luxembourg",
+      "birthplace_lat": 49.8158683,
+      "birthplace_lon": 6.1296751
     },
     {
       "name": "SOSA Iván Ramiro",
@@ -776,7 +936,11 @@
           "climber": 1267,
           "hills": 177
         }
-      }
+      },
+      "birthdate": "1997-10-31",
+      "place_of_birth": "Pasca",
+      "birthplace_lat": 4.3078299,
+      "birthplace_lon": -74.3001795
     },
     {
       "name": "CARRASCOSA Pablo",
@@ -794,7 +958,11 @@
           "climber": 5,
           "hills": 1
         }
-      }
+      },
+      "birthdate": "2002-10-7",
+      "place_of_birth": "Santa Amalia",
+      "birthplace_lat": 39.0267731,
+      "birthplace_lon": -6.0089402
     },
     {
       "name": "AZANZA Ibai",
@@ -812,7 +980,11 @@
           "climber": 1,
           "hills": 3
         }
-      }
+      },
+      "birthdate": "2004-2-22",
+      "place_of_birth": "Spain",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "RETEGI Mikel",
@@ -824,13 +996,17 @@
       "specialties": {
         "career": {
           "one_day_races": 15,
-          "gc": 9,
+          "gc": 15,
           "tt": 0,
-          "sprint": 2,
+          "sprint": 4,
           "climber": 31,
           "hills": 96
         }
-      }
+      },
+      "birthdate": "2001-4-27",
+      "place_of_birth": "Spain",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "SOTO Antonio Jesús",
@@ -844,11 +1020,15 @@
           "one_day_races": 243,
           "gc": 127,
           "tt": 40,
-          "sprint": 131,
+          "sprint": 134,
           "climber": 72,
           "hills": 386
         }
-      }
+      },
+      "birthdate": "1994-12-24",
+      "place_of_birth": "Spain",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "JUARISTI Txomin",
@@ -866,7 +1046,11 @@
           "climber": 258,
           "hills": 140
         }
-      }
+      },
+      "birthdate": "1995-7-20",
+      "place_of_birth": "Spain",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "SUTTON Louis",
@@ -884,7 +1068,11 @@
           "climber": 21,
           "hills": 56
         }
-      }
+      },
+      "birthdate": "2002-5-27",
+      "place_of_birth": "Great Britain",
+      "birthplace_lat": 54.3151594,
+      "birthplace_lon": -1.9181532
     },
     {
       "name": "AGIRRE Jon",
@@ -902,7 +1090,11 @@
           "climber": 235,
           "hills": 112
         }
-      }
+      },
+      "birthdate": "1997-9-10",
+      "place_of_birth": "Zumaia",
+      "birthplace_lat": 43.296653,
+      "birthplace_lon": -2.2571182
     },
     {
       "name": "AZNAR Unai",
@@ -920,7 +1112,11 @@
           "climber": 1,
           "hills": 1
         }
-      }
+      },
+      "birthdate": "2002-7-26",
+      "place_of_birth": "Cortes",
+      "birthplace_lat": 41.9235302,
+      "birthplace_lon": -1.4206848
     },
     {
       "name": "FERNÁNDEZ Samuel",
@@ -938,7 +1134,11 @@
           "climber": 0,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2003-5-14",
+      "place_of_birth": "Gijón",
+      "birthplace_lat": 43.5449422,
+      "birthplace_lon": -5.66275
     },
     {
       "name": "ISASA Xabier",
@@ -956,7 +1156,11 @@
           "climber": 18,
           "hills": 91
         }
-      }
+      },
+      "birthdate": "2001-8-24",
+      "place_of_birth": "Urretxu",
+      "birthplace_lat": 43.0920435,
+      "birthplace_lon": -2.3170309
     },
     {
       "name": "VAN DER TUUK Danny",
@@ -974,7 +1178,11 @@
           "climber": 4,
           "hills": 3
         }
-      }
+      },
+      "birthdate": "1999-11-5",
+      "place_of_birth": "Poland",
+      "birthplace_lat": 52.215933,
+      "birthplace_lon": 19.134422
     },
     {
       "name": "NYCH Artem",
@@ -992,7 +1200,11 @@
           "climber": 402,
           "hills": 104
         }
-      }
+      },
+      "birthdate": null,
+      "place_of_birth": "Kemerovo",
+      "birthplace_lat": 55.3550907,
+      "birthplace_lon": 86.0871213
     },
     {
       "name": "REIS Rafael",
@@ -1010,7 +1222,11 @@
           "climber": 80,
           "hills": 198
         }
-      }
+      },
+      "birthdate": "1992-7-15",
+      "place_of_birth": "Setúbal",
+      "birthplace_lat": 38.5241783,
+      "birthplace_lon": -8.8932341
     },
     {
       "name": "GUERIN Alexis",
@@ -1028,7 +1244,11 @@
           "climber": 419,
           "hills": 244
         }
-      }
+      },
+      "birthdate": "1992-6-6",
+      "place_of_birth": "Libourne ",
+      "birthplace_lat": 44.9133742,
+      "birthplace_lon": -0.2427217
     },
     {
       "name": "LÓPEZ DE ABETXUKO Andoni",
@@ -1046,7 +1266,11 @@
           "climber": 0,
           "hills": 137
         }
-      }
+      },
+      "birthdate": "1999-8-3",
+      "place_of_birth": "Salvatierra",
+      "birthplace_lat": 42.8492823,
+      "birthplace_lon": -2.3890592
     },
     {
       "name": "MESA Santiago",
@@ -1064,7 +1288,11 @@
           "climber": 6,
           "hills": 76
         }
-      }
+      },
+      "birthdate": "1997-11-11",
+      "place_of_birth": "Medellín ",
+      "birthplace_lat": 6.2697324,
+      "birthplace_lon": -75.6025597
     },
     {
       "name": "FERNÁNDEZ Rubén",
@@ -1082,7 +1310,11 @@
           "climber": 662,
           "hills": 534
         }
-      }
+      },
+      "birthdate": "1991-3-1",
+      "place_of_birth": "Murcia",
+      "birthplace_lat": 37.9347521,
+      "birthplace_lon": -1.1131029
     },
     {
       "name": "LEIJNSE Enzo",
@@ -1100,7 +1332,11 @@
           "climber": 5,
           "hills": 10
         }
-      }
+      },
+      "birthdate": "2001-7-16",
+      "place_of_birth": "Amsterdam",
+      "birthplace_lat": 52.3730796,
+      "birthplace_lon": 4.8924534
     },
     {
       "name": "CAMPOS Noah",
@@ -1118,7 +1354,11 @@
           "climber": 0,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2004-8-19",
+      "place_of_birth": "Loulé",
+      "birthplace_lat": 37.1399532,
+      "birthplace_lon": -8.023324
     },
     {
       "name": "MESTRE Guilherme",
@@ -1136,7 +1376,11 @@
           "climber": 0,
           "hills": 1
         }
-      }
+      },
+      "birthdate": "2006-8-6",
+      "place_of_birth": "Ribeira da Gafa",
+      "birthplace_lat": 37.2039277,
+      "birthplace_lon": -7.5572419
     },
     {
       "name": "SALGUEIRO Carlos Miguel",
@@ -1154,7 +1398,11 @@
           "climber": 10,
           "hills": 36
         }
-      }
+      },
+      "birthdate": "1999-6-9",
+      "place_of_birth": "Lisboa",
+      "birthplace_lat": 38.7077507,
+      "birthplace_lon": -9.1365919
     },
     {
       "name": "BICHO Jose",
@@ -1172,7 +1420,11 @@
           "climber": 0,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2004-1-4",
+      "place_of_birth": "Évora",
+      "birthplace_lat": 38.5707742,
+      "birthplace_lon": -7.9092808
     },
     {
       "name": "LASA Ailetz",
@@ -1190,7 +1442,11 @@
           "climber": 0,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2000-3-15",
+      "place_of_birth": "Ziordia",
+      "birthplace_lat": 42.870558,
+      "birthplace_lon": -2.2270211
     },
     {
       "name": "ALVES Rodrigo",
@@ -1208,7 +1464,9 @@
           "climber": 0,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2006-9-20",
+      "place_of_birth": "Onedayraces"
     },
     {
       "name": "COSTA Gabriel",
@@ -1226,7 +1484,9 @@
           "climber": 0,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2007-1-19",
+      "place_of_birth": "Onedayraces"
     },
     {
       "name": "PEÑA Jesús David",
@@ -1244,7 +1504,11 @@
           "climber": 350,
           "hills": 161
         }
-      }
+      },
+      "birthdate": "2000-5-8",
+      "place_of_birth": "Zipaquirá",
+      "birthplace_lat": 5.0234748,
+      "birthplace_lon": -74.0039818
     },
     {
       "name": "DURÃES Rafael",
@@ -1262,7 +1526,9 @@
           "climber": 2,
           "hills": 1
         }
-      }
+      },
+      "birthdate": "2006-3-12",
+      "place_of_birth": "Onedayraces"
     },
     {
       "name": "GRIGOREV Aleksandr",
@@ -1280,7 +1546,11 @@
           "climber": 12,
           "hills": 52
         }
-      }
+      },
+      "birthdate": "1992-3-21",
+      "place_of_birth": "Cheboksary",
+      "birthplace_lat": 56.1399598,
+      "birthplace_lon": 47.2480999
     },
     {
       "name": "LOPES Lucas",
@@ -1298,7 +1568,11 @@
           "climber": 47,
           "hills": 29
         }
-      }
+      },
+      "birthdate": "2003-4-10",
+      "place_of_birth": "Póvoa de Varzim",
+      "birthplace_lat": 41.3794188,
+      "birthplace_lon": -8.7598689
     },
     {
       "name": "PINTO Pedro",
@@ -1316,7 +1590,11 @@
           "climber": 10,
           "hills": 6
         }
-      }
+      },
+      "birthdate": "2000-11-5",
+      "place_of_birth": "Marco de Canavezes",
+      "birthplace_lat": 41.1616546,
+      "birthplace_lon": -8.127792
     },
     {
       "name": "SILVA Joaquim",
@@ -1334,7 +1612,11 @@
           "climber": 174,
           "hills": 149
         }
-      }
+      },
+      "birthdate": "1992-3-19",
+      "place_of_birth": "Penafiel",
+      "birthplace_lat": 41.2061892,
+      "birthplace_lon": -8.2855653
     },
     {
       "name": "SWIRBUL Keegan",
@@ -1352,7 +1634,11 @@
           "climber": 214,
           "hills": 108
         }
-      }
+      },
+      "birthdate": "1995-9-2",
+      "place_of_birth": "Basalt",
+      "birthplace_lat": 39.3688731,
+      "birthplace_lon": -107.032824
     },
     {
       "name": "SILVA Pedro",
@@ -1370,7 +1656,11 @@
           "climber": 60,
           "hills": 40
         }
-      }
+      },
+      "birthdate": "2001-7-7",
+      "place_of_birth": "Portugal",
+      "birthplace_lat": 39.6621648,
+      "birthplace_lon": -8.1353519
     },
     {
       "name": "COSTA Fábio",
@@ -1388,7 +1678,11 @@
           "climber": 16,
           "hills": 68
         }
-      }
+      },
+      "birthdate": "1999-7-4",
+      "place_of_birth": "Portugal",
+      "birthplace_lat": 39.6621648,
+      "birthplace_lon": -8.1353519
     },
     {
       "name": "DOMÍNGUEZ David",
@@ -1406,7 +1700,11 @@
           "climber": 41,
           "hills": 30
         }
-      }
+      },
+      "birthdate": "2000-7-28",
+      "place_of_birth": "Spain",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "LOPES Afonso",
@@ -1424,7 +1722,11 @@
           "climber": 1,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2004-3-31",
+      "place_of_birth": "Portugal",
+      "birthplace_lat": 39.6621648,
+      "birthplace_lon": -8.1353519
     },
     {
       "name": "SILVA João",
@@ -1442,7 +1744,11 @@
           "climber": 3,
           "hills": 6
         }
-      }
+      },
+      "birthdate": "2002-11-15",
+      "place_of_birth": "Portugal",
+      "birthplace_lat": 39.6621648,
+      "birthplace_lon": -8.1353519
     },
     {
       "name": "ANUNCIAÇÃO João",
@@ -1460,7 +1766,11 @@
           "climber": 0,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2007-1-24",
+      "place_of_birth": "Portugal",
+      "birthplace_lat": 39.6621648,
+      "birthplace_lon": -8.1353519
     },
     {
       "name": "RODRIGUES Rúben",
@@ -1478,7 +1788,11 @@
           "climber": 13,
           "hills": 12
         }
-      }
+      },
+      "birthdate": "2004-7-6",
+      "place_of_birth": "Portugal",
+      "birthplace_lat": 39.6621648,
+      "birthplace_lon": -8.1353519
     },
     {
       "name": "DEL PINO Jesus",
@@ -1496,7 +1810,11 @@
           "climber": 214,
           "hills": 58
         }
-      }
+      },
+      "birthdate": "1990-9-9",
+      "place_of_birth": "Segurilla",
+      "birthplace_lat": 40.0227539,
+      "birthplace_lon": -4.8657291
     },
     {
       "name": "CONTTE Tomas",
@@ -1514,7 +1832,11 @@
           "climber": 40,
           "hills": 74
         }
-      }
+      },
+      "birthdate": "1998-8-1",
+      "place_of_birth": "Zarate",
+      "birthplace_lat": -34.0954713,
+      "birthplace_lon": -59.0245097
     },
     {
       "name": "FRANCISCO Filipe",
@@ -1532,7 +1854,11 @@
           "climber": 0,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "1998-10-15",
+      "place_of_birth": "Loulé",
+      "birthplace_lat": 37.1399532,
+      "birthplace_lon": -8.023324
     },
     {
       "name": "VIEGAS Daniel",
@@ -1550,7 +1876,11 @@
           "climber": 0,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "1998-1-5",
+      "place_of_birth": "Faro",
+      "birthplace_lat": 37.0162944,
+      "birthplace_lon": -7.935182
     },
     {
       "name": "ANTÓNIO João",
@@ -1568,7 +1898,9 @@
           "climber": 0,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2006-7-10",
+      "place_of_birth": "Onedayraces"
     },
     {
       "name": "LEAL Cláudio",
@@ -1586,7 +1918,11 @@
           "climber": 2,
           "hills": 1
         }
-      }
+      },
+      "birthdate": "2004-7-30",
+      "place_of_birth": "Paredes",
+      "birthplace_lat": 41.2078862,
+      "birthplace_lon": -8.3332321
     },
     {
       "name": "GÁLVEZ Jorge",
@@ -1604,7 +1940,11 @@
           "climber": 5,
           "hills": 6
         }
-      }
+      },
+      "birthdate": "2000-4-11",
+      "place_of_birth": "Pozuelo de Alarcón",
+      "birthplace_lat": 40.4346528,
+      "birthplace_lon": -3.814834
     },
     {
       "name": "SÁNCHEZ Ángel",
@@ -1622,7 +1962,11 @@
           "climber": 16,
           "hills": 18
         }
-      }
+      },
+      "birthdate": "1993-4-12",
+      "place_of_birth": "Cambados",
+      "birthplace_lat": 42.5193232,
+      "birthplace_lon": -8.797678
     },
     {
       "name": "DEJESUS Lois",
@@ -1640,7 +1984,11 @@
           "climber": 0,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2006-7-24",
+      "place_of_birth": "Pontevedra",
+      "birthplace_lat": 42.428065,
+      "birthplace_lon": -8.6041447
     },
     {
       "name": "LÓPEZ Diego",
@@ -1658,7 +2006,11 @@
           "climber": 2,
           "hills": 1
         }
-      }
+      },
+      "birthdate": "2007-9-29",
+      "place_of_birth": "Santiago de Compostela",
+      "birthplace_lat": 42.9064576,
+      "birthplace_lon": -8.5192983
     },
     {
       "name": "MATIAS João",
@@ -1676,7 +2028,11 @@
           "climber": 9,
           "hills": 190
         }
-      }
+      },
+      "birthdate": "1991-5-26",
+      "place_of_birth": "Barcelos",
+      "birthplace_lat": 41.5314496,
+      "birthplace_lon": -8.6192306
     },
     {
       "name": "CARVALHO Gonçalo",
@@ -1694,7 +2050,11 @@
           "climber": 46,
           "hills": 31
         }
-      }
+      },
+      "birthdate": "1997-12-3",
+      "place_of_birth": "Mortágua",
+      "birthplace_lat": 40.3972486,
+      "birthplace_lon": -8.2287169
     },
     {
       "name": "BARBAS Rafael",
@@ -1712,7 +2072,11 @@
           "climber": 20,
           "hills": 9
         }
-      }
+      },
+      "birthdate": "2004-6-27",
+      "place_of_birth": "Guarda",
+      "birthplace_lat": 40.7046066,
+      "birthplace_lon": -7.1951392
     },
     {
       "name": "LUCAS Simão",
@@ -1730,7 +2094,11 @@
           "climber": 0,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2007-12-13",
+      "place_of_birth": "Évora",
+      "birthplace_lat": 38.5707742,
+      "birthplace_lon": -7.9092808
     },
     {
       "name": "DUARTE Emanuel",
@@ -1748,7 +2116,11 @@
           "climber": 55,
           "hills": 21
         }
-      }
+      },
+      "birthdate": "1997-1-24",
+      "place_of_birth": "Portugal",
+      "birthplace_lat": 39.6621648,
+      "birthplace_lon": -8.1353519
     },
     {
       "name": "LEAÇA Gonçalo",
@@ -1766,7 +2138,11 @@
           "climber": 56,
           "hills": 46
         }
-      }
+      },
+      "birthdate": "1997-10-29",
+      "place_of_birth": "Portugal",
+      "birthplace_lat": 39.6621648,
+      "birthplace_lon": -8.1353519
     },
     {
       "name": "PINTO Diogo",
@@ -1784,7 +2160,11 @@
           "climber": 0,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2003-2-21",
+      "place_of_birth": "Portugal",
+      "birthplace_lat": 39.6621648,
+      "birthplace_lon": -8.1353519
     },
     {
       "name": "OLIVEIRA João",
@@ -1802,7 +2182,11 @@
           "climber": 0,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2002-11-22",
+      "place_of_birth": "Portugal",
+      "birthplace_lat": 39.6621648,
+      "birthplace_lon": -8.1353519
     },
     {
       "name": "DOMINGUES Duarte",
@@ -1820,7 +2204,11 @@
           "climber": 1,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2004-2-29",
+      "place_of_birth": "Portugal",
+      "birthplace_lat": 39.6621648,
+      "birthplace_lon": -8.1353519
     },
     {
       "name": "MEDEIROS João",
@@ -1838,7 +2226,11 @@
           "climber": 19,
           "hills": 14
         }
-      }
+      },
+      "birthdate": "2000-8-4",
+      "place_of_birth": "Portugal",
+      "birthplace_lat": 39.6621648,
+      "birthplace_lon": -8.1353519
     },
     {
       "name": "NUNES Hugo",
@@ -1856,7 +2248,11 @@
           "climber": 44,
           "hills": 84
         }
-      }
+      },
+      "birthdate": "1996-11-17",
+      "place_of_birth": "Portugal",
+      "birthplace_lat": 39.6621648,
+      "birthplace_lon": -8.1353519
     },
     {
       "name": "ROY Jacob",
@@ -1874,7 +2270,9 @@
           "climber": 0,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2006-11-30",
+      "place_of_birth": "Onedayraces"
     },
     {
       "name": "MERINO Pelayo",
@@ -1892,7 +2290,11 @@
           "climber": 0,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2005-12-31",
+      "place_of_birth": "Oviedo",
+      "birthplace_lat": 43.3533452,
+      "birthplace_lon": -5.8795096
     },
     {
       "name": "JURACICH Ben",
@@ -1910,7 +2312,9 @@
           "climber": 0,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2007-3-1",
+      "place_of_birth": "Onedayraces"
     },
     {
       "name": "ROHDE Jade",
@@ -1928,7 +2332,9 @@
           "climber": 0,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2006-5-17",
+      "place_of_birth": "Onedayraces"
     },
     {
       "name": "LEBO Joshua",
@@ -1946,7 +2352,9 @@
           "climber": 2,
           "hills": 9
         }
-      }
+      },
+      "birthdate": "1997-4-30",
+      "place_of_birth": "Onedayraces"
     },
     {
       "name": "MURPHY Finnegan",
@@ -1964,7 +2372,9 @@
           "climber": 10,
           "hills": 18
         }
-      }
+      },
+      "birthdate": "2003-3-15",
+      "place_of_birth": "Onedayraces"
     },
     {
       "name": "LAMOTHE Hubert",
@@ -1982,7 +2392,9 @@
           "climber": 0,
           "hills": 0
         }
-      }
+      },
+      "birthdate": "2007-5-22",
+      "place_of_birth": "Onedayraces"
     }
   ]
 }

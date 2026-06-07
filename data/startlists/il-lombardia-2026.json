@@ -1,7 +1,7 @@
 {
   "race": "Il Lombardia",
   "race_slug": "il-lombardia-2026",
-  "updated_at": "2026-06-07T09:27:07.298106",
+  "updated_at": "2026-06-07T17:08:38.118334",
   "total_riders": 13,
   "riders": [
     {
@@ -17,10 +17,14 @@
           "gc": 507,
           "tt": 318,
           "sprint": 2,
-          "climber": 933,
+          "climber": 944,
           "hills": 188
         }
-      }
+      },
+      "birthdate": "2006-9-24",
+      "place_of_birth": "France",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335
     },
     {
       "name": "MOLLEMA Bauke",
@@ -38,7 +42,11 @@
           "climber": 7737,
           "hills": 4159
         }
-      }
+      },
+      "birthdate": "1986-11-26",
+      "place_of_birth": "Groningen",
+      "birthplace_lat": 53.2190652,
+      "birthplace_lon": 6.5680077
     },
     {
       "name": "WIDAR Jarno",
@@ -56,7 +64,11 @@
           "climber": 276,
           "hills": 88
         }
-      }
+      },
+      "birthdate": "2005-11-13",
+      "place_of_birth": "Hasselt",
+      "birthplace_lat": 50.9303735,
+      "birthplace_lon": 5.3378043
     },
     {
       "name": "PELLIZZARI Giulio",
@@ -74,7 +86,11 @@
           "climber": 1414,
           "hills": 374
         }
-      }
+      },
+      "birthdate": "2003-11-21",
+      "place_of_birth": "Italy",
+      "birthplace_lat": 42.6384261,
+      "birthplace_lon": 12.674297
     },
     {
       "name": "JORGENSON Matteo",
@@ -89,10 +105,14 @@
           "gc": 2452,
           "tt": 794,
           "sprint": 178,
-          "climber": 2121,
+          "climber": 2129,
           "hills": 1490
         }
-      }
+      },
+      "birthdate": "1999-7-1",
+      "place_of_birth": "Walnut Creek",
+      "birthplace_lat": 37.9020731,
+      "birthplace_lon": -122.0618702
     },
     {
       "name": "BARRÉ Louis",
@@ -110,7 +130,11 @@
           "climber": 318,
           "hills": 484
         }
-      }
+      },
+      "birthdate": "2000-4-6",
+      "place_of_birth": "France",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335
     },
     {
       "name": "ARMIRAIL Bruno",
@@ -125,10 +149,14 @@
           "gc": 806,
           "tt": 2076,
           "sprint": 5,
-          "climber": 417,
+          "climber": 435,
           "hills": 264
         }
-      }
+      },
+      "birthdate": "1994-4-11",
+      "place_of_birth": "France",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335
     },
     {
       "name": "PIGANZOLI Davide",
@@ -146,7 +174,11 @@
           "climber": 928,
           "hills": 338
         }
-      }
+      },
+      "birthdate": "2002-7-8",
+      "place_of_birth": "Italy",
+      "birthplace_lat": 42.6384261,
+      "birthplace_lon": 12.674297
     },
     {
       "name": "HAGENES Per Strand",
@@ -164,7 +196,11 @@
           "climber": 64,
           "hills": 348
         }
-      }
+      },
+      "birthdate": "2003-7-10",
+      "place_of_birth": "Norway",
+      "birthplace_lat": 61.1529386,
+      "birthplace_lon": 8.7876653
     },
     {
       "name": "TULETT Ben",
@@ -179,10 +215,14 @@
           "gc": 901,
           "tt": 485,
           "sprint": 8,
-          "climber": 798,
+          "climber": 830,
           "hills": 706
         }
-      }
+      },
+      "birthdate": "2001-8-26",
+      "place_of_birth": "Great Britain",
+      "birthplace_lat": 54.3151594,
+      "birthplace_lon": -1.9181532
     },
     {
       "name": "RONDEL Mathys",
@@ -200,7 +240,11 @@
           "climber": 632,
           "hills": 242
         }
-      }
+      },
+      "birthdate": "2003-9-23",
+      "place_of_birth": "France",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335
     },
     {
       "name": "CHRISTEN Jan",
@@ -218,7 +262,11 @@
           "climber": 750,
           "hills": 577
         }
-      }
+      },
+      "birthdate": "2004-6-26",
+      "place_of_birth": "Leuggern",
+      "birthplace_lat": 47.5798217,
+      "birthplace_lon": 8.217218
     },
     {
       "name": "POGAČAR Tadej",
@@ -236,7 +284,11 @@
           "climber": 9989,
           "hills": 4368
         }
-      }
+      },
+      "birthdate": "1998-9-21",
+      "place_of_birth": "Klanec",
+      "birthplace_lat": 45.8996388,
+      "birthplace_lon": 14.1402431
     }
   ]
 }

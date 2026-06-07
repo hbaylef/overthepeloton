@@ -1,7 +1,7 @@
 {
   "race": "Tour de Suisse",
   "race_slug": "tour-de-suisse-2026",
-  "updated_at": "2026-06-07T09:26:18.738856",
+  "updated_at": "2026-06-07T17:07:52.972730",
   "total_riders": 30,
   "riders": [
     {
@@ -20,7 +20,11 @@
           "climber": 192,
           "hills": 2571
         }
-      }
+      },
+      "birthdate": "1998-3-2",
+      "place_of_birth": "Belgium",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145
     },
     {
       "name": "VAN DER POEL Mathieu",
@@ -38,7 +42,9 @@
           "climber": 1165,
           "hills": 4534
         }
-      }
+      },
+      "birthdate": "1995-1-19",
+      "place_of_birth": "Kapellen"
     },
     {
       "name": "VERSTRYNGE Emiel",
@@ -56,7 +62,11 @@
           "climber": 278,
           "hills": 83
         }
-      }
+      },
+      "birthdate": "2002-2-4",
+      "place_of_birth": "Belgium",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145
     },
     {
       "name": "SEGAERT Alec",
@@ -74,7 +84,11 @@
           "climber": 36,
           "hills": 265
         }
-      }
+      },
+      "birthdate": "2003-1-16",
+      "place_of_birth": "Belgium",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145
     },
     {
       "name": "EULÁLIO Afonso",
@@ -92,7 +106,11 @@
           "climber": 502,
           "hills": 228
         }
-      }
+      },
+      "birthdate": "2001-9-30",
+      "place_of_birth": "Portugal",
+      "birthplace_lat": 39.6621648,
+      "birthplace_lon": -8.1353519
     },
     {
       "name": "MIQUEL Pau",
@@ -110,7 +128,11 @@
           "climber": 158,
           "hills": 710
         }
-      }
+      },
+      "birthdate": "2000-8-20",
+      "place_of_birth": "Spain",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "TIBERI Antonio",
@@ -128,7 +150,11 @@
           "climber": 1477,
           "hills": 952
         }
-      }
+      },
+      "birthdate": "2001-6-24",
+      "place_of_birth": "Italy",
+      "birthplace_lat": 42.6384261,
+      "birthplace_lon": 12.674297
     },
     {
       "name": "BRUTTOMESSO Alberto",
@@ -146,7 +172,11 @@
           "climber": 22,
           "hills": 160
         }
-      }
+      },
+      "birthdate": "2003-10-30",
+      "place_of_birth": "Italy",
+      "birthplace_lat": 42.6384261,
+      "birthplace_lon": 12.674297
     },
     {
       "name": "MARTINEZ Lenny",
@@ -164,7 +194,11 @@
           "climber": 2036,
           "hills": 588
         }
-      }
+      },
+      "birthdate": "2003-7-11",
+      "place_of_birth": "France",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335
     },
     {
       "name": "NAESEN Oliver",
@@ -182,7 +216,11 @@
           "climber": 421,
           "hills": 2410
         }
-      }
+      },
+      "birthdate": "1990-9-16",
+      "place_of_birth": "Belgium",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145
     },
     {
       "name": "LAPEIRA Paul",
@@ -200,7 +238,11 @@
           "climber": 282,
           "hills": 746
         }
-      }
+      },
+      "birthdate": "2000-5-25",
+      "place_of_birth": "France",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335
     },
     {
       "name": "DE LIE Arnaud",
@@ -212,13 +254,17 @@
       "specialties": {
         "career": {
           "one_day_races": 4875,
-          "gc": 561,
+          "gc": 651,
           "tt": 1,
           "sprint": 2072,
-          "climber": 172,
-          "hills": 1984
+          "climber": 192,
+          "hills": 2052
         }
-      }
+      },
+      "birthdate": "2002-3-16",
+      "place_of_birth": "Libramont",
+      "birthplace_lat": 49.94991,
+      "birthplace_lon": 5.4370892
     },
     {
       "name": "WIDAR Jarno",
@@ -236,7 +282,11 @@
           "climber": 276,
           "hills": 88
         }
-      }
+      },
+      "birthdate": "2005-11-13",
+      "place_of_birth": "Hasselt",
+      "birthplace_lat": 50.9303735,
+      "birthplace_lon": 5.3378043
     },
     {
       "name": "MAS Enric",
@@ -254,7 +304,11 @@
           "climber": 5911,
           "hills": 1468
         }
-      }
+      },
+      "birthdate": "1995-1-7",
+      "place_of_birth": "Artà",
+      "birthplace_lat": 39.6950088,
+      "birthplace_lon": 3.3506343
     },
     {
       "name": "ADRIÀ Roger",
@@ -272,7 +326,11 @@
           "climber": 722,
           "hills": 888
         }
-      }
+      },
+      "birthdate": "1998-4-18",
+      "place_of_birth": "Spain",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "SÁNCHEZ Pelayo",
@@ -288,9 +346,13 @@
           "tt": 68,
           "sprint": 0,
           "climber": 432,
-          "hills": 224
+          "hills": 242
         }
-      }
+      },
+      "birthdate": "2000-3-27",
+      "place_of_birth": "Tellego",
+      "birthplace_lat": 43.2987304,
+      "birthplace_lon": -5.867483
     },
     {
       "name": "ROGLIČ Primož",
@@ -308,7 +370,11 @@
           "climber": 8730,
           "hills": 3166
         }
-      }
+      },
+      "birthdate": "1989-10-29",
+      "place_of_birth": "Trbovlje",
+      "birthplace_lat": 46.1370921,
+      "birthplace_lon": 15.0464786
     },
     {
       "name": "VERVAEKE Louis",
@@ -326,7 +392,11 @@
           "climber": 534,
           "hills": 323
         }
-      }
+      },
+      "birthdate": "1993-10-6",
+      "place_of_birth": "Belgium",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145
     },
     {
       "name": "DOUBLE Paul",
@@ -344,7 +414,11 @@
           "climber": 452,
           "hills": 294
         }
-      }
+      },
+      "birthdate": "1996-6-25",
+      "place_of_birth": "Great Britain",
+      "birthplace_lat": 54.3151594,
+      "birthplace_lon": -1.9181532
     },
     {
       "name": "BOUWMAN Koen",
@@ -362,7 +436,11 @@
           "climber": 728,
           "hills": 386
         }
-      }
+      },
+      "birthdate": "1993-12-2",
+      "place_of_birth": "Netherlands",
+      "birthplace_lat": 52.2434979,
+      "birthplace_lon": 5.6343227
     },
     {
       "name": "LEMMEN Bart",
@@ -380,7 +458,11 @@
           "climber": 313,
           "hills": 370
         }
-      }
+      },
+      "birthdate": "1995-10-14",
+      "place_of_birth": "Netherlands",
+      "birthplace_lat": 52.2434979,
+      "birthplace_lon": 5.6343227
     },
     {
       "name": "ZINGLE Axel",
@@ -398,7 +480,11 @@
           "climber": 273,
           "hills": 1076
         }
-      }
+      },
+      "birthdate": "1998-12-18",
+      "place_of_birth": "France",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335
     },
     {
       "name": "BRENNAN Matthew",
@@ -412,11 +498,15 @@
           "one_day_races": 774,
           "gc": 286,
           "tt": 112,
-          "sprint": 643,
+          "sprint": 644,
           "climber": 154,
           "hills": 728
         }
-      }
+      },
+      "birthdate": "2005-8-6",
+      "place_of_birth": "Great Britain",
+      "birthplace_lat": 54.3151594,
+      "birthplace_lon": -1.9181532
     },
     {
       "name": "POGAČAR Tadej",
@@ -434,7 +524,11 @@
           "climber": 9989,
           "hills": 4368
         }
-      }
+      },
+      "birthdate": "1998-9-21",
+      "place_of_birth": "Klanec",
+      "birthplace_lat": 45.8996388,
+      "birthplace_lon": 14.1402431
     },
     {
       "name": "NOVAK Domen",
@@ -452,7 +546,11 @@
           "climber": 288,
           "hills": 75
         }
-      }
+      },
+      "birthdate": "1995-7-12",
+      "place_of_birth": "Dolenja vas",
+      "birthplace_lat": 45.8301813,
+      "birthplace_lon": 15.2199932
     },
     {
       "name": "CORT Magnus",
@@ -470,7 +568,11 @@
           "climber": 1228,
           "hills": 2818
         }
-      }
+      },
+      "birthdate": "1993-1-16",
+      "place_of_birth": "Rønne",
+      "birthplace_lat": 55.0994511,
+      "birthplace_lon": 14.7060906
     },
     {
       "name": "BETTIOL Alberto",
@@ -488,7 +590,11 @@
           "climber": 1088,
           "hills": 2364
         }
-      }
+      },
+      "birthdate": "1993-10-29",
+      "place_of_birth": "Poggibonsi",
+      "birthplace_lat": 43.4677215,
+      "birthplace_lon": 11.148762
     },
     {
       "name": "CHAMPOUSSIN Clément",
@@ -506,7 +612,11 @@
           "climber": 1803,
           "hills": 1276
         }
-      }
+      },
+      "birthdate": "1998-5-29",
+      "place_of_birth": "France",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335
     },
     {
       "name": "PIDCOCK Tom",
@@ -524,7 +634,11 @@
           "climber": 2816,
           "hills": 2394
         }
-      }
+      },
+      "birthdate": "1999-7-30",
+      "place_of_birth": "Leeds",
+      "birthplace_lat": 53.7974185,
+      "birthplace_lon": -1.5437941
     },
     {
       "name": "BRENNER Marco",
@@ -542,7 +656,11 @@
           "climber": 448,
           "hills": 428
         }
-      }
+      },
+      "birthdate": "2002-8-27",
+      "place_of_birth": "Germany",
+      "birthplace_lat": 51.1638175,
+      "birthplace_lon": 10.4478313
     }
   ]
 }

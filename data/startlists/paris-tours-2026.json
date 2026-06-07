@@ -1,7 +1,7 @@
 {
   "race": "Paris-Tours",
   "race_slug": "paris-tours-2026",
-  "updated_at": "2026-06-07T09:27:14.340386",
+  "updated_at": "2026-06-07T17:08:44.525032",
   "total_riders": 1,
   "riders": [
     {
@@ -13,14 +13,18 @@
       "team_url": "team/lotto-intermarche-2026",
       "specialties": {
         "career": {
-          "one_day_races": 395,
+          "one_day_races": 431,
           "gc": 166,
           "tt": 70,
-          "sprint": 560,
+          "sprint": 574,
           "climber": 0,
-          "hills": 191
+          "hills": 203
         }
-      }
+      },
+      "birthdate": "2005-2-24",
+      "place_of_birth": "Geraardsbergen ",
+      "birthplace_lat": 50.7715779,
+      "birthplace_lon": 3.8827287
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "race": "Renewi Tour",
   "race_slug": "renewi-tour-2026",
-  "updated_at": "2026-06-07T09:26:41.198788",
+  "updated_at": "2026-06-07T17:08:14.386487",
   "total_riders": 5,
   "riders": [
     {
@@ -20,7 +20,11 @@
           "climber": 4,
           "hills": 521
         }
-      }
+      },
+      "birthdate": "1992-10-30",
+      "place_of_birth": "Wortegem-Petegem",
+      "birthplace_lat": 50.8485315,
+      "birthplace_lon": 3.5375547
     },
     {
       "name": "MAGNIER Paul",
@@ -38,7 +42,11 @@
           "climber": 153,
           "hills": 1096
         }
-      }
+      },
+      "birthdate": "2004-4-14",
+      "place_of_birth": "Laredo",
+      "birthplace_lat": 47.7537689,
+      "birthplace_lon": -3.4988674
     },
     {
       "name": "MEZGEC Luka",
@@ -56,7 +64,11 @@
           "climber": 238,
           "hills": 2229
         }
-      }
+      },
+      "birthdate": "1988-6-27",
+      "place_of_birth": "Slovenia",
+      "birthplace_lat": 46.1199444,
+      "birthplace_lon": 14.8153333
     },
     {
       "name": "DE BONDT Dries",
@@ -74,7 +86,11 @@
           "climber": 131,
           "hills": 430
         }
-      }
+      },
+      "birthdate": "1991-7-4",
+      "place_of_birth": "Belgium",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145
     },
     {
       "name": "NAESEN Oliver",
@@ -92,7 +108,11 @@
           "climber": 421,
           "hills": 2410
         }
-      }
+      },
+      "birthdate": "1990-9-16",
+      "place_of_birth": "Belgium",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145
     }
   ]
 }

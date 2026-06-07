@@ -1,7 +1,7 @@
 {
   "race": "Grand Prix de Québec",
   "race_slug": "gp-quebec-2026",
-  "updated_at": "2026-06-07T09:26:48.401554",
+  "updated_at": "2026-06-07T17:08:20.802920",
   "total_riders": 6,
   "riders": [
     {
@@ -20,7 +20,11 @@
           "climber": 282,
           "hills": 746
         }
-      }
+      },
+      "birthdate": "2000-5-25",
+      "place_of_birth": "France",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335
     },
     {
       "name": "SEIXAS Paul",
@@ -35,10 +39,14 @@
           "gc": 507,
           "tt": 318,
           "sprint": 2,
-          "climber": 933,
+          "climber": 944,
           "hills": 188
         }
-      }
+      },
+      "birthdate": "2006-9-24",
+      "place_of_birth": "France",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335
     },
     {
       "name": "BARRÉ Louis",
@@ -56,7 +64,11 @@
           "climber": 318,
           "hills": 484
         }
-      }
+      },
+      "birthdate": "2000-4-6",
+      "place_of_birth": "France",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335
     },
     {
       "name": "EVENEPOEL Remco",
@@ -74,7 +86,11 @@
           "climber": 4886,
           "hills": 2044
         }
-      }
+      },
+      "birthdate": "2000-1-25",
+      "place_of_birth": "Aalst",
+      "birthplace_lat": 50.9383226,
+      "birthplace_lon": 4.0392147
     },
     {
       "name": "GODON Dorian",
@@ -92,7 +108,11 @@
           "climber": 882,
           "hills": 2240
         }
-      }
+      },
+      "birthdate": "1996-5-25",
+      "place_of_birth": "France",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335
     },
     {
       "name": "PIDCOCK Tom",
@@ -110,7 +130,11 @@
           "climber": 2816,
           "hills": 2394
         }
-      }
+      },
+      "birthdate": "1999-7-30",
+      "place_of_birth": "Leeds",
+      "birthplace_lat": 53.7974185,
+      "birthplace_lon": -1.5437941
     }
   ]
 }
