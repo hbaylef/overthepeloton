@@ -51,6 +51,27 @@ Site is live; each verified increment is committed + pushed (GitHub Pages).
 - ⏳ **Pending Actions run:** trigger the "Daily scrape" workflow to (a) name
   Auvergne's 32 climbs and (b) apply the climb length-match to other uncached
   races (e.g. Vuelta). GPX detection works everywhere; PCS naming needs Actions.
+- **La Flamme Rouge GPX fallback BUILT then PAUSED** (`scrape_lfr.py` +
+  `test_scrape_lfr.py` 9/9; `scrape_gpx.py` preserves LFR entries). WT+ProSeries
+  only. ⛔ Blocked by LFR's **Cloudflare managed challenge** (pre-login; no HTTP
+  scraper passes it; login secrets don't help). **User is contacting the LFR admin.**
+  See §9 "La Flamme Rouge" for diagnosis + resume options.
+- **GitHub username RENAMED `hbaylef` → `paludes`** (2026-06-07). Live site is now
+  `https://paludes.github.io/overthepeloton/frontend/` (old URL dead); repo
+  `github.com/paludes/overthepeloton`; local remote re-pointed. Only doc URLs
+  referenced the name — no app code. **Future commits in this repo are anonymous**
+  (`git config --local user.email paludes@users.noreply.github.com`); global config
+  untouched. Past 32 commits still carry the old gmail — user is **fine leaving
+  history as-is** (no rewrite).
+- **Frontend trimmed for this public version** (commits `d9b0367`, `4cb1fe6`):
+  **win-probability REMOVED from the UI** — Specialty Rankings now shows only career
+  PCS specialty points (no Win% column / stage-GC selector; default sort GC desc),
+  "pred" badge + per-race predictions fetch + dead win% plumbing/CSS removed.
+  **Live-odds panel moved BELOW the Startlist.** "Hide finished races" filter now
+  defaults **ticked**. Specialty Rankings section now defaults **collapsed**.
+  NOTE: `score_riders.py` + `data/predictions/*` + `predictions_index.json` remain
+  in the repo (dormant — predictions_index still fetched once at boot, unused);
+  user may retire them later or keep for a future predictions feature.
 
 **R5 open / tunable (not blockers):** avg-speed table + start-time default hour are
 guesses; wind-arrow density (24) / offset (2%) and rain thresholds are tuned but
@@ -545,12 +566,16 @@ a backlog, not in priority order. Several have open design questions noted.
   win%** (each stage scored on its own `stage_type`) **plus** overall GC
   (`0.6·gc + 0.4·stage-mean`); one-day races a single list. Career-only blend
   until R1's `recent` block ships. Frontend: sortable **Specialty Rankings**
-  table with a per-stage/GC **Win% dropdown**, collapsible **Startlist by Team**
-  grid, section toggles, flagcdn flags, jersey glyphs, rider→PCS links, and a
-  `getRaceRoster` data-access layer (see `R1_R2_DESIGN.md`).
+  table, collapsible **Startlist by Team** grid, section toggles, flagcdn flags,
+  jersey glyphs, rider→PCS links, and a `getRaceRoster` data-access layer (see
+  `R1_R2_DESIGN.md`).
   ⏸ `score_riders.py` is intentionally NOT in the daily Actions workflow — the
   rider/specialty data source is being swapped, so predictions stay a manual
   re-run for now.
+  ⚠️ **Win-probability is REMOVED from the current public frontend (2026-06-07).**
+  The model + `data/predictions/*` still exist (dormant), but the Specialty
+  Rankings table now shows career PCS points only (no Win% column/dropdown), and
+  the sidebar "pred" badge is gone. See §0 "Frontend trimmed".
 - Until R1's `recent` block ships, Step 3's blend degrades to `career`-only
   (`blended = career_norm`). Structure preserved so `recent` can drop in later.
 - See `R1_R2_DESIGN.md` for the full 4-step model + weight vectors + Phase 1
