@@ -395,6 +395,17 @@
     pointer-events: none;
     text-shadow: 0 0 2px var(--paper), 0 0 3px var(--paper), 0 0 4px var(--paper); }
 
+  /* hometown & birthdays — small strip under the profile */
+  .local-riders { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 7px; }
+  .lr-title { font-family: 'Archivo', sans-serif; text-transform: uppercase;
+    letter-spacing: .05em; font-size: 10px; color: var(--grey); margin-bottom: 5px; }
+  .lr-row { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; margin-bottom: 4px; }
+  .lr-ico { font-size: 13px; line-height: 1; }
+  .lr-chip { font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    background: var(--paper-2); border: 1px solid var(--line); padding: 2px 6px; color: var(--ink); }
+  .lr-chip em { color: var(--rust); font-style: normal; font-weight: 700; }
+  .lr-empty { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--grey); }
+
   /* R4: climbs list under the profile (numbers key the ▲ markers on the chart) */
   .climb-list {
     display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
@@ -1079,6 +1090,7 @@ function renderRaceHeader(gpx) {
           </div>
           <div class="readout" id="readout">Hover to explore · drag or click a ▲ climb to zoom · double-click to reset.</div>
           <div class="climb-list" id="climb-list" style="display:none"></div>
+          <div id="local-riders" class="local-riders"></div>
         </div>
       </div>`;
   } else {
@@ -1242,6 +1254,10 @@ function normalizeRider(raw) {
     teamUrl: raw.team_url || '',
     riderUrl: raw.rider_url || '',
     career,          // {one_day_races, gc, tt, sprint, climber, hills} | null
+    birthdate: raw.birthdate || null,                 // 'YYYY-MM-DD' | null
+    placeOfBirth: raw.place_of_birth || null,         // town | null
+    blat: (typeof raw.birthplace_lat === 'number') ? raw.birthplace_lat : null,
+    blon: (typeof raw.birthplace_lon === 'number') ? raw.birthplace_lon : null,
   };
 }
 
@@ -1271,6 +1287,7 @@ async function loadRosterSections() {
   currentRoster = roster;
   renderSpecialtyTable(roster);
   renderTeamSection(roster);
+  renderLocalRiders();          // roster now available → fill the hometown/birthday strip
 }
 
 // ---- Team-grouped collapsible startlist (3-up responsive grid) ----
@@ -1407,6 +1424,67 @@ function specCompare(a, b) {
 }
 
 // ============================================================
+//  HOMETOWN & BIRTHDAYS  (small strip under the elevation profile)
+// ============================================================
+// Shows riders (for the displayed stage) whose birthplace is within 50 km of any
+// point on the route, and/or whose birthday falls on the stage date. Needs the
+// per-rider birthdate + geocoded birthplace embedded by scrape_riders +
+// geocode_birthplaces — until those run it just shows the empty message.
+const LOCAL_RADIUS_KM = 50;
+let lrStageDate = null;          // 'YYYY-MM-DD' for the currently displayed stage
+
+function lrHaversineKm(la1, lo1, la2, lo2) {
+  const R = 6371, dLa = (la2 - la1) * Math.PI / 180, dLo = (lo2 - lo1) * Math.PI / 180;
+  const a = Math.sin(dLa / 2) ** 2 +
+    Math.cos(la1 * Math.PI / 180) * Math.cos(la2 * Math.PI / 180) * Math.sin(dLo / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+// nearest distance (km) from a point to the loaded route (route is sampled)
+function lrDistToRoute(lat, lon) {
+  const pts = elevationPoints;
+  if (!pts || !pts.length) return Infinity;
+  const stride = Math.max(1, Math.floor(pts.length / 200));
+  let best = Infinity;
+  for (let i = 0; i < pts.length; i += stride) {
+    const d = lrHaversineKm(lat, lon, pts[i].lat, pts[i].lon);
+    if (d < best) best = d;
+  }
+  return best;
+}
+
+function renderLocalRiders() {
+  const c = document.getElementById('local-riders');
+  if (!c) return;
+  const riders = (currentRoster && currentRoster.riders) || [];
+  const sd = lrStageDate || (currentRace && currentRace.startdate) || null;
+  const md = (sd && sd.length >= 10) ? sd.slice(5) : null;     // 'MM-DD'
+  const yr = (sd && sd.length >= 10) ? Number(sd.slice(0, 4)) : null;
+
+  const birthdays = [], locals = [];
+  for (const r of riders) {
+    if (md && r.birthdate && r.birthdate.length >= 10 && r.birthdate.slice(5) === md) {
+      const by = Number(r.birthdate.slice(0, 4));
+      birthdays.push({ name: r.name, age: (yr && by) ? yr - by : null });
+    }
+    if (r.blat != null && r.blon != null && elevationPoints.length) {
+      const d = lrDistToRoute(r.blat, r.blon);
+      if (d <= LOCAL_RADIUS_KM) locals.push({ name: r.name, place: r.placeOfBirth, km: Math.round(d) });
+    }
+  }
+  locals.sort((a, b) => a.km - b.km);
+
+  let html = '';
+  if (birthdays.length) html += `<div class="lr-row"><span class="lr-ico">🎂</span>` +
+    birthdays.map(b => `<span class="lr-chip">${b.name}${b.age != null ? ` (${b.age})` : ''}</span>`).join('') + `</div>`;
+  if (locals.length) html += `<div class="lr-row"><span class="lr-ico">📍</span>` +
+    locals.map(l => `<span class="lr-chip">${l.name}${l.place ? ` · ${l.place}` : ''} <em>${l.km} km</em></span>`).join('') + `</div>`;
+  if (!html) html = `<div class="lr-empty">No rider born near the race or on the day of the race.</div>`;
+
+  c.innerHTML = `<div class="lr-title">Hometown &amp; birthdays</div>${html}`;
+}
+
+// ============================================================
 //  ODDS
 // ============================================================
 async function loadOdds() {
@@ -1519,6 +1597,11 @@ async function loadStage(stageIdx) {
     // R5: weather overlay for this stage (at the time the peloton passes)
     wxCurrentFile = file;
     updateWeather(file, stageIdx);
+
+    // Hometown & birthdays for this stage (date + route both now known)
+    const lrm = stageWeatherMeta(file, stageIdx);
+    lrStageDate = (lrm && lrm.date) || (currentRace ? currentRace.startdate : null);
+    renderLocalRiders();
 
     // R4: place this stage's climbs on the (now-known) profile length, then
     // redraw into the cached static layer. stage number matches scrape_climbs.py's

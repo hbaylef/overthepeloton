@@ -45,6 +45,10 @@ jobs:
         run: python scrapers/scrape_riders.py
         continue-on-error: true
 
+      - name: Geocode rider birthplaces (hometown section)
+        run: python scrapers/geocode_birthplaces.py
+        continue-on-error: true
+
       - name: Scrape categorised climbs (R4)
         run: python scrapers/scrape_climbs.py
         continue-on-error: true

@@ -117,31 +117,45 @@ def is_fresh(entry: dict, days: int = CACHE_DAYS) -> bool:
         return False
 
 
-def fetch_career(rider_url: str) -> Optional[dict]:
+def fetch_rider_info(rider_url: str) -> dict:
     """
-    Fetch a rider's career specialty points from PCS.
+    Fetch a rider's career specialty points + birthdate + place of birth from PCS
+    in a SINGLE page hit (one Rider object, several parse calls reuse the HTML).
 
-    Returns a dict with the six spec keys (or None when PCS has no data for
-    this rider — i.e. the page exists but `.pps .xvalue` is empty / partial,
-    or the page fails to load). The caller stores None as a `null` block.
+    Returns {"career": {6 keys}|None, "birthdate": "YYYY-MM-DD"|None,
+             "place_of_birth": town|None}. `career` is None when PCS has no chart
+    for the rider; birthdate/place are None when absent or on any failure.
     """
     try:
-        raw = Rider(rider_url).points_per_speciality()
+        r = Rider(rider_url)
+        raw = r.points_per_speciality()
+        try:
+            birthdate = r.birthdate()
+        except Exception:
+            birthdate = None
+        try:
+            place = r.place_of_birth()
+        except Exception:
+            place = None
     except Exception as e:
         log.warning(f"Failed to scrape {rider_url}: {e}")
-        return None
+        return {"career": None, "birthdate": None, "place_of_birth": None}
 
-    # The library returns {} when the chart is missing on the page, and a
-    # full 6-key dict in the normal case. Treat anything less than a full
-    # set as missing data → null block (per spec).
-    if not raw or len(raw) < 6:
-        return None
-
-    return {spec_key: raw.get(pcs_key) for pcs_key, spec_key in PCS_KEY_TO_SPEC_KEY.items()}
+    # The library returns {} when the chart is missing, a full 6-key dict normally.
+    # Treat anything less than a full set as missing data → null career block.
+    career = None
+    if raw and len(raw) >= 6:
+        career = {spec_key: raw.get(pcs_key)
+                  for pcs_key, spec_key in PCS_KEY_TO_SPEC_KEY.items()}
+    return {"career": career,
+            "birthdate": birthdate or None,
+            "place_of_birth": place or None}
 
 
 def embed_specialties_into_startlists(cache_riders: dict):
-    """Open each startlist file and add specialties.career to every rider entry."""
+    """Open each startlist file and embed specialties.career + birthdate +
+    place_of_birth onto every rider entry (geocoding is done separately by
+    geocode_birthplaces.py, which adds birthplace_lat/lon afterwards)."""
     for f in sorted(STARTLISTS_DIR.glob("*.json")):
         try:
             d = json.loads(f.read_text(encoding="utf-8"))
@@ -151,10 +165,10 @@ def embed_specialties_into_startlists(cache_riders: dict):
 
         for r in d.get("riders", []):
             url = r.get("rider_url")
-            career = None
-            if url and url in cache_riders:
-                career = cache_riders[url].get("career")
-            r["specialties"] = {"career": career}
+            ent = cache_riders.get(url) if url else None
+            r["specialties"] = {"career": (ent or {}).get("career")}
+            r["birthdate"] = (ent or {}).get("birthdate")
+            r["place_of_birth"] = (ent or {}).get("place_of_birth")
 
         with open(f, "w", encoding="utf-8") as out:
             json.dump(d, out, indent=2, ensure_ascii=False)
@@ -174,19 +188,17 @@ def main():
 
     for i, url in enumerate(sorted(rider_urls), 1):
         existing = cache_riders.get(url)
-        if existing and is_fresh(existing):
+        # re-fetch when stale OR when an old-format entry lacks the new birth fields
+        if existing and is_fresh(existing) and "birthdate" in existing:
             fresh += 1
             continue
 
         log.info(f"[{i}/{total}] Scraping: {url}")
-        career = fetch_career(url)
-        cache_riders[url] = {
-            "career": career,
-            "_scraped_at": datetime.now().isoformat(),
-        }
+        info = fetch_rider_info(url)
+        cache_riders[url] = {**info, "_scraped_at": datetime.now().isoformat()}
         time.sleep(DELAY_BETWEEN_REQUESTS)
 
-        if career is None:
+        if info["career"] is None:
             failed += 1
         else:
             scraped += 1
