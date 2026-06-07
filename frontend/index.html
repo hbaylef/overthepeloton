@@ -384,11 +384,16 @@
   /* wind arrow marker: rotated glyph + speed label */
   .wx-wind { display: flex; flex-direction: column; align-items: center;
     line-height: 1; pointer-events: none; }
-  .wx-wind .wx-arrow { font-size: 20px; font-weight: 700;
-    text-shadow: 0 0 2px var(--paper), 0 0 2px var(--paper); }
-  .wx-wind .wx-spd { font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  .wx-wind .wx-arrow { font-size: 32px; font-weight: 700; line-height: 1;
+    text-shadow: 0 0 3px var(--paper), 0 0 3px var(--paper), 0 0 4px var(--paper); }
+  .wx-wind .wx-spd { font-family: 'JetBrains Mono', monospace; font-size: 11px;
     font-weight: 700; color: var(--ink);
-    text-shadow: 0 0 2px var(--paper), 0 0 3px var(--paper); }
+    text-shadow: 0 0 2px var(--paper), 0 0 3px var(--paper), 0 0 4px var(--paper); }
+  /* rain zone readout (% chance · mm) sitting above each rain circle */
+  .wx-rain-label { font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    font-weight: 700; color: #143653; white-space: nowrap; text-align: center;
+    pointer-events: none;
+    text-shadow: 0 0 2px var(--paper), 0 0 3px var(--paper), 0 0 4px var(--paper); }
 
   /* R4: climbs list under the profile (numbers key the ▲ markers on the chart) */
   .climb-list {
@@ -712,7 +717,11 @@
     <div class="race-filters">
       <input type="search" id="rf-search" placeholder="Search races…" autocomplete="off">
       <div class="rf-row">
-        <select id="rf-tour" title="Tour level"><option value="">All tours</option></select>
+        <select id="rf-tour" title="Tour level">
+          <option value="">All tours</option>
+          <option value="wt">World Tour</option>
+          <option value="rest">The rest</option>
+        </select>
         <select id="rf-type" title="Race type">
           <option value="">All types</option>
           <option value="stage">Stage races</option>
@@ -944,20 +953,16 @@ function fmtDate(s) {
   return d.toLocaleDateString('en-GB', { day:'2-digit', month:'short' });
 }
 
-// Race-list filters. Forward-looking for R7 (non-WT): the tour dropdown
-// auto-populates from whatever uci_tour values are present in the data.
+// Race-list filters. The tour dropdown groups PCS class codes into World Tour
+// (1.UWT one-day + 2.UWT stage) vs "the rest" (Pro/.1 etc) — R7 (non-WT) lands
+// in the latter bucket.
 let raceFilters = { q: '', tour: '', type: '', hidePast: false };
 
+function isWorldTour(race) {
+  return race.uci_tour === '1.UWT' || race.uci_tour === '2.UWT';
+}
+
 function initRaceFilters() {
-  // populate the tour-level dropdown from distinct uci_tour values
-  const sel = document.getElementById('rf-tour');
-  if (sel) {
-    const tours = [...new Set(RACES.map(r => r.uci_tour).filter(Boolean))].sort();
-    for (const t of tours) {
-      const o = document.createElement('option'); o.value = t; o.textContent = t;
-      sel.appendChild(o);
-    }
-  }
   const on = (id, ev, fn) => { const el = document.getElementById(id); if (el) el.addEventListener(ev, fn); };
   on('rf-search', 'input', e => { raceFilters.q = e.target.value.trim().toLowerCase(); renderRaceList(); });
   on('rf-tour', 'change', e => { raceFilters.tour = e.target.value; renderRaceList(); });
@@ -968,7 +973,8 @@ function initRaceFilters() {
 function raceMatches(race) {
   const f = raceFilters;
   if (f.q && !(race.name || '').toLowerCase().includes(f.q)) return false;
-  if (f.tour && race.uci_tour !== f.tour) return false;
+  if (f.tour === 'wt' && !isWorldTour(race)) return false;
+  if (f.tour === 'rest' && isWorldTour(race)) return false;
   if (f.type === 'stage' && race.is_one_day_race) return false;
   if (f.type === 'oneday' && !race.is_one_day_race) return false;
   if (f.hidePast) {
@@ -1758,7 +1764,7 @@ function drawHighlightsOnMap() {
 const PELOTON_KMH = { sprint:44, sprint_break:42, cobbles:41, hills_puncheur:40,
                       climber:36, time_trial:48 };
 const PELOTON_KMH_DEFAULT = 41;
-const WX_SAMPLES = 8;          // points sampled along the route
+const WX_SAMPLES = 24;         // points sampled along the route (wind + rain)
 
 // Resolve {date, startTime, stageType} for the displayed stage from races.json
 // metadata (stage races: the matching stages[] entry; one-day: race-level).
@@ -1784,13 +1790,28 @@ function stageWeatherMeta(file, stageIdx) {
 }
 
 // Even samples along the route (mid-bin, so we avoid the exact start/finish).
+// `lat/lon` is the true point (used for the weather fetch + rain zone); `olat/olon`
+// is the same point pushed perpendicular to the local route heading so the wind
+// arrow sits *beside* the line, not on top of it. Offset scales with route length
+// (the map fits the route) so it reads the same at any zoom.
 function sampleRoute(n = WX_SAMPLES) {
-  const total = elevationPoints[elevationPoints.length - 1].dist;
+  const pts = elevationPoints;
+  const total = pts[pts.length - 1].dist;                 // km
+  const offM = Math.max(250, Math.min(4000, total * 1000 * 0.02));
   const out = [];
   for (let i = 0; i < n; i++) {
     const d = total * (i + 0.5) / n;
-    const p = elevationPoints[nearestIndex(d)];
-    out.push({ lat: p.lat, lon: p.lon, dist: d });
+    const idx = nearestIndex(d);
+    const p = pts[idx];
+    // local heading from neighbours a→b, in (east, north) with lon scaled by cos(lat)
+    const a = pts[Math.max(0, idx - 2)], b = pts[Math.min(pts.length - 1, idx + 2)];
+    const latr = p.lat * Math.PI / 180;
+    let dx = (b.lon - a.lon) * Math.cos(latr), dy = (b.lat - a.lat);
+    const len = Math.hypot(dx, dy) || 1; dx /= len; dy /= len;
+    // perpendicular (rotate +90°): east=-dy, north=+dx → back to lat/lon
+    const olat = p.lat + dx * (offM / 111320);
+    const olon = p.lon + (-dy) * (offM / (111320 * Math.cos(latr)));
+    out.push({ lat: p.lat, lon: p.lon, dist: d, olat, olon });
   }
   return out;
 }
@@ -1819,8 +1840,11 @@ async function fetchWeather(meta) {
   const pts = sampleRoute();
   const lat = pts.map(p => p.lat.toFixed(4)).join(',');
   const lon = pts.map(p => p.lon.toFixed(4)).join(',');
-  const today = new Date().toISOString().slice(0, 10);
-  const past = meta.date < today;
+  // ERA5 archive runs a ~5-day lag, so only send clearly-old dates there;
+  // the forecast endpoint serves recent past too (past_days), so a stage that
+  // ran in the last few days still returns real data instead of an empty archive.
+  const cutoff = new Date(); cutoff.setDate(cutoff.getDate() - 6);
+  const past = meta.date < cutoff.toISOString().slice(0, 10);
   const base = past
     ? 'https://archive-api.open-meteo.com/v1/archive'
     : 'https://api.open-meteo.com/v1/forecast';
@@ -1846,11 +1870,11 @@ async function fetchWeather(meta) {
 }
 
 function windColor(kmh) {
-  if (kmh == null) return '#7c7668';
-  if (kmh < 12) return '#6b8f71';      // light — moss
-  if (kmh < 25) return '#c9a227';      // moderate — gold
-  if (kmh < 40) return '#c8442a';      // strong — rust
-  return '#7a1f12';                     // gale — maroon
+  if (kmh == null) return '#1a1a1a';
+  if (kmh < 10) return '#1a1a1a';      // calm / no wind — black
+  if (kmh < 20) return '#e8821e';      // breeze — orange
+  if (kmh < 35) return '#e0541c';      // strong — red-orange
+  return '#c0140a';                     // gale — red
 }
 
 function buildWindLayer(samples) {
@@ -1862,28 +1886,51 @@ function buildWindLayer(samples) {
     const html = `<div class="wx-wind">` +
       `<div class="wx-arrow" style="color:${col};transform:rotate(${rot}deg)">↑</div>` +
       `<div class="wx-spd">${Math.round(s.windSpeed)}</div></div>`;
-    const icon = L.divIcon({ className: '', iconSize: [34, 30], iconAnchor: [17, 15], html });
+    const icon = L.divIcon({ className: '', iconSize: [48, 44], iconAnchor: [24, 22], html });
     const tip = `Wind ${Math.round(s.windSpeed)} km/h` +
       (s.gust != null ? ` (gust ${Math.round(s.gust)})` : '') +
       (s.time ? `<br>at ${s.time.slice(11)}` : '');
-    layers.push(L.marker([s.lat, s.lon], { icon, interactive: true }).bindTooltip(tip));
+    layers.push(L.marker([s.olat, s.olon], { icon, interactive: true }).bindTooltip(tip));
   }
   return layers.length ? L.layerGroup(layers) : null;
 }
 
+function rainColor(w) {                 // w: 0..1 wetness — starts at a solid blue
+  if (w < 0.25) return '#5b9bc7';       // light
+  if (w < 0.5)  return '#3d7ba8';
+  if (w < 0.75) return '#2a6391';
+  return '#1c4a73';                      // heavy — navy
+}
+
+// Rain as a continuous translucent zone along the route corridor (not dots):
+// metre-radius circles sized to overlap into a band. Forecast points need BOTH a
+// real chance (> 10%) AND measurable rain (> 0.05 mm) — a high "chance" with
+// 0.0 mm is dry; past races (no probability) gate on mm alone. Tint by how much
+// rain falls; the % chance stays in the tooltip.
 function buildRainLayer(samples) {
+  if (!samples.length) return null;
+  const total = elevationPoints[elevationPoints.length - 1].dist;   // km
+  const radius = Math.max(800, (total * 1000 / samples.length) * 0.75);
   const layers = [];
   for (const s of samples) {
     const mm = s.precip, prob = s.precipProb;
-    const wet = (mm != null && mm > 0.1) || (prob != null && prob >= 40);
-    if (!wet) continue;
-    const intensity = Math.min(1, (mm || 0) / 4);          // 0..1 over ~4 mm/h
-    const r = 6 + intensity * 8;
-    const tip = (mm != null ? `Rain ${mm.toFixed(1)} mm` : 'Rain') +
-      (prob != null ? ` · ${prob}% chance` : '') + (s.time ? `<br>at ${s.time.slice(11)}` : '');
-    layers.push(L.circleMarker([s.lat, s.lon], {
-      radius: r, color: '#2f6f9f', weight: 1.5, fillColor: '#4a90c2',
-      fillOpacity: 0.35 + intensity * 0.4 }).bindTooltip(tip));
+    const hasRain = mm != null && mm > 0.05;
+    const show = prob != null ? (prob > 10 && hasRain) : hasRain;
+    if (!show) continue;                            // no real rain → leave a gap
+    const w = Math.min(1, mm / 4);                  // intensity over ~4 mm/h
+    const col = rainColor(w);
+    const tip = `Rain ${mm.toFixed(1)} mm` +
+      (prob != null ? ` · ${prob}% chance` : '') +
+      (s.time ? `<br>at ${s.time.slice(11)}` : '');
+    layers.push(L.circle([s.lat, s.lon], {
+      radius, stroke: false,
+      fillColor: col, fillOpacity: 0.32 + w * 0.4 }).bindTooltip(tip));
+    // readout above the zone: % chance · mm
+    const labLat = s.lat + radius / 111320;         // top edge of the circle (north)
+    const lab = (prob != null ? `${prob}% · ` : '') + `${mm.toFixed(1)}mm`;
+    const labIcon = L.divIcon({ className: '', iconSize: [72, 16], iconAnchor: [36, 16],
+      html: `<div class="wx-rain-label">${lab}</div>` });
+    layers.push(L.marker([labLat, s.lon], { icon: labIcon, interactive: false }));
   }
   return layers.length ? L.layerGroup(layers) : null;
 }
@@ -1928,7 +1975,7 @@ function addWeatherControl() {
         `<label><input type="checkbox" id="wx-wind"> Wind</label>` +
         `<label><input type="checkbox" id="wx-rain"> Rain</label>` +
         `<div class="wx-note" id="wx-note"></div>` +
-        `<div class="wx-legend">↑ points downwind · km/h</div>`;
+        `<div class="wx-legend">↑ points downwind · km/h<br>shaded zone = rain chance</div>`;
       L.DomEvent.disableClickPropagation(d);
       return d;
     }

@@ -1,7 +1,8 @@
 # R5 — Weather on the map (wind + rain) · Design
 
-> Status: **DESIGN / not built yet** (2026-06-06). Decisions below are locked with
-> the user. Build order is in §8. See `PROJECT_CONTEXT.md` §9 R5 for context.
+> Status: **BUILT & LIVE** (2026-06-07) — scraper (step 1) + frontend wind/rain
+> overlay (steps 2–4) shipped and browser-verified. Decisions below are locked with
+> the user. Build order + what's done is in §8. See `PROJECT_CONTEXT.md` §0/§9 R5.
 
 ## 1. Goal (user requirements)
 
@@ -119,10 +120,22 @@ weather via a scraper to guard against archive changes — not needed for v1.)
    Writes `stages[].start_time` / race-level `start_time` + `start_time_source`
    ("pcs" | "default" | "pending"); date-gated to the weather window (past +
    18 d). **Real times populate on the next Actions run** (PCS unreachable here).
-2. **Frontend weather module:** fetch + pass-time (§5,§6) — unit-testable math
-   (sampling, pass-hour) in isolation; verify the live fetch in the browser.
-3. **Wind layer** (arrows + speed), then **Rain layer**, then **toggles + legend**.
-4. Browser pass; tune avg-speed table + sample count + arrow scaling.
+2. ✅ **DONE (2026-06-07) — Frontend weather module:** fetch + pass-time (§5,§6)
+   in `frontend/index.html` (`fetchWeather`, `sampleRoute`, `passHourIndex`,
+   `stageWeatherMeta`, `wxInRange`). Recent-past dates route to the **forecast**
+   endpoint (6-day cutoff) so ERA5's ~5-day lag doesn't blank out just-run stages.
+3. ✅ **DONE (2026-06-07) — Wind + Rain layers + toggles + legend.**
+   - **Wind:** 24 samples; arrows offset perpendicular to the route (`olat/olon`)
+     so they sit beside the line; black→orange→red by speed; km/h label.
+   - **Rain:** continuous translucent zone (overlapping `L.circle`), gated to
+     `prob > 10% && mm > 0.05` (forecast) / `mm > 0.05` (archive); blue scale by
+     amount; `% · mm` readout above each zone.
+   - Top-right Leaflet toggle control + legend; state persists across stages;
+     `wxToken` guards stale fetches; fetch only when a toggle is on.
+4. ✅ **Browser pass done & tuned with the user (2026-06-07).** Remaining knobs
+   (§9): avg-speed table, arrow density/offset, rain thresholds, and an optional
+   **FROM-compass in the wind tooltip** (offered as a direction self-check —
+   declined for now).
 
 ## 9. Open / tunable later
 
