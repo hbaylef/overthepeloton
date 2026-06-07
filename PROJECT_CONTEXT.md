@@ -12,6 +12,45 @@
 Running in **Claude Code** locally at `C:\Users\PC\Desktop\cycling-dashboard`.
 Site is live; each verified increment is committed + pushed (GitHub Pages).
 
+### 🟢 LATEST SESSION (2026-06-06, evening) — pick up here tomorrow
+
+- **The daily scrape has FINISHED and committed to `origin/main`.** Start
+  tomorrow by `git fetch` + fast-forward/rebase onto origin/main BEFORE doing
+  anything, then continue from there.
+- **GPX bug fixed — Tour Auvergne-Rhône-Alpes now has all GPX.** This race is
+  stored under slug **`criterium-du-dauphine-2026`** (cyclingstage_slug
+  `tour-auvergne-rhone-alpes`). It had `gpx_available:false` because (1) it has
+  **no `…-2026-gpx/` index page** (404) — GPX live only on per-stage pages like
+  `/tour-auvergne-rhone-alpes-2026/stage-1-route-tara-2026/`, and (2) the
+  crawler only followed sub-links from the first two entry points, never the
+  main race page. **Fixes in `scrapers/scrape_gpx.py`:** crawl sub-links from
+  the main race page too (`entry_points[:3]`), and added
+  `construct_cdn_gpx_urls()` — a fallback that builds the predictable CDN paths
+  (`cdn.cyclingstage.com/images/{slug}/{year}/stage-N-route.gpx`) from the stage
+  count when crawling finds nothing (download_gpx still content-validates, so
+  bad guesses fail safe). General fix — any future race in this situation now
+  works automatically. `main()` passes `num_stages = len(race["stages"])`.
+- **Downloaded all 8 Auvergne stages now** → `data/gpx/criterium-du-dauphine-2026/stage-{1..8}-route.gpx`
+  (all valid, real trkpts; stage 3 is small = the Perreux TTT loop) and updated
+  `data/gpx_index.json` (`gpx_available:true`, 8 files).
+- ⚠️ **Local SSL caveat:** this machine has a TLS-interception proxy, so I had
+  to download with `verify=False` in a one-off script. **The scraper itself was
+  left untouched on verification** (GitHub Actions has no such proxy and works
+  normally). Don't "fix" scrape_gpx.py to disable verification.
+
+**UNCOMMITTED this session (verify, then commit next session):**
+- `scrapers/scrape_gpx.py` (the discovery fix above)
+- `data/gpx_index.json` (Auvergne entry → available)
+- `data/gpx/criterium-du-dauphine-2026/` (8 new GPX files, untracked)
+- `frontend/index.html` — was ALREADY modified in the working tree at the start
+  of this session; **I did not touch it.** Check what that change is before
+  committing it.
+
+**R5 weather** (Open-Meteo, pass-time wind model) is the active roadmap item —
+step 1 (per-stage `start_time` scraper) is already committed. See `R5_WEATHER.md`.
+
+---
+
 **Done & live:**
 - **R1** — startlists for all races + per-rider PCS **career** specialty points.
 - **R2** — stage grading + win-probability (percentile + **softmax**,

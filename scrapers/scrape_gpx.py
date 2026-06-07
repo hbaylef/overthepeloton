@@ -215,9 +215,12 @@ def discover_gpx_links(cs_slug: str, year: int) -> list[str]:
             if slug_compact in link.lower().replace("-", ""):
                 found_gpx.add(link)
 
-        # Follow internal links that look like sub-pages of this race
-        # (only on the first two entry points, to limit crawling depth)
-        if url in entry_points[:2]:
+        # Follow internal links that look like sub-pages of this race.
+        # We crawl from the GPX index, the route overview AND the main race
+        # page: some races (e.g. Tour Auvergne-Rhône-Alpes) have no -gpx/
+        # index and expose GPX only on per-stage route pages linked from the
+        # main page (e.g. /stage-1-route-tara-2026/).
+        if url in entry_points[:3]:
             for a in soup.find_all("a", href=True):
                 href = a["href"]
                 if href.startswith("/"):
@@ -234,8 +237,29 @@ def discover_gpx_links(cs_slug: str, year: int) -> list[str]:
     return sorted(found_gpx)
 
 
+def construct_cdn_gpx_urls(cs_slug: str, year: int, num_stages: int,
+                           is_one_day: bool) -> list[str]:
+    """
+    Build the predictable CDN GPX URLs directly, without crawling.
+
+    CyclingStage stores GPX at a stable path:
+      https://cdn.cyclingstage.com/images/{slug}/{year}/stage-N-route.gpx
+      https://cdn.cyclingstage.com/images/{slug}/{year}/route.gpx  (one-day)
+
+    Used as a fallback for races whose HTML pages don't expose .gpx links in
+    a crawlable way (e.g. no -gpx/ index page). Downloaded URLs are still
+    content-validated by download_gpx, so wrong guesses fail safely.
+    """
+    if is_one_day:
+        return [f"{CDN_URL}/images/{cs_slug}/{year}/route.gpx"]
+    return [
+        f"{CDN_URL}/images/{cs_slug}/{year}/stage-{n}-route.gpx"
+        for n in range(1, max(num_stages, 0) + 1)
+    ]
+
+
 def scrape_race_gpx(cs_slug: str, year: int, race_slug: str,
-                    is_one_day: bool) -> list[dict]:
+                    is_one_day: bool, num_stages: int = 0) -> list[dict]:
     """
     Download all GPX files discovered for a race.
     Returns a list of {stage, filename, url, local_path} dicts.
@@ -244,6 +268,10 @@ def scrape_race_gpx(cs_slug: str, year: int, race_slug: str,
     race_gpx_dir = GPX_DIR / race_slug
 
     gpx_links = discover_gpx_links(cs_slug, year)
+    if not gpx_links:
+        # Crawling found nothing — fall back to the predictable CDN paths.
+        log.info("  No GPX links discovered by crawling; trying CDN paths")
+        gpx_links = construct_cdn_gpx_urls(cs_slug, year, num_stages, is_one_day)
     if not gpx_links:
         return results
 
@@ -313,7 +341,8 @@ def main():
         log.info(f"Processing: {race_name} (cs_slug={cs_slug})")
         log.info(f"{'='*50}")
 
-        files = scrape_race_gpx(cs_slug, year, race_slug, is_one_day)
+        num_stages = len(race.get("stages", []))
+        files = scrape_race_gpx(cs_slug, year, race_slug, is_one_day, num_stages)
 
         gpx_index["races"][race_slug] = {
             "name": race_name,

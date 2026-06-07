@@ -111,6 +111,36 @@
     z-index: 2;
     border-bottom: 1px solid var(--line);
   }
+  /* race-list filter bar (sticky under the header) */
+  .race-filters {
+    padding: 10px 16px 12px;
+    border-bottom: 1px solid var(--line);
+    background: var(--paper-2);
+    position: sticky; top: 38px; z-index: 2;
+    display: flex; flex-direction: column; gap: 7px;
+  }
+  .race-filters input[type="search"],
+  .race-filters select {
+    width: 100%; box-sizing: border-box;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    padding: 6px 8px; color: var(--ink);
+    background: var(--paper); border: 1.5px solid var(--line);
+  }
+  .race-filters input[type="search"]:focus,
+  .race-filters select:focus { outline: none; border-color: var(--rust); }
+  .race-filters .rf-row { display: flex; gap: 7px; }
+  .race-filters .rf-row select { flex: 1; }
+  .race-filters label {
+    display: flex; align-items: center; gap: 6px; cursor: pointer;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--grey);
+  }
+  .race-filters input[type="checkbox"] { accent-color: var(--rust); cursor: pointer; margin: 0; }
+  .race-count {
+    padding: 8px 20px; font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--grey);
+  }
+  .race-empty { padding: 20px; color: var(--grey); font-size: 13px; text-align: center; }
+
   .race-item {
     padding: 14px 20px;
     border-bottom: 1px solid var(--line);
@@ -336,6 +366,29 @@
     border-left: 5px solid transparent; border-right: 5px solid transparent;
     border-bottom: 9px solid var(--ink);
   }
+
+  /* R5: weather overlay control (Leaflet control, top-right of the map) */
+  .wx-ctrl {
+    background: var(--paper); border: 1.5px solid var(--ink);
+    box-shadow: 3px 3px 0 var(--ink); padding: 8px 10px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink);
+    line-height: 1.5; max-width: 190px;
+  }
+  .wx-ctrl b { font-family: 'Archivo', sans-serif; letter-spacing: .04em;
+    text-transform: uppercase; font-size: 10px; }
+  .wx-ctrl label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+  .wx-ctrl input { accent-color: var(--rust); cursor: pointer; margin: 0; }
+  .wx-ctrl .wx-note { color: #7c7668; font-size: 10px; margin-top: 3px; }
+  .wx-ctrl .wx-legend { margin-top: 5px; border-top: 1px solid var(--line);
+    padding-top: 5px; color: #7c7668; font-size: 10px; }
+  /* wind arrow marker: rotated glyph + speed label */
+  .wx-wind { display: flex; flex-direction: column; align-items: center;
+    line-height: 1; pointer-events: none; }
+  .wx-wind .wx-arrow { font-size: 20px; font-weight: 700;
+    text-shadow: 0 0 2px var(--paper), 0 0 2px var(--paper); }
+  .wx-wind .wx-spd { font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    font-weight: 700; color: var(--ink);
+    text-shadow: 0 0 2px var(--paper), 0 0 3px var(--paper); }
 
   /* R4: climbs list under the profile (numbers key the ▲ markers on the chart) */
   .climb-list {
@@ -655,7 +708,20 @@
 
 <div class="layout">
   <aside class="sidebar">
-    <div class="sidebar-head">Upcoming Races</div>
+    <div class="sidebar-head">Races</div>
+    <div class="race-filters">
+      <input type="search" id="rf-search" placeholder="Search races…" autocomplete="off">
+      <div class="rf-row">
+        <select id="rf-tour" title="Tour level"><option value="">All tours</option></select>
+        <select id="rf-type" title="Race type">
+          <option value="">All types</option>
+          <option value="stage">Stage races</option>
+          <option value="oneday">One-day races</option>
+        </select>
+      </div>
+      <label><input type="checkbox" id="rf-hidepast"> Hide finished races</label>
+    </div>
+    <div class="race-count" id="race-count"></div>
     <div id="race-list"></div>
   </aside>
 
@@ -699,6 +765,13 @@ let highlightLayer = null;  // R4: pavé + climb overlays on the route (cleared/
 let hoverMarker = null;
 let elevationPoints = [];   // [{lat, lon, ele, dist}]
 let canvas, ctx;
+
+// R5 weather: toggle state persists across stage/race switches; layers + control
+// are rebuilt per stage. `wxToken` guards against a slow fetch landing on a
+// stage the user already navigated away from.
+let wxState = { wind: false, rain: false };
+let wxLayers = { wind: null, rain: null };
+let wxControl = null, wxToken = 0;
 
 // ============================================================
 //  BOOT
@@ -759,6 +832,7 @@ async function boot() {
   RACES = racesData.races || [];
   document.getElementById('updated').textContent =
     'updated ' + new Date(racesData.updated_at).toLocaleDateString();
+  initRaceFilters();
   renderRaceList();
 }
 
@@ -870,10 +944,47 @@ function fmtDate(s) {
   return d.toLocaleDateString('en-GB', { day:'2-digit', month:'short' });
 }
 
+// Race-list filters. Forward-looking for R7 (non-WT): the tour dropdown
+// auto-populates from whatever uci_tour values are present in the data.
+let raceFilters = { q: '', tour: '', type: '', hidePast: false };
+
+function initRaceFilters() {
+  // populate the tour-level dropdown from distinct uci_tour values
+  const sel = document.getElementById('rf-tour');
+  if (sel) {
+    const tours = [...new Set(RACES.map(r => r.uci_tour).filter(Boolean))].sort();
+    for (const t of tours) {
+      const o = document.createElement('option'); o.value = t; o.textContent = t;
+      sel.appendChild(o);
+    }
+  }
+  const on = (id, ev, fn) => { const el = document.getElementById(id); if (el) el.addEventListener(ev, fn); };
+  on('rf-search', 'input', e => { raceFilters.q = e.target.value.trim().toLowerCase(); renderRaceList(); });
+  on('rf-tour', 'change', e => { raceFilters.tour = e.target.value; renderRaceList(); });
+  on('rf-type', 'change', e => { raceFilters.type = e.target.value; renderRaceList(); });
+  on('rf-hidepast', 'change', e => { raceFilters.hidePast = e.target.checked; renderRaceList(); });
+}
+
+function raceMatches(race) {
+  const f = raceFilters;
+  if (f.q && !(race.name || '').toLowerCase().includes(f.q)) return false;
+  if (f.tour && race.uci_tour !== f.tour) return false;
+  if (f.type === 'stage' && race.is_one_day_race) return false;
+  if (f.type === 'oneday' && !race.is_one_day_race) return false;
+  if (f.hidePast) {
+    const end = race.enddate || race.startdate;
+    if (end && end < new Date().toISOString().slice(0, 10)) return false;
+  }
+  return true;
+}
+
 function renderRaceList() {
   const list = document.getElementById('race-list');
   list.innerHTML = '';
+  let shown = 0;
   RACES.forEach((race, i) => {
+    if (!raceMatches(race)) return;          // keep original index i for selectRace
+    shown++;
     const gpx = GPX_INDEX[race.slug] || {};
     const hasGpx = gpx.gpx_available;
     const odds = ODDS_INDEX[race.slug] || {};
@@ -900,9 +1011,16 @@ function renderRaceList() {
         ${hasOdds ? '<span class="badge" style="background:var(--gold);color:var(--ink)">odds</span>' : ''}
         ${hasPred ? '<span class="badge" style="background:var(--moss);color:var(--paper)">pred</span>' : ''}
       </div>`;
+    if (currentRace && currentRace.slug === race.slug) item.classList.add('active');
     item.addEventListener('click', () => selectRace(i));
     list.appendChild(item);
   });
+
+  if (!shown) {
+    list.innerHTML = '<div class="race-empty">No races match these filters.</div>';
+  }
+  const countEl = document.getElementById('race-count');
+  if (countEl) countEl.textContent = `${shown} of ${RACES.length} races`;
 }
 
 // ============================================================
@@ -1473,6 +1591,8 @@ function initMap() {
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap', maxZoom: 17
   }).addTo(map);
+  wxLayers = { wind: null, rain: null };   // map was recreated → drop stale refs
+  addWeatherControl();                      // R5 weather toggles (state persists)
 }
 
 // ============================================================
@@ -1494,6 +1614,10 @@ async function loadStage(stageIdx) {
     parseGpx(text);
     drawRouteOnMap();
     drawElevation();
+
+    // R5: weather overlay for this stage (at the time the peloton passes)
+    wxCurrentFile = file;
+    updateWeather(file, stageIdx);
 
     // R4: place this stage's climbs on the (now-known) profile length, then
     // redraw into the cached static layer. stage number matches scrape_climbs.py's
@@ -1625,6 +1749,225 @@ function drawHighlightsOnMap() {
 
   if (layers.length) highlightLayer = L.layerGroup(layers).addTo(map);
 }
+
+// ============================================================
+//  R5 WEATHER OVERLAY  (wind + rain, at the time the peloton passes)
+// ============================================================
+// Expected peloton speed by stage_type (km/h) — used to estimate when the race
+// reaches each point, so we read weather at that hour (not one global hour).
+const PELOTON_KMH = { sprint:44, sprint_break:42, cobbles:41, hills_puncheur:40,
+                      climber:36, time_trial:48 };
+const PELOTON_KMH_DEFAULT = 41;
+const WX_SAMPLES = 8;          // points sampled along the route
+
+// Resolve {date, startTime, stageType} for the displayed stage from races.json
+// metadata (stage races: the matching stages[] entry; one-day: race-level).
+function stageWeatherMeta(file, stageIdx) {
+  const r = currentRace;
+  if (!r) return null;
+  if (r.is_one_day_race) {
+    return { date: r.startdate, startTime: r.start_time || null,
+             stageType: r.stage_type };
+  }
+  const stages = r.stages || [];
+  const num = file.stage;
+  let s = null;
+  if (num != null) s = stages.find(x => {
+    const m = /stage-(\d+)/.exec(x.stage_url || '');
+    return m && Number(m[1]) === num;
+  });
+  if (!s) s = stages[stageIdx];                 // fallback: tab order
+  if (!s) return null;
+  const yr = r.year;
+  const date = (s.date && yr && s.date.includes('-')) ? `${yr}-${s.date}` : r.startdate;
+  return { date, startTime: s.start_time || null, stageType: s.stage_type };
+}
+
+// Even samples along the route (mid-bin, so we avoid the exact start/finish).
+function sampleRoute(n = WX_SAMPLES) {
+  const total = elevationPoints[elevationPoints.length - 1].dist;
+  const out = [];
+  for (let i = 0; i < n; i++) {
+    const d = total * (i + 0.5) / n;
+    const p = elevationPoints[nearestIndex(d)];
+    out.push({ lat: p.lat, lon: p.lon, dist: d });
+  }
+  return out;
+}
+
+// Hour index (0..23) into Open-Meteo's hourly arrays at which the peloton reaches
+// `distKm`, given a 'HH:MM' local start and the stage's expected speed.
+function passHourIndex(startTime, distKm, kmh) {
+  const [h, m] = startTime.split(':').map(Number);
+  const mins = h * 60 + m + (distKm / kmh) * 60;
+  return Math.max(0, Math.min(23, Math.round(mins / 60)));
+}
+
+function wxInRange(date) {
+  if (!date) return false;
+  const today = new Date().toISOString().slice(0, 10);
+  if (date < today) return true;                // past → archive actuals
+  // Forecast endpoint allows today…+15 days (it 400s beyond that).
+  const ahead = new Date(); ahead.setDate(ahead.getDate() + 15);
+  return date <= ahead.toISOString().slice(0, 10);
+}
+
+// Fetch + align weather for the current route. Returns [{lat,lon,dist,windSpeed,
+// windDir,gust,precip,precipProb,time}] or null on failure.
+async function fetchWeather(meta) {
+  const kmh = PELOTON_KMH[meta.stageType] || PELOTON_KMH_DEFAULT;
+  const pts = sampleRoute();
+  const lat = pts.map(p => p.lat.toFixed(4)).join(',');
+  const lon = pts.map(p => p.lon.toFixed(4)).join(',');
+  const today = new Date().toISOString().slice(0, 10);
+  const past = meta.date < today;
+  const base = past
+    ? 'https://archive-api.open-meteo.com/v1/archive'
+    : 'https://api.open-meteo.com/v1/forecast';
+  // precipitation_probability is forecast-only; the archive API rejects it.
+  const hourly = 'wind_speed_10m,wind_direction_10m,wind_gusts_10m,precipitation' +
+    (past ? '' : ',precipitation_probability');
+  const url = `${base}?latitude=${lat}&longitude=${lon}&hourly=${hourly}` +
+    `&start_date=${meta.date}&end_date=${meta.date}&timezone=auto&wind_speed_unit=kmh`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  const json = await res.json();
+  const locs = Array.isArray(json) ? json : [json];
+  return pts.map((p, i) => {
+    const H = (locs[i] || {}).hourly || {};
+    const idx = passHourIndex(meta.startTime, p.dist, kmh);
+    const at = a => (Array.isArray(a) ? a[idx] : null);
+    return { ...p,
+      windSpeed: at(H.wind_speed_10m), windDir: at(H.wind_direction_10m),
+      gust: at(H.wind_gusts_10m), precip: at(H.precipitation),
+      precipProb: at(H.precipitation_probability),
+      time: Array.isArray(H.time) ? H.time[idx] : null };
+  });
+}
+
+function windColor(kmh) {
+  if (kmh == null) return '#7c7668';
+  if (kmh < 12) return '#6b8f71';      // light — moss
+  if (kmh < 25) return '#c9a227';      // moderate — gold
+  if (kmh < 40) return '#c8442a';      // strong — rust
+  return '#7a1f12';                     // gale — maroon
+}
+
+function buildWindLayer(samples) {
+  const layers = [];
+  for (const s of samples) {
+    if (s.windSpeed == null || s.windDir == null) continue;
+    const rot = (s.windDir + 180) % 360;          // dir is FROM; arrow points TO
+    const col = windColor(s.windSpeed);
+    const html = `<div class="wx-wind">` +
+      `<div class="wx-arrow" style="color:${col};transform:rotate(${rot}deg)">↑</div>` +
+      `<div class="wx-spd">${Math.round(s.windSpeed)}</div></div>`;
+    const icon = L.divIcon({ className: '', iconSize: [34, 30], iconAnchor: [17, 15], html });
+    const tip = `Wind ${Math.round(s.windSpeed)} km/h` +
+      (s.gust != null ? ` (gust ${Math.round(s.gust)})` : '') +
+      (s.time ? `<br>at ${s.time.slice(11)}` : '');
+    layers.push(L.marker([s.lat, s.lon], { icon, interactive: true }).bindTooltip(tip));
+  }
+  return layers.length ? L.layerGroup(layers) : null;
+}
+
+function buildRainLayer(samples) {
+  const layers = [];
+  for (const s of samples) {
+    const mm = s.precip, prob = s.precipProb;
+    const wet = (mm != null && mm > 0.1) || (prob != null && prob >= 40);
+    if (!wet) continue;
+    const intensity = Math.min(1, (mm || 0) / 4);          // 0..1 over ~4 mm/h
+    const r = 6 + intensity * 8;
+    const tip = (mm != null ? `Rain ${mm.toFixed(1)} mm` : 'Rain') +
+      (prob != null ? ` · ${prob}% chance` : '') + (s.time ? `<br>at ${s.time.slice(11)}` : '');
+    layers.push(L.circleMarker([s.lat, s.lon], {
+      radius: r, color: '#2f6f9f', weight: 1.5, fillColor: '#4a90c2',
+      fillOpacity: 0.35 + intensity * 0.4 }).bindTooltip(tip));
+  }
+  return layers.length ? L.layerGroup(layers) : null;
+}
+
+function clearWxLayers() {
+  for (const k of ['wind', 'rain']) {
+    if (wxLayers[k]) { map.removeLayer(wxLayers[k]); wxLayers[k] = null; }
+  }
+}
+
+// (Re)build the weather overlay for the current stage, honouring the toggles.
+async function updateWeather(file, stageIdx) {
+  if (!map || typeof L === 'undefined' || !elevationPoints.length) return;
+  clearWxLayers();
+  const meta = stageWeatherMeta(file, stageIdx);
+  const usable = meta && meta.startTime && wxInRange(meta.date);
+  setWxControlState(usable, meta);
+  if (!usable || (!wxState.wind && !wxState.rain)) return;
+
+  const token = ++wxToken;
+  let samples;
+  try {
+    samples = await fetchWeather(meta);
+  } catch (e) {
+    if (token === wxToken) setWxNote('weather unavailable right now');
+    return;
+  }
+  if (token !== wxToken) return;        // navigated away mid-fetch
+  if (wxState.wind) { wxLayers.wind = buildWindLayer(samples); if (wxLayers.wind) wxLayers.wind.addTo(map); }
+  if (wxState.rain) { wxLayers.rain = buildRainLayer(samples); if (wxLayers.rain) wxLayers.rain.addTo(map); }
+}
+
+// --- the on-map toggle control ---------------------------------------------
+function addWeatherControl() {
+  if (typeof L === 'undefined' || !map) return;
+  const Ctrl = L.Control.extend({
+    options: { position: 'topright' },
+    onAdd: function () {
+      const d = L.DomUtil.create('div', 'wx-ctrl');
+      d.innerHTML =
+        `<b>Weather</b>` +
+        `<label><input type="checkbox" id="wx-wind"> Wind</label>` +
+        `<label><input type="checkbox" id="wx-rain"> Rain</label>` +
+        `<div class="wx-note" id="wx-note"></div>` +
+        `<div class="wx-legend">↑ points downwind · km/h</div>`;
+      L.DomEvent.disableClickPropagation(d);
+      return d;
+    }
+  });
+  wxControl = new Ctrl();
+  map.addControl(wxControl);
+  // wire after the control is in the DOM
+  const wind = document.getElementById('wx-wind');
+  const rain = document.getElementById('wx-rain');
+  if (wind) { wind.checked = wxState.wind;
+    wind.onchange = () => { wxState.wind = wind.checked; refreshWeather(); }; }
+  if (rain) { rain.checked = wxState.rain;
+    rain.onchange = () => { wxState.rain = rain.checked; refreshWeather(); }; }
+}
+
+function setWxControlState(usable, meta) {
+  const wind = document.getElementById('wx-wind');
+  const rain = document.getElementById('wx-rain');
+  [wind, rain].forEach(el => { if (el) el.disabled = !usable; });
+  if (!usable) {
+    const far = meta && meta.date && !wxInRange(meta.date);
+    setWxNote(far ? 'available closer to race day'
+                  : (meta && !meta.startTime) ? 'start time not published yet'
+                  : 'weather unavailable');
+  } else {
+    setWxNote('');
+  }
+}
+
+function setWxNote(msg) { const n = document.getElementById('wx-note'); if (n) n.textContent = msg; }
+
+// Re-run weather for the stage currently shown (used by the toggles).
+function refreshWeather() {
+  if (currentStageFiles.length) {
+    const idx = currentStageFiles.findIndex(f => f === wxCurrentFile);
+    updateWeather(wxCurrentFile, idx < 0 ? 0 : idx);
+  }
+}
+let wxCurrentFile = null;
 
 // ============================================================
 //  DRAW ELEVATION PROFILE  (canvas)
