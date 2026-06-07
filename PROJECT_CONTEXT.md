@@ -72,6 +72,37 @@ Site is live; each verified increment is committed + pushed (GitHub Pages).
   NOTE: `score_riders.py` + `data/predictions/*` + `predictions_index.json` remain
   in the repo (dormant — predictions_index still fetched once at boot, unused);
   user may retire them later or keep for a future predictions feature.
+- **Startlist SUBSTITUTE riders removed** (`scrape_races.py` + 27 cleaned files).
+  PCS lists a team's reserve as a SECOND entry sharing a bib (almost always the
+  #X4 slot; the 2nd is the sub — e.g. Ciccone shown but absent at Amstel). No
+  reserve flag in the library, so `scrape_startlist` now dedupes: keep the first
+  rider per (team, bib), drop later duplicate(s). Confirmed by the user. 601
+  removed; auto-applied on every future scrape.
+- **R4 climb NAMES are LIVE** — the 2026-06-07 daily Actions run executed
+  `derive_climbs.py` with the length-match fix, so stage races now show real climb
+  names (Auvergne 28 named, etc.). The earlier "pending Actions run" item is DONE.
+- **NEW FEATURE — "Hometown & birthdays" strip under the elevation profile**
+  (`37f1956`). Per stage: 🎂 riders whose birthday = the stage date, 📍 riders born
+  within 50 km of any route point; else "No rider born near the race or on the day
+  of the race." Compact. Built + frontend empty-state verified; **awaiting data**.
+  - `scrape_riders.py` now also stores `birthdate` + `place_of_birth` (same PCS
+    fetch) and embeds them; it RE-FETCHES all riders once (old cache lacks the new
+    fields) → that day's run is long.
+  - `geocode_birthplaces.py` (new, +tests) resolves town → lat/lon via Nominatim
+    (cached in `data/birthplaces_cache.json`; ~1 req/s; `--insecure` for the local
+    proxy — Nominatim isn't behind Cloudflare so this works locally). Added to the
+    workflow after `scrape_riders`. Daily runs re-apply coords from cache
+    (network-free); only new towns hit the net.
+  - ⏳ **Populates only after an Actions scrape + geocode run.** Nominatim from
+    Actions IPs may throttle on the ~1.2k first pass — it checkpoints + self-heals
+    over runs; or seed faster by running `geocode_birthplaces.py --insecure`
+    locally once birthdate/town exist. Town-level accuracy.
+
+**⏭️ NEXT SESSION (user is running the scrape while away):** `git pull`, then VERIFY
+the Hometown & birthdays strip populated (try a Belgian classic → 📍 should light
+up; check a stage whose date hits a rider's birthday). If birthplaces are sparse,
+run `geocode_birthplaces.py --insecure` locally to seed the cache. Then continue
+UI/UX polish (DIRECTION focus 1) or the LFR admin reply.
 
 **R5 open / tunable (not blockers):** avg-speed table + start-time default hour are
 guesses; wind-arrow density (24) / offset (2%) and rain thresholds are tuned but
@@ -295,7 +326,9 @@ overthepeloton/
 │   ├── test_scrape_lfr.py       ← no-network tests for the LFR fallback (9/9)
 │   ├── scrape_odds.py           ← STEP 4: Bet365 odds
 │   ├── enter_odds.py            ← STEP 4: manual odds entry
-│   ├── scrape_riders.py         ← R1: embeds specialties.career into startlists
+│   ├── scrape_riders.py         ← R1: embeds specialties.career + birthdate + place_of_birth
+│   ├── geocode_birthplaces.py   ← Hometown: town→lat/lon via Nominatim (cached, local-friendly)
+│   ├── test_geocode_birthplaces.py ← no-network tests for the geocoder (4/4)
 │   ├── classify_stages.py       ← R2 Phase 2: backfill stage_type into races.json
 │   ├── score_riders.py          ← R2 Phase 3: predictions (R4 cobbles tie-in shipped)
 │   ├── scrape_climbs.py         ← R4: one-day climbs via RaceClimbs (PCS, named)
@@ -379,12 +412,18 @@ of every scrape.
                 "team": "...", "rider_url": "rider/...", "team_url": "team/...",
                 "specialties": { "career": { "one_day_races": 9983, "gc": 7594,
                                               "tt": 3287, "sprint": 297,
-                                              "climber": 9989, "hills": 4368 } } } ] }
+                                              "climber": 9989, "hills": 4368 } },
+                "birthdate": "1998-09-21", "place_of_birth": "Komenda",
+                "birthplace_lat": 46.21, "birthplace_lon": 14.54 } ] }
 ```
 
 Per-rider `specialties.career` is added by R1's `scrape_riders.py`. Value is
 `null` for riders with no PCS chart. The `recent` half is deferred — see
-`R1_R2_DESIGN.md` "Spike outcome".
+`R1_R2_DESIGN.md` "Spike outcome". **`birthdate` + `place_of_birth`** also added by
+`scrape_riders.py` (null until populated); **`birthplace_lat`/`birthplace_lon`**
+added by `geocode_birthplaces.py` (null when un-geocoded). These feed the
+"Hometown & birthdays" strip. Substitute riders (duplicate bib within a team) are
+dropped at scrape time — see §0.
 
 ### `gpx_index.json`
 ```json
