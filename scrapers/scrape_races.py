@@ -181,6 +181,27 @@ def scrape_race_info(race_url: str) -> Optional[dict]:
         return None
 
 
+def drop_substitute_riders(riders: list) -> list:
+    """
+    PCS lists a team's reserve/substitute rider as a SECOND entry that shares a
+    bib number with a confirmed starter (almost always the team's #X4 slot, the
+    second one being the substitute who often doesn't actually start). The PCS
+    library exposes no reserve flag, so we dedupe: within each team, keep the
+    FIRST rider for a given bib number and drop any later duplicate(s).
+    """
+    seen = set()
+    out = []
+    for r in riders:
+        num = r.get("number")
+        key = (r.get("team"), num)
+        if num is not None and key in seen:
+            continue                 # duplicate bib within the team → substitute
+        if num is not None:
+            seen.add(key)
+        out.append(r)
+    return out
+
+
 def scrape_startlist(race_url: str) -> Optional[list]:
     """
     Scrape the startlist for a race.
@@ -204,7 +225,7 @@ def scrape_startlist(race_url: str) -> Optional[list]:
                 "team_url": rider.get("team_url"),
             })
 
-        return cleaned
+        return drop_substitute_riders(cleaned)
 
     except Exception as e:
         log.warning(f"No startlist available for {race_url}: {e}")
