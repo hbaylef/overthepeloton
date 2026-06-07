@@ -883,7 +883,7 @@ function jerseyIcon(colour) {
 // ---- Collapsible section shell (item 3) ----
 // Default open/closed per section, remembered for the session so re-renders
 // (e.g. sorting the table) keep the user's choice.
-const SECTION_DEFAULT_COLLAPSED = { specialty: false, odds: false, startlist: true };
+const SECTION_DEFAULT_COLLAPSED = { specialty: true, odds: false, startlist: true };
 let SECTION_STATE = {};
 function sectionCollapsed(id) {
   return (id in SECTION_STATE) ? SECTION_STATE[id] : !!SECTION_DEFAULT_COLLAPSED[id];
