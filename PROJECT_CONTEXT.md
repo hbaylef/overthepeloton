@@ -181,8 +181,8 @@ A **public website** that, for upcoming UCI World Tour cycling races:
 4. Shows **betting odds** (race winner) for each race (when populated).
 
 **Status: LIVE AND DEPLOYED.**
-- Public URL: **`https://hbaylef.github.io/overthepeloton/frontend/`**
-- Repo: **`https://github.com/hbaylef/overthepeloton`**
+- Public URL: **`https://paludes.github.io/overthepeloton/frontend/`**
+- Repo: **`https://github.com/paludes/overthepeloton`**
 - Auto-refreshes daily at 06:00 UTC via GitHub Actions.
 
 **Audience:** the user is a self-described **beginner** to coding, but has
@@ -224,7 +224,7 @@ should still be clear and beginner-friendly, but assume they know how to
 │                                                           │
 │  frontend/index.html — single file, no build step.        │
 │  Pages source: "Deploy from a branch", main /(root).      │
-│  Site path:    https://hbaylef.github.io/overthepeloton/  │
+│  Site path:    https://paludes.github.io/overthepeloton/  │
 │                                                            frontend/
 │  Renders: race list sidebar · Leaflet map · canvas        │
 │  elevation profile (synced) · race-winner odds panel.     │

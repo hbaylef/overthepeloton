@@ -233,7 +233,7 @@ re-runs of `scrape_races.py` re-derive freshly so there's no drift.
   stages + 18 one-day races), 0 invariant violations, source split
   163 `profile_icon` / 12 `stage_name_itt` / 0 `fallback_default`.
 - **Pushed & verified live (2026-06-05, commit `519a7db`)** — the deployed
-  `races.json` at hbaylef.github.io carries all annotations; daily scrapes
+  `races.json` at paludes.github.io carries all annotations; daily scrapes
   re-derive automatically.
 
 **Phase 3 — IN PROGRESS (2026-06-05): Steps 2–4 (type → weight vector →
