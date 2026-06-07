@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-06T21:30:11.715862",
+  "updated_at": "2026-06-07T09:57:29.805522",
   "source": "mixed",
   "races": {
     "tour-down-under-2026": {
@@ -145,8 +145,9 @@
     },
     "criterium-du-dauphine-2026": {
       "name": "Tour Auvergne-Rhône-Alpes",
-      "climbs_available": false,
-      "total_climbs": 0
+      "climbs_available": true,
+      "total_climbs": 32,
+      "source": "gpx_derived"
     },
     "tour-de-suisse-2026": {
       "name": "Tour de Suisse",

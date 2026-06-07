@@ -2,12 +2,12 @@
   "race": "Tour de France",
   "race_slug": "tour-de-france-2026",
   "source": "gpx_derived",
-  "updated_at": "2026-06-06T21:30:10.526776",
+  "updated_at": "2026-06-07T09:57:25.237397",
   "is_one_day_race": false,
   "stages": {
     "10": [
       {
-        "name": "Climb",
+        "name": "Côte De Grésin",
         "km_before_finish": 116.1,
         "length_km": 4.2,
         "steepness": 3.2,
@@ -21,35 +21,35 @@
         "top_m": 1067
       },
       {
-        "name": "Climb",
+        "name": "Côte d'Engins",
         "km_before_finish": 68.6,
         "length_km": 12.5,
         "steepness": 4.4,
         "top_m": 1364
       },
       {
-        "name": "Climb",
+        "name": "Côte de la Moussière",
         "km_before_finish": 63.0,
         "length_km": 3.1,
         "steepness": 6.0,
         "top_m": 1388
       },
       {
-        "name": "Climb",
+        "name": "Col de la Croisette",
         "km_before_finish": 46.6,
         "length_km": 8.0,
         "steepness": 4.0,
         "top_m": 1206
       },
       {
-        "name": "Climb",
+        "name": "Plateau de Salaison",
         "km_before_finish": 31.3,
         "length_km": 12.6,
         "steepness": 4.2,
         "top_m": 1577
       },
       {
-        "name": "Climb",
+        "name": "Côte de la Mulaz",
         "km_before_finish": 14.7,
         "length_km": 4.8,
         "steepness": 7.9,
@@ -65,7 +65,7 @@
     ],
     "12": [
       {
-        "name": "Climb",
+        "name": "Côte de la Moussière",
         "km_before_finish": 21.3,
         "length_km": 3.0,
         "steepness": 3.6,
@@ -83,7 +83,7 @@
     ],
     "14": [
       {
-        "name": "Climb",
+        "name": "Côte d'Engins",
         "km_before_finish": 128.0,
         "length_km": 13.2,
         "steepness": 4.7,
@@ -97,42 +97,42 @@
         "top_m": 1332
       },
       {
-        "name": "Climb",
+        "name": "Col de la Croisette",
         "km_before_finish": 87.2,
         "length_km": 7.8,
         "steepness": 5.1,
         "top_m": 894
       },
       {
-        "name": "Climb",
+        "name": "Côte de la Moussière",
         "km_before_finish": 84.2,
         "length_km": 1.8,
         "steepness": 7.3,
         "top_m": 964
       },
       {
-        "name": "Climb",
+        "name": "Col de Couz",
         "km_before_finish": 61.0,
         "length_km": 9.5,
         "steepness": 6.5,
         "top_m": 1169
       },
       {
-        "name": "Climb",
+        "name": "Côte De Grésin",
         "km_before_finish": 35.0,
         "length_km": 5.7,
         "steepness": 3.2,
         "top_m": 601
       },
       {
-        "name": "Climb",
+        "name": "Côte de la Mulaz",
         "km_before_finish": 30.0,
         "length_km": 3.7,
         "steepness": 5.1,
         "top_m": 745
       },
       {
-        "name": "Climb",
+        "name": "Plateau de Salaison",
         "km_before_finish": 13.1,
         "length_km": 11.5,
         "steepness": 3.4,
@@ -148,7 +148,7 @@
     ],
     "15": [
       {
-        "name": "Climb",
+        "name": "Côte de la Moussière",
         "km_before_finish": 180.4,
         "length_km": 3.2,
         "steepness": 3.2,
@@ -169,28 +169,28 @@
         "top_m": 1255
       },
       {
-        "name": "Climb",
+        "name": "Côte de la Mulaz",
         "km_before_finish": 103.5,
         "length_km": 3.8,
         "steepness": 4.0,
         "top_m": 721
       },
       {
-        "name": "Climb",
+        "name": "Côte De Grésin",
         "km_before_finish": 86.6,
         "length_km": 5.1,
         "steepness": 3.5,
         "top_m": 523
       },
       {
-        "name": "Climb",
+        "name": "Col de la Croisette",
         "km_before_finish": 47.4,
         "length_km": 7.7,
         "steepness": 8.6,
         "top_m": 1167
       },
       {
-        "name": "Climb",
+        "name": "Col de Prés",
         "km_before_finish": 36.4,
         "length_km": 3.6,
         "steepness": 6.1,
@@ -206,7 +206,7 @@
     ],
     "16": [
       {
-        "name": "Climb",
+        "name": "Plateau de Salaison",
         "km_before_finish": 15.1,
         "length_km": 10.8,
         "steepness": 3.8,
@@ -222,7 +222,7 @@
         "top_m": 1134
       },
       {
-        "name": "Climb",
+        "name": "Côte de la Moussière",
         "km_before_finish": 115.2,
         "length_km": 1.4,
         "steepness": 5.6,
@@ -231,28 +231,28 @@
     ],
     "18": [
       {
-        "name": "Climb",
+        "name": "Col de Prés",
         "km_before_finish": 118.4,
         "length_km": 2.0,
         "steepness": 4.5,
         "top_m": 435
       },
       {
-        "name": "Climb",
+        "name": "Côte d'Engins",
         "km_before_finish": 91.9,
         "length_km": 12.2,
         "steepness": 4.5,
         "top_m": 859
       },
       {
-        "name": "Climb",
+        "name": "Côte de la Moussière",
         "km_before_finish": 86.6,
         "length_km": 3.3,
         "steepness": 4.7,
         "top_m": 964
       },
       {
-        "name": "Climb",
+        "name": "Côte De Grésin",
         "km_before_finish": 71.5,
         "length_km": 4.4,
         "steepness": 5.5,
@@ -268,21 +268,21 @@
     ],
     "19": [
       {
-        "name": "Climb",
+        "name": "Côte De Grésin",
         "km_before_finish": 123.1,
         "length_km": 5.9,
         "steepness": 6.4,
         "top_m": 1252
       },
       {
-        "name": "Climb",
+        "name": "Côte d'Engins",
         "km_before_finish": 102.9,
         "length_km": 12.4,
         "steepness": 5.7,
         "top_m": 1666
       },
       {
-        "name": "Climb",
+        "name": "Col de Prés",
         "km_before_finish": 72.2,
         "length_km": 3.6,
         "steepness": 4.4,
@@ -305,28 +305,28 @@
     ],
     "2": [
       {
-        "name": "Climb",
+        "name": "Côte de la Moussière",
         "km_before_finish": 113.7,
         "length_km": 3.0,
         "steepness": 3.3,
         "top_m": 120
       },
       {
-        "name": "Climb",
+        "name": "Col de Couz",
         "km_before_finish": 45.3,
         "length_km": 10.0,
         "steepness": 4.0,
         "top_m": 422
       },
       {
-        "name": "Climb",
+        "name": "Col de Prés",
         "km_before_finish": 26.9,
         "length_km": 2.2,
         "steepness": 7.3,
         "top_m": 174
       },
       {
-        "name": "Climb",
+        "name": "Côte de la Mulaz",
         "km_before_finish": 14.6,
         "length_km": 2.2,
         "steepness": 7.3,
@@ -349,14 +349,14 @@
         "top_m": 1290
       },
       {
-        "name": "Climb",
+        "name": "Col de Couz",
         "km_before_finish": 144.8,
         "length_km": 8.9,
         "steepness": 6.9,
         "top_m": 1794
       },
       {
-        "name": "Climb",
+        "name": "Côte De Grésin",
         "km_before_finish": 138.1,
         "length_km": 5.1,
         "steepness": 6.6,
@@ -377,21 +377,21 @@
         "top_m": 2631
       },
       {
-        "name": "Climb",
+        "name": "Côte d'Engins",
         "km_before_finish": 14.9,
         "length_km": 12.7,
         "steepness": 7.4,
         "top_m": 1991
       },
       {
-        "name": "Climb",
+        "name": "Côte de la Moussière",
         "km_before_finish": 8.2,
         "length_km": 3.4,
         "steepness": 3.1,
         "top_m": 1870
       },
       {
-        "name": "Climb",
+        "name": "Côte de la Mulaz",
         "km_before_finish": 0.0,
         "length_km": 3.8,
         "steepness": 6.2,
@@ -400,7 +400,7 @@
     ],
     "21": [
       {
-        "name": "Climb",
+        "name": "Côte de la Moussière",
         "km_before_finish": 90.3,
         "length_km": 2.1,
         "steepness": 3.7,
@@ -409,14 +409,14 @@
     ],
     "3": [
       {
-        "name": "Climb",
+        "name": "Col de Couz",
         "km_before_finish": 64.9,
         "length_km": 8.1,
         "steepness": 6.6,
         "top_m": 1791
       },
       {
-        "name": "Climb",
+        "name": "Col de la Croisette",
         "km_before_finish": 0.0,
         "length_km": 7.8,
         "steepness": 3.8,
@@ -425,21 +425,21 @@
     ],
     "4": [
       {
-        "name": "Climb",
+        "name": "Col de Couz",
         "km_before_finish": 91.2,
         "length_km": 8.3,
         "steepness": 3.0,
         "top_m": 1454
       },
       {
-        "name": "Climb",
+        "name": "Plateau de Salaison",
         "km_before_finish": 36.7,
         "length_km": 11.5,
         "steepness": 5.4,
         "top_m": 1241
       },
       {
-        "name": "Climb",
+        "name": "Côte de la Mulaz",
         "km_before_finish": 26.4,
         "length_km": 4.0,
         "steepness": 10.6,
@@ -448,14 +448,14 @@
     ],
     "5": [
       {
-        "name": "Climb",
+        "name": "Côte de la Moussière",
         "km_before_finish": 126.4,
         "length_km": 3.3,
         "steepness": 3.3,
         "top_m": 376
       },
       {
-        "name": "Climb",
+        "name": "Col de Prés",
         "km_before_finish": 91.6,
         "length_km": 1.9,
         "steepness": 3.5,
@@ -487,21 +487,21 @@
     ],
     "9": [
       {
-        "name": "Climb",
+        "name": "Col de la Croisette",
         "km_before_finish": 155.7,
         "length_km": 6.4,
         "steepness": 3.4,
         "top_m": 404
       },
       {
-        "name": "Climb",
+        "name": "Plateau de Salaison",
         "km_before_finish": 52.1,
         "length_km": 10.5,
         "steepness": 3.5,
         "top_m": 851
       },
       {
-        "name": "Climb",
+        "name": "Côte de la Moussière",
         "km_before_finish": 14.0,
         "length_km": 2.2,
         "steepness": 4.7,

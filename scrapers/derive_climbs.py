@@ -69,6 +69,9 @@ NAMES_CACHE = DATA_DIR / "climbs_names_cache.json"
 # runs; an unmatched climb stays "Climb".
 NAMES_CACHE_DAYS = 30      # names don't change — refetch monthly
 TOP_MATCH_TOL_M = 40       # max altitude gap (m) to accept a name match
+LEN_MATCH_TOL_KM = 2.0     # fallback: max length gap (km) when the pool entry
+                           # has no altitude (some races, e.g. the Tour, publish
+                           # the climb pool with names + lengths but top=0)
 
 # --- Detection tuning (uncalibrated starting values; output is "experimental") --
 SMOOTH_M = 200.0        # elevation smoothing window (m) — kills GPS noise
@@ -216,38 +219,54 @@ def climbs_for_gpx(text: str) -> List[dict]:
 # Climb names from PCS (race-level route/climbs pool, matched by altitude)
 # ---------------------------------------------------------------------------
 def normalize_pool(raw_climbs: list) -> List[dict]:
-    """RaceClimbs.climbs() rows -> [{name, top_m, length_km}] (named + altitude
-    only; those are all we need to attach a name by altitude)."""
+    """RaceClimbs.climbs() rows -> [{name, top_m, length_km}]. Keep any named
+    climb that has an altitude OR a length: most races give altitudes (matched on
+    top_m), but some (e.g. the Tour) publish the pool with names + lengths and
+    top=0/None — those are matched on length instead. top_m is 0.0 when absent."""
     pool = []
     for c in raw_climbs or []:
         name = c.get("climb_name")
         top = c.get("top")
-        if name and top is not None:
+        length = c.get("length")
+        if name and (top is not None or length is not None):
             pool.append({"name": name.strip(),
-                         "top_m": float(top),
-                         "length_km": c.get("length")})
+                         "top_m": float(top) if top is not None else 0.0,
+                         "length_km": length})
     return pool
 
 
 def assign_names(climbs: List[dict], pool: List[dict],
-                 tol_m: float = TOP_MATCH_TOL_M) -> List[dict]:
-    """Attach PCS names to detected climbs by nearest altitude (greedy, no pool
-    entry reused). Length breaks altitude ties. Unmatched climbs keep "Climb".
-    Mutates and returns `climbs`."""
+                 tol_m: float = TOP_MATCH_TOL_M,
+                 tol_len_km: float = LEN_MATCH_TOL_KM) -> List[dict]:
+    """Attach PCS names to detected climbs (greedy, no pool entry reused).
+
+    Preferred match is by summit altitude (top_m, length breaks ties). When a
+    pool entry has no altitude (top_m == 0, as the Tour publishes its pool), fall
+    back to matching that entry by length. Altitude matches always win over
+    length matches. Unmatched climbs keep "Climb". Mutates and returns `climbs`."""
     if not pool:
         return climbs
-    # all candidate (altitude gap, length gap, climb_i, pool_j) within tolerance
+    # candidates as (tier, primary_gap, secondary_gap, climb_i, pool_j);
+    # tier 0 = altitude match (preferred), tier 1 = length-only match.
     cands = []
     for ci, c in enumerate(climbs):
+        c_top = c.get("top_m")
+        c_len = c.get("length_km") or 0.0
         for pj, p in enumerate(pool):
-            d_top = abs(c["top_m"] - p["top_m"])
-            if d_top <= tol_m:
-                d_len = (abs((c.get("length_km") or 0) - (p.get("length_km") or 0))
-                         if p.get("length_km") is not None else 0.0)
-                cands.append((d_top, d_len, ci, pj))
-    cands.sort()                       # best altitude match first, then length
+            p_top = p.get("top_m") or 0.0
+            p_len = p.get("length_km")
+            if p_top > 0 and c_top is not None:
+                d_top = abs(c_top - p_top)
+                if d_top <= tol_m:
+                    d_len = abs(c_len - p_len) if p_len is not None else 0.0
+                    cands.append((0, d_top, d_len, ci, pj))
+            elif p_len is not None:                 # pool entry has no altitude
+                d_len = abs(c_len - p_len)
+                if d_len <= tol_len_km:
+                    cands.append((1, d_len, 0.0, ci, pj))
+    cands.sort()                       # altitude matches first, then by gap
     used_c, used_p = set(), set()
-    for _, _, ci, pj in cands:
+    for _tier, _g1, _g2, ci, pj in cands:
         if ci in used_c or pj in used_p:
             continue
         climbs[ci]["name"] = pool[pj]["name"]

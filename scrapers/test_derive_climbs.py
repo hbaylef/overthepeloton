@@ -105,15 +105,44 @@ def test_stage_files_skips_one_day_route():
     assert [f["stage"] for f in dc.stage_files(entry)] == [1]
 
 
-def test_normalize_pool_keeps_named_with_altitude():
+def test_normalize_pool_keeps_named_with_altitude_or_length():
     raw = [
         {"climb_name": "Chommle", "top": 684, "length": 3.0},
         {"climb_name": None, "top": 700, "length": 2.0},      # no name → drop
-        {"climb_name": "NoTop", "top": None, "length": 1.0},  # no altitude → drop
+        {"climb_name": "NoTop", "top": None, "length": 1.0},  # no altitude but has
+                                                              # length → KEEP (top_m=0)
+        {"climb_name": "Empty", "top": None, "length": None}, # nothing usable → drop
     ]
     pool = dc.normalize_pool(raw)
-    assert [p["name"] for p in pool] == ["Chommle"], pool
+    assert [p["name"] for p in pool] == ["Chommle", "NoTop"], pool
     assert pool[0]["top_m"] == 684.0
+    assert pool[1]["top_m"] == 0.0 and pool[1]["length_km"] == 1.0
+
+
+def test_assign_names_matches_by_length_when_pool_has_no_altitude():
+    # the Tour case: pool entries carry names + lengths but top=0 → match on length
+    climbs = [
+        {"name": "Climb", "top_m": 828, "length_km": 11.8},   # ~Col 11.9
+        {"name": "Climb", "top_m": 1364, "length_km": 8.4},   # ~Couz 8.5
+        {"name": "Climb", "top_m": 1206, "length_km": 3.0},   # >2 km from any → none
+    ]
+    pool = [
+        {"name": "Col d'Engins", "top_m": 0.0, "length_km": 11.9},
+        {"name": "Col de Couz",  "top_m": 0.0, "length_km": 8.5},
+    ]
+    out = dc.assign_names(climbs, pool)
+    assert [c["name"] for c in out] == ["Col d'Engins", "Col de Couz", "Climb"], out
+
+
+def test_assign_names_altitude_match_beats_length_match():
+    # a pool with both an altitude entry and a no-altitude entry: the altitude
+    # match must win for the climb it fits, even if a length match also exists.
+    climbs = [{"name": "Climb", "top_m": 700, "length_km": 5.0}]
+    pool = [
+        {"name": "ByLen", "top_m": 0.0, "length_km": 5.0},    # length match
+        {"name": "ByAlt", "top_m": 695, "length_km": 9.0},    # altitude match (wins)
+    ]
+    assert dc.assign_names(climbs, pool)[0]["name"] == "ByAlt"
 
 
 def test_assign_names_matches_by_altitude():
