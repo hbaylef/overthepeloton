@@ -19,7 +19,7 @@ import os
 import re
 import time
 import logging
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from pathlib import Path
 from typing import Optional
 
@@ -34,6 +34,11 @@ DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 RACES_FILE = DATA_DIR / "races.json"
 STARTLISTS_DIR = DATA_DIR / "startlists"
 DELAY_BETWEEN_REQUESTS = 2  # seconds — be polite to PCS
+# A race that ended more than this many days ago is "frozen": we reuse its
+# cached entry + startlist and make no network calls for it. The grace window
+# keeps us scraping for a couple of days after the finish so the final stage's
+# results / abandons (scraped by scrape_results.py) are captured before freezing.
+FREEZE_GRACE_DAYS = 2
 
 logging.basicConfig(
     level=logging.INFO,
@@ -202,6 +207,35 @@ def drop_substitute_riders(riders: list) -> list:
     return out
 
 
+# Result fields owned by scrape_results.py (abandons + stage medals). scrape_races
+# rebuilds startlists from scratch each day, so without this it would wipe them
+# between the morning calendar scrape and scrape_results re-deriving them at the
+# end of the pipeline — making medals/DNF tags flicker if scrape_results fails.
+RESULT_FIELDS = ("status", "abandoned_stage", "medals")
+
+
+def carry_over_results(riders: list, sl_file: Path) -> None:
+    """Copy any existing abandon/medal fields from the previous startlist file
+    onto the freshly-scraped riders (matched by rider_url), in place. These are
+    authoritatively refreshed later by scrape_results.py; this just preserves
+    them across scrape_races' rebuild so they never momentarily disappear."""
+    if not sl_file.exists():
+        return
+    try:
+        prev = json.loads(sl_file.read_text(encoding="utf-8"))
+    except Exception as e:
+        log.warning(f"  could not read prior startlist {sl_file.name}: {e}")
+        return
+    by_url = {r.get("rider_url"): r for r in prev.get("riders", []) if r.get("rider_url")}
+    for r in riders:
+        old = by_url.get(r.get("rider_url"))
+        if not old:
+            continue
+        for k in RESULT_FIELDS:
+            if k in old:
+                r[k] = old[k]
+
+
 def scrape_startlist(race_url: str) -> Optional[list]:
     """
     Scrape the startlist for a race.
@@ -367,10 +401,45 @@ def annotate_stage_types(races: list) -> list:
     return races
 
 
+def load_existing_races_by_cs() -> dict:
+    """Index the previously-scraped races.json by cyclingstage_slug (the CALENDAR
+    key), so a frozen race can reuse last run's entry without re-scraping."""
+    if not RACES_FILE.exists():
+        return {}
+    try:
+        data = json.loads(RACES_FILE.read_text(encoding="utf-8"))
+    except Exception as e:
+        log.warning(f"Could not read existing {RACES_FILE.name}: {e}")
+        return {}
+    out = {}
+    for r in data.get("races", []):
+        cs = r.get("cyclingstage_slug")
+        if cs:
+            out[cs] = r
+    return out
+
+
+def is_finished(entry: dict, today: date) -> bool:
+    """True if the race ended more than FREEZE_GRACE_DAYS ago (safe to freeze)."""
+    end = entry.get("enddate")
+    if not end or len(end) < 10:
+        return False
+    try:
+        end_d = datetime.strptime(end[:10], "%Y-%m-%d").date()
+    except ValueError:
+        return False
+    return end_d < today - timedelta(days=FREEZE_GRACE_DAYS)
+
+
 def main():
     # Create output directories
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     STARTLISTS_DIR.mkdir(parents=True, exist_ok=True)
+
+    # Reuse last run's data for races that are already over (skip the network).
+    existing = load_existing_races_by_cs()
+    today = datetime.now().date()   # Actions runs in UTC; date granularity is enough
+    frozen = 0
 
     all_races = []
     startlist_count = 0
@@ -379,6 +448,18 @@ def main():
 
     for cs_slug, (pcs_slug, name, nationality, is_one_day, month) in CALENDAR.items():
         race_url = f"race/{pcs_slug}/{YEAR}"
+
+        # 0) Skip races that are over: reuse last run's entry + existing startlist
+        #    and make zero network calls. Final-day results are still captured
+        #    because the freeze waits FREEZE_GRACE_DAYS past the enddate.
+        cached = existing.get(cs_slug)
+        if cached and is_finished(cached, today):
+            log.info(f"  → Frozen (race over): {name} — reusing cached data")
+            all_races.append(cached)
+            frozen += 1
+            if (STARTLISTS_DIR / f"{cached.get('slug', '')}.json").exists():
+                startlist_count += 1
+            continue
 
         # 1) Try PCS for rich race info
         info = scrape_race_info(race_url)
@@ -428,6 +509,7 @@ def main():
         if riders and len(riders) > 0:
             slug = info["slug"]
             sl_file = STARTLISTS_DIR / f"{slug}.json"
+            carry_over_results(riders, sl_file)   # keep abandon/medal fields across the rebuild
             with open(sl_file, "w", encoding="utf-8") as f:
                 json.dump({
                     "race": info["name"],
@@ -458,7 +540,7 @@ def main():
         json.dump(output, f, indent=2, ensure_ascii=False)
 
     log.info(f"Done! {len(all_races)} races saved to {RACES_FILE}")
-    log.info(f"  PCS data ok: {pcs_ok}  ·  fallback used: {pcs_fail}")
+    log.info(f"  PCS data ok: {pcs_ok}  ·  fallback used: {pcs_fail}  ·  frozen: {frozen}")
     log.info(f"  Startlists saved: {startlist_count}")
 
     print("\n" + "=" * 64)
@@ -466,6 +548,7 @@ def main():
     print(f"  Total races:  {len(all_races)}")
     print(f"  PCS enriched: {pcs_ok}")
     print(f"  Fallback:     {pcs_fail}  (races PCS didn't have data for)")
+    print(f"  Frozen:       {frozen}  (races over — reused cached data, no scrape)")
     print(f"  Startlists:   {startlist_count}")
     print("=" * 64)
     for r in all_races:

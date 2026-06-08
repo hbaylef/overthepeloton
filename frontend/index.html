@@ -629,6 +629,25 @@
     flex: none;
   }
   .r-name { font-weight: 500; }
+  /* abandoned (DNF/DNS/OTL/DSQ) riders — struck through + greyed, with a tag */
+  .roster-rider.r-out { color: var(--grey); }
+  .roster-rider.r-out .r-name,
+  .roster-rider.r-out .r-name .rider-link { text-decoration: line-through; }
+  .dnf-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    color: var(--rust-dk);
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    padding: 1px 6px;
+    flex: none;
+  }
+  /* stage-podium medals next to a rider's name */
+  .medals { font-size: 11px; letter-spacing: -1px; flex: none; cursor: default; }
+  .roster-rider.r-out .medals { filter: grayscale(0.6); opacity: 0.7; }
 
   /* ---------- Specialty rankings (sortable table) ---------- */
   .spec-scroll { overflow-x: auto; }
@@ -756,6 +775,7 @@ let map = null;
 let routeLayer = null;
 let endpointMarkers = null;  // start/finish markers (tracked so stage switches don't stack them)
 let highlightLayer = null;  // R4: pavé + climb overlays on the route (cleared/redrawn together)
+let hometownLayer = null;   // 📍 birthplace pins for riders local to this stage (hover = name)
 let hoverMarker = null;
 let elevationPoints = [];   // [{lat, lon, ele, dist}]
 let canvas, ctx;
@@ -1258,7 +1278,33 @@ function normalizeRider(raw) {
     placeOfBirth: raw.place_of_birth || null,         // town | null
     blat: (typeof raw.birthplace_lat === 'number') ? raw.birthplace_lat : null,
     blon: (typeof raw.birthplace_lon === 'number') ? raw.birthplace_lon : null,
+    status: raw.status || null,                       // 'DNF'|'DNS'|'OTL'|'DSQ' | null
+    abandonedStage: raw.abandoned_stage || null,      // 'S5' | 'P' | null
+    medals: (raw.medals && typeof raw.medals === 'object') ? raw.medals : null, // {gold,silver,bronze} | null
   };
+}
+
+// A rider with any status other than "finished" has left the race.
+const ABANDON_STATUSES = { DNF: 1, DNS: 1, OTL: 1, DSQ: 1 };
+function isAbandoned(r) { return !!(r.status && ABANDON_STATUSES[r.status]); }
+function dnfTag(r) {
+  if (!isAbandoned(r)) return '';
+  const where = r.abandonedStage ? `·${r.abandonedStage}` : '';
+  return `<span class="dnf-tag" title="Abandoned the race">${r.status}${where}</span>`;
+}
+
+// One medal per stage podium: 🥇 win, 🥈 2nd, 🥉 3rd (e.g. two wins → 🥇🥇).
+function medalsHtml(r) {
+  const m = r.medals;
+  if (!m) return '';
+  const g = m.gold || 0, s = m.silver || 0, b = m.bronze || 0;
+  if (!(g || s || b)) return '';
+  const icons = '🥇'.repeat(g) + '🥈'.repeat(s) + '🥉'.repeat(b);
+  const parts = [];
+  if (g) parts.push(`${g} stage win${g > 1 ? 's' : ''}`);
+  if (s) parts.push(`${s} × 2nd`);
+  if (b) parts.push(`${b} × 3rd`);
+  return `<span class="medals" title="${parts.join(' · ')}">${icons}</span>`;
 }
 
 async function getRaceRoster(slug) {
@@ -1311,10 +1357,12 @@ function renderTeamSection(roster) {
   const teamsHtml = order.map((t, idx) => {
     const rs = groups[t];
     const ridersHtml = rs.map(r => `
-      <div class="roster-rider">
+      <div class="roster-rider${isAbandoned(r) ? ' r-out' : ''}">
         <span class="r-num">${r.number != null ? r.number : ''}</span>
         ${flagImg(r.nat)}
         <span class="r-name">${riderNameHtml(r)}</span>
+        ${medalsHtml(r)}
+        ${dnfTag(r)}
       </div>`).join('');
     return `
       <div class="team-group">
@@ -1426,11 +1474,12 @@ function specCompare(a, b) {
 // ============================================================
 //  HOMETOWN & BIRTHDAYS  (small strip under the elevation profile)
 // ============================================================
-// Shows riders (for the displayed stage) whose birthplace is within 50 km of any
+// Shows riders (for the displayed stage) whose birthplace is within 10 km of any
 // point on the route, and/or whose birthday falls on the stage date. Needs the
 // per-rider birthdate + geocoded birthplace embedded by scrape_riders +
 // geocode_birthplaces — until those run it just shows the empty message.
-const LOCAL_RADIUS_KM = 50;
+// Local riders also get a 📍 pin on the map at their place of birth (hover = name).
+const LOCAL_RADIUS_KM = 10;
 let lrStageDate = null;          // 'YYYY-MM-DD' for the currently displayed stage
 
 function lrHaversineKm(la1, lo1, la2, lo2) {
@@ -1469,10 +1518,12 @@ function renderLocalRiders() {
     }
     if (r.blat != null && r.blon != null && elevationPoints.length) {
       const d = lrDistToRoute(r.blat, r.blon);
-      if (d <= LOCAL_RADIUS_KM) locals.push({ name: r.name, place: r.placeOfBirth, km: Math.round(d) });
+      if (d <= LOCAL_RADIUS_KM)
+        locals.push({ name: r.name, place: r.placeOfBirth, km: Math.round(d), lat: r.blat, lon: r.blon });
     }
   }
   locals.sort((a, b) => a.km - b.km);
+  drawHometownOnMap(locals);   // 📍 birthplace pins for the local riders
 
   let html = '';
   if (birthdays.length) html += `<div class="lr-row"><span class="lr-ico">🎂</span>` +
@@ -1732,6 +1783,34 @@ function drawHighlightsOnMap() {
   }
 
   if (layers.length) highlightLayer = L.layerGroup(layers).addTo(map);
+}
+
+// Drop a 📍 pin at the birthplace of each rider local to this stage. Riders born
+// in the same town share a pin (names stacked in the tooltip). Hovering shows the
+// rider name(s) + town. Rebuilt whenever the local-rider set changes.
+function drawHometownOnMap(locals) {
+  if (!map || typeof L === 'undefined') return;
+  if (hometownLayer) { map.removeLayer(hometownLayer); hometownLayer = null; }
+  if (!locals || !locals.length) return;
+
+  const byTown = new Map();   // "lat,lon" → { lat, lon, place, names: [] }
+  for (const l of locals) {
+    if (l.lat == null || l.lon == null) continue;
+    const key = l.lat.toFixed(4) + ',' + l.lon.toFixed(4);
+    if (!byTown.has(key)) byTown.set(key, { lat: l.lat, lon: l.lon, place: l.place, names: [] });
+    byTown.get(key).names.push(l.name);
+  }
+
+  const ico = L.divIcon({ className: '', iconSize: [22, 22], iconAnchor: [11, 20], html:
+    `<div style="font-size:20px;line-height:22px;text-align:center;` +
+    `filter:drop-shadow(0 1px 1px rgba(0,0,0,0.5))">📍</div>` });
+
+  const layers = [];
+  for (const t of byTown.values()) {
+    const tip = t.names.join(', ') + (t.place ? ` · ${t.place}` : '');
+    layers.push(L.marker([t.lat, t.lon], { icon: ico }).bindTooltip(tip));
+  }
+  hometownLayer = L.layerGroup(layers).addTo(map);
 }
 
 // ============================================================

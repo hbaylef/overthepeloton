@@ -49,6 +49,11 @@ jobs:
         run: python scrapers/geocode_birthplaces.py
         continue-on-error: true
 
+      - name: Record stage-race abandons (DNF) into startlists
+        # Must run after scrape_riders + geocode — both rewrite the startlists.
+        run: python scrapers/scrape_results.py
+        continue-on-error: true
+
       - name: Scrape categorised climbs (R4)
         run: python scrapers/scrape_climbs.py
         continue-on-error: true

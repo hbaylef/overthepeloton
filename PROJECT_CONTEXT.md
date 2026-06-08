@@ -7,12 +7,49 @@
 
 ---
 
-## 0. ⚠️ CURRENT STATUS — START HERE (updated 2026-06-07, end of session)
+## 0. ⚠️ CURRENT STATUS — START HERE (updated 2026-06-08, end of session)
 
 Running in **Claude Code** locally at `C:\Users\PC\Desktop\cycling-dashboard`.
 Site is live; each verified increment is committed + pushed (GitHub Pages).
 
-### 🟢 LATEST SESSION (2026-06-07) — R5 weather frontend SHIPPED
+### 🟢 LATEST SESSION (2026-06-08) — efficiency + results: freeze, abandons, medals
+
+- **Hometown data VERIFIED live.** The two overnight scrapes populated it:
+  4,386/4,473 riders have a birthdate, all 4,473 a place of birth, 473/473 towns
+  geocoded. The "Hometown & birthdays" strip is now data-backed.
+- **Hometown tightened + mapped** (`frontend/index.html`): radius **50 km → 10 km**
+  (`LOCAL_RADIUS_KM`), and local riders now get a **📍 pin on the map** at their
+  birthplace (`drawHometownOnMap` + `hometownLayer`; riders from the same town
+  share one pin, names stacked in the tooltip; rebuilt each stage switch).
+- **Daily scrape now SKIPS finished races** (`scrape_races.py`). A race that ended
+  **> `FREEZE_GRACE_DAYS` (2)** ago is *frozen*: its `races.json` entry + startlist
+  are reused from the prior run and **zero PCS calls** are made (`load_existing_
+  races_by_cs` + `is_finished`). Today that skips 26 of 37 races. The 2-day grace
+  guarantees the final stage's results are captured before freezing. Verified the
+  full TdF lifecycle (3 wk): scraped every day start→finish + 2 days, frozen on
+  day +3. Ongoing races are never frozen (enddate is in the future).
+- **Abandons (DNF) — NEW** `scrapers/scrape_results.py` (+ `test_scrape_results.py`,
+  7/7). Reads each completed stage's `Stage.results()` `rank`+`status`. **Abandons:**
+  a rider's LAST appearance with status ≠ `DF` (`DNF`/`DNS`/`OTL`/`DSQ`) → marked
+  `status` + `abandoned_stage` ("S5"/"P"). Frontend: struck-through + greyed in the
+  Startlist-by-Team grid with a `DNF·S5` tag (`isAbandoned`/`dnfTag`).
+- **Stage medals — NEW** (same scraper). Counts podiums across stages (1st→gold,
+  2nd→silver, 3rd→bronze; one per podium, 2 wins = `🥇🥇`) → `"medals":{gold,silver,
+  bronze}`. Frontend `medalsHtml()` shows the emoji run next to the name (tooltip
+  "2 stage wins · 1 × 3rd"). Independent of abandons (win-then-quit shows both).
+- **Flicker fix:** `scrape_races.carry_over_results()` copies the prior startlist's
+  `status`/`abandoned_stage`/`medals` onto freshly-scraped riders, so these never
+  vanish between the morning calendar scrape and `scrape_results` re-deriving them
+  at the end of the pipeline (esp. if `scrape_results` fails — it's `continue-on-
+  error`). `scrape_riders`/`geocode` already preserve them (mutate in place).
+- **Workflow:** new step "Record stage-race abandons (DNF) into startlists" runs
+  `scrape_results.py` **after** `scrape_riders` + `geocode` (both rewrite startlists).
+- ⏳ **Populates only after an Actions run** (PCS blocked by local TLS proxy). The
+  Dauphiné/Suisse are ongoing now → first Actions run will show their DNFs + medals.
+- Note: `check.py` (untracked) is the user's scratch probing `api.odds-api.io` for
+  a possible R6 odds source — left untracked, not committed.
+
+### 🟢 EARLIER SESSION (2026-06-07) — R5 weather frontend SHIPPED
 
 - **Integrated origin/main first** (overnight daily scrape `43d21e4`). That scrape
   populated **`start_time` across `races.json`** — 105 stages `pcs`, 13 `default`,
