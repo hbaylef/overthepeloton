@@ -48,19 +48,19 @@ def test_compute_abandons_ignores_recovered_status():
     assert sr.compute_abandons(scanned) == {}
 
 
-def test_compute_medals_counts_podiums():
-    # B wins two stages (2 gold), A takes a win + a 3rd, C only 2nd, D nothing.
+def test_compute_medals_collects_podiums():
+    # B wins two stages + a 2nd, A takes a win + a 3rd, C only a 2nd, D nothing.
     scanned = [
         ("S1", {"rider/a": _row(1), "rider/b": _row(2), "rider/c": _row(2), "rider/d": _row(4)}),
         ("S2", {"rider/a": _row(3), "rider/b": _row(1), "rider/c": _row(7)}),
         ("S3", {"rider/b": _row(1), "rider/a": _row(9)}),
     ]
     med = sr.compute_medals(scanned)
-    assert med == {
-        "rider/a": {"gold": 1, "silver": 0, "bronze": 1},
-        "rider/b": {"gold": 2, "silver": 1, "bronze": 0},
-        "rider/c": {"gold": 0, "silver": 1, "bronze": 0},
-    }, med
+    # best rank first; stage order preserved within a rank
+    assert med["rider/a"] == [{"rank": 1, "stage": "S1"}, {"rank": 3, "stage": "S2"}]
+    assert med["rider/b"] == [{"rank": 1, "stage": "S2"}, {"rank": 1, "stage": "S3"},
+                              {"rank": 2, "stage": "S1"}]
+    assert med["rider/c"] == [{"rank": 2, "stage": "S1"}]
     assert "rider/d" not in med
 
 
@@ -69,14 +69,14 @@ def test_apply_results_sets_and_clears():
         {"rider_url": "rider/a", "name": "A"},
         # B is stale: previously abandoned + medalled, now neither → both cleared
         {"rider_url": "rider/b", "name": "B", "status": "DNF",
-         "abandoned_stage": "S1", "medals": {"gold": 1, "silver": 0, "bronze": 0}},
+         "abandoned_stage": "S1", "medals": [{"rank": 1, "stage": "S1"}]},
     ]
     abandons = {"rider/a": ("DNF", "S3")}
-    medals = {"rider/a": {"gold": 2, "silver": 0, "bronze": 0}}
+    medals = {"rider/a": [{"rank": 1, "stage": "S2"}, {"rank": 1, "stage": "S5"}]}
     n_ab, n_med = sr.apply_results(riders, abandons, medals)
     assert (n_ab, n_med) == (1, 1)
     assert riders[0]["status"] == "DNF" and riders[0]["abandoned_stage"] == "S3"
-    assert riders[0]["medals"] == {"gold": 2, "silver": 0, "bronze": 0}
+    assert riders[0]["medals"] == [{"rank": 1, "stage": "S2"}, {"rank": 1, "stage": "S5"}]
     assert "status" not in riders[1] and "abandoned_stage" not in riders[1]
     assert "medals" not in riders[1]
 

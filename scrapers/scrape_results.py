@@ -8,13 +8,13 @@ PCS exposes per-rider ``rank`` + ``status`` on every stage's result table:
   status: DF (did finish), DNF, DNS, OTL, DSQ.
 We scan each stage that has already happened. For abandons, a rider's LAST
 appearance decides their fate — if that status isn't DF, they abandoned there.
-For medals, we count podiums across all stages (1st→gold, 2nd→silver, 3rd→
-bronze; one medal per podium, so two stage wins = two golds).
+For medals, we record each podium across all stages (rank 1/2/3) with the stage
+it was won on, so the UI can show the ranking + stage (e.g. 🥇 #1 S5).
 
 Per-rider fields added inside data/startlists/{slug}.json:
     "status":          "DNF" | "DNS" | "OTL" | "DSQ"   (abandoners only)
     "abandoned_stage": "S5" | "P" | ...   (short label of the stage they left on)
-    "medals":          {"gold": n, "silver": n, "bronze": n}   (medallists only)
+    "medals":          [{"rank": 1, "stage": "S5"}, ...]   (stage podiums; medallists only)
 Non-abandoners / non-medallists have the respective fields removed (kept clean).
 
 Scope: only STAGE races that have started and aren't yet frozen (ended more
@@ -118,20 +118,23 @@ def compute_abandons(scanned_stages: list) -> dict:
             if st in ABANDON_STATUSES}
 
 
-# A stage placing earns a medal: 1st → gold, 2nd → silver, 3rd → bronze.
-RANK_TO_MEDAL = {1: "gold", 2: "silver", 3: "bronze"}
+# A stage podium (rank 1/2/3) earns a medal: 🥇 1st, 🥈 2nd, 🥉 3rd.
+PODIUM_RANKS = (1, 2, 3)
 
 
 def compute_medals(scanned_stages: list) -> dict:
-    """Pure: count stage podiums per rider across all scanned stages. Returns
-    {rider_url: {"gold": n, "silver": n, "bronze": n}} for medallists only —
-    one medal per podium finish, so two stage wins = two golds."""
+    """Pure: collect each rider's stage podiums across all scanned stages. Returns
+    {rider_url: [{"rank": 1, "stage": "S5"}, ...]} for medallists only — one entry
+    per podium finish (two stage wins = two rank-1 entries), best rank first
+    (stage order preserved within a rank), so the UI can show e.g. 🥇 #1 S5."""
     medals = {}
-    for _label, rows in scanned_stages:
+    for label, rows in scanned_stages:
         for url, info in rows.items():
-            m = RANK_TO_MEDAL.get(info.get("rank"))
-            if m:
-                medals.setdefault(url, {"gold": 0, "silver": 0, "bronze": 0})[m] += 1
+            rank = info.get("rank")
+            if rank in PODIUM_RANKS:
+                medals.setdefault(url, []).append({"rank": rank, "stage": label})
+    for podiums in medals.values():
+        podiums.sort(key=lambda p: p["rank"])   # stable: keeps stage order within a rank
     return medals
 
 

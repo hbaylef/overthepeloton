@@ -16,17 +16,17 @@
 
 <style>
   :root {
-    --ink: #14130f;
-    --paper: #f4f1ea;
-    --paper-2: #ebe7dc;
-    --rust: #c8442a;
-    --rust-dk: #9e3320;
-    --road: #1a1916;
-    --moss: #4a5d23;
-    --gold: #d99e2b;
-    --line: #d8d2c4;
-    --grey: #7c7668;
-    --shadow: rgba(20,19,15,0.12);
+    --ink: #0f2238;        /* deep navy — text, borders, header */
+    --paper: #eef3f9;      /* cool off-white page */
+    --paper-2: #dde8f3;    /* cool panel tint */
+    --rust: #2563d8;       /* primary blue accent (was rust) */
+    --rust-dk: #1846a8;    /* darker blue accent */
+    --road: #25374f;       /* slate blue */
+    --moss: #1f8a78;       /* teal (start marker / one-day badge) */
+    --gold: #e0a526;       /* gold kept — medals, birthdays, highlights */
+    --line: #c4d4e4;       /* cool hairline */
+    --grey: #64748b;       /* cool slate grey */
+    --shadow: rgba(15,34,56,0.16);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -36,6 +36,7 @@
     background: var(--paper);
     color: var(--ink);
     font-family: 'Archivo', sans-serif;
+    font-size: 16px;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -44,7 +45,7 @@
     flex-direction: column;
     min-height: 100vh;
     background-image:
-      radial-gradient(circle at 1px 1px, rgba(20,19,15,0.04) 1px, transparent 0);
+      radial-gradient(circle at 1px 1px, rgba(15,34,56,0.05) 1px, transparent 0);
     background-size: 22px 22px;
   }
 
@@ -62,7 +63,7 @@
   }
   .brand {
     font-family: 'Archivo Black', sans-serif;
-    font-size: 28px;
+    font-size: 31px;
     letter-spacing: -0.5px;
     line-height: 1;
   }
@@ -100,7 +101,7 @@
   }
   .sidebar-head {
     padding: 16px 20px 10px;
-    font-size: 11px;
+    font-size: 12.5px;
     text-transform: uppercase;
     letter-spacing: 2.5px;
     color: var(--grey);
@@ -167,13 +168,13 @@
     letter-spacing: 0.5px;
   }
   .race-name {
-    font-size: 16px;
+    font-size: 17.5px;
     font-weight: 700;
-    margin: 3px 0;
+    margin: 4px 0;
     line-height: 1.15;
   }
   .race-meta {
-    font-size: 11px;
+    font-size: 12px;
     color: var(--grey);
     display: flex;
     gap: 8px;
@@ -215,16 +216,16 @@
   }
   .race-header h1 {
     font-family: 'Archivo Black', sans-serif;
-    font-size: 34px;
+    font-size: 42px;
     line-height: 0.95;
     letter-spacing: -1px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
   .race-header .sub {
     display: flex;
-    gap: 18px;
+    gap: 20px;
     flex-wrap: wrap;
-    font-size: 13px;
+    font-size: 14px;
     color: var(--grey);
     font-family: 'JetBrains Mono', monospace;
   }
@@ -239,9 +240,9 @@
   }
   .stage-tab {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
-    padding: 6px 12px;
+    padding: 7px 13px;
     border: 1.5px solid var(--line);
     background: var(--paper);
     cursor: pointer;
@@ -264,13 +265,13 @@
     gap: 18px;
   }
   #map {
-    height: 420px;
+    height: 560px;
     border: 2px solid var(--ink);
-    border-radius: 6px;
-    box-shadow: 6px 6px 0 var(--shadow);
+    border-radius: 8px;
+    box-shadow: 7px 7px 0 var(--shadow);
     z-index: 1;
   }
-  .leaflet-container { background: #aad3df; font-family: inherit; }
+  .leaflet-container { background: #aacbe6; font-family: inherit; }
 
   .profile-card {
     border: 2px solid var(--ink);
@@ -288,23 +289,23 @@
     background: var(--paper-2);
   }
   .profile-head h3 {
-    font-size: 12px;
+    font-size: 13.5px;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 800;
   }
   .profile-stats {
     display: flex;
-    gap: 18px;
+    gap: 20px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
+    font-size: 13.5px;
   }
   .profile-stats .stat b {
     color: var(--rust-dk);
   }
   .profile-stats .stat span {
     color: var(--grey);
-    font-size: 10px;
+    font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 1px;
     display: block;
@@ -312,16 +313,16 @@
   #elevation {
     display: block;
     width: 100%;
-    height: 220px;
+    height: 320px;
     cursor: crosshair;
   }
   .readout {
-    padding: 8px 18px;
+    padding: 10px 18px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
+    font-size: 13px;
     border-top: 1.5px solid var(--line);
     color: var(--grey);
-    min-height: 34px;
+    min-height: 38px;
     display: flex;
     gap: 22px;
   }
@@ -347,40 +348,40 @@
   .grad-legend {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    padding: 7px 18px;
+    gap: 14px;
+    padding: 9px 18px;
     border-top: 1.5px solid var(--line);
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
+    font-size: 12.5px;
     color: var(--grey);
   }
-  .grad-legend span { display: inline-flex; align-items: center; gap: 5px; }
+  .grad-legend span { display: inline-flex; align-items: center; gap: 6px; }
   .grad-legend i {
-    width: 14px; height: 9px; border-radius: 2px;
+    width: 18px; height: 11px; border-radius: 2px;
     display: inline-block;
-    box-shadow: 0 0 0 1px rgba(20,19,15,0.08);
+    box-shadow: 0 0 0 1px rgba(15,34,56,0.08);
   }
   /* climb legend marker: a small ▲ matching the on-profile climb glyph */
   .grad-legend i.climb-mark {
     width: 0; height: 0; border-radius: 0; box-shadow: none;
-    border-left: 5px solid transparent; border-right: 5px solid transparent;
-    border-bottom: 9px solid var(--ink);
+    border-left: 7px solid transparent; border-right: 7px solid transparent;
+    border-bottom: 12px solid var(--ink);
   }
 
   /* R5: weather overlay control (Leaflet control, top-right of the map) */
   .wx-ctrl {
     background: var(--paper); border: 1.5px solid var(--ink);
-    box-shadow: 3px 3px 0 var(--ink); padding: 8px 10px;
-    font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink);
-    line-height: 1.5; max-width: 190px;
+    box-shadow: 3px 3px 0 var(--ink); padding: 11px 13px;
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--ink);
+    line-height: 1.55; max-width: 235px;
   }
   .wx-ctrl b { font-family: 'Archivo', sans-serif; letter-spacing: .04em;
-    text-transform: uppercase; font-size: 10px; }
-  .wx-ctrl label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
-  .wx-ctrl input { accent-color: var(--rust); cursor: pointer; margin: 0; }
-  .wx-ctrl .wx-note { color: #7c7668; font-size: 10px; margin-top: 3px; }
-  .wx-ctrl .wx-legend { margin-top: 5px; border-top: 1px solid var(--line);
-    padding-top: 5px; color: #7c7668; font-size: 10px; }
+    text-transform: uppercase; font-size: 12px; }
+  .wx-ctrl label { display: flex; align-items: center; gap: 7px; cursor: pointer; margin-top: 2px; }
+  .wx-ctrl input { accent-color: var(--rust); cursor: pointer; margin: 0; width: 15px; height: 15px; }
+  .wx-ctrl .wx-note { color: #64748b; font-size: 11.5px; margin-top: 4px; }
+  .wx-ctrl .wx-legend { margin-top: 6px; border-top: 1px solid var(--line);
+    padding-top: 6px; color: #64748b; font-size: 11.5px; }
   /* wind arrow marker: rotated glyph + speed label */
   .wx-wind { display: flex; flex-direction: column; align-items: center;
     line-height: 1; pointer-events: none; }
@@ -396,39 +397,45 @@
     text-shadow: 0 0 2px var(--paper), 0 0 3px var(--paper), 0 0 4px var(--paper); }
 
   /* hometown & birthdays — small strip under the profile */
-  .local-riders { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 7px; }
-  .lr-title { font-family: 'Archivo', sans-serif; text-transform: uppercase;
-    letter-spacing: .05em; font-size: 10px; color: var(--grey); margin-bottom: 5px; }
-  .lr-row { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; margin-bottom: 4px; }
-  .lr-ico { font-size: 13px; line-height: 1; }
-  .lr-chip { font-family: 'JetBrains Mono', monospace; font-size: 11px;
-    background: var(--paper-2); border: 1px solid var(--line); padding: 2px 6px; color: var(--ink); }
+  /* same layout/typography as the climbs list: head label + inline chips */
+  .local-riders {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 7px;
+    padding: 11px 18px; border-top: 1.5px solid var(--line);
+  }
+  .lr-head {
+    font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey);
+    margin-right: 4px;
+  }
+  .lr-ico { font-size: 16px; line-height: 1; margin-left: 4px; }
+  .lr-chip { font-family: 'JetBrains Mono', monospace; font-size: 13px;
+    background: var(--paper-2); border: 1px solid var(--line); padding: 3px 8px; color: var(--ink); }
   .lr-chip em { color: var(--rust); font-style: normal; font-weight: 700; }
-  .lr-empty { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--grey); }
+  .lr-empty { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--grey); }
 
   /* R4: climbs list under the profile (numbers key the ▲ markers on the chart) */
   .climb-list {
-    display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
-    padding: 9px 18px; border-top: 1.5px solid var(--line);
-    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 7px;
+    padding: 11px 18px; border-top: 1.5px solid var(--line);
+    font-family: 'JetBrains Mono', monospace; font-size: 13px;
   }
   .climb-list-head {
-    font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 10px;
+    font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px;
     letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey);
     margin-right: 4px;
   }
   .climb-chip {
-    display: inline-flex; align-items: center; gap: 5px;
-    padding: 3px 8px; cursor: pointer; color: var(--ink);
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 9px; cursor: pointer; color: var(--ink);
     background: var(--paper); border: 1.5px solid var(--line); border-radius: 3px;
     font: inherit; line-height: 1.4;
-    box-shadow: 1.5px 1.5px 0 rgba(20,19,15,0.06);
+    box-shadow: 1.5px 1.5px 0 rgba(15,34,56,0.06);
   }
   .climb-chip:hover { border-color: var(--rust); box-shadow: 1.5px 1.5px 0 var(--rust); }
   .climb-chip i {
     width: 0; height: 0;
-    border-left: 4px solid transparent; border-right: 4px solid transparent;
-    border-bottom: 8px solid var(--ink);
+    border-left: 5px solid transparent; border-right: 5px solid transparent;
+    border-bottom: 10px solid var(--ink);
   }
   .climb-chip b { font-weight: 700; }
   .climb-chip span { color: var(--grey); }
@@ -484,7 +491,7 @@
     align-items: center;
   }
   .odds-head h3 {
-    font-size: 12px;
+    font-size: 13.5px;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 800;
@@ -519,7 +526,7 @@
   }
   .odds-rider {
     font-weight: 600;
-    font-size: 14px;
+    font-size: 15px;
     z-index: 1;
   }
   .odds-prob {
@@ -538,7 +545,7 @@
   .odds-bar {
     position: absolute;
     left: 0; top: 0; bottom: 0;
-    background: linear-gradient(90deg, rgba(200,68,42,0.14), rgba(200,68,42,0.03));
+    background: linear-gradient(90deg, rgba(37,99,216,0.16), rgba(37,99,216,0.03));
     z-index: 0;
   }
   .odds-fav .odds-rider { color: var(--rust-dk); font-weight: 700; }
@@ -562,7 +569,7 @@
   /* ---------- Collapsible section shell ---------- */
   .sec-card { margin-bottom: 18px; }
   .sec-head { cursor: pointer; user-select: none; }
-  .sec-head:hover { background: #e3ddcf; }
+  .sec-head:hover { background: #d3e1f0; }
   .sec-head-right { display: flex; align-items: center; gap: 10px; }
   .sec-caret { font-size: 11px; color: var(--rust); width: 12px; text-align: center; }
 
@@ -570,7 +577,7 @@
   .flag-img {
     width: 20px; height: 15px;
     border-radius: 2px;
-    box-shadow: 0 0 0 1px rgba(20,19,15,0.12);
+    box-shadow: 0 0 0 1px rgba(15,34,56,0.12);
     flex: none;
     object-fit: cover;
   }
@@ -602,7 +609,7 @@
   }
   .team-head:hover { background: var(--paper-2); }
   .team-caret { font-size: 9px; color: var(--rust); width: 9px; flex: none; }
-  .team-name { font-weight: 700; font-size: 13px; flex: 1; line-height: 1.2; }
+  .team-name { font-weight: 700; font-size: 14.5px; flex: 1; line-height: 1.2; }
   .team-count {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
@@ -617,14 +624,14 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 3px 0;
-    font-size: 12.5px;
+    padding: 4px 0;
+    font-size: 14px;
   }
   .r-num {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
+    font-size: 12.5px;
     color: var(--grey);
-    width: 24px;
+    width: 26px;
     text-align: right;
     flex: none;
   }
@@ -645,8 +652,11 @@
     padding: 1px 6px;
     flex: none;
   }
-  /* stage-podium medals next to a rider's name */
-  .medals { font-size: 11px; letter-spacing: -1px; flex: none; cursor: default; }
+  /* stage-podium medals next to a rider's name — emoji + #rank and stage */
+  .medals { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px; flex: none; }
+  .medal { display: inline-flex; align-items: center; gap: 2px; font-size: 13px; white-space: nowrap; cursor: default; }
+  .medal em { font-style: normal; font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 700; color: var(--grey); }
   .roster-rider.r-out .medals { filter: grayscale(0.6); opacity: 0.7; }
 
   /* ---------- Specialty rankings (sortable table) ---------- */
@@ -673,7 +683,7 @@
   }
   .spec-table th.sortable { cursor: pointer; user-select: none; }
   .spec-table th.sortable:hover { color: var(--rust-dk); }
-  .spec-table th.sorted { color: var(--rust-dk); background: #e3ddcf; }
+  .spec-table th.sorted { color: var(--rust-dk); background: #d3e1f0; }
   .spec-table td.num, .spec-table th.num {
     text-align: right;
     font-family: 'JetBrains Mono', monospace;
@@ -855,7 +865,7 @@ function showLoadError(err) {
   const hint = usingFile
     ? `You opened this file directly (<code>file://</code>). Browsers block
        data loading that way. Run a local server instead:<br><br>
-       <code style="display:block;background:#14130f;color:#f4f1ea;padding:10px;
+       <code style="display:block;background:#0f2238;color:#eef3f9;padding:10px;
        border-radius:4px;margin-top:6px">cd cycling-dashboard<br>python3 -m http.server</code>
        <br>then open <code>http://localhost:8000/frontend/</code>`
     : `Could not find <code>races.json</code>. Make sure the <code>data/</code>
@@ -907,7 +917,7 @@ function teamColour(name) {
 function jerseyIcon(colour) {
   return `<svg class="jersey" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">` +
     `<path d="M9 3 L4 6.5 L6.5 10 L8.5 8.8 V21 H15.5 V8.8 L17.5 10 L20 6.5 L15 3 ` +
-    `C15 5 9 5 9 3 Z" fill="${colour}" stroke="rgba(20,19,15,0.3)" stroke-width="0.7" ` +
+    `C15 5 9 5 9 3 Z" fill="${colour}" stroke="rgba(15,34,56,0.3)" stroke-width="0.7" ` +
     `stroke-linejoin="round"/></svg>`;
 }
 
@@ -1099,12 +1109,12 @@ function renderRaceHeader(gpx) {
           </div>
           <canvas id="elevation"></canvas>
           <div class="grad-legend">
-            <span><i style="background:#5a7fa0"></i>descent</span>
-            <span><i style="background:#6f8f3f"></i>0–3%</span>
-            <span><i style="background:#d99e2b"></i>3–6%</span>
-            <span><i style="background:#c8442a"></i>6–9%</span>
-            <span><i style="background:#9e3320"></i>9–12%</span>
-            <span><i style="background:#6e1f14"></i>12%+</span>
+            <span><i style="background:#5293c2"></i>descent</span>
+            <span><i style="background:#62a347"></i>0–3%</span>
+            <span><i style="background:#e0a626"></i>3–6%</span>
+            <span><i style="background:#dd7029"></i>6–9%</span>
+            <span><i style="background:#cc3f29"></i>9–12%</span>
+            <span><i style="background:#971c12"></i>12%+</span>
             <span><i style="background:#4a2c12"></i>cobbles</span>
             <span><i class="climb-mark"></i>climb</span>
           </div>
@@ -1136,7 +1146,6 @@ function renderRaceHeader(gpx) {
     </div>
     ${vizHtml}
     <div class="viz" style="padding-top:0">
-      <div id="specialty-container"></div>
       <div id="startlist-container"></div>
       <div id="odds-container"></div>
     </div>`;
@@ -1234,7 +1243,7 @@ function renderClimbList(climbs) {
   el.style.display = '';
   el.innerHTML = '<span class="climb-list-head">Climbs</span>' + climbs.map(c => {
     const stats = (c.length_km && c.steepness) ? `<span>${c.length_km} km · ${c.steepness}%</span>` : '';
-    const col = gradeColor(c.steepness || 0);
+    const col = climbColor(c);                  // glyph coloured by climb difficulty
     return `<button class="climb-chip" data-num="${c.num}" title="zoom to this climb">` +
       `<i style="border-bottom-color:${col}"></i><b>${c.num}</b> ${c.name}${stats}</button>`;
   }).join('');
@@ -1280,7 +1289,7 @@ function normalizeRider(raw) {
     blon: (typeof raw.birthplace_lon === 'number') ? raw.birthplace_lon : null,
     status: raw.status || null,                       // 'DNF'|'DNS'|'OTL'|'DSQ' | null
     abandonedStage: raw.abandoned_stage || null,      // 'S5' | 'P' | null
-    medals: (raw.medals && typeof raw.medals === 'object') ? raw.medals : null, // {gold,silver,bronze} | null
+    medals: Array.isArray(raw.medals) ? raw.medals : null, // [{rank,stage}, …] | null
   };
 }
 
@@ -1293,18 +1302,20 @@ function dnfTag(r) {
   return `<span class="dnf-tag" title="Abandoned the race">${r.status}${where}</span>`;
 }
 
-// One medal per stage podium: 🥇 win, 🥈 2nd, 🥉 3rd (e.g. two wins → 🥇🥇).
+// One badge per stage podium: medal emoji by rank + #rank and the stage it was
+// won on, e.g. 🥇 #1 S5  🥉 #3 S8.
+const MEDAL_BY_RANK = { 1: '🥇', 2: '🥈', 3: '🥉' };
+const RANK_LABEL = { 1: 'Stage win', 2: '2nd place', 3: '3rd place' };
 function medalsHtml(r) {
   const m = r.medals;
-  if (!m) return '';
-  const g = m.gold || 0, s = m.silver || 0, b = m.bronze || 0;
-  if (!(g || s || b)) return '';
-  const icons = '🥇'.repeat(g) + '🥈'.repeat(s) + '🥉'.repeat(b);
-  const parts = [];
-  if (g) parts.push(`${g} stage win${g > 1 ? 's' : ''}`);
-  if (s) parts.push(`${s} × 2nd`);
-  if (b) parts.push(`${b} × 3rd`);
-  return `<span class="medals" title="${parts.join(' · ')}">${icons}</span>`;
+  if (!Array.isArray(m) || !m.length) return '';
+  const items = m.map(p => {
+    const emo = MEDAL_BY_RANK[p.rank] || '';
+    const stg = p.stage ? ` ${p.stage}` : '';
+    const tip = `${RANK_LABEL[p.rank] || ('#' + p.rank)}${p.stage ? ' · ' + p.stage : ''}`;
+    return `<span class="medal" title="${tip}">${emo}<em>#${p.rank}${stg}</em></span>`;
+  }).join('');
+  return `<span class="medals">${items}</span>`;
 }
 
 async function getRaceRoster(slug) {
@@ -1321,17 +1332,14 @@ let currentRoster = null;
 async function loadRosterSections() {
   if (!currentRace) return;
   const slug = currentRace.slug;
-  const specC = document.getElementById('specialty-container');
   const teamC = document.getElementById('startlist-container');
-  if (specC) specC.innerHTML = `<div class="odds-card"><div class="odds-head">
-    <h3>Specialty Rankings</h3></div><div class="odds-empty">Loading…</div></div>`;
   if (teamC) teamC.innerHTML = '';
 
   const roster = await getRaceRoster(slug);
   if (currentRace.slug !== slug) return;   // user switched races mid-fetch
 
   currentRoster = roster;
-  renderSpecialtyTable(roster);
+  // Specialty Rankings hidden for now — renderSpecialtyTable kept but not called.
   renderTeamSection(roster);
   renderLocalRiders();          // roster now available → fill the hometown/birthday strip
 }
@@ -1525,14 +1533,22 @@ function renderLocalRiders() {
   locals.sort((a, b) => a.km - b.km);
   drawHometownOnMap(locals);   // 📍 birthplace pins for the local riders
 
-  let html = '';
-  if (birthdays.length) html += `<div class="lr-row"><span class="lr-ico">🎂</span>` +
-    birthdays.map(b => `<span class="lr-chip">${b.name}${b.age != null ? ` (${b.age})` : ''}</span>`).join('') + `</div>`;
-  if (locals.length) html += `<div class="lr-row"><span class="lr-ico">📍</span>` +
-    locals.map(l => `<span class="lr-chip">${l.name}${l.place ? ` · ${l.place}` : ''} <em>${l.km} km</em></span>`).join('') + `</div>`;
-  if (!html) html = `<div class="lr-empty">No rider born near the race or on the day of the race.</div>`;
-
-  c.innerHTML = `<div class="lr-title">Hometown &amp; birthdays</div>${html}`;
+  // head label + inline chips, on one wrapping row (same pattern as the climbs list)
+  const parts = [`<span class="lr-head">Hometown &amp; birthdays</span>`];
+  if (birthdays.length) {
+    parts.push(`<span class="lr-ico" title="birthday on the stage date">🎂</span>`);
+    parts.push(...birthdays.map(b =>
+      `<span class="lr-chip">${b.name}${b.age != null ? ` (${b.age})` : ''}</span>`));
+  }
+  if (locals.length) {
+    parts.push(`<span class="lr-ico" title="born near the route">📍</span>`);
+    parts.push(...locals.map(l =>
+      `<span class="lr-chip">${l.name}${l.place ? ` · ${l.place}` : ''} <em>${l.km} km</em></span>`));
+  }
+  if (!birthdays.length && !locals.length) {
+    parts.push(`<span class="lr-empty">No rider born near the race or on the day of the race.</span>`);
+  }
+  c.innerHTML = parts.join('');
 }
 
 // ============================================================
@@ -1610,7 +1626,7 @@ function initMap() {
     // Leaflet failed to load (e.g. offline / blocked CDN).
     const m = document.getElementById('map');
     if (m) m.innerHTML = '<div style="display:flex;align-items:center;'+
-      'justify-content:center;height:100%;color:#7c7668;font-family:'+
+      'justify-content:center;height:100%;color:#64748b;font-family:'+
       'JetBrains Mono,monospace;font-size:13px;text-align:center;padding:20px">'+
       'Map library could not load.<br>The elevation profile below still works.</div>';
     map = null;
@@ -1720,17 +1736,17 @@ function drawRouteOnMap() {
   const latlngs = elevationPoints.map(p => [p.lat, p.lon]);
 
   routeLayer = L.polyline(latlngs, {
-    color: '#c8442a', weight: 4, opacity: 0.9,
+    color: '#2563d8', weight: 4, opacity: 0.95,
     lineJoin: 'round', lineCap: 'round'
   }).addTo(map);
 
   // start & finish markers
   const startIco = L.divIcon({ className:'', html:
-    '<div style="background:#4a5d23;width:14px;height:14px;border-radius:50%;border:2.5px solid #f4f1ea;box-shadow:0 0 0 1px #14130f"></div>',
-    iconSize:[14,14], iconAnchor:[7,7] });
+    '<div style="background:#1f8a78;width:15px;height:15px;border-radius:50%;border:2.5px solid #eef3f9;box-shadow:0 0 0 1px #0f2238"></div>',
+    iconSize:[15,15], iconAnchor:[7,7] });
   const endIco = L.divIcon({ className:'', html:
-    '<div style="background:#14130f;width:14px;height:14px;border-radius:50%;border:2.5px solid #f4f1ea;box-shadow:0 0 0 1px #14130f"></div>',
-    iconSize:[14,14], iconAnchor:[7,7] });
+    '<div style="background:#0f2238;width:15px;height:15px;border-radius:50%;border:2.5px solid #eef3f9;box-shadow:0 0 0 1px #0f2238"></div>',
+    iconSize:[15,15], iconAnchor:[7,7] });
 
   endpointMarkers = L.layerGroup([
     L.marker(latlngs[0], {icon:startIco}).bindTooltip('Start'),
@@ -1739,7 +1755,7 @@ function drawRouteOnMap() {
 
   // moving hover marker
   hoverMarker = L.circleMarker(latlngs[0], {
-    radius: 7, color:'#14130f', weight:2, fillColor:'#d99e2b', fillOpacity:1
+    radius: 7, color:'#0f2238', weight:2, fillColor:'#e0a526', fillOpacity:1
   });
 
   map.fitBounds(routeLayer.getBounds(), { padding:[30,30] });
@@ -1761,7 +1777,7 @@ function drawHighlightsOnMap() {
   const addStretch = (d0, d1, color, tip) => {
     const ll = llBetween(d0, d1);
     if (ll.length < 2) return;
-    layers.push(L.polyline(ll, { color:'#f4f1ea', weight:9, opacity:0.9, lineCap:'round' }));        // casing
+    layers.push(L.polyline(ll, { color:'#eef3f9', weight:9, opacity:0.9, lineCap:'round' }));        // casing
     layers.push(L.polyline(ll, { color, weight:6, opacity:0.95, lineCap:'round' }).bindTooltip(tip)); // core
   };
 
@@ -1769,15 +1785,16 @@ function drawHighlightsOnMap() {
     addStretch(s.km_start, s.km_end, '#4a2c12', `pavé: ${s.name} ${'★'.repeat(s.stars || 0)}`);
 
   for (const c of (currentClimbs || [])) {
-    const col = gradeColor(c.steepness || 0);
+    const col = gradeColor(c.steepness || 0);   // road stretch = gradient
+    const mcol = climbColor(c);                  // summit marker = difficulty
     const stats = (c.length_km && c.steepness) ? ` · ${c.length_km}km @ ${c.steepness}%` : '';
     addStretch(c.kmStart, c.km, col, `${c.num}. ${c.name}${stats}`);
     const p = elevationPoints[nearestIndex(c.km)];
     if (p) {
       const ico = L.divIcon({ className:'', iconSize:[18,18], iconAnchor:[9,9], html:
         `<div style="display:flex;align-items:center;justify-content:center;width:18px;height:18px;` +
-        `border-radius:50%;background:${col};color:#f4f1ea;border:2px solid #14130f;` +
-        `box-shadow:0 0 0 1px #f4f1ea;font:700 10px 'JetBrains Mono',monospace">${c.num}</div>` });
+        `border-radius:50%;background:${mcol};color:#eef3f9;border:2px solid #0f2238;` +
+        `box-shadow:0 0 0 1px #eef3f9;font:700 10px 'JetBrains Mono',monospace">${c.num}</div>` });
       layers.push(L.marker([p.lat, p.lon], { icon: ico }).bindTooltip(`${c.num}. ${c.name}${stats}`));
     }
   }
@@ -2088,14 +2105,29 @@ function smoothGradeAt(i) {
   const de = elevationPoints[i].ele - elevationPoints[j].ele;
   return dd > 0 ? (de / (dd * 1000)) * 100 : 0;
 }
-// Stepped roadbook palette (on-brand: blue-grey → moss → gold → rust → maroon).
+// Stepped roadbook palette — vivid steepness ramp (blue → green → amber → orange
+// → red → deep red). Steepness colour is universal, so it stays loud on any theme.
 function gradeColor(g) {
-  if (g < -3) return '#5a7fa0';   // descent
-  if (g <  3) return '#6f8f3f';   // flat / gentle
-  if (g <  6) return '#d99e2b';   // 3–6%
-  if (g <  9) return '#c8442a';   // 6–9%
-  if (g < 12) return '#9e3320';   // 9–12%
-  return '#6e1f14';               // 12%+
+  if (g < -3) return '#5293c2';   // descent
+  if (g <  3) return '#62a347';   // flat / gentle
+  if (g <  6) return '#e0a626';   // 3–6%
+  if (g <  9) return '#dd7029';   // 6–9%
+  if (g < 12) return '#cc3f29';   // 9–12%
+  return '#971c12';               // 12%+
+}
+
+// Climb difficulty colour for the ▲ markers — reuses the legend's UPHILL palette
+// (a climb is never a "descent", so no blue) but keys it to total elevation gained
+// (length × avg gradient ≈ metres climbed), since average gradient alone clusters
+// most categorised climbs into one band. Long, steady climbs read harder (redder)
+// than short ones at the same gradient.
+function climbColor(c) {
+  const gain = (c.length_km || 0) * (c.steepness || 0) * 10;   // ≈ metres climbed
+  if (gain < 50)  return '#62a347';   // easy
+  if (gain < 150) return '#e0a626';
+  if (gain < 300) return '#dd7029';
+  if (gain < 600) return '#cc3f29';
+  return '#971c12';                    // brutal
 }
 
 // R4: cobbled stretches are coloured brown (overrides the steepness colour).
@@ -2172,15 +2204,19 @@ function ensureBase() {
   baseKey = key;
 
   if (!baseCanvas) { baseCanvas = document.createElement('canvas'); baseCtx = baseCanvas.getContext('2d'); }
-  baseCanvas.width = W*dpr; baseCanvas.height = H*dpr;
-  if (canvas.width !== W*dpr) canvas.width = W*dpr;
-  if (canvas.height !== H*dpr) canvas.height = H*dpr;
+  // Integer backing-store dimensions. On fractional devicePixelRatio (Windows
+  // 125%/150% scaling) W*dpr is non-integer, which made the per-frame base blit
+  // rescale by a hair and blur the static text (axes + climb labels). Round once.
+  const pw = Math.round(W*dpr), ph = Math.round(H*dpr);
+  baseCanvas.width = pw; baseCanvas.height = ph;
+  if (canvas.width !== pw) canvas.width = pw;
+  if (canvas.height !== ph) canvas.height = ph;
 
   const b = baseCtx;
   b.setTransform(dpr,0,0,dpr,0,0);
   b.clearRect(0,0,W,H);
 
-  const pad = { l: 44, r: 12, t: currentClimbs.length ? 24 : 14, b: 24 };
+  const pad = { l: 52, r: 14, t: currentClimbs.length ? 40 : 18, b: 30 };
   const plotW = W - pad.l - pad.r;
   const plotH = H - pad.t - pad.b;
   const baseY = pad.t + plotH;
@@ -2202,16 +2238,16 @@ function ensureBase() {
   const yOf = e => pad.t + plotH - ((e-eLo)/(eHi-eLo))*plotH;
 
   // grid + y labels
-  b.font = '10px "JetBrains Mono", monospace';
-  b.fillStyle = '#7c7668'; b.strokeStyle = '#e4dfd2'; b.lineWidth = 1;
+  b.font = '13px "JetBrains Mono", monospace';
+  b.fillStyle = '#64748b'; b.strokeStyle = '#c4d4e4'; b.lineWidth = 1;
   b.textBaseline = 'alphabetic';
   for (let i=0;i<=4;i++){
     const e = eLo + (eHi-eLo)*(i/4), y = yOf(e);
     b.beginPath(); b.moveTo(pad.l,y); b.lineTo(W-pad.r,y); b.stroke();
-    b.fillText(Math.round(e)+'m', 6, y+3);
+    b.fillText(Math.round(e)+'m', 6, y+4);
   }
   const dec = dSpan < 8 ? 1 : 0;
-  for (let i=0;i<=5;i++){ const d = dLo + dSpan*(i/5); b.fillText(d.toFixed(dec), xOf(d)-6, H-8); }
+  for (let i=0;i<=5;i++){ const d = dLo + dSpan*(i/5); b.fillText(d.toFixed(dec), xOf(d)-8, H-9); }
 
   // coloured segments (precomputed grades), clipped to the plot area
   b.save();
@@ -2223,43 +2259,43 @@ function ensureBase() {
     const x0 = xOf(p0.dist), x1 = xOf(p1.dist), y0 = yOf(p0.ele), y1 = yOf(p1.ele);
     b.beginPath();
     b.moveTo(x0, baseY); b.lineTo(x0, y0); b.lineTo(x1, y1); b.lineTo(x1, baseY); b.closePath();
-    b.fillStyle = col + '66'; b.fill();
+    b.fillStyle = col + '94'; b.fill();
     b.beginPath(); b.moveTo(x0, y0); b.lineTo(x1, y1);
-    b.strokeStyle = col; b.lineWidth = 2; b.lineCap = 'round'; b.stroke();
+    b.strokeStyle = col; b.lineWidth = 2.25; b.lineCap = 'round'; b.stroke();
   }
   b.restore();
 
   // R4: climb markers — a ▲ just above the plot with a dashed drop line to the
   // summit (coloured by steepness) and a small number; the full name · length ·
   // avg gradient live in the climb list below the chart. Static cache (per stage).
-  b.font = '9px "JetBrains Mono", monospace';
-  const my = pad.t - 7;                         // ▲ row, just above the plot top
+  b.font = '700 13px "JetBrains Mono", monospace';
+  const my = pad.t - 12;                        // ▲ row, just above the plot top
   for (const c of currentClimbs) {
     if (c.km < dLo || c.km > dHi) continue;
     const xc = xOf(c.km);
     const ei = nearestIndex(c.km);
     const yTop = yOf(elevationPoints[ei].ele);
-    const col = gradeColor(c.steepness || 0);
+    const col = climbColor(c);                  // ▲ coloured by climb difficulty
 
     b.beginPath();                              // dashed drop line summit → marker
-    b.setLineDash([3, 3]); b.moveTo(xc, my + 4); b.lineTo(xc, yTop);
-    b.strokeStyle = '#14130f'; b.globalAlpha = 0.45; b.lineWidth = 1; b.stroke();
+    b.setLineDash([3, 3]); b.moveTo(xc, my + 6); b.lineTo(xc, yTop);
+    b.strokeStyle = '#0f2238'; b.globalAlpha = 0.45; b.lineWidth = 1; b.stroke();
     b.setLineDash([]); b.globalAlpha = 1;
 
-    b.beginPath();                              // ▲ triangle
-    b.moveTo(xc, my - 5); b.lineTo(xc - 5, my + 4); b.lineTo(xc + 5, my + 4); b.closePath();
+    b.beginPath();                              // ▲ triangle (bigger)
+    b.moveTo(xc, my - 8); b.lineTo(xc - 7, my + 6); b.lineTo(xc + 7, my + 6); b.closePath();
     b.fillStyle = col; b.fill();
-    b.strokeStyle = '#14130f'; b.lineWidth = 1; b.stroke();
+    b.strokeStyle = '#0f2238'; b.lineWidth = 1.25; b.stroke();
 
     // number + length·gradient above the ▲ (full name is in the list below)
     const lbl = (c.length_km && c.steepness)
       ? `${c.num}  ${c.length_km}km ${c.steepness}%` : String(c.num);
     b.textAlign = 'center'; b.textBaseline = 'middle';
     const lw = b.measureText(lbl).width;
-    b.fillStyle = 'rgba(244,241,234,0.85)';
-    b.fillRect(xc - lw / 2 - 2, my - 17, lw + 4, 11);   // backing for legibility
-    b.fillStyle = '#14130f';
-    b.fillText(lbl, xc, my - 12);
+    b.fillStyle = 'rgba(238,243,249,0.92)';
+    b.fillRect(xc - lw / 2 - 3, my - 27, lw + 6, 17);   // backing for legibility
+    b.fillStyle = '#64748b';
+    b.fillText(lbl, xc, my - 18);
   }
   b.textAlign = 'left';
 
@@ -2271,9 +2307,12 @@ function renderProfile(hover = null, selection = null) {
   ensureBase();
   const dpr = window.devicePixelRatio || 1;
   const W = canvas.clientWidth, H = canvas.clientHeight;
-  ctx.setTransform(dpr,0,0,dpr,0,0);
-  ctx.clearRect(0,0,W,H);
-  ctx.drawImage(baseCanvas, 0, 0, W, H);
+  // Blit the cached base 1:1 in device pixels (identity transform) so it is never
+  // rescaled — keeps the static text crisp on fractional-DPR displays.
+  ctx.setTransform(1,0,0,1,0,0);
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.drawImage(baseCanvas, 0, 0);
+  ctx.setTransform(dpr,0,0,dpr,0,0);   // overlay (hover/badge) draws in CSS px
 
   const t = canvas._x; if (!t) return;
   const pad = t.pad, baseY = t.baseY;
@@ -2287,24 +2326,24 @@ function renderProfile(hover = null, selection = null) {
     const dele  = elevationPoints[i1].ele  - elevationPoints[i0].ele;
     const avg = ddist > 0 ? (dele/(ddist*1000))*100 : 0;
     const btxt = `${(t.dHi - t.dLo).toFixed(1)} km · avg ${avg>=0?'+':''}${avg.toFixed(1)}%`;
-    ctx.font = '11px "JetBrains Mono", monospace';
-    const bw = ctx.measureText(btxt).width + 18, bh = 18;
+    ctx.font = '700 14px "JetBrains Mono", monospace';
+    const bw = ctx.measureText(btxt).width + 24, bh = 24;
     const bx = t.W - pad.r - bw, by = pad.t + 2;
-    ctx.fillStyle = '#14130f';
-    if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(bx, by, bw, bh, 3); ctx.fill(); }
-    else ctx.fillRect(bx, by, bw, bh);
-    ctx.fillStyle = gradeColor(avg); ctx.fillRect(bx, by+3, 3, bh-6);   // band stripe
-    ctx.fillStyle = '#f4f1ea'; ctx.textBaseline = 'middle';
-    ctx.fillText(btxt, bx + 9, by + bh/2 + 0.5); ctx.textBaseline = 'alphabetic';
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#0f2238'; ctx.lineWidth = 1.5;
+    if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(bx, by, bw, bh, 4); ctx.fill(); ctx.stroke(); }
+    else { ctx.fillRect(bx, by, bw, bh); ctx.strokeRect(bx, by, bw, bh); }
+    ctx.fillStyle = gradeColor(avg); ctx.fillRect(bx + 2, by + 3, 4, bh - 6);   // band stripe
+    ctx.fillStyle = '#000'; ctx.textBaseline = 'middle';
+    ctx.fillText(btxt, bx + 13, by + bh/2 + 0.5); ctx.textBaseline = 'alphabetic';
     badgeBox = { x: bx, y: by, w: bw, h: bh };
   }
 
   // drag-to-zoom selection rectangle
   if (selection) {
     const sx0 = Math.min(selection.x0, selection.x1), sx1 = Math.max(selection.x0, selection.x1);
-    ctx.fillStyle = 'rgba(20,19,15,0.12)';
+    ctx.fillStyle = 'rgba(15,34,56,0.12)';
     ctx.fillRect(sx0, pad.t, sx1-sx0, t.plotH);
-    ctx.strokeStyle = 'rgba(20,19,15,0.5)'; ctx.lineWidth = 1;
+    ctx.strokeStyle = 'rgba(15,34,56,0.5)'; ctx.lineWidth = 1;
     ctx.strokeRect(sx0, pad.t, sx1-sx0, t.plotH);
   }
 
@@ -2314,15 +2353,15 @@ function renderProfile(hover = null, selection = null) {
     const col = gradeColor(hover.grade);
     ctx.beginPath();
     ctx.moveTo(hx, pad.t); ctx.lineTo(hx, baseY);
-    ctx.strokeStyle = '#14130f'; ctx.lineWidth = 1; ctx.setLineDash([4,3]);
+    ctx.strokeStyle = '#0f2238'; ctx.lineWidth = 1; ctx.setLineDash([4,3]);
     ctx.stroke(); ctx.setLineDash([]);
     ctx.beginPath(); ctx.arc(hx, hy, 4, 0, Math.PI*2);
-    ctx.fillStyle = col; ctx.strokeStyle = '#14130f'; ctx.lineWidth = 1.5;
+    ctx.fillStyle = col; ctx.strokeStyle = '#0f2238'; ctx.lineWidth = 1.5;
     ctx.fill(); ctx.stroke();
 
     const txt = `${hover.dist.toFixed(1)}km · ${hover.grade>=0?'+':''}${hover.grade.toFixed(1)}% · ${Math.round(hover.ele)}m`;
-    ctx.font = '11px "JetBrains Mono", monospace';
-    const bw = ctx.measureText(txt).width + 16, bh = 18;
+    ctx.font = '700 14px "JetBrains Mono", monospace';
+    const bw = ctx.measureText(txt).width + 24, bh = 24;
     let bx = hx + 10, by = pad.t + 2;     // pinned near the top of the chart
     if (bx + bw > t.W - pad.r) bx = hx - bw - 10;   // flip left near right edge
     if (bx < pad.l) bx = pad.l;
@@ -2331,12 +2370,12 @@ function renderProfile(hover = null, selection = null) {
         bx + bw > badgeBox.x && bx < badgeBox.x + badgeBox.w) {
       by = badgeBox.y + badgeBox.h + 4;
     }
-    ctx.fillStyle = '#14130f';
-    if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(bx, by, bw, bh, 3); ctx.fill(); }
-    else ctx.fillRect(bx, by, bw, bh);
-    ctx.fillStyle = col; ctx.fillRect(bx, by+3, 3, bh-6);   // steepness-band stripe
-    ctx.fillStyle = '#f4f1ea'; ctx.textBaseline = 'middle';
-    ctx.fillText(txt, bx + 9, by + bh/2 + 0.5);
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#0f2238'; ctx.lineWidth = 1.5;
+    if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(bx, by, bw, bh, 4); ctx.fill(); ctx.stroke(); }
+    else { ctx.fillRect(bx, by, bw, bh); ctx.strokeRect(bx, by, bw, bh); }
+    ctx.fillStyle = col; ctx.fillRect(bx + 2, by + 3, 4, bh - 6);   // steepness-band stripe
+    ctx.fillStyle = '#000'; ctx.textBaseline = 'middle';
+    ctx.fillText(txt, bx + 13, by + bh/2 + 0.5);
     ctx.textBaseline = 'alphabetic';
   }
 }
@@ -2467,5 +2506,7 @@ function resetZoom() {
 
 boot();
 </script>
+<script data-goatcounter="https://overthepeloton.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
