@@ -1,7 +1,7 @@
 {
   "race": "Tour Auvergne-Rhône-Alpes",
   "race_slug": "criterium-du-dauphine-2026",
-  "updated_at": "2026-06-08T19:42:22.922089",
+  "updated_at": "2026-06-08T21:04:21.217375",
   "total_riders": 154,
   "riders": [
     {
@@ -799,6 +799,12 @@
       "team": "Decathlon CMA CGM Team (WT)",
       "rider_url": "rider/leo-bisiaux",
       "team_url": "team/decathlon-cma-cgm-team-2026",
+      "medals": [
+        {
+          "rank": 3,
+          "stage": "S1"
+        }
+      ],
       "specialties": {
         "career": {
           "one_day_races": 266,
@@ -812,12 +818,7 @@
       "birthdate": "2005-2-14",
       "place_of_birth": "France",
       "birthplace_lat": 46.603354,
-      "birthplace_lon": 1.8883335,
-      "medals": {
-        "gold": 0,
-        "silver": 0,
-        "bronze": 1
-      }
+      "birthplace_lon": 1.8883335
     },
     {
       "name": "BISSEGGER Stefan",
@@ -914,6 +915,8 @@
       "team": "Decathlon CMA CGM Team (WT)",
       "rider_url": "rider/matthew-riccitello",
       "team_url": "team/decathlon-cma-cgm-team-2026",
+      "status": "DNF",
+      "abandoned_stage": "S1",
       "specialties": {
         "career": {
           "one_day_races": 163,
@@ -927,9 +930,7 @@
       "birthdate": "2002-3-5",
       "place_of_birth": "United States",
       "birthplace_lat": 39.7837304,
-      "birthplace_lon": -100.445882,
-      "status": "DNF",
-      "abandoned_stage": "S1"
+      "birthplace_lon": -100.445882
     },
     {
       "name": "JOHANNESSEN Tobias Halland",
@@ -982,6 +983,12 @@
       "team": "Uno-X Mobility (WT)",
       "rider_url": "rider/anthon-charmig",
       "team_url": "team/uno-x-mobility-2026",
+      "medals": [
+        {
+          "rank": 1,
+          "stage": "S2"
+        }
+      ],
       "specialties": {
         "career": {
           "one_day_races": 257,
@@ -995,12 +1002,7 @@
       "birthdate": "1998-3-25",
       "place_of_birth": "Aarhus",
       "birthplace_lat": 56.1496278,
-      "birthplace_lon": 10.2134046,
-      "medals": {
-        "gold": 1,
-        "silver": 0,
-        "bronze": 0
-      }
+      "birthplace_lon": 10.2134046
     },
     {
       "name": "JOHANNESSEN Anders Halland",
@@ -1117,6 +1119,12 @@
       "team": "EF Education - EasyPost (WT)",
       "rider_url": "rider/alex-baudin",
       "team_url": "team/ef-education-easypost-2026",
+      "medals": [
+        {
+          "rank": 1,
+          "stage": "S1"
+        }
+      ],
       "specialties": {
         "career": {
           "one_day_races": 661,
@@ -1130,12 +1138,7 @@
       "birthdate": "2001-5-25",
       "place_of_birth": "France",
       "birthplace_lat": 46.603354,
-      "birthplace_lon": 1.8883335,
-      "medals": {
-        "gold": 1,
-        "silver": 0,
-        "bronze": 0
-      }
+      "birthplace_lon": 1.8883335
     },
     {
       "name": "LEONARD Michael",
@@ -1474,6 +1477,8 @@
       "team": "XDS Astana Team (WT)",
       "rider_url": "rider/florian-samuel-kajamini",
       "team_url": "team/xds-astana-team-2026",
+      "status": "OTL",
+      "abandoned_stage": "S1",
       "specialties": {
         "career": {
           "one_day_races": 56,
@@ -1487,9 +1492,7 @@
       "birthdate": "2003-2-28",
       "place_of_birth": "Bologna",
       "birthplace_lat": 44.4938203,
-      "birthplace_lon": 11.3426327,
-      "status": "OTL",
-      "abandoned_stage": "S1"
+      "birthplace_lon": 11.3426327
     },
     {
       "name": "KUZMIN Anton",
@@ -2004,6 +2007,12 @@
       "team": "Bahrain - Victorious (WT)",
       "rider_url": "rider/vlad-van-mechelen",
       "team_url": "team/bahrain-victorious-2026",
+      "medals": [
+        {
+          "rank": 3,
+          "stage": "S2"
+        }
+      ],
       "specialties": {
         "career": {
           "one_day_races": 127,
@@ -2017,12 +2026,7 @@
       "birthdate": "2004-6-2",
       "place_of_birth": "Belgium",
       "birthplace_lat": 50.6402809,
-      "birthplace_lon": 4.6667145,
-      "medals": {
-        "gold": 0,
-        "silver": 0,
-        "bronze": 1
-      }
+      "birthplace_lon": 4.6667145
     },
     {
       "name": "ZIMMERMANN Georg",
@@ -2141,6 +2145,8 @@
       "team": "Lotto Intermarché (WT)",
       "rider_url": "rider/roel-van-sintmaartensdijk",
       "team_url": "team/lotto-intermarche-2026",
+      "status": "DNF",
+      "abandoned_stage": "S2",
       "specialties": {
         "career": {
           "one_day_races": 84,
@@ -2154,9 +2160,7 @@
       "birthdate": "2001-5-8",
       "place_of_birth": "Netherlands",
       "birthplace_lat": 52.2434979,
-      "birthplace_lon": 5.6343227,
-      "status": "DNF",
-      "abandoned_stage": "S2"
+      "birthplace_lon": 5.6343227
     },
     {
       "name": "VEISTROFFER Baptiste",
@@ -2473,6 +2477,8 @@
       "team": "Caja Rural - Seguros RGA (PRT)",
       "rider_url": "rider/gorka-sorarrain",
       "team_url": "team/caja-rural-seguros-rga-2026",
+      "status": "DNF",
+      "abandoned_stage": "S2",
       "specialties": {
         "career": {
           "one_day_races": 48,
@@ -2486,9 +2492,7 @@
       "birthdate": "1996-5-21",
       "place_of_birth": "Spain",
       "birthplace_lat": 39.3260685,
-      "birthplace_lon": -4.8379791,
-      "status": "DNF",
-      "abandoned_stage": "S2"
+      "birthplace_lon": -4.8379791
     },
     {
       "name": "BENNETT George",
@@ -2541,6 +2545,8 @@
       "team": "NSN Cycling Team (WT)",
       "rider_url": "rider/brady-gilmore",
       "team_url": "team/nsn-cycling-team-2026",
+      "status": "DNF",
+      "abandoned_stage": "S1",
       "specialties": {
         "career": {
           "one_day_races": 407,
@@ -2554,9 +2560,7 @@
       "birthdate": "2001-4-14",
       "place_of_birth": "Kalgoorlie",
       "birthplace_lat": -30.7464139,
-      "birthplace_lon": 121.473223,
-      "status": "DNF",
-      "abandoned_stage": "S1"
+      "birthplace_lon": 121.473223
     },
     {
       "name": "HOFSTETTER Hugo",
@@ -2631,6 +2635,8 @@
       "team": "NSN Cycling Team (WT)",
       "rider_url": "rider/rotem-tene",
       "team_url": "team/nsn-cycling-team-2026",
+      "status": "DNF",
+      "abandoned_stage": "S1",
       "specialties": {
         "career": {
           "one_day_races": 43,
@@ -2644,9 +2650,7 @@
       "birthdate": null,
       "place_of_birth": "Hod Hasharon",
       "birthplace_lat": 32.1561974,
-      "birthplace_lon": 34.8930354,
-      "status": "DNF",
-      "abandoned_stage": "S1"
+      "birthplace_lon": 34.8930354
     },
     {
       "name": "PLAPP Luke",
@@ -3161,6 +3165,12 @@
       "team": "Alpecin - Premier Tech (WT)",
       "rider_url": "rider/ramses-debruyne",
       "team_url": "team/alpecin-premier-tech-2026",
+      "medals": [
+        {
+          "rank": 2,
+          "stage": "S1"
+        }
+      ],
       "specialties": {
         "career": {
           "one_day_races": 153,
@@ -3174,12 +3184,7 @@
       "birthdate": "2002-8-31",
       "place_of_birth": "Belgium",
       "birthplace_lat": 50.6402809,
-      "birthplace_lon": 4.6667145,
-      "medals": {
-        "gold": 0,
-        "silver": 1,
-        "bronze": 0
-      }
+      "birthplace_lon": 4.6667145
     },
     {
       "name": "GLIVAR Gal",
@@ -3386,6 +3391,8 @@
       "team": "Team Picnic PostNL (WT)",
       "rider_url": "rider/guillermo-juan-martinez",
       "team_url": "team/team-picnic-postnl-2026",
+      "status": "DNF",
+      "abandoned_stage": "S1",
       "specialties": {
         "career": {
           "one_day_races": 16,
@@ -3399,9 +3406,7 @@
       "birthdate": "2004-11-21",
       "place_of_birth": "Úmbita",
       "birthplace_lat": 5.22123,
-      "birthplace_lon": -73.457038,
-      "status": "DNF",
-      "abandoned_stage": "S1"
+      "birthplace_lon": -73.457038
     },
     {
       "name": "RENARD-HAQUIN Henri-François",
@@ -3410,6 +3415,12 @@
       "team": "Team Picnic PostNL (WT)",
       "rider_url": "rider/henri-francois-renard-haquin",
       "team_url": "team/team-picnic-postnl-2026",
+      "medals": [
+        {
+          "rank": 2,
+          "stage": "S2"
+        }
+      ],
       "specialties": {
         "career": {
           "one_day_races": 37,
@@ -3423,12 +3434,7 @@
       "birthdate": "2002-12-12",
       "place_of_birth": "France",
       "birthplace_lat": 46.603354,
-      "birthplace_lon": 1.8883335,
-      "medals": {
-        "gold": 0,
-        "silver": 1,
-        "bronze": 0
-      }
+      "birthplace_lon": 1.8883335
     }
   ]
 }
