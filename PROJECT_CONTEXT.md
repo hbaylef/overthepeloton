@@ -12,7 +12,54 @@
 Running in **Claude Code** locally at `C:\Users\PC\Desktop\cycling-dashboard`.
 Site is live; each verified increment is committed + pushed (GitHub Pages).
 
-### 🟢 LATEST SESSION (2026-06-08) — efficiency + results: freeze, abandons, medals
+### 🟢 LATEST SESSION (2026-06-08, pt 2) — UI redesign, medal detail, ops
+
+Big visual pass (verified live on a local server, then committed + pushed —
+commits `3ff8bba` UI/medals/GoatCounter, `7d4f67f` cron). All in
+`frontend/index.html` unless noted.
+
+- **Blue theme.** Re-toned the whole palette from warm cream/rust to a navy +
+  blue editorial scheme by changing the `:root` CSS variable VALUES (names kept,
+  so everything re-themed) + cooling the hardcoded canvas/map/marker colours via
+  global hex replaces. `--rust`/`--rust-dk` are now blues; route line, badges,
+  odds bars, active states all follow.
+- **Bigger type everywhere** (base 16px) + **taller viz**: map 420→**560px**,
+  elevation profile 220→**320px** (canvas auto-adapts via clientHeight).
+- **Specialty Rankings REMOVED** from the UI — container dropped + not rendered;
+  `renderSpecialtyTable` kept (dead) for easy revival. (Also `SECTION_DEFAULT_
+  COLLAPSED.specialty` now unused.)
+- **Elevation profile polish:** larger axis/climb/hover/zoom-badge fonts; hover &
+  zoom readouts are now **bold black text on a white pill** (were light-on-navy);
+  toned-down (not neon) steepness ramp in `gradeColor` + matching legend swatches;
+  bigger legend / climbs-list / hometown fonts.
+- **Canvas crispness FIX.** Text was blurry on fractional `devicePixelRatio`
+  (Windows 125/150% scaling): the offscreen base layer was rescaled on every blit.
+  Fixed by rounding the backing store to integer device px and blitting the base
+  **1:1** (identity transform) instead of through the dpr transform.
+- **Climb ▲ coloured by DIFFICULTY** via new `climbColor(c)` = elevation gained
+  (`length_km × steepness × 10` m) mapped to the legend's uphill colours (no blue
+  for a climb). Average gradient alone clustered most climbs into one amber band.
+  Applied to the profile ▲, the climbs-list glyph, and the map summit marker (the
+  map road *stretch* still uses `gradeColor`).
+- **Hometown & birthdays restyled** to match the climbs list: a head label +
+  inline chips on one wrapping row (was a title + stacked rows).
+- **Medals now carry detail.** Changed the medal data shape from aggregate counts
+  to a **list of podiums** `[{rank, stage}, …]` (`scrape_results.compute_medals`),
+  so the UI shows **🥇 #1 S5** per podium next to the rider name (`medalsHtml`).
+  Two stage wins → two `#1` badges. `test_scrape_results.py` updated, **7/7**.
+- **GoatCounter analytics** added (snippet before `</body>`, site
+  `overthepeloton.goatcounter.com`).
+- **Daily scrape now runs TWICE** (`.github/workflows/scrape.yml`): `30 7` +
+  `0 19` UTC = **09:30 & 21:00 Paris (CEST)**. Actions cron is UTC-only (no DST);
+  in winter these land an hour earlier locally (08:30 / 20:00).
+- ⏳ **Medals/abandons populate only after a scrape runs the NEW `scrape_results`**
+  (PCS blocked locally by the TLS proxy). The remote daily scrape `fe6af16` ran the
+  OLD medal shape; the new frontend safely ignores non-array `medals` (shows none,
+  no error) until a fresh run rewrites the startlists. **Trigger from the Actions
+  tab** ("Daily scrape" → Run workflow) — Claude can't (no gh/token here).
+- Note: `check.py` (untracked, odds-api.io probe) still NOT committed.
+
+### 🟢 EARLIER SESSION (2026-06-08, pt 1) — efficiency + results: freeze, abandons, medals
 
 - **Hometown data VERIFIED live.** The two overnight scrapes populated it:
   4,386/4,473 riders have a birthdate, all 4,473 a place of birth, 473/473 towns
