@@ -3,8 +3,11 @@ name: Daily scrape
 # When this workflow runs
 on:
   schedule:
-    # Every day at 06:00 UTC (about 8 AM in Paris)
-    - cron: '0 6 * * *'
+    # GitHub Actions cron is UTC-only (no DST). Times below target Paris CEST
+    # (UTC+2, the cycling season); in winter (CET, UTC+1) they land an hour
+    # earlier in Paris — i.e. 08:30 and 20:00 local.
+    - cron: '30 7 * * *'   # 09:30 Paris (morning)
+    - cron: '0 19 * * *'   # 21:00 Paris (evening)
   workflow_dispatch:  # Lets you also trigger it manually from the Actions tab
 
 # Permission needed to commit data back to the repo
