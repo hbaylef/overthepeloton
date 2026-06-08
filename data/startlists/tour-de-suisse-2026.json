@@ -1,9 +1,31 @@
 {
   "race": "Tour de Suisse",
   "race_slug": "tour-de-suisse-2026",
-  "updated_at": "2026-06-07T17:07:52.972730",
-  "total_riders": 30,
+  "updated_at": "2026-06-08T11:10:20.155217",
+  "total_riders": 33,
   "riders": [
+    {
+      "name": "VERSTRYNGE Emiel",
+      "nationality": "BE",
+      "number": null,
+      "team": "Alpecin - Premier Tech (WT)",
+      "rider_url": "rider/emiel-verstrynge",
+      "team_url": "team/alpecin-premier-tech-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 269,
+          "gc": 98,
+          "tt": 30,
+          "sprint": 22,
+          "climber": 278,
+          "hills": 83
+        }
+      },
+      "birthdate": "2002-2-4",
+      "place_of_birth": "Belgium",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145
+    },
     {
       "name": "PHILIPSEN Jasper",
       "nationality": "BE",
@@ -45,28 +67,6 @@
       },
       "birthdate": "1995-1-19",
       "place_of_birth": "Kapellen"
-    },
-    {
-      "name": "VERSTRYNGE Emiel",
-      "nationality": "BE",
-      "number": null,
-      "team": "Alpecin - Premier Tech (WT)",
-      "rider_url": "rider/emiel-verstrynge",
-      "team_url": "team/alpecin-premier-tech-2026",
-      "specialties": {
-        "career": {
-          "one_day_races": 269,
-          "gc": 98,
-          "tt": 30,
-          "sprint": 22,
-          "climber": 278,
-          "hills": 83
-        }
-      },
-      "birthdate": "2002-2-4",
-      "place_of_birth": "Belgium",
-      "birthplace_lat": 50.6402809,
-      "birthplace_lon": 4.6667145
     },
     {
       "name": "SEGAERT Alec",
@@ -245,6 +245,28 @@
       "birthplace_lon": 1.8883335
     },
     {
+      "name": "VACEK Mathias",
+      "nationality": "CZ",
+      "number": null,
+      "team": "Lidl - Trek (WT)",
+      "rider_url": "rider/mathias-vacek",
+      "team_url": "team/lidl-trek-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 603,
+          "gc": 544,
+          "tt": 793,
+          "sprint": 193,
+          "climber": 264,
+          "hills": 530
+        }
+      },
+      "birthdate": "2002-6-12",
+      "place_of_birth": "Beroun",
+      "birthplace_lat": 49.9640292,
+      "birthplace_lon": 14.0733907
+    },
+    {
       "name": "DE LIE Arnaud",
       "nationality": "BE",
       "number": null,
@@ -377,6 +399,28 @@
       "birthplace_lon": 15.0464786
     },
     {
+      "name": "LANDA Mikel",
+      "nationality": "ES",
+      "number": null,
+      "team": "Soudal Quick-Step (WT)",
+      "rider_url": "rider/mikel-landa",
+      "team_url": "team/soudal-quick-step-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 1055,
+          "gc": 6488,
+          "tt": 310,
+          "sprint": 89,
+          "climber": 7232,
+          "hills": 1211
+        }
+      },
+      "birthdate": "1989-12-13",
+      "place_of_birth": "Murgia",
+      "birthplace_lat": 42.9563116,
+      "birthplace_lon": -2.8196513
+    },
+    {
       "name": "VERVAEKE Louis",
       "nationality": "BE",
       "number": null,
@@ -397,6 +441,28 @@
       "place_of_birth": "Belgium",
       "birthplace_lat": 50.6402809,
       "birthplace_lon": 4.6667145
+    },
+    {
+      "name": "MATTHEWS Michael",
+      "nationality": "AU",
+      "number": null,
+      "team": "Team Jayco AlUla (WT)",
+      "rider_url": "rider/michael-matthews",
+      "team_url": "team/team-jayco-alula-2026",
+      "specialties": {
+        "career": {
+          "one_day_races": 8292,
+          "gc": 867,
+          "tt": 1678,
+          "sprint": 2165,
+          "climber": 2374,
+          "hills": 7788
+        }
+      },
+      "birthdate": "1990-9-26",
+      "place_of_birth": "Australia",
+      "birthplace_lat": -24.7761086,
+      "birthplace_lon": 134.755
     },
     {
       "name": "DOUBLE Paul",
