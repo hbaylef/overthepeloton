@@ -20,7 +20,15 @@ import libsql_client
 url = os.environ.get("TURSO_DATABASE_URL") or "file:_smoke_local.db"
 auth = os.environ.get("TURSO_AUTH_TOKEN")  # None for the local file path
 
-where = "remote Turso" if url.startswith(("libsql:", "http:", "https:")) else "local file"
+# Force the HTTP transport. Turso hands out libsql:// URLs; the sync client can
+# otherwise pick a websocket backend that hangs in CI. https:// hits the same
+# host over plain HTTP(S), which is the client we actually want.
+if url.startswith("libsql://"):
+    url = "https://" + url[len("libsql://"):]
+elif url.startswith(("ws://", "wss://")):
+    url = "https://" + url.split("://", 1)[1]
+
+where = "remote Turso" if url.startswith(("http:", "https:")) else "local file"
 print(f"Connecting to {where}: {url}")
 
 client = libsql_client.create_client_sync(url=url, auth_token=auth)
