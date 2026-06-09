@@ -57,10 +57,10 @@ from typing import Callable, List, Optional
 
 from procyclingstats import RaceClimbs
 
+import db  # local module: Turso/SQLite store (build-order step 2)
+
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-RACES_FILE = DATA_DIR / "races.json"
-CLIMBS_DIR = DATA_DIR / "climbs"
-INDEX_FILE = DATA_DIR / "climbs_index.json"
+# Legacy file, read once to seed the climbs cache into the store; no longer written.
 CACHE_FILE = DATA_DIR / "climbs_cache.json"
 
 DELAY_BETWEEN_REQUESTS = 2
@@ -131,19 +131,21 @@ def fetch_climbs(url: str) -> Optional[List[dict]]:
 # ---------------------------------------------------------------------------
 # Cache
 # ---------------------------------------------------------------------------
-def load_cache() -> dict:
-    if CACHE_FILE.exists():
+def load_cache(client) -> dict:
+    """Load the climbs cache from the store, seeding once from the legacy file."""
+    cached = db.get_cache(client, db.CACHE_CLIMBS)
+    if cached is None and CACHE_FILE.exists():
         try:
-            return json.loads(CACHE_FILE.read_text(encoding="utf-8"))
+            cached = json.loads(CACHE_FILE.read_text(encoding="utf-8"))
+            log.info(f"Seeded climbs cache from legacy {CACHE_FILE.name}")
         except Exception as e:
             log.warning(f"Could not parse {CACHE_FILE.name}, starting fresh: {e}")
-    return {"updated_at": None, "urls": {}}
+    return cached or {"updated_at": None, "urls": {}}
 
 
-def save_cache(cache: dict):
+def save_cache(client, cache: dict):
     cache["updated_at"] = datetime.now().isoformat()
-    with open(CACHE_FILE, "w", encoding="utf-8") as f:
-        json.dump(cache, f, indent=2, ensure_ascii=False)
+    db.put_cache(client, db.CACHE_CLIMBS, cache)
 
 
 def cached_climbs(cache: dict, url: str) -> Optional[List[dict]]:
@@ -225,16 +227,17 @@ def count_climbs(payload: dict) -> int:
 # Main
 # ---------------------------------------------------------------------------
 def main():
-    if not RACES_FILE.exists():
-        log.error(f"No {RACES_FILE} — run scrape_races.py first.")
+    client = db.open_db()
+    log.info(f"Climbs store: {'remote Turso' if db.is_remote() else 'local SQLite file'}")
+
+    races = list(db.get_all_documents(client, db.KIND_RACE).values())
+    if not races:
+        log.error("No races in the store — run scrape_races.py first.")
+        client.close()
         return
 
-    races = json.loads(RACES_FILE.read_text(encoding="utf-8")).get("races", [])
-    CLIMBS_DIR.mkdir(parents=True, exist_ok=True)
-    cache = load_cache()
-
-    index_races = {}
-    with_climbs = 0
+    cache = load_cache(client)
+    processed = with_climbs = total = 0
 
     for i, race in enumerate(races, 1):
         slug = race.get("slug")
@@ -244,33 +247,22 @@ def main():
 
         payload = build_race_entry(race, cache, fetch_climbs)
         n = count_climbs(payload)
+        db.put_document(client, db.KIND_CLIMBS, slug, payload)
 
-        out_path = CLIMBS_DIR / f"{slug}.json"
-        with open(out_path, "w", encoding="utf-8") as f:
-            json.dump(payload, f, indent=2, ensure_ascii=False)
-
-        index_races[slug] = {
-            "name": race.get("name"),
-            "climbs_available": n > 0,
-            "total_climbs": n,
-        }
+        processed += 1
+        total += n
         if n > 0:
             with_climbs += 1
 
-        save_cache(cache)   # checkpoint after every race (cheap, crash-safe)
+        save_cache(client, cache)   # checkpoint after every race (cheap, crash-safe)
 
-    with open(INDEX_FILE, "w", encoding="utf-8") as f:
-        json.dump({
-            "updated_at": datetime.now().isoformat(),
-            "source": "procyclingstats",
-            "races": index_races,
-        }, f, indent=2, ensure_ascii=False)
+    client.close()
 
     print("\n" + "=" * 64)
     print("  CLIMBS SCRAPE SUMMARY")
-    print(f"  Races processed:       {len(index_races)}")
+    print(f"  Races processed:       {processed}")
     print(f"  Races with climbs:     {with_climbs}")
-    print(f"  Total climbs scraped:  {sum(r['total_climbs'] for r in index_races.values())}")
+    print(f"  Total climbs scraped:  {total}")
     print("=" * 64)
 
 

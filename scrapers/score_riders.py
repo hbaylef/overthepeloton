@@ -45,12 +45,11 @@ from datetime import datetime
 from pathlib import Path
 from statistics import mean
 
+import db  # local module: Turso/SQLite store (build-order step 2)
+
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-RACES_FILE = DATA_DIR / "races.json"
-STARTLISTS_DIR = DATA_DIR / "startlists"
+# Cobbles stay on disk: curated, public, hand-edited (not scraped raw data).
 COBBLES_DIR = DATA_DIR / "cobbles"
-PREDICTIONS_DIR = DATA_DIR / "predictions"
-PREDICTIONS_INDEX = DATA_DIR / "predictions_index.json"
 
 logging.basicConfig(
     level=logging.INFO,
@@ -257,7 +256,7 @@ def _method_block():
     }
 
 
-def predict_race(race):
+def predict_race(client, race):
     """
     Produce the prediction payload for one race, or None if it can't be scored
     (no startlist, or no scoreable stage type).
@@ -268,11 +267,10 @@ def predict_race(race):
                    each stage.
     """
     slug = race["slug"]
-    sl_file = STARTLISTS_DIR / f"{slug}.json"
-    if not sl_file.exists():
+    startlist = db.get_document(client, db.KIND_STARTLIST, slug)
+    if not startlist:
         return None
 
-    startlist = json.loads(sl_file.read_text(encoding="utf-8"))
     riders = startlist.get("riders", [])
 
     # Riders with no PCS chart (career == null) are listed but not scored, and
@@ -365,39 +363,21 @@ def predict_race(race):
 
 
 def main():
-    PREDICTIONS_DIR.mkdir(parents=True, exist_ok=True)
-    data = json.loads(RACES_FILE.read_text(encoding="utf-8"))
+    client = db.open_db()
+    log.info(f"Predictions store: {'remote Turso' if db.is_remote() else 'local SQLite file'}")
 
-    index = {}
+    races = list(db.get_all_documents(client, db.KIND_RACE).values())
     written = 0
     skipped = 0
-    for race in data.get("races", []):
-        pred = predict_race(race)
-        slug = race["slug"]
+    for race in races:
+        pred = predict_race(client, race)
         if pred is None:
             skipped += 1
-            index[slug] = {"name": race.get("name"), "prediction_available": False}
             continue
-        out_file = PREDICTIONS_DIR / f"{slug}.json"
-        out_file.write_text(json.dumps(pred, indent=2, ensure_ascii=False), encoding="utf-8")
+        db.put_document(client, db.KIND_PREDICTIONS, race["slug"], pred)
         written += 1
-        index[slug] = {
-            "name": race.get("name"),
-            "prediction_available": True,
-            "is_one_day_race": pred["is_one_day_race"],
-            "scored_rider_count": pred["scored_rider_count"],
-        }
 
-    PREDICTIONS_INDEX.write_text(
-        json.dumps({
-            "updated_at": datetime.now().isoformat(),
-            "year": data.get("year"),
-            "model": MODEL_LABEL,
-            "races": index,
-        }, indent=2, ensure_ascii=False),
-        encoding="utf-8",
-    )
-
+    client.close()
     log.info(f"Predictions written: {written}  ·  skipped (no startlist/stages): {skipped}")
     print("\n" + "=" * 56)
     print(f"  R2 Phase 3 — predictions ({MODEL_LABEL})")

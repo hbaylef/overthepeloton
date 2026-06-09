@@ -35,8 +35,10 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Callable, Optional
 
+import db  # local module: Turso/SQLite store (build-order step 2)
+
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-RACES_FILE = DATA_DIR / "races.json"
+# Legacy file, read once to seed the start-times cache into the store.
 CACHE_FILE = DATA_DIR / "start_times_cache.json"
 
 DELAY_BETWEEN_REQUESTS = 2
@@ -169,35 +171,43 @@ def fetch_start_time(url: str) -> Optional[str]:
         return None
 
 
-def load_cache() -> dict:
-    if CACHE_FILE.exists():
+def load_cache(client) -> dict:
+    """Load the start-times cache from the store, seeding once from the legacy file."""
+    cached = db.get_cache(client, db.CACHE_START_TIMES)
+    if cached is None and CACHE_FILE.exists():
         try:
-            return json.loads(CACHE_FILE.read_text(encoding="utf-8"))
+            cached = json.loads(CACHE_FILE.read_text(encoding="utf-8"))
+            log.info(f"Seeded start-times cache from legacy {CACHE_FILE.name}")
         except Exception as e:
             log.warning(f"Could not parse {CACHE_FILE.name}, starting fresh: {e}")
-    return {"updated_at": None, "urls": {}}
+    return cached or {"updated_at": None, "urls": {}}
 
 
-def save_cache(cache: dict):
+def save_cache(client, cache: dict):
     cache["updated_at"] = datetime.now().isoformat()
-    with open(CACHE_FILE, "w", encoding="utf-8") as f:
-        json.dump(cache, f, indent=2, ensure_ascii=False)
+    db.put_cache(client, db.CACHE_START_TIMES, cache)
 
 
 def main():
-    if not RACES_FILE.exists():
-        log.error(f"No {RACES_FILE} — run scrape_races.py first.")
+    client = db.open_db()
+    log.info(f"Start-times store: {'remote Turso' if db.is_remote() else 'local SQLite file'}")
+
+    races = list(db.get_all_documents(client, db.KIND_RACE).values())
+    if not races:
+        log.error("No races in the store — run scrape_races.py first.")
+        client.close()
         return
 
-    payload = json.loads(RACES_FILE.read_text(encoding="utf-8"))
-    races = payload.get("races", [])
-    cache = load_cache()
-
+    cache = load_cache(client)
     scraped = annotate_start_times(races, cache, fetch_start_time)
 
-    save_cache(cache)
-    with open(RACES_FILE, "w", encoding="utf-8") as f:
-        json.dump(payload, f, indent=2, ensure_ascii=False)
+    # Write each race doc back (change-aware: only rows that actually changed).
+    for race in races:
+        slug = race.get("slug")
+        if slug:
+            db.put_document(client, db.KIND_RACE, slug, race)
+    save_cache(client, cache)
+    client.close()
 
     total = sum(1 if r.get("is_one_day_race") else len(r.get("stages", []))
                 for r in races)

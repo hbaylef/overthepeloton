@@ -53,11 +53,10 @@ from datetime import datetime
 from pathlib import Path
 from typing import List, Optional, Tuple
 
+import db  # local module: Turso/SQLite store (build-order step 2)
+
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-GPX_INDEX = DATA_DIR / "gpx_index.json"
-RACES_FILE = DATA_DIR / "races.json"
-CLIMBS_DIR = DATA_DIR / "climbs"
-INDEX_FILE = DATA_DIR / "climbs_index.json"
+# Legacy file, read once to seed the names cache into the store; no longer written.
 NAMES_CACHE = DATA_DIR / "climbs_names_cache.json"
 
 # Climb names: PCS publishes the race's climbs (with altitude) on the race-level
@@ -316,32 +315,28 @@ def stage_files(race_entry: dict) -> List[dict]:
     return [f for f in race_entry.get("files", []) if f.get("stage") is not None]
 
 
-def build_stage_climbs(race_entry: dict, pool: Optional[List[dict]] = None) -> dict:
-    """Derive {stage_number(str): [climbs]} for one race from its GPX files,
-    attaching PCS names (matched by altitude) when a name pool is given."""
+def build_stage_climbs(client, slug: str, files: List[dict],
+                       pool: Optional[List[dict]] = None) -> dict:
+    """Derive {stage_number(str): [climbs]} for one race from its GPX files (read
+    from the store), attaching PCS names (matched by altitude) when a name pool
+    is given."""
     stages = {}
-    for f in stage_files(race_entry):
-        path = DATA_DIR / f["local_path"]
-        if not path.exists():
-            log.warning(f"    missing GPX: {f['local_path']}")
+    for f in files:
+        text = db.get_gpx(client, slug, f["filename"])
+        if not text:
+            log.warning(f"    missing GPX in store: {slug}/{f['filename']}")
             continue
-        climbs = climbs_for_gpx(path.read_text(encoding="utf-8", errors="ignore"))
+        climbs = climbs_for_gpx(text)
         if climbs:
             assign_names(climbs, pool or [])
             stages[str(f["stage"])] = climbs
     return stages
 
 
-def write_race_file(slug: str, name: str, stages: dict):
-    """Merge derived stage climbs into data/climbs/{slug}.json (preserving any
-    existing fields)."""
-    path = CLIMBS_DIR / f"{slug}.json"
-    payload = {}
-    if path.exists():
-        try:
-            payload = json.loads(path.read_text(encoding="utf-8"))
-        except Exception:
-            payload = {}
+def write_race_climbs(client, slug: str, name: str, stages: dict):
+    """Merge derived stage climbs into the climbs doc in the store (preserving
+    any existing fields, e.g. one-day `climbs` written by scrape_climbs)."""
+    payload = db.get_document(client, db.KIND_CLIMBS, slug) or {}
     payload.update({
         "race": name,
         "race_slug": slug,
@@ -351,74 +346,48 @@ def write_race_file(slug: str, name: str, stages: dict):
         "stages": stages,
     })
     payload.pop("climbs", None)   # stage races don't use the one-day key
-    with open(path, "w", encoding="utf-8") as fh:
-        json.dump(payload, fh, indent=2, ensure_ascii=False)
-
-
-def update_index(slug_counts: dict):
-    """Update climbs_index.json entries for the stage races we derived, leaving
-    one-day (PCS) entries untouched."""
-    index = {"updated_at": None, "source": "mixed", "races": {}}
-    if INDEX_FILE.exists():
-        try:
-            index = json.loads(INDEX_FILE.read_text(encoding="utf-8"))
-        except Exception:
-            pass
-    index.setdefault("races", {})
-    for slug, (name, total) in slug_counts.items():
-        index["races"][slug] = {
-            "name": name,
-            "climbs_available": total > 0,
-            "total_climbs": total,
-            "source": "gpx_derived",
-        }
-    index["updated_at"] = datetime.now().isoformat()
-    index["source"] = "mixed"
-    with open(INDEX_FILE, "w", encoding="utf-8") as fh:
-        json.dump(index, fh, indent=2, ensure_ascii=False)
+    db.put_document(client, db.KIND_CLIMBS, slug, payload)
 
 
 def main():
-    if not GPX_INDEX.exists():
-        log.error(f"No {GPX_INDEX} — run scrape_gpx.py first.")
-        return
+    client = db.open_db()
+    log.info(f"Climbs store: {'remote Turso' if db.is_remote() else 'local SQLite file'}")
 
-    races = json.loads(GPX_INDEX.read_text(encoding="utf-8")).get("races", {})
-    CLIMBS_DIR.mkdir(parents=True, exist_ok=True)
+    # slug -> race name + PCS url (for the race-level name pool), from the store.
+    race_docs = db.get_all_documents(client, db.KIND_RACE)
+    pcs_urls = {slug: r.get("pcs_url") for slug, r in race_docs.items()}
+    names = {slug: r.get("name", slug) for slug, r in race_docs.items()}
 
-    # slug -> PCS url (for the race-level name pool) and a persistent names cache
-    pcs_urls = {r["slug"]: r.get("pcs_url")
-                for r in (json.loads(RACES_FILE.read_text(encoding="utf-8")).get("races", [])
-                          if RACES_FILE.exists() else [])}
-    names_cache = (json.loads(NAMES_CACHE.read_text(encoding="utf-8"))
-                   if NAMES_CACHE.exists() else {})
+    # Persistent names cache lives in the caches table, seeded once from disk.
+    names_cache = db.get_cache(client, db.CACHE_CLIMBS_NAMES)
+    if names_cache is None:
+        names_cache = (json.loads(NAMES_CACHE.read_text(encoding="utf-8"))
+                       if NAMES_CACHE.exists() else {})
+        if names_cache:
+            log.info(f"Seeded climbs-names cache from legacy {NAMES_CACHE.name}")
 
     slug_counts = {}
-    total_climbs = 0
-    total_named = 0
-    races_with = 0
+    total_climbs = total_named = races_with = 0
 
-    for slug, entry in races.items():
-        files = stage_files(entry)
-        if not files:                      # one-day race or no GPX → skip
+    for slug in db.gpx_slugs(client):
+        files = [f for f in db.list_gpx(client, slug) if f.get("stage") is not None]
+        if not files:                      # one-day race (route.gpx only) → skip
             continue
-        name = entry.get("name", slug)
+        name = names.get(slug, slug)
         log.info(f"{slug}: {len(files)} stage GPX file(s)")
         pool = get_pool(names_cache, slug, pcs_urls.get(slug))
-        stages = build_stage_climbs(entry, pool)
+        stages = build_stage_climbs(client, slug, files, pool)
         climbs = [c for v in stages.values() for c in v]
         n = len(climbs)
-        named = sum(1 for c in climbs if c["name"] != "Climb")
-        write_race_file(slug, name, stages)
+        total_named += sum(1 for c in climbs if c["name"] != "Climb")
+        write_race_climbs(client, slug, name, stages)
         slug_counts[slug] = (name, n)
         total_climbs += n
-        total_named += named
         if n > 0:
             races_with += 1
 
-    update_index(slug_counts)
-    with open(NAMES_CACHE, "w", encoding="utf-8") as fh:
-        json.dump(names_cache, fh, indent=2, ensure_ascii=False)
+    db.put_cache(client, db.CACHE_CLIMBS_NAMES, names_cache)
+    client.close()
 
     print("\n" + "=" * 60)
     print("  GPX-DERIVED STAGE CLIMBS")

@@ -33,11 +33,14 @@ from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 
+import db  # local module: Turso/SQLite store (build-order step 2)
+
 # ---------------------------------------------------------------------------
 # Config
 # ---------------------------------------------------------------------------
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-RACES_FILE = DATA_DIR / "races.json"
+# Legacy on-disk paths, read once to import already-downloaded routes into the
+# store (so we don't re-crawl/re-download them). GPX now lives in Turso.
 GPX_DIR = DATA_DIR / "gpx"
 GPX_INDEX_FILE = DATA_DIR / "gpx_index.json"
 DELAY_BETWEEN_REQUESTS = 1.5  # seconds
@@ -151,28 +154,22 @@ def find_gpx_links(soup: BeautifulSoup) -> list[str]:
     return gpx_links
 
 
-def download_gpx(url: str, output_path: Path) -> bool:
-    """Download a GPX file. Returns True on success."""
+def download_gpx_content(url: str) -> Optional[str]:
+    """Download a GPX file and return its XML text, or None if it isn't valid."""
     try:
         resp = SESSION.get(url, timeout=15)
         if resp.status_code == 200 and len(resp.content) > 100:
             # Basic sanity: GPX files should contain XML
             content = resp.content.decode("utf-8", errors="ignore")
             if "<gpx" in content.lower() or "<?xml" in content.lower():
-                output_path.parent.mkdir(parents=True, exist_ok=True)
-                with open(output_path, "wb") as f:
-                    f.write(resp.content)
-                log.info(f"  ✓ Downloaded: {output_path.name} ({len(resp.content)} bytes)")
-                return True
-            else:
-                log.warning(f"  ✗ Not a valid GPX: {url}")
-                return False
+                log.info(f"  ✓ Downloaded: {url.split('/')[-1]} ({len(resp.content)} bytes)")
+                return content
+            log.warning(f"  ✗ Not a valid GPX: {url}")
         else:
             log.warning(f"  ✗ Download failed ({resp.status_code}): {url}")
-            return False
     except Exception as e:
         log.warning(f"  ✗ Download error: {e}")
-        return False
+    return None
 
 
 def discover_gpx_links(cs_slug: str, year: int) -> list[str]:
@@ -258,14 +255,13 @@ def construct_cdn_gpx_urls(cs_slug: str, year: int, num_stages: int,
     ]
 
 
-def scrape_race_gpx(cs_slug: str, year: int, race_slug: str,
+def scrape_race_gpx(client, cs_slug: str, year: int, race_slug: str,
                     is_one_day: bool, num_stages: int = 0) -> list[dict]:
     """
-    Download all GPX files discovered for a race.
-    Returns a list of {stage, filename, url, local_path} dicts.
+    Discover + download all GPX files for a race and store them in the DB.
+    Returns a list of {stage, filename, url} dicts for what was stored.
     """
     results = []
-    race_gpx_dir = GPX_DIR / race_slug
 
     gpx_links = discover_gpx_links(cs_slug, year)
     if not gpx_links:
@@ -284,116 +280,117 @@ def scrape_race_gpx(cs_slug: str, year: int, race_slug: str,
             output_filename = "route.gpx"
         else:
             output_filename = filename
-        output_path = race_gpx_dir / output_filename
 
-        if download_gpx(link, output_path):
+        content = download_gpx_content(link)
+        if content:
             stage_match = re.search(r"stage-(\d+)", filename)
             stage_num = int(stage_match.group(1)) if stage_match else None
-            results.append({
-                "stage": stage_num,
-                "filename": output_filename,
-                "url": link,
-                "local_path": str(output_path.relative_to(DATA_DIR)),
-            })
+            try:
+                db.put_gpx(client, race_slug, output_filename, content,
+                           stage=stage_num, source="cyclingstage", url=link)
+                results.append({"stage": stage_num, "filename": output_filename, "url": link})
+            except Exception as e:
+                log.warning(f"  ✗ Could not store {output_filename}: {e}")
 
         time.sleep(0.5)
 
     return results
 
 
+def import_disk_gpx(client, slug: str, disk_index: dict) -> int:
+    """One-time bootstrap: import a race's already-committed GPX files into the
+    store instead of re-downloading them (published routes never change). Reads
+    file metadata (stage/url/source) from the legacy gpx_index.json and the
+    bytes from data/gpx/. Returns the number of files imported."""
+    entry = disk_index.get(slug)
+    if not entry:
+        return 0
+    source = entry.get("source", "cyclingstage")
+    n = 0
+    for f in entry.get("files", []):
+        path = DATA_DIR / f.get("local_path", "")
+        if not path.exists():
+            continue
+        try:
+            content = path.read_text(encoding="utf-8", errors="ignore")
+            db.put_gpx(client, slug, f.get("filename"), content,
+                       stage=f.get("stage"), source=source, url=f.get("url"))
+        except Exception as e:
+            log.warning(f"    could not import {path.name}: {e}")
+            continue
+        n += 1
+    return n
+
+
 def main():
-    # Load race data from Step 1
-    if not RACES_FILE.exists():
-        log.error(f"races.json not found at {RACES_FILE}. Run scrape_races.py first!")
+    client = db.open_db()
+    log.info(f"GPX store: {'remote Turso' if db.is_remote() else 'local SQLite file'}")
+
+    races = list(db.get_all_documents(client, db.KIND_RACE).values())
+    if not races:
+        log.error("No races in the store — run scrape_races.py first.")
+        client.close()
         return
 
-    with open(RACES_FILE) as f:
-        races_data = json.load(f)
-
-    GPX_DIR.mkdir(parents=True, exist_ok=True)
-
-    # Preserve La Flamme Rouge fallback entries: scrape_lfr.py runs locally only
-    # (not in Actions), so this daily rebuild must not wipe the GPX it filled for
-    # races cyclingstage misses. We keep an LFR entry when cyclingstage still finds
-    # nothing AND the LFR files are still on disk.
-    prior_lfr = {}
+    # Legacy on-disk index, used once to import already-downloaded routes (incl.
+    # La Flamme Rouge files) into the store without re-downloading them.
+    disk_index = {}
     if GPX_INDEX_FILE.exists():
         try:
-            prior = json.loads(GPX_INDEX_FILE.read_text(encoding="utf-8"))
-            for slug, e in prior.get("races", {}).items():
-                if e.get("source") == "la_flamme_rouge" and e.get("gpx_available"):
-                    prior_lfr[slug] = e
+            disk_index = json.loads(GPX_INDEX_FILE.read_text(encoding="utf-8")).get("races", {})
         except Exception:
             pass
 
-    year = races_data.get("year", datetime.now().year)
-    gpx_index = {
-        "updated_at": datetime.now().isoformat(),
-        "year": year,
-        "races": {},
-    }
+    # Over-scraping counters (build-order step 3a/3c).
+    skipped_have = imported = crawled = no_map = 0
+    downloaded_files = imported_files = 0
 
-    total_gpx_files = 0
-
-    for race in races_data["races"]:
+    for race in races:
         cs_slug = race.get("cyclingstage_slug")
         race_slug = race["slug"]
         race_name = race["name"]
         is_one_day = race.get("is_one_day_race", False)
 
         if not cs_slug:
-            log.info(f"Skipping {race_name} — no CyclingStage.com mapping")
-            gpx_index["races"][race_slug] = {
-                "name": race_name,
-                "gpx_available": False,
-                "reason": "no_cyclingstage_mapping",
-                "files": [],
-            }
+            no_map += 1
             continue
 
-        log.info(f"\n{'='*50}")
-        log.info(f"Processing: {race_name} (cs_slug={cs_slug})")
-        log.info(f"{'='*50}")
+        # 1) Already in the store → published routes never change, so never
+        #    re-crawl or re-download. This is the GPX over-scraping fix.
+        if db.has_gpx(client, race_slug):
+            skipped_have += 1
+            continue
 
-        num_stages = len(race.get("stages", []))
-        files = scrape_race_gpx(cs_slug, year, race_slug, is_one_day, num_stages)
+        # 2) Not in the store yet, but we already have it on disk from a prior
+        #    run → import it (no network) rather than re-downloading.
+        n = import_disk_gpx(client, race_slug, disk_index)
+        if n:
+            imported += 1
+            imported_files += n
+            log.info(f"  → imported {n} existing GPX file(s) for {race_name} (no download)")
+            continue
 
-        # cyclingstage found nothing → keep the LFR fallback if its files remain.
-        if not files and race_slug in prior_lfr:
-            e = prior_lfr[race_slug]
-            if all((DATA_DIR / f["local_path"]).exists() for f in e.get("files", [])):
-                gpx_index["races"][race_slug] = e
-                total_gpx_files += e.get("total_files", 0)
-                log.info(f"  → preserved {e.get('total_files', 0)} La Flamme Rouge "
-                         f"file(s) for {race_name}")
-                continue
+        # 3) Genuinely missing → crawl cyclingstage and download into the store.
+        log.info(f"\n{'='*50}\nProcessing: {race_name} (cs_slug={cs_slug})\n{'='*50}")
+        year = race.get("year") or datetime.now().year
+        files = scrape_race_gpx(client, cs_slug, year, race_slug, is_one_day,
+                                len(race.get("stages", [])))
+        if files:
+            crawled += 1
+            downloaded_files += len(files)
+        log.info(f"  → {len(files)} GPX file(s) downloaded for {race_name}")
 
-        gpx_index["races"][race_slug] = {
-            "name": race_name,
-            "gpx_available": len(files) > 0,
-            "total_files": len(files),
-            "files": files,
-        }
+    total_stored = len(db.gpx_slugs(client))
+    client.close()
 
-        total_gpx_files += len(files)
-        log.info(f"  → {len(files)} GPX file(s) for {race_name}")
-
-    # Save GPX index
-    with open(GPX_INDEX_FILE, "w", encoding="utf-8") as f:
-        json.dump(gpx_index, f, indent=2, ensure_ascii=False)
-
-    log.info(f"\n{'='*60}")
-    log.info(f"  GPX SCRAPE COMPLETE")
-    log.info(f"  Total GPX files downloaded: {total_gpx_files}")
-    log.info(f"  Index saved to: {GPX_INDEX_FILE}")
-    log.info(f"{'='*60}")
-
-    # Summary
-    print(f"\n  GPX availability:")
-    for slug, info in gpx_index["races"].items():
-        status = "✓" if info["gpx_available"] else "✗"
-        count = info.get("total_files", 0)
-        print(f"    {status} {info['name']:35s} {count} file(s)")
+    print("\n" + "=" * 64)
+    print("  GPX SCRAPE SUMMARY")
+    print(f"  Races with GPX already in store (skipped, no network): {skipped_have}")
+    print(f"  Races imported from disk (no download):                {imported} ({imported_files} files)")
+    print(f"  Races crawled + downloaded:                            {crawled} ({downloaded_files} files)")
+    print(f"  Races with no cyclingstage mapping:                    {no_map}")
+    print(f"  Total races with GPX in store:                         {total_stored}")
+    print("=" * 64)
 
 
 if __name__ == "__main__":
