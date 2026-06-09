@@ -1,79 +1,30 @@
 {
-  "updated_at": "2026-06-06T21:06:29.731803",
-  "year": 2026,
+  "updated_at": "2026-06-09T21:10:30.411559+00:00",
   "model": "experimental",
   "races": {
-    "tour-down-under-2026": {
-      "name": "Tour Down Under",
-      "prediction_available": true,
-      "is_one_day_race": false,
-      "scored_rider_count": 159
-    },
-    "setmana-ciclista-valenciana-2026": {
-      "name": "Volta a la Comunitat Valenciana",
-      "prediction_available": true,
-      "is_one_day_race": false,
-      "scored_rider_count": 153
-    },
-    "uae-tour-2026": {
-      "name": "UAE Tour",
-      "prediction_available": true,
-      "is_one_day_race": false,
-      "scored_rider_count": 167
-    },
-    "ruta-del-sol-2026": {
-      "name": "Vuelta a Andalucía",
-      "prediction_available": true,
-      "is_one_day_race": false,
-      "scored_rider_count": 135
-    },
-    "volta-ao-algarve-2026": {
-      "name": "Volta ao Algarve",
-      "prediction_available": true,
-      "is_one_day_race": false,
-      "scored_rider_count": 191
-    },
-    "omloop-het-nieuwsblad-2026": {
-      "name": "Omloop Het Nieuwsblad",
-      "prediction_available": true,
-      "is_one_day_race": true,
-      "scored_rider_count": 199
-    },
-    "kuurne-brussel-kuurne-2026": {
-      "name": "Kuurne-Brussels-Kuurne",
-      "prediction_available": true,
-      "is_one_day_race": true,
-      "scored_rider_count": 199
-    },
-    "strade-bianche-2026": {
-      "name": "Strade Bianche",
+    "amstel-gold-2026": {
+      "name": "Amstel Gold Race",
       "prediction_available": true,
       "is_one_day_race": true,
       "scored_rider_count": 200
     },
-    "paris-nice-2026": {
-      "name": "Paris-Nice",
-      "prediction_available": true,
-      "is_one_day_race": false,
-      "scored_rider_count": 176
-    },
-    "tirreno-adriatico-2026": {
-      "name": "Tirreno-Adriatico",
-      "prediction_available": true,
-      "is_one_day_race": false,
-      "scored_rider_count": 191
-    },
-    "milano-sanremo-2026": {
-      "name": "Milano-Sanremo",
+    "brabantse-pijl-2026": {
+      "name": "Brabantse Pijl",
       "prediction_available": true,
       "is_one_day_race": true,
-      "scored_rider_count": 200
+      "scored_rider_count": 146
     },
-    "volta-a-catalunya-2026": {
-      "name": "Volta a Catalunya",
+    "criterium-du-dauphine-2026": {
+      "name": "Tour Auvergne-Rhône-Alpes",
       "prediction_available": true,
       "is_one_day_race": false,
-      "scored_rider_count": 184
+      "scored_rider_count": 174
+    },
+    "dwars-door-vlaanderen-2026": {
+      "name": "Dwars door Vlaanderen",
+      "prediction_available": true,
+      "is_one_day_race": true,
+      "scored_rider_count": 199
     },
     "e3-harelbeke-2026": {
       "name": "E3 Saxo Classic",
@@ -87,29 +38,23 @@
       "is_one_day_race": true,
       "scored_rider_count": 199
     },
-    "dwars-door-vlaanderen-2026": {
-      "name": "Dwars door Vlaanderen",
-      "prediction_available": true,
-      "is_one_day_race": true,
-      "scored_rider_count": 199
-    },
-    "ronde-van-vlaanderen-2026": {
-      "name": "Tour of Flanders",
-      "prediction_available": true,
-      "is_one_day_race": true,
-      "scored_rider_count": 199
-    },
-    "itzulia-basque-country-2026": {
-      "name": "Itzulia Basque Country",
+    "giro-d-italia-2026": {
+      "name": "Giro d'Italia",
       "prediction_available": true,
       "is_one_day_race": false,
-      "scored_rider_count": 176
+      "scored_rider_count": 207
     },
-    "paris-roubaix-2026": {
-      "name": "Paris-Roubaix",
+    "gp-montreal-2026": {
+      "name": "Grand Prix de Montréal",
       "prediction_available": true,
       "is_one_day_race": true,
-      "scored_rider_count": 199
+      "scored_rider_count": 5
+    },
+    "gp-quebec-2026": {
+      "name": "Grand Prix de Québec",
+      "prediction_available": true,
+      "is_one_day_race": true,
+      "scored_rider_count": 6
     },
     "gran-camino-2026": {
       "name": "O Gran Camiño",
@@ -117,23 +62,23 @@
       "is_one_day_race": false,
       "scored_rider_count": 126
     },
-    "brabantse-pijl-2026": {
-      "name": "Brabantse Pijl",
+    "il-lombardia-2026": {
+      "name": "Il Lombardia",
       "prediction_available": true,
       "is_one_day_race": true,
-      "scored_rider_count": 146
+      "scored_rider_count": 13
     },
-    "amstel-gold-2026": {
-      "name": "Amstel Gold Race",
-      "prediction_available": true,
-      "is_one_day_race": true,
-      "scored_rider_count": 200
-    },
-    "tour-of-the-alps-2026": {
-      "name": "Tour of the Alps",
+    "itzulia-basque-country-2026": {
+      "name": "Itzulia Basque Country",
       "prediction_available": true,
       "is_one_day_race": false,
-      "scored_rider_count": 128
+      "scored_rider_count": 176
+    },
+    "kuurne-brussel-kuurne-2026": {
+      "name": "Kuurne-Brussels-Kuurne",
+      "prediction_available": true,
+      "is_one_day_race": true,
+      "scored_rider_count": 199
     },
     "la-fleche-wallonne-2026": {
       "name": "La Flèche Wallonne",
@@ -147,41 +92,35 @@
       "is_one_day_race": true,
       "scored_rider_count": 200
     },
-    "tour-de-romandie-2026": {
-      "name": "Tour de Romandie",
-      "prediction_available": true,
-      "is_one_day_race": false,
-      "scored_rider_count": 118
-    },
-    "giro-d-italia-2026": {
-      "name": "Giro d'Italia",
-      "prediction_available": true,
-      "is_one_day_race": false,
-      "scored_rider_count": 207
-    },
-    "criterium-du-dauphine-2026": {
-      "name": "Tour Auvergne-Rhône-Alpes",
-      "prediction_available": true,
-      "is_one_day_race": false,
-      "scored_rider_count": 174
-    },
-    "tour-de-suisse-2026": {
-      "name": "Tour de Suisse",
-      "prediction_available": true,
-      "is_one_day_race": false,
-      "scored_rider_count": 30
-    },
-    "tour-de-france-2026": {
-      "name": "Tour de France",
-      "prediction_available": true,
-      "is_one_day_race": false,
-      "scored_rider_count": 120
-    },
-    "san-sebastian-2026": {
-      "name": "Clásica de San Sebastián",
+    "milano-sanremo-2026": {
+      "name": "Milano-Sanremo",
       "prediction_available": true,
       "is_one_day_race": true,
-      "scored_rider_count": 13
+      "scored_rider_count": 200
+    },
+    "omloop-het-nieuwsblad-2026": {
+      "name": "Omloop Het Nieuwsblad",
+      "prediction_available": true,
+      "is_one_day_race": true,
+      "scored_rider_count": 199
+    },
+    "paris-nice-2026": {
+      "name": "Paris-Nice",
+      "prediction_available": true,
+      "is_one_day_race": false,
+      "scored_rider_count": 176
+    },
+    "paris-roubaix-2026": {
+      "name": "Paris-Roubaix",
+      "prediction_available": true,
+      "is_one_day_race": true,
+      "scored_rider_count": 199
+    },
+    "paris-tours-2026": {
+      "name": "Paris-Tours",
+      "prediction_available": true,
+      "is_one_day_race": true,
+      "scored_rider_count": 1
     },
     "renewi-tour-2026": {
       "name": "Renewi Tour",
@@ -189,39 +128,95 @@
       "is_one_day_race": false,
       "scored_rider_count": 5
     },
+    "ronde-van-vlaanderen-2026": {
+      "name": "Tour of Flanders",
+      "prediction_available": true,
+      "is_one_day_race": true,
+      "scored_rider_count": 199
+    },
+    "ruta-del-sol-2026": {
+      "name": "Vuelta a Andalucía",
+      "prediction_available": true,
+      "is_one_day_race": false,
+      "scored_rider_count": 135
+    },
+    "san-sebastian-2026": {
+      "name": "Clásica de San Sebastián",
+      "prediction_available": true,
+      "is_one_day_race": true,
+      "scored_rider_count": 13
+    },
+    "setmana-ciclista-valenciana-2026": {
+      "name": "Volta a la Comunitat Valenciana",
+      "prediction_available": true,
+      "is_one_day_race": false,
+      "scored_rider_count": 153
+    },
+    "strade-bianche-2026": {
+      "name": "Strade Bianche",
+      "prediction_available": true,
+      "is_one_day_race": true,
+      "scored_rider_count": 200
+    },
+    "tirreno-adriatico-2026": {
+      "name": "Tirreno-Adriatico",
+      "prediction_available": true,
+      "is_one_day_race": false,
+      "scored_rider_count": 191
+    },
+    "tour-de-france-2026": {
+      "name": "Tour de France",
+      "prediction_available": true,
+      "is_one_day_race": false,
+      "scored_rider_count": 120
+    },
+    "tour-de-romandie-2026": {
+      "name": "Tour de Romandie",
+      "prediction_available": true,
+      "is_one_day_race": false,
+      "scored_rider_count": 118
+    },
+    "tour-de-suisse-2026": {
+      "name": "Tour de Suisse",
+      "prediction_available": true,
+      "is_one_day_race": false,
+      "scored_rider_count": 30
+    },
+    "tour-down-under-2026": {
+      "name": "Tour Down Under",
+      "prediction_available": true,
+      "is_one_day_race": false,
+      "scored_rider_count": 159
+    },
+    "tour-of-the-alps-2026": {
+      "name": "Tour of the Alps",
+      "prediction_available": true,
+      "is_one_day_race": false,
+      "scored_rider_count": 128
+    },
+    "uae-tour-2026": {
+      "name": "UAE Tour",
+      "prediction_available": true,
+      "is_one_day_race": false,
+      "scored_rider_count": 167
+    },
+    "volta-a-catalunya-2026": {
+      "name": "Volta a Catalunya",
+      "prediction_available": true,
+      "is_one_day_race": false,
+      "scored_rider_count": 184
+    },
+    "volta-ao-algarve-2026": {
+      "name": "Volta ao Algarve",
+      "prediction_available": true,
+      "is_one_day_race": false,
+      "scored_rider_count": 191
+    },
     "vuelta-a-espana-2026": {
       "name": "Vuelta a España",
       "prediction_available": true,
       "is_one_day_race": false,
       "scored_rider_count": 53
-    },
-    "tour-of-britain-2026": {
-      "name": "Tour of Britain",
-      "prediction_available": false
-    },
-    "gp-quebec-2026": {
-      "name": "Grand Prix de Québec",
-      "prediction_available": true,
-      "is_one_day_race": true,
-      "scored_rider_count": 6
-    },
-    "gp-montreal-2026": {
-      "name": "Grand Prix de Montréal",
-      "prediction_available": true,
-      "is_one_day_race": true,
-      "scored_rider_count": 5
-    },
-    "il-lombardia-2026": {
-      "name": "Il Lombardia",
-      "prediction_available": true,
-      "is_one_day_race": true,
-      "scored_rider_count": 13
-    },
-    "paris-tours-2026": {
-      "name": "Paris-Tours",
-      "prediction_available": true,
-      "is_one_day_race": true,
-      "scored_rider_count": 1
     }
   }
 }

@@ -780,7 +780,8 @@ let currentSegments = [];   // sectors for the selected race (drawn on the profi
 let CLIMBS = {};        // slug -> climbs payload (lazy-loaded, cached)
 let currentClimbs = [];     // resolved climbs for the displayed stage (drawn on the profile)
 let currentRace = null;
-let currentStageFiles = [];
+let currentStageFiles = [];   // routes[] of the selected race's route slice
+let currentRouteDoc = null;   // the fetched routes/{slug}.json for the selected race
 let map = null;
 let routeLayer = null;
 let endpointMarkers = null;  // start/finish markers (tracked so stage switches don't stack them)
@@ -833,10 +834,12 @@ async function boot() {
   }
 
   try {
-    const gpxData = await fetchJsonFrom(DATA_BASE, 'gpx_index.json');
-    GPX_INDEX = gpxData.races || {};
+    // Routes are now thin, downsampled slices derived from the private store
+    // (publish.py); the raw .gpx no longer ships to the site.
+    const routesData = await fetchJsonFrom(DATA_BASE, 'routes_index.json');
+    GPX_INDEX = routesData.races || {};
   } catch (e) {
-    GPX_INDEX = {};  // non-fatal: races still show, just no GPX
+    GPX_INDEX = {};  // non-fatal: races still show, just no route
   }
 
   try {
@@ -1007,7 +1010,7 @@ function renderRaceList() {
     if (!raceMatches(race)) return;          // keep original index i for selectRace
     shown++;
     const gpx = GPX_INDEX[race.slug] || {};
-    const hasGpx = gpx.gpx_available;
+    const hasGpx = gpx.route_available;
     const odds = ODDS_INDEX[race.slug] || {};
     const hasOdds = odds.odds_available;
     const item = document.createElement('div');
@@ -1026,7 +1029,7 @@ function renderRaceList() {
         <span class="badge ${race.is_one_day_race ? 'oneday' : 'stage'}">
           ${race.is_one_day_race ? '1-day' : 'stage'}</span>
         <span class="badge ${hasGpx ? 'gpx' : 'nogpx'}">
-          ${hasGpx ? 'GPX' : 'no route'}</span>
+          ${hasGpx ? 'route' : 'no route'}</span>
         ${hasOdds ? '<span class="badge" style="background:var(--gold);color:var(--ink)">odds</span>' : ''}
       </div>`;
     if (currentRace && currentRace.slug === race.slug) item.classList.add('active');
@@ -1062,11 +1065,25 @@ async function selectRace(idx) {
   });
 
   const gpx = GPX_INDEX[currentRace.slug] || {};
-  // Prefer the main route over a women's route file (so e.g. Paris-Roubaix
-  // defaults to the full men's parcours), then order by stage.
-  const isWomen = f => /women|femmes|dames/i.test(f.filename || '');
-  currentStageFiles = (gpx.files || []).slice().sort(
-    (a,b) => (isWomen(a) - isWomen(b)) || ((a.stage||0) - (b.stage||0)));
+  const slug = currentRace.slug;
+
+  // Fetch this race's downsampled route slice (all stages, with points), then
+  // prefer the main route over a women's route file (so e.g. Paris-Roubaix
+  // defaults to the full men's parcours) and order by stage.
+  currentRouteDoc = null;
+  currentStageFiles = [];
+  if (gpx.route_available) {
+    try {
+      const doc = await fetchJsonFrom(DATA_BASE, `routes/${slug}.json`);
+      if (!currentRace || currentRace.slug !== slug) return;  // user switched races
+      currentRouteDoc = doc;
+      const isWomen = f => /women|femmes|dames/i.test(f.filename || '');
+      currentStageFiles = (doc.routes || []).slice().sort(
+        (a,b) => (isWomen(a) - isWomen(b)) || ((a.stage||0) - (b.stage||0)));
+    } catch (e) {
+      currentStageFiles = [];   // route slice missing → show "route not available"
+    }
+  }
 
   renderRaceHeader(gpx);
 
@@ -1078,7 +1095,7 @@ async function selectRace(idx) {
 function renderRaceHeader(gpx) {
   const main = document.getElementById('main');
   const r = currentRace;
-  const hasGpx = gpx.gpx_available && currentStageFiles.length > 0;
+  const hasGpx = gpx.route_available && currentStageFiles.length > 0;
 
   let stageTabsHtml = '';
   if (hasGpx && !r.is_one_day_race && currentStageFiles.length > 1) {
@@ -1141,7 +1158,7 @@ function renderRaceHeader(gpx) {
         <span>${r.category||''}</span>
         ${r.edition ? `<span>edition <b>${r.edition}</b></span>`:''}
         ${!r.is_one_day_race && currentStageFiles.length ?
-          `<span><b>${currentStageFiles.length}</b> stages with GPX</span>`:''}
+          `<span><b>${currentStageFiles.length}</b> stages with route</span>`:''}
       </div>
     </div>
     ${vizHtml}
@@ -1649,15 +1666,13 @@ async function loadStage(stageIdx) {
     el.classList.toggle('active', i === stageIdx));
 
   const file = currentStageFiles[stageIdx];
-  const url = `${DATA_BASE}/${file.local_path}?t=${Date.now()}`;
 
   currentClimbs = [];   // cleared until this stage's climbs resolve (async, below)
   renderClimbList([]);
 
   try {
-    const res = await fetch(url, { cache: 'no-store' });
-    const text = await res.text();
-    parseGpx(text);
+    // Points are already in memory from the route slice — no fetch/XML parse.
+    setElevationFromPoints(file.points || []);
     drawRouteOnMap();
     drawElevation();
 
@@ -1687,28 +1702,21 @@ async function loadStage(stageIdx) {
       });
     }
   } catch (e) {
-    document.getElementById('readout').textContent = 'Failed to load GPX: ' + e.message;
+    document.getElementById('readout').textContent = 'Failed to load route: ' + e.message;
   }
 }
 
 // ============================================================
-//  GPX PARSING  (compute cumulative distance + elevation)
+//  ROUTE POINTS → cumulative distance + elevation
+//  Points come from the downsampled route slice as [lat, lon, ele].
 // ============================================================
-function parseGpx(xmlText) {
-  const xml = new DOMParser().parseFromString(xmlText, 'text/xml');
-  const pts = [...xml.getElementsByTagName('trkpt')];
-  // some files use <rtept> instead
-  const nodes = pts.length ? pts : [...xml.getElementsByTagName('rtept')];
-
+function setElevationFromPoints(points) {
   elevationPoints = [];
   let cumDist = 0;
   let prev = null;
 
-  nodes.forEach(n => {
-    const lat = parseFloat(n.getAttribute('lat'));
-    const lon = parseFloat(n.getAttribute('lon'));
-    const eleNode = n.getElementsByTagName('ele')[0];
-    const ele = eleNode ? parseFloat(eleNode.textContent) : 0;
+  points.forEach(p => {
+    const lat = p[0], lon = p[1], ele = p[2] || 0;
     if (prev) cumDist += haversine(prev.lat, prev.lon, lat, lon);
     elevationPoints.push({ lat, lon, ele, dist: cumDist });
     prev = { lat, lon };

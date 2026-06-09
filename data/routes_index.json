@@ -1,0 +1,910 @@
+{
+  "updated_at": "2026-06-09T21:10:30.336603+00:00",
+  "races": {
+    "amstel-gold-2026": {
+      "name": "Amstel Gold Race",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 157.0
+        },
+        {
+          "stage": null,
+          "distance_km": 257.2
+        }
+      ]
+    },
+    "brabantse-pijl-2026": {
+      "name": "Brabantse Pijl",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 162.4
+        }
+      ]
+    },
+    "criterium-du-dauphine-2026": {
+      "name": "Tour Auvergne-Rhône-Alpes",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 139.9
+        },
+        {
+          "stage": 2,
+          "distance_km": 237.0
+        },
+        {
+          "stage": 3,
+          "distance_km": 28.4
+        },
+        {
+          "stage": 4,
+          "distance_km": 164.4
+        },
+        {
+          "stage": 5,
+          "distance_km": 198.1
+        },
+        {
+          "stage": 6,
+          "distance_km": 181.9
+        },
+        {
+          "stage": 7,
+          "distance_km": 133.6
+        },
+        {
+          "stage": 8,
+          "distance_km": 121.2
+        }
+      ]
+    },
+    "dwars-door-vlaanderen-2026": {
+      "name": "Dwars door Vlaanderen",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 184.5
+        }
+      ]
+    },
+    "e3-harelbeke-2026": {
+      "name": "E3 Saxo Classic",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 208.6
+        }
+      ]
+    },
+    "gent-wevelgem-2026": {
+      "name": "In Flanders Fields (Gent-Wevelgem)",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 240.2
+        }
+      ]
+    },
+    "giro-d-italia-2026": {
+      "name": "Giro d'Italia",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 146.8
+        },
+        {
+          "stage": 1,
+          "distance_km": 155.8
+        },
+        {
+          "stage": 2,
+          "distance_km": 221.1
+        },
+        {
+          "stage": 2,
+          "distance_km": 219.2
+        },
+        {
+          "stage": 3,
+          "distance_km": 175.2
+        },
+        {
+          "stage": 3,
+          "distance_km": 175.4
+        },
+        {
+          "stage": 4,
+          "distance_km": 138.6
+        },
+        {
+          "stage": 4,
+          "distance_km": 142.9
+        },
+        {
+          "stage": 5,
+          "distance_km": 202.9
+        },
+        {
+          "stage": 5,
+          "distance_km": 204.7
+        },
+        {
+          "stage": 6,
+          "distance_km": 142.6
+        },
+        {
+          "stage": 6,
+          "distance_km": 160.3
+        },
+        {
+          "stage": 7,
+          "distance_km": 245.1
+        },
+        {
+          "stage": 7,
+          "distance_km": 244.8
+        },
+        {
+          "stage": 8,
+          "distance_km": 155.8
+        },
+        {
+          "stage": 8,
+          "distance_km": 157.7
+        },
+        {
+          "stage": 9,
+          "distance_km": 183.7
+        },
+        {
+          "stage": 9,
+          "distance_km": 184.7
+        },
+        {
+          "stage": 10,
+          "distance_km": 40.0
+        },
+        {
+          "stage": 11,
+          "distance_km": 195.2
+        },
+        {
+          "stage": 11,
+          "distance_km": 178.5
+        },
+        {
+          "stage": 12,
+          "distance_km": 175.3
+        },
+        {
+          "stage": 12,
+          "distance_km": 178.0
+        },
+        {
+          "stage": 13,
+          "distance_km": 189.2
+        },
+        {
+          "stage": 13,
+          "distance_km": 186.3
+        },
+        {
+          "stage": 14,
+          "distance_km": 132.9
+        },
+        {
+          "stage": 14,
+          "distance_km": 132.8
+        },
+        {
+          "stage": 15,
+          "distance_km": 156.9
+        },
+        {
+          "stage": 15,
+          "distance_km": 135.8
+        },
+        {
+          "stage": 16,
+          "distance_km": 113.3
+        },
+        {
+          "stage": 16,
+          "distance_km": 113.2
+        },
+        {
+          "stage": 17,
+          "distance_km": 201.7
+        },
+        {
+          "stage": 17,
+          "distance_km": 200.6
+        },
+        {
+          "stage": 18,
+          "distance_km": 168.7
+        },
+        {
+          "stage": 18,
+          "distance_km": 166.4
+        },
+        {
+          "stage": 19,
+          "distance_km": 150.9
+        },
+        {
+          "stage": 19,
+          "distance_km": 151.5
+        },
+        {
+          "stage": 20,
+          "distance_km": 200.7
+        },
+        {
+          "stage": 20,
+          "distance_km": 199.2
+        },
+        {
+          "stage": 21,
+          "distance_km": 133.2
+        },
+        {
+          "stage": 21,
+          "distance_km": 133.2
+        }
+      ]
+    },
+    "gran-camino-2026": {
+      "name": "O Gran Camiño",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 14.9
+        },
+        {
+          "stage": 2,
+          "distance_km": 149.1
+        },
+        {
+          "stage": 3,
+          "distance_km": 168.9
+        },
+        {
+          "stage": 4,
+          "distance_km": 145.7
+        },
+        {
+          "stage": 5,
+          "distance_km": 155.0
+        }
+      ]
+    },
+    "itzulia-basque-country-2026": {
+      "name": "Itzulia Basque Country",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 13.9
+        },
+        {
+          "stage": 2,
+          "distance_km": 164.5
+        },
+        {
+          "stage": 3,
+          "distance_km": 153.1
+        },
+        {
+          "stage": 4,
+          "distance_km": 167.2
+        },
+        {
+          "stage": 5,
+          "distance_km": 176.4
+        },
+        {
+          "stage": 6,
+          "distance_km": 136.0
+        }
+      ]
+    },
+    "kuurne-brussel-kuurne-2026": {
+      "name": "Kuurne-Brussels-Kuurne",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 193.4
+        }
+      ]
+    },
+    "la-fleche-wallonne-2026": {
+      "name": "La Flèche Wallonne",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 200.3
+        }
+      ]
+    },
+    "liege-bastogne-liege-2026": {
+      "name": "Liège-Bastogne-Liège",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 259.0
+        }
+      ]
+    },
+    "milano-sanremo-2026": {
+      "name": "Milano-Sanremo",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 297.7
+        }
+      ]
+    },
+    "omloop-het-nieuwsblad-2026": {
+      "name": "Omloop Het Nieuwsblad",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 207.9
+        }
+      ]
+    },
+    "paris-nice-2026": {
+      "name": "Paris-Nice",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 171.4
+        },
+        {
+          "stage": 2,
+          "distance_km": 186.9
+        },
+        {
+          "stage": 3,
+          "distance_km": 23.5
+        },
+        {
+          "stage": 4,
+          "distance_km": 194.8
+        },
+        {
+          "stage": 5,
+          "distance_km": 205.3
+        },
+        {
+          "stage": 6,
+          "distance_km": 179.2
+        },
+        {
+          "stage": 7,
+          "distance_km": 138.8
+        },
+        {
+          "stage": 8,
+          "distance_km": 146.7
+        }
+      ]
+    },
+    "paris-roubaix-2026": {
+      "name": "Paris-Roubaix",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 143.9
+        },
+        {
+          "stage": null,
+          "distance_km": 257.9
+        }
+      ]
+    },
+    "ronde-van-vlaanderen-2026": {
+      "name": "Tour of Flanders",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 278.6
+        },
+        {
+          "stage": null,
+          "distance_km": 164.3
+        },
+        {
+          "stage": null,
+          "distance_km": 278.6
+        }
+      ]
+    },
+    "ruta-del-sol-2026": {
+      "name": "Vuelta a Andalucía",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 150.3
+        },
+        {
+          "stage": 2,
+          "distance_km": 138.5
+        },
+        {
+          "stage": 3,
+          "distance_km": 181.0
+        },
+        {
+          "stage": 4,
+          "distance_km": 166.1
+        },
+        {
+          "stage": 5,
+          "distance_km": 168.6
+        }
+      ]
+    },
+    "setmana-ciclista-valenciana-2026": {
+      "name": "Volta a la Comunitat Valenciana",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 163.9
+        },
+        {
+          "stage": 2,
+          "distance_km": 17.2
+        },
+        {
+          "stage": 3,
+          "distance_km": 157.8
+        },
+        {
+          "stage": 4,
+          "distance_km": 172.7
+        },
+        {
+          "stage": 5,
+          "distance_km": 92.5
+        }
+      ]
+    },
+    "strade-bianche-2026": {
+      "name": "Strade Bianche",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 131.2
+        },
+        {
+          "stage": null,
+          "distance_km": 200.7
+        }
+      ]
+    },
+    "tirreno-adriatico-2026": {
+      "name": "Tirreno-Adriatico",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 11.5
+        },
+        {
+          "stage": 2,
+          "distance_km": 206.1
+        },
+        {
+          "stage": 3,
+          "distance_km": 225.0
+        },
+        {
+          "stage": 4,
+          "distance_km": 210.3
+        },
+        {
+          "stage": 5,
+          "distance_km": 187.3
+        },
+        {
+          "stage": 6,
+          "distance_km": 188.5
+        },
+        {
+          "stage": 7,
+          "distance_km": 143.2
+        }
+      ]
+    },
+    "tour-de-france-2026": {
+      "name": "Tour de France",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 19.6
+        },
+        {
+          "stage": 2,
+          "distance_km": 178.8
+        },
+        {
+          "stage": 3,
+          "distance_km": 187.1
+        },
+        {
+          "stage": 4,
+          "distance_km": 184.8
+        },
+        {
+          "stage": 5,
+          "distance_km": 157.9
+        },
+        {
+          "stage": 6,
+          "distance_km": 185.9
+        },
+        {
+          "stage": 7,
+          "distance_km": 174.8
+        },
+        {
+          "stage": 8,
+          "distance_km": 182.2
+        },
+        {
+          "stage": 9,
+          "distance_km": 184.8
+        },
+        {
+          "stage": 10,
+          "distance_km": 166.9
+        },
+        {
+          "stage": 11,
+          "distance_km": 160.8
+        },
+        {
+          "stage": 12,
+          "distance_km": 180.8
+        },
+        {
+          "stage": 13,
+          "distance_km": 204.8
+        },
+        {
+          "stage": 14,
+          "distance_km": 155.6
+        },
+        {
+          "stage": 15,
+          "distance_km": 183.8
+        },
+        {
+          "stage": 16,
+          "distance_km": 26.0
+        },
+        {
+          "stage": 17,
+          "distance_km": 180.4
+        },
+        {
+          "stage": 18,
+          "distance_km": 185.1
+        },
+        {
+          "stage": 19,
+          "distance_km": 129.0
+        },
+        {
+          "stage": 20,
+          "distance_km": 172.1
+        },
+        {
+          "stage": 21,
+          "distance_km": 129.9
+        }
+      ]
+    },
+    "tour-down-under-2026": {
+      "name": "Tour Down Under",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 125.1
+        },
+        {
+          "stage": 3,
+          "distance_km": 155.8
+        },
+        {
+          "stage": 4,
+          "distance_km": 178.8
+        },
+        {
+          "stage": 5,
+          "distance_km": 170.2
+        }
+      ]
+    },
+    "tour-of-the-alps-2026": {
+      "name": "Tour of the Alps",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 144.4
+        },
+        {
+          "stage": 2,
+          "distance_km": 147.5
+        },
+        {
+          "stage": 3,
+          "distance_km": 174.4
+        },
+        {
+          "stage": 4,
+          "distance_km": 167.6
+        },
+        {
+          "stage": 5,
+          "distance_km": 128.5
+        }
+      ]
+    },
+    "uae-tour-2026": {
+      "name": "UAE Tour",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 144.5
+        },
+        {
+          "stage": 2,
+          "distance_km": 12.3
+        },
+        {
+          "stage": 3,
+          "distance_km": 182.2
+        },
+        {
+          "stage": 4,
+          "distance_km": 182.0
+        },
+        {
+          "stage": 5,
+          "distance_km": 159.0
+        },
+        {
+          "stage": 6,
+          "distance_km": 167.7
+        },
+        {
+          "stage": 7,
+          "distance_km": 142.4
+        }
+      ]
+    },
+    "volta-a-catalunya-2026": {
+      "name": "Volta a Catalunya",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 172.7
+        },
+        {
+          "stage": 2,
+          "distance_km": 167.3
+        },
+        {
+          "stage": 3,
+          "distance_km": 159.0
+        },
+        {
+          "stage": 4,
+          "distance_km": 173.1
+        },
+        {
+          "stage": 5,
+          "distance_km": 155.4
+        },
+        {
+          "stage": 6,
+          "distance_km": 158.1
+        },
+        {
+          "stage": 7,
+          "distance_km": 95.4
+        }
+      ]
+    },
+    "volta-ao-algarve-2026": {
+      "name": "Volta ao Algarve",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 183.5
+        },
+        {
+          "stage": 2,
+          "distance_km": 148.3
+        },
+        {
+          "stage": 3,
+          "distance_km": 19.5
+        },
+        {
+          "stage": 4,
+          "distance_km": 176.0
+        },
+        {
+          "stage": 5,
+          "distance_km": 148.1
+        }
+      ]
+    },
+    "vuelta-a-espana-2026": {
+      "name": "Vuelta a España",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 9.8
+        },
+        {
+          "stage": 2,
+          "distance_km": 216.6
+        },
+        {
+          "stage": 3,
+          "distance_km": 164.9
+        },
+        {
+          "stage": 4,
+          "distance_km": 106.2
+        },
+        {
+          "stage": 5,
+          "distance_km": 170.9
+        },
+        {
+          "stage": 6,
+          "distance_km": 175.4
+        },
+        {
+          "stage": 7,
+          "distance_km": 150.0
+        },
+        {
+          "stage": 8,
+          "distance_km": 165.7
+        },
+        {
+          "stage": 9,
+          "distance_km": 188.7
+        },
+        {
+          "stage": 10,
+          "distance_km": 183.9
+        },
+        {
+          "stage": 11,
+          "distance_km": 154.3
+        },
+        {
+          "stage": 12,
+          "distance_km": 166.5
+        },
+        {
+          "stage": 13,
+          "distance_km": 192.8
+        },
+        {
+          "stage": 14,
+          "distance_km": 151.6
+        },
+        {
+          "stage": 15,
+          "distance_km": 181.0
+        },
+        {
+          "stage": 16,
+          "distance_km": 189.1
+        },
+        {
+          "stage": 17,
+          "distance_km": 196.1
+        },
+        {
+          "stage": 18,
+          "distance_km": 32.0
+        },
+        {
+          "stage": 19,
+          "distance_km": 205.7
+        },
+        {
+          "stage": 20,
+          "distance_km": 186.8
+        },
+        {
+          "stage": 21,
+          "distance_km": 96.6
+        }
+      ]
+    },
+    "gp-montreal-2026": {
+      "name": "Grand Prix de Montréal",
+      "route_available": false,
+      "stages": []
+    },
+    "gp-quebec-2026": {
+      "name": "Grand Prix de Québec",
+      "route_available": false,
+      "stages": []
+    },
+    "il-lombardia-2026": {
+      "name": "Il Lombardia",
+      "route_available": false,
+      "stages": []
+    },
+    "paris-tours-2026": {
+      "name": "Paris-Tours",
+      "route_available": false,
+      "stages": []
+    },
+    "renewi-tour-2026": {
+      "name": "Renewi Tour",
+      "route_available": false,
+      "stages": []
+    },
+    "san-sebastian-2026": {
+      "name": "Clásica de San Sebastián",
+      "route_available": false,
+      "stages": []
+    },
+    "tour-de-romandie-2026": {
+      "name": "Tour de Romandie",
+      "route_available": false,
+      "stages": []
+    },
+    "tour-de-suisse-2026": {
+      "name": "Tour de Suisse",
+      "route_available": false,
+      "stages": []
+    },
+    "tour-of-britain-2026": {
+      "name": "Tour of Britain",
+      "route_available": false,
+      "stages": []
+    }
+  }
+}

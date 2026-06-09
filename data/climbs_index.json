@@ -1,17 +1,203 @@
 {
-  "updated_at": "2026-06-09T11:15:11.374256",
+  "updated_at": "2026-06-09T21:10:24.937776+00:00",
   "source": "mixed",
   "races": {
+    "amstel-gold-2026": {
+      "name": "Amstel Gold Race",
+      "climbs_available": true,
+      "total_climbs": 33,
+      "source": "procyclingstats"
+    },
+    "brabantse-pijl-2026": {
+      "name": "Brabantse Pijl",
+      "climbs_available": true,
+      "total_climbs": 21,
+      "source": "procyclingstats"
+    },
+    "criterium-du-dauphine-2026": {
+      "name": "Tour Auvergne-Rhône-Alpes",
+      "climbs_available": true,
+      "total_climbs": 32,
+      "source": "gpx_derived"
+    },
+    "dwars-door-vlaanderen-2026": {
+      "name": "Dwars door Vlaanderen",
+      "climbs_available": true,
+      "total_climbs": 12,
+      "source": "procyclingstats"
+    },
+    "e3-harelbeke-2026": {
+      "name": "E3 Saxo Classic",
+      "climbs_available": true,
+      "total_climbs": 16,
+      "source": "procyclingstats"
+    },
+    "gent-wevelgem-2026": {
+      "name": "In Flanders Fields (Gent-Wevelgem)",
+      "climbs_available": true,
+      "total_climbs": 9,
+      "source": "procyclingstats"
+    },
+    "giro-d-italia-2026": {
+      "name": "Giro d'Italia",
+      "climbs_available": true,
+      "total_climbs": 49,
+      "source": "gpx_derived"
+    },
+    "gp-montreal-2026": {
+      "name": "Grand Prix de Montréal",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "gp-quebec-2026": {
+      "name": "Grand Prix de Québec",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "gran-camino-2026": {
+      "name": "O Gran Camiño",
+      "climbs_available": true,
+      "total_climbs": 11,
+      "source": "gpx_derived"
+    },
+    "il-lombardia-2026": {
+      "name": "Il Lombardia",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "itzulia-basque-country-2026": {
+      "name": "Itzulia Basque Country",
+      "climbs_available": true,
+      "total_climbs": 30,
+      "source": "gpx_derived"
+    },
+    "kuurne-brussel-kuurne-2026": {
+      "name": "Kuurne-Brussels-Kuurne",
+      "climbs_available": true,
+      "total_climbs": 11,
+      "source": "procyclingstats"
+    },
+    "la-fleche-wallonne-2026": {
+      "name": "La Flèche Wallonne",
+      "climbs_available": true,
+      "total_climbs": 12,
+      "source": "procyclingstats"
+    },
+    "liege-bastogne-liege-2026": {
+      "name": "Liège-Bastogne-Liège",
+      "climbs_available": true,
+      "total_climbs": 12,
+      "source": "procyclingstats"
+    },
+    "milano-sanremo-2026": {
+      "name": "Milano-Sanremo",
+      "climbs_available": true,
+      "total_climbs": 6,
+      "source": "procyclingstats"
+    },
+    "omloop-het-nieuwsblad-2026": {
+      "name": "Omloop Het Nieuwsblad",
+      "climbs_available": true,
+      "total_climbs": 12,
+      "source": "procyclingstats"
+    },
+    "paris-nice-2026": {
+      "name": "Paris-Nice",
+      "climbs_available": true,
+      "total_climbs": 17,
+      "source": "gpx_derived"
+    },
+    "paris-roubaix-2026": {
+      "name": "Paris-Roubaix",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "paris-tours-2026": {
+      "name": "Paris-Tours",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "renewi-tour-2026": {
+      "name": "Renewi Tour",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "ronde-van-vlaanderen-2026": {
+      "name": "Tour of Flanders",
+      "climbs_available": true,
+      "total_climbs": 19,
+      "source": "procyclingstats"
+    },
+    "ruta-del-sol-2026": {
+      "name": "Vuelta a Andalucía",
+      "climbs_available": true,
+      "total_climbs": 13,
+      "source": "gpx_derived"
+    },
+    "san-sebastian-2026": {
+      "name": "Clásica de San Sebastián",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "setmana-ciclista-valenciana-2026": {
+      "name": "Volta a la Comunitat Valenciana",
+      "climbs_available": true,
+      "total_climbs": 13,
+      "source": "gpx_derived"
+    },
+    "strade-bianche-2026": {
+      "name": "Strade Bianche",
+      "climbs_available": true,
+      "total_climbs": 1,
+      "source": "procyclingstats"
+    },
+    "tirreno-adriatico-2026": {
+      "name": "Tirreno-Adriatico",
+      "climbs_available": true,
+      "total_climbs": 33,
+      "source": "gpx_derived"
+    },
+    "tour-de-france-2026": {
+      "name": "Tour de France",
+      "climbs_available": true,
+      "total_climbs": 67,
+      "source": "gpx_derived"
+    },
+    "tour-de-romandie-2026": {
+      "name": "Tour de Romandie",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "tour-de-suisse-2026": {
+      "name": "Tour de Suisse",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
     "tour-down-under-2026": {
       "name": "Tour Down Under",
       "climbs_available": true,
       "total_climbs": 20,
       "source": "gpx_derived"
     },
-    "setmana-ciclista-valenciana-2026": {
-      "name": "Volta a la Comunitat Valenciana",
+    "tour-of-britain-2026": {
+      "name": "Tour of Britain",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "tour-of-the-alps-2026": {
+      "name": "Tour of the Alps",
       "climbs_available": true,
-      "total_climbs": 13,
+      "total_climbs": 19,
       "source": "gpx_derived"
     },
     "uae-tour-2026": {
@@ -20,10 +206,10 @@
       "total_climbs": 6,
       "source": "gpx_derived"
     },
-    "ruta-del-sol-2026": {
-      "name": "Vuelta a Andalucía",
+    "volta-a-catalunya-2026": {
+      "name": "Volta a Catalunya",
       "climbs_available": true,
-      "total_climbs": 13,
+      "total_climbs": 32,
       "source": "gpx_derived"
     },
     "volta-ao-algarve-2026": {
@@ -32,175 +218,11 @@
       "total_climbs": 11,
       "source": "gpx_derived"
     },
-    "omloop-het-nieuwsblad-2026": {
-      "name": "Omloop Het Nieuwsblad",
-      "climbs_available": true,
-      "total_climbs": 12
-    },
-    "kuurne-brussel-kuurne-2026": {
-      "name": "Kuurne-Brussels-Kuurne",
-      "climbs_available": true,
-      "total_climbs": 11
-    },
-    "strade-bianche-2026": {
-      "name": "Strade Bianche",
-      "climbs_available": true,
-      "total_climbs": 1
-    },
-    "paris-nice-2026": {
-      "name": "Paris-Nice",
-      "climbs_available": true,
-      "total_climbs": 17,
-      "source": "gpx_derived"
-    },
-    "tirreno-adriatico-2026": {
-      "name": "Tirreno-Adriatico",
-      "climbs_available": true,
-      "total_climbs": 33,
-      "source": "gpx_derived"
-    },
-    "milano-sanremo-2026": {
-      "name": "Milano-Sanremo",
-      "climbs_available": true,
-      "total_climbs": 6
-    },
-    "volta-a-catalunya-2026": {
-      "name": "Volta a Catalunya",
-      "climbs_available": true,
-      "total_climbs": 32,
-      "source": "gpx_derived"
-    },
-    "e3-harelbeke-2026": {
-      "name": "E3 Saxo Classic",
-      "climbs_available": true,
-      "total_climbs": 16
-    },
-    "gent-wevelgem-2026": {
-      "name": "In Flanders Fields (Gent-Wevelgem)",
-      "climbs_available": true,
-      "total_climbs": 9
-    },
-    "dwars-door-vlaanderen-2026": {
-      "name": "Dwars door Vlaanderen",
-      "climbs_available": true,
-      "total_climbs": 12
-    },
-    "ronde-van-vlaanderen-2026": {
-      "name": "Tour of Flanders",
-      "climbs_available": true,
-      "total_climbs": 19
-    },
-    "itzulia-basque-country-2026": {
-      "name": "Itzulia Basque Country",
-      "climbs_available": true,
-      "total_climbs": 30,
-      "source": "gpx_derived"
-    },
-    "paris-roubaix-2026": {
-      "name": "Paris-Roubaix",
-      "climbs_available": false,
-      "total_climbs": 0
-    },
-    "gran-camino-2026": {
-      "name": "O Gran Camiño",
-      "climbs_available": true,
-      "total_climbs": 11,
-      "source": "gpx_derived"
-    },
-    "brabantse-pijl-2026": {
-      "name": "Brabantse Pijl",
-      "climbs_available": true,
-      "total_climbs": 21
-    },
-    "amstel-gold-2026": {
-      "name": "Amstel Gold Race",
-      "climbs_available": true,
-      "total_climbs": 33
-    },
-    "tour-of-the-alps-2026": {
-      "name": "Tour of the Alps",
-      "climbs_available": true,
-      "total_climbs": 19,
-      "source": "gpx_derived"
-    },
-    "la-fleche-wallonne-2026": {
-      "name": "La Flèche Wallonne",
-      "climbs_available": true,
-      "total_climbs": 12
-    },
-    "liege-bastogne-liege-2026": {
-      "name": "Liège-Bastogne-Liège",
-      "climbs_available": true,
-      "total_climbs": 12
-    },
-    "tour-de-romandie-2026": {
-      "name": "Tour de Romandie",
-      "climbs_available": false,
-      "total_climbs": 0
-    },
-    "giro-d-italia-2026": {
-      "name": "Giro d'Italia",
-      "climbs_available": true,
-      "total_climbs": 49,
-      "source": "gpx_derived"
-    },
-    "criterium-du-dauphine-2026": {
-      "name": "Tour Auvergne-Rhône-Alpes",
-      "climbs_available": true,
-      "total_climbs": 32,
-      "source": "gpx_derived"
-    },
-    "tour-de-suisse-2026": {
-      "name": "Tour de Suisse",
-      "climbs_available": false,
-      "total_climbs": 0
-    },
-    "tour-de-france-2026": {
-      "name": "Tour de France",
-      "climbs_available": true,
-      "total_climbs": 67,
-      "source": "gpx_derived"
-    },
-    "san-sebastian-2026": {
-      "name": "Clásica de San Sebastián",
-      "climbs_available": false,
-      "total_climbs": 0
-    },
-    "renewi-tour-2026": {
-      "name": "Renewi Tour",
-      "climbs_available": false,
-      "total_climbs": 0
-    },
     "vuelta-a-espana-2026": {
       "name": "Vuelta a España",
       "climbs_available": true,
       "total_climbs": 94,
       "source": "gpx_derived"
-    },
-    "tour-of-britain-2026": {
-      "name": "Tour of Britain",
-      "climbs_available": false,
-      "total_climbs": 0
-    },
-    "gp-quebec-2026": {
-      "name": "Grand Prix de Québec",
-      "climbs_available": false,
-      "total_climbs": 0
-    },
-    "gp-montreal-2026": {
-      "name": "Grand Prix de Montréal",
-      "climbs_available": false,
-      "total_climbs": 0
-    },
-    "il-lombardia-2026": {
-      "name": "Il Lombardia",
-      "climbs_available": false,
-      "total_climbs": 0
-    },
-    "paris-tours-2026": {
-      "name": "Paris-Tours",
-      "climbs_available": false,
-      "total_climbs": 0
     }
   }
 }
