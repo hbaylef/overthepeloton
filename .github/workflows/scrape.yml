@@ -18,8 +18,8 @@ jobs:
   scrape:
     runs-on: ubuntu-latest
     timeout-minutes: 90
-    # Private raw-data store (Turso). Scrapers migrated to the DB read these;
-    # not-yet-migrated scrapers ignore them. Absent vars => local file fallback.
+    # Private raw-data store (Turso). All scrapers read/write the DB; publish.py
+    # reads it to regenerate the public slices. Absent vars => local file fallback.
     env:
       TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
       TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
@@ -70,13 +70,20 @@ jobs:
         run: python scrapers/derive_climbs.py
         continue-on-error: true
 
-      - name: Commit & push updated data
+      - name: Publish public slices from Turso
+        # Reads the private store and (re)writes the thin public slices the site
+        # serves: races.json, startlists, climbs (+index), and DOWNSAMPLED routes
+        # (data/routes/* + routes_index.json). Change-aware, so unchanged days
+        # produce no diff. Not continue-on-error: a failure here is worth seeing.
+        run: python scrapers/publish.py
+
+      - name: Commit & push updated public slices
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/
           if ! git diff --staged --quiet; then
-            git commit -m "Daily scrape: $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git commit -m "Daily publish: $(date -u +'%Y-%m-%d %H:%M UTC')"
             git push
           else
             echo "No changes to commit"
