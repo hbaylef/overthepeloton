@@ -33,13 +33,15 @@ import db  # local module: Turso/SQLite store (build-order step 2)
 # ---------------------------------------------------------------------------
 YEAR = datetime.now().year
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-# Legacy on-disk file. Races now live in Turso (race_data kind="race"); this
-# path is only read once, to SEED Turso on the first run. No longer written.
+# Legacy on-disk paths. Races AND startlists now live in Turso (race_data
+# kind="race"/"startlist"); these paths are only read once, to SEED Turso on
+# the first run. No longer written.
 RACES_FILE = DATA_DIR / "races.json"
 STARTLISTS_DIR = DATA_DIR / "startlists"
 
-# race_data "kind" for race documents (keyed by slug, e.g. tour-de-france-2026).
-DB_RACE_KIND = "race"
+# race_data "kind" values (docs keyed by slug, e.g. tour-de-france-2026).
+DB_RACE_KIND = db.KIND_RACE
+DB_STARTLIST_KIND = db.KIND_STARTLIST
 DELAY_BETWEEN_REQUESTS = 2  # seconds — be polite to PCS
 # A race that ended more than this many days ago is "frozen": we reuse its
 # cached entry + startlist and make no network calls for it. The grace window
@@ -221,17 +223,14 @@ def drop_substitute_riders(riders: list) -> list:
 RESULT_FIELDS = ("status", "abandoned_stage", "medals")
 
 
-def carry_over_results(riders: list, sl_file: Path) -> None:
-    """Copy any existing abandon/medal fields from the previous startlist file
-    onto the freshly-scraped riders (matched by rider_url), in place. These are
-    authoritatively refreshed later by scrape_results.py; this just preserves
-    them across scrape_races' rebuild so they never momentarily disappear."""
-    if not sl_file.exists():
-        return
-    try:
-        prev = json.loads(sl_file.read_text(encoding="utf-8"))
-    except Exception as e:
-        log.warning(f"  could not read prior startlist {sl_file.name}: {e}")
+def carry_over_results(client, riders: list, slug: str) -> None:
+    """Copy any existing abandon/medal fields from the previous startlist (in
+    Turso) onto the freshly-scraped riders (matched by rider_url), in place.
+    These are authoritatively refreshed later by scrape_results.py; this just
+    preserves them across scrape_races' rebuild so they never momentarily
+    disappear."""
+    prev = db.get_document(client, DB_STARTLIST_KIND, slug)
+    if not prev:
         return
     by_url = {r.get("rider_url"): r for r in prev.get("riders", []) if r.get("rider_url")}
     for r in riders:
@@ -434,6 +433,30 @@ def seed_races_from_json_if_empty(client) -> int:
     return n
 
 
+def seed_startlists_from_json_if_empty(client) -> int:
+    """One-time bootstrap for startlists, mirroring the race seed. If Turso has
+    no startlist docs yet, import every data/startlists/*.json. Crucial so
+    FINISHED (frozen) races — which scrape_races never re-scrapes — keep their
+    startlists in the store. Idempotent."""
+    if db.list_slugs(client, DB_STARTLIST_KIND):
+        return 0
+    if not STARTLISTS_DIR.exists():
+        return 0
+    n = 0
+    for f in sorted(STARTLISTS_DIR.glob("*.json")):
+        try:
+            doc = json.loads(f.read_text(encoding="utf-8"))
+        except Exception as e:
+            log.warning(f"Seed: could not read {f.name}: {e}")
+            continue
+        slug = doc.get("race_slug") or f.stem
+        db.put_document(client, DB_STARTLIST_KIND, slug, doc)
+        n += 1
+    if n:
+        log.info(f"Seeded {n} startlists from legacy files into Turso")
+    return n
+
+
 def load_existing_races_by_cs(client) -> dict:
     """Index the previously-stored races (from Turso) by cyclingstage_slug (the
     CALENDAR key), so a frozen race can reuse last run's entry without
@@ -468,8 +491,10 @@ def main():
     where = "remote Turso" if db.is_remote() else "local SQLite file"
     log.info(f"Race store: {where}")
 
-    # First-run bootstrap: import the legacy races.json so freeze works today.
+    # First-run bootstrap: import the legacy JSON so freeze works today and
+    # frozen races keep their startlists.
     seed_races_from_json_if_empty(client)
+    seed_startlists_from_json_if_empty(client)
 
     # Reuse last run's data for races that are already over (skip the network).
     existing = load_existing_races_by_cs(client)
@@ -492,7 +517,7 @@ def main():
             log.info(f"  → Frozen (race over): {name} — reusing cached data")
             all_races.append(cached)
             frozen += 1
-            if (STARTLISTS_DIR / f"{cached.get('slug', '')}.json").exists():
+            if db.has_document(client, DB_STARTLIST_KIND, cached.get("slug", "")):
                 startlist_count += 1
             continue
 
@@ -543,16 +568,14 @@ def main():
 
         if riders and len(riders) > 0:
             slug = info["slug"]
-            sl_file = STARTLISTS_DIR / f"{slug}.json"
-            carry_over_results(riders, sl_file)   # keep abandon/medal fields across the rebuild
-            with open(sl_file, "w", encoding="utf-8") as f:
-                json.dump({
-                    "race": info["name"],
-                    "race_slug": slug,
-                    "updated_at": datetime.now().isoformat(),
-                    "total_riders": len(riders),
-                    "riders": riders,
-                }, f, indent=2, ensure_ascii=False)
+            carry_over_results(client, riders, slug)  # keep abandon/medal fields across the rebuild
+            db.put_document(client, DB_STARTLIST_KIND, slug, {
+                "race": info["name"],
+                "race_slug": slug,
+                "updated_at": datetime.now().isoformat(),
+                "total_riders": len(riders),
+                "riders": riders,
+            })
             startlist_count += 1
             log.info(f"  → Saved startlist: {slug} ({len(riders)} riders)")
 
@@ -570,6 +593,7 @@ def main():
         if slug and db.put_document(client, DB_RACE_KIND, slug, race):
             written += 1
     stored = len(db.list_slugs(client, DB_RACE_KIND))
+    sl_slugs = set(db.list_slugs(client, DB_STARTLIST_KIND))
     client.close()
 
     log.info(f"Done! {len(all_races)} races processed; {written} rows changed; "
@@ -586,7 +610,7 @@ def main():
     print(f"  Startlists:   {startlist_count}")
     print("=" * 64)
     for r in all_races:
-        has_sl = "📋" if (STARTLISTS_DIR / f"{r['slug']}.json").exists() else "  "
+        has_sl = "📋" if r["slug"] in sl_slugs else "  "
         flag = "⚠️" if r.get("_pcs_data_missing") else "  "
         print(f"  {has_sl}{flag} {r['startdate']}  {r['name']}")
 

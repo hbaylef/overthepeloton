@@ -33,8 +33,10 @@ from typing import Optional, Tuple
 
 import requests
 
+import db  # local module: Turso/SQLite store (build-order step 2)
+
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-STARTLISTS_DIR = DATA_DIR / "startlists"
+# Legacy file, read once to seed the Turso cache on first run; no longer written.
 CACHE_FILE = DATA_DIR / "birthplaces_cache.json"
 
 NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
@@ -89,18 +91,22 @@ def geocode(session: requests.Session, place: str,
     return None, None
 
 
-def load_cache() -> dict:
-    if CACHE_FILE.exists():
+def load_cache(client) -> dict:
+    """Load the birthplaces cache from the store, seeding it once from the
+    legacy data/birthplaces_cache.json so the ~473 already-geocoded towns aren't
+    re-fetched from Nominatim on the first run."""
+    cached = db.get_cache(client, db.CACHE_BIRTHPLACES)
+    if cached is None and CACHE_FILE.exists():
         try:
-            return json.loads(CACHE_FILE.read_text(encoding="utf-8"))
+            cached = json.loads(CACHE_FILE.read_text(encoding="utf-8"))
+            log.info(f"Seeded birthplaces cache from legacy {CACHE_FILE.name}")
         except Exception:
             pass
-    return {}
+    return cached or {}
 
 
-def save_cache(cache: dict):
-    CACHE_FILE.write_text(json.dumps(cache, indent=2, ensure_ascii=False),
-                          encoding="utf-8")
+def save_cache(client, cache: dict):
+    db.put_cache(client, db.CACHE_BIRTHPLACES, cache)
 
 
 def main():
@@ -112,7 +118,9 @@ def main():
     args = ap.parse_args()
     insecure = args.insecure or os.environ.get("LFR_INSECURE") == "1"
 
-    cache = load_cache()
+    client = db.open_db()
+    log.info(f"Geocode store: {'remote Turso' if db.is_remote() else 'local SQLite file'}")
+    cache = load_cache(client)
     session = requests.Session()
     session.headers.update({"User-Agent": USER_AGENT})
     if insecure:
@@ -121,15 +129,9 @@ def main():
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
         log.warning("TLS verification DISABLED (--insecure).")
 
-    files = sorted(STARTLISTS_DIR.glob("*.json"))
     geocoded = from_cache = embedded = 0
 
-    for f in files:
-        try:
-            d = json.loads(f.read_text(encoding="utf-8"))
-        except Exception as e:
-            log.warning(f"skip {f.name}: {e}")
-            continue
+    for slug, d in db.get_all_documents(client, db.KIND_STARTLIST).items():
         changed = False
         for r in d.get("riders", []):
             place = r.get("place_of_birth")
@@ -143,7 +145,7 @@ def main():
                 cache[key] = {"lat": lat, "lon": lon}
                 geocoded += 1
                 if geocoded % 25 == 0:
-                    save_cache(cache)
+                    save_cache(client, cache)
                 time.sleep(DELAY_S)
             else:
                 from_cache += 1
@@ -155,9 +157,10 @@ def main():
                 changed = True
                 embedded += 1
         if changed:
-            f.write_text(json.dumps(d, indent=2, ensure_ascii=False), encoding="utf-8")
+            db.put_document(client, db.KIND_STARTLIST, slug, d)
 
-    save_cache(cache)
+    save_cache(client, cache)
+    client.close()
     print("\n" + "=" * 60)
     print("  BIRTHPLACE GEOCODE")
     print(f"  newly geocoded (network): {geocoded}")

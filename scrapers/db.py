@@ -29,6 +29,20 @@ import libsql_client
 # OVERTHEPELOTON_DB (handy for tests).
 DEFAULT_LOCAL_PATH = "data/overthepeloton.db"
 
+# race_data "kind" values — the contract shared across scrapers.
+KIND_RACE = "race"
+KIND_STARTLIST = "startlist"
+KIND_CLIMBS = "climbs"
+KIND_PREDICTIONS = "predictions"
+KIND_COBBLES = "cobbles"
+
+# caches table names.
+CACHE_RIDERS = "riders"
+CACHE_BIRTHPLACES = "birthplaces"
+CACHE_CLIMBS = "climbs"
+CACHE_CLIMBS_NAMES = "climbs_names"
+CACHE_START_TIMES = "start_times"
+
 
 # --------------------------------------------------------------------------- #
 # Connection
@@ -150,6 +164,14 @@ def get_document(client, kind, slug):
         "SELECT content FROM race_data WHERE kind=? AND slug=?", [kind, slug]
     )
     return json.loads(rs.rows[0][0]) if rs.rows else None
+
+
+def has_document(client, kind, slug):
+    """Cheap existence check (doesn't load the content)."""
+    rs = client.execute(
+        "SELECT 1 FROM race_data WHERE kind=? AND slug=? LIMIT 1", [kind, slug]
+    )
+    return bool(rs.rows)
 
 
 def list_slugs(client, kind):

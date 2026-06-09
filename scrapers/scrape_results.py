@@ -41,9 +41,8 @@ from typing import Optional
 
 from procyclingstats import Stage
 
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-RACES_FILE = DATA_DIR / "races.json"
-STARTLISTS_DIR = DATA_DIR / "startlists"
+import db  # local module: Turso/SQLite store (build-order step 2)
+
 DELAY_BETWEEN_REQUESTS = 2  # seconds — be polite to PCS
 GRACE_DAYS = 2              # keep scanning a race this many days past its end
 
@@ -179,39 +178,37 @@ def scan_stages(race: dict, today, fetch=fetch_stage_results) -> list:
     return scanned
 
 
-def process_race(race: dict, today) -> Optional[tuple]:
+def process_race(client, race: dict, today, fetch=fetch_stage_results) -> Optional[tuple]:
     """Scan a stage race's completed stages and write abandon status + stage
-    medals into its startlist. Returns (n_abandoned, n_medallists), or None if
-    nothing was done."""
-    sl_file = STARTLISTS_DIR / f"{race.get('slug')}.json"
-    if not sl_file.exists():
+    medals into its startlist (in the store). Returns (n_abandoned,
+    n_medallists), or None if nothing was done."""
+    slug = race.get("slug")
+    data = db.get_document(client, db.KIND_STARTLIST, slug)
+    if not data:
         return None
 
-    scanned = scan_stages(race, today)
+    scanned = scan_stages(race, today, fetch)
     if not scanned:
-        return None
-
-    try:
-        data = json.loads(sl_file.read_text(encoding="utf-8"))
-    except Exception as e:
-        log.warning(f"  cannot read {sl_file.name}: {e}")
         return None
 
     n_ab, n_med = apply_results(data.get("riders", []),
                                 compute_abandons(scanned), compute_medals(scanned))
-    with open(sl_file, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-    log.info(f"  {race.get('slug')}: {len(scanned)} stage(s), "
+    db.put_document(client, db.KIND_STARTLIST, slug, data)
+    log.info(f"  {slug}: {len(scanned)} stage(s), "
              f"{n_ab} abandoned, {n_med} medallist(s)")
     return n_ab, n_med
 
 
 def main():
-    if not RACES_FILE.exists():
-        log.error(f"No {RACES_FILE} — run scrape_races.py first.")
+    client = db.open_db()
+    log.info(f"Results store: {'remote Turso' if db.is_remote() else 'local SQLite file'}")
+
+    races = list(db.get_all_documents(client, db.KIND_RACE).values())
+    if not races:
+        log.error("No races in the store — run scrape_races.py first.")
+        client.close()
         return
 
-    races = json.loads(RACES_FILE.read_text(encoding="utf-8")).get("races", [])
     today = datetime.now().date()   # Actions runs in UTC; date granularity is enough
     total_abandons = total_medals = 0
     processed = 0
@@ -226,11 +223,13 @@ def main():
         if end_d and end_d < today - timedelta(days=GRACE_DAYS):
             continue                                   # over & frozen
         log.info(f"Scanning {race.get('name')} for abandons + stage medals…")
-        res = process_race(race, today)
+        res = process_race(client, race, today)
         if res is not None:
             total_abandons += res[0]
             total_medals += res[1]
             processed += 1
+
+    client.close()
 
     print("\n" + "=" * 64)
     print(f"  RESULTS SCRAPE SUMMARY")

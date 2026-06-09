@@ -43,8 +43,10 @@ from typing import Optional
 
 from procyclingstats import Rider
 
+import db  # local module: Turso/SQLite store (build-order step 2)
+
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-STARTLISTS_DIR = DATA_DIR / "startlists"
+# Legacy file, read once to seed the Turso cache on first run; no longer written.
 CACHE_FILE = DATA_DIR / "riders_cache.json"
 DELAY_BETWEEN_REQUESTS = 2
 CACHE_DAYS = 7
@@ -70,39 +72,36 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 
-def collect_rider_urls() -> set:
-    """Walk startlist files and return the deduped set of rider_url values."""
+def collect_rider_urls(client) -> set:
+    """Walk the startlists in the store and return the deduped set of rider_url
+    values."""
     urls = set()
-    if not STARTLISTS_DIR.exists():
-        log.warning(f"No startlists directory at {STARTLISTS_DIR}")
-        return urls
-    for f in sorted(STARTLISTS_DIR.glob("*.json")):
-        try:
-            d = json.loads(f.read_text(encoding="utf-8"))
-            for r in d.get("riders", []):
-                u = r.get("rider_url")
-                if u:
-                    urls.add(u)
-        except Exception as e:
-            log.warning(f"Failed to read {f.name}: {e}")
+    for d in db.get_all_documents(client, db.KIND_STARTLIST).values():
+        for r in d.get("riders", []):
+            u = r.get("rider_url")
+            if u:
+                urls.add(u)
     return urls
 
 
-def load_cache() -> dict:
-    """Load data/riders_cache.json, or return an empty cache skeleton."""
-    if CACHE_FILE.exists():
+def load_cache(client) -> dict:
+    """Load the riders cache from the store, seeding it once from the legacy
+    data/riders_cache.json if the store has none yet (so we don't needlessly
+    re-scrape ~1k riders on the first run)."""
+    cached = db.get_cache(client, db.CACHE_RIDERS)
+    if cached is None and CACHE_FILE.exists():
         try:
-            return json.loads(CACHE_FILE.read_text(encoding="utf-8"))
+            cached = json.loads(CACHE_FILE.read_text(encoding="utf-8"))
+            log.info(f"Seeded riders cache from legacy {CACHE_FILE.name}")
         except Exception as e:
             log.warning(f"Could not parse {CACHE_FILE.name}, starting fresh: {e}")
-    return {"updated_at": None, "total_cached": 0, "riders": {}}
+    return cached or {"updated_at": None, "total_cached": 0, "riders": {}}
 
 
-def save_cache(cache: dict):
+def save_cache(client, cache: dict):
     cache["total_cached"] = len(cache.get("riders", {}))
     cache["updated_at"] = datetime.now().isoformat()
-    with open(CACHE_FILE, "w", encoding="utf-8") as f:
-        json.dump(cache, f, indent=2, ensure_ascii=False)
+    db.put_cache(client, db.CACHE_RIDERS, cache)
 
 
 def is_fresh(entry: dict, days: int = CACHE_DAYS) -> bool:
@@ -152,35 +151,29 @@ def fetch_rider_info(rider_url: str) -> dict:
             "place_of_birth": place or None}
 
 
-def embed_specialties_into_startlists(cache_riders: dict):
-    """Open each startlist file and embed specialties.career + birthdate +
+def embed_specialties_into_startlists(client, cache_riders: dict):
+    """For each startlist in the store, embed specialties.career + birthdate +
     place_of_birth onto every rider entry (geocoding is done separately by
     geocode_birthplaces.py, which adds birthplace_lat/lon afterwards)."""
-    for f in sorted(STARTLISTS_DIR.glob("*.json")):
-        try:
-            d = json.loads(f.read_text(encoding="utf-8"))
-        except Exception as e:
-            log.warning(f"Failed to read {f.name}: {e}")
-            continue
-
+    for slug, d in db.get_all_documents(client, db.KIND_STARTLIST).items():
         for r in d.get("riders", []):
             url = r.get("rider_url")
             ent = cache_riders.get(url) if url else None
             r["specialties"] = {"career": (ent or {}).get("career")}
             r["birthdate"] = (ent or {}).get("birthdate")
             r["place_of_birth"] = (ent or {}).get("place_of_birth")
-
-        with open(f, "w", encoding="utf-8") as out:
-            json.dump(d, out, indent=2, ensure_ascii=False)
+        db.put_document(client, db.KIND_STARTLIST, slug, d)
 
 
 def main():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
+    client = db.open_db()
+    log.info(f"Rider store: {'remote Turso' if db.is_remote() else 'local SQLite file'}")
 
-    rider_urls = collect_rider_urls()
+    rider_urls = collect_rider_urls(client)
     log.info(f"Found {len(rider_urls)} unique riders across all startlists")
 
-    cache = load_cache()
+    cache = load_cache(client)
     cache_riders = cache.setdefault("riders", {})
 
     fresh = scraped = failed = 0
@@ -204,11 +197,12 @@ def main():
             scraped += 1
 
         if (scraped + failed) % SAVE_EVERY == 0:
-            save_cache(cache)
+            save_cache(client, cache)
             log.info(f"  → Cache checkpoint ({len(cache_riders)} entries)")
 
-    save_cache(cache)
-    embed_specialties_into_startlists(cache_riders)
+    save_cache(client, cache)
+    embed_specialties_into_startlists(client, cache_riders)
+    client.close()
 
     print("\n" + "=" * 64)
     print(f"  RIDER SCRAPE SUMMARY")
