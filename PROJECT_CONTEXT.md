@@ -443,6 +443,26 @@ should still be clear and beginner-friendly, but assume they know how to
 └─────────────────────────────────────────────────────────┘
 ```
 
+### Why slices are committed (and a possible future change)
+
+The site reads its data from the **committed slices** in `data/` because GitHub
+Pages is **static — there is no server**. The browser can't read Turso directly:
+that needs the `TURSO_AUTH_TOKEN`, and any secret placed in client-side JS is
+readable by anyone, which would expose the whole private store. So something
+holding the token must sit between the browser and Turso — today that's
+`publish.py` at **build time** (in Actions), producing static files.
+
+**Possible future evolution (not now):** if we ever move hosting **off GitHub
+Pages** to a platform with serverless functions (e.g. Cloudflare Pages/Workers,
+Netlify, Vercel), a small **server-side function** could hold the Turso token and
+query the DB **at request time**, returning the same slices on demand. That would
+let `data/` be empty (no committed JSON) and the site always read live from Turso.
+Caveat: whatever such an endpoint returns is still public — it only changes
+*where* the public JSON comes from (a committed file vs. a live endpoint), not
+whether displayed data is public. Worth it only if a data-free repo / always-live
+freshness becomes important enough to add a backend. Until then, committed slices
+on Pages is the simplest correct setup.
+
 ---
 
 ## 3. Data sources (decided)
