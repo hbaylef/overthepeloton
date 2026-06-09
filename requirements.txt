@@ -3,5 +3,8 @@ cloudscraper>=1.2.71
 requests>=2.31.0
 beautifulsoup4>=4.12.0
 lxml>=5.0.0
+# Turso/libsql client — HTTP-based, pure-Python wheel (installs cleanly in CI;
+# the native/Rust build can fail). Pinned; see scrapers/db.py.
+libsql-client==0.3.1
 # Optional — only needed for the --live Bet365 attempt:
 # playwright>=1.40.0   (then run: playwright install chromium)
