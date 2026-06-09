@@ -82,9 +82,22 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/
-          if ! git diff --staged --quiet; then
-            git commit -m "Daily publish: $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git push
-          else
+          if git diff --staged --quiet; then
             echo "No changes to commit"
+            exit 0
           fi
+          git commit -m "Daily publish: $(date -u +'%Y-%m-%d %H:%M UTC')"
+          # Push robustly: the remote may have moved (another run, the other
+          # cron, or a manual push) between checkout and now. Rebase onto the
+          # latest main and retry a few times instead of failing the run.
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:main; then
+              echo "Pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "Push rejected (attempt $attempt) — rebasing onto origin/main and retrying"
+            git pull --rebase --autostash origin main || true
+            sleep 5
+          done
+          echo "Could not push after retries" >&2
+          exit 1
