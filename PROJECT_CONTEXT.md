@@ -7,12 +7,72 @@
 
 ---
 
-## 0. ⚠️ CURRENT STATUS — START HERE (updated 2026-06-08, end of session)
+## 0. ⚠️ CURRENT STATUS — START HERE (updated 2026-06-09, end of session)
 
 Running in **Claude Code** locally at `C:\Users\PC\Desktop\cycling-dashboard`.
 Site is live; each verified increment is committed + pushed (GitHub Pages).
 
-### 🟢 LATEST SESSION (2026-06-08, pt 2) — UI redesign, medal detail, ops
+### 🟢 LATEST SESSION (2026-06-09) — DATA RE-ARCHITECTURE: raw data → private Turso, site reads thin slices
+
+Big structural change. The daily scrape used to commit **all** raw data (PCS JSON +
+~105 MB of GPX + caches) into this **public** repo, twice a day — bloating the repo
+with mostly timestamp-only diffs and exposing the raw scraped data. It also re-did
+work every run (re-crawling/re-downloading routes it already had).
+
+**New architecture (shipped + verified):**
+- **Private store = Turso** (free hosted SQLite, AWS EU-West/Ireland). All raw
+  scraped data now lives there, not in the repo.
+- **`scrapers/db.py`** — connection helper + schema. Switches **local SQLite file
+  vs remote Turso** by the presence of `TURSO_DATABASE_URL` (same code both ways,
+  so logic is testable locally without the TLS proxy). Pragmatic schema, 3 tables:
+  `race_data(kind, slug, content, content_hash, updated_at)` (per-race JSON blobs;
+  `kind` ∈ race/startlist/climbs/predictions), `caches(name, …)` (the scrape
+  caches: riders/birthplaces/climbs/climbs_names/start_times), and
+  `gpx_files(slug, filename, stage, source, url, content, …)`. Every writer is
+  **change-aware** (skips the write when the content hash is unchanged).
+  Client = `libsql-client==0.3.1` (pure-Python HTTP wheel; pinned in
+  requirements.txt). **Gotcha:** Turso hands out `libsql://` URLs but the sync
+  client can hang on a websocket backend — `db.py` coerces `libsql://`→`https://`
+  to force the HTTP transport.
+- **All scrapers migrated** to read/write Turso (`scrape_races`, `scrape_riders`,
+  `scrape_results`, `geocode_birthplaces`, `scrape_gpx`, `scrape_climbs`,
+  `derive_climbs`, `scrape_start_times`, `score_riders`). On first run each seeds
+  its table once from the legacy `data/*.json` (so nothing was re-scraped and
+  finished/frozen races kept their data).
+- **Over-scraping fixed (the primary goal):** `scrape_gpx.py` stores each route
+  once and **skips any race whose GPX is already in the store** (published routes
+  never change) — verified live: a steady-state run does **0 downloads**
+  (~28 races skipped). Finished-race freeze (`FREEZE_GRACE_DAYS`) confirmed.
+- **`scrapers/publish.py`** — reads the private store and writes the **thin public
+  slices** the site serves: `races.json`, `startlists/`, `climbs/` (+index),
+  `predictions/`, and **downsampled routes** `data/routes/{slug}.json` +
+  `routes_index.json`. Routes are the privacy transform: the raw `.gpx` never
+  leaves Turso; the public slice is a reduced point list (`[[lat,lon,ele],…]`,
+  ≤1500 pts, compact JSON, integer elevation) — **105 MB raw → 5.6 MB slices**.
+  Writes are change-aware + timestamp-stripped, so an unchanged day rewrites **0
+  files** (no churn).
+- **Frontend** reads `routes_index.json` + per-race `routes/{slug}.json` (points)
+  instead of `gpx_index.json` + raw `.gpx` (`setElevationFromPoints` replaces
+  `parseGpx`; `loadStage` uses in-memory points, no fetch/XML). Map/profile/
+  weather/climbs/hometown unchanged. **Verified in-browser by the user.**
+- **Workflow** (`scrape.yml`): all scrapers run (Turso secrets in a job-level
+  `env:`), then a **Publish public slices** step, then commit only the slices
+  ("Daily publish"). The two GitHub secrets `TURSO_DATABASE_URL` +
+  `TURSO_AUTH_TOKEN` already exist; commit-back uses the built-in `GITHUB_TOKEN`
+  (workflow has `permissions: contents: write`).
+- **Repo cleanup:** deleted `data/gpx/` (~105 MB, 188 files), `gpx_index.json`,
+  the 5 raw caches, and the throwaway Turso smoke spike. Git **history** still
+  retains them (no purge).
+- **Tests (all no-network, run against a temp SQLite file):** `test_db.py` 7,
+  `test_scrape_races_db.py` 5, `test_startlists_db.py` 8, `test_migration2_db.py`
+  6, `test_publish.py` 4 — plus the pre-existing suites still green.
+- See the `project-turso-rearchitecture` memory for the running build log.
+
+⏭️ **Remaining:** nothing structural — the migration is functionally complete.
+Optional later: a git-history purge of the old raw data (BFG/filter-repo) if the
+repo's `.git` size matters. `score_riders.py` is still manual (not in cron).
+
+### 🟢 EARLIER SESSION (2026-06-08, pt 2) — UI redesign, medal detail, ops
 
 Big visual pass (verified live on a local server, then committed + pushed —
 commits `3ff8bba` UI/medals/GoatCounter, `7d4f67f` cron). All in
@@ -339,21 +399,36 @@ should still be clear and beginner-friendly, but assume they know how to
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  DATA PIPELINE  (Python, runs daily on GitHub Actions)    │
+│  SCRAPERS  (Python, runs daily on GitHub Actions)         │
 │                                                           │
-│  scrape_races.py   → races.json + startlists/*.json       │
-│  scrape_gpx.py     → gpx/*/**.gpx + gpx_index.json        │
-│  scrape_odds.py    → odds/*.json + odds_index.json        │
-│  enter_odds.py     → manual odds fallback (local-only)    │
-│                                                           │
-│  Workflow file:  .github/workflows/scrape.yml             │
-│  Schedule:       '0 6 * * *' UTC (daily ~8 AM Paris)      │
-│  Commits fresh data back to main branch.                  │
-│                                                           │
-│  NOTE: scrape_odds.py runs LOCALLY only (Bet365 blocks    │
-│  GitHub IPs). User commits odds output manually.          │
+│  scrape_races · scrape_start_times · scrape_gpx ·         │
+│  scrape_riders · geocode_birthplaces · scrape_results ·   │
+│  scrape_climbs · derive_climbs                            │
+│      ▼ read/write via scrapers/db.py                      │
 └─────────────────────────────────────────────────────────┘
-                          │  (static JSON + GPX files)
+                          │  (raw data, PRIVATE)
+                          ▼
+┌─────────────────────────────────────────────────────────┐
+│  TURSO  (hosted SQLite, PRIVATE)  — the raw-data store    │
+│  race_data (JSON blobs by kind+slug) · caches · gpx_files │
+│  Secrets: TURSO_DATABASE_URL + TURSO_AUTH_TOKEN           │
+└─────────────────────────────────────────────────────────┘
+                          │  scrapers/publish.py
+                          │  (thin DERIVED slices only)
+                          ▼
+┌─────────────────────────────────────────────────────────┐
+│  data/  in this PUBLIC repo  (committed by the workflow)  │
+│  races.json · startlists/ · climbs/(+index) ·             │
+│  routes/{slug}.json (+routes_index) ← DOWNSAMPLED, not    │
+│  the raw .gpx · predictions/ · cobbles/ · odds/           │
+│                                                           │
+│  Workflow: .github/workflows/scrape.yml  (scrape → Turso  │
+│  → publish → commit slices). Schedule: 07:30 + 19:00 UTC. │
+│  permissions: contents: write (built-in GITHUB_TOKEN).    │
+│  NOTE: scrape_odds.py / score_riders.py run LOCALLY/      │
+│  manually only (not in cron).                             │
+└─────────────────────────────────────────────────────────┘
+                          │  (static JSON slices)
                           ▼
 ┌─────────────────────────────────────────────────────────┐
 │  FRONTEND  (static site on GitHub Pages)                  │
@@ -364,6 +439,7 @@ should still be clear and beginner-friendly, but assume they know how to
 │                                                            frontend/
 │  Renders: race list sidebar · Leaflet map · canvas        │
 │  elevation profile (synced) · race-winner odds panel.     │
+│  Reads routes_index.json + routes/{slug}.json (points).   │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -404,38 +480,47 @@ overthepeloton/
 ├── README_TEST.md               ← user-facing local-test instructions
 ├── requirements.txt             ← Python deps
 ├── scrapers/
-│   ├── scrape_races.py          ← STEP 1: races + startlists
-│   ├── scrape_gpx.py            ← STEP 2: GPX routes (crawl-based; preserves LFR entries)
-│   ├── scrape_lfr.py            ← GPX FALLBACK: La Flamme Rouge (WT+ProSeries, local-only)
+│   ├── db.py                    ← Turso/SQLite store: connection + schema + helpers
+│   ├── publish.py               ← Turso → thin public slices (incl. downsampled routes)
+│   ├── scrape_races.py          ← races + startlists → Turso
+│   ├── scrape_gpx.py            ← GPX → Turso gpx_files; SKIPS routes already stored
+│   ├── scrape_lfr.py            ← GPX FALLBACK: La Flamme Rouge (WT+ProSeries, local; PAUSED)
 │   ├── test_scrape_lfr.py       ← no-network tests for the LFR fallback (9/9)
-│   ├── scrape_odds.py           ← STEP 4: Bet365 odds
-│   ├── enter_odds.py            ← STEP 4: manual odds entry
-│   ├── scrape_riders.py         ← R1: embeds specialties.career + birthdate + place_of_birth
-│   ├── geocode_birthplaces.py   ← Hometown: town→lat/lon via Nominatim (cached, local-friendly)
-│   ├── test_geocode_birthplaces.py ← no-network tests for the geocoder (4/4)
-│   ├── classify_stages.py       ← R2 Phase 2: backfill stage_type into races.json
-│   ├── score_riders.py          ← R2 Phase 3: predictions (R4 cobbles tie-in shipped)
-│   ├── scrape_climbs.py         ← R4: one-day climbs via RaceClimbs (PCS, named)
-│   ├── derive_climbs.py         ← R4: stage-race climbs DERIVED from GPX (no network)
-│   ├── test_scrape_climbs.py    ← R4: no-network tests for the climbs scraper (7/7)
-│   ├── test_derive_climbs.py    ← R4: no-network tests for GPX climb detection (10/10)
-│   └── test_score_riders.py     ← R4: no-network tests for scoring + cobbles (7/7)
+│   ├── scrape_odds.py           ← Bet365 odds (PARKED; local-only)
+│   ├── enter_odds.py            ← manual odds entry
+│   ├── scrape_riders.py         ← specialties.career + birthdate + place_of_birth → Turso
+│   ├── geocode_birthplaces.py   ← Hometown: town→lat/lon via Nominatim (caches table)
+│   ├── scrape_results.py        ← abandons (DNF) + stage medals → Turso startlists
+│   ├── scrape_start_times.py    ← R5: per-stage start times → Turso race docs
+│   ├── classify_stages.py       ← R2 Phase 2: stage_type helper (standalone backfill)
+│   ├── score_riders.py          ← R2 Phase 3: predictions → Turso (manual; not in cron)
+│   ├── scrape_climbs.py         ← R4: one-day climbs via RaceClimbs → Turso
+│   ├── derive_climbs.py         ← R4: stage-race climbs DERIVED from stored GPX
+│   ├── test_db.py               ← db.py (7/7)   · test_scrape_races_db.py (5/5)
+│   ├── test_startlists_db.py    ← startlist+cache migration (8/8)
+│   ├── test_migration2_db.py    ← gpx/climbs/start_times/predictions migration (6/6)
+│   ├── test_publish.py          ← publish slices + downsampling (4/4)
+│   ├── test_scrape_results.py · test_geocode_birthplaces.py · test_scrape_start_times.py
+│   ├── test_scrape_climbs.py · test_derive_climbs.py · test_score_riders.py
 ├── frontend/
-│   └── index.html               ← STEP 3: whole UI (R4 climbs + map highlights UNCOMMITTED)
+│   └── index.html               ← whole UI (reads routes/ slices, not raw .gpx)
 ├── R1_R2_DESIGN.md              ← R1+R2 build spec (Tier 1) + R4/R5 research (Tier 2)
-└── data/                        ← REAL scraped data (live)
+└── data/                        ← PUBLIC slices written by publish.py (raw data is in Turso)
     ├── races.json               ← 37 races
-    ├── gpx_index.json
+    ├── routes/{slug}.json       ← DOWNSAMPLED route per race (points [[lat,lon,ele]])
+    ├── routes_index.json        ← which races have a route + per-stage distance
     ├── odds_index.json          ← sample odds for 3 races
-    ├── riders_cache.json        ← R1: career specialty points (7-day cache)
-    ├── climbs_index.json        ← R4: which races have climbs (12 one-day; stage=0)
-    ├── climbs_cache.json        ← R4: per-URL climbs cache (7-day, retries empties)
-    ├── cobbles/{slug}.json      ← R4: curated pavé sectors (paris-roubaix)
-    ├── climbs/{slug}.json       ← R4: scraped climbs (one-day populated; stage races empty)
-    ├── predictions/{slug}.json  ← R2: win-prob (re-run score_riders to apply cobbles tie-in)
+    ├── climbs_index.json        ← R4: which races have climbs
+    ├── cobbles/{slug}.json      ← R4: curated pavé sectors (on disk; not in Turso)
+    ├── climbs/{slug}.json       ← R4: climbs (one-day from PCS, stage races from GPX)
+    ├── predictions/{slug}.json  ← R2: win-prob (re-run score_riders to refresh)
     ├── startlists/{slug}.json   ← 36 startlists (riders carry specialties.career)
-    ├── gpx/{slug}/*.gpx         ← real GPX for ~23 races (TdF, Giro, Vuelta, classics)
     └── odds/{slug}.json
+
+# Raw data NO LONGER in the repo — it lives privately in Turso:
+#   gpx_files (raw .gpx) · caches (riders/birthplaces/climbs/climbs_names/start_times)
+#   and the full race_data/startlist JSON. data/overthepeloton.db is the local-dev
+#   SQLite file (gitignored).
 ```
 
 ---
@@ -509,24 +594,36 @@ added by `geocode_birthplaces.py` (null when un-geocoded). These feed the
 "Hometown & birthdays" strip. Substitute riders (duplicate bib within a team) are
 dropped at scrape time — see §0.
 
-### `gpx_index.json`
+### `routes_index.json`  (replaced the old `gpx_index.json`)
 ```json
 {
-  "updated_at": "ISO", "year": 2026,
+  "updated_at": "ISO",
   "races": {
     "tour-de-france-2026": {
-      "name": "Tour de France", "gpx_available": true, "total_files": 21,
-      "files": [ { "stage": 1, "filename": "stage-1-route.gpx",
-                   "url": "https://cdn.cyclingstage.com/...",
-                   "local_path": "gpx/tour-de-france-2026/stage-1-route.gpx" } ]
+      "name": "Tour de France", "route_available": true,
+      "stages": [ { "stage": 1, "distance_km": 184.9 } ]   // stage may be null (one-day)
     },
     "tour-de-suisse-2026": {
-      "name": "Tour de Suisse", "gpx_available": false,
-      "reason": "route_not_yet_published", "total_files": 0, "files": []
+      "name": "Tour de Suisse", "route_available": false, "stages": []
     }
   }
 }
 ```
+
+### `routes/{slug}.json`  (downsampled route slice — written by publish.py)
+```json
+{
+  "race_slug": "tour-de-france-2026", "name": "Tour de France", "updated_at": "ISO",
+  "routes": [
+    { "stage": 1, "filename": "stage-1-route.gpx", "distance_km": 184.9,
+      "point_count": 1500,
+      "points": [ [44.84, -0.58, 12], [44.85, -0.57, 14] ]   // [lat, lon, ele], ≤1500 pts
+    }
+  ]
+}
+```
+The raw `.gpx` lives only in Turso (`gpx_files`); the frontend draws the map +
+elevation profile from these reduced `points` (it no longer parses `.gpx`).
 
 ### `odds/{slug}.json`
 ```json
@@ -582,25 +679,36 @@ dropped at scrape time — see §0.
 ## 7. How to run / develop locally
 
 ```bash
-# (One-time) install deps
+# (One-time) install deps  (now includes libsql-client for Turso)
 pip install -r requirements.txt
 
-# Run scrapers — needs internet to PCS + cyclingstage + (for odds) Bet365
-python scrapers/scrape_races.py     # ~3-5 min, 37 races
-python scrapers/scrape_gpx.py       # ~10-15 min, crawls cyclingstage
+# --- Data store: local vs remote (scrapers/db.py) ---
+# No env vars set      → a LOCAL SQLite file (data/overthepeloton.db, gitignored).
+# TURSO_DATABASE_URL +
+#   TURSO_AUTH_TOKEN   → the remote PRIVATE Turso store (what Actions uses).
+# Same code both ways. Real scraping needs internet to PCS + cyclingstage; this
+# machine's TLS proxy blocks that, so live scraping runs in GitHub Actions.
 
-# Manual odds (when needed)
-python scrapers/enter_odds.py tour-de-france-2026 --paste
+# Regenerate the public slices from the store (this is what CI runs after scraping):
+python scrapers/publish.py          # → data/races.json, routes/, climbs/, … (change-aware)
 
-# Local preview
-python -m http.server
+# Local preview of the site (reads the committed slices in data/)
+python -m http.server 8000
 # open http://localhost:8000/frontend/  (incognito recommended to avoid cache)
+# In Claude Code: tools run on your machine, so the assistant can start this server
+# for you (Bash run_in_background) and your browser can hit localhost.
+
+# Tests (all no-network, run against a temp SQLite file)
+python scrapers/test_db.py          # …and the other scrapers/test_*.py
 
 # Push updates
 git add data/ scrapers/ frontend/
 git commit -m "..."
 git push           # triggers GitHub Pages rebuild automatically
 ```
+
+> The daily GitHub Actions run does it all: scrape → Turso → `publish.py` →
+> commit the slices. You normally don't run the scrapers by hand.
 
 ---
 

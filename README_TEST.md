@@ -1,13 +1,14 @@
-# Test Steps 2 + 3 locally
+# Run the site locally
 
-This bundle lets you **see the website working** with sample data, and
-optionally run the **GPX scraper** to fetch real route data.
+This lets you **see the website working** from the published data already in
+`data/`, and explains where that data comes from.
 
-There are two things here:
-- **Step 3 (the website):** view the map + elevation profile in your browser.
-- **Step 2 (the GPX scraper):** fetch real GPX route files.
+There are two parts here:
+- **Part A (the website):** view the map + elevation profile in your browser.
+- **Part B (the data):** how the slices are produced (Turso → `publish.py`);
+  you normally don't run this — GitHub Actions does.
 
-You can do the website test on its own — it already includes sample data.
+You can do Part A on its own — the committed slices are all it needs.
 
 ---
 
@@ -44,33 +45,43 @@ To stop the server, press `Ctrl + C` in the terminal.
 
 ---
 
-## Part B — Run the GPX scraper (Step 2)  ← optional
+## Part B — How the data is produced (you normally don't run this)
 
-This fetches **real** GPX route files from cyclingstage.com and replaces the
-sample data.
+The raw scraped data (PCS responses, full `.gpx`, caches) now lives in a
+**private Turso database**, not in this repo. The website reads only small
+**published slices** that are already committed in `data/` (so Part A works
+out of the box).
 
-1. Install the Python tools needed (one time):
+The full pipeline runs automatically in **GitHub Actions** (`.github/workflows/
+scrape.yml`): scrape → Turso → `scrapers/publish.py` → commit the slices. To run
+it by hand, **trigger "Daily scrape" from the repo's Actions tab** — live scraping
+needs to reach procyclingstats.com / cyclingstage.com, which the daily runner does
+(and which a TLS-proxied machine can't).
+
+If you just want to regenerate the public slices from the store locally:
+
+1. Install the Python tools (one time):
    ```
    cd cycling-dashboard
    pip install -r requirements.txt
    ```
-   (Use `pip3` if `pip` doesn't work.)
+2. Point at the store (optional — without these it uses a **local** SQLite file
+   `data/overthepeloton.db` instead of remote Turso):
+   ```
+   set TURSO_DATABASE_URL=libsql://...      (Windows: set,  Mac/Linux: export)
+   set TURSO_AUTH_TOKEN=...
+   ```
+3. Write the slices:
+   ```
+   python scrapers/publish.py
+   ```
+   This (re)writes `data/races.json`, `data/routes/`, `data/climbs/`, etc.
+4. Re-open the website (Part A).
 
-2. The GPX scraper reads `data/races.json` to know which races to fetch. A
-   sample `races.json` is already included, so you can run the GPX scraper
-   straight away:
-   ```
-   python scrapers/scrape_gpx.py
-   ```
-   It will download GPX files into `data/gpx/` and update `data/gpx_index.json`.
-
-3. (Optional) To also refresh the race list itself from procyclingstats.com:
-   ```
-   python scrapers/scrape_races.py
-   ```
-   Run this **before** `scrape_gpx.py` if you want a fresh race list.
-
-4. Re-open the website (Part A) to see the real routes.
+The logic tests are no-network and run against a temp SQLite file:
+```
+python scrapers/test_db.py        (and the other scrapers/test_*.py)
+```
 
 ---
 
@@ -80,9 +91,9 @@ sample data.
   directly. Use the local server and the `http://localhost:8000/frontend/` URL.
 - **`python` not found** → try `python3`. If neither works, install Python
   from python.org.
-- **A race shows "route not available"** → that race's GPX isn't on
-  cyclingstage.com yet, or the slug needs updating (see PROJECT_CONTEXT.md,
-  section 6 "Known limitations").
+- **A race shows "route not available"** → that race has no route in the store
+  yet (route not published, or not on cyclingstage.com). Routes fill in over
+  time; see PROJECT_CONTEXT.md, section 6 "Known limitations".
 - **The map area is blank but the profile works** → the map tiles need
   internet access; check your connection.
 
