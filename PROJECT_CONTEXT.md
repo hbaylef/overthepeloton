@@ -68,9 +68,26 @@ work every run (re-crawling/re-downloading routes it already had).
   6, `test_publish.py` 4 — plus the pre-existing suites still green.
 - See the `project-turso-rearchitecture` memory for the running build log.
 
-⏭️ **Remaining:** nothing structural — the migration is functionally complete.
-Optional later: a git-history purge of the old raw data (BFG/filter-repo) if the
-repo's `.git` size matters. `score_riders.py` is still manual (not in cron).
+**History purged (2026-06-09):** `git filter-repo` removed `data/gpx` + the raw
+caches + `gpx_index.json` from ALL history; force-pushed (`main` rewritten,
+`.git` 11.5 → 3.6 MiB; 0 GPX anywhere). Full backup bundle saved OUTSIDE the repo
+at `../overthepeloton-backup-20260609-2350.bundle`.
+
+**Workflow push hardened (2026-06-09):** the daily "Commit & push" step did a plain
+`git push`, which fails whenever `main` moves between checkout and push (it failed
+twice when the history force-push landed mid-run). It now **rebases onto
+origin/main and retries up to 5×** before failing. `publish.py` runs as its own
+("Publish public slices from Turso") step before the commit.
+
+⏭️ **PENDING VERIFICATION (check next session, 2026-06-10):** trigger **"Daily
+scrape" → Run workflow** and confirm a clean green run end-to-end — especially
+(a) the **Publish** step is green, and (b) **Commit & push** is green (rebase+retry
+fix). The last two runs scraped+published fine but their *push* was rejected only
+because of the concurrent history rewrite; data was never at risk (it's in Turso,
+slices are regenerated). Also eyeball the live site after.
+
+✅ **Otherwise the migration is complete.** `score_riders.py` is still manual (not
+in cron). See the `project-turso-rearchitecture` memory for the full build log.
 
 ### 🟢 EARLIER SESSION (2026-06-08, pt 2) — UI redesign, medal detail, ops
 
