@@ -26,13 +26,20 @@ from typing import Optional
 import cloudscraper
 from procyclingstats import Race, RaceStartlist
 
+import db  # local module: Turso/SQLite store (build-order step 2)
+
 # ---------------------------------------------------------------------------
 # Config
 # ---------------------------------------------------------------------------
 YEAR = datetime.now().year
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
+# Legacy on-disk file. Races now live in Turso (race_data kind="race"); this
+# path is only read once, to SEED Turso on the first run. No longer written.
 RACES_FILE = DATA_DIR / "races.json"
 STARTLISTS_DIR = DATA_DIR / "startlists"
+
+# race_data "kind" for race documents (keyed by slug, e.g. tour-de-france-2026).
+DB_RACE_KIND = "race"
 DELAY_BETWEEN_REQUESTS = 2  # seconds — be polite to PCS
 # A race that ended more than this many days ago is "frozen": we reuse its
 # cached entry + startlist and make no network calls for it. The grace window
@@ -401,18 +408,38 @@ def annotate_stage_types(races: list) -> list:
     return races
 
 
-def load_existing_races_by_cs() -> dict:
-    """Index the previously-scraped races.json by cyclingstage_slug (the CALENDAR
-    key), so a frozen race can reuse last run's entry without re-scraping."""
+def seed_races_from_json_if_empty(client) -> int:
+    """One-time bootstrap. If Turso has no race docs yet but a legacy
+    data/races.json exists, import it. This makes the freeze work on the very
+    first Turso run (so finished races aren't needlessly re-scraped) and
+    preserves the existing curated data. Idempotent — does nothing once the
+    race table is populated."""
+    if db.list_slugs(client, DB_RACE_KIND):
+        return 0
     if not RACES_FILE.exists():
-        return {}
+        return 0
     try:
-        data = json.loads(RACES_FILE.read_text(encoding="utf-8"))
+        legacy = json.loads(RACES_FILE.read_text(encoding="utf-8"))
     except Exception as e:
-        log.warning(f"Could not read existing {RACES_FILE.name}: {e}")
-        return {}
+        log.warning(f"Seed: could not read {RACES_FILE.name}: {e}")
+        return 0
+    n = 0
+    for race in legacy.get("races", []):
+        slug = race.get("slug")
+        if slug:
+            db.put_document(client, DB_RACE_KIND, slug, race)
+            n += 1
+    if n:
+        log.info(f"Seeded {n} races from legacy {RACES_FILE.name} into Turso")
+    return n
+
+
+def load_existing_races_by_cs(client) -> dict:
+    """Index the previously-stored races (from Turso) by cyclingstage_slug (the
+    CALENDAR key), so a frozen race can reuse last run's entry without
+    re-scraping."""
     out = {}
-    for r in data.get("races", []):
+    for r in db.get_all_documents(client, DB_RACE_KIND).values():
         cs = r.get("cyclingstage_slug")
         if cs:
             out[cs] = r
@@ -432,12 +459,20 @@ def is_finished(entry: dict, today: date) -> bool:
 
 
 def main():
-    # Create output directories
+    # Create output directories (startlists are still written to disk this step)
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     STARTLISTS_DIR.mkdir(parents=True, exist_ok=True)
 
+    # Open the store (remote Turso in Actions; local SQLite file in dev).
+    client = db.open_db()
+    where = "remote Turso" if db.is_remote() else "local SQLite file"
+    log.info(f"Race store: {where}")
+
+    # First-run bootstrap: import the legacy races.json so freeze works today.
+    seed_races_from_json_if_empty(client)
+
     # Reuse last run's data for races that are already over (skip the network).
-    existing = load_existing_races_by_cs()
+    existing = load_existing_races_by_cs(client)
     today = datetime.now().date()   # Actions runs in UTC; date granularity is enough
     frozen = 0
 
@@ -527,19 +562,18 @@ def main():
     # R2 Phase 2 — derive stage_type from profile_icon / stage names (in place).
     annotate_stage_types(all_races)
 
-    # Build final output — include ALL races, not just upcoming.
-    # The frontend can show past + future together so users browse any race.
-    output = {
-        "updated_at": datetime.now().isoformat(),
-        "year": YEAR,
-        "total_races": len(all_races),
-        "races": all_races,
-    }
+    # Persist each race as its own JSON-blob row in Turso (change-aware: a row is
+    # written only when its content actually changed, so the store barely churns).
+    written = 0
+    for race in all_races:
+        slug = race.get("slug")
+        if slug and db.put_document(client, DB_RACE_KIND, slug, race):
+            written += 1
+    stored = len(db.list_slugs(client, DB_RACE_KIND))
+    client.close()
 
-    with open(RACES_FILE, "w", encoding="utf-8") as f:
-        json.dump(output, f, indent=2, ensure_ascii=False)
-
-    log.info(f"Done! {len(all_races)} races saved to {RACES_FILE}")
+    log.info(f"Done! {len(all_races)} races processed; {written} rows changed; "
+             f"{stored} race docs now in the store.")
     log.info(f"  PCS data ok: {pcs_ok}  ·  fallback used: {pcs_fail}  ·  frozen: {frozen}")
     log.info(f"  Startlists saved: {startlist_count}")
 

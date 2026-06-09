@@ -18,6 +18,11 @@ jobs:
   scrape:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    # Private raw-data store (Turso). Scrapers migrated to the DB read these;
+    # not-yet-migrated scrapers ignore them. Absent vars => local file fallback.
+    env:
+      TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+      TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
