@@ -36,9 +36,11 @@ Output  data/climbs/{slug}.json:
 Also writes data/climbs_index.json (which races have climbs).
 
 Politeness: 2 s between PCS requests.
-Cache:      data/climbs_cache.json — a fetched URL is reused for 7 days, BUT an
-            empty/failed result is always retried (a route not yet published
-            today may appear tomorrow).
+Idempotency: a 2026 race's climbs are a FIXED fact once published, so a race that
+            already has climbs stored is SKIPPED entirely on later runs — no PCS
+            call. Only races still missing climbs (route not published yet) are
+            fetched. The per-URL cache reinforces this: a non-empty result is kept
+            permanently; an empty/failed one is always retried.
 
 Must run where PCS is reachable (GitHub Actions). This machine's TLS-intercepting
 proxy breaks Python cert verification, so live runs fail locally — see
@@ -51,7 +53,7 @@ Usage:
 import json
 import time
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
 from typing import Callable, List, Optional
 
@@ -64,7 +66,6 @@ DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 CACHE_FILE = DATA_DIR / "climbs_cache.json"
 
 DELAY_BETWEEN_REQUESTS = 2
-CACHE_DAYS = 7
 
 # PCS climbs() field name -> our output field name. (Also fixes PCS's
 # "finnish" typo, and tags km/%/m units onto the ambiguous names.)
@@ -149,19 +150,16 @@ def save_cache(client, cache: dict):
 
 
 def cached_climbs(cache: dict, url: str) -> Optional[List[dict]]:
-    """Return a fresh, NON-empty cached result for url, else None (→ refetch)."""
+    """Return a NON-empty cached result for url, else None (→ refetch).
+
+    A published 2026 route's climbs never change, so a non-empty result is reused
+    PERMANENTLY (no 7-day re-scrape). An empty/failed entry is always retried — a
+    route not yet published today may appear tomorrow."""
     entry = cache.get("urls", {}).get(url)
     if not entry:
         return None
-    if not entry.get("climbs"):           # empty/failed → always retry
-        return None
-    ts = entry.get("_scraped_at")
-    try:
-        if datetime.now() - datetime.fromisoformat(ts) < timedelta(days=CACHE_DAYS):
-            return entry["climbs"]
-    except Exception:
-        pass
-    return None
+    climbs = entry.get("climbs")
+    return climbs if climbs else None     # empty/failed → None → always retry
 
 
 def get_climbs(cache: dict, url: str, fetch: Callable[[str], Optional[List[dict]]]) -> List[dict]:
@@ -223,10 +221,29 @@ def count_climbs(payload: dict) -> int:
     return sum(len(v) for v in payload.get("stages", {}).values())
 
 
+def has_stored_climbs(payload: Optional[dict]) -> bool:
+    """True when a race's stored climbs doc already holds climbs — a one-day
+    `climbs` list or any non-empty `stages` list. Such a race is fixed for the
+    season, so we skip it entirely (no PCS call). A doc with only empty
+    climbs/stages (route not published yet) returns False so it keeps retrying."""
+    if not payload:
+        return False
+    if payload.get("climbs"):
+        return True
+    return any(payload.get("stages", {}).values())
+
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 def main():
+    import argparse
+    ap = argparse.ArgumentParser(description="Scrape categorised climbs from PCS.")
+    ap.add_argument("--dry-run", action="store_true",
+                    help="report how many races would be skipped vs fetched, then "
+                         "exit (no network, no writes)")
+    args = ap.parse_args()
+
     client = db.open_db()
     log.info(f"Climbs store: {'remote Turso' if db.is_remote() else 'local SQLite file'}")
 
@@ -236,12 +253,31 @@ def main():
         client.close()
         return
 
+    races = [r for r in races if r.get("slug")]
+    # A race whose climbs are already stored is fixed for the season → skip (no PCS).
+    stored = {r["slug"]: has_stored_climbs(db.get_document(client, db.KIND_CLIMBS, r["slug"]))
+              for r in races}
+    n_skip = sum(stored.values())
+    log.info(f"Races with climbs already stored (skip): {n_skip} · "
+             f"to fetch (still missing): {len(races) - n_skip}")
+    if args.dry_run:
+        print("\n" + "=" * 64)
+        print("  CLIMBS SCRAPE — DRY RUN")
+        print(f"  Races total:                   {len(races)}")
+        print(f"  SKIPPED (climbs already stored): {n_skip}")
+        print(f"  to FETCH (still missing):      {len(races) - n_skip}")
+        print("=" * 64)
+        client.close()
+        return
+
     cache = load_cache(client)
-    processed = with_climbs = total = 0
+    processed = with_climbs = total = skipped = 0
 
     for i, race in enumerate(races, 1):
-        slug = race.get("slug")
-        if not slug:
+        slug = race["slug"]
+        if stored[slug]:
+            skipped += 1
+            log.info(f"[{i}/{len(races)}] {slug}: climbs already stored — skip")
             continue
         log.info(f"[{i}/{len(races)}] {slug}")
 
@@ -260,7 +296,8 @@ def main():
 
     print("\n" + "=" * 64)
     print("  CLIMBS SCRAPE SUMMARY")
-    print(f"  Races processed:       {processed}")
+    print(f"  Races skipped (already stored): {skipped}")
+    print(f"  Races processed (fetched):      {processed}")
     print(f"  Races with climbs:     {with_climbs}")
     print(f"  Total climbs scraped:  {total}")
     print("=" * 64)

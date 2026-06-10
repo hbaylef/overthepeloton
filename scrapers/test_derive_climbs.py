@@ -179,6 +179,35 @@ def test_assign_names_empty_pool_is_noop():
     assert dc.assign_names(climbs, [])[0]["name"] == "Climb"
 
 
+def test_needs_processing_new_or_empty_is_processed():
+    assert dc.needs_processing(None, None) is True            # never derived
+    assert dc.needs_processing({}, None) is True
+    assert dc.needs_processing({"stages": {}}, None) is True  # no climbs yet
+    assert dc.needs_processing({"stages": {"1": []}}, None) is True
+
+
+def test_needs_processing_unnamed_no_pool_is_processed():
+    # derived but every climb still "Climb" and no pool cached → names pending
+    payload = {"stages": {"1": [{"name": "Climb", "top_m": 500}]}}
+    assert dc.needs_processing(payload, None) is True
+    assert dc.needs_processing(payload, []) is True
+
+
+def test_needs_processing_named_is_skipped():
+    # at least one real name → naming applied → skip (no re-derive, no PCS fetch)
+    payload = {"stages": {"1": [{"name": "Chommle", "top_m": 684},
+                                {"name": "Climb", "top_m": 300}]}}
+    assert dc.needs_processing(payload, None) is False
+
+
+def test_needs_processing_unnamed_but_pool_cached_is_skipped():
+    # derived, all unmatched "Climb", but the PCS pool was already fetched →
+    # remaining "Climb"s will never match, so don't re-fetch forever.
+    payload = {"stages": {"1": [{"name": "Climb", "top_m": 500}]}}
+    pool = [{"name": "SomeCol", "top_m": 999, "length_km": 3.0}]
+    assert dc.needs_processing(payload, pool) is False
+
+
 def test_climbs_to_output_shape():
     detected = [{"km_start": 4.0, "km_top": 9.0, "length_km": 5.0,
                  "gain_m": 300.0, "avg_grade": 6.0, "top_m": 400.0}]

@@ -87,17 +87,17 @@ def test_stage_assembly_keys_by_stage_and_drops_empty():
     assert sc.count_climbs(payload) == 1
 
 
-def test_cache_reuse_and_empty_retry():
+def test_cache_is_permanent_for_nonempty_and_retries_empty():
     now = datetime.now().isoformat()
-    old = (datetime.now() - timedelta(days=8)).isoformat()
+    old = (datetime.now() - timedelta(days=400)).isoformat()
     cache = {"urls": {
         "fresh/route/climbs": {"climbs": [sc.normalize_climb(PCS_ROW)], "_scraped_at": now},
-        "stale/route/climbs": {"climbs": [sc.normalize_climb(PCS_ROW)], "_scraped_at": old},
+        "old/route/climbs":   {"climbs": [sc.normalize_climb(PCS_ROW)], "_scraped_at": old},
         "empty/route/climbs": {"climbs": [], "_scraped_at": now},
     }}
-    assert sc.cached_climbs(cache, "fresh/route/climbs")            # fresh+nonempty → hit
-    assert sc.cached_climbs(cache, "stale/route/climbs") is None    # stale → refetch
-    assert sc.cached_climbs(cache, "empty/route/climbs") is None    # empty → always retry
+    assert sc.cached_climbs(cache, "fresh/route/climbs")           # non-empty → hit
+    assert sc.cached_climbs(cache, "old/route/climbs")             # non-empty, OLD → still hit (permanent)
+    assert sc.cached_climbs(cache, "empty/route/climbs") is None   # empty → always retry
 
     # get_climbs should fetch on miss and record the result
     fetched = []
@@ -106,6 +106,18 @@ def test_cache_reuse_and_empty_retry():
         return sc.normalize_climbs([PCS_ROW])
     out = sc.get_climbs(cache, "empty/route/climbs", fake_fetch)
     assert len(out) == 1 and fetched == ["empty/route/climbs"]
+
+
+def test_has_stored_climbs():
+    # populated → skip (True)
+    assert sc.has_stored_climbs({"climbs": [{"name": "X"}]}) is True
+    assert sc.has_stored_climbs({"stages": {"5": [{"name": "X"}]}}) is True
+    # not yet populated → keep retrying (False)
+    assert sc.has_stored_climbs({"climbs": []}) is False
+    assert sc.has_stored_climbs({"stages": {}}) is False
+    assert sc.has_stored_climbs({"stages": {"5": []}}) is False
+    assert sc.has_stored_climbs(None) is False
+    assert sc.has_stored_climbs({}) is False
 
 
 def test_failed_fetch_records_empty_not_none():

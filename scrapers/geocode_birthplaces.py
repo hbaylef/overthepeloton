@@ -72,6 +72,35 @@ def needs_coords(rider: dict) -> bool:
     return bool(rider.get("place_of_birth")) and rider.get("birthplace_lat") is None
 
 
+def has_coords(entry: Optional[dict]) -> bool:
+    """True if a cache entry holds real (non-null) coordinates.
+
+    A town's lat/lon never changes once resolved, so such an entry is PERMANENT —
+    it is skipped forever (no re-query). An absent entry, or one cached as
+    {lat: None} from a past failed lookup, has *no* coordinates and is therefore
+    still genuinely missing → it should be (re)queried. We no longer persist a
+    failed lookup as a None entry, so failures naturally retry next run."""
+    return bool(entry) and entry.get("lat") is not None and entry.get("lon") is not None
+
+
+def plan_geocode(startlists: dict, cache: dict) -> Tuple[set, set]:
+    """Split the towns referenced by the startlists into (to_fetch, resolved).
+
+    `resolved` = unique town keys we already have coordinates for (skip, no
+    network). `to_fetch` = unique town keys still missing coordinates (new towns,
+    or ones a past lookup couldn't resolve) — the only ones that hit Nominatim.
+    Pure: drives the dry-run report and the real loop's skip decision."""
+    resolved, to_fetch = set(), set()
+    for d in startlists.values():
+        for r in d.get("riders", []):
+            place = r.get("place_of_birth")
+            if not place:
+                continue
+            key = cache_key(place, r.get("nationality"))
+            (resolved if has_coords(cache.get(key)) else to_fetch).add(key)
+    return to_fetch, resolved
+
+
 # ===========================================================================
 #  Network + IO
 # ===========================================================================
@@ -115,12 +144,32 @@ def main():
                     help="skip TLS verification (local TLS-proxy workaround)")
     ap.add_argument("--embed-only", action="store_true",
                     help="only re-apply cached coords to startlists (no network)")
+    ap.add_argument("--dry-run", action="store_true",
+                    help="report how many towns would be skipped vs queried, then "
+                         "exit (no network, no writes)")
     args = ap.parse_args()
     insecure = args.insecure or os.environ.get("LFR_INSECURE") == "1"
 
     client = db.open_db()
     log.info(f"Geocode store: {'remote Turso' if db.is_remote() else 'local SQLite file'}")
     cache = load_cache(client)
+    startlists = db.get_all_documents(client, db.KIND_STARTLIST)
+
+    # Idempotency report: a resolved town is fixed forever (skip); only towns we
+    # still have no coordinates for ever hit Nominatim.
+    to_fetch, resolved = plan_geocode(startlists, cache)
+    log.info(f"Towns resolved (skip): {len(resolved)} · "
+             f"towns still missing coords (would query): {len(to_fetch)}")
+    if args.dry_run:
+        print("\n" + "=" * 60)
+        print("  BIRTHPLACE GEOCODE — DRY RUN")
+        print(f"  towns SKIPPED (already resolved): {len(resolved)}")
+        print(f"  towns to FETCH (missing coords):  {len(to_fetch)}")
+        print(f"  cache size:                       {len(cache)} towns")
+        print("=" * 60)
+        client.close()
+        return
+
     session = requests.Session()
     session.headers.update({"User-Agent": USER_AGENT})
     if insecure:
@@ -129,27 +178,35 @@ def main():
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
         log.warning("TLS verification DISABLED (--insecure).")
 
-    geocoded = from_cache = embedded = 0
+    geocoded = from_cache = embedded = failed = 0
+    attempted = set()   # towns hit this run (avoid re-querying within one pass)
 
-    for slug, d in db.get_all_documents(client, db.KIND_STARTLIST).items():
+    for slug, d in startlists.items():
         changed = False
         for r in d.get("riders", []):
             place = r.get("place_of_birth")
             if not place:
                 continue
             key = cache_key(place, r.get("nationality"))
-            if key not in cache:
-                if args.embed_only:
-                    continue
-                lat, lon = geocode(session, place, r.get("nationality"))
-                cache[key] = {"lat": lat, "lon": lon}
-                geocoded += 1
-                if geocoded % 25 == 0:
-                    save_cache(client, cache)
-                time.sleep(DELAY_S)
+            entry = cache.get(key)
+            if has_coords(entry):
+                from_cache += 1            # resolved town — permanent skip
+            elif args.embed_only or key in attempted:
+                pass                       # no network now / already tried this run
             else:
-                from_cache += 1
-            ent = cache.get(key, {})
+                lat, lon = geocode(session, place, r.get("nationality"))
+                attempted.add(key)
+                if lat is not None and lon is not None:
+                    entry = {"lat": lat, "lon": lon}
+                    cache[key] = entry     # persist ONLY successes → permanent skip
+                    geocoded += 1
+                    if geocoded % 25 == 0:
+                        save_cache(client, cache)
+                else:
+                    entry = None           # not persisted → retried on a later run
+                    failed += 1
+                time.sleep(DELAY_S)
+            ent = entry or {}
             if r.get("birthplace_lat") != ent.get("lat") or \
                r.get("birthplace_lon") != ent.get("lon"):
                 r["birthplace_lat"] = ent.get("lat")
@@ -164,7 +221,8 @@ def main():
     print("\n" + "=" * 60)
     print("  BIRTHPLACE GEOCODE")
     print(f"  newly geocoded (network): {geocoded}")
-    print(f"  served from cache:        {from_cache}")
+    print(f"  skipped (already resolved): {from_cache}")
+    print(f"  still unresolved (retry next run): {failed}")
     print(f"  rider coords embedded:    {embedded}")
     print(f"  cache size:               {len(cache)} towns")
     print("=" * 60)

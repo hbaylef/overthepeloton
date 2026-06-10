@@ -116,6 +116,34 @@ def is_fresh(entry: dict, days: int = CACHE_DAYS) -> bool:
         return False
 
 
+def needs_refetch(entry: Optional[dict], days: int = CACHE_DAYS) -> bool:
+    """Decide whether to hit PCS for a rider.
+
+    We re-fetch ONLY to refresh the rider's *evolving* career specialty points
+    (the 7-day staleness gate), or when we have no entry at all. Birthdate and
+    place_of_birth are immutable and ride along in the same page hit, so a
+    missing birth field must NEVER on its own trigger a network call — it simply
+    fills in on the next natural career refresh. Pure → unit-tested."""
+    if not entry:
+        return True
+    return not is_fresh(entry, days)
+
+
+def merge_preserving_birth(new_info: dict, existing: Optional[dict]) -> dict:
+    """Keep immutable birth fields when a re-fetch loses them.
+
+    birthdate / place_of_birth never change, so if a flaky PCS read returns them
+    empty we must not clobber a value we already had. Career points DO evolve, so
+    they always take the fresh value."""
+    merged = dict(new_info)
+    if existing:
+        if not merged.get("birthdate"):
+            merged["birthdate"] = existing.get("birthdate")
+        if not merged.get("place_of_birth"):
+            merged["place_of_birth"] = existing.get("place_of_birth")
+    return merged
+
+
 def fetch_rider_info(rider_url: str) -> dict:
     """
     Fetch a rider's career specialty points + birthdate + place of birth from PCS
@@ -166,6 +194,13 @@ def embed_specialties_into_startlists(client, cache_riders: dict):
 
 
 def main():
+    import argparse
+    ap = argparse.ArgumentParser(description="Embed rider career specialties + birth info.")
+    ap.add_argument("--dry-run", action="store_true",
+                    help="report how many riders would be skipped vs fetched, then "
+                         "exit (no network, no writes)")
+    args = ap.parse_args()
+
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     client = db.open_db()
     log.info(f"Rider store: {'remote Turso' if db.is_remote() else 'local SQLite file'}")
@@ -175,19 +210,33 @@ def main():
 
     cache = load_cache(client)
     cache_riders = cache.setdefault("riders", {})
+    total = len(rider_urls)
+
+    if args.dry_run:
+        to_fetch = [u for u in rider_urls if needs_refetch(cache_riders.get(u))]
+        print("\n" + "=" * 64)
+        print("  RIDER SCRAPE — DRY RUN")
+        print(f"  Riders in startlists:        {total}")
+        print(f"  SKIPPED (career still fresh): {total - len(to_fetch)}")
+        print(f"  to FETCH (new or >7d stale):  {len(to_fetch)}")
+        print("=" * 64)
+        client.close()
+        return
 
     fresh = scraped = failed = 0
-    total = len(rider_urls)
 
     for i, url in enumerate(sorted(rider_urls), 1):
         existing = cache_riders.get(url)
-        # re-fetch when stale OR when an old-format entry lacks the new birth fields
-        if existing and is_fresh(existing) and "birthdate" in existing:
+        # Re-fetch ONLY for evolving career points (staleness) — never just to
+        # backfill an immutable birth field.
+        if not needs_refetch(existing):
             fresh += 1
             continue
 
         log.info(f"[{i}/{total}] Scraping: {url}")
         info = fetch_rider_info(url)
+        # Don't let a flaky read drop a birthdate/place we already have.
+        info = merge_preserving_birth(info, existing)
         cache_riders[url] = {**info, "_scraped_at": datetime.now().isoformat()}
         time.sleep(DELAY_BETWEEN_REQUESTS)
 

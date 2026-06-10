@@ -32,6 +32,38 @@ def test_needs_coords():
     assert g.needs_coords({}) is False
 
 
+def test_has_coords_only_true_for_real_coordinates():
+    # a resolved town is permanent (skip forever)
+    assert g.has_coords({"lat": 55.6, "lon": 12.1}) is True
+    # a past failed lookup (None) has no coords → still genuinely missing → fetch
+    assert g.has_coords({"lat": None, "lon": None}) is False
+    assert g.has_coords({"lat": 55.6, "lon": None}) is False
+    assert g.has_coords(None) is False
+    assert g.has_coords({}) is False
+
+
+def test_plan_geocode_splits_resolved_and_missing():
+    startlists = {
+        "race-a": {"riders": [
+            {"place_of_birth": "Bilbao", "nationality": "ES"},   # resolved
+            {"place_of_birth": "Bilbao", "nationality": "ES"},   # dup town → one key
+            {"place_of_birth": "Komenda", "nationality": "SI"},  # missing
+            {"place_of_birth": None},                            # no town → ignored
+            {"nationality": "FR"},                               # no town → ignored
+        ]},
+        "race-b": {"riders": [
+            {"place_of_birth": "Oslo", "nationality": "NO"},     # failed-before (None)
+        ]},
+    }
+    cache = {
+        "bilbao|es": {"lat": 43.26, "lon": -2.93},   # resolved
+        "oslo|no": {"lat": None, "lon": None},       # previously failed → re-fetch
+    }
+    to_fetch, resolved = g.plan_geocode(startlists, cache)
+    assert resolved == {"bilbao|es"}, resolved
+    assert to_fetch == {"komenda|si", "oslo|no"}, to_fetch
+
+
 def run():
     tests = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     failed = 0

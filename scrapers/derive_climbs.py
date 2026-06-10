@@ -315,6 +315,25 @@ def stage_files(race_entry: dict) -> List[dict]:
     return [f for f in race_entry.get("files", []) if f.get("stage") is not None]
 
 
+def needs_processing(payload: Optional[dict], named_pool: Optional[list]) -> bool:
+    """Decide whether a stage race needs (re)deriving + naming.
+
+    GPX is immutable in Turso, so derived climbs never change; PCS climb names
+    don't change either. A race is DONE — skip it, no re-derive and no PCS name
+    fetch — once its stage climbs are derived AND naming has been applied. 'Naming
+    applied' means either at least one climb carries a real name, OR a non-empty
+    PCS name pool is already cached for the race (so climbs that legitimately match
+    no pool entry don't force endless re-fetches). We still process a race with no
+    derived climbs yet, or one whose climbs are all unnamed with no pool cached
+    (names still pending an earlier run that couldn't reach PCS)."""
+    stages = (payload or {}).get("stages") or {}
+    climbs = [c for v in stages.values() for c in v]
+    if not climbs:
+        return True                        # nothing derived yet
+    has_real_name = any(c.get("name") and c.get("name") != "Climb" for c in climbs)
+    return not (has_real_name or bool(named_pool))
+
+
 def build_stage_climbs(client, slug: str, files: List[dict],
                        pool: Optional[List[dict]] = None) -> dict:
     """Derive {stage_number(str): [climbs]} for one race from its GPX files (read
@@ -350,6 +369,13 @@ def write_race_climbs(client, slug: str, name: str, stages: dict):
 
 
 def main():
+    import argparse
+    ap = argparse.ArgumentParser(description="Derive stage-race climbs from GPX.")
+    ap.add_argument("--dry-run", action="store_true",
+                    help="report how many stage races would be skipped vs processed, "
+                         "then exit (no network, no re-derive, no writes)")
+    args = ap.parse_args()
+
     client = db.open_db()
     log.info(f"Climbs store: {'remote Turso' if db.is_remote() else 'local SQLite file'}")
 
@@ -366,13 +392,32 @@ def main():
         if names_cache:
             log.info(f"Seeded climbs-names cache from legacy {NAMES_CACHE.name}")
 
+    # Stage races with GPX. A race already derived + named is fixed (GPX immutable,
+    # names don't change) → skip it: no re-derive, no PCS name fetch.
+    stage_slugs = [s for s in db.gpx_slugs(client)
+                   if any(f.get("stage") is not None for f in db.list_gpx(client, s))]
+    todo, done = [], []
+    for slug in stage_slugs:
+        cached_pool = (names_cache.get(slug) or {}).get("pool")
+        payload = db.get_document(client, db.KIND_CLIMBS, slug)
+        (todo if needs_processing(payload, cached_pool) else done).append(slug)
+    log.info(f"Stage races derived + named (skip): {len(done)} · "
+             f"to process (new / names pending): {len(todo)}")
+    if args.dry_run:
+        print("\n" + "=" * 60)
+        print("  GPX-DERIVED STAGE CLIMBS — DRY RUN")
+        print(f"  Stage races total:               {len(stage_slugs)}")
+        print(f"  SKIPPED (derived + named):       {len(done)}")
+        print(f"  to PROCESS (new / names pending): {len(todo)}")
+        print("=" * 60)
+        client.close()
+        return
+
     slug_counts = {}
     total_climbs = total_named = races_with = 0
 
-    for slug in db.gpx_slugs(client):
+    for slug in todo:
         files = [f for f in db.list_gpx(client, slug) if f.get("stage") is not None]
-        if not files:                      # one-day race (route.gpx only) → skip
-            continue
         name = names.get(slug, slug)
         log.info(f"{slug}: {len(files)} stage GPX file(s)")
         pool = get_pool(names_cache, slug, pcs_urls.get(slug))
@@ -391,7 +436,8 @@ def main():
 
     print("\n" + "=" * 60)
     print("  GPX-DERIVED STAGE CLIMBS")
-    print(f"  Stage races processed: {len(slug_counts)}")
+    print(f"  Stage races skipped (done): {len(done)}")
+    print(f"  Stage races processed:      {len(slug_counts)}")
     print(f"  Races with climbs:     {races_with}")
     print(f"  Total climbs derived:  {total_climbs}  (named: {total_named})")
     print("=" * 60)
