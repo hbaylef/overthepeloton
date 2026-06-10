@@ -1,2644 +1,2314 @@
 {
   "race": "Tour de France",
   "race_slug": "tour-de-france-2026",
-  "updated_at": "2026-06-09T10:46:11.503845",
-  "total_riders": 120,
   "riders": [
     {
+      "birthdate": "1998-3-2",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145,
       "name": "PHILIPSEN Jasper",
       "nationality": "BE",
       "number": null,
-      "team": "Alpecin - Premier Tech (WT)",
+      "place_of_birth": "Belgium",
       "rider_url": "rider/jasper-philipsen",
-      "team_url": "team/alpecin-premier-tech-2026",
       "specialties": {
         "career": {
-          "one_day_races": 5904,
-          "gc": 649,
-          "tt": 155,
-          "sprint": 6401,
           "climber": 192,
-          "hills": 2571
+          "gc": 649,
+          "hills": 2571,
+          "one_day_races": 5904,
+          "sprint": 6401,
+          "tt": 155
         }
       },
-      "birthdate": "1998-3-2",
-      "place_of_birth": "Belgium",
-      "birthplace_lat": 50.6402809,
-      "birthplace_lon": 4.6667145
+      "team": "Alpecin - Premier Tech (WT)",
+      "team_url": "team/alpecin-premier-tech-2026"
     },
     {
+      "birthdate": "1998-12-23",
+      "birthplace_lat": -24.7761086,
+      "birthplace_lon": 134.755,
       "name": "GROVES Kaden",
       "nationality": "AU",
       "number": null,
-      "team": "Alpecin - Premier Tech (WT)",
+      "place_of_birth": "Australia",
       "rider_url": "rider/kaden-groves",
-      "team_url": "team/alpecin-premier-tech-2026",
       "specialties": {
         "career": {
-          "one_day_races": 531,
-          "gc": 291,
-          "tt": 359,
-          "sprint": 1575,
           "climber": 225,
-          "hills": 2064
+          "gc": 291,
+          "hills": 2064,
+          "one_day_races": 531,
+          "sprint": 1575,
+          "tt": 359
         }
       },
-      "birthdate": "1998-12-23",
-      "place_of_birth": "Australia",
-      "birthplace_lat": -24.7761086,
-      "birthplace_lon": 134.755
+      "team": "Alpecin - Premier Tech (WT)",
+      "team_url": "team/alpecin-premier-tech-2026"
     },
     {
+      "birthdate": "1995-1-19",
       "name": "VAN DER POEL Mathieu",
       "nationality": "NL",
       "number": null,
-      "team": "Alpecin - Premier Tech (WT)",
+      "place_of_birth": "Kapellen",
       "rider_url": "rider/mathieu-van-der-poel",
-      "team_url": "team/alpecin-premier-tech-2026",
       "specialties": {
         "career": {
-          "one_day_races": 8836,
-          "gc": 1324,
-          "tt": 1050,
-          "sprint": 1661,
           "climber": 1165,
-          "hills": 4534
+          "gc": 1324,
+          "hills": 4534,
+          "one_day_races": 8836,
+          "sprint": 1661,
+          "tt": 1050
         }
       },
-      "birthdate": "1995-1-19",
-      "place_of_birth": "Kapellen"
+      "team": "Alpecin - Premier Tech (WT)",
+      "team_url": "team/alpecin-premier-tech-2026"
     },
     {
+      "birthdate": "2002-2-4",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145,
       "name": "VERSTRYNGE Emiel",
       "nationality": "BE",
       "number": null,
-      "team": "Alpecin - Premier Tech (WT)",
-      "rider_url": "rider/emiel-verstrynge",
-      "team_url": "team/alpecin-premier-tech-2026",
-      "specialties": {
-        "career": {
-          "one_day_races": 269,
-          "gc": 98,
-          "tt": 30,
-          "sprint": 22,
-          "climber": 278,
-          "hills": 83
-        }
-      },
-      "birthdate": "2002-2-4",
       "place_of_birth": "Belgium",
-      "birthplace_lat": 50.6402809,
-      "birthplace_lon": 4.6667145
-    },
-    {
-      "name": "BAYER Tobias",
-      "nationality": "AT",
-      "number": null,
-      "team": "Alpecin - Premier Tech (WT)",
-      "rider_url": "rider/tobias-bayer",
-      "team_url": "team/alpecin-premier-tech-2026",
+      "rider_url": "rider/emiel-verstrynge",
       "specialties": {
         "career": {
-          "one_day_races": 225,
-          "gc": 204,
-          "tt": 36,
-          "sprint": 88,
-          "climber": 114,
-          "hills": 180
+          "climber": 278,
+          "gc": 98,
+          "hills": 83,
+          "one_day_races": 269,
+          "sprint": 22,
+          "tt": 30
         }
       },
-      "birthdate": "1999-11-17",
-      "place_of_birth": "Ried im Innkreis",
-      "birthplace_lat": 48.2085868,
-      "birthplace_lon": 13.48839
+      "team": "Alpecin - Premier Tech (WT)",
+      "team_url": "team/alpecin-premier-tech-2026"
     },
     {
+      "birthdate": "1994-2-7",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145,
       "name": "RICKAERT Jonas",
       "nationality": "BE",
       "number": null,
-      "team": "Alpecin - Premier Tech (WT)",
+      "place_of_birth": "Belgium",
       "rider_url": "rider/jonas-rickaert",
-      "team_url": "team/alpecin-premier-tech-2026",
       "specialties": {
         "career": {
-          "one_day_races": 820,
-          "gc": 248,
-          "tt": 128,
-          "sprint": 606,
           "climber": 10,
-          "hills": 90
+          "gc": 248,
+          "hills": 90,
+          "one_day_races": 820,
+          "sprint": 606,
+          "tt": 128
         }
       },
-      "birthdate": "1994-2-7",
-      "place_of_birth": "Belgium",
-      "birthplace_lat": 50.6402809,
-      "birthplace_lon": 4.6667145
+      "team": "Alpecin - Premier Tech (WT)",
+      "team_url": "team/alpecin-premier-tech-2026"
     },
     {
+      "birthdate": "2001-6-24",
+      "birthplace_lat": 42.6384261,
+      "birthplace_lon": 12.674297,
       "name": "TIBERI Antonio",
       "nationality": "IT",
       "number": null,
-      "team": "Bahrain - Victorious (WT)",
+      "place_of_birth": "Italy",
       "rider_url": "rider/antonio-tiberi",
-      "team_url": "team/bahrain-victorious-2026",
       "specialties": {
         "career": {
-          "one_day_races": 273,
-          "gc": 1685,
-          "tt": 973,
-          "sprint": 2,
           "climber": 1477,
-          "hills": 952
+          "gc": 1685,
+          "hills": 952,
+          "one_day_races": 273,
+          "sprint": 2,
+          "tt": 973
         }
       },
-      "birthdate": "2001-6-24",
-      "place_of_birth": "Italy",
-      "birthplace_lat": 42.6384261,
-      "birthplace_lon": 12.674297
+      "team": "Bahrain - Victorious (WT)",
+      "team_url": "team/bahrain-victorious-2026"
     },
     {
+      "birthdate": "2003-7-11",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335,
       "name": "MARTINEZ Lenny",
       "nationality": "FR",
       "number": null,
-      "team": "Bahrain - Victorious (WT)",
+      "place_of_birth": "France",
       "rider_url": "rider/lenny-martinez",
-      "team_url": "team/bahrain-victorious-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1293,
-          "gc": 1461,
-          "tt": 290,
-          "sprint": 4,
           "climber": 2036,
-          "hills": 588
+          "gc": 1461,
+          "hills": 588,
+          "one_day_races": 1293,
+          "sprint": 4,
+          "tt": 290
         }
       },
-      "birthdate": "2003-7-11",
-      "place_of_birth": "France",
-      "birthplace_lat": 46.603354,
-      "birthplace_lon": 1.8883335
+      "team": "Bahrain - Victorious (WT)",
+      "team_url": "team/bahrain-victorious-2026"
     },
     {
+      "birthdate": "1994-10-19",
+      "birthplace_lat": 46.1199444,
+      "birthplace_lon": 14.8153333,
       "name": "MOHORIČ Matej",
       "nationality": "SI",
       "number": null,
-      "team": "Bahrain - Victorious (WT)",
+      "place_of_birth": "Slovenia",
       "rider_url": "rider/matej-mohoric",
-      "team_url": "team/bahrain-victorious-2026",
       "specialties": {
         "career": {
-          "one_day_races": 3238,
-          "gc": 2366,
-          "tt": 352,
-          "sprint": 624,
           "climber": 1644,
-          "hills": 3004
+          "gc": 2366,
+          "hills": 3004,
+          "one_day_races": 3238,
+          "sprint": 624,
+          "tt": 352
         }
       },
-      "birthdate": "1994-10-19",
-      "place_of_birth": "Slovenia",
-      "birthplace_lat": 46.1199444,
-      "birthplace_lon": 14.8153333
+      "team": "Bahrain - Victorious (WT)",
+      "team_url": "team/bahrain-victorious-2026"
     },
     {
+      "birthdate": "1990-2-25",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791,
       "name": "BILBAO Pello",
       "nationality": "ES",
       "number": null,
-      "team": "Bahrain - Victorious (WT)",
-      "rider_url": "rider/pello-bilbao",
-      "team_url": "team/bahrain-victorious-2026",
-      "specialties": {
-        "career": {
-          "one_day_races": 1939,
-          "gc": 5093,
-          "tt": 1187,
-          "sprint": 92,
-          "climber": 5320,
-          "hills": 2402
-        }
-      },
-      "birthdate": "1990-2-25",
       "place_of_birth": "Spain",
-      "birthplace_lat": 39.3260685,
-      "birthplace_lon": -4.8379791
-    },
-    {
-      "name": "BRUTTOMESSO Alberto",
-      "nationality": "IT",
-      "number": null,
-      "team": "Bahrain - Victorious (WT)",
-      "rider_url": "rider/alberto-bruttomesso",
-      "team_url": "team/bahrain-victorious-2026",
+      "rider_url": "rider/pello-bilbao",
       "specialties": {
         "career": {
-          "one_day_races": 109,
-          "gc": 6,
-          "tt": 27,
-          "sprint": 206,
-          "climber": 22,
-          "hills": 160
+          "climber": 5320,
+          "gc": 5093,
+          "hills": 2402,
+          "one_day_races": 1939,
+          "sprint": 92,
+          "tt": 1187
         }
       },
-      "birthdate": "2003-10-30",
-      "place_of_birth": "Italy",
-      "birthplace_lat": 42.6384261,
-      "birthplace_lon": 12.674297
+      "team": "Bahrain - Victorious (WT)",
+      "team_url": "team/bahrain-victorious-2026"
     },
     {
+      "birthdate": "2001-10-17",
+      "birthplace_lat": 52.2434979,
+      "birthplace_lon": 5.6343227,
       "name": "KOOIJ Olav",
       "nationality": "NL",
       "number": null,
-      "team": "Decathlon CMA CGM Team (WT)",
+      "place_of_birth": "Netherlands",
       "rider_url": "rider/olav-kooij",
-      "team_url": "team/decathlon-cma-cgm-team-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1917,
-          "gc": 712,
-          "tt": 102,
-          "sprint": 3512,
           "climber": 88,
-          "hills": 1146
+          "gc": 712,
+          "hills": 1146,
+          "one_day_races": 1917,
+          "sprint": 3512,
+          "tt": 102
         }
       },
-      "birthdate": "2001-10-17",
-      "place_of_birth": "Netherlands",
-      "birthplace_lat": 52.2434979,
-      "birthplace_lon": 5.6343227
+      "team": "Decathlon CMA CGM Team (WT)",
+      "team_url": "team/decathlon-cma-cgm-team-2026"
     },
     {
+      "birthdate": "1994-3-11",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145,
       "name": "BENOOT Tiesj",
       "nationality": "BE",
       "number": null,
-      "team": "Decathlon CMA CGM Team (WT)",
+      "place_of_birth": "Belgium",
       "rider_url": "rider/tiesj-benoot",
-      "team_url": "team/decathlon-cma-cgm-team-2026",
       "specialties": {
         "career": {
-          "one_day_races": 5450,
-          "gc": 1942,
-          "tt": 85,
-          "sprint": 487,
           "climber": 2894,
-          "hills": 3062
+          "gc": 1942,
+          "hills": 3062,
+          "one_day_races": 5450,
+          "sprint": 487,
+          "tt": 85
         }
       },
-      "birthdate": "1994-3-11",
-      "place_of_birth": "Belgium",
-      "birthplace_lat": 50.6402809,
-      "birthplace_lon": 4.6667145
+      "team": "Decathlon CMA CGM Team (WT)",
+      "team_url": "team/decathlon-cma-cgm-team-2026"
     },
     {
+      "birthdate": "1999-2-22",
+      "birthplace_lat": 52.2434979,
+      "birthplace_lon": 5.6343227,
       "name": "HOOLE Daan",
       "nationality": "NL",
       "number": null,
-      "team": "Decathlon CMA CGM Team (WT)",
+      "place_of_birth": "Netherlands",
       "rider_url": "rider/daan-hoole",
-      "team_url": "team/decathlon-cma-cgm-team-2026",
       "specialties": {
         "career": {
-          "one_day_races": 304,
-          "gc": 187,
-          "tt": 1234,
-          "sprint": 58,
           "climber": 16,
-          "hills": 132
+          "gc": 187,
+          "hills": 132,
+          "one_day_races": 304,
+          "sprint": 58,
+          "tt": 1234
         }
       },
-      "birthdate": "1999-2-22",
-      "place_of_birth": "Netherlands",
-      "birthplace_lat": 52.2434979,
-      "birthplace_lon": 5.6343227
+      "team": "Decathlon CMA CGM Team (WT)",
+      "team_url": "team/decathlon-cma-cgm-team-2026"
     },
     {
+      "birthdate": "1998-9-13",
+      "birthplace_lat": 46.7985624,
+      "birthplace_lon": 8.2319736,
       "name": "BISSEGGER Stefan",
       "nationality": "CH",
       "number": null,
-      "team": "Decathlon CMA CGM Team (WT)",
-      "rider_url": "rider/stefan-bissegger",
-      "team_url": "team/decathlon-cma-cgm-team-2026",
-      "specialties": {
-        "career": {
-          "one_day_races": 586,
-          "gc": 262,
-          "tt": 2539,
-          "sprint": 228,
-          "climber": 18,
-          "hills": 407
-        }
-      },
-      "birthdate": "1998-9-13",
       "place_of_birth": "Switzerland",
-      "birthplace_lat": 46.7985624,
-      "birthplace_lon": 8.2319736
-    },
-    {
-      "name": "POLLEFLIET Gianluca",
-      "nationality": "BE",
-      "number": null,
-      "team": "Decathlon CMA CGM Team (WT)",
-      "rider_url": "rider/gianluca-pollefliet",
-      "team_url": "team/decathlon-cma-cgm-team-2026",
+      "rider_url": "rider/stefan-bissegger",
       "specialties": {
         "career": {
-          "one_day_races": 138,
-          "gc": 20,
-          "tt": 0,
-          "sprint": 376,
-          "climber": 0,
-          "hills": 22
+          "climber": 18,
+          "gc": 262,
+          "hills": 407,
+          "one_day_races": 586,
+          "sprint": 228,
+          "tt": 2539
         }
       },
-      "birthdate": "2002-1-28",
-      "place_of_birth": "Belgium",
-      "birthplace_lat": 50.6402809,
-      "birthplace_lon": 4.6667145
+      "team": "Decathlon CMA CGM Team (WT)",
+      "team_url": "team/decathlon-cma-cgm-team-2026"
     },
     {
+      "birthdate": "2006-9-24",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335,
       "name": "SEIXAS Paul",
       "nationality": "FR",
       "number": null,
-      "team": "Decathlon CMA CGM Team (WT)",
+      "place_of_birth": "France",
       "rider_url": "rider/paul-seixas",
-      "team_url": "team/decathlon-cma-cgm-team-2026",
       "specialties": {
         "career": {
-          "one_day_races": 997,
-          "gc": 507,
-          "tt": 318,
-          "sprint": 2,
           "climber": 944,
-          "hills": 188
+          "gc": 507,
+          "hills": 188,
+          "one_day_races": 997,
+          "sprint": 2,
+          "tt": 318
         }
       },
-      "birthdate": "2006-9-24",
-      "place_of_birth": "France",
-      "birthplace_lat": 46.603354,
-      "birthplace_lon": 1.8883335
+      "team": "Decathlon CMA CGM Team (WT)",
+      "team_url": "team/decathlon-cma-cgm-team-2026"
     },
     {
+      "birthdate": "2000-9-11",
       "name": "HEALY Ben",
       "nationality": "IE",
       "number": null,
-      "team": "EF Education - EasyPost (WT)",
+      "place_of_birth": "Kingswinford",
       "rider_url": "rider/ben-healy",
-      "team_url": "team/ef-education-easypost-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1514,
-          "gc": 869,
-          "tt": 548,
-          "sprint": 40,
           "climber": 1548,
-          "hills": 570
+          "gc": 869,
+          "hills": 570,
+          "one_day_races": 1514,
+          "sprint": 40,
+          "tt": 548
         }
       },
-      "birthdate": "2000-9-11",
-      "place_of_birth": "Kingswinford"
+      "team": "EF Education - EasyPost (WT)",
+      "team_url": "team/ef-education-easypost-2026"
     },
     {
+      "birthdate": "1995-2-8",
+      "birthplace_lat": 55.4894999,
+      "birthplace_lon": 9.47905,
       "name": "ASGREEN Kasper",
       "nationality": "DK",
       "number": null,
-      "team": "EF Education - EasyPost (WT)",
+      "place_of_birth": "Kolding",
       "rider_url": "rider/kasper-asgreen",
-      "team_url": "team/ef-education-easypost-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1690,
-          "gc": 856,
-          "tt": 2474,
-          "sprint": 359,
           "climber": 504,
-          "hills": 1528
+          "gc": 856,
+          "hills": 1528,
+          "one_day_races": 1690,
+          "sprint": 359,
+          "tt": 2474
         }
       },
-      "birthdate": "1995-2-8",
-      "place_of_birth": "Kolding",
-      "birthplace_lat": 55.4894999,
-      "birthplace_lon": 9.47905
+      "team": "EF Education - EasyPost (WT)",
+      "team_url": "team/ef-education-easypost-2026"
     },
     {
+      "birthdate": "1993-5-29",
+      "birthplace_lat": 0.6694038,
+      "birthplace_lon": -77.5891866,
       "name": "CARAPAZ Richard",
       "nationality": "EC",
       "number": null,
-      "team": "EF Education - EasyPost (WT)",
+      "place_of_birth": "El Carmelo",
       "rider_url": "rider/richard-carapaz",
-      "team_url": "team/ef-education-easypost-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1345,
-          "gc": 4248,
-          "tt": 585,
-          "sprint": 92,
           "climber": 4952,
-          "hills": 1798
+          "gc": 4248,
+          "hills": 1798,
+          "one_day_races": 1345,
+          "sprint": 92,
+          "tt": 585
         }
       },
-      "birthdate": "1993-5-29",
-      "place_of_birth": "El Carmelo",
-      "birthplace_lat": 0.6694038,
-      "birthplace_lon": -77.5891866
+      "team": "EF Education - EasyPost (WT)",
+      "team_url": "team/ef-education-easypost-2026"
     },
     {
+      "birthdate": "2001-5-25",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335,
       "name": "BAUDIN Alex",
       "nationality": "FR",
       "number": null,
-      "team": "EF Education - EasyPost (WT)",
-      "rider_url": "rider/alex-baudin",
-      "team_url": "team/ef-education-easypost-2026",
-      "specialties": {
-        "career": {
-          "one_day_races": 661,
-          "gc": 670,
-          "tt": 90,
-          "sprint": 5,
-          "climber": 752,
-          "hills": 569
-        }
-      },
-      "birthdate": "2001-5-25",
       "place_of_birth": "France",
-      "birthplace_lat": 46.603354,
-      "birthplace_lon": 1.8883335
-    },
-    {
-      "name": "SWEENY Harry",
-      "nationality": "AU",
-      "number": null,
-      "team": "EF Education - EasyPost (WT)",
-      "rider_url": "rider/harry-sweeny",
-      "team_url": "team/ef-education-easypost-2026",
+      "rider_url": "rider/alex-baudin",
       "specialties": {
         "career": {
-          "one_day_races": 202,
-          "gc": 418,
-          "tt": 285,
-          "sprint": 71,
-          "climber": 214,
-          "hills": 325
+          "climber": 752,
+          "gc": 670,
+          "hills": 569,
+          "one_day_races": 661,
+          "sprint": 5,
+          "tt": 90
         }
       },
-      "birthdate": "1998-7-9",
-      "place_of_birth": "Australia",
-      "birthplace_lat": -24.7761086,
-      "birthplace_lon": 134.755
+      "team": "EF Education - EasyPost (WT)",
+      "team_url": "team/ef-education-easypost-2026"
     },
     {
+      "birthdate": "1996-10-10",
+      "birthplace_lat": 48.5127551,
+      "birthplace_lon": -4.0699356,
       "name": "GAUDU David",
       "nationality": "FR",
       "number": null,
-      "team": "Groupama - FDJ United (WT)",
+      "place_of_birth": "Landivisiau",
       "rider_url": "rider/david-gaudu",
-      "team_url": "team/groupama-fdj-united-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1790,
-          "gc": 3194,
-          "tt": 160,
-          "sprint": 17,
           "climber": 4184,
-          "hills": 1370
+          "gc": 3194,
+          "hills": 1370,
+          "one_day_races": 1790,
+          "sprint": 17,
+          "tt": 160
         }
       },
-      "birthdate": "1996-10-10",
-      "place_of_birth": "Landivisiau",
-      "birthplace_lat": 48.5127551,
-      "birthplace_lon": -4.0699356
+      "team": "Groupama - FDJ United (WT)",
+      "team_url": "team/groupama-fdj-united-2026"
     },
     {
+      "birthdate": "1993-6-9",
+      "birthplace_lat": 48.8534951,
+      "birthplace_lon": 2.3483915,
       "name": "MARTIN Guillaume",
       "nationality": "FR",
       "number": null,
-      "team": "Groupama - FDJ United (WT)",
+      "place_of_birth": "Paris",
       "rider_url": "rider/guillaume-martin",
-      "team_url": "team/groupama-fdj-united-2026",
       "specialties": {
         "career": {
-          "one_day_races": 2621,
-          "gc": 4117,
-          "tt": 10,
-          "sprint": 74,
           "climber": 4193,
-          "hills": 1809
+          "gc": 4117,
+          "hills": 1809,
+          "one_day_races": 2621,
+          "sprint": 74,
+          "tt": 10
         }
       },
-      "birthdate": "1993-6-9",
-      "place_of_birth": "Paris",
-      "birthplace_lat": 48.8534951,
-      "birthplace_lon": 2.3483915
+      "team": "Groupama - FDJ United (WT)",
+      "team_url": "team/groupama-fdj-united-2026"
     },
     {
+      "birthdate": "1996-7-25",
+      "birthplace_lat": 42.6384261,
+      "birthplace_lon": 12.674297,
       "name": "GANNA Filippo",
       "nationality": "IT",
       "number": null,
-      "team": "Netcompany INEOS (WT)",
+      "place_of_birth": "Italy",
       "rider_url": "rider/filippo-ganna",
-      "team_url": "team/netcompany-ineos-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1254,
-          "gc": 1086,
-          "tt": 6442,
-          "sprint": 362,
           "climber": 312,
-          "hills": 1164
+          "gc": 1086,
+          "hills": 1164,
+          "one_day_races": 1254,
+          "sprint": 362,
+          "tt": 6442
         }
       },
-      "birthdate": "1996-7-25",
-      "place_of_birth": "Italy",
-      "birthplace_lat": 42.6384261,
-      "birthplace_lon": 12.674297
+      "team": "Netcompany INEOS (WT)",
+      "team_url": "team/netcompany-ineos-2026"
     },
     {
+      "birthdate": "2001-2-2",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791,
       "name": "RODRÍGUEZ Carlos",
       "nationality": "ES",
       "number": null,
-      "team": "Netcompany INEOS (WT)",
+      "place_of_birth": "Spain",
       "rider_url": "rider/carlos-rodriguez-cano",
-      "team_url": "team/netcompany-ineos-2026",
       "specialties": {
         "career": {
-          "one_day_races": 503,
-          "gc": 2631,
-          "tt": 497,
-          "sprint": 14,
           "climber": 2570,
-          "hills": 598
+          "gc": 2631,
+          "hills": 598,
+          "one_day_races": 503,
+          "sprint": 14,
+          "tt": 497
         }
       },
-      "birthdate": "2001-2-2",
-      "place_of_birth": "Spain",
-      "birthplace_lat": 39.3260685,
-      "birthplace_lon": -4.8379791
+      "team": "Netcompany INEOS (WT)",
+      "team_url": "team/netcompany-ineos-2026"
     },
     {
+      "birthdate": "1990-6-2",
+      "birthplace_lat": 52.215933,
+      "birthplace_lon": 19.134422,
       "name": "KWIATKOWSKI Michał",
       "nationality": "PL",
       "number": null,
-      "team": "Netcompany INEOS (WT)",
+      "place_of_birth": "Poland",
       "rider_url": "rider/michal-kwiatkowski",
-      "team_url": "team/netcompany-ineos-2026",
       "specialties": {
         "career": {
-          "one_day_races": 4752,
-          "gc": 3745,
-          "tt": 3565,
-          "sprint": 346,
           "climber": 3410,
-          "hills": 3612
+          "gc": 3745,
+          "hills": 3612,
+          "one_day_races": 4752,
+          "sprint": 346,
+          "tt": 3565
         }
       },
-      "birthdate": "1990-6-2",
-      "place_of_birth": "Poland",
-      "birthplace_lat": 52.215933,
-      "birthplace_lon": 19.134422
+      "team": "Netcompany INEOS (WT)",
+      "team_url": "team/netcompany-ineos-2026"
     },
     {
+      "birthdate": "2001-4-26",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335,
       "name": "VAUQUELIN Kévin",
       "nationality": "FR",
       "number": null,
-      "team": "Netcompany INEOS (WT)",
-      "rider_url": "rider/kevin-vauquelin",
-      "team_url": "team/netcompany-ineos-2026",
-      "specialties": {
-        "career": {
-          "one_day_races": 824,
-          "gc": 1837,
-          "tt": 1217,
-          "sprint": 91,
-          "climber": 1262,
-          "hills": 1155
-        }
-      },
-      "birthdate": "2001-4-26",
       "place_of_birth": "France",
-      "birthplace_lat": 46.603354,
-      "birthplace_lon": 1.8883335
-    },
-    {
-      "name": "BERNAL Egan",
-      "nationality": "CO",
-      "number": null,
-      "team": "Netcompany INEOS (WT)",
-      "rider_url": "rider/egan-bernal",
-      "team_url": "team/netcompany-ineos-2026",
+      "rider_url": "rider/kevin-vauquelin",
       "specialties": {
         "career": {
-          "one_day_races": 1229,
-          "gc": 5016,
-          "tt": 618,
-          "sprint": 96,
-          "climber": 4828,
-          "hills": 1419
+          "climber": 1262,
+          "gc": 1837,
+          "hills": 1155,
+          "one_day_races": 824,
+          "sprint": 91,
+          "tt": 1217
         }
       },
-      "birthdate": "1997-1-13",
-      "place_of_birth": "Colombia",
-      "birthplace_lat": 4.099917,
-      "birthplace_lon": -72.9088133
+      "team": "Netcompany INEOS (WT)",
+      "team_url": "team/netcompany-ineos-2026"
     },
     {
+      "birthdate": "1996-5-25",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335,
       "name": "GODON Dorian",
       "nationality": "FR",
       "number": null,
-      "team": "Netcompany INEOS (WT)",
+      "place_of_birth": "France",
       "rider_url": "rider/dorian-godon",
-      "team_url": "team/netcompany-ineos-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1836,
-          "gc": 584,
-          "tt": 525,
-          "sprint": 273,
           "climber": 882,
-          "hills": 2240
+          "gc": 584,
+          "hills": 2240,
+          "one_day_races": 1836,
+          "sprint": 273,
+          "tt": 525
         }
       },
-      "birthdate": "1996-5-25",
-      "place_of_birth": "France",
-      "birthplace_lat": 46.603354,
-      "birthplace_lon": 1.8883335
+      "team": "Netcompany INEOS (WT)",
+      "team_url": "team/netcompany-ineos-2026"
     },
     {
+      "birthdate": "1999-12-4",
+      "birthplace_lat": 52.2434979,
+      "birthplace_lon": 5.6343227,
       "name": "ARENSMAN Thymen",
       "nationality": "NL",
       "number": null,
-      "team": "Netcompany INEOS (WT)",
+      "place_of_birth": "Netherlands",
       "rider_url": "rider/thymen-arensman",
-      "team_url": "team/netcompany-ineos-2026",
       "specialties": {
         "career": {
-          "one_day_races": 67,
-          "gc": 2435,
-          "tt": 1657,
-          "sprint": 28,
           "climber": 2268,
-          "hills": 604
+          "gc": 2435,
+          "hills": 604,
+          "one_day_races": 67,
+          "sprint": 28,
+          "tt": 1657
         }
       },
-      "birthdate": "1999-12-4",
-      "place_of_birth": "Netherlands",
-      "birthplace_lat": 52.2434979,
-      "birthplace_lon": 5.6343227
+      "team": "Netcompany INEOS (WT)",
+      "team_url": "team/netcompany-ineos-2026"
     },
     {
+      "birthdate": "1994-12-20",
+      "birthplace_lat": 42.1026928,
+      "birthplace_lon": 14.4159053,
       "name": "CICCONE Giulio",
       "nationality": "IT",
       "number": null,
-      "team": "Lidl - Trek (WT)",
+      "place_of_birth": "Chieti",
       "rider_url": "rider/giulio-ciccone",
-      "team_url": "team/lidl-trek-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1861,
-          "gc": 2178,
-          "tt": 117,
-          "sprint": 56,
           "climber": 4598,
-          "hills": 1404
+          "gc": 2178,
+          "hills": 1404,
+          "one_day_races": 1861,
+          "sprint": 56,
+          "tt": 117
         }
       },
-      "birthdate": "1994-12-20",
-      "place_of_birth": "Chieti",
-      "birthplace_lat": 42.1026928,
-      "birthplace_lon": 14.4159053
+      "team": "Lidl - Trek (WT)",
+      "team_url": "team/lidl-trek-2026"
     },
     {
+      "birthdate": "2002-9-16",
+      "birthplace_lat": 41.3825802,
+      "birthplace_lon": 2.177073,
       "name": "AYUSO Juan",
       "nationality": "ES",
       "number": null,
-      "team": "Lidl - Trek (WT)",
+      "place_of_birth": "Barcelona",
       "rider_url": "rider/juan-ayuso-pesquera",
-      "team_url": "team/lidl-trek-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1277,
-          "gc": 2225,
-          "tt": 1303,
-          "sprint": 12,
           "climber": 2472,
-          "hills": 928
+          "gc": 2225,
+          "hills": 928,
+          "one_day_races": 1277,
+          "sprint": 12,
+          "tt": 1303
         }
       },
-      "birthdate": "2002-9-16",
-      "place_of_birth": "Barcelona",
-      "birthplace_lat": 41.3825802,
-      "birthplace_lon": 2.177073
+      "team": "Lidl - Trek (WT)",
+      "team_url": "team/lidl-trek-2026"
     },
     {
+      "birthdate": "1995-12-18",
+      "birthplace_lat": 55.6108727,
+      "birthplace_lon": 11.7704158,
       "name": "PEDERSEN Mads",
       "nationality": "DK",
       "number": null,
-      "team": "Lidl - Trek (WT)",
+      "place_of_birth": "Tølløse",
       "rider_url": "rider/mads-pedersen",
-      "team_url": "team/lidl-trek-2026",
       "specialties": {
         "career": {
-          "one_day_races": 5070,
-          "gc": 1777,
-          "tt": 1921,
-          "sprint": 3201,
           "climber": 487,
-          "hills": 3776
+          "gc": 1777,
+          "hills": 3776,
+          "one_day_races": 5070,
+          "sprint": 3201,
+          "tt": 1921
         }
       },
-      "birthdate": "1995-12-18",
-      "place_of_birth": "Tølløse",
-      "birthplace_lat": 55.6108727,
-      "birthplace_lon": 11.7704158
+      "team": "Lidl - Trek (WT)",
+      "team_url": "team/lidl-trek-2026"
     },
     {
+      "birthdate": "2002-6-12",
+      "birthplace_lat": 49.9640292,
+      "birthplace_lon": 14.0733907,
       "name": "VACEK Mathias",
       "nationality": "CZ",
       "number": null,
-      "team": "Lidl - Trek (WT)",
-      "rider_url": "rider/mathias-vacek",
-      "team_url": "team/lidl-trek-2026",
-      "specialties": {
-        "career": {
-          "one_day_races": 603,
-          "gc": 544,
-          "tt": 793,
-          "sprint": 193,
-          "climber": 264,
-          "hills": 530
-        }
-      },
-      "birthdate": "2002-6-12",
       "place_of_birth": "Beroun",
-      "birthplace_lat": 49.9640292,
-      "birthplace_lon": 14.0733907
-    },
-    {
-      "name": "MOLLEMA Bauke",
-      "nationality": "NL",
-      "number": null,
-      "team": "Lidl - Trek (WT)",
-      "rider_url": "rider/bauke-mollema",
-      "team_url": "team/lidl-trek-2026",
+      "rider_url": "rider/mathias-vacek",
       "specialties": {
         "career": {
-          "one_day_races": 5326,
-          "gc": 6063,
-          "tt": 2081,
-          "sprint": 592,
-          "climber": 7737,
-          "hills": 4159
+          "climber": 264,
+          "gc": 544,
+          "hills": 530,
+          "one_day_races": 603,
+          "sprint": 193,
+          "tt": 793
         }
       },
-      "birthdate": "1986-11-26",
-      "place_of_birth": "Groningen",
-      "birthplace_lat": 53.2190652,
-      "birthplace_lon": 6.5680077
+      "team": "Lidl - Trek (WT)",
+      "team_url": "team/lidl-trek-2026"
     },
     {
+      "birthdate": "2000-9-26",
+      "birthplace_lat": 55.6867243,
+      "birthplace_lon": 12.5700724,
       "name": "SKJELMOSE Mattias",
       "nationality": "DK",
       "number": null,
-      "team": "Lidl - Trek (WT)",
+      "place_of_birth": "Copenhagen",
       "rider_url": "rider/mattias-skjelmose-jensen",
-      "team_url": "team/lidl-trek-2026",
       "specialties": {
         "career": {
-          "one_day_races": 2060,
-          "gc": 2530,
-          "tt": 1210,
-          "sprint": 132,
           "climber": 2624,
-          "hills": 1716
+          "gc": 2530,
+          "hills": 1716,
+          "one_day_races": 2060,
+          "sprint": 132,
+          "tt": 1210
         }
       },
-      "birthdate": "2000-9-26",
-      "place_of_birth": "Copenhagen",
-      "birthplace_lat": 55.6867243,
-      "birthplace_lon": 12.5700724
+      "team": "Lidl - Trek (WT)",
+      "team_url": "team/lidl-trek-2026"
     },
     {
+      "birthdate": "2001-5-8",
+      "birthplace_lat": 37.2769484,
+      "birthplace_lon": -107.8766,
       "name": "SIMMONS Quinn",
       "nationality": "US",
       "number": null,
-      "team": "Lidl - Trek (WT)",
+      "place_of_birth": "Durango",
       "rider_url": "rider/quinn-simmons",
-      "team_url": "team/lidl-trek-2026",
       "specialties": {
         "career": {
-          "one_day_races": 836,
-          "gc": 509,
-          "tt": 38,
-          "sprint": 87,
           "climber": 704,
-          "hills": 780
+          "gc": 509,
+          "hills": 780,
+          "one_day_races": 836,
+          "sprint": 87,
+          "tt": 38
         }
       },
-      "birthdate": "2001-5-8",
-      "place_of_birth": "Durango",
-      "birthplace_lat": 37.2769484,
-      "birthplace_lon": -107.8766
+      "team": "Lidl - Trek (WT)",
+      "team_url": "team/lidl-trek-2026"
     },
     {
+      "birthdate": "1994-8-10",
+      "birthplace_lat": 55.5369188,
+      "birthplace_lon": 9.7763619,
       "name": "KRAGH ANDERSEN Søren",
       "nationality": "DK",
       "number": null,
-      "team": "Lidl - Trek (WT)",
+      "place_of_birth": "Strib",
       "rider_url": "rider/soren-kragh-andersen",
-      "team_url": "team/lidl-trek-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1599,
-          "gc": 1543,
-          "tt": 1935,
-          "sprint": 722,
           "climber": 466,
-          "hills": 1472
+          "gc": 1543,
+          "hills": 1472,
+          "one_day_races": 1599,
+          "sprint": 722,
+          "tt": 1935
         }
       },
-      "birthdate": "1994-8-10",
-      "place_of_birth": "Strib",
-      "birthplace_lat": 55.5369188,
-      "birthplace_lon": 9.7763619
+      "team": "Lidl - Trek (WT)",
+      "team_url": "team/lidl-trek-2026"
     },
     {
+      "birthdate": "2002-3-16",
+      "birthplace_lat": 49.94991,
+      "birthplace_lon": 5.4370892,
       "name": "DE LIE Arnaud",
       "nationality": "BE",
       "number": null,
-      "team": "Lotto Intermarché (WT)",
+      "place_of_birth": "Libramont",
       "rider_url": "rider/arnaud-de-lie",
-      "team_url": "team/lotto-intermarche-2026",
       "specialties": {
         "career": {
-          "one_day_races": 4875,
-          "gc": 651,
-          "tt": 1,
-          "sprint": 2072,
           "climber": 192,
-          "hills": 2052
+          "gc": 651,
+          "hills": 2052,
+          "one_day_races": 4875,
+          "sprint": 2072,
+          "tt": 1
         }
       },
-      "birthdate": "2002-3-16",
-      "place_of_birth": "Libramont",
-      "birthplace_lat": 49.94991,
-      "birthplace_lon": 5.4370892
+      "team": "Lotto Intermarché (WT)",
+      "team_url": "team/lotto-intermarche-2026"
     },
     {
+      "birthdate": "2001-7-17",
+      "birthplace_lat": 50.8721329,
+      "birthplace_lon": 4.8840011,
       "name": "VAN EETVELT Lennert",
       "nationality": "BE",
       "number": null,
-      "team": "Lotto Intermarché (WT)",
+      "place_of_birth": "Binkom",
       "rider_url": "rider/lennert-van-eetvelt",
-      "team_url": "team/lotto-intermarche-2026",
       "specialties": {
         "career": {
-          "one_day_races": 639,
-          "gc": 1104,
-          "tt": 103,
-          "sprint": 12,
           "climber": 1264,
-          "hills": 560
+          "gc": 1104,
+          "hills": 560,
+          "one_day_races": 639,
+          "sprint": 12,
+          "tt": 103
         }
       },
-      "birthdate": "2001-7-17",
-      "place_of_birth": "Binkom",
-      "birthplace_lat": 50.8721329,
-      "birthplace_lon": 4.8840011
+      "team": "Lotto Intermarché (WT)",
+      "team_url": "team/lotto-intermarche-2026"
     },
     {
+      "birthdate": "1997-10-11",
+      "birthplace_lat": 51.1638175,
+      "birthplace_lon": 10.4478313,
       "name": "ZIMMERMANN Georg",
       "nationality": "DE",
       "number": null,
-      "team": "Lotto Intermarché (WT)",
+      "place_of_birth": "Germany",
       "rider_url": "rider/georg-zimmermann",
-      "team_url": "team/lotto-intermarche-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1278,
-          "gc": 748,
-          "tt": 0,
-          "sprint": 63,
           "climber": 758,
-          "hills": 842
+          "gc": 748,
+          "hills": 842,
+          "one_day_races": 1278,
+          "sprint": 63,
+          "tt": 0
         }
       },
-      "birthdate": "1997-10-11",
-      "place_of_birth": "Germany",
-      "birthplace_lat": 51.1638175,
-      "birthplace_lon": 10.4478313
+      "team": "Lotto Intermarché (WT)",
+      "team_url": "team/lotto-intermarche-2026"
     },
     {
+      "birthdate": "2003-2-28",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145,
       "name": "UIJTDEBROEKS Cian",
       "nationality": "BE",
       "number": null,
-      "team": "Movistar Team (WT)",
+      "place_of_birth": "Belgium",
       "rider_url": "rider/cian-uijtdebroeks",
-      "team_url": "team/movistar-team-2026",
       "specialties": {
         "career": {
-          "one_day_races": 258,
-          "gc": 1302,
-          "tt": 88,
-          "sprint": 0,
           "climber": 1248,
-          "hills": 272
+          "gc": 1302,
+          "hills": 272,
+          "one_day_races": 258,
+          "sprint": 0,
+          "tt": 88
         }
       },
-      "birthdate": "2003-2-28",
-      "place_of_birth": "Belgium",
-      "birthplace_lat": 50.6402809,
-      "birthplace_lon": 4.6667145
+      "team": "Movistar Team (WT)",
+      "team_url": "team/movistar-team-2026"
     },
     {
+      "birthdate": "1998-2-22",
+      "birthplace_lat": 4.099917,
+      "birthplace_lon": -72.9088133,
       "name": "RUBIO Einer",
       "nationality": "CO",
       "number": null,
-      "team": "Movistar Team (WT)",
+      "place_of_birth": "Colombia",
       "rider_url": "rider/einer-rubio",
-      "team_url": "team/movistar-team-2026",
       "specialties": {
         "career": {
-          "one_day_races": 214,
-          "gc": 1638,
-          "tt": 64,
-          "sprint": 8,
           "climber": 1927,
-          "hills": 378
+          "gc": 1638,
+          "hills": 378,
+          "one_day_races": 214,
+          "sprint": 8,
+          "tt": 64
         }
       },
-      "birthdate": "1998-2-22",
-      "place_of_birth": "Colombia",
-      "birthplace_lat": 4.099917,
-      "birthplace_lon": -72.9088133
+      "team": "Movistar Team (WT)",
+      "team_url": "team/movistar-team-2026"
     },
     {
+      "birthdate": "2003-8-16",
+      "birthplace_lat": 41.6200024,
+      "birthplace_lon": -4.7259906,
       "name": "ROMEO Iván",
       "nationality": "ES",
       "number": null,
-      "team": "Movistar Team (WT)",
+      "place_of_birth": "Valladolid",
       "rider_url": "rider/ivan-romeo",
-      "team_url": "team/movistar-team-2026",
       "specialties": {
         "career": {
-          "one_day_races": 253,
-          "gc": 587,
-          "tt": 584,
-          "sprint": 55,
           "climber": 298,
-          "hills": 324
+          "gc": 587,
+          "hills": 324,
+          "one_day_races": 253,
+          "sprint": 55,
+          "tt": 584
         }
       },
-      "birthdate": "2003-8-16",
-      "place_of_birth": "Valladolid",
-      "birthplace_lat": 41.6200024,
-      "birthplace_lon": -4.7259906
+      "team": "Movistar Team (WT)",
+      "team_url": "team/movistar-team-2026"
     },
     {
+      "birthdate": "2001-1-2",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791,
       "name": "CASTRILLO Pablo",
       "nationality": "ES",
       "number": null,
-      "team": "Movistar Team (WT)",
-      "rider_url": "rider/pablo-castrillo-zapater",
-      "team_url": "team/movistar-team-2026",
-      "specialties": {
-        "career": {
-          "one_day_races": 72,
-          "gc": 685,
-          "tt": 299,
-          "sprint": 0,
-          "climber": 790,
-          "hills": 266
-        }
-      },
-      "birthdate": "2001-1-2",
       "place_of_birth": "Spain",
-      "birthplace_lat": 39.3260685,
-      "birthplace_lon": -4.8379791
-    },
-    {
-      "name": "SERRANO Gonzalo",
-      "nationality": "ES",
-      "number": null,
-      "team": "Movistar Team (WT)",
-      "rider_url": "rider/gonzalo-serrano",
-      "team_url": "team/movistar-team-2026",
+      "rider_url": "rider/pablo-castrillo-zapater",
       "specialties": {
         "career": {
-          "one_day_races": 768,
-          "gc": 489,
-          "tt": 58,
-          "sprint": 160,
-          "climber": 406,
-          "hills": 932
+          "climber": 790,
+          "gc": 685,
+          "hills": 266,
+          "one_day_races": 72,
+          "sprint": 0,
+          "tt": 299
         }
       },
-      "birthdate": "1994-8-17",
-      "place_of_birth": "Madrid",
-      "birthplace_lat": 40.416782,
-      "birthplace_lon": -3.703507
+      "team": "Movistar Team (WT)",
+      "team_url": "team/movistar-team-2026"
     },
     {
+      "birthdate": "1998-4-18",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791,
       "name": "ADRIÀ Roger",
       "nationality": "ES",
       "number": null,
-      "team": "Movistar Team (WT)",
+      "place_of_birth": "Spain",
       "rider_url": "rider/roger-adria",
-      "team_url": "team/movistar-team-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1203,
-          "gc": 396,
-          "tt": 43,
-          "sprint": 48,
           "climber": 722,
-          "hills": 888
+          "gc": 396,
+          "hills": 888,
+          "one_day_races": 1203,
+          "sprint": 48,
+          "tt": 43
         }
       },
-      "birthdate": "1998-4-18",
-      "place_of_birth": "Spain",
-      "birthplace_lat": 39.3260685,
-      "birthplace_lon": -4.8379791
+      "team": "Movistar Team (WT)",
+      "team_url": "team/movistar-team-2026"
     },
     {
+      "birthdate": null,
+      "birthplace_lat": 15.3389667,
+      "birthplace_lon": 38.9326763,
       "name": "GIRMAY Biniam",
       "nationality": "ER",
       "number": null,
-      "team": "NSN Cycling Team (WT)",
+      "place_of_birth": "Asmara",
       "rider_url": "rider/biniam-girmay",
-      "team_url": "team/nsn-cycling-team-2026",
       "specialties": {
         "career": {
-          "one_day_races": 3519,
-          "gc": 121,
-          "tt": 112,
-          "sprint": 1545,
           "climber": 272,
-          "hills": 2211
+          "gc": 121,
+          "hills": 2211,
+          "one_day_races": 3519,
+          "sprint": 1545,
+          "tt": 112
         }
       },
-      "birthdate": null,
-      "place_of_birth": "Asmara",
-      "birthplace_lat": 15.3389667,
-      "birthplace_lon": 38.9326763
+      "team": "NSN Cycling Team (WT)",
+      "team_url": "team/nsn-cycling-team-2026"
     },
     {
+      "birthdate": "1999-10-2",
+      "birthplace_lat": 52.4081812,
+      "birthplace_lon": -1.510477,
       "name": "STEWART Jake",
       "nationality": "GB",
       "number": null,
-      "team": "NSN Cycling Team (WT)",
+      "place_of_birth": "Coventry",
       "rider_url": "rider/jake-stewart",
-      "team_url": "team/nsn-cycling-team-2026",
       "specialties": {
         "career": {
-          "one_day_races": 534,
-          "gc": 472,
-          "tt": 28,
-          "sprint": 542,
           "climber": 148,
-          "hills": 930
+          "gc": 472,
+          "hills": 930,
+          "one_day_races": 534,
+          "sprint": 542,
+          "tt": 28
         }
       },
-      "birthdate": "1999-10-2",
-      "place_of_birth": "Coventry",
-      "birthplace_lat": 52.4081812,
-      "birthplace_lon": -1.510477
+      "team": "NSN Cycling Team (WT)",
+      "team_url": "team/nsn-cycling-team-2026"
     },
     {
+      "birthdate": "2000-1-25",
+      "birthplace_lat": 50.9383226,
+      "birthplace_lon": 4.0392147,
       "name": "EVENEPOEL Remco",
       "nationality": "BE",
       "number": null,
-      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "place_of_birth": "Aalst",
       "rider_url": "rider/remco-evenepoel",
-      "team_url": "team/red-bull-bora-hansgrohe-2026",
       "specialties": {
         "career": {
-          "one_day_races": 4615,
-          "gc": 4704,
-          "tt": 4921,
-          "sprint": 120,
           "climber": 4886,
-          "hills": 2044
+          "gc": 4704,
+          "hills": 2044,
+          "one_day_races": 4615,
+          "sprint": 120,
+          "tt": 4921
         }
       },
-      "birthdate": "2000-1-25",
-      "place_of_birth": "Aalst",
-      "birthplace_lat": 50.9383226,
-      "birthplace_lon": 4.0392147
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
     },
     {
+      "birthdate": "2000-9-21",
+      "birthplace_lat": 48.4896773,
+      "birthplace_lon": 9.6861474,
       "name": "LIPOWITZ Florian",
       "nationality": "DE",
       "number": null,
-      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "place_of_birth": "Laichingen",
       "rider_url": "rider/florian-lipowitz",
-      "team_url": "team/red-bull-bora-hansgrohe-2026",
       "specialties": {
         "career": {
-          "one_day_races": 81,
-          "gc": 2060,
-          "tt": 663,
-          "sprint": 4,
           "climber": 1680,
-          "hills": 404
+          "gc": 2060,
+          "hills": 404,
+          "one_day_races": 81,
+          "sprint": 4,
+          "tt": 663
         }
       },
-      "birthdate": "2000-9-21",
-      "place_of_birth": "Laichingen",
-      "birthplace_lat": 48.4896773,
-      "birthplace_lon": 9.6861474
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
     },
     {
+      "birthdate": "1990-10-25",
+      "birthplace_lat": 45.7532846,
+      "birthplace_lon": 9.7114794,
       "name": "CATTANEO Mattia",
       "nationality": "IT",
       "number": null,
-      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "place_of_birth": "Alzano Lombardo",
       "rider_url": "rider/mattia-cattaneo",
-      "team_url": "team/red-bull-bora-hansgrohe-2026",
       "specialties": {
         "career": {
-          "one_day_races": 783,
-          "gc": 1592,
-          "tt": 2263,
-          "sprint": 10,
           "climber": 1248,
-          "hills": 746
+          "gc": 1592,
+          "hills": 746,
+          "one_day_races": 783,
+          "sprint": 10,
+          "tt": 2263
         }
       },
-      "birthdate": "1990-10-25",
-      "place_of_birth": "Alzano Lombardo",
-      "birthplace_lat": 45.7532846,
-      "birthplace_lon": 9.7114794
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
     },
     {
+      "birthdate": "1999-11-25",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145,
       "name": "VAN GILS Maxim",
       "nationality": "BE",
       "number": null,
-      "team": "Red Bull - BORA - hansgrohe (WT)",
-      "rider_url": "rider/maxim-van-gils",
-      "team_url": "team/red-bull-bora-hansgrohe-2026",
-      "specialties": {
-        "career": {
-          "one_day_races": 1840,
-          "gc": 526,
-          "tt": 117,
-          "sprint": 72,
-          "climber": 1324,
-          "hills": 1245
-        }
-      },
-      "birthdate": "1999-11-25",
       "place_of_birth": "Belgium",
-      "birthplace_lat": 50.6402809,
-      "birthplace_lon": 4.6667145
-    },
-    {
-      "name": "VAN POPPEL Danny",
-      "nationality": "NL",
-      "number": null,
-      "team": "Red Bull - BORA - hansgrohe (WT)",
-      "rider_url": "rider/danny-van-poppel",
-      "team_url": "team/red-bull-bora-hansgrohe-2026",
+      "rider_url": "rider/maxim-van-gils",
       "specialties": {
         "career": {
-          "one_day_races": 3490,
-          "gc": 848,
-          "tt": 481,
-          "sprint": 4747,
-          "climber": 198,
-          "hills": 1884
+          "climber": 1324,
+          "gc": 526,
+          "hills": 1245,
+          "one_day_races": 1840,
+          "sprint": 72,
+          "tt": 117
         }
       },
-      "birthdate": "1993-7-26",
-      "place_of_birth": "Moergestel",
-      "birthplace_lat": 51.5448378,
-      "birthplace_lon": 5.1805818
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
     },
     {
+      "birthdate": "1994-2-15",
+      "birthplace_lat": 47.6281754,
+      "birthplace_lon": 8.2408579,
       "name": "DENZ Nico",
       "nationality": "DE",
       "number": null,
-      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "place_of_birth": "Waldshut-Tiengen",
       "rider_url": "rider/nico-denz",
-      "team_url": "team/red-bull-bora-hansgrohe-2026",
       "specialties": {
         "career": {
-          "one_day_races": 492,
-          "gc": 418,
-          "tt": 329,
-          "sprint": 195,
           "climber": 324,
-          "hills": 684
+          "gc": 418,
+          "hills": 684,
+          "one_day_races": 492,
+          "sprint": 195,
+          "tt": 329
         }
       },
-      "birthdate": "1994-2-15",
-      "place_of_birth": "Waldshut-Tiengen",
-      "birthplace_lat": 47.6281754,
-      "birthplace_lon": 8.2408579
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
     },
     {
+      "birthdate": "2000-3-15",
+      "birthplace_lat": 52.2434979,
+      "birthplace_lon": 5.6343227,
       "name": "VAN DIJKE Mick",
       "nationality": "NL",
       "number": null,
-      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "place_of_birth": "Netherlands",
       "rider_url": "rider/mick-van-dijke",
-      "team_url": "team/red-bull-bora-hansgrohe-2026",
       "specialties": {
         "career": {
-          "one_day_races": 381,
-          "gc": 371,
-          "tt": 259,
-          "sprint": 262,
           "climber": 112,
-          "hills": 300
+          "gc": 371,
+          "hills": 300,
+          "one_day_races": 381,
+          "sprint": 262,
+          "tt": 259
         }
       },
-      "birthdate": "2000-3-15",
-      "place_of_birth": "Netherlands",
-      "birthplace_lat": 52.2434979,
-      "birthplace_lon": 5.6343227
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
     },
     {
+      "birthdate": "1996-5-5",
+      "birthplace_lat": -24.7761086,
+      "birthplace_lon": 134.755,
       "name": "HINDLEY Jai",
       "nationality": "AU",
       "number": null,
-      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "place_of_birth": "Australia",
       "rider_url": "rider/jai-hindley",
-      "team_url": "team/red-bull-bora-hansgrohe-2026",
       "specialties": {
         "career": {
-          "one_day_races": 535,
-          "gc": 3821,
-          "tt": 180,
-          "sprint": 84,
           "climber": 3914,
-          "hills": 921
+          "gc": 3821,
+          "hills": 921,
+          "one_day_races": 535,
+          "sprint": 84,
+          "tt": 180
         }
       },
-      "birthdate": "1996-5-5",
-      "place_of_birth": "Australia",
-      "birthplace_lat": -24.7761086,
-      "birthplace_lon": 134.755
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
     },
     {
+      "birthdate": "1996-4-25",
+      "birthplace_lat": 4.5826886,
+      "birthplace_lon": -74.2117781,
       "name": "MARTÍNEZ Daniel Felipe",
       "nationality": "CO",
       "number": null,
-      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "place_of_birth": "Soacha",
       "rider_url": "rider/daniel-felipe-martinez",
-      "team_url": "team/red-bull-bora-hansgrohe-2026",
       "specialties": {
         "career": {
-          "one_day_races": 875,
-          "gc": 3090,
-          "tt": 1305,
-          "sprint": 14,
           "climber": 2612,
-          "hills": 786
+          "gc": 3090,
+          "hills": 786,
+          "one_day_races": 875,
+          "sprint": 14,
+          "tt": 1305
         }
       },
-      "birthdate": "1996-4-25",
-      "place_of_birth": "Soacha",
-      "birthplace_lat": 4.5826886,
-      "birthplace_lon": -74.2117781
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
     },
     {
+      "birthdate": "1998-7-1",
+      "birthplace_lat": 51.2305657,
+      "birthplace_lon": 5.3076895,
       "name": "MEEUS Jordi",
       "nationality": "BE",
       "number": null,
-      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "place_of_birth": "Lommel",
       "rider_url": "rider/jordi-meeus",
-      "team_url": "team/red-bull-bora-hansgrohe-2026",
       "specialties": {
         "career": {
-          "one_day_races": 2856,
-          "gc": 116,
-          "tt": 61,
-          "sprint": 2234,
           "climber": 32,
-          "hills": 1226
+          "gc": 116,
+          "hills": 1226,
+          "one_day_races": 2856,
+          "sprint": 2234,
+          "tt": 61
         }
       },
-      "birthdate": "1998-7-1",
-      "place_of_birth": "Lommel",
-      "birthplace_lat": 51.2305657,
-      "birthplace_lon": 5.3076895
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
     },
     {
+      "birthdate": "1994-4-20",
+      "birthplace_lat": 46.1029536,
+      "birthplace_lon": 11.1297425,
       "name": "MOSCON Gianni",
       "nationality": "IT",
       "number": null,
-      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "place_of_birth": "Trento",
       "rider_url": "rider/gianni-moscon",
-      "team_url": "team/red-bull-bora-hansgrohe-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1923,
-          "gc": 992,
-          "tt": 606,
-          "sprint": 240,
           "climber": 886,
-          "hills": 761
+          "gc": 992,
+          "hills": 761,
+          "one_day_races": 1923,
+          "sprint": 240,
+          "tt": 606
         }
       },
-      "birthdate": "1994-4-20",
-      "place_of_birth": "Trento",
-      "birthplace_lat": 46.1029536,
-      "birthplace_lon": 11.1297425
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
     },
     {
+      "birthdate": "1990-2-23",
+      "birthplace_lat": 46.0023983,
+      "birthplace_lon": 14.0273014,
       "name": "TRATNIK Jan",
       "nationality": "SI",
       "number": null,
-      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "place_of_birth": "Idrija",
       "rider_url": "rider/jan-tratnik",
-      "team_url": "team/red-bull-bora-hansgrohe-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1274,
-          "gc": 898,
-          "tt": 1856,
-          "sprint": 158,
           "climber": 606,
-          "hills": 836
+          "gc": 898,
+          "hills": 836,
+          "one_day_races": 1274,
+          "sprint": 158,
+          "tt": 1856
         }
       },
-      "birthdate": "1990-2-23",
-      "place_of_birth": "Idrija",
-      "birthplace_lat": 46.0023983,
-      "birthplace_lon": 14.0273014
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
     },
     {
+      "birthdate": "2001-1-14",
+      "birthplace_lat": 46.1934005,
+      "birthplace_lon": 6.2341093,
       "name": "PARET-PEINTRE Valentin",
       "nationality": "FR",
       "number": null,
-      "team": "Soudal Quick-Step (WT)",
+      "place_of_birth": "Annemasse",
       "rider_url": "rider/valentin-paret-peintre",
-      "team_url": "team/soudal-quick-step-2026",
       "specialties": {
         "career": {
-          "one_day_races": 122,
-          "gc": 731,
-          "tt": 1,
-          "sprint": 16,
           "climber": 983,
-          "hills": 310
+          "gc": 731,
+          "hills": 310,
+          "one_day_races": 122,
+          "sprint": 16,
+          "tt": 1
         }
       },
-      "birthdate": "2001-1-14",
-      "place_of_birth": "Annemasse",
-      "birthplace_lat": 46.1934005,
-      "birthplace_lon": 6.2341093
+      "team": "Soudal Quick-Step (WT)",
+      "team_url": "team/soudal-quick-step-2026"
     },
     {
+      "birthdate": "1989-12-13",
+      "birthplace_lat": 42.9563116,
+      "birthplace_lon": -2.8196513,
       "name": "LANDA Mikel",
       "nationality": "ES",
       "number": null,
-      "team": "Soudal Quick-Step (WT)",
+      "place_of_birth": "Murgia",
       "rider_url": "rider/mikel-landa",
-      "team_url": "team/soudal-quick-step-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1055,
-          "gc": 6488,
-          "tt": 310,
-          "sprint": 89,
           "climber": 7232,
-          "hills": 1211
+          "gc": 6488,
+          "hills": 1211,
+          "one_day_races": 1055,
+          "sprint": 89,
+          "tt": 310
         }
       },
-      "birthdate": "1989-12-13",
-      "place_of_birth": "Murgia",
-      "birthplace_lat": 42.9563116,
-      "birthplace_lon": -2.8196513
+      "team": "Soudal Quick-Step (WT)",
+      "team_url": "team/soudal-quick-step-2026"
     },
     {
+      "birthdate": "1992-10-30",
+      "birthplace_lat": 50.8485315,
+      "birthplace_lon": 3.5375547,
       "name": "MERLIER Tim",
       "nationality": "BE",
       "number": null,
-      "team": "Soudal Quick-Step (WT)",
+      "place_of_birth": "Wortegem-Petegem",
       "rider_url": "rider/tim-merlier",
-      "team_url": "team/soudal-quick-step-2026",
       "specialties": {
         "career": {
-          "one_day_races": 4557,
-          "gc": 144,
-          "tt": 3,
-          "sprint": 6144,
           "climber": 4,
-          "hills": 521
+          "gc": 144,
+          "hills": 521,
+          "one_day_races": 4557,
+          "sprint": 6144,
+          "tt": 3
         }
       },
-      "birthdate": "1992-10-30",
-      "place_of_birth": "Wortegem-Petegem",
-      "birthplace_lat": 50.8485315,
-      "birthplace_lon": 3.5375547
+      "team": "Soudal Quick-Step (WT)",
+      "team_url": "team/soudal-quick-step-2026"
     },
     {
+      "birthdate": "1992-4-17",
+      "birthplace_lat": 50.879202,
+      "birthplace_lon": 4.7011675,
       "name": "STUYVEN Jasper",
       "nationality": "BE",
       "number": null,
-      "team": "Soudal Quick-Step (WT)",
-      "rider_url": "rider/jasper-stuyven",
-      "team_url": "team/soudal-quick-step-2026",
-      "specialties": {
-        "career": {
-          "one_day_races": 5297,
-          "gc": 1405,
-          "tt": 284,
-          "sprint": 2276,
-          "climber": 762,
-          "hills": 3908
-        }
-      },
-      "birthdate": "1992-4-17",
       "place_of_birth": " Leuven",
-      "birthplace_lat": 50.879202,
-      "birthplace_lon": 4.7011675
-    },
-    {
-      "name": "LECERF Junior",
-      "nationality": "BE",
-      "number": null,
-      "team": "Soudal Quick-Step (WT)",
-      "rider_url": "rider/junior-lecerf",
-      "team_url": "team/soudal-quick-step-2026",
+      "rider_url": "rider/jasper-stuyven",
       "specialties": {
         "career": {
-          "one_day_races": 94,
-          "gc": 899,
-          "tt": 62,
-          "sprint": 10,
-          "climber": 714,
-          "hills": 388
+          "climber": 762,
+          "gc": 1405,
+          "hills": 3908,
+          "one_day_races": 5297,
+          "sprint": 2276,
+          "tt": 284
         }
       },
-      "birthdate": "2002-10-15",
-      "place_of_birth": "Belgium",
-      "birthplace_lat": 50.6402809,
-      "birthplace_lon": 4.6667145
+      "team": "Soudal Quick-Step (WT)",
+      "team_url": "team/soudal-quick-step-2026"
     },
     {
+      "birthdate": "2000-5-14",
+      "birthplace_lat": 50.8759585,
+      "birthplace_lon": 4.3245702,
       "name": "VAN WILDER Ilan",
       "nationality": "BE",
       "number": null,
-      "team": "Soudal Quick-Step (WT)",
+      "place_of_birth": "Jette",
       "rider_url": "rider/ilan-van-wilder",
-      "team_url": "team/soudal-quick-step-2026",
       "specialties": {
         "career": {
-          "one_day_races": 540,
-          "gc": 1803,
-          "tt": 1090,
-          "sprint": 26,
           "climber": 1471,
-          "hills": 818
+          "gc": 1803,
+          "hills": 818,
+          "one_day_races": 540,
+          "sprint": 26,
+          "tt": 1090
         }
       },
-      "birthdate": "2000-5-14",
-      "place_of_birth": "Jette",
-      "birthplace_lat": 50.8759585,
-      "birthplace_lon": 4.3245702
+      "team": "Soudal Quick-Step (WT)",
+      "team_url": "team/soudal-quick-step-2026"
     },
     {
+      "birthdate": "1993-10-6",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145,
       "name": "VERVAEKE Louis",
       "nationality": "BE",
       "number": null,
-      "team": "Soudal Quick-Step (WT)",
+      "place_of_birth": "Belgium",
       "rider_url": "rider/louis-vervaeke",
-      "team_url": "team/soudal-quick-step-2026",
       "specialties": {
         "career": {
-          "one_day_races": 398,
-          "gc": 584,
-          "tt": 175,
-          "sprint": 2,
           "climber": 534,
-          "hills": 323
+          "gc": 584,
+          "hills": 323,
+          "one_day_races": 398,
+          "sprint": 2,
+          "tt": 175
         }
       },
-      "birthdate": "1993-10-6",
-      "place_of_birth": "Belgium",
-      "birthplace_lat": 50.6402809,
-      "birthplace_lon": 4.6667145
+      "team": "Soudal Quick-Step (WT)",
+      "team_url": "team/soudal-quick-step-2026"
     },
     {
+      "birthdate": "1990-9-26",
+      "birthplace_lat": -24.7761086,
+      "birthplace_lon": 134.755,
       "name": "MATTHEWS Michael",
       "nationality": "AU",
       "number": null,
-      "team": "Team Jayco AlUla (WT)",
+      "place_of_birth": "Australia",
       "rider_url": "rider/michael-matthews",
-      "team_url": "team/team-jayco-alula-2026",
       "specialties": {
         "career": {
-          "one_day_races": 8292,
-          "gc": 867,
-          "tt": 1678,
-          "sprint": 2165,
           "climber": 2374,
-          "hills": 7788
+          "gc": 867,
+          "hills": 7788,
+          "one_day_races": 8292,
+          "sprint": 2165,
+          "tt": 1678
         }
       },
-      "birthdate": "1990-9-26",
-      "place_of_birth": "Australia",
-      "birthplace_lat": -24.7761086,
-      "birthplace_lon": 134.755
+      "team": "Team Jayco AlUla (WT)",
+      "team_url": "team/team-jayco-alula-2026"
     },
     {
+      "birthdate": "2000-12-25",
+      "birthplace_lat": -37.8142454,
+      "birthplace_lon": 144.9631732,
       "name": "PLAPP Luke",
       "nationality": "AU",
       "number": null,
-      "team": "Team Jayco AlUla (WT)",
+      "place_of_birth": "Melbourne",
       "rider_url": "rider/luke-plapp",
-      "team_url": "team/team-jayco-alula-2026",
       "specialties": {
         "career": {
-          "one_day_races": 255,
-          "gc": 1090,
-          "tt": 897,
-          "sprint": 23,
           "climber": 886,
-          "hills": 458
+          "gc": 1090,
+          "hills": 458,
+          "one_day_races": 255,
+          "sprint": 23,
+          "tt": 897
         }
       },
-      "birthdate": "2000-12-25",
-      "place_of_birth": "Melbourne",
-      "birthplace_lat": -37.8142454,
-      "birthplace_lon": 144.9631732
+      "team": "Team Jayco AlUla (WT)",
+      "team_url": "team/team-jayco-alula-2026"
     },
     {
+      "birthdate": "1994-1-17",
+      "birthplace_lat": 51.1638175,
+      "birthplace_lon": 10.4478313,
       "name": "ACKERMANN Pascal",
       "nationality": "DE",
       "number": null,
-      "team": "Team Jayco AlUla (WT)",
+      "place_of_birth": "Germany",
       "rider_url": "rider/pascal-ackermann",
-      "team_url": "team/team-jayco-alula-2026",
       "specialties": {
         "career": {
-          "one_day_races": 3738,
-          "gc": 380,
-          "tt": 68,
-          "sprint": 4212,
           "climber": 134,
-          "hills": 2017
+          "gc": 380,
+          "hills": 2017,
+          "one_day_races": 3738,
+          "sprint": 4212,
+          "tt": 68
         }
       },
-      "birthdate": "1994-1-17",
-      "place_of_birth": "Germany",
-      "birthplace_lat": 51.1638175,
-      "birthplace_lon": 10.4478313
+      "team": "Team Jayco AlUla (WT)",
+      "team_url": "team/team-jayco-alula-2026"
     },
     {
+      "birthdate": "1995-11-25",
+      "birthplace_lat": -31.9463298,
+      "birthplace_lon": 115.8240314,
       "name": "O'CONNOR Ben",
       "nationality": "AU",
       "number": null,
-      "team": "Team Jayco AlUla (WT)",
-      "rider_url": "rider/ben-o-connor",
-      "team_url": "team/team-jayco-alula-2026",
-      "specialties": {
-        "career": {
-          "one_day_races": 795,
-          "gc": 3987,
-          "tt": 730,
-          "sprint": 53,
-          "climber": 3660,
-          "hills": 1026
-        }
-      },
-      "birthdate": "1995-11-25",
       "place_of_birth": "Subiaco",
-      "birthplace_lat": -31.9463298,
-      "birthplace_lon": 115.8240314
-    },
-    {
-      "name": "SCHMID Mauro",
-      "nationality": "CH",
-      "number": null,
-      "team": "Team Jayco AlUla (WT)",
-      "rider_url": "rider/mauro-schmid",
-      "team_url": "team/team-jayco-alula-2026",
+      "rider_url": "rider/ben-o-connor",
       "specialties": {
         "career": {
-          "one_day_races": 1342,
-          "gc": 1306,
-          "tt": 774,
-          "sprint": 8,
-          "climber": 1262,
-          "hills": 1368
+          "climber": 3660,
+          "gc": 3987,
+          "hills": 1026,
+          "one_day_races": 795,
+          "sprint": 53,
+          "tt": 730
         }
       },
-      "birthdate": "1999-12-4",
-      "place_of_birth": "Switzerland",
-      "birthplace_lat": 46.7985624,
-      "birthplace_lon": 8.2319736
+      "team": "Team Jayco AlUla (WT)",
+      "team_url": "team/team-jayco-alula-2026"
     },
     {
+      "birthdate": "2002-10-29",
+      "birthplace_lat": 49.7439047,
+      "birthplace_lon": 15.3381061,
       "name": "BITTNER Pavel",
       "nationality": "CZ",
       "number": null,
-      "team": "Team Picnic PostNL (WT)",
+      "place_of_birth": "Czech Republic",
       "rider_url": "rider/pavel-bittner",
-      "team_url": "team/team-picnic-postnl-2026",
       "specialties": {
         "career": {
-          "one_day_races": 804,
-          "gc": 219,
-          "tt": 52,
-          "sprint": 829,
           "climber": 44,
-          "hills": 721
+          "gc": 219,
+          "hills": 721,
+          "one_day_races": 804,
+          "sprint": 829,
+          "tt": 52
         }
       },
-      "birthdate": "2002-10-29",
-      "place_of_birth": "Czech Republic",
-      "birthplace_lat": 49.7439047,
-      "birthplace_lon": 15.3381061
+      "team": "Team Picnic PostNL (WT)",
+      "team_url": "team/team-picnic-postnl-2026"
     },
     {
+      "birthdate": "1991-10-28",
+      "birthplace_lat": 47.8058026,
+      "birthplace_lon": -3.2751174,
       "name": "BARGUIL Warren",
       "nationality": "FR",
       "number": null,
-      "team": "Team Picnic PostNL (WT)",
+      "place_of_birth": "Hennebont",
       "rider_url": "rider/warren-barguil",
-      "team_url": "team/team-picnic-postnl-2026",
       "specialties": {
         "career": {
-          "one_day_races": 2746,
-          "gc": 3121,
-          "tt": 100,
-          "sprint": 236,
           "climber": 4021,
-          "hills": 1990
+          "gc": 3121,
+          "hills": 1990,
+          "one_day_races": 2746,
+          "sprint": 236,
+          "tt": 100
         }
       },
-      "birthdate": "1991-10-28",
-      "place_of_birth": "Hennebont",
-      "birthplace_lat": 47.8058026,
-      "birthplace_lon": -3.2751174
+      "team": "Team Picnic PostNL (WT)",
+      "team_url": "team/team-picnic-postnl-2026"
     },
     {
+      "birthdate": "2000-12-28",
+      "birthplace_lat": 52.1979528,
+      "birthplace_lon": 4.5028721,
       "name": "VAN DEN BROEK Frank",
       "nationality": "NL",
       "number": null,
-      "team": "Team Picnic PostNL (WT)",
+      "place_of_birth": "Warmond",
       "rider_url": "rider/frank-van-den-broek",
-      "team_url": "team/team-picnic-postnl-2026",
       "specialties": {
         "career": {
-          "one_day_races": 187,
-          "gc": 468,
-          "tt": 74,
-          "sprint": 26,
           "climber": 401,
-          "hills": 338
+          "gc": 468,
+          "hills": 338,
+          "one_day_races": 187,
+          "sprint": 26,
+          "tt": 74
         }
       },
-      "birthdate": "2000-12-28",
-      "place_of_birth": "Warmond",
-      "birthplace_lat": 52.1979528,
-      "birthplace_lon": 4.5028721
+      "team": "Team Picnic PostNL (WT)",
+      "team_url": "team/team-picnic-postnl-2026"
     },
     {
+      "birthdate": "1996-12-10",
+      "birthplace_lat": 55.670249,
+      "birthplace_lon": 10.3333283,
       "name": "VINGEGAARD Jonas",
       "nationality": "DK",
       "number": null,
-      "team": "Team Visma | Lease a Bike (WT)",
+      "place_of_birth": "Denmark",
       "rider_url": "rider/jonas-vingegaard",
-      "team_url": "team/team-visma-lease-a-bike-2026",
       "specialties": {
         "career": {
-          "one_day_races": 320,
-          "gc": 6706,
-          "tt": 2384,
-          "sprint": 130,
           "climber": 6142,
-          "hills": 2153
+          "gc": 6706,
+          "hills": 2153,
+          "one_day_races": 320,
+          "sprint": 130,
+          "tt": 2384
         }
       },
-      "birthdate": "1996-12-10",
-      "place_of_birth": "Denmark",
-      "birthplace_lat": 55.670249,
-      "birthplace_lon": 10.3333283
+      "team": "Team Visma | Lease a Bike (WT)",
+      "team_url": "team/team-visma-lease-a-bike-2026"
     },
     {
+      "birthdate": "1994-9-15",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145,
       "name": "VAN AERT Wout",
       "nationality": "BE",
       "number": null,
-      "team": "Team Visma | Lease a Bike (WT)",
+      "place_of_birth": "Belgium",
       "rider_url": "rider/wout-van-aert",
-      "team_url": "team/team-visma-lease-a-bike-2026",
       "specialties": {
         "career": {
-          "one_day_races": 8637,
-          "gc": 1283,
-          "tt": 3102,
-          "sprint": 2348,
           "climber": 2172,
-          "hills": 5161
+          "gc": 1283,
+          "hills": 5161,
+          "one_day_races": 8637,
+          "sprint": 2348,
+          "tt": 3102
         }
       },
-      "birthdate": "1994-9-15",
-      "place_of_birth": "Belgium",
-      "birthplace_lat": 50.6402809,
-      "birthplace_lon": 4.6667145
+      "team": "Team Visma | Lease a Bike (WT)",
+      "team_url": "team/team-visma-lease-a-bike-2026"
     },
     {
+      "birthdate": "1999-7-1",
+      "birthplace_lat": 37.9020731,
+      "birthplace_lon": -122.0618702,
       "name": "JORGENSON Matteo",
       "nationality": "US",
       "number": null,
-      "team": "Team Visma | Lease a Bike (WT)",
+      "place_of_birth": "Walnut Creek",
       "rider_url": "rider/matteo-jorgenson",
-      "team_url": "team/team-visma-lease-a-bike-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1117,
-          "gc": 2452,
-          "tt": 794,
-          "sprint": 178,
           "climber": 2129,
-          "hills": 1490
+          "gc": 2452,
+          "hills": 1490,
+          "one_day_races": 1117,
+          "sprint": 178,
+          "tt": 794
         }
       },
-      "birthdate": "1999-7-1",
-      "place_of_birth": "Walnut Creek",
-      "birthplace_lat": 37.9020731,
-      "birthplace_lon": -122.0618702
+      "team": "Team Visma | Lease a Bike (WT)",
+      "team_url": "team/team-visma-lease-a-bike-2026"
     },
     {
+      "birthdate": "1994-4-11",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335,
       "name": "ARMIRAIL Bruno",
       "nationality": "FR",
       "number": null,
-      "team": "Team Visma | Lease a Bike (WT)",
-      "rider_url": "rider/bruno-armirail",
-      "team_url": "team/team-visma-lease-a-bike-2026",
-      "specialties": {
-        "career": {
-          "one_day_races": 127,
-          "gc": 806,
-          "tt": 2076,
-          "sprint": 5,
-          "climber": 435,
-          "hills": 264
-        }
-      },
-      "birthdate": "1994-4-11",
       "place_of_birth": "France",
-      "birthplace_lat": 46.603354,
-      "birthplace_lon": 1.8883335
-    },
-    {
-      "name": "HAGENES Per Strand",
-      "nationality": "NO",
-      "number": null,
-      "team": "Team Visma | Lease a Bike (WT)",
-      "rider_url": "rider/per-strand-hagenes",
-      "team_url": "team/team-visma-lease-a-bike-2026",
+      "rider_url": "rider/bruno-armirail",
       "specialties": {
         "career": {
-          "one_day_races": 684,
-          "gc": 389,
-          "tt": 114,
-          "sprint": 258,
-          "climber": 64,
-          "hills": 348
+          "climber": 435,
+          "gc": 806,
+          "hills": 264,
+          "one_day_races": 127,
+          "sprint": 5,
+          "tt": 2076
         }
       },
-      "birthdate": "2003-7-10",
-      "place_of_birth": "Norway",
-      "birthplace_lat": 61.1529386,
-      "birthplace_lon": 8.7876653
+      "team": "Team Visma | Lease a Bike (WT)",
+      "team_url": "team/team-visma-lease-a-bike-2026"
     },
     {
+      "birthdate": "1991-10-28",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145,
       "name": "CAMPENAERTS Victor",
       "nationality": "BE",
       "number": null,
-      "team": "Team Visma | Lease a Bike (WT)",
+      "place_of_birth": "Belgium",
       "rider_url": "rider/victor-campenaerts",
-      "team_url": "team/team-visma-lease-a-bike-2026",
       "specialties": {
         "career": {
-          "one_day_races": 790,
-          "gc": 1042,
-          "tt": 3635,
-          "sprint": 223,
           "climber": 496,
-          "hills": 916
+          "gc": 1042,
+          "hills": 916,
+          "one_day_races": 790,
+          "sprint": 223,
+          "tt": 3635
         }
       },
-      "birthdate": "1991-10-28",
-      "place_of_birth": "Belgium",
-      "birthplace_lat": 50.6402809,
-      "birthplace_lon": 4.6667145
+      "team": "Team Visma | Lease a Bike (WT)",
+      "team_url": "team/team-visma-lease-a-bike-2026"
     },
     {
+      "birthdate": "1994-9-13",
+      "birthplace_lat": 39.7837304,
+      "birthplace_lon": -100.445882,
       "name": "KUSS Sepp",
       "nationality": "US",
       "number": null,
-      "team": "Team Visma | Lease a Bike (WT)",
+      "place_of_birth": "United States",
       "rider_url": "rider/sepp-kuss",
-      "team_url": "team/team-visma-lease-a-bike-2026",
       "specialties": {
         "career": {
-          "one_day_races": 207,
-          "gc": 3062,
-          "tt": 331,
-          "sprint": 36,
           "climber": 3860,
-          "hills": 612
+          "gc": 3062,
+          "hills": 612,
+          "one_day_races": 207,
+          "sprint": 36,
+          "tt": 331
         }
       },
-      "birthdate": "1994-9-13",
-      "place_of_birth": "United States",
-      "birthplace_lat": 39.7837304,
-      "birthplace_lon": -100.445882
+      "team": "Team Visma | Lease a Bike (WT)",
+      "team_url": "team/team-visma-lease-a-bike-2026"
     },
     {
+      "birthdate": "2001-8-26",
+      "birthplace_lat": 54.3151594,
+      "birthplace_lon": -1.9181532,
       "name": "TULETT Ben",
       "nationality": "GB",
       "number": null,
-      "team": "Team Visma | Lease a Bike (WT)",
+      "place_of_birth": "Great Britain",
       "rider_url": "rider/ben-tulett",
-      "team_url": "team/team-visma-lease-a-bike-2026",
       "specialties": {
         "career": {
-          "one_day_races": 828,
-          "gc": 901,
-          "tt": 485,
-          "sprint": 8,
           "climber": 830,
-          "hills": 706
+          "gc": 901,
+          "hills": 706,
+          "one_day_races": 828,
+          "sprint": 8,
+          "tt": 485
         }
       },
-      "birthdate": "2001-8-26",
-      "place_of_birth": "Great Britain",
-      "birthplace_lat": 54.3151594,
-      "birthplace_lon": -1.9181532
+      "team": "Team Visma | Lease a Bike (WT)",
+      "team_url": "team/team-visma-lease-a-bike-2026"
     },
     {
+      "birthdate": "1996-6-24",
+      "birthplace_lat": 42.6384261,
+      "birthplace_lon": 12.674297,
       "name": "AFFINI Edoardo",
       "nationality": "IT",
       "number": null,
-      "team": "Team Visma | Lease a Bike (WT)",
+      "place_of_birth": "Italy",
       "rider_url": "rider/edoardo-affini",
-      "team_url": "team/team-visma-lease-a-bike-2026",
       "specialties": {
         "career": {
-          "one_day_races": 177,
-          "gc": 309,
-          "tt": 2303,
-          "sprint": 212,
           "climber": 15,
-          "hills": 140
+          "gc": 309,
+          "hills": 140,
+          "one_day_races": 177,
+          "sprint": 212,
+          "tt": 2303
         }
       },
-      "birthdate": "1996-6-24",
-      "place_of_birth": "Italy",
-      "birthplace_lat": 42.6384261,
-      "birthplace_lon": 12.674297
+      "team": "Team Visma | Lease a Bike (WT)",
+      "team_url": "team/team-visma-lease-a-bike-2026"
     },
     {
+      "birthdate": "1998-9-21",
+      "birthplace_lat": 45.8996388,
+      "birthplace_lon": 14.1402431,
       "name": "POGAČAR Tadej",
       "nationality": "SI",
       "number": null,
-      "team": "UAE Team Emirates - XRG (WT)",
+      "place_of_birth": "Klanec",
       "rider_url": "rider/tadej-pogacar",
-      "team_url": "team/uae-team-emirates-xrg-2026",
       "specialties": {
         "career": {
-          "one_day_races": 9983,
-          "gc": 7594,
-          "tt": 3287,
-          "sprint": 297,
           "climber": 9989,
-          "hills": 4368
+          "gc": 7594,
+          "hills": 4368,
+          "one_day_races": 9983,
+          "sprint": 297,
+          "tt": 3287
         }
       },
-      "birthdate": "1998-9-21",
-      "place_of_birth": "Klanec",
-      "birthplace_lat": 45.8996388,
-      "birthplace_lon": 14.1402431
+      "team": "UAE Team Emirates - XRG (WT)",
+      "team_url": "team/uae-team-emirates-xrg-2026"
     },
     {
+      "birthdate": "2003-11-27",
+      "birthplace_lat": 31.8658887,
+      "birthplace_lon": -116.602983,
       "name": "DEL TORO Isaac",
       "nationality": "MX",
       "number": null,
-      "team": "UAE Team Emirates - XRG (WT)",
+      "place_of_birth": "Ensenada ",
       "rider_url": "rider/isaac-del-toro",
-      "team_url": "team/uae-team-emirates-xrg-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1783,
-          "gc": 1728,
-          "tt": 460,
-          "sprint": 1,
           "climber": 1822,
-          "hills": 954
+          "gc": 1728,
+          "hills": 954,
+          "one_day_races": 1783,
+          "sprint": 1,
+          "tt": 460
         }
       },
-      "birthdate": "2003-11-27",
-      "place_of_birth": "Ensenada ",
-      "birthplace_lat": 31.8658887,
-      "birthplace_lon": -116.602983
+      "team": "UAE Team Emirates - XRG (WT)",
+      "team_url": "team/uae-team-emirates-xrg-2026"
     },
     {
+      "birthdate": "1991-5-10",
+      "birthplace_lat": 50.8152784,
+      "birthplace_lon": 5.1858896,
       "name": "WELLENS Tim",
       "nationality": "BE",
       "number": null,
-      "team": "UAE Team Emirates - XRG (WT)",
+      "place_of_birth": "Sint-Truiden",
       "rider_url": "rider/tim-wellens",
-      "team_url": "team/uae-team-emirates-xrg-2026",
       "specialties": {
         "career": {
-          "one_day_races": 4255,
-          "gc": 4538,
-          "tt": 1406,
-          "sprint": 221,
           "climber": 2532,
-          "hills": 3134
+          "gc": 4538,
+          "hills": 3134,
+          "one_day_races": 4255,
+          "sprint": 221,
+          "tt": 1406
         }
       },
-      "birthdate": "1991-5-10",
-      "place_of_birth": "Sint-Truiden",
-      "birthplace_lat": 50.8152784,
-      "birthplace_lon": 5.1858896
+      "team": "UAE Team Emirates - XRG (WT)",
+      "team_url": "team/uae-team-emirates-xrg-2026"
     },
     {
+      "birthdate": "1993-11-22",
+      "birthplace_lat": 41.2241992,
+      "birthplace_lon": 1.7256327,
       "name": "SOLER Marc",
       "nationality": "ES",
       "number": null,
-      "team": "UAE Team Emirates - XRG (WT)",
-      "rider_url": "rider/marc-soler",
-      "team_url": "team/uae-team-emirates-xrg-2026",
-      "specialties": {
-        "career": {
-          "one_day_races": 300,
-          "gc": 2800,
-          "tt": 776,
-          "sprint": 32,
-          "climber": 3212,
-          "hills": 1334
-        }
-      },
-      "birthdate": "1993-11-22",
       "place_of_birth": "Vilanova i la Geltrú",
-      "birthplace_lat": 41.2241992,
-      "birthplace_lon": 1.7256327
-    },
-    {
-      "name": "ALMEIDA João",
-      "nationality": "PT",
-      "number": null,
-      "team": "UAE Team Emirates - XRG (WT)",
-      "rider_url": "rider/joao-almeida",
-      "team_url": "team/uae-team-emirates-xrg-2026",
+      "rider_url": "rider/marc-soler",
       "specialties": {
         "career": {
-          "one_day_races": 431,
-          "gc": 5449,
-          "tt": 2996,
-          "sprint": 47,
-          "climber": 4868,
-          "hills": 1494
+          "climber": 3212,
+          "gc": 2800,
+          "hills": 1334,
+          "one_day_races": 300,
+          "sprint": 32,
+          "tt": 776
         }
       },
-      "birthdate": "1998-8-5",
-      "place_of_birth": "Caldas da Rainha",
-      "birthplace_lat": 39.4071857,
-      "birthplace_lon": -9.1346004
+      "team": "UAE Team Emirates - XRG (WT)",
+      "team_url": "team/uae-team-emirates-xrg-2026"
     },
     {
+      "birthdate": "1998-4-2",
+      "birthplace_lat": 33.4484367,
+      "birthplace_lon": -112.074141,
       "name": "MCNULTY Brandon",
       "nationality": "US",
       "number": null,
-      "team": "UAE Team Emirates - XRG (WT)",
+      "place_of_birth": "Phoenix",
       "rider_url": "rider/brandon-mcnulty",
-      "team_url": "team/uae-team-emirates-xrg-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1407,
-          "gc": 2963,
-          "tt": 2475,
-          "sprint": 60,
           "climber": 2345,
-          "hills": 1274
+          "gc": 2963,
+          "hills": 1274,
+          "one_day_races": 1407,
+          "sprint": 60,
+          "tt": 2475
         }
       },
-      "birthdate": "1998-4-2",
-      "place_of_birth": "Phoenix",
-      "birthplace_lat": 33.4484367,
-      "birthplace_lon": -112.074141
+      "team": "UAE Team Emirates - XRG (WT)",
+      "team_url": "team/uae-team-emirates-xrg-2026"
     },
     {
+      "birthdate": "1992-8-7",
+      "birthplace_lat": 52.2460367,
+      "birthplace_lon": 0.7125173,
       "name": "YATES Adam",
       "nationality": "GB",
       "number": null,
-      "team": "UAE Team Emirates - XRG (WT)",
+      "place_of_birth": "Bury",
       "rider_url": "rider/adam-yates",
-      "team_url": "team/uae-team-emirates-xrg-2026",
       "specialties": {
         "career": {
-          "one_day_races": 2759,
-          "gc": 7403,
-          "tt": 1330,
-          "sprint": 67,
           "climber": 7690,
-          "hills": 2123
+          "gc": 7403,
+          "hills": 2123,
+          "one_day_races": 2759,
+          "sprint": 67,
+          "tt": 1330
         }
       },
-      "birthdate": "1992-8-7",
-      "place_of_birth": "Bury",
-      "birthplace_lat": 52.2460367,
-      "birthplace_lon": 0.7125173
+      "team": "UAE Team Emirates - XRG (WT)",
+      "team_url": "team/uae-team-emirates-xrg-2026"
     },
     {
+      "birthdate": "1999-3-12",
+      "birthplace_lat": 51.0538286,
+      "birthplace_lon": 3.7250121,
       "name": "VERMEERSCH Florian",
       "nationality": "BE",
       "number": null,
-      "team": "UAE Team Emirates - XRG (WT)",
+      "place_of_birth": "Ghent",
       "rider_url": "rider/florian-vermeersch",
-      "team_url": "team/uae-team-emirates-xrg-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1865,
-          "gc": 614,
-          "tt": 579,
-          "sprint": 571,
           "climber": 93,
-          "hills": 632
+          "gc": 614,
+          "hills": 632,
+          "one_day_races": 1865,
+          "sprint": 571,
+          "tt": 579
         }
       },
-      "birthdate": "1999-3-12",
-      "place_of_birth": "Ghent",
-      "birthplace_lat": 51.0538286,
-      "birthplace_lon": 3.7250121
+      "team": "UAE Team Emirates - XRG (WT)",
+      "team_url": "team/uae-team-emirates-xrg-2026"
     },
     {
+      "birthdate": "1998-6-1",
+      "birthplace_lat": 55.6586018,
+      "birthplace_lon": 12.3562849,
       "name": "KRON Andreas",
       "nationality": "DK",
       "number": null,
-      "team": "Uno-X Mobility (WT)",
+      "place_of_birth": "Albertslund",
       "rider_url": "rider/andreas-kron",
-      "team_url": "team/uno-x-mobility-2026",
       "specialties": {
         "career": {
-          "one_day_races": 945,
-          "gc": 574,
-          "tt": 9,
-          "sprint": 22,
           "climber": 1084,
-          "hills": 1138
+          "gc": 574,
+          "hills": 1138,
+          "one_day_races": 945,
+          "sprint": 22,
+          "tt": 9
         }
       },
-      "birthdate": "1998-6-1",
-      "place_of_birth": "Albertslund",
-      "birthplace_lat": 55.6586018,
-      "birthplace_lon": 12.3562849
+      "team": "Uno-X Mobility (WT)",
+      "team_url": "team/uno-x-mobility-2026"
     },
     {
+      "birthdate": "1993-1-16",
+      "birthplace_lat": 55.0994511,
+      "birthplace_lon": 14.7060906,
       "name": "CORT Magnus",
       "nationality": "DK",
       "number": null,
-      "team": "Uno-X Mobility (WT)",
+      "place_of_birth": "Rønne",
       "rider_url": "rider/magnus-cort-nielsen",
-      "team_url": "team/uno-x-mobility-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1686,
-          "gc": 1488,
-          "tt": 825,
-          "sprint": 1296,
           "climber": 1228,
-          "hills": 2818
+          "gc": 1488,
+          "hills": 2818,
+          "one_day_races": 1686,
+          "sprint": 1296,
+          "tt": 825
         }
       },
-      "birthdate": "1993-1-16",
-      "place_of_birth": "Rønne",
-      "birthplace_lat": 55.0994511,
-      "birthplace_lon": 14.7060906
+      "team": "Uno-X Mobility (WT)",
+      "team_url": "team/uno-x-mobility-2026"
     },
     {
+      "birthdate": "1999-8-23",
+      "birthplace_lat": 59.6633005,
+      "birthplace_lon": 10.6293392,
       "name": "JOHANNESSEN Tobias Halland",
       "nationality": "NO",
       "number": null,
-      "team": "Uno-X Mobility (WT)",
+      "place_of_birth": "Drøbak",
       "rider_url": "rider/tobias-halland-johannessen",
-      "team_url": "team/uno-x-mobility-2026",
       "specialties": {
         "career": {
-          "one_day_races": 986,
-          "gc": 1763,
-          "tt": 105,
-          "sprint": 28,
           "climber": 1877,
-          "hills": 1128
+          "gc": 1763,
+          "hills": 1128,
+          "one_day_races": 986,
+          "sprint": 28,
+          "tt": 105
         }
       },
-      "birthdate": "1999-8-23",
-      "place_of_birth": "Drøbak",
-      "birthplace_lat": 59.6633005,
-      "birthplace_lon": 10.6293392
+      "team": "Uno-X Mobility (WT)",
+      "team_url": "team/uno-x-mobility-2026"
     },
     {
+      "birthdate": "1992-8-25",
+      "birthplace_lat": 51.4899045,
+      "birthplace_lon": 5.8961579,
       "name": "TEUNISSEN Mike",
       "nationality": "NL",
       "number": null,
-      "team": "XDS Astana Team (WT)",
+      "place_of_birth": "Ysselsteyn",
       "rider_url": "rider/mike-teunissen",
-      "team_url": "team/xds-astana-team-2026",
       "specialties": {
         "career": {
-          "one_day_races": 2640,
-          "gc": 1508,
-          "tt": 338,
-          "sprint": 1845,
           "climber": 210,
-          "hills": 1600
+          "gc": 1508,
+          "hills": 1600,
+          "one_day_races": 2640,
+          "sprint": 1845,
+          "tt": 338
         }
       },
-      "birthdate": "1992-8-25",
-      "place_of_birth": "Ysselsteyn",
-      "birthplace_lat": 51.4899045,
-      "birthplace_lon": 5.8961579
+      "team": "XDS Astana Team (WT)",
+      "team_url": "team/xds-astana-team-2026"
     },
     {
+      "birthdate": "1997-8-1",
+      "birthplace_lat": 6.2697324,
+      "birthplace_lon": -75.6025597,
       "name": "HIGUITA Sergio",
       "nationality": "CO",
       "number": null,
-      "team": "XDS Astana Team (WT)",
+      "place_of_birth": "Medellín",
       "rider_url": "rider/sergio-higuita",
-      "team_url": "team/xds-astana-team-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1189,
-          "gc": 2525,
-          "tt": 130,
-          "sprint": 70,
           "climber": 2631,
-          "hills": 1412
+          "gc": 2525,
+          "hills": 1412,
+          "one_day_races": 1189,
+          "sprint": 70,
+          "tt": 130
         }
       },
-      "birthdate": "1997-8-1",
-      "place_of_birth": "Medellín",
-      "birthplace_lat": 6.2697324,
-      "birthplace_lon": -75.6025597
+      "team": "XDS Astana Team (WT)",
+      "team_url": "team/xds-astana-team-2026"
     },
     {
+      "birthdate": "1997-4-27",
+      "birthplace_lat": 4.099917,
+      "birthplace_lon": -72.9088133,
       "name": "TEJADA Harold",
       "nationality": "CO",
       "number": null,
-      "team": "XDS Astana Team (WT)",
+      "place_of_birth": "Colombia",
       "rider_url": "rider/harold-tejada",
-      "team_url": "team/xds-astana-team-2026",
       "specialties": {
         "career": {
-          "one_day_races": 146,
-          "gc": 1165,
-          "tt": 366,
-          "sprint": 12,
           "climber": 1188,
-          "hills": 876
+          "gc": 1165,
+          "hills": 876,
+          "one_day_races": 146,
+          "sprint": 12,
+          "tt": 366
         }
       },
-      "birthdate": "1997-4-27",
-      "place_of_birth": "Colombia",
-      "birthplace_lat": 4.099917,
-      "birthplace_lon": -72.9088133
+      "team": "XDS Astana Team (WT)",
+      "team_url": "team/xds-astana-team-2026"
     },
     {
+      "birthdate": "1996-5-9",
+      "birthplace_lat": 42.6384261,
+      "birthplace_lon": 12.674297,
       "name": "FORTUNATO Lorenzo",
       "nationality": "IT",
       "number": null,
-      "team": "XDS Astana Team (WT)",
-      "rider_url": "rider/lorenzo-fortunato",
-      "team_url": "team/xds-astana-team-2026",
-      "specialties": {
-        "career": {
-          "one_day_races": 369,
-          "gc": 1858,
-          "tt": 8,
-          "sprint": 15,
-          "climber": 1907,
-          "hills": 363
-        }
-      },
-      "birthdate": "1996-5-9",
       "place_of_birth": "Italy",
-      "birthplace_lat": 42.6384261,
-      "birthplace_lon": 12.674297
-    },
-    {
-      "name": "BALLERINI Davide",
-      "nationality": "IT",
-      "number": null,
-      "team": "XDS Astana Team (WT)",
-      "rider_url": "rider/davide-ballerini",
-      "team_url": "team/xds-astana-team-2026",
+      "rider_url": "rider/lorenzo-fortunato",
       "specialties": {
         "career": {
-          "one_day_races": 1835,
-          "gc": 290,
-          "tt": 133,
-          "sprint": 1106,
-          "climber": 276,
-          "hills": 1698
+          "climber": 1907,
+          "gc": 1858,
+          "hills": 363,
+          "one_day_races": 369,
+          "sprint": 15,
+          "tt": 8
         }
       },
-      "birthdate": "1994-9-21",
-      "place_of_birth": "Cantù",
-      "birthplace_lat": 45.7395347,
-      "birthplace_lon": 9.129103
+      "team": "XDS Astana Team (WT)",
+      "team_url": "team/xds-astana-team-2026"
     },
     {
+      "birthdate": "1992-6-12",
+      "birthplace_lat": 49.8158683,
+      "birthplace_lon": 6.1296751,
       "name": "KIRSCH Alex",
       "nationality": "LU",
       "number": null,
-      "team": "Cofidis (PRT)",
+      "place_of_birth": "Luxembourg",
       "rider_url": "rider/alex-kirsch",
-      "team_url": "team/cofidis-2026",
       "specialties": {
         "career": {
-          "one_day_races": 644,
-          "gc": 504,
-          "tt": 746,
-          "sprint": 538,
           "climber": 127,
-          "hills": 478
+          "gc": 504,
+          "hills": 478,
+          "one_day_races": 644,
+          "sprint": 538,
+          "tt": 746
         }
       },
-      "birthdate": "1992-6-12",
-      "place_of_birth": "Luxembourg",
-      "birthplace_lat": 49.8158683,
-      "birthplace_lon": 6.1296751
+      "team": "Cofidis (PRT)",
+      "team_url": "team/cofidis-2026"
     },
     {
+      "birthdate": "2001-3-19",
+      "birthplace_lat": 50.9654864,
+      "birthplace_lon": 5.5001456,
       "name": "FRETIN Milan",
       "nationality": "BE",
       "number": null,
-      "team": "Cofidis (PRT)",
+      "place_of_birth": "Genk",
       "rider_url": "rider/milan-fretin",
-      "team_url": "team/cofidis-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1250,
-          "gc": 92,
-          "tt": 15,
-          "sprint": 1210,
           "climber": 48,
-          "hills": 392
+          "gc": 92,
+          "hills": 392,
+          "one_day_races": 1250,
+          "sprint": 1210,
+          "tt": 15
         }
       },
-      "birthdate": "2001-3-19",
-      "place_of_birth": "Genk",
-      "birthplace_lat": 50.9654864,
-      "birthplace_lon": 5.5001456
+      "team": "Cofidis (PRT)",
+      "team_url": "team/cofidis-2026"
     },
     {
+      "birthdate": "1998-8-29",
+      "birthplace_lat": 52.0553813,
+      "birthplace_lon": -2.7151735,
       "name": "CARR Simon",
       "nationality": "GB",
       "number": null,
-      "team": "Cofidis (PRT)",
+      "place_of_birth": "Hereford",
       "rider_url": "rider/simon-carr",
-      "team_url": "team/cofidis-2026",
       "specialties": {
         "career": {
-          "one_day_races": 411,
-          "gc": 289,
-          "tt": 91,
-          "sprint": 8,
           "climber": 466,
-          "hills": 92
+          "gc": 289,
+          "hills": 92,
+          "one_day_races": 411,
+          "sprint": 8,
+          "tt": 91
         }
       },
-      "birthdate": "1998-8-29",
-      "place_of_birth": "Hereford",
-      "birthplace_lat": 52.0553813,
-      "birthplace_lon": -2.7151735
+      "team": "Cofidis (PRT)",
+      "team_url": "team/cofidis-2026"
     },
     {
+      "birthdate": "1992-11-18",
+      "birthplace_lat": 47.7811014,
+      "birthplace_lon": 9.612468,
       "name": "BUCHMANN Emanuel",
       "nationality": "DE",
       "number": null,
-      "team": "Cofidis (PRT)",
-      "rider_url": "rider/emanuel-buchmann",
-      "team_url": "team/cofidis-2026",
-      "specialties": {
-        "career": {
-          "one_day_races": 817,
-          "gc": 3324,
-          "tt": 233,
-          "sprint": 13,
-          "climber": 2966,
-          "hills": 858
-        }
-      },
-      "birthdate": "1992-11-18",
       "place_of_birth": " Ravensburg",
-      "birthplace_lat": 47.7811014,
-      "birthplace_lon": 9.612468
-    },
-    {
-      "name": "ANIOŁKOWSKI Stanisław",
-      "nationality": "PL",
-      "number": null,
-      "team": "Cofidis (PRT)",
-      "rider_url": "rider/stanislaw-aniolkowski",
-      "team_url": "team/cofidis-2026",
+      "rider_url": "rider/emanuel-buchmann",
       "specialties": {
         "career": {
-          "one_day_races": 1171,
-          "gc": 407,
-          "tt": 123,
-          "sprint": 1769,
-          "climber": 52,
-          "hills": 758
+          "climber": 2966,
+          "gc": 3324,
+          "hills": 858,
+          "one_day_races": 817,
+          "sprint": 13,
+          "tt": 233
         }
       },
-      "birthdate": "1997-1-20",
-      "place_of_birth": "Warsaw",
-      "birthplace_lat": 52.2333742,
-      "birthplace_lon": 21.0711489
+      "team": "Cofidis (PRT)",
+      "team_url": "team/cofidis-2026"
     },
     {
+      "birthdate": "2001-7-24",
+      "birthplace_lat": 48.4438601,
+      "birthplace_lon": 1.4881434,
       "name": "PAGE Hugo",
       "nationality": "FR",
       "number": null,
-      "team": "Cofidis (PRT)",
+      "place_of_birth": "Chartres",
       "rider_url": "rider/hugo-page",
-      "team_url": "team/cofidis-2026",
       "specialties": {
         "career": {
-          "one_day_races": 725,
-          "gc": 192,
-          "tt": 77,
-          "sprint": 303,
           "climber": 53,
-          "hills": 666
+          "gc": 192,
+          "hills": 666,
+          "one_day_races": 725,
+          "sprint": 303,
+          "tt": 77
         }
       },
-      "birthdate": "2001-7-24",
-      "place_of_birth": "Chartres",
-      "birthplace_lat": 48.4438601,
-      "birthplace_lon": 1.4881434
+      "team": "Cofidis (PRT)",
+      "team_url": "team/cofidis-2026"
     },
     {
+      "birthdate": "1995-9-19",
+      "birthplace_lat": 43.0812994,
+      "birthplace_lon": -2.2754976,
       "name": "ARANBURU Alex",
       "nationality": "ES",
       "number": null,
-      "team": "Cofidis (PRT)",
+      "place_of_birth": "Ezkio-Itsaso",
       "rider_url": "rider/alex-aranburu",
-      "team_url": "team/cofidis-2026",
       "specialties": {
         "career": {
-          "one_day_races": 2865,
-          "gc": 1013,
-          "tt": 301,
-          "sprint": 397,
           "climber": 2015,
-          "hills": 2767
+          "gc": 1013,
+          "hills": 2767,
+          "one_day_races": 2865,
+          "sprint": 397,
+          "tt": 301
         }
       },
-      "birthdate": "1995-9-19",
-      "place_of_birth": "Ezkio-Itsaso",
-      "birthplace_lat": 43.0812994,
-      "birthplace_lon": -2.2754976
+      "team": "Cofidis (PRT)",
+      "team_url": "team/cofidis-2026"
     },
     {
+      "birthdate": "1989-2-4",
+      "birthplace_lat": 43.0431256,
+      "birthplace_lon": -2.254814,
       "name": "IZAGIRRE Ion",
       "nationality": "ES",
       "number": null,
-      "team": "Cofidis (PRT)",
+      "place_of_birth": "Ormaiztegi",
       "rider_url": "rider/ion-izagirre",
-      "team_url": "team/cofidis-2026",
       "specialties": {
         "career": {
-          "one_day_races": 2539,
-          "gc": 5711,
-          "tt": 3035,
-          "sprint": 154,
           "climber": 5096,
-          "hills": 2476
+          "gc": 5711,
+          "hills": 2476,
+          "one_day_races": 2539,
+          "sprint": 154,
+          "tt": 3035
         }
       },
-      "birthdate": "1989-2-4",
-      "place_of_birth": "Ormaiztegi",
-      "birthplace_lat": 43.0431256,
-      "birthplace_lon": -2.254814
+      "team": "Cofidis (PRT)",
+      "team_url": "team/cofidis-2026"
     },
     {
+      "birthdate": "1992-6-11",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335,
       "name": "ALAPHILIPPE Julian",
       "nationality": "FR",
       "number": null,
-      "team": "Tudor Pro Cycling Team (PRT)",
+      "place_of_birth": "France",
       "rider_url": "rider/julian-alaphilippe",
-      "team_url": "team/tudor-pro-cycling-team-2026",
       "specialties": {
         "career": {
-          "one_day_races": 6997,
-          "gc": 2982,
-          "tt": 1457,
-          "sprint": 447,
           "climber": 5606,
-          "hills": 5073
+          "gc": 2982,
+          "hills": 5073,
+          "one_day_races": 6997,
+          "sprint": 447,
+          "tt": 1457
         }
       },
-      "birthdate": "1992-6-11",
-      "place_of_birth": "France",
-      "birthplace_lat": 46.603354,
-      "birthplace_lon": 1.8883335
+      "team": "Tudor Pro Cycling Team (PRT)",
+      "team_url": "team/tudor-pro-cycling-team-2026"
     },
     {
+      "birthdate": "1993-11-16",
+      "birthplace_lat": 46.7985624,
+      "birthplace_lon": 8.2319736,
       "name": "KÜNG Stefan",
       "nationality": "CH",
       "number": null,
-      "team": "Tudor Pro Cycling Team (PRT)",
+      "place_of_birth": "Switzerland",
       "rider_url": "rider/stefan-kung",
-      "team_url": "team/tudor-pro-cycling-team-2026",
       "specialties": {
         "career": {
-          "one_day_races": 2900,
-          "gc": 1694,
-          "tt": 6230,
-          "sprint": 412,
           "climber": 552,
-          "hills": 1756
+          "gc": 1694,
+          "hills": 1756,
+          "one_day_races": 2900,
+          "sprint": 412,
+          "tt": 6230
         }
       },
-      "birthdate": "1993-11-16",
-      "place_of_birth": "Switzerland",
-      "birthplace_lat": 46.7985624,
-      "birthplace_lon": 8.2319736
+      "team": "Tudor Pro Cycling Team (PRT)",
+      "team_url": "team/tudor-pro-cycling-team-2026"
     },
     {
+      "birthdate": "1997-2-28",
+      "birthplace_lat": -24.7761086,
+      "birthplace_lon": 134.755,
       "name": "STORER Michael",
       "nationality": "AU",
       "number": null,
-      "team": "Tudor Pro Cycling Team (PRT)",
+      "place_of_birth": "Australia",
       "rider_url": "rider/michael-storer",
-      "team_url": "team/tudor-pro-cycling-team-2026",
       "specialties": {
         "career": {
-          "one_day_races": 978,
-          "gc": 2217,
-          "tt": 169,
-          "sprint": 0,
           "climber": 2448,
-          "hills": 599
+          "gc": 2217,
+          "hills": 599,
+          "one_day_races": 978,
+          "sprint": 0,
+          "tt": 169
         }
       },
-      "birthdate": "1997-2-28",
-      "place_of_birth": "Australia",
-      "birthplace_lat": -24.7761086,
-      "birthplace_lon": 134.755
+      "team": "Tudor Pro Cycling Team (PRT)",
+      "team_url": "team/tudor-pro-cycling-team-2026"
     },
     {
+      "birthdate": "1989-8-2",
+      "birthplace_lat": 42.6384261,
+      "birthplace_lon": 12.674297,
       "name": "TRENTIN Matteo",
       "nationality": "IT",
       "number": null,
-      "team": "Tudor Pro Cycling Team (PRT)",
-      "rider_url": "rider/matteo-trentin",
-      "team_url": "team/tudor-pro-cycling-team-2026",
-      "specialties": {
-        "career": {
-          "one_day_races": 5955,
-          "gc": 1049,
-          "tt": 334,
-          "sprint": 2682,
-          "climber": 1090,
-          "hills": 4464
-        }
-      },
-      "birthdate": "1989-8-2",
       "place_of_birth": "Italy",
-      "birthplace_lat": 42.6384261,
-      "birthplace_lon": 12.674297
-    },
-    {
-      "name": "VOISARD Yannis",
-      "nationality": "CH",
-      "number": null,
-      "team": "Tudor Pro Cycling Team (PRT)",
-      "rider_url": "rider/yannis-voisard",
-      "team_url": "team/tudor-pro-cycling-team-2026",
+      "rider_url": "rider/matteo-trentin",
       "specialties": {
         "career": {
-          "one_day_races": 124,
-          "gc": 825,
-          "tt": 179,
-          "sprint": 19,
-          "climber": 532,
-          "hills": 325
+          "climber": 1090,
+          "gc": 1049,
+          "hills": 4464,
+          "one_day_races": 5955,
+          "sprint": 2682,
+          "tt": 334
         }
       },
-      "birthdate": "1998-7-26",
-      "place_of_birth": "Switzerland",
-      "birthplace_lat": 46.7985624,
-      "birthplace_lon": 8.2319736
+      "team": "Tudor Pro Cycling Team (PRT)",
+      "team_url": "team/tudor-pro-cycling-team-2026"
     },
     {
+      "birthdate": "2000-12-7",
+      "birthplace_lat": 52.2434979,
+      "birthplace_lon": 5.6343227,
       "name": "PLUIMERS Rick",
       "nationality": "NL",
       "number": null,
-      "team": "Tudor Pro Cycling Team (PRT)",
+      "place_of_birth": "Netherlands",
       "rider_url": "rider/rick-pluimers",
-      "team_url": "team/tudor-pro-cycling-team-2026",
       "specialties": {
         "career": {
-          "one_day_races": 589,
-          "gc": 172,
-          "tt": 82,
-          "sprint": 230,
           "climber": 161,
-          "hills": 531
+          "gc": 172,
+          "hills": 531,
+          "one_day_races": 589,
+          "sprint": 230,
+          "tt": 82
         }
       },
-      "birthdate": "2000-12-7",
-      "place_of_birth": "Netherlands",
-      "birthplace_lat": 52.2434979,
-      "birthplace_lon": 5.6343227
+      "team": "Tudor Pro Cycling Team (PRT)",
+      "team_url": "team/tudor-pro-cycling-team-2026"
     },
     {
+      "birthdate": "1999-6-7",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335,
       "name": "JEGAT Jordan",
       "nationality": "FR",
       "number": null,
-      "team": "TotalEnergies (PRT)",
+      "place_of_birth": "France",
       "rider_url": "rider/jordan-jegat",
-      "team_url": "team/totalenergies-2026",
       "specialties": {
         "career": {
-          "one_day_races": 557,
-          "gc": 734,
-          "tt": 17,
-          "sprint": 3,
           "climber": 807,
-          "hills": 548
+          "gc": 734,
+          "hills": 548,
+          "one_day_races": 557,
+          "sprint": 3,
+          "tt": 17
         }
       },
-      "birthdate": "1999-6-7",
-      "place_of_birth": "France",
-      "birthplace_lat": 46.603354,
-      "birthplace_lon": 1.8883335
+      "team": "TotalEnergies (PRT)",
+      "team_url": "team/totalenergies-2026"
     },
     {
+      "birthdate": "1999-7-13",
+      "birthplace_lat": 52.2434979,
+      "birthplace_lon": 5.6343227,
       "name": "MOLENAAR Alex",
       "nationality": "NL",
       "number": null,
-      "team": "Caja Rural - Seguros RGA (PRT)",
+      "place_of_birth": "Netherlands",
       "rider_url": "rider/alex-molenaar",
-      "team_url": "team/caja-rural-seguros-rga-2026",
       "specialties": {
         "career": {
-          "one_day_races": 376,
-          "gc": 317,
-          "tt": 130,
-          "sprint": 100,
           "climber": 148,
-          "hills": 462
+          "gc": 317,
+          "hills": 462,
+          "one_day_races": 376,
+          "sprint": 100,
+          "tt": 130
         }
       },
-      "birthdate": "1999-7-13",
-      "place_of_birth": "Netherlands",
-      "birthplace_lat": 52.2434979,
-      "birthplace_lon": 5.6343227
+      "team": "Caja Rural - Seguros RGA (PRT)",
+      "team_url": "team/caja-rural-seguros-rga-2026"
     },
     {
+      "birthdate": "1999-7-30",
+      "birthplace_lat": 53.7974185,
+      "birthplace_lon": -1.5437941,
       "name": "PIDCOCK Tom",
       "nationality": "GB",
       "number": null,
-      "team": "Pinarello Q36.5 Pro Cycling Team (PRT)",
+      "place_of_birth": "Leeds",
       "rider_url": "rider/tom-pidcock",
-      "team_url": "team/pinarello-q365-pro-cycling-team-2026",
       "specialties": {
         "career": {
-          "one_day_races": 3589,
-          "gc": 1671,
-          "tt": 149,
-          "sprint": 394,
           "climber": 2816,
-          "hills": 2394
+          "gc": 1671,
+          "hills": 2394,
+          "one_day_races": 3589,
+          "sprint": 394,
+          "tt": 149
         }
       },
-      "birthdate": "1999-7-30",
-      "place_of_birth": "Leeds",
-      "birthplace_lat": 53.7974185,
-      "birthplace_lon": -1.5437941
+      "team": "Pinarello Q36.5 Pro Cycling Team (PRT)",
+      "team_url": "team/pinarello-q365-pro-cycling-team-2026"
     },
     {
+      "birthdate": "1999-6-13",
+      "birthplace_lat": 54.3151594,
+      "birthplace_lon": -1.9181532,
       "name": "WRIGHT Fred",
       "nationality": "GB",
       "number": null,
-      "team": "Pinarello Q36.5 Pro Cycling Team (PRT)",
+      "place_of_birth": "Great Britain",
       "rider_url": "rider/alfred-wright",
-      "team_url": "team/pinarello-q365-pro-cycling-team-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1051,
-          "gc": 545,
-          "tt": 466,
-          "sprint": 252,
           "climber": 375,
-          "hills": 1584
+          "gc": 545,
+          "hills": 1584,
+          "one_day_races": 1051,
+          "sprint": 252,
+          "tt": 466
         }
       },
-      "birthdate": "1999-6-13",
-      "place_of_birth": "Great Britain",
-      "birthplace_lat": 54.3151594,
-      "birthplace_lon": -1.9181532
+      "team": "Pinarello Q36.5 Pro Cycling Team (PRT)",
+      "team_url": "team/pinarello-q365-pro-cycling-team-2026"
     }
-  ]
+  ],
+  "total_riders": 105,
+  "updated_at": "2026-06-10T11:09:28.991683"
 }

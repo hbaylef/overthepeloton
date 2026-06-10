@@ -1,294 +1,272 @@
 {
   "race": "Il Lombardia",
   "race_slug": "il-lombardia-2026",
-  "updated_at": "2026-06-09T10:46:52.822713",
-  "total_riders": 13,
   "riders": [
     {
+      "birthdate": "2006-9-24",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335,
       "name": "SEIXAS Paul",
       "nationality": "FR",
       "number": null,
-      "team": "Decathlon CMA CGM Team (WT)",
+      "place_of_birth": "France",
       "rider_url": "rider/paul-seixas",
-      "team_url": "team/decathlon-cma-cgm-team-2026",
       "specialties": {
         "career": {
-          "one_day_races": 997,
-          "gc": 507,
-          "tt": 318,
-          "sprint": 2,
           "climber": 944,
-          "hills": 188
+          "gc": 507,
+          "hills": 188,
+          "one_day_races": 997,
+          "sprint": 2,
+          "tt": 318
         }
       },
-      "birthdate": "2006-9-24",
-      "place_of_birth": "France",
-      "birthplace_lat": 46.603354,
-      "birthplace_lon": 1.8883335
+      "team": "Decathlon CMA CGM Team (WT)",
+      "team_url": "team/decathlon-cma-cgm-team-2026"
     },
     {
+      "birthdate": "1986-11-26",
+      "birthplace_lat": 53.2190652,
+      "birthplace_lon": 6.5680077,
       "name": "MOLLEMA Bauke",
       "nationality": "NL",
       "number": null,
-      "team": "Lidl - Trek (WT)",
+      "place_of_birth": "Groningen",
       "rider_url": "rider/bauke-mollema",
-      "team_url": "team/lidl-trek-2026",
       "specialties": {
         "career": {
-          "one_day_races": 5326,
-          "gc": 6063,
-          "tt": 2081,
-          "sprint": 592,
           "climber": 7737,
-          "hills": 4159
+          "gc": 6063,
+          "hills": 4159,
+          "one_day_races": 5326,
+          "sprint": 592,
+          "tt": 2081
         }
       },
-      "birthdate": "1986-11-26",
-      "place_of_birth": "Groningen",
-      "birthplace_lat": 53.2190652,
-      "birthplace_lon": 6.5680077
+      "team": "Lidl - Trek (WT)",
+      "team_url": "team/lidl-trek-2026"
     },
     {
+      "birthdate": "2005-11-13",
+      "birthplace_lat": 50.9303735,
+      "birthplace_lon": 5.3378043,
       "name": "WIDAR Jarno",
       "nationality": "BE",
       "number": null,
-      "team": "Lotto Intermarché (WT)",
+      "place_of_birth": "Hasselt",
       "rider_url": "rider/jarno-widar",
-      "team_url": "team/lotto-intermarche-2026",
       "specialties": {
         "career": {
-          "one_day_races": 157,
-          "gc": 205,
-          "tt": 40,
-          "sprint": 4,
           "climber": 276,
-          "hills": 88
+          "gc": 205,
+          "hills": 88,
+          "one_day_races": 157,
+          "sprint": 4,
+          "tt": 40
         }
       },
-      "birthdate": "2005-11-13",
-      "place_of_birth": "Hasselt",
-      "birthplace_lat": 50.9303735,
-      "birthplace_lon": 5.3378043
+      "team": "Lotto Intermarché (WT)",
+      "team_url": "team/lotto-intermarche-2026"
     },
     {
+      "birthdate": "2003-11-21",
+      "birthplace_lat": 42.6384261,
+      "birthplace_lon": 12.674297,
       "name": "PELLIZZARI Giulio",
       "nationality": "IT",
       "number": null,
-      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "place_of_birth": "Italy",
       "rider_url": "rider/giulio-pellizzari",
-      "team_url": "team/red-bull-bora-hansgrohe-2026",
       "specialties": {
         "career": {
-          "one_day_races": 219,
-          "gc": 1261,
-          "tt": 111,
-          "sprint": 0,
           "climber": 1414,
-          "hills": 374
+          "gc": 1261,
+          "hills": 374,
+          "one_day_races": 219,
+          "sprint": 0,
+          "tt": 111
         }
       },
-      "birthdate": "2003-11-21",
-      "place_of_birth": "Italy",
-      "birthplace_lat": 42.6384261,
-      "birthplace_lon": 12.674297
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
     },
     {
+      "birthdate": "1999-7-1",
+      "birthplace_lat": 37.9020731,
+      "birthplace_lon": -122.0618702,
       "name": "JORGENSON Matteo",
       "nationality": "US",
       "number": null,
-      "team": "Team Visma | Lease a Bike (WT)",
+      "place_of_birth": "Walnut Creek",
       "rider_url": "rider/matteo-jorgenson",
-      "team_url": "team/team-visma-lease-a-bike-2026",
       "specialties": {
         "career": {
-          "one_day_races": 1117,
-          "gc": 2452,
-          "tt": 794,
-          "sprint": 178,
           "climber": 2129,
-          "hills": 1490
+          "gc": 2452,
+          "hills": 1490,
+          "one_day_races": 1117,
+          "sprint": 178,
+          "tt": 794
         }
       },
-      "birthdate": "1999-7-1",
-      "place_of_birth": "Walnut Creek",
-      "birthplace_lat": 37.9020731,
-      "birthplace_lon": -122.0618702
+      "team": "Team Visma | Lease a Bike (WT)",
+      "team_url": "team/team-visma-lease-a-bike-2026"
     },
     {
+      "birthdate": "2000-4-6",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335,
       "name": "BARRÉ Louis",
       "nationality": "FR",
       "number": null,
-      "team": "Team Visma | Lease a Bike (WT)",
+      "place_of_birth": "France",
       "rider_url": "rider/louis-barre",
-      "team_url": "team/team-visma-lease-a-bike-2026",
       "specialties": {
         "career": {
-          "one_day_races": 652,
-          "gc": 363,
-          "tt": 1,
-          "sprint": 4,
           "climber": 318,
-          "hills": 484
+          "gc": 363,
+          "hills": 484,
+          "one_day_races": 652,
+          "sprint": 4,
+          "tt": 1
         }
       },
-      "birthdate": "2000-4-6",
-      "place_of_birth": "France",
-      "birthplace_lat": 46.603354,
-      "birthplace_lon": 1.8883335
+      "team": "Team Visma | Lease a Bike (WT)",
+      "team_url": "team/team-visma-lease-a-bike-2026"
     },
     {
+      "birthdate": "1994-4-11",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335,
       "name": "ARMIRAIL Bruno",
       "nationality": "FR",
       "number": null,
-      "team": "Team Visma | Lease a Bike (WT)",
+      "place_of_birth": "France",
       "rider_url": "rider/bruno-armirail",
-      "team_url": "team/team-visma-lease-a-bike-2026",
       "specialties": {
         "career": {
-          "one_day_races": 127,
-          "gc": 806,
-          "tt": 2076,
-          "sprint": 5,
           "climber": 435,
-          "hills": 264
+          "gc": 806,
+          "hills": 264,
+          "one_day_races": 127,
+          "sprint": 5,
+          "tt": 2076
         }
       },
-      "birthdate": "1994-4-11",
-      "place_of_birth": "France",
-      "birthplace_lat": 46.603354,
-      "birthplace_lon": 1.8883335
+      "team": "Team Visma | Lease a Bike (WT)",
+      "team_url": "team/team-visma-lease-a-bike-2026"
     },
     {
+      "birthdate": "2002-7-8",
+      "birthplace_lat": 42.6384261,
+      "birthplace_lon": 12.674297,
       "name": "PIGANZOLI Davide",
       "nationality": "IT",
       "number": null,
-      "team": "Team Visma | Lease a Bike (WT)",
-      "rider_url": "rider/davide-piganzoli",
-      "team_url": "team/team-visma-lease-a-bike-2026",
-      "specialties": {
-        "career": {
-          "one_day_races": 418,
-          "gc": 1026,
-          "tt": 104,
-          "sprint": 0,
-          "climber": 928,
-          "hills": 338
-        }
-      },
-      "birthdate": "2002-7-8",
       "place_of_birth": "Italy",
-      "birthplace_lat": 42.6384261,
-      "birthplace_lon": 12.674297
-    },
-    {
-      "name": "HAGENES Per Strand",
-      "nationality": "NO",
-      "number": null,
-      "team": "Team Visma | Lease a Bike (WT)",
-      "rider_url": "rider/per-strand-hagenes",
-      "team_url": "team/team-visma-lease-a-bike-2026",
+      "rider_url": "rider/davide-piganzoli",
       "specialties": {
         "career": {
-          "one_day_races": 684,
-          "gc": 389,
-          "tt": 114,
-          "sprint": 258,
-          "climber": 64,
-          "hills": 348
+          "climber": 928,
+          "gc": 1026,
+          "hills": 338,
+          "one_day_races": 418,
+          "sprint": 0,
+          "tt": 104
         }
       },
-      "birthdate": "2003-7-10",
-      "place_of_birth": "Norway",
-      "birthplace_lat": 61.1529386,
-      "birthplace_lon": 8.7876653
+      "team": "Team Visma | Lease a Bike (WT)",
+      "team_url": "team/team-visma-lease-a-bike-2026"
     },
     {
+      "birthdate": "2001-8-26",
+      "birthplace_lat": 54.3151594,
+      "birthplace_lon": -1.9181532,
       "name": "TULETT Ben",
       "nationality": "GB",
       "number": null,
-      "team": "Team Visma | Lease a Bike (WT)",
+      "place_of_birth": "Great Britain",
       "rider_url": "rider/ben-tulett",
-      "team_url": "team/team-visma-lease-a-bike-2026",
       "specialties": {
         "career": {
-          "one_day_races": 828,
-          "gc": 901,
-          "tt": 485,
-          "sprint": 8,
           "climber": 830,
-          "hills": 706
+          "gc": 901,
+          "hills": 706,
+          "one_day_races": 828,
+          "sprint": 8,
+          "tt": 485
         }
       },
-      "birthdate": "2001-8-26",
-      "place_of_birth": "Great Britain",
-      "birthplace_lat": 54.3151594,
-      "birthplace_lon": -1.9181532
+      "team": "Team Visma | Lease a Bike (WT)",
+      "team_url": "team/team-visma-lease-a-bike-2026"
     },
     {
+      "birthdate": "2003-9-23",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335,
       "name": "RONDEL Mathys",
       "nationality": "FR",
       "number": null,
-      "team": "Tudor Pro Cycling Team (PRT)",
+      "place_of_birth": "France",
       "rider_url": "rider/mathys-rondel",
-      "team_url": "team/tudor-pro-cycling-team-2026",
       "specialties": {
         "career": {
-          "one_day_races": 211,
-          "gc": 778,
-          "tt": 31,
-          "sprint": 0,
           "climber": 632,
-          "hills": 242
+          "gc": 778,
+          "hills": 242,
+          "one_day_races": 211,
+          "sprint": 0,
+          "tt": 31
         }
       },
-      "birthdate": "2003-9-23",
-      "place_of_birth": "France",
-      "birthplace_lat": 46.603354,
-      "birthplace_lon": 1.8883335
+      "team": "Tudor Pro Cycling Team (PRT)",
+      "team_url": "team/tudor-pro-cycling-team-2026"
     },
     {
+      "birthdate": "2004-6-26",
+      "birthplace_lat": 47.5798217,
+      "birthplace_lon": 8.217218,
       "name": "CHRISTEN Jan",
       "nationality": "CH",
       "number": null,
-      "team": "UAE Team Emirates - XRG (WT)",
+      "place_of_birth": "Leuggern",
       "rider_url": "rider/jan-christen",
-      "team_url": "team/uae-team-emirates-xrg-2026",
       "specialties": {
         "career": {
-          "one_day_races": 992,
-          "gc": 632,
-          "tt": 282,
-          "sprint": 32,
           "climber": 750,
-          "hills": 577
+          "gc": 632,
+          "hills": 577,
+          "one_day_races": 992,
+          "sprint": 32,
+          "tt": 282
         }
       },
-      "birthdate": "2004-6-26",
-      "place_of_birth": "Leuggern",
-      "birthplace_lat": 47.5798217,
-      "birthplace_lon": 8.217218
+      "team": "UAE Team Emirates - XRG (WT)",
+      "team_url": "team/uae-team-emirates-xrg-2026"
     },
     {
+      "birthdate": "1998-9-21",
+      "birthplace_lat": 45.8996388,
+      "birthplace_lon": 14.1402431,
       "name": "POGAČAR Tadej",
       "nationality": "SI",
       "number": null,
-      "team": "UAE Team Emirates - XRG (WT)",
+      "place_of_birth": "Klanec",
       "rider_url": "rider/tadej-pogacar",
-      "team_url": "team/uae-team-emirates-xrg-2026",
       "specialties": {
         "career": {
-          "one_day_races": 9983,
-          "gc": 7594,
-          "tt": 3287,
-          "sprint": 297,
           "climber": 9989,
-          "hills": 4368
+          "gc": 7594,
+          "hills": 4368,
+          "one_day_races": 9983,
+          "sprint": 297,
+          "tt": 3287
         }
       },
-      "birthdate": "1998-9-21",
-      "place_of_birth": "Klanec",
-      "birthplace_lat": 45.8996388,
-      "birthplace_lon": 14.1402431
+      "team": "UAE Team Emirates - XRG (WT)",
+      "team_url": "team/uae-team-emirates-xrg-2026"
     }
-  ]
+  ],
+  "total_riders": 12,
+  "updated_at": "2026-06-10T11:10:13.896151"
 }
