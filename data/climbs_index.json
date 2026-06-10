@@ -1,11 +1,35 @@
 {
-  "updated_at": "2026-06-09T21:10:24.937776+00:00",
+  "updated_at": "2026-06-10T20:50:29.633743+00:00",
   "source": "mixed",
   "races": {
+    "4-jours-de-dunkerque-2026": {
+      "name": "Quatre Jours de Dunkerque",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "alula-tour-2026": {
+      "name": "AlUla Tour",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
     "amstel-gold-2026": {
       "name": "Amstel Gold Race",
       "climbs_available": true,
       "total_climbs": 33,
+      "source": "procyclingstats"
+    },
+    "arctic-race-of-norway-2026": {
+      "name": "Arctic Race of Norway",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "boucles-de-la-mayenne-2026": {
+      "name": "Boucles de la Mayenne",
+      "climbs_available": false,
+      "total_climbs": 0,
       "source": "procyclingstats"
     },
     "brabantse-pijl-2026": {
@@ -14,11 +38,83 @@
       "total_climbs": 21,
       "source": "procyclingstats"
     },
+    "bredene-koksijde-classic-2026": {
+      "name": "Bredene Koksijde Classic",
+      "climbs_available": true,
+      "total_climbs": 5,
+      "source": "procyclingstats"
+    },
+    "bretagne-classic-2026": {
+      "name": "Bretagne Classic - CIC",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "brussels-cycling-classic-2026": {
+      "name": "Brussels Cycling Classic",
+      "climbs_available": true,
+      "total_climbs": 10,
+      "source": "procyclingstats"
+    },
+    "circuit-franco-belge-2026": {
+      "name": "Circuit Franco-Belge",
+      "climbs_available": true,
+      "total_climbs": 13,
+      "source": "procyclingstats"
+    },
+    "clasica-de-almeria-2026": {
+      "name": "Clasica de Almeria",
+      "climbs_available": true,
+      "total_climbs": 4,
+      "source": "procyclingstats"
+    },
+    "classic-brugge-de-panne-2026": {
+      "name": "Ronde Van Brugge - Tour of Bruges ME",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "classique-dunkerque-2026": {
+      "name": "Classique Dunkerque / Grand prix des Hauts de France",
+      "climbs_available": true,
+      "total_climbs": 3,
+      "source": "procyclingstats"
+    },
+    "copenhagen-sprint-2026": {
+      "name": "Copenhagen Sprint",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "coppa-bernocchi-2026": {
+      "name": "Coppa Bernocchi",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
     "criterium-du-dauphine-2026": {
       "name": "Tour Auvergne-Rhône-Alpes",
       "climbs_available": true,
       "total_climbs": 32,
       "source": "gpx_derived"
+    },
+    "cyclassics-hamburg-2026": {
+      "name": "Cyclassics Hamburg",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "czech-tour-2026": {
+      "name": "Czech Tour",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "deutschland-tour-2026": {
+      "name": "Deutschland Tour",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
     },
     "dwars-door-vlaanderen-2026": {
       "name": "Dwars door Vlaanderen",
@@ -32,6 +128,24 @@
       "total_climbs": 16,
       "source": "procyclingstats"
     },
+    "eschborn-frankfurt-2026": {
+      "name": "Eschborn-Frankfurt",
+      "climbs_available": true,
+      "total_climbs": 9,
+      "source": "procyclingstats"
+    },
+    "faun-ardeche-classic-2026": {
+      "name": "Faun-Ardèche Classic",
+      "climbs_available": true,
+      "total_climbs": 13,
+      "source": "procyclingstats"
+    },
+    "figueira-champions-classic-2026": {
+      "name": "Figueira Champions Classic",
+      "climbs_available": true,
+      "total_climbs": 7,
+      "source": "procyclingstats"
+    },
     "gent-wevelgem-2026": {
       "name": "In Flanders Fields (Gent-Wevelgem)",
       "climbs_available": true,
@@ -43,6 +157,60 @@
       "climbs_available": true,
       "total_climbs": 49,
       "source": "gpx_derived"
+    },
+    "giro-del-veneto-2026": {
+      "name": "Giro del Veneto",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "giro-dell-emilia-2026": {
+      "name": "Giro dell'Emilia",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "gp-citta-di-peccioli-2026": {
+      "name": "Coppa Sabatini",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "gp-de-denain-2026": {
+      "name": "Grand Prix de Denain",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "gp-de-fourmies-2026": {
+      "name": "GP de Fourmies / La Voix du Nord",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "gp-de-plumelec-2026": {
+      "name": "Grand Prix du Morbihan",
+      "climbs_available": true,
+      "total_climbs": 2,
+      "source": "procyclingstats"
+    },
+    "gp-de-wallonie-2026": {
+      "name": "Grand Prix de Wallonie",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "gp-impanis-van-petegem-2026": {
+      "name": "Flandrien 0.0 Classic",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "gp-industria-artigianato-2026": {
+      "name": "GP Industria & Artigianato",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
     },
     "gp-montreal-2026": {
       "name": "Grand Prix de Montréal",
@@ -62,6 +230,24 @@
       "total_climbs": 11,
       "source": "gpx_derived"
     },
+    "gran-piemonte-2026": {
+      "name": "Gran Piemonte",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "gran-premio-miguel-indurain-2026": {
+      "name": "Gran Premio Miguel Indurain",
+      "climbs_available": true,
+      "total_climbs": 16,
+      "source": "procyclingstats"
+    },
+    "great-ocean-road-2026": {
+      "name": "Cadel Evans Great Ocean Road Race",
+      "climbs_available": true,
+      "total_climbs": 3,
+      "source": "procyclingstats"
+    },
     "il-lombardia-2026": {
       "name": "Il Lombardia",
       "climbs_available": false,
@@ -74,10 +260,22 @@
       "total_climbs": 30,
       "source": "gpx_derived"
     },
+    "japan-cup-2026": {
+      "name": "Japan Cup",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
     "kuurne-brussel-kuurne-2026": {
       "name": "Kuurne-Brussels-Kuurne",
       "climbs_available": true,
       "total_climbs": 11,
+      "source": "procyclingstats"
+    },
+    "la-drome-classic-2026": {
+      "name": "Faun Drome Classic",
+      "climbs_available": true,
+      "total_climbs": 17,
       "source": "procyclingstats"
     },
     "la-fleche-wallonne-2026": {
@@ -92,10 +290,40 @@
       "total_climbs": 12,
       "source": "procyclingstats"
     },
+    "maryland-cycling-classic-2026": {
+      "name": "Maryland Cycling Classic",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
     "milano-sanremo-2026": {
       "name": "Milano-Sanremo",
       "climbs_available": true,
       "total_climbs": 6,
+      "source": "procyclingstats"
+    },
+    "milano-torino-2026": {
+      "name": "Milano - Torino",
+      "climbs_available": true,
+      "total_climbs": 2,
+      "source": "procyclingstats"
+    },
+    "munsterland-giro-2026": {
+      "name": "Sparkassen Münsterland Giro",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "muscat-classic-2026": {
+      "name": "Muscat Classic",
+      "climbs_available": true,
+      "total_climbs": 6,
+      "source": "procyclingstats"
+    },
+    "nokere-koerse-2026": {
+      "name": "Nokere Koerse",
+      "climbs_available": true,
+      "total_climbs": 12,
       "source": "procyclingstats"
     },
     "omloop-het-nieuwsblad-2026": {
@@ -118,6 +346,18 @@
     },
     "paris-tours-2026": {
       "name": "Paris-Tours",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "race-torquay-2026": {
+      "name": "Surf Coast Classic - Men",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "region-pays-de-la-loire-2026": {
+      "name": "Région Pays de la Loire Tour",
       "climbs_available": false,
       "total_climbs": 0,
       "source": "procyclingstats"
@@ -146,6 +386,12 @@
       "total_climbs": 0,
       "source": "procyclingstats"
     },
+    "scheldeprijs-2026": {
+      "name": "Scheldeprijs",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
     "setmana-ciclista-valenciana-2026": {
       "name": "Volta a la Comunitat Valenciana",
       "climbs_available": true,
@@ -170,6 +416,30 @@
       "total_climbs": 67,
       "source": "gpx_derived"
     },
+    "tour-de-hongrie-2026": {
+      "name": "Tour de Hongrie",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "tour-de-langkawi-2026": {
+      "name": "Tour de Langkawi",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "tour-de-luxembourg-2026": {
+      "name": "Tour de Luxembourg",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "tour-de-pologne-2026": {
+      "name": "Tour de Pologne",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
     "tour-de-romandie-2026": {
       "name": "Tour de Romandie",
       "climbs_available": false,
@@ -178,6 +448,12 @@
     },
     "tour-de-suisse-2026": {
       "name": "Tour de Suisse",
+      "climbs_available": true,
+      "total_climbs": 16,
+      "source": "gpx_derived"
+    },
+    "tour-de-wallonie-2026": {
+      "name": "Tour de Wallonie",
       "climbs_available": false,
       "total_climbs": 0,
       "source": "procyclingstats"
@@ -188,8 +464,62 @@
       "total_climbs": 20,
       "source": "gpx_derived"
     },
+    "tour-of-belgium-2026": {
+      "name": "Baloise Belgium Tour",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
     "tour-of-britain-2026": {
       "name": "Tour of Britain",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "tour-of-croatia-2026": {
+      "name": "CRO Race",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "tour-of-denmark-2026": {
+      "name": "Tour of Denmark",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "tour-of-guangxi-2026": {
+      "name": "Tour of Guangxi",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "tour-of-hainan-2026": {
+      "name": "Tour of Hainan",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "tour-of-magnificent-qinghai-2026": {
+      "name": "Tour of Magnificent Qinghai",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "tour-of-norway-2026": {
+      "name": "Tour of Norway",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "tour-of-oman-2026": {
+      "name": "Tour of Oman",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "tour-of-slovenia-2026": {
+      "name": "Tour of Slovenia",
       "climbs_available": false,
       "total_climbs": 0,
       "source": "procyclingstats"
@@ -200,11 +530,41 @@
       "total_climbs": 19,
       "source": "gpx_derived"
     },
+    "tour-of-turkey-2026": {
+      "name": "Presidential Cycling Tour of Türkiye",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "tre-valli-varesine-2026": {
+      "name": "Tre Valli Varesine",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "tro-bro-leon-2026": {
+      "name": "Tro-Bro Léon",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "trofeo-laigueglia-2026": {
+      "name": "Trofeo Laigueglia",
+      "climbs_available": true,
+      "total_climbs": 14,
+      "source": "procyclingstats"
+    },
     "uae-tour-2026": {
       "name": "UAE Tour",
       "climbs_available": true,
       "total_climbs": 6,
       "source": "gpx_derived"
+    },
+    "veneto-classic-2026": {
+      "name": "Veneto Classic",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
     },
     "volta-a-catalunya-2026": {
       "name": "Volta a Catalunya",
@@ -217,6 +577,12 @@
       "climbs_available": true,
       "total_climbs": 11,
       "source": "gpx_derived"
+    },
+    "vuelta-a-burgos-2026": {
+      "name": "Vuelta a Burgos",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
     },
     "vuelta-a-espana-2026": {
       "name": "Vuelta a España",

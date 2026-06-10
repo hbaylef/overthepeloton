@@ -1,0 +1,113 @@
+{
+  "climbs": [
+    {
+      "climb_url": "location/cote-du-pin",
+      "km_before_finish": 108,
+      "length_km": 9.6,
+      "name": "Côte du Pin",
+      "steepness": 4.5,
+      "top_m": 558
+    },
+    {
+      "climb_url": "location/cote-du-pin",
+      "km_before_finish": 179,
+      "length_km": 9.0,
+      "name": "Côte du Pin",
+      "steepness": 4.3,
+      "top_m": 576
+    },
+    {
+      "climb_url": "location/mur-de-royes",
+      "km_before_finish": 39,
+      "length_km": 6.8,
+      "name": "Mur de Royes",
+      "steepness": 7.3,
+      "top_m": 606
+    },
+    {
+      "climb_url": "location/col-des-boscs",
+      "km_before_finish": 148,
+      "length_km": 5.6,
+      "name": "Col des Boscs",
+      "steepness": 4.0,
+      "top_m": 587
+    },
+    {
+      "climb_url": "location/col-des-boscs",
+      "km_before_finish": 77,
+      "length_km": 5.6,
+      "name": "Col des Boscs",
+      "steepness": 4.0,
+      "top_m": 608
+    },
+    {
+      "climb_url": "location/col-de-la-justice",
+      "km_before_finish": 169,
+      "length_km": 2.1,
+      "name": "Col de la Justice",
+      "steepness": 3.6,
+      "top_m": 682
+    },
+    {
+      "climb_url": "location/col-de-la-justice",
+      "km_before_finish": 98,
+      "length_km": 2.1,
+      "name": "Col de la Justice",
+      "steepness": 3.6,
+      "top_m": 654
+    },
+    {
+      "climb_url": "location/cote-de-val-d-enfer",
+      "km_before_finish": 131,
+      "length_km": 1.5,
+      "name": "Val d'Enfer",
+      "steepness": 10.3,
+      "top_m": 269
+    },
+    {
+      "climb_url": "location/cote-de-val-d-enfer",
+      "km_before_finish": 60,
+      "length_km": 1.5,
+      "name": "Val d'Enfer",
+      "steepness": 10.3,
+      "top_m": 270
+    },
+    {
+      "climb_url": "location/cote-de-val-d-enfer",
+      "km_before_finish": 24,
+      "length_km": 1.5,
+      "name": "Val d'Enfer",
+      "steepness": 10.3,
+      "top_m": 268
+    },
+    {
+      "climb_url": "location/cote-de-val-d-enfer",
+      "km_before_finish": 5,
+      "length_km": 1.5,
+      "name": "Val d'Enfer",
+      "steepness": 10.3,
+      "top_m": 269
+    },
+    {
+      "climb_url": "location/montee-de-costebelle",
+      "km_before_finish": 118,
+      "length_km": 0.3,
+      "name": "Mur de Costebelle",
+      "steepness": 8.0,
+      "top_m": 158
+    },
+    {
+      "climb_url": "location/montee-de-costebelle",
+      "km_before_finish": 12,
+      "length_km": 0.3,
+      "name": "Mur de Costebelle",
+      "steepness": 8.0,
+      "top_m": 161
+    }
+  ],
+  "is_one_day_race": true,
+  "race": "Faun-Ardèche Classic",
+  "race_slug": "faun-ardeche-classic-2026",
+  "source": "procyclingstats",
+  "updated_at": "2026-06-10T20:44:09.997651"
+}

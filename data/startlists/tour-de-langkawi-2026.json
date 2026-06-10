@@ -1,0 +1,52 @@
+{
+  "race": "Tour de Langkawi",
+  "race_slug": "tour-de-langkawi-2026",
+  "riders": [
+    {
+      "birthdate": "1997-9-25",
+      "birthplace_lat": 49.4300997,
+      "birthplace_lon": 2.0823355,
+      "name": "BARBIER Pierre",
+      "nationality": "FR",
+      "number": null,
+      "place_of_birth": "Beauvais",
+      "rider_url": "rider/pierre-barbier",
+      "specialties": {
+        "career": {
+          "climber": 0,
+          "gc": 29,
+          "hills": 95,
+          "one_day_races": 769,
+          "sprint": 1370,
+          "tt": 2
+        }
+      },
+      "team": "Terengganu Cycling Team (CT)",
+      "team_url": "team/terengganu-cycling-team-2026"
+    },
+    {
+      "birthdate": "2001-1-19",
+      "birthplace_lat": 48.5141134,
+      "birthplace_lon": -2.7603283,
+      "name": "HUBY Antoine",
+      "nationality": "FR",
+      "number": null,
+      "place_of_birth": "Saint-Brieuc",
+      "rider_url": "rider/antoine-huby",
+      "specialties": {
+        "career": {
+          "climber": 86,
+          "gc": 186,
+          "hills": 90,
+          "one_day_races": 87,
+          "sprint": 28,
+          "tt": 26
+        }
+      },
+      "team": "7Eleven Cliqq Roadbike Philippines (CT)",
+      "team_url": "team/7eleven-cliqq-roadbike-philippines-2026"
+    }
+  ],
+  "total_riders": 2,
+  "updated_at": "2026-06-10T20:02:56.973469"
+}

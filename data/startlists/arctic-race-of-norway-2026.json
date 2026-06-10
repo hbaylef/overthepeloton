@@ -1,0 +1,52 @@
+{
+  "race": "Arctic Race of Norway",
+  "race_slug": "arctic-race-of-norway-2026",
+  "riders": [
+    {
+      "birthdate": "2003-5-20",
+      "birthplace_lat": 39.7837304,
+      "birthplace_lon": -100.445882,
+      "name": "KESSLER Cole",
+      "nationality": "US",
+      "number": null,
+      "place_of_birth": "United States",
+      "rider_url": "rider/cole-kessler",
+      "specialties": {
+        "career": {
+          "climber": 6,
+          "gc": 5,
+          "hills": 12,
+          "one_day_races": 6,
+          "sprint": 17,
+          "tt": 13
+        }
+      },
+      "team": "Modern Adventure Pro Cycling (PRT)",
+      "team_url": "team/modern-adventure-pro-cycling-2026"
+    },
+    {
+      "birthdate": "1993-10-19",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145,
+      "name": "AERTS Toon",
+      "nationality": "BE",
+      "number": null,
+      "place_of_birth": "Belgium",
+      "rider_url": "rider/toon-aerts",
+      "specialties": {
+        "career": {
+          "climber": 73,
+          "gc": 289,
+          "hills": 352,
+          "one_day_races": 146,
+          "sprint": 161,
+          "tt": 100
+        }
+      },
+      "team": "Lotto Intermarché (WT)",
+      "team_url": "team/lotto-intermarche-2026"
+    }
+  ],
+  "total_riders": 2,
+  "updated_at": "2026-06-10T20:01:54.438727"
+}

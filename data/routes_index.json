@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-09T21:10:30.336603+00:00",
+  "updated_at": "2026-06-10T20:50:51.572614+00:00",
   "races": {
     "amstel-gold-2026": {
       "name": "Amstel Gold Race",
@@ -629,6 +629,32 @@
         }
       ]
     },
+    "tour-de-suisse-2026": {
+      "name": "Tour de Suisse",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 142.8
+        },
+        {
+          "stage": 2,
+          "distance_km": 157.6
+        },
+        {
+          "stage": 3,
+          "distance_km": 157.5
+        },
+        {
+          "stage": 4,
+          "distance_km": 23.6
+        },
+        {
+          "stage": 5,
+          "distance_km": 151.8
+        }
+      ]
+    },
     "tour-down-under-2026": {
       "name": "Tour Down Under",
       "route_available": true,
@@ -861,6 +887,146 @@
         }
       ]
     },
+    "4-jours-de-dunkerque-2026": {
+      "name": "Quatre Jours de Dunkerque",
+      "route_available": false,
+      "stages": []
+    },
+    "alula-tour-2026": {
+      "name": "AlUla Tour",
+      "route_available": false,
+      "stages": []
+    },
+    "arctic-race-of-norway-2026": {
+      "name": "Arctic Race of Norway",
+      "route_available": false,
+      "stages": []
+    },
+    "boucles-de-la-mayenne-2026": {
+      "name": "Boucles de la Mayenne",
+      "route_available": false,
+      "stages": []
+    },
+    "bredene-koksijde-classic-2026": {
+      "name": "Bredene Koksijde Classic",
+      "route_available": false,
+      "stages": []
+    },
+    "bretagne-classic-2026": {
+      "name": "Bretagne Classic - CIC",
+      "route_available": false,
+      "stages": []
+    },
+    "brussels-cycling-classic-2026": {
+      "name": "Brussels Cycling Classic",
+      "route_available": false,
+      "stages": []
+    },
+    "circuit-franco-belge-2026": {
+      "name": "Circuit Franco-Belge",
+      "route_available": false,
+      "stages": []
+    },
+    "clasica-de-almeria-2026": {
+      "name": "Clasica de Almeria",
+      "route_available": false,
+      "stages": []
+    },
+    "classic-brugge-de-panne-2026": {
+      "name": "Ronde Van Brugge - Tour of Bruges ME",
+      "route_available": false,
+      "stages": []
+    },
+    "classique-dunkerque-2026": {
+      "name": "Classique Dunkerque / Grand prix des Hauts de France",
+      "route_available": false,
+      "stages": []
+    },
+    "copenhagen-sprint-2026": {
+      "name": "Copenhagen Sprint",
+      "route_available": false,
+      "stages": []
+    },
+    "coppa-bernocchi-2026": {
+      "name": "Coppa Bernocchi",
+      "route_available": false,
+      "stages": []
+    },
+    "cyclassics-hamburg-2026": {
+      "name": "Cyclassics Hamburg",
+      "route_available": false,
+      "stages": []
+    },
+    "czech-tour-2026": {
+      "name": "Czech Tour",
+      "route_available": false,
+      "stages": []
+    },
+    "deutschland-tour-2026": {
+      "name": "Deutschland Tour",
+      "route_available": false,
+      "stages": []
+    },
+    "eschborn-frankfurt-2026": {
+      "name": "Eschborn-Frankfurt",
+      "route_available": false,
+      "stages": []
+    },
+    "faun-ardeche-classic-2026": {
+      "name": "Faun-Ardèche Classic",
+      "route_available": false,
+      "stages": []
+    },
+    "figueira-champions-classic-2026": {
+      "name": "Figueira Champions Classic",
+      "route_available": false,
+      "stages": []
+    },
+    "giro-del-veneto-2026": {
+      "name": "Giro del Veneto",
+      "route_available": false,
+      "stages": []
+    },
+    "giro-dell-emilia-2026": {
+      "name": "Giro dell'Emilia",
+      "route_available": false,
+      "stages": []
+    },
+    "gp-citta-di-peccioli-2026": {
+      "name": "Coppa Sabatini",
+      "route_available": false,
+      "stages": []
+    },
+    "gp-de-denain-2026": {
+      "name": "Grand Prix de Denain",
+      "route_available": false,
+      "stages": []
+    },
+    "gp-de-fourmies-2026": {
+      "name": "GP de Fourmies / La Voix du Nord",
+      "route_available": false,
+      "stages": []
+    },
+    "gp-de-plumelec-2026": {
+      "name": "Grand Prix du Morbihan",
+      "route_available": false,
+      "stages": []
+    },
+    "gp-de-wallonie-2026": {
+      "name": "Grand Prix de Wallonie",
+      "route_available": false,
+      "stages": []
+    },
+    "gp-impanis-van-petegem-2026": {
+      "name": "Flandrien 0.0 Classic",
+      "route_available": false,
+      "stages": []
+    },
+    "gp-industria-artigianato-2026": {
+      "name": "GP Industria & Artigianato",
+      "route_available": false,
+      "stages": []
+    },
     "gp-montreal-2026": {
       "name": "Grand Prix de Montréal",
       "route_available": false,
@@ -871,13 +1037,73 @@
       "route_available": false,
       "stages": []
     },
+    "gran-piemonte-2026": {
+      "name": "Gran Piemonte",
+      "route_available": false,
+      "stages": []
+    },
+    "gran-premio-miguel-indurain-2026": {
+      "name": "Gran Premio Miguel Indurain",
+      "route_available": false,
+      "stages": []
+    },
+    "great-ocean-road-2026": {
+      "name": "Cadel Evans Great Ocean Road Race",
+      "route_available": false,
+      "stages": []
+    },
     "il-lombardia-2026": {
       "name": "Il Lombardia",
       "route_available": false,
       "stages": []
     },
+    "japan-cup-2026": {
+      "name": "Japan Cup",
+      "route_available": false,
+      "stages": []
+    },
+    "la-drome-classic-2026": {
+      "name": "Faun Drome Classic",
+      "route_available": false,
+      "stages": []
+    },
+    "maryland-cycling-classic-2026": {
+      "name": "Maryland Cycling Classic",
+      "route_available": false,
+      "stages": []
+    },
+    "milano-torino-2026": {
+      "name": "Milano - Torino",
+      "route_available": false,
+      "stages": []
+    },
+    "munsterland-giro-2026": {
+      "name": "Sparkassen Münsterland Giro",
+      "route_available": false,
+      "stages": []
+    },
+    "muscat-classic-2026": {
+      "name": "Muscat Classic",
+      "route_available": false,
+      "stages": []
+    },
+    "nokere-koerse-2026": {
+      "name": "Nokere Koerse",
+      "route_available": false,
+      "stages": []
+    },
     "paris-tours-2026": {
       "name": "Paris-Tours",
+      "route_available": false,
+      "stages": []
+    },
+    "race-torquay-2026": {
+      "name": "Surf Coast Classic - Men",
+      "route_available": false,
+      "stages": []
+    },
+    "region-pays-de-la-loire-2026": {
+      "name": "Région Pays de la Loire Tour",
       "route_available": false,
       "stages": []
     },
@@ -891,18 +1117,118 @@
       "route_available": false,
       "stages": []
     },
+    "scheldeprijs-2026": {
+      "name": "Scheldeprijs",
+      "route_available": false,
+      "stages": []
+    },
+    "tour-de-hongrie-2026": {
+      "name": "Tour de Hongrie",
+      "route_available": false,
+      "stages": []
+    },
+    "tour-de-langkawi-2026": {
+      "name": "Tour de Langkawi",
+      "route_available": false,
+      "stages": []
+    },
+    "tour-de-luxembourg-2026": {
+      "name": "Tour de Luxembourg",
+      "route_available": false,
+      "stages": []
+    },
+    "tour-de-pologne-2026": {
+      "name": "Tour de Pologne",
+      "route_available": false,
+      "stages": []
+    },
     "tour-de-romandie-2026": {
       "name": "Tour de Romandie",
       "route_available": false,
       "stages": []
     },
-    "tour-de-suisse-2026": {
-      "name": "Tour de Suisse",
+    "tour-de-wallonie-2026": {
+      "name": "Tour de Wallonie",
+      "route_available": false,
+      "stages": []
+    },
+    "tour-of-belgium-2026": {
+      "name": "Baloise Belgium Tour",
       "route_available": false,
       "stages": []
     },
     "tour-of-britain-2026": {
       "name": "Tour of Britain",
+      "route_available": false,
+      "stages": []
+    },
+    "tour-of-croatia-2026": {
+      "name": "CRO Race",
+      "route_available": false,
+      "stages": []
+    },
+    "tour-of-denmark-2026": {
+      "name": "Tour of Denmark",
+      "route_available": false,
+      "stages": []
+    },
+    "tour-of-guangxi-2026": {
+      "name": "Tour of Guangxi",
+      "route_available": false,
+      "stages": []
+    },
+    "tour-of-hainan-2026": {
+      "name": "Tour of Hainan",
+      "route_available": false,
+      "stages": []
+    },
+    "tour-of-magnificent-qinghai-2026": {
+      "name": "Tour of Magnificent Qinghai",
+      "route_available": false,
+      "stages": []
+    },
+    "tour-of-norway-2026": {
+      "name": "Tour of Norway",
+      "route_available": false,
+      "stages": []
+    },
+    "tour-of-oman-2026": {
+      "name": "Tour of Oman",
+      "route_available": false,
+      "stages": []
+    },
+    "tour-of-slovenia-2026": {
+      "name": "Tour of Slovenia",
+      "route_available": false,
+      "stages": []
+    },
+    "tour-of-turkey-2026": {
+      "name": "Presidential Cycling Tour of Türkiye",
+      "route_available": false,
+      "stages": []
+    },
+    "tre-valli-varesine-2026": {
+      "name": "Tre Valli Varesine",
+      "route_available": false,
+      "stages": []
+    },
+    "tro-bro-leon-2026": {
+      "name": "Tro-Bro Léon",
+      "route_available": false,
+      "stages": []
+    },
+    "trofeo-laigueglia-2026": {
+      "name": "Trofeo Laigueglia",
+      "route_available": false,
+      "stages": []
+    },
+    "veneto-classic-2026": {
+      "name": "Veneto Classic",
+      "route_available": false,
+      "stages": []
+    },
+    "vuelta-a-burgos-2026": {
+      "name": "Vuelta a Burgos",
       "route_available": false,
       "stages": []
     }

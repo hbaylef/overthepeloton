@@ -1,0 +1,96 @@
+{
+  "race": "Tour of Denmark",
+  "race_slug": "tour-of-denmark-2026",
+  "riders": [
+    {
+      "birthdate": "1996-10-31",
+      "birthplace_lat": 50.8707787,
+      "birthplace_lon": 5.5181089,
+      "name": "MENTEN Milan",
+      "nationality": "BE",
+      "number": null,
+      "place_of_birth": "Bilzen",
+      "rider_url": "rider/milan-menten",
+      "specialties": {
+        "career": {
+          "climber": 92,
+          "gc": 420,
+          "hills": 1055,
+          "one_day_races": 1720,
+          "sprint": 1354,
+          "tt": 113
+        }
+      },
+      "team": "Lotto Intermarché (WT)",
+      "team_url": "team/lotto-intermarche-2026"
+    },
+    {
+      "birthdate": "1993-10-19",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145,
+      "name": "AERTS Toon",
+      "nationality": "BE",
+      "number": null,
+      "place_of_birth": "Belgium",
+      "rider_url": "rider/toon-aerts",
+      "specialties": {
+        "career": {
+          "climber": 73,
+          "gc": 289,
+          "hills": 352,
+          "one_day_races": 146,
+          "sprint": 161,
+          "tt": 100
+        }
+      },
+      "team": "Lotto Intermarché (WT)",
+      "team_url": "team/lotto-intermarche-2026"
+    },
+    {
+      "birthdate": "2003-5-20",
+      "birthplace_lat": 39.7837304,
+      "birthplace_lon": -100.445882,
+      "name": "KESSLER Cole",
+      "nationality": "US",
+      "number": null,
+      "place_of_birth": "United States",
+      "rider_url": "rider/cole-kessler",
+      "specialties": {
+        "career": {
+          "climber": 6,
+          "gc": 5,
+          "hills": 12,
+          "one_day_races": 6,
+          "sprint": 17,
+          "tt": 13
+        }
+      },
+      "team": "Modern Adventure Pro Cycling (PRT)",
+      "team_url": "team/modern-adventure-pro-cycling-2026"
+    },
+    {
+      "birthdate": "1997-4-8",
+      "birthplace_lat": 55.670249,
+      "birthplace_lon": 10.3333283,
+      "name": "STOKBRO Andreas",
+      "nationality": "DK",
+      "number": null,
+      "place_of_birth": "Denmark",
+      "rider_url": "rider/andreas-stokbro",
+      "specialties": {
+        "career": {
+          "climber": 38,
+          "gc": 182,
+          "hills": 232,
+          "one_day_races": 321,
+          "sprint": 444,
+          "tt": 46
+        }
+      },
+      "team": "Team ColoQuick (CT)",
+      "team_url": "team/team-coloquick-2026"
+    }
+  ],
+  "total_riders": 4,
+  "updated_at": "2026-06-10T20:01:45.078132"
+}

@@ -1,0 +1,30 @@
+{
+  "race": "Cyclassics Hamburg",
+  "race_slug": "cyclassics-hamburg-2026",
+  "riders": [
+    {
+      "birthdate": "1988-6-27",
+      "birthplace_lat": 46.1199444,
+      "birthplace_lon": 14.8153333,
+      "name": "MEZGEC Luka",
+      "nationality": "SI",
+      "number": null,
+      "place_of_birth": "Slovenia",
+      "rider_url": "rider/luka-mezgec",
+      "specialties": {
+        "career": {
+          "climber": 238,
+          "gc": 675,
+          "hills": 2229,
+          "one_day_races": 1626,
+          "sprint": 1723,
+          "tt": 33
+        }
+      },
+      "team": "Team Jayco AlUla (WT)",
+      "team_url": "team/team-jayco-alula-2026"
+    }
+  ],
+  "total_riders": 1,
+  "updated_at": "2026-06-10T19:58:20.754751"
+}

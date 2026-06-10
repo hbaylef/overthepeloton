@@ -1,0 +1,74 @@
+{
+  "race": "Bretagne Classic - CIC",
+  "race_slug": "bretagne-classic-2026",
+  "riders": [
+    {
+      "birthdate": "2000-5-25",
+      "birthplace_lat": 46.603354,
+      "birthplace_lon": 1.8883335,
+      "name": "LAPEIRA Paul",
+      "nationality": "FR",
+      "number": null,
+      "place_of_birth": "France",
+      "rider_url": "rider/paul-lapeira",
+      "specialties": {
+        "career": {
+          "climber": 282,
+          "gc": 297,
+          "hills": 746,
+          "one_day_races": 1172,
+          "sprint": 172,
+          "tt": 116
+        }
+      },
+      "team": "Decathlon CMA CGM Team (WT)",
+      "team_url": "team/decathlon-cma-cgm-team-2026"
+    },
+    {
+      "birthdate": "1990-9-16",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145,
+      "name": "NAESEN Oliver",
+      "nationality": "BE",
+      "number": null,
+      "place_of_birth": "Belgium",
+      "rider_url": "rider/oliver-naesen",
+      "specialties": {
+        "career": {
+          "climber": 421,
+          "gc": 1537,
+          "hills": 2410,
+          "one_day_races": 4419,
+          "sprint": 1326,
+          "tt": 49
+        }
+      },
+      "team": "Decathlon CMA CGM Team (WT)",
+      "team_url": "team/decathlon-cma-cgm-team-2026"
+    },
+    {
+      "birthdate": "2004-6-26",
+      "birthplace_lat": 47.5798217,
+      "birthplace_lon": 8.217218,
+      "name": "CHRISTEN Jan",
+      "nationality": "CH",
+      "number": null,
+      "place_of_birth": "Leuggern",
+      "rider_url": "rider/jan-christen",
+      "specialties": {
+        "career": {
+          "climber": 750,
+          "gc": 632,
+          "hills": 577,
+          "one_day_races": 992,
+          "sprint": 32,
+          "tt": 282
+        }
+      },
+      "team": "UAE Team Emirates - XRG (WT)",
+      "team_url": "team/uae-team-emirates-xrg-2026"
+    }
+  ],
+  "total_riders": 3,
+  "updated_at": "2026-06-10T19:58:27.575288"
+}

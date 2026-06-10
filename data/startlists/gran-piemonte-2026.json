@@ -1,0 +1,30 @@
+{
+  "race": "Gran Piemonte",
+  "race_slug": "gran-piemonte-2026",
+  "riders": [
+    {
+      "birthdate": "1993-10-29",
+      "birthplace_lat": 43.4677215,
+      "birthplace_lon": 11.148762,
+      "name": "BETTIOL Alberto",
+      "nationality": "IT",
+      "number": null,
+      "place_of_birth": "Poggibonsi",
+      "rider_url": "rider/alberto-bettiol",
+      "specialties": {
+        "career": {
+          "climber": 1088,
+          "gc": 1166,
+          "hills": 2364,
+          "one_day_races": 2675,
+          "sprint": 266,
+          "tt": 1152
+        }
+      },
+      "team": "XDS Astana Team (WT)",
+      "team_url": "team/xds-astana-team-2026"
+    }
+  ],
+  "total_riders": 1,
+  "updated_at": "2026-06-10T20:03:32.897673"
+}

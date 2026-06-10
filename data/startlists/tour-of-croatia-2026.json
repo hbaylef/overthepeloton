@@ -1,0 +1,30 @@
+{
+  "race": "CRO Race",
+  "race_slug": "tour-of-croatia-2026",
+  "riders": [
+    {
+      "birthdate": "1996-9-5",
+      "birthplace_lat": 41.1292264,
+      "birthplace_lon": -8.6057396,
+      "name": "OLIVEIRA Ivo",
+      "nationality": "PT",
+      "number": null,
+      "place_of_birth": "Vila Nova de Gaia",
+      "rider_url": "rider/ivo-emanuel-alves",
+      "specialties": {
+        "career": {
+          "climber": 74,
+          "gc": 259,
+          "hills": 490,
+          "one_day_races": 145,
+          "sprint": 98,
+          "tt": 900
+        }
+      },
+      "team": "UAE Team Emirates - XRG (WT)",
+      "team_url": "team/uae-team-emirates-xrg-2026"
+    }
+  ],
+  "total_riders": 1,
+  "updated_at": "2026-06-10T20:02:51.588261"
+}

@@ -422,6 +422,12 @@
       "birthdate": "2001-5-8",
       "birthplace_lat": 37.2769484,
       "birthplace_lon": -107.8766,
+      "medals": [
+        {
+          "rank": 1,
+          "stage": "S4"
+        }
+      ],
       "name": "SIMMONS Quinn",
       "nationality": "US",
       "number": 24,
@@ -725,6 +731,7 @@
       "team_url": "team/red-bull-bora-hansgrohe-2026"
     },
     {
+      "abandoned_stage": "S4",
       "birthdate": "2003-9-8",
       "birthplace_lat": 39.3260685,
       "birthplace_lon": -4.8379791,
@@ -743,11 +750,18 @@
           "tt": 0
         }
       },
+      "status": "DNF",
       "team": "Red Bull - BORA - hansgrohe (WT)",
       "team_url": "team/red-bull-bora-hansgrohe-2026"
     },
     {
       "birthdate": "2001-12-21",
+      "medals": [
+        {
+          "rank": 2,
+          "stage": "S4"
+        }
+      ],
       "name": "FISHER-BLACK Finn",
       "nationality": "NZ",
       "number": 43,
@@ -2444,6 +2458,12 @@
       "birthdate": "2001-1-26",
       "birthplace_lat": 46.603354,
       "birthplace_lon": 1.8883335,
+      "medals": [
+        {
+          "rank": 3,
+          "stage": "S4"
+        }
+      ],
       "name": "VERCHER Mattéo",
       "nationality": "FR",
       "number": 147,
@@ -3562,5 +3582,5 @@
     }
   ],
   "total_riders": 154,
-  "updated_at": "2026-06-10T11:09:17.894378"
+  "updated_at": "2026-06-10T19:56:43.631004"
 }

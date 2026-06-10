@@ -1,0 +1,30 @@
+{
+  "race": "Tre Valli Varesine",
+  "race_slug": "tre-valli-varesine-2026",
+  "riders": [
+    {
+      "birthdate": "2003-11-21",
+      "birthplace_lat": 42.6384261,
+      "birthplace_lon": 12.674297,
+      "name": "PELLIZZARI Giulio",
+      "nationality": "IT",
+      "number": null,
+      "place_of_birth": "Italy",
+      "rider_url": "rider/giulio-pellizzari",
+      "specialties": {
+        "career": {
+          "climber": 1414,
+          "gc": 1261,
+          "hills": 374,
+          "one_day_races": 219,
+          "sprint": 0,
+          "tt": 111
+        }
+      },
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
+    }
+  ],
+  "total_riders": 1,
+  "updated_at": "2026-06-10T20:03:25.290156"
+}

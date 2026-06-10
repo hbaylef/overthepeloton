@@ -1,0 +1,118 @@
+{
+  "race": "Tour de Luxembourg",
+  "race_slug": "tour-de-luxembourg-2026",
+  "riders": [
+    {
+      "birthdate": "1990-9-16",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145,
+      "name": "NAESEN Oliver",
+      "nationality": "BE",
+      "number": null,
+      "place_of_birth": "Belgium",
+      "rider_url": "rider/oliver-naesen",
+      "specialties": {
+        "career": {
+          "climber": 421,
+          "gc": 1537,
+          "hills": 2410,
+          "one_day_races": 4419,
+          "sprint": 1326,
+          "tt": 49
+        }
+      },
+      "team": "Decathlon CMA CGM Team (WT)",
+      "team_url": "team/decathlon-cma-cgm-team-2026"
+    },
+    {
+      "birthdate": "2001-8-10",
+      "birthplace_lat": 54.3151594,
+      "birthplace_lon": -1.9181532,
+      "name": "HAYTER Leo",
+      "nationality": "GB",
+      "number": null,
+      "place_of_birth": "Great Britain",
+      "rider_url": "rider/leo-hayter",
+      "specialties": {
+        "career": {
+          "climber": 72,
+          "gc": 117,
+          "hills": 64,
+          "one_day_races": 52,
+          "sprint": 0,
+          "tt": 103
+        }
+      },
+      "team": "Modern Adventure Pro Cycling (PRT)",
+      "team_url": "team/modern-adventure-pro-cycling-2026"
+    },
+    {
+      "birthdate": "2003-5-20",
+      "birthplace_lat": 39.7837304,
+      "birthplace_lon": -100.445882,
+      "name": "KESSLER Cole",
+      "nationality": "US",
+      "number": null,
+      "place_of_birth": "United States",
+      "rider_url": "rider/cole-kessler",
+      "specialties": {
+        "career": {
+          "climber": 6,
+          "gc": 5,
+          "hills": 12,
+          "one_day_races": 6,
+          "sprint": 17,
+          "tt": 13
+        }
+      },
+      "team": "Modern Adventure Pro Cycling (PRT)",
+      "team_url": "team/modern-adventure-pro-cycling-2026"
+    },
+    {
+      "birthdate": "2004-1-28",
+      "birthplace_lat": 39.4071857,
+      "birthplace_lon": -9.1346004,
+      "name": "MORGADO António",
+      "nationality": "PT",
+      "number": null,
+      "place_of_birth": "Caldas da Rainha",
+      "rider_url": "rider/antonio-morgado",
+      "specialties": {
+        "career": {
+          "climber": 262,
+          "gc": 154,
+          "hills": 441,
+          "one_day_races": 1342,
+          "sprint": 112,
+          "tt": 114
+        }
+      },
+      "team": "UAE Team Emirates - XRG (WT)",
+      "team_url": "team/uae-team-emirates-xrg-2026"
+    },
+    {
+      "birthdate": "1991-3-25",
+      "birthplace_lat": 52.2434979,
+      "birthplace_lon": 5.6343227,
+      "name": "KELDERMAN Wilco",
+      "nationality": "NL",
+      "number": null,
+      "place_of_birth": "Netherlands",
+      "rider_url": "rider/wilco-kelderman",
+      "specialties": {
+        "career": {
+          "climber": 5314,
+          "gc": 6134,
+          "hills": 2562,
+          "one_day_races": 754,
+          "sprint": 121,
+          "tt": 2717
+        }
+      },
+      "team": "Team Visma | Lease a Bike (WT)",
+      "team_url": "team/team-visma-lease-a-bike-2026"
+    }
+  ],
+  "total_riders": 5,
+  "updated_at": "2026-06-10T20:02:40.044547"
+}

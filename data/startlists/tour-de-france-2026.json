@@ -1715,28 +1715,6 @@
       "team_url": "team/uae-team-emirates-xrg-2026"
     },
     {
-      "birthdate": "1993-11-22",
-      "birthplace_lat": 41.2241992,
-      "birthplace_lon": 1.7256327,
-      "name": "SOLER Marc",
-      "nationality": "ES",
-      "number": null,
-      "place_of_birth": "Vilanova i la Geltrú",
-      "rider_url": "rider/marc-soler",
-      "specialties": {
-        "career": {
-          "climber": 3212,
-          "gc": 2800,
-          "hills": 1334,
-          "one_day_races": 300,
-          "sprint": 32,
-          "tt": 776
-        }
-      },
-      "team": "UAE Team Emirates - XRG (WT)",
-      "team_url": "team/uae-team-emirates-xrg-2026"
-    },
-    {
       "birthdate": "1998-4-2",
       "birthplace_lat": 33.4484367,
       "birthplace_lon": -112.074141,
@@ -1797,6 +1775,28 @@
           "one_day_races": 1865,
           "sprint": 571,
           "tt": 579
+        }
+      },
+      "team": "UAE Team Emirates - XRG (WT)",
+      "team_url": "team/uae-team-emirates-xrg-2026"
+    },
+    {
+      "birthdate": "1994-3-6",
+      "birthplace_lat": 50.938361,
+      "birthplace_lon": 6.959974,
+      "name": "POLITT Nils",
+      "nationality": "DE",
+      "number": null,
+      "place_of_birth": "Cologne",
+      "rider_url": "rider/nils-politt",
+      "specialties": {
+        "career": {
+          "climber": 156,
+          "gc": 1088,
+          "hills": 1481,
+          "one_day_races": 2415,
+          "sprint": 516,
+          "tt": 1352
         }
       },
       "team": "UAE Team Emirates - XRG (WT)",
@@ -2310,5 +2310,5 @@
     }
   ],
   "total_riders": 105,
-  "updated_at": "2026-06-10T11:09:28.991683"
+  "updated_at": "2026-06-10T19:56:53.158948"
 }

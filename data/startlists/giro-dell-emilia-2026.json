@@ -1,0 +1,52 @@
+{
+  "race": "Giro dell'Emilia",
+  "race_slug": "giro-dell-emilia-2026",
+  "riders": [
+    {
+      "birthdate": "1996-5-9",
+      "birthplace_lat": 42.6384261,
+      "birthplace_lon": 12.674297,
+      "name": "FORTUNATO Lorenzo",
+      "nationality": "IT",
+      "number": null,
+      "place_of_birth": "Italy",
+      "rider_url": "rider/lorenzo-fortunato",
+      "specialties": {
+        "career": {
+          "climber": 1907,
+          "gc": 1858,
+          "hills": 363,
+          "one_day_races": 369,
+          "sprint": 15,
+          "tt": 8
+        }
+      },
+      "team": "XDS Astana Team (WT)",
+      "team_url": "team/xds-astana-team-2026"
+    },
+    {
+      "birthdate": "2003-11-21",
+      "birthplace_lat": 42.6384261,
+      "birthplace_lon": 12.674297,
+      "name": "PELLIZZARI Giulio",
+      "nationality": "IT",
+      "number": null,
+      "place_of_birth": "Italy",
+      "rider_url": "rider/giulio-pellizzari",
+      "specialties": {
+        "career": {
+          "climber": 1414,
+          "gc": 1261,
+          "hills": 374,
+          "one_day_races": 219,
+          "sprint": 0,
+          "tt": 111
+        }
+      },
+      "team": "Red Bull - BORA - hansgrohe (WT)",
+      "team_url": "team/red-bull-bora-hansgrohe-2026"
+    }
+  ],
+  "total_riders": 2,
+  "updated_at": "2026-06-10T20:03:04.689742"
+}

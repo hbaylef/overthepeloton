@@ -1,0 +1,49 @@
+{
+  "climbs": [
+    {
+      "climb_url": "location/monteberg",
+      "km_before_finish": 123,
+      "length_km": 1.3,
+      "name": "Monteberg",
+      "steepness": 4.6,
+      "top_m": 95
+    },
+    {
+      "climb_url": "location/baneberg",
+      "km_before_finish": 129,
+      "length_km": 1.2,
+      "name": "Baneberg",
+      "steepness": 6.3,
+      "top_m": 136
+    },
+    {
+      "climb_url": "location/baneberg",
+      "km_before_finish": 109,
+      "length_km": 1.2,
+      "name": "Baneberg",
+      "steepness": 6.3,
+      "top_m": 127
+    },
+    {
+      "climb_url": "location/kemmelberg",
+      "km_before_finish": 104,
+      "length_km": 0.8,
+      "name": "Kemmelberg",
+      "steepness": 9.7,
+      "top_m": 136
+    },
+    {
+      "climb_url": "location/kemmelberg",
+      "km_before_finish": 121,
+      "length_km": 0.4,
+      "name": "Kemmelberg",
+      "steepness": 10.0,
+      "top_m": 154
+    }
+  ],
+  "is_one_day_race": true,
+  "race": "Bredene Koksijde Classic",
+  "race_slug": "bredene-koksijde-classic-2026",
+  "source": "procyclingstats",
+  "updated_at": "2026-06-10T20:43:19.335677"
+}

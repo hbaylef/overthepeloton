@@ -1,0 +1,65 @@
+{
+  "climbs": [
+    {
+      "climb_url": "location/brenha",
+      "km_before_finish": 120,
+      "length_km": 3.2,
+      "name": "Brenha",
+      "steepness": 4.5,
+      "top_m": 155
+    },
+    {
+      "climb_url": "location/rua-parque-florestal",
+      "km_before_finish": 66,
+      "length_km": 2.3,
+      "name": "Rua Parque Florestal",
+      "steepness": 7.8,
+      "top_m": 191
+    },
+    {
+      "climb_url": "location/rua-parque-florestal",
+      "km_before_finish": 36,
+      "length_km": 2.3,
+      "name": "Rua Parque Florestal",
+      "steepness": 7.8,
+      "top_m": 189
+    },
+    {
+      "climb_url": "location/rua-parque-florestal",
+      "km_before_finish": 7,
+      "length_km": 2.3,
+      "name": "Rua Parque Florestal",
+      "steepness": 7.8,
+      "top_m": 188
+    },
+    {
+      "climb_url": "location/enforca-caes",
+      "km_before_finish": 52,
+      "length_km": 0.8,
+      "name": "Enforca Cães",
+      "steepness": 7.3,
+      "top_m": 89
+    },
+    {
+      "climb_url": "location/enforca-caes",
+      "km_before_finish": 22,
+      "length_km": 0.8,
+      "name": "Enforca Cães",
+      "steepness": 7.3,
+      "top_m": 93
+    },
+    {
+      "climb_url": "location/enforca-caes",
+      "km_before_finish": -7,
+      "length_km": 0.8,
+      "name": "Enforca Cães",
+      "steepness": 7.3,
+      "top_m": 88
+    }
+  ],
+  "is_one_day_race": true,
+  "race": "Figueira Champions Classic",
+  "race_slug": "figueira-champions-classic-2026",
+  "source": "procyclingstats",
+  "updated_at": "2026-06-10T20:44:12.617275"
+}

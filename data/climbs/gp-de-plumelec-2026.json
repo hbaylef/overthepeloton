@@ -1,0 +1,25 @@
+{
+  "climbs": [
+    {
+      "climb_url": "location/cote-de-cadoudal",
+      "km_before_finish": 123,
+      "length_km": 1.9,
+      "name": "Côte de Cadoudal",
+      "steepness": 5.7,
+      "top_m": 132
+    },
+    {
+      "climb_url": "location/le-mont",
+      "km_before_finish": 153,
+      "length_km": 0.3,
+      "name": "KOM",
+      "steepness": 6.5,
+      "top_m": 128
+    }
+  ],
+  "is_one_day_race": true,
+  "race": "Grand Prix du Morbihan",
+  "race_slug": "gp-de-plumelec-2026",
+  "source": "procyclingstats",
+  "updated_at": "2026-06-10T20:44:28.740408"
+}

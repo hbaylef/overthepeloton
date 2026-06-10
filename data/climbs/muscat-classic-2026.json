@@ -1,0 +1,57 @@
+{
+  "climbs": [
+    {
+      "climb_url": "location/bousher-al-amerat",
+      "km_before_finish": 86,
+      "length_km": 3.8,
+      "name": "Al Jabal Road",
+      "steepness": 8.5,
+      "top_m": 362
+    },
+    {
+      "climb_url": "location/wadi-kabir",
+      "km_before_finish": 38,
+      "length_km": 2.2,
+      "name": "Wadi Al Kabir",
+      "steepness": 6.3,
+      "top_m": 138
+    },
+    {
+      "climb_url": "location/al-jissah-climb",
+      "km_before_finish": 44,
+      "length_km": 1.1,
+      "name": "Al Jissah",
+      "steepness": 9.3,
+      "top_m": 143
+    },
+    {
+      "climb_url": "location/al-jissah-climb",
+      "km_before_finish": 10,
+      "length_km": 1.1,
+      "name": "Al Jissah",
+      "steepness": 9.3,
+      "top_m": 122
+    },
+    {
+      "climb_url": "location/al-hamriyah",
+      "km_before_finish": 62,
+      "length_km": 1.0,
+      "name": "Hamriyah",
+      "steepness": 8.6,
+      "top_m": 137
+    },
+    {
+      "climb_url": "location/al-hamriyah",
+      "km_before_finish": 28,
+      "length_km": 1.0,
+      "name": "Hamriyah",
+      "steepness": 8.6,
+      "top_m": 137
+    }
+  ],
+  "is_one_day_race": true,
+  "race": "Muscat Classic",
+  "race_slug": "muscat-classic-2026",
+  "source": "procyclingstats",
+  "updated_at": "2026-06-10T20:45:13.228664"
+}

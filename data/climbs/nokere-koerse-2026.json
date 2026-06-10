@@ -1,0 +1,105 @@
+{
+  "climbs": [
+    {
+      "climb_url": "location/eikenberg",
+      "km_before_finish": 137,
+      "length_km": 1.4,
+      "name": "Eikenberg",
+      "steepness": 4.4,
+      "top_m": 80
+    },
+    {
+      "climb_url": "location/hellestraat",
+      "km_before_finish": 119,
+      "length_km": 1.4,
+      "name": "Hellestraat",
+      "steepness": 3.6,
+      "top_m": 70
+    },
+    {
+      "climb_url": "location/holstraat",
+      "km_before_finish": 114,
+      "length_km": 1.1,
+      "name": "Holstraat",
+      "steepness": 4.0,
+      "top_m": 57
+    },
+    {
+      "climb_url": "location/waregemsestraat",
+      "km_before_finish": 1,
+      "length_km": 0.7,
+      "name": "Waregemsestraat",
+      "steepness": 4.2,
+      "top_m": 45
+    },
+    {
+      "climb_url": "location/petegemberg",
+      "km_before_finish": 109,
+      "length_km": 0.6,
+      "name": "Petegemberg",
+      "steepness": 6.0,
+      "top_m": 55
+    },
+    {
+      "climb_url": "location/lange-ast",
+      "km_before_finish": 83,
+      "length_km": 0.6,
+      "name": "Lange Ast",
+      "steepness": 4.3,
+      "top_m": 38
+    },
+    {
+      "climb_url": "location/lange-ast",
+      "km_before_finish": 52,
+      "length_km": 0.6,
+      "name": "Lange Ast",
+      "steepness": 4.3,
+      "top_m": 31
+    },
+    {
+      "climb_url": "location/lange-ast",
+      "km_before_finish": 20,
+      "length_km": 0.6,
+      "name": "Lange Ast",
+      "steepness": 4.3,
+      "top_m": 37
+    },
+    {
+      "climb_url": "location/pareelstraat",
+      "km_before_finish": 107,
+      "length_km": 0.5,
+      "name": "Pareelstraat",
+      "steepness": 4.9,
+      "top_m": 59
+    },
+    {
+      "climb_url": "location/nokereberg",
+      "km_before_finish": 101,
+      "length_km": 0.3,
+      "name": "Nokereberg",
+      "steepness": 5.3,
+      "top_m": 58
+    },
+    {
+      "climb_url": "location/nokereberg",
+      "km_before_finish": 69,
+      "length_km": 0.3,
+      "name": "Nokereberg",
+      "steepness": 5.3,
+      "top_m": 57
+    },
+    {
+      "climb_url": "location/nokereberg",
+      "km_before_finish": 38,
+      "length_km": 0.3,
+      "name": "Nokereberg",
+      "steepness": 5.3,
+      "top_m": 57
+    }
+  ],
+  "is_one_day_race": true,
+  "race": "Nokere Koerse",
+  "race_slug": "nokere-koerse-2026",
+  "source": "procyclingstats",
+  "updated_at": "2026-06-10T20:45:16.586219"
+}

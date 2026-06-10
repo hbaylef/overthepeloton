@@ -1,0 +1,41 @@
+{
+  "climbs": [
+    {
+      "climb_url": "location/alto-de-celin",
+      "km_before_finish": 142,
+      "length_km": 6.8,
+      "name": "Alto de Celín / Dalías",
+      "steepness": 4.7,
+      "top_m": 513
+    },
+    {
+      "climb_url": "location/alto-de-berja",
+      "km_before_finish": 91,
+      "length_km": 3.0,
+      "name": "Alto de Berja",
+      "steepness": 4.0,
+      "top_m": 355
+    },
+    {
+      "climb_url": "location/alto-de-rio-chico",
+      "km_before_finish": 104,
+      "length_km": 2.4,
+      "name": "Alto de Río Chico",
+      "steepness": 4.6,
+      "top_m": 142
+    },
+    {
+      "climb_url": "location/cuesta-de-almerimar",
+      "km_before_finish": 52,
+      "length_km": 1.1,
+      "name": "Alto Cuesta de Almerimar",
+      "steepness": 4.7,
+      "top_m": 54
+    }
+  ],
+  "is_one_day_race": true,
+  "race": "Clasica de Almeria",
+  "race_slug": "clasica-de-almeria-2026",
+  "source": "procyclingstats",
+  "updated_at": "2026-06-10T20:43:30.797958"
+}
