@@ -21,9 +21,10 @@ import time
 import logging
 from datetime import datetime, date, timedelta
 from pathlib import Path
-from typing import Optional
+from typing import List, Optional
 
 import cloudscraper
+from bs4 import BeautifulSoup
 from procyclingstats import Race, RaceStartlist
 
 import db  # local module: Turso/SQLite store (build-order step 2)
@@ -116,6 +117,164 @@ CALENDAR = {
     "tour-of-lombardy":          ("il-lombardia",                          "Il Lombardia",                   "IT", True,  10),
     "paris-tours":               ("paris-tours",                           "Paris-Tours",                    "FR", True,  10),
 }
+
+
+# ---------------------------------------------------------------------------
+# PCS season-calendar discovery (Phase A).
+# CALENDAR above stays the hand-tuned base (display names, cyclingstage_slug,
+# ONE_DAY_OVERRIDE keys); discovery extends it to the FULL WorldTour + ProSeries
+# season so no race is missed. Discovered races run through the same enrichment
+# as CALENDAR ones. If discovery fails (PCS down), we fall back to CALENDAR
+# alone — never less than today's 37 races.
+# ---------------------------------------------------------------------------
+
+# Circuit codes on PCS's races.php filter, VERIFIED live (2026-06-10) from the
+# filter form's <select name="circuit">: 1 = "UCI WorldTour",
+# 26 = "UCI ProSeries". (Others, for reference: 24 = Women's WorldTour,
+# 13 = Europe Tour.)
+PCS_CIRCUITS = {"UCI WorldTour": 1, "UCI ProSeries": 26}
+PCS_CALENDAR_URL = ("https://www.procyclingstats.com/races.php"
+                    "?year={year}&circuit={circuit}&class=&filter=Filter")
+
+# PCS occasionally renames a race's canonical slug between seasons (the old
+# slug usually still resolves). Map a races.php-discovered slug back to the
+# CALENDAR pcs_slug it corresponds to, so a rename reconciles to the hand-tuned
+# entry instead of duplicating the race.
+PCS_SLUG_ALIASES = {
+    "tour-auvergne-rhone-alpes": "criterium-du-dauphine",        # renamed 2026
+    "vuelta-a-la-comunidad-valenciana": "setmana-ciclista-valenciana",
+}
+
+# PCS listing names carry a gender/sponsor tail the race page itself drops
+# ("Omloop Nieuwsblad ME", "Surf Coast Classic - Men"). Only used for fallback
+# display names; enrichment overwrites with the race page's own name.
+_LISTING_NAME_TAIL_RE = re.compile(r"\s*(?:\bME\b|-\s*Men)\s*$")
+
+_CAL_ROW_DATE_RE = re.compile(r"(\d{2})\.(\d{2})")
+
+
+def _cal_iso_date(token: str, year: int) -> Optional[str]:
+    """'20.01' → '2026-01-20'."""
+    m = _CAL_ROW_DATE_RE.fullmatch(token.strip())
+    return f"{year}-{m.group(2)}-{m.group(1)}" if m else None
+
+
+def parse_calendar_html(html: str, year: int) -> List[dict]:
+    """Parse one races.php season-calendar page into race rows.
+
+    Each table row holds: a date ('01.02') or range ('20.01 - 25.01'), a flag
+    span, a race/{slug}/{year}[/gc|/result] link, and the UCI class in the last
+    cell. Returns [{pcs_slug, name, nationality, startdate, enddate, uci_class}],
+    de-duplicated by slug.
+    """
+    out, seen = [], set()
+    soup = BeautifulSoup(html, "html.parser")
+    link_re = re.compile(rf"^race/([^/]+)/{year}(?:/|$)")
+    for tr in soup.select("table tr"):
+        a = tr.find("a", href=link_re)
+        if a is None:
+            continue
+        slug = link_re.match(a["href"]).group(1)
+        if slug in seen:
+            continue
+        seen.add(slug)
+        tds = tr.find_all("td")
+        dates = _CAL_ROW_DATE_RE.findall(tds[0].get_text()) if tds else []
+        startdate = f"{year}-{dates[0][1]}-{dates[0][0]}" if dates else None
+        enddate = f"{year}-{dates[-1][1]}-{dates[-1][0]}" if dates else None
+        flag = tr.find("span", class_="flag")
+        nat = None
+        if flag:
+            codes = [c for c in flag.get("class", []) if c != "flag"]
+            nat = codes[0].upper() if codes else None
+        out.append({
+            "pcs_slug": slug,
+            "name": a.get_text(strip=True),
+            "nationality": nat,
+            "startdate": startdate,
+            "enddate": enddate,
+            "uci_class": tds[-1].get_text(strip=True) if tds else None,
+        })
+    return out
+
+
+def discover_calendar(year: int) -> Optional[List[dict]]:
+    """Fetch the full WT + ProSeries season calendar from PCS.
+
+    Returns the combined race rows, or None when NO circuit page could be
+    fetched (caller then proceeds with the hardcoded CALENDAR alone). A partial
+    result (one circuit down) is still returned — the CALENDAR superset rule
+    protects the missing races.
+    """
+    rows, fetched = [], 0
+    for circuit_name, code in PCS_CIRCUITS.items():
+        url = PCS_CALENDAR_URL.format(year=year, circuit=code)
+        try:
+            log.info(f"Discovering {circuit_name} {year} calendar: {url}")
+            r = _get_scraper().get(url, timeout=30)
+            if r.status_code != 200:
+                log.warning(f"  calendar: HTTP {r.status_code}")
+                continue
+            page_rows = parse_calendar_html(r.text, year)
+            log.info(f"  {len(page_rows)} {circuit_name} races listed")
+            rows.extend(page_rows)
+            fetched += 1
+        except Exception as e:
+            log.warning(f"  calendar fetch failed: {e}")
+        time.sleep(DELAY_BETWEEN_REQUESTS)
+    return rows if fetched else None
+
+
+def _entry(pcs_slug: str, name: str, nationality: Optional[str],
+           is_one_day: bool, month: int, from_calendar: bool,
+           startdate: Optional[str] = None, enddate: Optional[str] = None,
+           uci_class: Optional[str] = None) -> dict:
+    return {
+        "pcs_slug": pcs_slug, "name": name, "nationality": nationality,
+        "is_one_day": is_one_day, "month": month,
+        "from_calendar": from_calendar,
+        "startdate": startdate, "enddate": enddate, "uci_class": uci_class,
+    }
+
+
+def calendar_entries() -> dict:
+    """The hand-tuned CALENDAR as {cs_slug: entry-dict}."""
+    return {cs: _entry(*vals, from_calendar=True)
+            for cs, vals in CALENDAR.items()}
+
+
+def build_effective_calendar(discovered: List[dict]) -> dict:
+    """Merge PCS-discovered races into the hand-tuned CALENDAR.
+
+    Superset, never a regression: every CALENDAR entry is kept (even when PCS
+    no longer lists it), and CALENDAR wins for the hand-tuned fields
+    (cyclingstage_slug = the dict key, display name, ONE_DAY_OVERRIDE keys).
+    A discovered race reconciles to a CALENDAR entry by pcs_slug, by
+    PCS_SLUG_ALIASES, or by matching the CALENDAR key itself (covers renames
+    where our cs key already uses the new PCS name). Anything left is a new
+    race keyed by its pcs_slug — so its internal slug is '{pcs_slug}-{year}'
+    and its cyclingstage_slug defaults to the pcs_slug (content-validated
+    downstream, wrong guesses fail safely).
+    """
+    entries = calendar_entries()
+    by_pcs = {e["pcs_slug"]: cs for cs, e in entries.items()}
+    for d in discovered:
+        slug = d["pcs_slug"]
+        cs = by_pcs.get(PCS_SLUG_ALIASES.get(slug, slug))
+        if cs is None and slug in entries:
+            cs = slug
+        if cs is not None:
+            # Hand-tuned fields win; discovery just fills the season metadata.
+            entries[cs].update(startdate=d["startdate"], enddate=d["enddate"],
+                               uci_class=d["uci_class"])
+            continue
+        name = _LISTING_NAME_TAIL_RE.sub("", d["name"] or slug.replace("-", " "))
+        month = int(d["startdate"][5:7]) if d["startdate"] else 12
+        is_one_day = bool(d["uci_class"] and d["uci_class"].startswith("1."))
+        entries[slug] = _entry(slug, name, d["nationality"], is_one_day, month,
+                               from_calendar=False, startdate=d["startdate"],
+                               enddate=d["enddate"], uci_class=d["uci_class"])
+    return entries
 
 
 # Manual override for one-day race profile icons. PCS returns "p0" for both
@@ -302,10 +461,13 @@ def scrape_one_day_profile_icon(pcs_slug: str, year: int) -> Optional[str]:
 
 def build_fallback_entry(cs_slug: str, pcs_slug: str, name: str,
                           nationality: str, is_one_day: bool, month: int,
-                          year: int) -> dict:
+                          year: int, startdate: Optional[str] = None,
+                          enddate: Optional[str] = None,
+                          uci_class: Optional[str] = None) -> dict:
     """
     Build a minimal race entry when PCS scraping fails for this race.
-    Sets approximate date (15th of given month) so it sorts roughly right.
+    Uses the season-calendar dates/class when discovery provided them; else an
+    approximate date (15th of given month) so it sorts roughly right.
     """
     approx_date = f"{year}-{month:02d}-15"
     return {
@@ -316,10 +478,10 @@ def build_fallback_entry(cs_slug: str, pcs_slug: str, name: str,
         "name": name,
         "year": year,
         "nationality": nationality,
-        "startdate": approx_date,
-        "enddate": approx_date,
+        "startdate": startdate or approx_date,
+        "enddate": enddate or startdate or approx_date,
         "category": "Men Elite",
-        "uci_tour": None,
+        "uci_tour": uci_class,
         "is_one_day_race": is_one_day,
         "edition": None,
         "stages": [],
@@ -501,12 +663,28 @@ def main():
     today = datetime.now().date()   # Actions runs in UTC; date granularity is enough
     frozen = 0
 
+    # Phase A — discover the full WT + ProSeries season from PCS and merge it
+    # into the hand-tuned CALENDAR (superset; CALENDAR wins hand-tuned fields).
+    discovered = discover_calendar(YEAR)
+    if discovered is None:
+        log.warning("PCS calendar discovery unavailable — "
+                    "proceeding with the hardcoded CALENDAR only")
+        entries = calendar_entries()
+    else:
+        entries = build_effective_calendar(discovered)
+        log.info(f"Effective calendar: {len(entries)} races "
+                 f"({len(CALENDAR)} hand-tuned + "
+                 f"{len(entries) - len(CALENDAR)} discovered)")
+
     all_races = []
     startlist_count = 0
     pcs_ok = 0
     pcs_fail = 0
 
-    for cs_slug, (pcs_slug, name, nationality, is_one_day, month) in CALENDAR.items():
+    for cs_slug, entry in entries.items():
+        pcs_slug = entry["pcs_slug"]
+        name = entry["name"]
+        is_one_day = entry["is_one_day"]
         race_url = f"race/{pcs_slug}/{YEAR}"
 
         # 0) Skip races that are over: reuse last run's entry + existing startlist
@@ -526,18 +704,25 @@ def main():
         time.sleep(DELAY_BETWEEN_REQUESTS)
 
         if info is None:
-            # PCS didn't have this race — use fallback with hardcoded basics
+            # PCS didn't have this race — use fallback with calendar basics
             log.info(f"  → No PCS data, using fallback for: {name}")
-            info = build_fallback_entry(cs_slug, pcs_slug, name, nationality,
-                                         is_one_day, month, YEAR)
+            info = build_fallback_entry(cs_slug, pcs_slug, name,
+                                         entry["nationality"], is_one_day,
+                                         entry["month"], YEAR,
+                                         startdate=entry["startdate"],
+                                         enddate=entry["enddate"],
+                                         uci_class=entry["uci_class"])
             pcs_fail += 1
         else:
             # Override the cyclingstage_slug from our master mapping.
-            # Also force the display name from CALENDAR so PCS's verbose titles
-            # (e.g. "Donostia San Sebastian Klasikoa") don't replace our curated
-            # ones (e.g. "Clásica de San Sebastián").
             info["cyclingstage_slug"] = cs_slug
-            info["name"] = name
+            if entry["from_calendar"]:
+                # Force the display name from CALENDAR so PCS's verbose titles
+                # (e.g. "Donostia San Sebastian Klasikoa") don't replace our
+                # curated ones (e.g. "Clásica de San Sebastián").
+                info["name"] = name
+            elif not info.get("name"):
+                info["name"] = name   # listing name beats an empty parse
             pcs_ok += 1
 
         # For one-day races, fetch the race-level profile icon (the library

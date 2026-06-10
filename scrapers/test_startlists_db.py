@@ -25,10 +25,18 @@ import scrape_results as re_
 import geocode_birthplaces as ge
 
 
+# Clients opened by tests, closed in _run(). libsql's sync client runs a
+# NON-DAEMON background thread — an unclosed client keeps the interpreter
+# alive forever after the tests finish (observed hang, 2026-06-10).
+_clients = []
+
+
 def _fresh_db():
     p = Path(tempfile.mkdtemp(prefix="otp_sl_")) / "t.db"
     os.environ["OVERTHEPELOTON_DB"] = str(p)
-    return db.open_db()
+    client = db.open_db()
+    _clients.append(client)
+    return client
 
 
 def _tmpdir(prefix):
@@ -155,11 +163,18 @@ def test_birthplaces_cache_seed_and_save():
 def _run():
     tests = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     passed = 0
-    for t in tests:
-        t()
-        print(f"  [ok] {t.__name__}")
-        passed += 1
-    print(f"\n{passed}/{len(tests)} passed")
+    try:
+        for t in tests:
+            t()
+            print(f"  [ok] {t.__name__}")
+            passed += 1
+        print(f"\n{passed}/{len(tests)} passed")
+    finally:
+        for c in _clients:          # else the process never exits (see _clients)
+            try:
+                c.close()
+            except Exception:
+                pass
 
 
 if __name__ == "__main__":
