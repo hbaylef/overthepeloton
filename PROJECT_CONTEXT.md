@@ -12,7 +12,74 @@
 Running in **Claude Code** locally at `C:\Users\PC\Desktop\cycling-dashboard`.
 Site is live; each verified increment is committed + pushed (GitHub Pages).
 
-### 🟢 LATEST SESSION (2026-06-10) — IDEMPOTENCY PASS: skip immutable data already captured
+### 🟡 LATEST SESSION (2026-06-10, pt 2) — PHASE A: discover ALL 2026 WT + ProSeries races from PCS (BUILT + REVIEWED, in the working tree — NOT yet pushed)
+
+**The plan (user-approved, two phases):** expand the project from the ~37
+hardcoded races to the FULL 2026 UCI WorldTour + ProSeries calendars, then
+harvest the missing routes from La Flamme Rouge into Turso.
+**Phase A** (race discovery) is **done and user-reviewed** (race list approved).
+**Phase B** (LFR GPX harvest) is **specified but NOT started** — see the
+updated §9 "La Flamme Rouge" for the agreed approach.
+
+**Phase A — what changed (`scrapers/scrape_races.py`):**
+- The hardcoded `CALENDAR` (~37 races) is no longer the only source: the
+  scraper now **discovers the season** from PCS's calendar pages
+  `races.php?year={Y}&circuit={code}&class=&filter=Filter`. Circuit codes
+  **verified live** on the races.php filter form (NOT guessed):
+  **1 = UCI WorldTour, 26 = UCI ProSeries** (24 = Women's WT, 13 = Europe Tour).
+  Fetched with the existing cloudscraper session; parsed by
+  `parse_calendar_html` (bs4; date/range, flag→nationality, race link→pcs_slug,
+  last cell→UCI class, de-duped).
+- `build_effective_calendar` merges discovery into `CALENDAR`. Rules:
+  **superset, never a regression** (every CALENDAR entry kept even if PCS drops
+  it; if the calendar fetch fails entirely → CALENDAR alone). **CALENDAR wins
+  hand-tuned fields** (cyclingstage_slug = dict key, curated display names,
+  `ONE_DAY_OVERRIDE`). Discovered races reconcile by pcs_slug, by
+  `PCS_SLUG_ALIASES`, or by matching the CALENDAR key itself.
+- **PCS renamed two slugs in 2026** (caught + aliased in `PCS_SLUG_ALIASES`,
+  else they'd duplicate): Dauphiné → `tour-auvergne-rhone-alpes`, Valenciana →
+  `vuelta-a-la-comunidad-valenciana`. Old slugs verified to still serve the
+  same race pages, so the existing pipeline keeps using them unchanged.
+- New races are FIRST-CLASS: same enrichment loop as CALENDAR ones (PCS race
+  info, one-day profile icon, startlist, `annotate_stage_types`, freeze,
+  change-aware Turso upsert) → they render on the site like any other race.
+  Internal slug = `{pcs_slug}-2026`; `cyclingstage_slug` defaults to the
+  pcs_slug (scrape_gpx content-validates, wrong guesses fail safely); fallback
+  entries now carry the real calendar dates + class (`uci_tour`) instead of the
+  month-15 approximation.
+- **Result (computed from the live listing, harvested 2026-06-10):** 37 → **98
+  races** = 36 of 37 CALENDAR entries matched + **8 new WT** (Great Ocean Road
+  Race, Brugge-De Panne, Eschborn-Frankfurt, Copenhagen Sprint, Tour de
+  Pologne, Cyclassics Hamburg, Bretagne Classic, Tour of Guangxi) + **53 new
+  ProSeries**. O Gran Camiño didn't match because it was **demoted to 2.1**
+  (Europe Tour) in 2026 — kept via the superset rule.
+- **Tests:** new `scrapers/test_discover_races.py` (6/6 — synthetic-HTML
+  parser, reconciliation/aliases/superset, fallback dates; also checks the
+  gitignored live fixture `scrapers/fixture/pcs_calendar_2026.json` when
+  present). Full suite **109/109 green**.
+
+**Side fix — test suite used to HANG at exit (pre-existing):** `libsql_client`'s
+sync client runs a **non-daemon background thread**; any test that opened a db
+client without `close()` kept the interpreter alive forever after "N/N passed".
+Four files affected (`test_migration2_db`, `test_publish`,
+`test_scrape_races_db`, `test_startlists_db`): their `_fresh_db()` now registers
+clients and `_run()` closes them in a `finally`. Production scrapers were never
+affected (they all call `client.close()`).
+
+**⏭️ WHERE WE ARE in the scraping expansion (do in order):**
+1. ✅ Phase A built + tested (109/109) + user-reviewed. Context docs pushed
+   (this commit); **the Phase A code itself is still uncommitted** in the
+   working tree, awaiting the user's go to push.
+2. ⏭️ Push Phase A (`scrape_races.py`, the 4 fixed test files,
+   `test_discover_races.py`) → trigger/await a "Daily scrape" Actions run →
+   verify ~98 races land in Turso + `data/races.json` and render on the site.
+   First run scrapes ~61 new races once (~10–15 min extra); finished ones then
+   freeze permanently. ProSeries startlists publish near race day (empty = OK).
+   scrape_gpx will try cyclingstage for new races (guessed slugs, content-
+   validated); most ProSeries will stay GPX-less → that's Phase B's target list.
+3. ⏭️ Phase B — LFR GPX harvest (LOCAL, attended, occasional): see §9.
+
+### 🟢 EARLIER SESSION (2026-06-10, pt 1) — IDEMPOTENCY PASS: skip immutable data already captured
 
 Pushed `933e689`. Immutable 2026 facts (rider birthplaces/birthdates, a race's
 climbs) are now captured **once** and then **permanently skipped** — only
@@ -326,11 +393,12 @@ aid — declined for now). See `R5_WEATHER.md` §8–9.
 - **Focus area 2 — close the GPX coverage gap.** ~14 races without routes (past
   races archived differently + upcoming 2026 routes not yet published). The
   Auvergne fix (`construct_cdn_gpx_urls()` + crawl the main race page) recovered
-  one. The **La Flamme Rouge fallback** (`scrape_lfr.py`, WT+ProSeries) is built
-  but ⛔ **PAUSED** — LFR is behind a Cloudflare managed challenge no HTTP scraper
-  can pass; **user is contacting the LFR admin** for blessed access. See §9 "La
-  Flamme Rouge" for the full diagnosis + resume options.
-- **R7 non-WT** stays a later-stage goal (the filter bar already buckets "the rest").
+  one. The **La Flamme Rouge fallback** (`scrape_lfr.py`, WT+ProSeries) is built;
+  the Cloudflare block is now solved by the **Phase B attended-Chrome approach**
+  (agreed 2026-06-10, not yet built) — see §9 "La Flamme Rouge". With Phase A's
+  ~98-race calendar the GPX gap grows to ~60+ targets, mostly ProSeries.
+- **R7 non-WT**: the ProSeries half is being delivered NOW by Phase A (calendar +
+  startlists for all 2026 WT+ProSeries races). Women's/Continental stay later-stage.
 
 ---
 
@@ -564,9 +632,12 @@ overthepeloton/
 ├── scrapers/
 │   ├── db.py                    ← Turso/SQLite store: connection + schema + helpers
 │   ├── publish.py               ← Turso → thin public slices (incl. downsampled routes)
-│   ├── scrape_races.py          ← races + startlists → Turso
+│   ├── scrape_races.py          ← races + startlists → Turso; discovers the FULL
+│   │                               WT+ProSeries season from PCS races.php (Phase A)
+│   ├── test_discover_races.py   ← no-network tests for discovery/reconciliation (6/6)
 │   ├── scrape_gpx.py            ← GPX → Turso gpx_files; SKIPS routes already stored
-│   ├── scrape_lfr.py            ← GPX FALLBACK: La Flamme Rouge (WT+ProSeries, local; PAUSED)
+│   ├── scrape_lfr.py            ← GPX FALLBACK: La Flamme Rouge (local; Phase B will
+│   │                               swap its fetch layer to CDP-Chrome + output to Turso)
 │   ├── test_scrape_lfr.py       ← no-network tests for the LFR fallback (9/9)
 │   ├── scrape_odds.py           ← Bet365 odds (PARKED; local-only)
 │   ├── enter_odds.py            ← manual odds entry
@@ -954,9 +1025,12 @@ a backlog, not in priority order. Several have open design questions noted.
   non-proxied machine, a more scrapable source, or the manual paste tool as the
   practical fallback. Still the "hardest part" of the project.
 
-### R7 — Extend to non-World-Tour races (later stage)
-- Broaden coverage beyond UCI World Tour: ProSeries, Continental, women's
-  racing, etc. Explicitly a **later-stage** goal once the above are solid.
+### R7 — Extend to non-World-Tour races  🔨 ProSeries half landing via Phase A
+- ✅ **ProSeries (men):** Phase A (2026-06-10, see §0) discovers the full UCI
+  ProSeries calendar from PCS and runs every race through the standard
+  pipeline — 53 new ProSeries races + 8 missing WT ones (37 → 98 total).
+  Built + reviewed; awaiting push + Actions verification.
+- ⏭️ **Women's racing, Continental:** still a later-stage goal.
 
 ### La Flamme Rouge supplemental GPX source — 🔨 TOOL BUILT (2026-06-07), calibrating
 Fallback for the GPX cyclingstage misses, **scoped to WorldTour + ProSeries** (user
@@ -981,19 +1055,52 @@ confirmed against the open-source `jalnichols/p-c` LFR scraper). Mechanics:
   challenge, not managed/Turnstile; and on this machine its TLS-fingerprint context
   also collides with the corporate TLS proxy. **Login secrets do NOT help** — the
   challenge is in front of login, and LFR's public GPX needs no login anyway.
-- ➡️ **Resume options when we return to LFR:** (1) **admin cooperation** — user is
-  contacting the LFR admin for a data export / blessed access (PREFERRED; pending
-  reply); (2) **`cf_clearance` cookie** — paste a browser-obtained Cloudflare
-  clearance cookie + matching UA into the scraper's fetch layer (IP/UA-bound,
-  expires in ~30 min–hours, semi-manual refresh); (3) **Playwright** headed real
-  browser (heavier, may still be flagged); (4) **browser-assisted import** (user
-  downloads `/maps/viewtrack/gpx/{id}` via their browser, a script ingests).
-- **STATUS: PAUSED pending the LFR admin's reply.** The scraper scaffolding
-  (`scrape_lfr.py`: target selection, parsing, GPX validation, index merge +
-  `scrape_gpx.py` preserve-logic) is built and unit-tested (9/9) — only the *fetch
-  layer* needs swapping for whichever resume option we pick. 11 WT+ProSeries races
-  still lack GPX (TDU, Flèche W., Romandie, Suisse, San Sebastián, Renewi, Britain,
-  Québec, Montréal, Lombardia, Paris-Tours).
+- ➡️ **Resume approach CHOSEN (2026-06-10) — "Phase B", attended real-Chrome via
+  CDP** (supersedes the earlier option list; admin reply never needed for this):
+  1. User launches their normal Chrome with
+     `chrome.exe --remote-debugging-port=9222 --user-data-dir="C:\lfr-profile"`,
+     visits la-flamme-rouge.eu and passes Cloudflare ONCE (the dedicated profile
+     persists `cf_clearance` between runs).
+  2. The script CONNECTS to that running browser via Playwright
+     `connect_over_cdp("http://localhost:9222")` — do NOT launch a fresh
+     automated Chrome (sets `navigator.webdriver`, gets challenged).
+  3. ALL network happens INSIDE the browser context (real TLS fingerprint +
+     cf_clearance): listing/race pages → navigate + parse `page.content()` with
+     the existing scrape_lfr parsing; GPX → in-page `fetch()` of
+     `/maps/viewtrack/gpx/{track_id}` via `page.evaluate`, validated by the
+     existing GPX gate. If a challenge appears mid-run, surface it and let the
+     user solve it in the visible window, then continue. (Auto-solve fallback =
+     SeleniumBase UC mode — do NOT build unless asked.)
+  This also dodges the corporate TLS proxy for LFR traffic (Chrome trusts the
+  proxy's root cert at the OS level). A real browser + occasional attended runs
+  is the right shape: LFR uploads GPX weeks ahead, so this is not a cron job.
+- **Phase B specification (agreed 2026-06-10, NOT yet built):**
+  - **Targets:** every WT+ProSeries 2026 race from Phase A with **no GPX in
+    Turso** (`db.has_gpx`). Find on LFR via name-search
+    (`/maps/races?...&name={q}&year[0]=2026`), keep `LFR_RACE_OVERRIDES` as the
+    escape hatch; expect more name-match misses for ProSeries than WT — log
+    unmatched races clearly.
+  - **Output:** store each GPX as a private blob via `db.put_gpx`
+    (`source="la_flamme_rouge"`, keyed by race slug + stage) — the same store
+    publish.py derives public routes from. ⚠️ `scrape_lfr.py` still targets the
+    LEGACY `gpx_index.json` files — its fetch layer AND its output layer must be
+    ported to Turso/db.py (parsing/matching/validation helpers stay).
+  - **Idempotent:** skip any race/track already stored; NEVER overwrite an
+    existing route (LFR is a fallback for missing routes only).
+  - **Local-only:** not in the Actions workflow (LFR blocks Actions IPs; no
+    display there). Keep the polite random 3–7 s delays. `playwright` goes in a
+    LOCAL/dev requirements file only, NOT the CI deps.
+  - **TLS gotcha for the WRITE side:** the Python → Turso write goes through
+    the corporate proxy (the browser dodges it, the DB client doesn't) → point
+    the client at the corporate CA bundle via `SSL_CERT_FILE` /
+    `REQUESTS_CA_BUNDLE`; verify the Turso write actually lands (no silent
+    failure). Exact env var to be confirmed when Phase B is built/run.
+  - Keep/extend the no-network unit tests for parsing/targeting/merge.
+- **STATUS: Phase B pending — start AFTER the Phase A push is verified in
+  Actions** (Phase A defines the target list). The scraper scaffolding
+  (`scrape_lfr.py` parsing/matching/validation, 9/9 tests) is reusable as-is;
+  swap the fetch layer to CDP-Chrome and the output to Turso. With the
+  calendar now at ~98 races, expect ~60+ GPX-less targets (most ProSeries).
 
 ### Smaller polish ideas (not committed to)
 - Search/filter box on the race list.
