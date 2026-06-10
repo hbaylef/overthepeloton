@@ -79,12 +79,13 @@ twice when the history force-push landed mid-run). It now **rebases onto
 origin/main and retries up to 5×** before failing. `publish.py` runs as its own
 ("Publish public slices from Turso") step before the commit.
 
-⏭️ **PENDING VERIFICATION (check next session, 2026-06-10):** trigger **"Daily
-scrape" → Run workflow** and confirm a clean green run end-to-end — especially
-(a) the **Publish** step is green, and (b) **Commit & push** is green (rebase+retry
-fix). The last two runs scraped+published fine but their *push* was rejected only
-because of the concurrent history rewrite; data was never at risk (it's in Turso,
-slices are regenerated). Also eyeball the live site after.
+✅ **GREEN RUN CONFIRMED (2026-06-10):** the daily scrape ran clean end-to-end —
+`Daily publish: 2026-06-10 11:22 UTC` (`f52df9d`) landed on origin/main. Both the
+(a) **Publish** step and (b) **Commit & push** step (rebase+retry fix) are green;
+the earlier push rejections were only the concurrent history rewrite, now past.
+Change-aware publish verified live: only **4** startlist files were rewritten
+(Dauphiné ongoing + grand-tour startlists firming up), the other slices skipped
+with zero churn. The push-hardening + Turso re-architecture are now fully done.
 
 ✅ **Otherwise the migration is complete.** `score_riders.py` is still manual (not
 in cron). See the `project-turso-rearchitecture` memory for the full build log.
