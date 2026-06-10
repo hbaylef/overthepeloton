@@ -7,12 +7,56 @@
 
 ---
 
-## 0. ⚠️ CURRENT STATUS — START HERE (updated 2026-06-09, end of session)
+## 0. ⚠️ CURRENT STATUS — START HERE (updated 2026-06-10, end of session)
 
 Running in **Claude Code** locally at `C:\Users\PC\Desktop\cycling-dashboard`.
 Site is live; each verified increment is committed + pushed (GitHub Pages).
 
-### 🟢 LATEST SESSION (2026-06-09) — DATA RE-ARCHITECTURE: raw data → private Turso, site reads thin slices
+### 🟢 LATEST SESSION (2026-06-10) — IDEMPOTENCY PASS: skip immutable data already captured
+
+Pushed `933e689`. Immutable 2026 facts (rider birthplaces/birthdates, a race's
+climbs) are now captured **once** and then **permanently skipped** — only
+genuinely-missing/empty entries keep retrying. Evolving data (rider career
+specialty points) keeps its normal 7-day refresh. Complements the GPX-skip +
+startlist-freeze idempotency from the Turso migration — same "check Turso, skip
+if already have it" principle. All skip logic is in pure, no-network helpers;
+each scraper gained a `--dry-run` that reports skipped-vs-fetched.
+
+- **`geocode_birthplaces.py`** — a town's coords are fixed once resolved →
+  permanent skip (no re-query). Stopped persisting a failed lookup as a `{None}`
+  entry (the old code then skipped it forever); failures now **retry next run**,
+  with an in-run `attempted` set to avoid hammering the same town twice in one
+  pass. New `has_coords` / `plan_geocode` helpers.
+- **`scrape_riders.py`** — re-fetch **only** for evolving career points (>7-day
+  staleness) or a brand-new rider; a missing birthdate/place no longer triggers a
+  network call on its own (dropped the old `"birthdate" in existing` clause). New
+  `merge_preserving_birth` keeps an already-stored birthdate/place when a flaky
+  PCS read returns them empty (no clobber). New `needs_refetch` helper.
+- **`scrape_climbs.py`** (one-day climbs) — a race whose climbs are already stored
+  is **skipped entirely** (no PCS call) via new `has_stored_climbs`; dropped the
+  7-day re-scrape (`cached_climbs` is now permanent for non-empty, removed
+  `CACHE_DAYS`). Empty/unpublished routes still retry.
+- **`derive_climbs.py`** (stage-race climbs) — a stage race already **derived +
+  named** is skipped (no re-derive, no PCS name fetch) via new `needs_processing`;
+  "named" = at least one real name OR a non-empty PCS pool already cached (so
+  climbs that legitimately match no pool entry don't force endless refetches).
+  Only races with no derived climbs yet, or all-unnamed-with-no-pool (names
+  pending), are processed.
+
+**Dry-run (temp DB seeded from on-disk slices; Turso/PCS/Nominatim unreachable
+here, so representative of steady state):** geocode **448** towns skip / 26 query;
+riders **1140** skip / 0; scrape_climbs **27** races skip / 10 fetch; derive_climbs
+**13** stage races skip / 2 pending. Tests: +2 geocode, +1 scrape_climbs, +4
+derive_climbs, new `test_scrape_riders.py` (6) — full suite **103/103 green**.
+
+⏭️ **Verify on the next Actions run:** the three steps now log a skip/fetch line
+(e.g. "Races with climbs already stored (skip): N"); confirm the counts against
+real Turso and that "Daily publish" is a near-empty diff (this only cuts redundant
+fetches, doesn't change stored/published data). The authoritative `--dry-run` runs
+in Actions. This delivers the "3 over-scraping fixes" the migration listed as
+pending.
+
+### 🟢 EARLIER SESSION (2026-06-09) — DATA RE-ARCHITECTURE: raw data → private Turso, site reads thin slices
 
 Big structural change. The daily scrape used to commit **all** raw data (PCS JSON +
 ~105 MB of GPX + caches) into this **public** repo, twice a day — bloating the repo
