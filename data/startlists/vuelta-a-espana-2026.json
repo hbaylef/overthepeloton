@@ -421,6 +421,28 @@
       "team_url": "team/soudal-quick-step-2026"
     },
     {
+      "birthdate": "1999-3-18",
+      "birthplace_lat": 42.6384261,
+      "birthplace_lon": 12.674297,
+      "name": "ZANA Filippo",
+      "nationality": "IT",
+      "number": null,
+      "place_of_birth": "Italy",
+      "rider_url": "rider/filippo-zana",
+      "specialties": {
+        "career": {
+          "climber": 1255,
+          "gc": 1306,
+          "hills": 648,
+          "one_day_races": 750,
+          "sprint": 12,
+          "tt": 73
+        }
+      },
+      "team": "Soudal Quick-Step (WT)",
+      "team_url": "team/soudal-quick-step-2026"
+    },
+    {
       "birthdate": "1996-6-25",
       "birthplace_lat": 54.3151594,
       "birthplace_lon": -1.9181532,
@@ -1103,6 +1125,6 @@
       "team_url": "team/burgos-burpellet-bh-2026"
     }
   ],
-  "total_riders": 50,
-  "updated_at": "2026-06-10T11:09:41.370040"
+  "total_riders": 51,
+  "updated_at": "2026-06-11T21:17:04.961193"
 }

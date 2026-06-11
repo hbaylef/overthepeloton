@@ -45,8 +45,30 @@
       },
       "team": "Lotto Intermarché (WT)",
       "team_url": "team/lotto-intermarche-2026"
+    },
+    {
+      "birthdate": "2004-1-31",
+      "birthplace_lat": 49.8158683,
+      "birthplace_lon": 6.1296751,
+      "name": "KOCKELMANN Mathieu",
+      "nationality": "LU",
+      "number": null,
+      "place_of_birth": "Luxembourg",
+      "rider_url": "rider/mathieu-kockelmann",
+      "specialties": {
+        "career": {
+          "climber": 3,
+          "gc": 20,
+          "hills": 130,
+          "one_day_races": 22,
+          "sprint": 62,
+          "tt": 25
+        }
+      },
+      "team": "Lotto Intermarché (WT)",
+      "team_url": "team/lotto-intermarche-2026"
     }
   ],
-  "total_riders": 2,
-  "updated_at": "2026-06-10T20:01:54.438727"
+  "total_riders": 3,
+  "updated_at": "2026-06-11T21:19:01.969459"
 }

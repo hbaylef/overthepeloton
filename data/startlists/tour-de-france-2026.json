@@ -2111,6 +2111,50 @@
       "team_url": "team/cofidis-2026"
     },
     {
+      "birthdate": "1995-1-20",
+      "birthplace_lat": 50.8914035,
+      "birthplace_lon": 3.063026,
+      "name": "ALLEGAERT Piet",
+      "nationality": "BE",
+      "number": null,
+      "place_of_birth": "Moorslede",
+      "rider_url": "rider/piet-allegaert",
+      "specialties": {
+        "career": {
+          "climber": 19,
+          "gc": 147,
+          "hills": 485,
+          "one_day_races": 1446,
+          "sprint": 826,
+          "tt": 140
+        }
+      },
+      "team": "Cofidis (PRT)",
+      "team_url": "team/cofidis-2026"
+    },
+    {
+      "birthdate": "1995-10-30",
+      "birthplace_lat": 51.1610826,
+      "birthplace_lon": 4.9903187,
+      "name": "BIERMANS Jenthe",
+      "nationality": "BE",
+      "number": null,
+      "place_of_birth": "Geel",
+      "rider_url": "rider/jenthe-biermans",
+      "specialties": {
+        "career": {
+          "climber": 116,
+          "gc": 297,
+          "hills": 710,
+          "one_day_races": 1590,
+          "sprint": 591,
+          "tt": 56
+        }
+      },
+      "team": "Cofidis (PRT)",
+      "team_url": "team/cofidis-2026"
+    },
+    {
       "birthdate": "1992-6-11",
       "birthplace_lat": 46.603354,
       "birthplace_lon": 1.8883335,
@@ -2309,6 +2353,6 @@
       "team_url": "team/pinarello-q365-pro-cycling-team-2026"
     }
   ],
-  "total_riders": 105,
-  "updated_at": "2026-06-10T19:56:53.158948"
+  "total_riders": 107,
+  "updated_at": "2026-06-11T21:16:51.590992"
 }

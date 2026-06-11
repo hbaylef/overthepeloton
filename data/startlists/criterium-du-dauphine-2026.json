@@ -332,6 +332,10 @@
         {
           "rank": 1,
           "stage": "S3"
+        },
+        {
+          "rank": 1,
+          "stage": "S5"
         }
       ],
       "name": "VAN AERT Wout",
@@ -2058,6 +2062,12 @@
       "birthdate": "1994-7-8",
       "birthplace_lat": 51.1638175,
       "birthplace_lon": 10.4478313,
+      "medals": [
+        {
+          "rank": 3,
+          "stage": "S5"
+        }
+      ],
       "name": "BAUHAUS Phil",
       "nationality": "DE",
       "number": 123,
@@ -2716,6 +2726,12 @@
       "birthdate": "1994-2-13",
       "birthplace_lat": 47.6238204,
       "birthplace_lon": 7.2401542,
+      "medals": [
+        {
+          "rank": 2,
+          "stage": "S5"
+        }
+      ],
       "name": "HOFSTETTER Hugo",
       "nationality": "FR",
       "number": 164,
@@ -3588,5 +3604,5 @@
     }
   ],
   "total_riders": 154,
-  "updated_at": "2026-06-11T11:55:18.956776"
+  "updated_at": "2026-06-11T21:16:40.262083"
 }
