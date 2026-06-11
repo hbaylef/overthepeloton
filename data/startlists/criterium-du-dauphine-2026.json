@@ -1743,6 +1743,7 @@
       "team_url": "team/movistar-team-2026"
     },
     {
+      "abandoned_stage": "S5",
       "birthdate": "1996-3-2",
       "birthplace_lat": -0.2292424,
       "birthplace_lon": -79.5990372,
@@ -1761,6 +1762,7 @@
           "tt": 243
         }
       },
+      "status": "DNS",
       "team": "Movistar Team (WT)",
       "team_url": "team/movistar-team-2026"
     },
@@ -1831,6 +1833,7 @@
       "team_url": "team/movistar-team-2026"
     },
     {
+      "abandoned_stage": "S5",
       "birthdate": "2003-8-16",
       "birthplace_lat": 41.6200024,
       "birthplace_lon": -4.7259906,
@@ -1849,6 +1852,7 @@
           "tt": 584
         }
       },
+      "status": "DNS",
       "team": "Movistar Team (WT)",
       "team_url": "team/movistar-team-2026"
     },
@@ -2117,6 +2121,7 @@
       "team_url": "team/bahrain-victorious-2026"
     },
     {
+      "abandoned_stage": "S5",
       "birthdate": "1994-10-19",
       "birthplace_lat": 46.1199444,
       "birthplace_lon": 14.8153333,
@@ -2135,6 +2140,7 @@
           "tt": 352
         }
       },
+      "status": "DNS",
       "team": "Bahrain - Victorious (WT)",
       "team_url": "team/bahrain-victorious-2026"
     },
@@ -3582,5 +3588,5 @@
     }
   ],
   "total_riders": 154,
-  "updated_at": "2026-06-10T19:56:43.631004"
+  "updated_at": "2026-06-11T11:55:18.956776"
 }

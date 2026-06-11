@@ -25,34 +25,12 @@
       "team_url": "team/bahrain-victorious-2026"
     },
     {
-      "birthdate": "2005-2-6",
-      "birthplace_lat": 42.6384261,
-      "birthplace_lon": 12.674297,
-      "name": "BORGO Alessandro",
-      "nationality": "IT",
-      "number": 2,
-      "place_of_birth": "Italy",
-      "rider_url": "rider/alessandro-borgo",
-      "specialties": {
-        "career": {
-          "climber": 15,
-          "gc": 1,
-          "hills": 53,
-          "one_day_races": 133,
-          "sprint": 133,
-          "tt": 4
-        }
-      },
-      "team": "Bahrain - Victorious (WT)",
-      "team_url": "team/bahrain-victorious-2026"
-    },
-    {
       "birthdate": null,
       "birthplace_lat": 46.1199444,
       "birthplace_lon": 14.8153333,
       "name": "ERMAKOV Roman",
       "nationality": "SI",
-      "number": 3,
+      "number": 2,
       "place_of_birth": "Slovenia",
       "rider_url": "rider/roman-ermakov",
       "specialties": {
@@ -74,7 +52,7 @@
       "birthplace_lon": 14.8153333,
       "name": "ERŽEN Žak",
       "nationality": "SI",
-      "number": 4,
+      "number": 3,
       "place_of_birth": "Slovenia",
       "rider_url": "rider/zak-erzen",
       "specialties": {
@@ -85,6 +63,28 @@
           "one_day_races": 188,
           "sprint": 148,
           "tt": 0
+        }
+      },
+      "team": "Bahrain - Victorious (WT)",
+      "team_url": "team/bahrain-victorious-2026"
+    },
+    {
+      "birthdate": "2002-8-2",
+      "birthplace_lat": 45.3658443,
+      "birthplace_lon": 15.6575209,
+      "name": "MIHOLJEVIĆ Fran",
+      "nationality": "HR",
+      "number": 4,
+      "place_of_birth": "Croatia",
+      "rider_url": "rider/fran-miholjevic",
+      "specialties": {
+        "career": {
+          "climber": 30,
+          "gc": 144,
+          "hills": 63,
+          "one_day_races": 110,
+          "sprint": 4,
+          "tt": 142
         }
       },
       "team": "Bahrain - Victorious (WT)",
@@ -927,22 +927,22 @@
       "team_url": "team/equipo-kern-pharma-2026"
     },
     {
-      "birthdate": "2003-1-4",
-      "birthplace_lat": 39.3260685,
-      "birthplace_lon": -4.8379791,
-      "name": "ALUSTIZA Nicolás",
+      "birthdate": "1997-9-10",
+      "birthplace_lat": 43.296653,
+      "birthplace_lon": -2.2571182,
+      "name": "AGIRRE Jon",
       "nationality": "ES",
       "number": 61,
-      "place_of_birth": "Spain",
-      "rider_url": "rider/nicolas-alustiza",
+      "place_of_birth": "Zumaia",
+      "rider_url": "rider/jon-agirre",
       "specialties": {
         "career": {
-          "climber": 6,
-          "gc": 26,
-          "hills": 27,
-          "one_day_races": 10,
-          "sprint": 10,
-          "tt": 0
+          "climber": 235,
+          "gc": 286,
+          "hills": 112,
+          "one_day_races": 110,
+          "sprint": 0,
+          "tt": 4
         }
       },
       "team": "Euskaltel - Euskadi (PRT)",
@@ -993,22 +993,22 @@
       "team_url": "team/euskaltel-euskadi-2026"
     },
     {
-      "birthdate": "1998-8-14",
-      "birthplace_lat": 39.3260685,
-      "birthplace_lon": -4.8379791,
-      "name": "LÓPEZ Jordi",
+      "birthdate": "1993-6-3",
+      "birthplace_lat": 43.2630018,
+      "birthplace_lon": -2.9350039,
+      "name": "LASTRA Jonathan",
       "nationality": "ES",
       "number": 64,
-      "place_of_birth": "Spain",
-      "rider_url": "rider/jordi-lopez-caravaca",
+      "place_of_birth": "Bilbao",
+      "rider_url": "rider/jonathan-lastra",
       "specialties": {
         "career": {
-          "climber": 89,
-          "gc": 310,
-          "hills": 228,
-          "one_day_races": 101,
-          "sprint": 38,
-          "tt": 5
+          "climber": 664,
+          "gc": 844,
+          "hills": 641,
+          "one_day_races": 480,
+          "sprint": 124,
+          "tt": 11
         }
       },
       "team": "Euskaltel - Euskadi (PRT)",
@@ -1081,12 +1081,34 @@
       "team_url": "team/euskaltel-euskadi-2026"
     },
     {
+      "birthdate": "1993-11-6",
+      "birthplace_lat": 42.6384261,
+      "birthplace_lon": 12.674297,
+      "name": "MASNADA Fausto",
+      "nationality": "IT",
+      "number": 71,
+      "place_of_birth": "Italy",
+      "rider_url": "rider/fausto-masnada",
+      "specialties": {
+        "career": {
+          "climber": 1242,
+          "gc": 1624,
+          "hills": 556,
+          "one_day_races": 729,
+          "sprint": 50,
+          "tt": 178
+        }
+      },
+      "team": "MBH Bank CSB Telecom Fort (PRT)",
+      "team_url": "team/mbh-bank-csb-telecom-fort-2026"
+    },
+    {
       "birthdate": "2002-4-23",
       "birthplace_lat": 42.6384261,
       "birthplace_lon": 12.674297,
       "name": "AMBROSINI Matteo",
       "nationality": "IT",
-      "number": 71,
+      "number": 72,
       "place_of_birth": "Italy",
       "rider_url": "rider/matteo-ambrosini",
       "specialties": {
@@ -1103,44 +1125,22 @@
       "team_url": "team/mbh-bank-csb-telecom-fort-2026"
     },
     {
-      "birthdate": "2004-12-6",
-      "birthplace_lat": 43.0922489,
-      "birthplace_lon": 13.6387681,
-      "name": "BRACALENTE Diego",
-      "nationality": "IT",
-      "number": 72,
-      "place_of_birth": "Fermo",
-      "rider_url": "rider/diego-bracalente",
-      "specialties": {
-        "career": {
-          "climber": 16,
-          "gc": 3,
-          "hills": 52,
-          "one_day_races": 33,
-          "sprint": 0,
-          "tt": 0
-        }
-      },
-      "team": "MBH Bank CSB Telecom Fort (PRT)",
-      "team_url": "team/mbh-bank-csb-telecom-fort-2026"
-    },
-    {
-      "birthdate": "2001-7-7",
-      "birthplace_lat": 42.6384261,
-      "birthplace_lon": 12.674297,
-      "name": "BURATTI Nicolò",
-      "nationality": "IT",
+      "birthdate": "1998-4-24",
+      "birthplace_lat": 52.215933,
+      "birthplace_lon": 19.134422,
+      "name": "BUDZIŃSKI Marcin",
+      "nationality": "PL",
       "number": 73,
-      "place_of_birth": "Italy",
-      "rider_url": "rider/nicolo-buratti",
+      "place_of_birth": "Poland",
+      "rider_url": "rider/marcin-budzinski",
       "specialties": {
         "career": {
-          "climber": 44,
-          "gc": 69,
-          "hills": 306,
-          "one_day_races": 185,
-          "sprint": 86,
-          "tt": 36
+          "climber": 181,
+          "gc": 399,
+          "hills": 517,
+          "one_day_races": 195,
+          "sprint": 182,
+          "tt": 38
         }
       },
       "team": "MBH Bank CSB Telecom Fort (PRT)",
@@ -1169,22 +1169,22 @@
       "team_url": "team/mbh-bank-csb-telecom-fort-2026"
     },
     {
-      "birthdate": "1993-11-6",
-      "birthplace_lat": 42.6384261,
-      "birthplace_lon": 12.674297,
-      "name": "MASNADA Fausto",
+      "birthdate": "2003-10-22",
+      "birthplace_lat": 42.3102619,
+      "birthplace_lon": 13.9575901,
+      "name": "MASCIARELLI Lorenzo",
       "nationality": "IT",
       "number": 75,
-      "place_of_birth": "Italy",
-      "rider_url": "rider/fausto-masnada",
+      "place_of_birth": "Pescara",
+      "rider_url": "rider/lorenzo-masciarelli",
       "specialties": {
         "career": {
-          "climber": 1242,
-          "gc": 1624,
-          "hills": 556,
-          "one_day_races": 729,
-          "sprint": 50,
-          "tt": 178
+          "climber": 38,
+          "gc": 5,
+          "hills": 18,
+          "one_day_races": 30,
+          "sprint": 41,
+          "tt": 0
         }
       },
       "team": "MBH Bank CSB Telecom Fort (PRT)",
@@ -1213,22 +1213,22 @@
       "team_url": "team/mbh-bank-csb-telecom-fort-2026"
     },
     {
-      "birthdate": "2001-11-17",
-      "birthplace_lat": 40.3766014,
-      "birthplace_lon": 15.8244926,
-      "name": "VERRE Alessandro",
+      "birthdate": "1998-1-9",
+      "birthplace_lat": 42.6384261,
+      "birthplace_lon": 12.674297,
+      "name": "ZOCCARATO Samuele",
       "nationality": "IT",
       "number": 77,
-      "place_of_birth": "Marsicovetere",
-      "rider_url": "rider/alessandro-verre",
+      "place_of_birth": "Italy",
+      "rider_url": "rider/samuele-zoccarato",
       "specialties": {
         "career": {
-          "climber": 232,
-          "gc": 248,
-          "hills": 158,
-          "one_day_races": 169,
-          "sprint": 1,
-          "tt": 39
+          "climber": 134,
+          "gc": 71,
+          "hills": 100,
+          "one_day_races": 200,
+          "sprint": 18,
+          "tt": 3
         }
       },
       "team": "MBH Bank CSB Telecom Fort (PRT)",
@@ -2594,5 +2594,5 @@
     }
   ],
   "total_riders": 119,
-  "updated_at": "2026-06-10T20:01:35.778390"
+  "updated_at": "2026-06-11T11:57:23.731166"
 }
