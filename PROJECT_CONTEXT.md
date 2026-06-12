@@ -12,7 +12,68 @@
 Running in **Claude Code** locally at `C:\Users\PC\Desktop\cycling-dashboard`.
 Site is live; each verified increment is committed + pushed (GitHub Pages).
 
-### 🟢 LATEST SESSION (2026-06-12) — PHASE B: La Flamme Rouge GPX harvest via attended CDP-Chrome → Turso (BUILT + RUN; first bulk pass done)
+### 🟢 LATEST SESSION (2026-06-12, pt 3) — FRONTEND UI overhaul (all live; commits a8159ed, 67c7140, 6e7ffb1)
+
+Iterated on `frontend/index.html` against a **local server** (`python -m http.server
+8000 --directory <repo>`, opened at `localhost:8000/frontend/`) — the agreed ground
+rule is **view every UI change locally before pushing**.
+
+**Shipped (live):**
+- **Map + elevation profile fit the viewport.** `fitViz(refit)` measures the space
+  from the top of the map to the bottom of the screen, reserves the profile's
+  head/legend/readout, and splits the rest ~57% map / 43% profile (caps map
+  220–520px, profile 150–360px; floor 380px → tiny screens scroll). Runs on render
+  (rAF, `refit=true` → tight `fitBounds(padding:[10,10])`) and on window resize
+  (`refit=false`). CSS heights are `clamp(vh)` as the no-JS fallback. Also trimmed
+  header/title/spacing clutter (H1 42→30, base header smaller).
+- **Single-line race header** (`.race-headline`): `[flag img] Name | date (with
+  year) | N stages · total km · total elevation gain | Edition #x`. Totals computed
+  client-side from the loaded route points (`routeTotals`, de-duped so a women's
+  variant isn't double-counted); `fmtDateRange` adds the year; `flagImg` (image, not
+  emoji — Windows doesn't render flag emoji).
+- **Stage-type emoji on the stage tabs** (`STAGE_TYPE_META` + `stageTypeByNumber`,
+  matched by "Stage N" in `stage_name`): 🏔️ mountain, 🌄 hilly, ➡️ flat/sprint,
+  ⏱️ time-trial, 🧱 cobbles, with a hover label.
+- **Map route line is now RED** (`#e11d2a`, was blue — clear of the blue rain),
+  **green start dot** (`#16a34a`) + **🏁 chequered-flag finish**, **wind arrows ~30%
+  smaller**, tighter default fit.
+- **Rain overlay rebuilt:** drawn in a dedicated **`rainPane` (zIndex 350, UNDER the
+  route line)** so the red line is never buried; per-circle translucent at lower
+  opacity (`0.23 + w*0.35`); the `% · mm` label sits **inside** each circle in
+  Archivo Black (white). (A pane-opacity "merge" was tried and reverted — it made a
+  flat hard-edged blob.)
+- **NEW Temperature weather toggle:** blue→green→yellow→orange band behind the route
+  in **`tempPane` (zIndex 360, under route, above rain)**, fixed scale via
+  `TEMP_STOPS` (−5 blue · 9 green · 20 yellow · 32 orange); a °C badge **every 40 km
+  and at each climb summit**; **hover shows temp + the peloton's pass-time**.
+  `temperature_2m` added to the Open-Meteo fetch (`fetchWeather`); wind-speed label
+  switched to Archivo Black; weather **legend colour-keyed** (wind black / rain blue
+  / temp gradient key).
+
+**Tried and reverted this session (NOT in the build):** map tilt + compass
+(leaflet-rotate; route ran wrong way + dependency) ; the 🗺/📈 map+profile toggle
+buttons ; a 2-column 2/3-map / 1/3-startlist layout ; the rain pane-opacity merge.
+All cleanly removed.
+
+**Working method note:** `frontend/index.html` is one ~2.6k-line file with one big
+inline `<script>`. After edits, syntax-check it without a browser via:
+`python` to extract the inline non-src `<script>` blocks → `node --check`. To run the
+local server for the user: Bash `run_in_background` `python -m http.server 8000
+--directory <repo>`; stop via PowerShell `Get-NetTCPConnection -LocalPort 8000 →
+Stop-Process`.
+
+### 🟢 EARLIER SESSION (2026-06-12, pt 2.5) — daily PCS rider re-scrape removed (commit b3bba7f)
+
+The daily workflow no longer does the heavy PCS rider specialty re-fetch. `scrape_riders.py`
+gained **`--embed-only`** (re-applies the CACHED specialties + birthdate/place onto the
+freshly-rebuilt startlists with **zero PCS calls**) and `scrape.yml` now runs it that way,
+so the site keeps showing rider/hometown data without the ~1k-rider 7-day refetch. Run
+`scrape_riders.py` WITHOUT the flag on a future weekly/monthly cadence to actually refresh
+from PCS. (Needed because `scrape_races.py` rebuilds startlists fresh each run and only
+carries over abandon/medal fields — without the embed step the hometown strip + specialties
+would blank site-wide.)
+
+### 🟢 EARLIER SESSION (2026-06-12) — PHASE B: La Flamme Rouge GPX harvest via attended CDP-Chrome → Turso (BUILT + RUN; first bulk pass done)
 
 Phase B is the LFR GPX fallback agreed in §9. `scrapers/scrape_lfr.py` was ported
 from the old requests/disk version to: **fetch layer = a real Chrome driven over
