@@ -1319,6 +1319,50 @@
       "team_url": "team/soudal-quick-step-2026"
     },
     {
+      "birthdate": "1992-5-21",
+      "birthplace_lat": 52.0703201,
+      "birthplace_lon": 4.3558561,
+      "name": "VAN BAARLE Dylan",
+      "nationality": "NL",
+      "number": null,
+      "place_of_birth": "Voorburg",
+      "rider_url": "rider/dylan-van-baarle",
+      "specialties": {
+        "career": {
+          "climber": 534,
+          "gc": 1510,
+          "hills": 1524,
+          "one_day_races": 2724,
+          "sprint": 232,
+          "tt": 1346
+        }
+      },
+      "team": "Soudal Quick-Step (WT)",
+      "team_url": "team/soudal-quick-step-2026"
+    },
+    {
+      "birthdate": "1992-9-29",
+      "birthplace_lat": 50.8276429,
+      "birthplace_lon": 3.2659884,
+      "name": "VAN LERBERGHE Bert",
+      "nationality": "BE",
+      "number": null,
+      "place_of_birth": "Kortrijk",
+      "rider_url": "rider/bert-van-lerberghe",
+      "specialties": {
+        "career": {
+          "climber": 0,
+          "gc": 196,
+          "hills": 140,
+          "one_day_races": 1219,
+          "sprint": 864,
+          "tt": 48
+        }
+      },
+      "team": "Soudal Quick-Step (WT)",
+      "team_url": "team/soudal-quick-step-2026"
+    },
+    {
       "birthdate": "1990-9-26",
       "birthplace_lat": -24.7761086,
       "birthplace_lon": 134.755,
@@ -2353,6 +2397,6 @@
       "team_url": "team/pinarello-q365-pro-cycling-team-2026"
     }
   ],
-  "total_riders": 107,
-  "updated_at": "2026-06-11T21:16:51.590992"
+  "total_riders": 109,
+  "updated_at": "2026-06-12T17:21:50.291603"
 }

@@ -399,28 +399,6 @@
       "team_url": "team/soudal-quick-step-2026"
     },
     {
-      "birthdate": "1998-9-18",
-      "birthplace_lat": 51.5074456,
-      "birthplace_lon": -0.1277653,
-      "name": "HAYTER Ethan",
-      "nationality": "GB",
-      "number": null,
-      "place_of_birth": "London",
-      "rider_url": "rider/ethan-hayter",
-      "specialties": {
-        "career": {
-          "climber": 714,
-          "gc": 1450,
-          "hills": 1510,
-          "one_day_races": 654,
-          "sprint": 326,
-          "tt": 1971
-        }
-      },
-      "team": "Soudal Quick-Step (WT)",
-      "team_url": "team/soudal-quick-step-2026"
-    },
-    {
       "birthdate": "1999-3-18",
       "birthplace_lat": 42.6384261,
       "birthplace_lon": 12.674297,
@@ -437,6 +415,50 @@
           "one_day_races": 750,
           "sprint": 12,
           "tt": 73
+        }
+      },
+      "team": "Soudal Quick-Step (WT)",
+      "team_url": "team/soudal-quick-step-2026"
+    },
+    {
+      "birthdate": "1996-2-13",
+      "birthplace_lat": 51.1610826,
+      "birthplace_lon": 4.9903187,
+      "name": "CRAS Steff",
+      "nationality": "BE",
+      "number": null,
+      "place_of_birth": "Geel",
+      "rider_url": "rider/steff-cras",
+      "specialties": {
+        "career": {
+          "climber": 982,
+          "gc": 1081,
+          "hills": 466,
+          "one_day_races": 335,
+          "sprint": 8,
+          "tt": 82
+        }
+      },
+      "team": "Soudal Quick-Step (WT)",
+      "team_url": "team/soudal-quick-step-2026"
+    },
+    {
+      "birthdate": "1998-9-18",
+      "birthplace_lat": 51.5074456,
+      "birthplace_lon": -0.1277653,
+      "name": "HAYTER Ethan",
+      "nationality": "GB",
+      "number": null,
+      "place_of_birth": "London",
+      "rider_url": "rider/ethan-hayter",
+      "specialties": {
+        "career": {
+          "climber": 714,
+          "gc": 1450,
+          "hills": 1510,
+          "one_day_races": 654,
+          "sprint": 326,
+          "tt": 1971
         }
       },
       "team": "Soudal Quick-Step (WT)",
@@ -531,28 +553,6 @@
       "team_url": "team/team-picnic-postnl-2026"
     },
     {
-      "birthdate": "1987-6-7",
-      "birthplace_lat": 52.2434979,
-      "birthplace_lon": 5.6343227,
-      "name": "KRUIJSWIJK Steven",
-      "nationality": "NL",
-      "number": null,
-      "place_of_birth": "Netherlands",
-      "rider_url": "rider/steven-kruijswijk",
-      "specialties": {
-        "career": {
-          "climber": 4081,
-          "gc": 4499,
-          "hills": 1318,
-          "one_day_races": 349,
-          "sprint": 38,
-          "tt": 1440
-        }
-      },
-      "team": "Team Visma | Lease a Bike (WT)",
-      "team_url": "team/team-visma-lease-a-bike-2026"
-    },
-    {
       "birthdate": "2003-1-10",
       "birthplace_lat": 52.2434979,
       "birthplace_lon": 5.6343227,
@@ -635,6 +635,28 @@
           "one_day_races": 751,
           "sprint": 586,
           "tt": 19
+        }
+      },
+      "team": "Team Visma | Lease a Bike (WT)",
+      "team_url": "team/team-visma-lease-a-bike-2026"
+    },
+    {
+      "birthdate": "1987-6-7",
+      "birthplace_lat": 52.2434979,
+      "birthplace_lon": 5.6343227,
+      "name": "KRUIJSWIJK Steven",
+      "nationality": "NL",
+      "number": null,
+      "place_of_birth": "Netherlands",
+      "rider_url": "rider/steven-kruijswijk",
+      "specialties": {
+        "career": {
+          "climber": 4081,
+          "gc": 4499,
+          "hills": 1318,
+          "one_day_races": 349,
+          "sprint": 38,
+          "tt": 1440
         }
       },
       "team": "Team Visma | Lease a Bike (WT)",
@@ -1125,6 +1147,6 @@
       "team_url": "team/burgos-burpellet-bh-2026"
     }
   ],
-  "total_riders": 51,
-  "updated_at": "2026-06-11T21:17:04.961193"
+  "total_riders": 52,
+  "updated_at": "2026-06-12T17:22:01.895211"
 }

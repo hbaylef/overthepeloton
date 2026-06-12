@@ -91,6 +91,28 @@
       "team_url": "team/team-visma-lease-a-bike-2026"
     },
     {
+      "birthdate": "1997-3-20",
+      "birthplace_lat": 61.1529386,
+      "birthplace_lon": 8.7876653,
+      "name": "DVERSNES LAVIK Fredrik",
+      "nationality": "NO",
+      "number": null,
+      "place_of_birth": "Norway",
+      "rider_url": "rider/fredrik-dversnes",
+      "specialties": {
+        "career": {
+          "climber": 139,
+          "gc": 436,
+          "hills": 323,
+          "one_day_races": 603,
+          "sprint": 173,
+          "tt": 130
+        }
+      },
+      "team": "Uno-X Mobility (WT)",
+      "team_url": "team/uno-x-mobility-2026"
+    },
+    {
       "birthdate": "1995-10-17",
       "birthplace_lat": 49.6425343,
       "birthplace_lon": -1.6249565,
@@ -135,6 +157,6 @@
       "team_url": "team/soudal-quick-step-2026"
     }
   ],
-  "total_riders": 6,
-  "updated_at": "2026-06-10T19:58:14.136200"
+  "total_riders": 7,
+  "updated_at": "2026-06-12T17:22:50.777677"
 }

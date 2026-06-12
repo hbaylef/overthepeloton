@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-10T20:50:51.572614+00:00",
+  "updated_at": "2026-06-12T17:46:00.866717+00:00",
   "races": {
     "amstel-gold-2026": {
       "name": "Amstel Gold Race",
@@ -15,6 +15,28 @@
         }
       ]
     },
+    "arctic-race-of-norway-2026": {
+      "name": "Arctic Race of Norway",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 181.2
+        },
+        {
+          "stage": 2,
+          "distance_km": 178.3
+        },
+        {
+          "stage": 3,
+          "distance_km": 139.7
+        },
+        {
+          "stage": 4,
+          "distance_km": 193.1
+        }
+      ]
+    },
     "brabantse-pijl-2026": {
       "name": "Brabantse Pijl",
       "route_available": true,
@@ -22,6 +44,16 @@
         {
           "stage": null,
           "distance_km": 162.4
+        }
+      ]
+    },
+    "copenhagen-sprint-2026": {
+      "name": "Copenhagen Sprint",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 156.9
         }
       ]
     },
@@ -263,6 +295,26 @@
         }
       ]
     },
+    "giro-del-veneto-2026": {
+      "name": "Giro del Veneto",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 168.3
+        }
+      ]
+    },
+    "giro-dell-emilia-2026": {
+      "name": "Giro dell'Emilia",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 196.9
+        }
+      ]
+    },
     "gran-camino-2026": {
       "name": "O Gran Camiño",
       "route_available": true,
@@ -316,6 +368,16 @@
         {
           "stage": 6,
           "distance_km": 136.0
+        }
+      ]
+    },
+    "japan-cup-2026": {
+      "name": "Japan Cup",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 107.6
         }
       ]
     },
@@ -629,6 +691,36 @@
         }
       ]
     },
+    "tour-de-romandie-2026": {
+      "name": "Tour de Romandie",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 3.2
+        },
+        {
+          "stage": 2,
+          "distance_km": 170.7
+        },
+        {
+          "stage": 3,
+          "distance_km": 173.0
+        },
+        {
+          "stage": 4,
+          "distance_km": 176.4
+        },
+        {
+          "stage": 5,
+          "distance_km": 149.3
+        },
+        {
+          "stage": 6,
+          "distance_km": 178.1
+        }
+      ]
+    },
     "tour-de-suisse-2026": {
       "name": "Tour de Suisse",
       "route_available": true,
@@ -674,6 +766,54 @@
         {
           "stage": 5,
           "distance_km": 170.2
+        }
+      ]
+    },
+    "tour-of-belgium-2026": {
+      "name": "Baloise Belgium Tour",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 188.2
+        },
+        {
+          "stage": 2,
+          "distance_km": 197.3
+        },
+        {
+          "stage": 3,
+          "distance_km": 172.8
+        },
+        {
+          "stage": 4,
+          "distance_km": 182.6
+        },
+        {
+          "stage": 5,
+          "distance_km": 182.5
+        }
+      ]
+    },
+    "tour-of-slovenia-2026": {
+      "name": "Tour of Slovenia",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 142.3
+        },
+        {
+          "stage": 2,
+          "distance_km": 182.3
+        },
+        {
+          "stage": 3,
+          "distance_km": 133.9
+        },
+        {
+          "stage": 5,
+          "distance_km": 169.1
         }
       ]
     },
@@ -797,6 +937,28 @@
         }
       ]
     },
+    "vuelta-a-burgos-2026": {
+      "name": "Vuelta a Burgos",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 127.4
+        },
+        {
+          "stage": 2,
+          "distance_km": 121.5
+        },
+        {
+          "stage": 3,
+          "distance_km": 125.9
+        },
+        {
+          "stage": 4,
+          "distance_km": 119.5
+        }
+      ]
+    },
     "vuelta-a-espana-2026": {
       "name": "Vuelta a España",
       "route_available": true,
@@ -897,11 +1059,6 @@
       "route_available": false,
       "stages": []
     },
-    "arctic-race-of-norway-2026": {
-      "name": "Arctic Race of Norway",
-      "route_available": false,
-      "stages": []
-    },
     "boucles-de-la-mayenne-2026": {
       "name": "Boucles de la Mayenne",
       "route_available": false,
@@ -942,11 +1099,6 @@
       "route_available": false,
       "stages": []
     },
-    "copenhagen-sprint-2026": {
-      "name": "Copenhagen Sprint",
-      "route_available": false,
-      "stages": []
-    },
     "coppa-bernocchi-2026": {
       "name": "Coppa Bernocchi",
       "route_available": false,
@@ -979,16 +1131,6 @@
     },
     "figueira-champions-classic-2026": {
       "name": "Figueira Champions Classic",
-      "route_available": false,
-      "stages": []
-    },
-    "giro-del-veneto-2026": {
-      "name": "Giro del Veneto",
-      "route_available": false,
-      "stages": []
-    },
-    "giro-dell-emilia-2026": {
-      "name": "Giro dell'Emilia",
       "route_available": false,
       "stages": []
     },
@@ -1054,11 +1196,6 @@
     },
     "il-lombardia-2026": {
       "name": "Il Lombardia",
-      "route_available": false,
-      "stages": []
-    },
-    "japan-cup-2026": {
-      "name": "Japan Cup",
       "route_available": false,
       "stages": []
     },
@@ -1142,18 +1279,8 @@
       "route_available": false,
       "stages": []
     },
-    "tour-de-romandie-2026": {
-      "name": "Tour de Romandie",
-      "route_available": false,
-      "stages": []
-    },
     "tour-de-wallonie-2026": {
       "name": "Tour de Wallonie",
-      "route_available": false,
-      "stages": []
-    },
-    "tour-of-belgium-2026": {
-      "name": "Baloise Belgium Tour",
       "route_available": false,
       "stages": []
     },
@@ -1197,11 +1324,6 @@
       "route_available": false,
       "stages": []
     },
-    "tour-of-slovenia-2026": {
-      "name": "Tour of Slovenia",
-      "route_available": false,
-      "stages": []
-    },
     "tour-of-turkey-2026": {
       "name": "Presidential Cycling Tour of Türkiye",
       "route_available": false,
@@ -1224,11 +1346,6 @@
     },
     "veneto-classic-2026": {
       "name": "Veneto Classic",
-      "route_available": false,
-      "stages": []
-    },
-    "vuelta-a-burgos-2026": {
-      "name": "Vuelta a Burgos",
       "route_available": false,
       "stages": []
     }

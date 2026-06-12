@@ -1,8 +1,180 @@
 {
+  "is_one_day_race": false,
   "race": "Tour de Romandie",
   "race_slug": "tour-de-romandie-2026",
-  "source": "procyclingstats",
-  "updated_at": "2026-06-09T11:11:14.493564",
-  "is_one_day_race": false,
-  "stages": {}
+  "source": "gpx_derived",
+  "stages": {
+    "2": [
+      {
+        "km_before_finish": 147.9,
+        "length_km": 2.7,
+        "name": "La Rasse",
+        "steepness": 7.9,
+        "top_m": 628
+      },
+      {
+        "km_before_finish": 110.6,
+        "length_km": 2.7,
+        "name": "La Rasse",
+        "steepness": 7.9,
+        "top_m": 628
+      },
+      {
+        "km_before_finish": 73.2,
+        "length_km": 2.7,
+        "name": "La Rasse",
+        "steepness": 7.9,
+        "top_m": 628
+      }
+    ],
+    "3": [
+      {
+        "km_before_finish": 152.8,
+        "length_km": 3.0,
+        "name": "Vulliens",
+        "steepness": 4.0,
+        "top_m": 700
+      },
+      {
+        "km_before_finish": 145.2,
+        "length_km": 5.0,
+        "name": "Villars-le-Comte",
+        "steepness": 3.3,
+        "top_m": 768
+      },
+      {
+        "km_before_finish": 129.5,
+        "length_km": 6.2,
+        "name": "Climb",
+        "steepness": 3.2,
+        "top_m": 879
+      },
+      {
+        "km_before_finish": 94.7,
+        "length_km": 3.9,
+        "name": "Vulliens",
+        "steepness": 4.6,
+        "top_m": 708
+      },
+      {
+        "km_before_finish": 83.1,
+        "length_km": 6.2,
+        "name": "Climb",
+        "steepness": 3.2,
+        "top_m": 879
+      },
+      {
+        "km_before_finish": 48.3,
+        "length_km": 3.9,
+        "name": "Villars-sur-Glâne",
+        "steepness": 4.6,
+        "top_m": 708
+      },
+      {
+        "km_before_finish": 36.7,
+        "length_km": 6.2,
+        "name": "Climb",
+        "steepness": 3.2,
+        "top_m": 879
+      },
+      {
+        "km_before_finish": 1.9,
+        "length_km": 3.9,
+        "name": "Vulliens",
+        "steepness": 4.6,
+        "top_m": 708
+      }
+    ],
+    "4": [
+      {
+        "km_before_finish": 103.4,
+        "length_km": 1.7,
+        "name": "Suchy",
+        "steepness": 5.6,
+        "top_m": 531
+      },
+      {
+        "km_before_finish": 83.5,
+        "length_km": 1.6,
+        "name": "Vulliens",
+        "steepness": 5.5,
+        "top_m": 683
+      },
+      {
+        "km_before_finish": 31.8,
+        "length_km": 18.0,
+        "name": "Col du Mollendruz",
+        "steepness": 4.1,
+        "top_m": 1185
+      }
+    ],
+    "5": [
+      {
+        "km_before_finish": 146.8,
+        "length_km": 2.5,
+        "name": "Climb",
+        "steepness": 5.3,
+        "top_m": 878
+      },
+      {
+        "km_before_finish": 126.8,
+        "length_km": 15.9,
+        "name": "Jaunpass",
+        "steepness": 4.2,
+        "top_m": 1516
+      },
+      {
+        "km_before_finish": 108.0,
+        "length_km": 10.6,
+        "name": "Jaunpass",
+        "steepness": 6.4,
+        "top_m": 1516
+      },
+      {
+        "km_before_finish": 58.9,
+        "length_km": 2.4,
+        "name": "Climb",
+        "steepness": 3.2,
+        "top_m": 967
+      },
+      {
+        "km_before_finish": 54.3,
+        "length_km": 3.4,
+        "name": "Climb",
+        "steepness": 3.1,
+        "top_m": 1009
+      },
+      {
+        "km_before_finish": 16.5,
+        "length_km": 8.9,
+        "name": "Jaunpass",
+        "steepness": 7.7,
+        "top_m": 1516
+      }
+    ],
+    "6": [
+      {
+        "km_before_finish": 116.6,
+        "length_km": 6.4,
+        "name": "Climb",
+        "steepness": 3.2,
+        "top_m": 808
+      },
+      {
+        "km_before_finish": 93.5,
+        "length_km": 11.3,
+        "name": "Climb",
+        "steepness": 3.3,
+        "top_m": 882
+      },
+      {
+        "km_before_finish": 0.0,
+        "length_km": 28.4,
+        "name": "Saanenmöser Pass",
+        "steepness": 3.3,
+        "top_m": 1310
+      }
+    ]
+  },
+  "updated_at": "2026-06-12T17:45:07.947065"
 }

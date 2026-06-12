@@ -631,6 +631,7 @@
       "team_url": "team/netcompany-ineos-2026"
     },
     {
+      "abandoned_stage": "S6",
       "birthdate": "2004-2-15",
       "birthplace_lat": 54.3151594,
       "birthplace_lon": -1.9181532,
@@ -655,6 +656,7 @@
           "tt": 1766
         }
       },
+      "status": "DNF",
       "team": "Netcompany INEOS (WT)",
       "team_url": "team/netcompany-ineos-2026"
     },
@@ -814,6 +816,12 @@
       "birthdate": "2004-6-21",
       "birthplace_lat": -33.2820463,
       "birthplace_lon": 149.0971567,
+      "medals": [
+        {
+          "rank": 3,
+          "stage": "S6"
+        }
+      ],
       "name": "TUCKWELL Luke",
       "nationality": "AU",
       "number": 45,
@@ -836,6 +844,12 @@
       "birthdate": "1999-11-25",
       "birthplace_lat": 50.6402809,
       "birthplace_lon": 4.6667145,
+      "medals": [
+        {
+          "rank": 1,
+          "stage": "S6"
+        }
+      ],
       "name": "VAN GILS Maxim",
       "nationality": "BE",
       "number": 46,
@@ -1042,6 +1056,12 @@
       "birthdate": "1999-8-23",
       "birthplace_lat": 59.6633005,
       "birthplace_lon": 10.6293392,
+      "medals": [
+        {
+          "rank": 2,
+          "stage": "S6"
+        }
+      ],
       "name": "JOHANNESSEN Tobias Halland",
       "nationality": "NO",
       "number": 61,
@@ -1257,6 +1277,7 @@
       "team_url": "team/ef-education-easypost-2026"
     },
     {
+      "abandoned_stage": "S6",
       "birthdate": "2004-3-26",
       "birthplace_lat": 61.0666922,
       "birthplace_lon": -107.991707,
@@ -1281,6 +1302,7 @@
           "tt": 262
         }
       },
+      "status": "DNF",
       "team": "EF Education - EasyPost (WT)",
       "team_url": "team/ef-education-easypost-2026"
     },
@@ -1641,6 +1663,7 @@
       "team_url": "team/xds-astana-team-2026"
     },
     {
+      "abandoned_stage": "S6",
       "birthdate": null,
       "birthplace_lat": 48.1012954,
       "birthplace_lon": 66.7780818,
@@ -1659,6 +1682,7 @@
           "tt": 133
         }
       },
+      "status": "DNF",
       "team": "XDS Astana Team (WT)",
       "team_url": "team/xds-astana-team-2026"
     },
@@ -2529,6 +2553,7 @@
       "team_url": "team/caja-rural-seguros-rga-2026"
     },
     {
+      "abandoned_stage": "S6",
       "birthdate": "2001-2-16",
       "birthplace_lat": 39.3260685,
       "birthplace_lon": -4.8379791,
@@ -2547,6 +2572,7 @@
           "tt": 0
         }
       },
+      "status": "OTL",
       "team": "Caja Rural - Seguros RGA (PRT)",
       "team_url": "team/caja-rural-seguros-rga-2026"
     },
@@ -2941,6 +2967,7 @@
       "team_url": "team/team-jayco-alula-2026"
     },
     {
+      "abandoned_stage": "S6",
       "birthdate": "2004-9-13",
       "birthplace_lat": -24.7761086,
       "birthplace_lon": 134.755,
@@ -2959,6 +2986,7 @@
           "tt": 44
         }
       },
+      "status": "DNF",
       "team": "Team Jayco AlUla (WT)",
       "team_url": "team/team-jayco-alula-2026"
     },
@@ -3205,6 +3233,7 @@
       "team_url": "team/groupama-fdj-united-2026"
     },
     {
+      "abandoned_stage": "S6",
       "birthdate": "1997-1-9",
       "birthplace_lat": 49.4959628,
       "birthplace_lon": 5.9850306,
@@ -3223,6 +3252,7 @@
           "tt": 254
         }
       },
+      "status": "DNF",
       "team": "Groupama - FDJ United (WT)",
       "team_url": "team/groupama-fdj-united-2026"
     },
@@ -3431,6 +3461,7 @@
       "team_url": "team/alpecin-premier-tech-2026"
     },
     {
+      "abandoned_stage": "S6",
       "birthdate": "2006-1-22",
       "birthplace_lat": 51.5310535,
       "birthplace_lon": 3.8217163,
@@ -3449,6 +3480,7 @@
           "tt": 16
         }
       },
+      "status": "DNF",
       "team": "Alpecin - Premier Tech (WT)",
       "team_url": "team/alpecin-premier-tech-2026"
     },
@@ -3616,5 +3648,5 @@
     }
   ],
   "total_riders": 154,
-  "updated_at": "2026-06-12T11:13:12.609839"
+  "updated_at": "2026-06-12T17:21:40.442494"
 }

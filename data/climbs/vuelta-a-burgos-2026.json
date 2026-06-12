@@ -2,7 +2,79 @@
   "is_one_day_race": false,
   "race": "Vuelta a Burgos",
   "race_slug": "vuelta-a-burgos-2026",
-  "source": "procyclingstats",
-  "stages": {},
-  "updated_at": "2026-06-10T20:50:07.540717"
+  "source": "gpx_derived",
+  "stages": {
+    "1": [
+      {
+        "km_before_finish": 83.2,
+        "length_km": 2.4,
+        "name": "Climb",
+        "steepness": 3.4,
+        "top_m": 1062
+      }
+    ],
+    "2": [
+      {
+        "km_before_finish": 111.9,
+        "length_km": 1.6,
+        "name": "Climb",
+        "steepness": 5.1,
+        "top_m": 916
+      }
+    ],
+    "3": [
+      {
+        "km_before_finish": 112.8,
+        "length_km": 3.6,
+        "name": "Climb",
+        "steepness": 5.4,
+        "top_m": 990
+      },
+      {
+        "km_before_finish": 92.7,
+        "length_km": 6.0,
+        "name": "Climb",
+        "steepness": 4.0,
+        "top_m": 762
+      },
+      {
+        "km_before_finish": 68.7,
+        "length_km": 2.3,
+        "name": "Climb",
+        "steepness": 5.1,
+        "top_m": 811
+      },
+      {
+        "km_before_finish": 30.8,
+        "length_km": 5.4,
+        "name": "Climb",
+        "steepness": 3.5,
+        "top_m": 781
+      },
+      {
+        "km_before_finish": 14.3,
+        "length_km": 3.0,
+        "name": "Climb",
+        "steepness": 6.1,
+        "top_m": 781
+      }
+    ],
+    "4": [
+      {
+        "km_before_finish": 9.7,
+        "length_km": 6.9,
+        "name": "Climb",
+        "steepness": 3.4,
+        "top_m": 1440
+      },
+      {
+        "km_before_finish": 0.0,
+        "length_km": 6.0,
+        "name": "Climb",
+        "steepness": 9.8,
+        "top_m": 1865
+      }
+    ]
+  },
+  "updated_at": "2026-06-12T17:45:13.930853"
 }

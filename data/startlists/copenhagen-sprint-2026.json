@@ -2663,6 +2663,28 @@
       "team_url": "team/xds-astana-team-2026"
     },
     {
+      "birthdate": "2003-2-28",
+      "birthplace_lat": 44.4938203,
+      "birthplace_lon": 11.3426327,
+      "name": "KAJAMINI Florian Samuel",
+      "nationality": "IT",
+      "number": 173,
+      "place_of_birth": "Bologna",
+      "rider_url": "rider/florian-samuel-kajamini",
+      "specialties": {
+        "career": {
+          "climber": 84,
+          "gc": 63,
+          "hills": 104,
+          "one_day_races": 56,
+          "sprint": 3,
+          "tt": 0
+        }
+      },
+      "team": "XDS Astana Team (WT)",
+      "team_url": "team/xds-astana-team-2026"
+    },
+    {
       "birthdate": "1993-10-20",
       "birthplace_lat": 42.6384261,
       "birthplace_lon": 12.674297,
@@ -3829,6 +3851,6 @@
       "team_url": "team/denmark-2026"
     }
   ],
-  "total_riders": 174,
-  "updated_at": "2026-06-11T21:17:53.211710"
+  "total_riders": 175,
+  "updated_at": "2026-06-12T17:22:45.893423"
 }

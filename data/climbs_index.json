@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-10T20:50:29.633743+00:00",
+  "updated_at": "2026-06-12T17:45:21.639177+00:00",
   "source": "mixed",
   "races": {
     "4-jours-de-dunkerque-2026": {
@@ -22,9 +22,9 @@
     },
     "arctic-race-of-norway-2026": {
       "name": "Arctic Race of Norway",
-      "climbs_available": false,
-      "total_climbs": 0,
-      "source": "procyclingstats"
+      "climbs_available": true,
+      "total_climbs": 3,
+      "source": "gpx_derived"
     },
     "boucles-de-la-mayenne-2026": {
       "name": "Boucles de la Mayenne",
@@ -442,9 +442,9 @@
     },
     "tour-de-romandie-2026": {
       "name": "Tour de Romandie",
-      "climbs_available": false,
-      "total_climbs": 0,
-      "source": "procyclingstats"
+      "climbs_available": true,
+      "total_climbs": 23,
+      "source": "gpx_derived"
     },
     "tour-de-suisse-2026": {
       "name": "Tour de Suisse",
@@ -468,7 +468,7 @@
       "name": "Baloise Belgium Tour",
       "climbs_available": false,
       "total_climbs": 0,
-      "source": "procyclingstats"
+      "source": "gpx_derived"
     },
     "tour-of-britain-2026": {
       "name": "Tour of Britain",
@@ -520,9 +520,9 @@
     },
     "tour-of-slovenia-2026": {
       "name": "Tour of Slovenia",
-      "climbs_available": false,
-      "total_climbs": 0,
-      "source": "procyclingstats"
+      "climbs_available": true,
+      "total_climbs": 10,
+      "source": "gpx_derived"
     },
     "tour-of-the-alps-2026": {
       "name": "Tour of the Alps",
@@ -580,9 +580,9 @@
     },
     "vuelta-a-burgos-2026": {
       "name": "Vuelta a Burgos",
-      "climbs_available": false,
-      "total_climbs": 0,
-      "source": "procyclingstats"
+      "climbs_available": true,
+      "total_climbs": 9,
+      "source": "gpx_derived"
     },
     "vuelta-a-espana-2026": {
       "name": "Vuelta a España",

@@ -2,7 +2,84 @@
   "is_one_day_race": false,
   "race": "Tour of Slovenia",
   "race_slug": "tour-of-slovenia-2026",
-  "source": "procyclingstats",
-  "stages": {},
-  "updated_at": "2026-06-10T20:49:26.744392"
+  "source": "gpx_derived",
+  "stages": {
+    "1": [
+      {
+        "km_before_finish": 140.1,
+        "length_km": 2.0,
+        "name": "Climb",
+        "steepness": 3.1,
+        "top_m": 440
+      },
+      {
+        "km_before_finish": 138.3,
+        "length_km": 1.1,
+        "name": "Climb",
+        "steepness": 6.3,
+        "top_m": 461
+      },
+      {
+        "km_before_finish": 60.9,
+        "length_km": 1.5,
+        "name": "Climb",
+        "steepness": 4.3,
+        "top_m": 339
+      }
+    ],
+    "3": [
+      {
+        "km_before_finish": 98.2,
+        "length_km": 3.1,
+        "name": "Climb",
+        "steepness": 4.3,
+        "top_m": 475
+      },
+      {
+        "km_before_finish": 84.9,
+        "length_km": 11.7,
+        "name": "Climb",
+        "steepness": 4.6,
+        "top_m": 925
+      },
+      {
+        "km_before_finish": 75.1,
+        "length_km": 3.9,
+        "name": "Climb",
+        "steepness": 3.4,
+        "top_m": 571
+      }
+    ],
+    "5": [
+      {
+        "km_before_finish": 158.5,
+        "length_km": 9.6,
+        "name": "Climb",
+        "steepness": 3.7,
+        "top_m": 592
+      },
+      {
+        "km_before_finish": 112.6,
+        "length_km": 6.5,
+        "name": "Climb",
+        "steepness": 3.7,
+        "top_m": 490
+      },
+      {
+        "km_before_finish": 65.0,
+        "length_km": 3.5,
+        "name": "Climb",
+        "steepness": 5.4,
+        "top_m": 434
+      },
+      {
+        "km_before_finish": 39.2,
+        "length_km": 7.9,
+        "name": "Climb",
+        "steepness": 3.5,
+        "top_m": 515
+      }
+    ]
+  },
+  "updated_at": "2026-06-12T17:45:12.307132"
 }

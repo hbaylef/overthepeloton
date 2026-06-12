@@ -2,7 +2,33 @@
   "is_one_day_race": false,
   "race": "Arctic Race of Norway",
   "race_slug": "arctic-race-of-norway-2026",
-  "source": "procyclingstats",
-  "stages": {},
-  "updated_at": "2026-06-10T20:42:59.687619"
+  "source": "gpx_derived",
+  "stages": {
+    "2": [
+      {
+        "km_before_finish": 151.0,
+        "length_km": 2.1,
+        "name": "Climb",
+        "steepness": 5.2,
+        "top_m": 127
+      }
+    ],
+    "4": [
+      {
+        "km_before_finish": 64.2,
+        "length_km": 4.3,
+        "name": "Climb",
+        "steepness": 3.3,
+        "top_m": 176
+      },
+      {
+        "km_before_finish": 0.0,
+        "length_km": 4.5,
+        "name": "Climb",
+        "steepness": 5.8,
+        "top_m": 264
+      }
+    ]
+  },
+  "updated_at": "2026-06-12T17:45:05.084028"
 }
