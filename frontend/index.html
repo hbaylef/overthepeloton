@@ -53,17 +53,17 @@
   header {
     background: var(--ink);
     color: var(--paper);
-    padding: 18px 28px;
+    padding: 12px 28px;
     display: flex;
     align-items: baseline;
-    gap: 18px;
-    border-bottom: 4px solid var(--rust);
+    gap: 16px;
+    border-bottom: 3px solid var(--rust);
     position: relative;
     z-index: 1200;
   }
   .brand {
     font-family: 'Archivo Black', sans-serif;
-    font-size: 31px;
+    font-size: 25px;
     letter-spacing: -0.5px;
     line-height: 1;
   }
@@ -210,33 +210,41 @@
     overflow-y: auto;
   }
   .race-header {
-    padding: 22px 28px 18px;
+    padding: 13px 28px;
     border-bottom: 2px solid var(--line);
     background: var(--paper);
   }
-  .race-header h1 {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: 42px;
-    line-height: 0.95;
-    letter-spacing: -1px;
-    margin-bottom: 10px;
-  }
-  .race-header .sub {
+  /* Single-line headline: 🏴 Name | date | stats | edition */
+  .race-headline {
     display: flex;
-    gap: 20px;
     flex-wrap: wrap;
+    align-items: baseline;
+    gap: 12px;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 14px;
     color: var(--grey);
-    font-family: 'JetBrains Mono', monospace;
   }
-  .race-header .sub b { color: var(--ink); }
+  .race-headline .rh-name {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 23px;
+    letter-spacing: -0.4px;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .race-headline b { color: var(--ink); font-weight: 700; }
+  .race-headline .rh-sep { color: var(--line); }
+  .race-headline .rh-name .flag-img {
+    height: 18px; width: auto; vertical-align: -2px;
+    border-radius: 2px; box-shadow: 0 0 0 1px var(--line);
+  }
+  .stage-tab .st-emoji { font-size: 17px; vertical-align: -2px; }
 
   /* stage selector */
   .stage-tabs {
     display: flex;
     gap: 6px;
     flex-wrap: wrap;
-    padding: 14px 28px 0;
+    padding: 10px 28px 0;
   }
   .stage-tab {
     font-family: 'JetBrains Mono', monospace;
@@ -259,13 +267,15 @@
 
   /* map + profile */
   .viz {
-    padding: 18px 28px 28px;
+    padding: 14px 28px 22px;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 14px;
   }
   #map {
-    height: 560px;
+    /* Viewport-relative so the map + profile both fit on a normal screen
+       instead of forcing a scroll. Shrinks on laptops, grows on big monitors. */
+    height: clamp(240px, 40vh, 440px);
     border: 2px solid var(--ink);
     border-radius: 8px;
     box-shadow: 7px 7px 0 var(--shadow);
@@ -313,7 +323,7 @@
   #elevation {
     display: block;
     width: 100%;
-    height: 320px;
+    height: clamp(180px, 26vh, 290px);
     cursor: crosshair;
   }
   .readout {
@@ -711,7 +721,7 @@
   @media (max-width: 820px) {
     .layout { grid-template-columns: 1fr; }
     .sidebar { max-height: 220px; }
-    .race-header h1 { font-size: 26px; }
+    .race-headline .rh-name { font-size: 20px; }
   }
 </style>
 </head>
@@ -971,6 +981,57 @@ function fmtDate(s) {
   return d.toLocaleDateString('en-GB', { day:'2-digit', month:'short' });
 }
 
+// ISO alpha-2 country code → flag emoji (regional indicator letters). Returns ''
+// for missing/odd codes so the header degrades gracefully.
+function flagEmoji(code) {
+  const cc = String(code || '').trim().toUpperCase();
+  if (!/^[A-Z]{2}$/.test(cc)) return '';
+  return String.fromCodePoint(...[...cc].map(c => 0x1F1E6 + c.charCodeAt(0) - 65));
+}
+
+// Date range WITH year, compacted: one-day → "18 Jan 2026"; same month →
+// "18–24 January 2026"; spanning months → "28 Jan – 2 Feb 2026".
+function fmtDateRange(r) {
+  if (!r.startdate) return '';
+  const a = new Date(r.startdate + 'T00:00:00');
+  const full = d => d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+  if (r.is_one_day_race || !r.enddate || r.enddate === r.startdate) return full(a);
+  const b = new Date(r.enddate + 'T00:00:00');
+  if (a.getMonth() === b.getMonth() && a.getFullYear() === b.getFullYear()) {
+    return a.getDate() + '–' + b.getDate() + ' ' +
+      b.toLocaleDateString('en-GB', { month:'long', year:'numeric' });
+  }
+  const sameYear = a.getFullYear() === b.getFullYear();
+  const aStr = a.toLocaleDateString('en-GB', { day:'numeric', month:'short' }) +
+    (sameYear ? '' : ' ' + a.getFullYear());
+  return aStr + ' – ' + full(b);
+}
+
+// Race-wide route totals (km + elevation gain) from the loaded stage points —
+// same maths as the per-stage profile stats. De-duplicates by stage number so a
+// women's variant of a one-day race (sorted last in currentStageFiles) isn't
+// double-counted.
+function routeTotals() {
+  const seen = new Set();
+  let km = 0, gain = 0;
+  for (const f of currentStageFiles) {
+    const key = f.stage == null ? 'oneday' : f.stage;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    let prev = null;
+    for (const p of (f.points || [])) {
+      const lat = p[0], lon = p[1], ele = p[2] || 0;
+      if (prev) {
+        km += haversine(prev.lat, prev.lon, lat, lon);
+        const d = ele - prev.ele;
+        if (d > 0) gain += d;
+      }
+      prev = { lat, lon, ele };
+    }
+  }
+  return { km, gain };
+}
+
 // Race-list filters. The tour dropdown groups PCS class codes into World Tour
 // (1.UWT one-day + 2.UWT stage) vs "the rest" (Pro/.1 etc) — R7 (non-WT) lands
 // in the latter bucket.
@@ -1092,6 +1153,28 @@ async function selectRace(idx) {
   }
 }
 
+// Stage-type → emoji + label for the stage selector.
+const STAGE_TYPE_META = {
+  climber:        { emoji: '🏔️', label: 'Mountain' },
+  hills_puncheur: { emoji: '🌄', label: 'Hilly' },
+  sprint:         { emoji: '➡️', label: 'Flat / sprint' },
+  sprint_break:   { emoji: '➡️', label: 'Flat / sprint' },
+  time_trial:     { emoji: '⏱️', label: 'Time trial' },
+  cobbles:        { emoji: '🧱', label: 'Cobbles' },
+};
+
+// Map a route's stage number to its stage_type by reading the race's stage list
+// (routes are a subset of stages, so we match "Stage N" by name, not position).
+function stageTypeByNumber(r) {
+  const map = {};
+  (r.stages || []).forEach(s => {
+    const m = (s.stage_name || '').match(/stage\s+(\d+)/i);
+    if (m) map[parseInt(m[1], 10)] = s.stage_type;
+    else if (/prologue/i.test(s.stage_name || '')) map.prologue = s.stage_type;
+  });
+  return map;
+}
+
 function renderRaceHeader(gpx) {
   const main = document.getElementById('main');
   const r = currentRace;
@@ -1099,11 +1182,16 @@ function renderRaceHeader(gpx) {
 
   let stageTabsHtml = '';
   if (hasGpx && !r.is_one_day_race && currentStageFiles.length > 1) {
+    const typeByNum = stageTypeByNumber(r);
     stageTabsHtml = '<div class="stage-tabs">' +
-      currentStageFiles.map((f, i) =>
-        `<div class="stage-tab ${i===0?'active':''}" data-stage="${i}"
-          onclick="loadStage(${i})">Stage ${f.stage || (i+1)}</div>`
-      ).join('') + '</div>';
+      currentStageFiles.map((f, i) => {
+        const num = f.stage || (i + 1);
+        const type = (f.stage ? typeByNum[f.stage] : null) || typeByNum.prologue;
+        const meta = STAGE_TYPE_META[type];
+        const tag = meta ? ` <span class="st-emoji" title="${meta.label}">${meta.emoji}</span>` : '';
+        return `<div class="stage-tab ${i===0?'active':''}" data-stage="${i}"
+          onclick="loadStage(${i})">Stage ${num}${tag}</div>`;
+      }).join('') + '</div>';
   }
 
   let vizHtml;
@@ -1148,18 +1236,28 @@ function renderRaceHeader(gpx) {
       <div class="big">Route not available</div>${reason}</div></div>`;
   }
 
+  // Build the single-line headline: [flag] Name | date | N stages · km · elev | Edition #x
+  const flag = flagImg(r.nationality);
+  const stats = [];
+  if (!r.is_one_day_race && r.stages && r.stages.length)
+    stats.push(`<b>${r.stages.length}</b> stages`);
+  if (hasGpx) {
+    const t = routeTotals();
+    if (t.km > 0)   stats.push(`<b>${Math.round(t.km).toLocaleString('en-GB')}</b> km`);
+    if (t.gain > 0) stats.push(`<b>${Math.round(t.gain).toLocaleString('en-GB')}</b> m elevation gain`);
+  }
+  const dateStr = fmtDateRange(r);
+  const parts = [
+    `<span class="rh-name">${flag ? flag + ' ' : ''}${r.name}</span>`,
+    dateStr ? `<span>${dateStr}</span>` : '',
+    stats.length ? `<span>${stats.join(' · ')}</span>` : '',
+    r.edition ? `<span>Edition #${r.edition}</span>` : '',
+  ].filter(Boolean);
+  const headline = parts.join('<span class="rh-sep">|</span>');
+
   main.innerHTML = `
     <div class="race-header">
-      <h1>${r.name}</h1>
-      <div class="sub">
-        <span><b>${r.is_one_day_race ? fmtDate(r.startdate)
-          : fmtDate(r.startdate)+' – '+fmtDate(r.enddate)}</b></span>
-        <span>${flagImg(r.nationality)} <b>${r.nationality||''}</b></span>
-        <span>${r.category||''}</span>
-        ${r.edition ? `<span>edition <b>${r.edition}</b></span>`:''}
-        ${!r.is_one_day_race && currentStageFiles.length ?
-          `<span><b>${currentStageFiles.length}</b> stages with route</span>`:''}
-      </div>
+      <div class="race-headline">${headline}</div>
     </div>
     ${vizHtml}
     <div class="viz" style="padding-top:0">
