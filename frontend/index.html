@@ -398,7 +398,7 @@
   .wx-legend .wx-leg-temp { color: var(--ink); font-weight: 600; }
   .wx-temp-key { display: inline-block; width: 22px; height: 9px; border-radius: 2px;
     vertical-align: middle; margin-right: 2px;
-    background: linear-gradient(90deg,#2847c4,#4aa3df,#46b37f,#e0a526,#c61e18); }
+    background: linear-gradient(90deg,#2563d8,#38a864,#f0c71e,#e8821e); }
   /* temperature badge: °C every 50 km + at climb summits */
   .wx-temp-label { font-family: 'Archivo Black', sans-serif; font-size: 10px; color: #fff;
     padding: 1px 5px; border-radius: 9px; white-space: nowrap; text-align: center;
@@ -2134,10 +2134,12 @@ function rainColor(w) {                 // w: 0..1 wetness — starts at a solid
 // real chance (> 10%) AND measurable rain (> 0.05 mm) — a high "chance" with
 // 0.0 mm is dry; past races (no probability) gate on mm alone. Tint by how much
 // rain falls; the % chance stays in the tooltip.
-// Fixed temperature colour scale (°C): deep blue (cold) → red (hot).
+// Fixed temperature colour scale (°C): blue → green → yellow → orange.
 const TEMP_STOPS = [
-  [-5, [40, 71, 196]], [3, [74, 163, 223]], [11, [70, 179, 127]],
-  [19, [224, 165, 38]], [27, [221, 112, 41]], [35, [198, 30, 24]],
+  [-5, [37, 99, 216]],   // blue
+  [9,  [56, 168, 100]],  // green
+  [20, [240, 199, 30]],  // yellow
+  [32, [232, 126, 26]],  // orange
 ];
 function tempColor(t) {
   if (t == null) return '#888';
@@ -2171,31 +2173,44 @@ function tempAtDist(dist, temps) {
 // Temperature as a blue→red band BEHIND the route (its own under-route pane),
 // plus a °C label every 50 km and at each climb summit.
 function buildTempLayer(samples) {
-  const temps = samples.filter(s => s.temp != null).map(s => ({ dist: s.dist, temp: s.temp }));
+  const withT = samples.filter(s => s.temp != null);
+  const temps = withT.map(s => ({ dist: s.dist, temp: s.temp }));
   if (!temps.length || !elevationPoints.length) return null;
   const pts = elevationPoints;
   const total = pts[pts.length - 1].dist;
   const layers = [];
+  // The pass-time (HH:MM) of the nearest weather sample to a distance — shown on hover.
+  const timeAt = dist => {
+    let best = null, bd = Infinity;
+    for (const s of withT) { const d = Math.abs(s.dist - dist); if (d < bd) { bd = d; best = s; } }
+    return best && best.time ? best.time.slice(11) : null;
+  };
+  const tipFor = (t, dist) => { const hm = timeAt(dist);
+    return `${Math.round(t)}°C` + (hm ? ` · at ${hm}` : ''); };
   // 1) gradient band: contiguous index buckets, coloured by their midpoint temp.
   //    Buckets share endpoints (i1 of one = i0 of the next), so there are no gaps.
+  //    Hovering a segment shows its temperature and the time the peloton is there.
   const SEG = 60;
   for (let k = 0; k < SEG; k++) {
     const i0 = Math.floor(pts.length * k / SEG);
     const i1 = Math.min(pts.length - 1, Math.floor(pts.length * (k + 1) / SEG));
     if (i1 - i0 < 1) continue;
     const ll = pts.slice(i0, i1 + 1).map(p => [p.lat, p.lon]);
-    const t = tempAtDist(pts[Math.floor((i0 + i1) / 2)].dist, temps);
+    const midDist = pts[Math.floor((i0 + i1) / 2)].dist;
+    const t = tempAtDist(midDist, temps);
     layers.push(L.polyline(ll, { pane: 'tempPane', color: tempColor(t),
-      weight: 13, opacity: 0.8, lineCap: 'round', lineJoin: 'round' }));
+      weight: 13, opacity: 0.8, lineCap: 'round', lineJoin: 'round' })
+      .bindTooltip(tipFor(t, midDist), { sticky: true }));
   }
-  // 2) °C labels every 40 km, and 3) at each climb summit.
+  // 2) °C labels every 40 km, and 3) at each climb summit (hover shows the time).
   const addLabel = dist => {
     const t = tempAtDist(dist, temps);
     if (t == null) return;
     const p = pts[nearestIndex(dist)];
     const html = `<div class="wx-temp-label" style="background:${tempColor(t)}">${Math.round(t)}°</div>`;
-    layers.push(L.marker([p.lat, p.lon], { interactive: false,
-      icon: L.divIcon({ className: '', iconSize: [34, 18], iconAnchor: [17, 9], html }) }));
+    layers.push(L.marker([p.lat, p.lon], { interactive: true,
+      icon: L.divIcon({ className: '', iconSize: [34, 18], iconAnchor: [17, 9], html }) })
+      .bindTooltip(tipFor(t, dist)));
   };
   for (let d = 40; d < total; d += 40) addLabel(d);
   for (const c of (currentClimbs || [])) if (c.km > 0 && c.km <= total) addLabel(c.km);
