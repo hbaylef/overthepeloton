@@ -199,6 +199,12 @@ def main():
     ap.add_argument("--dry-run", action="store_true",
                     help="report how many riders would be skipped vs fetched, then "
                          "exit (no network, no writes)")
+    ap.add_argument("--embed-only", action="store_true",
+                    help="re-apply the CACHED specialties/birthdate/place onto the "
+                         "startlists and exit — NO PCS calls. Used by the daily run "
+                         "so the site keeps showing rider data without re-scraping; "
+                         "run without this flag (weekly/monthly) to actually refresh "
+                         "from PCS.")
     args = ap.parse_args()
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -211,6 +217,18 @@ def main():
     cache = load_cache(client)
     cache_riders = cache.setdefault("riders", {})
     total = len(rider_urls)
+
+    if args.embed_only:
+        # Daily mode: NO PCS calls. scrape_races rebuilds the startlists fresh
+        # (dropping specialties/birth), so we re-apply the already-cached values
+        # to keep the site's hometown strip + specialty data populated. New
+        # riders simply have null blocks until a weekly/monthly full run scrapes
+        # them. The cache itself is unchanged, so we don't rewrite it.
+        embed_specialties_into_startlists(client, cache_riders)
+        client.close()
+        log.info(f"Embed-only: re-applied cached rider data to {total} riders' "
+                 f"startlist entries (no PCS calls).")
+        return
 
     if args.dry_run:
         to_fetch = [u for u in rider_urls if needs_refetch(cache_riders.get(u))]

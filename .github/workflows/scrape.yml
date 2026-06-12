@@ -49,8 +49,13 @@ jobs:
         run: python scrapers/scrape_gpx.py
         continue-on-error: true
 
-      - name: Embed rider career specialty points into startlists
-        run: python scrapers/scrape_riders.py
+      - name: Re-apply cached rider specialties/birthplaces to startlists (no PCS calls)
+        # --embed-only makes ZERO PCS calls: it just re-applies the already-cached
+        # specialties + birthdate/place onto the freshly-rebuilt startlists so the
+        # site keeps showing them. The heavy PCS specialty re-scrape was removed
+        # from the daily run (2026-06-12); run scrape_riders.py WITHOUT this flag
+        # on a weekly/monthly cadence to actually refresh rider data from PCS.
+        run: python scrapers/scrape_riders.py --embed-only
         continue-on-error: true
 
       - name: Geocode rider birthplaces (hometown section)
