@@ -124,8 +124,8 @@ own shell) can't reach Turso through the proxy, so verification ran via
 (`publish.py` derives downsampled routes from any `gpx_files` row regardless of
 source — no code change needed); that same run finally publishes Phase A's 98
 races to the public slices. Then: recover name-match misses via overrides + a
-re-run for the "no routes yet" races. **Rotate the Turso token** (it appeared in a
-chat transcript during this session). See §9 "La Flamme Rouge".
+re-run for the "no routes yet" races. (The Turso token was exposed in chat this
+session and the user has since **rotated it** — resolved.) See §9 "La Flamme Rouge".
 
 ### 🟡 EARLIER SESSION (2026-06-10, pt 2) — PHASE A: discover ALL 2026 WT + ProSeries races from PCS (BUILT + REVIEWED, in the working tree — NOT yet pushed)
 
