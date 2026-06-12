@@ -392,19 +392,30 @@
   .wx-ctrl .wx-note { color: #64748b; font-size: 11.5px; margin-top: 4px; }
   .wx-ctrl .wx-legend { margin-top: 6px; border-top: 1px solid var(--line);
     padding-top: 6px; color: #64748b; font-size: 11.5px; }
+  /* legend keyed to the map colours: wind = black, rain = blue */
+  .wx-legend .wx-leg-wind { color: var(--ink); font-weight: 600; }
+  .wx-legend .wx-leg-rain { color: #2a6391; font-weight: 600; }
+  .wx-legend .wx-leg-temp { color: var(--ink); font-weight: 600; }
+  .wx-temp-key { display: inline-block; width: 22px; height: 9px; border-radius: 2px;
+    vertical-align: middle; margin-right: 2px;
+    background: linear-gradient(90deg,#2847c4,#4aa3df,#46b37f,#e0a526,#c61e18); }
+  /* temperature badge: °C every 50 km + at climb summits */
+  .wx-temp-label { font-family: 'Archivo Black', sans-serif; font-size: 10px; color: #fff;
+    padding: 1px 5px; border-radius: 9px; white-space: nowrap; text-align: center;
+    line-height: 1.4; border: 1.5px solid #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.4); }
   /* wind arrow marker: rotated glyph + speed label */
   .wx-wind { display: flex; flex-direction: column; align-items: center;
     line-height: 1; pointer-events: none; }
-  .wx-wind .wx-arrow { font-size: 32px; font-weight: 700; line-height: 1;
+  .wx-wind .wx-arrow { font-size: 22px; font-weight: 700; line-height: 1;
     text-shadow: 0 0 3px var(--paper), 0 0 3px var(--paper), 0 0 4px var(--paper); }
-  .wx-wind .wx-spd { font-family: 'JetBrains Mono', monospace; font-size: 11px;
-    font-weight: 700; color: var(--ink);
+  .wx-wind .wx-spd { font-family: 'Archivo Black', sans-serif; font-size: 11px;
+    color: var(--ink);
     text-shadow: 0 0 2px var(--paper), 0 0 3px var(--paper), 0 0 4px var(--paper); }
-  /* rain zone readout (% chance · mm) sitting above each rain circle */
-  .wx-rain-label { font-family: 'JetBrains Mono', monospace; font-size: 10px;
-    font-weight: 700; color: #143653; white-space: nowrap; text-align: center;
-    pointer-events: none;
-    text-shadow: 0 0 2px var(--paper), 0 0 3px var(--paper), 0 0 4px var(--paper); }
+  /* rain readout (% chance · mm) sitting INSIDE each rain circle */
+  .wx-rain-label { font-family: 'Archivo Black', sans-serif; font-size: 10px;
+    color: #ffffff; white-space: nowrap; text-align: center; line-height: 1.1;
+    letter-spacing: 0.2px; pointer-events: none;
+    text-shadow: 0 0 2px #0a2440, 0 0 3px #0a2440, 0 1px 2px rgba(0,0,0,0.55); }
 
   /* hometown & birthdays — small strip under the profile */
   /* same layout/typography as the climbs list: head label + inline chips */
@@ -804,8 +815,8 @@ let canvas, ctx;
 // R5 weather: toggle state persists across stage/race switches; layers + control
 // are rebuilt per stage. `wxToken` guards against a slow fetch landing on a
 // stage the user already navigated away from.
-let wxState = { wind: false, rain: false };
-let wxLayers = { wind: null, rain: null };
+let wxState = { wind: false, rain: false, temp: false };
+let wxLayers = { wind: null, rain: null, temp: null };
 let wxControl = null, wxToken = 0;
 
 // ============================================================
@@ -1265,7 +1276,7 @@ function renderRaceHeader(gpx) {
       <div id="odds-container"></div>
     </div>`;
 
-  if (hasGpx) initMap();
+  if (hasGpx) { initMap(); requestAnimationFrame(() => fitViz(true)); }
   loadOdds();
   loadRosterSections();
 }
@@ -1736,6 +1747,33 @@ function renderOdds(data) {
 // ============================================================
 //  MAP
 // ============================================================
+// Size the map + elevation profile to the VISITOR's screen so both are visible
+// together. Measures the space from the top of the map to the bottom of the
+// viewport, reserves the profile's head/legend/readout (the climb list +
+// hometown strip below them are allowed to scroll), and splits the rest ~57/43.
+// Re-runs on window resize. Leaflet needs invalidateSize() after a height change.
+function fitViz(refit) {
+  const mapEl = document.getElementById('map');
+  const elev  = document.getElementById('elevation');
+  if (!mapEl || !elev) return;
+  const card = elev.closest('.profile-card');
+  const h = sel => { const el = card && card.querySelector(sel); return el ? el.offsetHeight : 0; };
+  const chrome = h('.profile-head') + h('.grad-legend') + h('.readout') + 6; // +borders
+  const top = mapEl.getBoundingClientRect().top;
+  let avail = Math.max(window.innerHeight - top - 22, 380); // 22 ≈ .viz bottom padding; floor → scroll
+  const graphics = avail - 14 /* gap */ - chrome;
+  let mapH  = Math.round(graphics * 0.57);
+  let elevH = graphics - mapH;
+  mapH  = Math.min(Math.max(mapH, 220), 520);
+  elevH = Math.min(Math.max(elevH, 150), 360);
+  mapEl.style.height = mapH + 'px';
+  elev.style.height  = elevH + 'px';
+  if (map && map.invalidateSize) map.invalidateSize();
+  // On a fresh render, re-fit the route tightly to the final map size.
+  if (refit && map && routeLayer) map.fitBounds(routeLayer.getBounds(), { padding:[10,10] });
+  if (canvas && ctx && elevationPoints && elevationPoints.length) renderProfile();
+}
+
 function initMap() {
   if (typeof L === 'undefined') {
     // Leaflet failed to load (e.g. offline / blocked CDN).
@@ -1749,10 +1787,17 @@ function initMap() {
   }
   if (map) { map.remove(); map = null; }
   map = L.map('map', { scrollWheelZoom: true }).setView([46, 6], 6);
+  // Rain pane: sits BELOW the route line (overlayPane=400) so the red line is
+  // never covered by the rain wash.
+  map.createPane('rainPane');
+  map.getPane('rainPane').style.zIndex = 350;
+  // Temperature band: above rain, still below the route line (overlayPane=400).
+  map.createPane('tempPane');
+  map.getPane('tempPane').style.zIndex = 360;
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap', maxZoom: 17
   }).addTo(map);
-  wxLayers = { wind: null, rain: null };   // map was recreated → drop stale refs
+  wxLayers = { wind: null, rain: null, temp: null };   // map was recreated → drop stale refs
   addWeatherControl();                      // R5 weather toggles (state persists)
 }
 
@@ -1842,17 +1887,17 @@ function drawRouteOnMap() {
   const latlngs = elevationPoints.map(p => [p.lat, p.lon]);
 
   routeLayer = L.polyline(latlngs, {
-    color: '#2563d8', weight: 4, opacity: 0.95,
+    color: '#e11d2a', weight: 4, opacity: 0.95,   // red — distinct from blue rain circles
     lineJoin: 'round', lineCap: 'round'
   }).addTo(map);
 
-  // start & finish markers
+  // start = green dot, finish = chequered flag
   const startIco = L.divIcon({ className:'', html:
-    '<div style="background:#1f8a78;width:15px;height:15px;border-radius:50%;border:2.5px solid #eef3f9;box-shadow:0 0 0 1px #0f2238"></div>',
+    '<div style="background:#16a34a;width:15px;height:15px;border-radius:50%;border:2.5px solid #eef3f9;box-shadow:0 0 0 1px #0f2238"></div>',
     iconSize:[15,15], iconAnchor:[7,7] });
   const endIco = L.divIcon({ className:'', html:
-    '<div style="background:#0f2238;width:15px;height:15px;border-radius:50%;border:2.5px solid #eef3f9;box-shadow:0 0 0 1px #0f2238"></div>',
-    iconSize:[15,15], iconAnchor:[7,7] });
+    '<div style="font-size:22px;line-height:1;filter:drop-shadow(0 1px 1.5px rgba(0,0,0,.45))">🏁</div>',
+    iconSize:[22,22], iconAnchor:[3,20] });   // anchor near the flagpole base
 
   endpointMarkers = L.layerGroup([
     L.marker(latlngs[0], {icon:startIco}).bindTooltip('Start'),
@@ -1864,7 +1909,7 @@ function drawRouteOnMap() {
     radius: 7, color:'#0f2238', weight:2, fillColor:'#e0a526', fillOpacity:1
   });
 
-  map.fitBounds(routeLayer.getBounds(), { padding:[30,30] });
+  map.fitBounds(routeLayer.getBounds(), { padding:[10,10] });   // tight fit, whole line
 
   drawHighlightsOnMap();   // overlay any pavé / climbs we already have for this stage
 }
@@ -2029,7 +2074,8 @@ async function fetchWeather(meta) {
     ? 'https://archive-api.open-meteo.com/v1/archive'
     : 'https://api.open-meteo.com/v1/forecast';
   // precipitation_probability is forecast-only; the archive API rejects it.
-  const hourly = 'wind_speed_10m,wind_direction_10m,wind_gusts_10m,precipitation' +
+  // temperature_2m exists on both endpoints.
+  const hourly = 'temperature_2m,wind_speed_10m,wind_direction_10m,wind_gusts_10m,precipitation' +
     (past ? '' : ',precipitation_probability');
   const url = `${base}?latitude=${lat}&longitude=${lon}&hourly=${hourly}` +
     `&start_date=${meta.date}&end_date=${meta.date}&timezone=auto&wind_speed_unit=kmh`;
@@ -2042,6 +2088,7 @@ async function fetchWeather(meta) {
     const idx = passHourIndex(meta.startTime, p.dist, kmh);
     const at = a => (Array.isArray(a) ? a[idx] : null);
     return { ...p,
+      temp: at(H.temperature_2m),
       windSpeed: at(H.wind_speed_10m), windDir: at(H.wind_direction_10m),
       gust: at(H.wind_gusts_10m), precip: at(H.precipitation),
       precipProb: at(H.precipitation_probability),
@@ -2066,7 +2113,7 @@ function buildWindLayer(samples) {
     const html = `<div class="wx-wind">` +
       `<div class="wx-arrow" style="color:${col};transform:rotate(${rot}deg)">↑</div>` +
       `<div class="wx-spd">${Math.round(s.windSpeed)}</div></div>`;
-    const icon = L.divIcon({ className: '', iconSize: [48, 44], iconAnchor: [24, 22], html });
+    const icon = L.divIcon({ className: '', iconSize: [34, 31], iconAnchor: [17, 15], html });
     const tip = `Wind ${Math.round(s.windSpeed)} km/h` +
       (s.gust != null ? ` (gust ${Math.round(s.gust)})` : '') +
       (s.time ? `<br>at ${s.time.slice(11)}` : '');
@@ -2087,6 +2134,74 @@ function rainColor(w) {                 // w: 0..1 wetness — starts at a solid
 // real chance (> 10%) AND measurable rain (> 0.05 mm) — a high "chance" with
 // 0.0 mm is dry; past races (no probability) gate on mm alone. Tint by how much
 // rain falls; the % chance stays in the tooltip.
+// Fixed temperature colour scale (°C): deep blue (cold) → red (hot).
+const TEMP_STOPS = [
+  [-5, [40, 71, 196]], [3, [74, 163, 223]], [11, [70, 179, 127]],
+  [19, [224, 165, 38]], [27, [221, 112, 41]], [35, [198, 30, 24]],
+];
+function tempColor(t) {
+  if (t == null) return '#888';
+  const S = TEMP_STOPS;
+  if (t <= S[0][0]) return `rgb(${S[0][1].join(',')})`;
+  if (t >= S[S.length - 1][0]) return `rgb(${S[S.length - 1][1].join(',')})`;
+  for (let i = 1; i < S.length; i++) {
+    if (t <= S[i][0]) {
+      const [t0, c0] = S[i - 1], [t1, c1] = S[i];
+      const f = (t - t0) / (t1 - t0);
+      return `rgb(${c0.map((v, j) => Math.round(v + (c1[j] - v) * f)).join(',')})`;
+    }
+  }
+}
+// Linear-interpolate the temperature at a route distance, from the sampled points.
+function tempAtDist(dist, temps) {
+  if (!temps.length) return null;
+  if (dist <= temps[0].dist) return temps[0].temp;
+  const last = temps[temps.length - 1];
+  if (dist >= last.dist) return last.temp;
+  for (let i = 1; i < temps.length; i++) {
+    if (dist <= temps[i].dist) {
+      const a = temps[i - 1], b = temps[i];
+      const f = (dist - a.dist) / ((b.dist - a.dist) || 1);
+      return a.temp + (b.temp - a.temp) * f;
+    }
+  }
+  return last.temp;
+}
+
+// Temperature as a blue→red band BEHIND the route (its own under-route pane),
+// plus a °C label every 50 km and at each climb summit.
+function buildTempLayer(samples) {
+  const temps = samples.filter(s => s.temp != null).map(s => ({ dist: s.dist, temp: s.temp }));
+  if (!temps.length || !elevationPoints.length) return null;
+  const pts = elevationPoints;
+  const total = pts[pts.length - 1].dist;
+  const layers = [];
+  // 1) gradient band: contiguous index buckets, coloured by their midpoint temp.
+  //    Buckets share endpoints (i1 of one = i0 of the next), so there are no gaps.
+  const SEG = 60;
+  for (let k = 0; k < SEG; k++) {
+    const i0 = Math.floor(pts.length * k / SEG);
+    const i1 = Math.min(pts.length - 1, Math.floor(pts.length * (k + 1) / SEG));
+    if (i1 - i0 < 1) continue;
+    const ll = pts.slice(i0, i1 + 1).map(p => [p.lat, p.lon]);
+    const t = tempAtDist(pts[Math.floor((i0 + i1) / 2)].dist, temps);
+    layers.push(L.polyline(ll, { pane: 'tempPane', color: tempColor(t),
+      weight: 13, opacity: 0.8, lineCap: 'round', lineJoin: 'round' }));
+  }
+  // 2) °C labels every 40 km, and 3) at each climb summit.
+  const addLabel = dist => {
+    const t = tempAtDist(dist, temps);
+    if (t == null) return;
+    const p = pts[nearestIndex(dist)];
+    const html = `<div class="wx-temp-label" style="background:${tempColor(t)}">${Math.round(t)}°</div>`;
+    layers.push(L.marker([p.lat, p.lon], { interactive: false,
+      icon: L.divIcon({ className: '', iconSize: [34, 18], iconAnchor: [17, 9], html }) }));
+  };
+  for (let d = 40; d < total; d += 40) addLabel(d);
+  for (const c of (currentClimbs || [])) if (c.km > 0 && c.km <= total) addLabel(c.km);
+  return layers.length ? L.layerGroup(layers) : null;
+}
+
 function buildRainLayer(samples) {
   if (!samples.length) return null;
   const total = elevationPoints[elevationPoints.length - 1].dist;   // km
@@ -2102,21 +2217,21 @@ function buildRainLayer(samples) {
     const tip = `Rain ${mm.toFixed(1)} mm` +
       (prob != null ? ` · ${prob}% chance` : '') +
       (s.time ? `<br>at ${s.time.slice(11)}` : '');
+    // Per-circle translucent fill (soft falloff), in the under-route pane.
     layers.push(L.circle([s.lat, s.lon], {
-      radius, stroke: false,
-      fillColor: col, fillOpacity: 0.32 + w * 0.4 }).bindTooltip(tip));
-    // readout above the zone: % chance · mm
-    const labLat = s.lat + radius / 111320;         // top edge of the circle (north)
+      pane: 'rainPane', radius, stroke: false,
+      fillColor: col, fillOpacity: 0.23 + w * 0.35 }).bindTooltip(tip));
+    // readout INSIDE the circle (% chance · mm) so it's clearly tied to the rain
     const lab = (prob != null ? `${prob}% · ` : '') + `${mm.toFixed(1)}mm`;
-    const labIcon = L.divIcon({ className: '', iconSize: [72, 16], iconAnchor: [36, 16],
+    const labIcon = L.divIcon({ className: '', iconSize: [72, 16], iconAnchor: [36, 8],
       html: `<div class="wx-rain-label">${lab}</div>` });
-    layers.push(L.marker([labLat, s.lon], { icon: labIcon, interactive: false }));
+    layers.push(L.marker([s.lat, s.lon], { icon: labIcon, interactive: false }));
   }
   return layers.length ? L.layerGroup(layers) : null;
 }
 
 function clearWxLayers() {
-  for (const k of ['wind', 'rain']) {
+  for (const k of ['wind', 'rain', 'temp']) {
     if (wxLayers[k]) { map.removeLayer(wxLayers[k]); wxLayers[k] = null; }
   }
 }
@@ -2128,7 +2243,7 @@ async function updateWeather(file, stageIdx) {
   const meta = stageWeatherMeta(file, stageIdx);
   const usable = meta && meta.startTime && wxInRange(meta.date);
   setWxControlState(usable, meta);
-  if (!usable || (!wxState.wind && !wxState.rain)) return;
+  if (!usable || (!wxState.wind && !wxState.rain && !wxState.temp)) return;
 
   const token = ++wxToken;
   let samples;
@@ -2139,6 +2254,7 @@ async function updateWeather(file, stageIdx) {
     return;
   }
   if (token !== wxToken) return;        // navigated away mid-fetch
+  if (wxState.temp) { wxLayers.temp = buildTempLayer(samples); if (wxLayers.temp) wxLayers.temp.addTo(map); }
   if (wxState.wind) { wxLayers.wind = buildWindLayer(samples); if (wxLayers.wind) wxLayers.wind.addTo(map); }
   if (wxState.rain) { wxLayers.rain = buildRainLayer(samples); if (wxLayers.rain) wxLayers.rain.addTo(map); }
 }
@@ -2154,8 +2270,13 @@ function addWeatherControl() {
         `<b>Weather</b>` +
         `<label><input type="checkbox" id="wx-wind"> Wind</label>` +
         `<label><input type="checkbox" id="wx-rain"> Rain</label>` +
+        `<label><input type="checkbox" id="wx-temp"> Temp</label>` +
         `<div class="wx-note" id="wx-note"></div>` +
-        `<div class="wx-legend">↑ points downwind · km/h<br>shaded zone = rain chance</div>`;
+        `<div class="wx-legend">` +
+          `<span class="wx-leg-wind">↑ points downwind · km/h</span><br>` +
+          `<span class="wx-leg-rain">shaded zone = rain chance</span><br>` +
+          `<span class="wx-leg-temp"><i class="wx-temp-key"></i> temperature (°C)</span>` +
+        `</div>`;
       L.DomEvent.disableClickPropagation(d);
       return d;
     }
@@ -2165,16 +2286,20 @@ function addWeatherControl() {
   // wire after the control is in the DOM
   const wind = document.getElementById('wx-wind');
   const rain = document.getElementById('wx-rain');
+  const temp = document.getElementById('wx-temp');
   if (wind) { wind.checked = wxState.wind;
     wind.onchange = () => { wxState.wind = wind.checked; refreshWeather(); }; }
   if (rain) { rain.checked = wxState.rain;
     rain.onchange = () => { wxState.rain = rain.checked; refreshWeather(); }; }
+  if (temp) { temp.checked = wxState.temp;
+    temp.onchange = () => { wxState.temp = temp.checked; refreshWeather(); }; }
 }
 
 function setWxControlState(usable, meta) {
   const wind = document.getElementById('wx-wind');
   const rain = document.getElementById('wx-rain');
-  [wind, rain].forEach(el => { if (el) el.disabled = !usable; });
+  const temp = document.getElementById('wx-temp');
+  [wind, rain, temp].forEach(el => { if (el) el.disabled = !usable; });
   if (!usable) {
     const far = meta && meta.date && !wxInRange(meta.date);
     setWxNote(far ? 'available closer to race day'
@@ -2280,8 +2405,13 @@ function drawElevation() {
   renderProfile();
 
   // Resize handler once globally; interaction handlers once per canvas element.
+  // On resize we refit the map + profile to the new viewport (throttled to one
+  // call per animation frame), which also re-renders the profile.
   if (!window._elevResizeWired) {
-    window.addEventListener('resize', () => { if (canvas && ctx) renderProfile(); });
+    window.addEventListener('resize', () => {
+      if (window._vizRAF) cancelAnimationFrame(window._vizRAF);
+      window._vizRAF = requestAnimationFrame(() => fitViz(false));
+    });
     window._elevResizeWired = true;
   }
   if (!canvas._wired) {
