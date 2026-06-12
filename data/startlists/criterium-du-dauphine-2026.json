@@ -325,6 +325,7 @@
       "team_url": "team/team-visma-lease-a-bike-2026"
     },
     {
+      "abandoned_stage": "S6",
       "birthdate": "1994-9-15",
       "birthplace_lat": 50.6402809,
       "birthplace_lon": 4.6667145,
@@ -353,6 +354,7 @@
           "tt": 3102
         }
       },
+      "status": "DNS",
       "team": "Team Visma | Lease a Bike (WT)",
       "team_url": "team/team-visma-lease-a-bike-2026"
     },
@@ -759,6 +761,7 @@
       "team_url": "team/red-bull-bora-hansgrohe-2026"
     },
     {
+      "abandoned_stage": "S6",
       "birthdate": "2001-12-21",
       "medals": [
         {
@@ -781,6 +784,7 @@
           "tt": 635
         }
       },
+      "status": "DNS",
       "team": "Red Bull - BORA - hansgrohe (WT)",
       "team_url": "team/red-bull-bora-hansgrohe-2026"
     },
@@ -1993,6 +1997,7 @@
       "team_url": "team/tudor-pro-cycling-team-2026"
     },
     {
+      "abandoned_stage": "S6",
       "birthdate": "2001-10-30",
       "birthplace_lat": 51.1638175,
       "birthplace_lon": 10.4478313,
@@ -2011,6 +2016,7 @@
           "tt": 4
         }
       },
+      "status": "DNS",
       "team": "Tudor Pro Cycling Team (PRT)",
       "team_url": "team/tudor-pro-cycling-team-2026"
     },
@@ -2109,6 +2115,7 @@
       "team_url": "team/bahrain-victorious-2026"
     },
     {
+      "abandoned_stage": "S6",
       "birthdate": "2000-4-17",
       "birthplace_lat": 46.1199444,
       "birthplace_lon": 14.8153333,
@@ -2127,6 +2134,7 @@
           "tt": 132
         }
       },
+      "status": "DNS",
       "team": "Bahrain - Victorious (WT)",
       "team_url": "team/bahrain-victorious-2026"
     },
@@ -2751,6 +2759,7 @@
       "team_url": "team/nsn-cycling-team-2026"
     },
     {
+      "abandoned_stage": "S6",
       "birthdate": "2004-11-24",
       "birthplace_lat": 38.8753162,
       "birthplace_lon": -0.7495353,
@@ -2769,6 +2778,7 @@
           "tt": 44
         }
       },
+      "status": "DNS",
       "team": "NSN Cycling Team (WT)",
       "team_url": "team/nsn-cycling-team-2026"
     },
@@ -2907,6 +2917,7 @@
       "team_url": "team/team-jayco-alula-2026"
     },
     {
+      "abandoned_stage": "S6",
       "birthdate": "1990-9-26",
       "birthplace_lat": -24.7761086,
       "birthplace_lon": 134.755,
@@ -2925,6 +2936,7 @@
           "tt": 1678
         }
       },
+      "status": "DNS",
       "team": "Team Jayco AlUla (WT)",
       "team_url": "team/team-jayco-alula-2026"
     },
@@ -3604,5 +3616,5 @@
     }
   ],
   "total_riders": 154,
-  "updated_at": "2026-06-11T21:16:40.262083"
+  "updated_at": "2026-06-12T11:13:12.609839"
 }

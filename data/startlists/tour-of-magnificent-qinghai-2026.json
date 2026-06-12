@@ -91,6 +91,28 @@
       "team_url": "team/azerion-villa-valkenburg-2026"
     },
     {
+      "birthdate": "2003-6-15",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145,
+      "name": "AVONDTS Mathis",
+      "nationality": "BE",
+      "number": null,
+      "place_of_birth": "Belgium",
+      "rider_url": "rider/mathis-avondts",
+      "specialties": {
+        "career": {
+          "climber": 0,
+          "gc": 0,
+          "hills": 1,
+          "one_day_races": 30,
+          "sprint": 218,
+          "tt": 0
+        }
+      },
+      "team": "Azerion / Villa Valkenburg (CT)",
+      "team_url": "team/azerion-villa-valkenburg-2026"
+    },
+    {
       "birthdate": "1998-3-22",
       "birthplace_lat": 52.2434979,
       "birthplace_lon": 5.6343227,
@@ -135,6 +157,6 @@
       "team_url": "team/china-anta-mentech-cycling-team-2026"
     }
   ],
-  "total_riders": 6,
-  "updated_at": "2026-06-10T20:01:40.376104"
+  "total_riders": 7,
+  "updated_at": "2026-06-12T11:15:03.335444"
 }
