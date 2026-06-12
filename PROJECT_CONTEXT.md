@@ -7,12 +7,66 @@
 
 ---
 
-## 0. ⚠️ CURRENT STATUS — START HERE (updated 2026-06-10, end of session)
+## 0. ⚠️ CURRENT STATUS — START HERE (updated 2026-06-12, end of session)
 
 Running in **Claude Code** locally at `C:\Users\PC\Desktop\cycling-dashboard`.
 Site is live; each verified increment is committed + pushed (GitHub Pages).
 
-### 🟡 LATEST SESSION (2026-06-10, pt 2) — PHASE A: discover ALL 2026 WT + ProSeries races from PCS (BUILT + REVIEWED, in the working tree — NOT yet pushed)
+### 🟢 LATEST SESSION (2026-06-12) — PHASE B: La Flamme Rouge GPX harvest via attended CDP-Chrome → Turso (BUILT + RUN; first bulk pass done)
+
+Phase B is the LFR GPX fallback agreed in §9. `scrapers/scrape_lfr.py` was ported
+from the old requests/disk version to: **fetch layer = a real Chrome driven over
+CDP** (Playwright `connect_over_cdp`, all LFR network inside the browser so it
+inherits `cf_clearance` + real TLS and dodges both Cloudflare and the corporate
+proxy) and **output layer = Turso** (`db.put_gpx`, `source=la_flamme_rouge`).
+Targets come from the store (WT+ProSeries with no `db.has_gpx`); idempotent
+(never overwrites an existing route). **Local-only/attended**, NOT in CI;
+`playwright` lives in a new `requirements-dev.txt` (kept out of `requirements.txt`).
+
+**Calibration findings (the original blind-written code was wrong; fixed against
+real LFR HTML captured via a new `--dump-html` flag):**
+- LFR listing pages are **1-INDEXED**: `page=0` makes its SQL offset `(0-1)*30 =
+  -30` → a phpBB "General Error" page (0 results). Start at page 1.
+- Race link format is **`/maps/races/view/{year}/{id}`** (e.g. `/view/2026/44`),
+  NOT `/view/{id}/{slug}`. The race **name is not in the link** — it's a sibling
+  cell `<div class="displayRaceLine__logo"><strong>Name</strong></div>`.
+- The `name=` query param is **ignored** by LFR (returns the whole calendar), so
+  we crawl the listing and match by name. `parse_stage_tracks` was already correct.
+- New: `race_starts_on_or_after` date filter — **only harvest upcoming races**
+  (`--start-after`, default **tomorrow**), per user decision (don't waste effort
+  on finished races). `--list-targets` prints the worklist with no browser.
+- Helper scripts (local dev, committed): `launch-lfr-chrome.ps1` (starts Chrome
+  with `--remote-debugging-port=9222 --user-data-dir=C:\lfr-profile`),
+  `run-lfr.ps1` (`-Real` bulk / `-Slug` one race / `-Dump`; tees to `lfr-run.log`),
+  `verify-lfr.ps1` + `scrapers/verify_lfr_store.py` (read-only store check).
+  `test_scrape_lfr.py` 11/11.
+
+**First bulk run (2026-06-12, 37 forward races): 8 filled (28 GPX), store 30 → 38.**
+- ✅ 8 races got GPX (incl. Arctic Race of Norway, Copenhagen Sprint, an 8-stage);
+  one race stored 4 of 5 tracks (1 GPX failed the validity gate).
+- 🕓 ~7 matched on LFR but have **no routes uploaded yet** (future races, e.g.
+  Bretagne Classic) → just re-run nearer their dates.
+- ❌ ~22 **name-match misses** (PCS vs LFR naming: Cyclassics Hamburg, Czech Tour,
+  Deutschland Tour, Paris-Tours, Clásica San Sebastián, Gran Piemonte, …) → fix by
+  pinning `LFR_RACE_OVERRIDES` (manual LFR lookup per race). **Paris-Tours oddly
+  missed despite an exact name — investigate matching before calling it done.**
+
+**Ops notes:** the harvest is ATTENDED — clear Cloudflare once in the
+`C:\lfr-profile` Chrome; `cf_clearance` expires (~30 min) so a long run needs
+re-clearing (script waits 180s per challenge). Turso read/write works fine from
+the user's machine with no CA bundle; a *background subprocess* (the assistant's
+own shell) can't reach Turso through the proxy, so verification ran via
+`verify-lfr.ps1` on the user's side. Per-race re-crawl makes a full run slow
+(~1.5 h for 37); the "crawl listing once" optimization was **declined** by the user.
+
+**⏭️ NEXT:** the new LFR routes publish automatically on the next daily Actions run
+(`publish.py` derives downsampled routes from any `gpx_files` row regardless of
+source — no code change needed); that same run finally publishes Phase A's 98
+races to the public slices. Then: recover name-match misses via overrides + a
+re-run for the "no routes yet" races. **Rotate the Turso token** (it appeared in a
+chat transcript during this session). See §9 "La Flamme Rouge".
+
+### 🟡 EARLIER SESSION (2026-06-10, pt 2) — PHASE A: discover ALL 2026 WT + ProSeries races from PCS (BUILT + REVIEWED, in the working tree — NOT yet pushed)
 
 **The plan (user-approved, two phases):** expand the project from the ~37
 hardcoded races to the FULL 2026 UCI WorldTour + ProSeries calendars, then
@@ -1096,11 +1150,13 @@ confirmed against the open-source `jalnichols/p-c` LFR scraper). Mechanics:
     `REQUESTS_CA_BUNDLE`; verify the Turso write actually lands (no silent
     failure). Exact env var to be confirmed when Phase B is built/run.
   - Keep/extend the no-network unit tests for parsing/targeting/merge.
-- **STATUS: Phase B pending — start AFTER the Phase A push is verified in
-  Actions** (Phase A defines the target list). The scraper scaffolding
-  (`scrape_lfr.py` parsing/matching/validation, 9/9 tests) is reusable as-is;
-  swap the fetch layer to CDP-Chrome and the output to Turso. With the
-  calendar now at ~98 races, expect ~60+ GPX-less targets (most ProSeries).
+- **STATUS: Phase B BUILT + first bulk run done (2026-06-12).** `scrape_lfr.py`
+  ported to attended CDP-Chrome → Turso; LFR HTML calibrated against real pages
+  (1-indexed paging, `/view/{year}/{id}` links, name in `displayRaceLine__logo`,
+  `name=` filter ignored). Date-filtered to upcoming races. First run filled 8 of
+  37 forward races (28 GPX), store 30 → 38; ~22 name-match misses + ~7 "no routes
+  yet". See §0 "LATEST SESSION (2026-06-12) — PHASE B" for the full writeup,
+  remaining work (overrides for misses, investigate Paris-Tours), and ops notes.
 
 ### Smaller polish ideas (not committed to)
 - Search/filter box on the race list.

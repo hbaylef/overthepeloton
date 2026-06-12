@@ -1,12 +1,34 @@
 #!/usr/bin/env python3
 """
-R-deferred — La Flamme Rouge (LFR) GPX FALLBACK for races cyclingstage.com misses.
+La Flamme Rouge (LFR) GPX FALLBACK — Phase B (attended CDP-Chrome → Turso).
 
 Primary GPX source is cyclingstage.com (scrape_gpx.py). This script fills the gap
-for **UCI WorldTour + ProSeries** races that still have no GPX, using LFR's public
-"maps" section. It is a FALLBACK: it only touches races that are still
-`gpx_available: false` in data/gpx_index.json, and MERGES its results in (it never
-rebuilds the index), tagging them `"source": "la_flamme_rouge"`.
+for **UCI WorldTour + ProSeries** races that still have NO GPX in the store, using
+LFR's public "maps" section. It is a FALLBACK: it only touches races that have no
+GPX yet (`db.has_gpx` is False) and NEVER overwrites an existing route.
+
+Why CDP-Chrome instead of plain HTTP? LFR sits behind a Cloudflare **managed
+challenge** (pre-login) that `requests`/`cloudscraper` cannot pass. So we drive a
+REAL Chrome the user already cleared once:
+
+  1. The user launches their normal Chrome with remote debugging + a dedicated
+     profile that persists `cf_clearance` between runs:
+
+         chrome.exe --remote-debugging-port=9222 --user-data-dir="C:\\lfr-profile"
+
+     …then visits https://www.la-flamme-rouge.eu once and passes Cloudflare.
+  2. This script CONNECTS to that running browser over CDP
+     (`connect_over_cdp("http://localhost:9222")`) — it does NOT launch a fresh
+     automated Chrome (that sets navigator.webdriver and gets challenged).
+  3. ALL network happens INSIDE the browser context (real TLS fingerprint +
+     cf_clearance): listing/race pages via navigate + parse `page.content()`;
+     GPX via an in-page `fetch()` of /maps/viewtrack/gpx/{id}. If a challenge
+     appears mid-run, solve it in the visible window — the script waits.
+
+This also dodges the corporate TLS proxy for LFR traffic (Chrome trusts the
+proxy's root cert at the OS level). LFR uploads GPX weeks ahead, so this is an
+occasional ATTENDED run, NOT a cron job — it is deliberately NOT in the daily
+Actions workflow (LFR also blocks Actions IPs).
 
 LFR mechanics (no login needed for the public maps section):
   - Race listing:  /maps/races?count=0&page={p}&calendar[0]={cal}&year[0]={yr}&name={q}
@@ -14,44 +36,46 @@ LFR mechanics (no login needed for the public maps section):
   - Race page:     /maps/races/view/{race_id}/{name}   (lists the stage tracks)
   - GPX download:  /maps/viewtrack/gpx/{track_id}      (a ready GPX file)
 
-⚠️ RUN LOCALLY ONLY. LFR blocks/limits automated access and GH Actions IPs; this is
-not wired into the daily workflow. Be polite — random delays between requests.
+⚠️ TLS gotcha for the WRITE side: the Python → Turso write does NOT go through the
+browser; it goes through the corporate proxy. If the Turso write fails with a cert
+error, point the libsql client at the corporate CA bundle before running:
+    set REQUESTS_CA_BUNDLE=C:\\path\\to\\corp-ca.pem
+    set SSL_CERT_FILE=%REQUESTS_CA_BUNDLE%
+The script verifies each filled race actually landed in the store (has_gpx) and
+shouts if a write silently didn't take.
 
-⚠️ This machine has a TLS-intercepting proxy that breaks Python cert verification.
-For THIS local-only tool you may pass --insecure (or set LFR_INSECURE=1) to skip
-verification. Do NOT copy that into the cron scrapers.
-
-Because LFR's exact HTML can't be inspected from this dev sandbox, the parsing is
-defensive and verbose; the first real run is a calibration pass. Use --dry-run to
-see what it resolves without downloading, and LFR_RACE_OVERRIDES below to pin a
-race_id when the name auto-match misses.
+Requirements: playwright is a LOCAL/dev dependency only (requirements-dev.txt),
+NOT in CI. Install once:  pip install -r requirements-dev.txt  &&  playwright install chromium
 
 Usage:
-  python scrapers/scrape_lfr.py                 # fill all missing WT+ProSeries
-  python scrapers/scrape_lfr.py --dry-run       # resolve only, download nothing
+  python scrapers/scrape_lfr.py                  # fill all missing WT+ProSeries
+  python scrapers/scrape_lfr.py --dry-run        # resolve races/tracks, store nothing
   python scrapers/scrape_lfr.py --only tour-de-suisse-2026
-  python scrapers/scrape_lfr.py --insecure      # behind a TLS-intercepting proxy
+  python scrapers/scrape_lfr.py --cdp-url http://localhost:9222
 """
 
 import argparse
-import json
 import logging
-import os
 import random
 import re
+import sys
 import time
 import unicodedata
-from datetime import datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
-from typing import List, Optional
+from typing import Callable, List, Optional
 
-import requests
 from bs4 import BeautifulSoup
 
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-RACES_FILE = DATA_DIR / "races.json"
-GPX_DIR = DATA_DIR / "gpx"
-GPX_INDEX_FILE = DATA_DIR / "gpx_index.json"
+import db  # local module: Turso/SQLite store
+
+# This tool runs LOCALLY on Windows; its logs use ✓/✗/→/⚠ symbols. Force UTF-8 on
+# the console streams so they don't crash a default cp1252 terminal.
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
 
 BASE_URL = "https://www.la-flamme-rouge.eu"
 SOURCE_TAG = "la_flamme_rouge"
@@ -68,6 +92,10 @@ CALENDAR_CODES = [1, 2, 3, 4]
 DELAY_RANGE = (3.0, 7.0)
 MAX_LISTING_PAGES = 12          # safety cap when crawling a calendar's listing
 
+# How long (seconds) to wait for the user to solve a Cloudflare challenge in the
+# visible Chrome window before giving up on a page.
+CHALLENGE_WAIT_SECONDS = 180
+
 # Pin a race when the name auto-match fails: race_slug -> LFR race_id (the number
 # in /maps/races/view/{id}/...). Fill in after a --dry-run shows the candidates.
 LFR_RACE_OVERRIDES: dict = {
@@ -80,7 +108,7 @@ log = logging.getLogger(__name__)
 
 
 # ===========================================================================
-#  Pure helpers (no network — unit-tested in test_scrape_lfr.py)
+#  Pure helpers (no network, no browser — unit-tested in test_scrape_lfr.py)
 # ===========================================================================
 _STOPWORDS = {"tour", "de", "la", "le", "du", "of", "the", "et", "a", "grand",
               "prix", "gp", "race", "classic", "ronde", "van"}
@@ -115,21 +143,36 @@ def name_match_score(target: str, candidate: str) -> float:
 
 def parse_race_listing(html: str) -> List[dict]:
     """Extract races from an LFR /maps/races listing page.
-    Returns [{race_id, name, view_url}] for every /maps/races/view/{id}/{slug} link."""
+
+    Real LFR markup (verified 2026-06): each race is a table row; the map link is
+    `/maps/races/view/{year}/{race_id}` (an arrow icon, NO name in the link), and
+    the race name sits in a sibling cell as
+    `<div class="displayRaceLine__logo"><strong>Name</strong></div>`.
+    Returns [{race_id, name, view_url}] per race (de-duplicated by race_id).
+    """
     out, seen = [], set()
     soup = BeautifulSoup(html, "html.parser")
     for a in soup.find_all("a", href=True):
-        m = re.search(r"/maps/races/view/(\d+)/([^/?\"'#]+)", a["href"])
+        m = re.search(r"/maps/races/view/(\d+)/(\d+)", a["href"])
         if not m:
             continue
-        rid = int(m.group(1))
+        year, rid = m.group(1), int(m.group(2))
         if rid in seen:
             continue
+        # The name lives elsewhere in the same row, not in this link.
+        name = ""
+        row = a.find_parent("tr")
+        if row:
+            logo = row.find("div", class_="displayRaceLine__logo")
+            strong = (logo.find("strong") if logo else None) or row.find("strong")
+            if strong:
+                name = strong.get_text(strip=True)
+        if not name:
+            continue  # can't match a race we can't name
         seen.add(rid)
-        name = a.get_text(strip=True) or m.group(2).replace("-", " ")
         out.append({"race_id": rid,
                     "name": name,
-                    "view_url": f"{BASE_URL}/maps/races/view/{rid}/{m.group(2)}"})
+                    "view_url": f"{BASE_URL}/maps/races/view/{year}/{rid}"})
     return out
 
 
@@ -166,82 +209,190 @@ def stage_filename(i: int, total: int, is_one_day: bool) -> str:
     return f"stage-{i}-route.gpx"
 
 
-# ===========================================================================
-#  Network IO
-# ===========================================================================
-def make_session(insecure: bool) -> requests.Session:
-    s = requests.Session()
-    s.headers.update({
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-                      "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "Accept-Language": "en-US,en;q=0.5",
-    })
-    s.verify = not insecure
-    if insecure:
-        log.warning("TLS verification DISABLED (--insecure) — local proxy workaround only.")
-        import urllib3
-        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-    return s
+def looks_like_gpx(text: Optional[str]) -> bool:
+    """Content gate: same check scrape_gpx.py uses. A real GPX is non-trivial XML."""
+    if not text or len(text) < 100:
+        return False
+    head = text[:2000].lower()
+    return "<gpx" in head or "<?xml" in head
+
+
+def race_starts_on_or_after(race: dict, cutoff: date) -> bool:
+    """True if the race's startdate is on/after `cutoff`. Missing/unparseable
+    dates → False (we only harvest races we can confirm are upcoming)."""
+    sd = race.get("startdate")
+    if not sd:
+        return False
+    try:
+        return datetime.strptime(str(sd)[:10], "%Y-%m-%d").date() >= cutoff
+    except ValueError:
+        return False
+
+
+def targets(races: List[dict], has_gpx: Callable[[str], bool],
+            only: Optional[str] = None,
+            start_on_or_after: Optional[date] = None) -> List[dict]:
+    """WT+ProSeries races that still lack GPX, optionally narrowed to one slug.
+
+    `has_gpx(slug)` is a predicate (in production `db.has_gpx`); kept as an
+    argument so the targeting logic stays unit-testable without a database.
+    `start_on_or_after` limits to upcoming races (skipped when `only` names a
+    race explicitly — an explicit pick wins over the date window).
+    """
+    out = []
+    for r in races:
+        if r.get("uci_tour") not in TARGET_TOURS:
+            continue
+        if only:
+            if r["slug"] != only:
+                continue
+        elif start_on_or_after and not race_starts_on_or_after(r, start_on_or_after):
+            continue
+        if has_gpx(r["slug"]):
+            continue
+        out.append(r)
+    return out
 
 
 def polite_sleep():
     time.sleep(random.uniform(*DELAY_RANGE))
 
 
-def fetch_html(session: requests.Session, url: str) -> Optional[str]:
-    try:
-        log.info(f"  GET {url}")
-        r = session.get(url, timeout=20)
-        if r.status_code == 200:
-            return r.text
-        log.warning(f"    HTTP {r.status_code}")
-    except Exception as e:
-        log.warning(f"    error: {e}")
-    return None
+# ===========================================================================
+#  Browser IO — a REAL Chrome driven over CDP (Playwright), lazily imported so
+#  the pure helpers/tests don't need playwright installed.
+# ===========================================================================
+class CDPFetcher:
+    """Connects to a user-launched Chrome (remote-debugging) and does all LFR
+    network INSIDE it: page navigation for HTML, in-page fetch() for GPX. This
+    inherits the browser's cf_clearance + real TLS fingerprint, so Cloudflare
+    lets the requests through."""
 
+    def __init__(self, cdp_url: str = "http://localhost:9222",
+                 challenge_wait: int = CHALLENGE_WAIT_SECONDS,
+                 dump_dir: Optional[Path] = None):
+        from playwright.sync_api import sync_playwright  # local-only dep
+        self._pw = sync_playwright().start()
+        log.info(f"Connecting to Chrome over CDP at {cdp_url} …")
+        self.browser = self._pw.chromium.connect_over_cdp(cdp_url)
+        ctx = (self.browser.contexts[0] if self.browser.contexts
+               else self.browser.new_context())
+        self.page = ctx.pages[0] if ctx.pages else ctx.new_page()
+        self.challenge_wait = challenge_wait
+        self.dump_dir = dump_dir          # if set, save each fetched page's HTML
+        self._dump_seq = 0
+        log.info("Connected. Using the existing browser context (cf_clearance reused).")
 
-def download_gpx(session: requests.Session, track_id: int, out_path: Path) -> Optional[str]:
-    """Download one track's GPX. Content-validated (same gate as scrape_gpx.py).
-    Returns the source URL on success, else None."""
-    url = f"{BASE_URL}/maps/viewtrack/gpx/{track_id}"
-    try:
-        r = session.get(url, timeout=20)
-        if r.status_code == 200 and len(r.content) > 100:
-            text = r.content.decode("utf-8", errors="ignore").lower()
-            if "<gpx" in text or "<?xml" in text:
-                out_path.parent.mkdir(parents=True, exist_ok=True)
-                out_path.write_bytes(r.content)
-                log.info(f"    ✓ {out_path.name} ({len(r.content)} bytes)")
-                return url
-            log.warning(f"    ✗ not GPX (track {track_id})")
-        else:
-            log.warning(f"    ✗ HTTP {r.status_code} (track {track_id})")
-    except Exception as e:
-        log.warning(f"    ✗ download error (track {track_id}): {e}")
-    return None
+    def _maybe_dump(self, url: str, content: str):
+        if not self.dump_dir or content is None:
+            return
+        self._dump_seq += 1
+        try:
+            self.dump_dir.mkdir(parents=True, exist_ok=True)
+            tag = re.sub(r"[^a-z0-9]+", "_", url.lower())[:60].strip("_")
+            path = self.dump_dir / f"{self._dump_seq:02d}_{tag}.html"
+            path.write_text(content, encoding="utf-8")
+            log.info(f"    [dump] {path}  ({len(content)} bytes)")
+        except Exception as e:
+            log.warning(f"    dump failed: {e}")
+
+    def close(self):
+        try:
+            self.browser.close()
+        except Exception:
+            pass
+        try:
+            self._pw.stop()
+        except Exception:
+            pass
+
+    # -- challenge handling --------------------------------------------------
+    def _looks_challenged(self) -> bool:
+        try:
+            title = (self.page.title() or "").lower()
+        except Exception:
+            return False
+        if "just a moment" in title or "attention required" in title:
+            return True
+        try:
+            html = self.page.content().lower()
+        except Exception:
+            return False
+        return ("challenge-platform" in html or "cf_chl_opt" in html
+                or "_cf_chl_" in html)
+
+    def _wait_out_challenge(self):
+        waited = 0
+        while self._looks_challenged() and waited < self.challenge_wait:
+            if waited == 0:
+                log.warning("⚠️  Cloudflare challenge detected — solve it in the "
+                            "Chrome window. Waiting up to %ss …", self.challenge_wait)
+            time.sleep(3)
+            waited += 3
+        if self._looks_challenged():
+            log.error("    still challenged after %ss — skipping this page.",
+                      self.challenge_wait)
+            return False
+        return True
+
+    # -- fetchers ------------------------------------------------------------
+    def get_html(self, url: str) -> Optional[str]:
+        try:
+            log.info(f"  NAV {url}")
+            self.page.goto(url, wait_until="domcontentloaded", timeout=45000)
+        except Exception as e:
+            log.warning(f"    nav error: {e}")
+            return None
+        if self._looks_challenged() and not self._wait_out_challenge():
+            return None
+        try:
+            content = self.page.content()
+        except Exception as e:
+            log.warning(f"    content error: {e}")
+            return None
+        self._maybe_dump(url, content)
+        return content
+
+    def get_gpx_text(self, track_id: int) -> Optional[str]:
+        """Fetch a track's GPX with an in-page fetch() (same origin → cf_clearance
+        + browser TLS apply). Returns the raw text or None."""
+        url = f"{BASE_URL}/maps/viewtrack/gpx/{track_id}"
+        js = """async (u) => {
+            try {
+                const r = await fetch(u, {credentials: 'include'});
+                if (!r.ok) return null;
+                return await r.text();
+            } catch (e) { return null; }
+        }"""
+        try:
+            return self.page.evaluate(js, url)
+        except Exception as e:
+            log.warning(f"    gpx fetch error (track {track_id}): {e}")
+            return None
 
 
 # ===========================================================================
-#  Resolve + scrape one race
+#  Resolve + scrape one race  (uses a CDPFetcher)
 # ===========================================================================
-def find_race_page(session: requests.Session, race: dict, year: int) -> Optional[dict]:
+def find_race_page(fetcher: CDPFetcher, race: dict, year: int) -> Optional[dict]:
     """Find this race's LFR race-view page. Honours LFR_RACE_OVERRIDES, else
     searches the listing by name across the target calendars."""
     slug = race["slug"]
     if slug in LFR_RACE_OVERRIDES:
         rid = LFR_RACE_OVERRIDES[slug]
         return {"race_id": rid, "name": race["name"],
-                "view_url": f"{BASE_URL}/maps/races/view/{rid}/{race.get('pcs_slug', slug)}",
+                "view_url": f"{BASE_URL}/maps/races/view/{year}/{rid}",
                 "score": 1.0}
 
     candidates: List[dict] = []
     q = normalize_name(race["name"]).replace(" ", "+")
     for cal in CALENDAR_CODES:
-        for page in range(MAX_LISTING_PAGES):
+        # LFR pages are 1-INDEXED: its SQL offset is (page-1)*30, so page=0 yields
+        # `LIMIT -30,30` → a phpBB "General Error" page (0 candidates). Start at 1.
+        for page in range(1, MAX_LISTING_PAGES + 1):
             url = (f"{BASE_URL}/maps/races?count=0&page={page}"
                    f"&calendar%5B0%5D={cal}&year%5B0%5D={year}&years=&name={q}")
-            html = fetch_html(session, url)
+            html = fetcher.get_html(url)
             polite_sleep()
             if not html:
                 break
@@ -261,13 +412,14 @@ def find_race_page(session: requests.Session, race: dict, year: int) -> Optional
     return None
 
 
-def scrape_race(session: requests.Session, race: dict, year: int,
+def scrape_race(fetcher: CDPFetcher, race: dict, year: int,
                 dry_run: bool) -> List[dict]:
-    """Resolve a race on LFR and download its stage GPX. Returns gpx_index `files`."""
-    page = find_race_page(session, race, year)
+    """Resolve a race on LFR and fetch its stage GPX. Returns a list of file
+    records: dry-run → {stage, track_id, filename}; live → also {content, url}."""
+    page = find_race_page(fetcher, race, year)
     if not page:
         return []
-    html = fetch_html(session, page["view_url"])
+    html = fetcher.get_html(page["view_url"])
     polite_sleep()
     if not html:
         return []
@@ -279,93 +431,130 @@ def scrape_race(session: requests.Session, race: dict, year: int,
     is_one_day = race.get("is_one_day_race", False)
     log.info(f"  {len(track_ids)} track(s) found"
              + (" [dry-run]" if dry_run else ""))
+
     if dry_run:
         return [{"stage": (None if is_one_day else i + 1),
-                 "track_id": t} for i, t in enumerate(track_ids)]
+                 "track_id": t,
+                 "filename": stage_filename(i + 1, len(track_ids), is_one_day)}
+                for i, t in enumerate(track_ids)]
 
     files = []
-    race_dir = GPX_DIR / race["slug"]
     for i, tid in enumerate(track_ids):
         fname = stage_filename(i + 1, len(track_ids), is_one_day)
-        out_path = race_dir / fname
-        src = download_gpx(session, tid, out_path)
+        text = fetcher.get_gpx_text(tid)
         polite_sleep()
-        if src:
+        if looks_like_gpx(text):
+            log.info(f"    ✓ {fname} (track {tid}, {len(text)} bytes)")
             files.append({
                 "stage": None if is_one_day else i + 1,
                 "filename": fname,
-                "url": src,
-                "local_path": str(out_path.relative_to(DATA_DIR)),
+                "content": text,
+                "url": f"{BASE_URL}/maps/viewtrack/gpx/{tid}",
+                "track_id": tid,
             })
+        else:
+            log.warning(f"    ✗ not GPX (track {tid})")
     return files
 
 
 # ===========================================================================
-#  Index merge + main
+#  Main — read targets from the store, fetch via CDP, write GPX to Turso
 # ===========================================================================
-def targets(races: List[dict], gpx_index: dict, only: Optional[str]) -> List[dict]:
-    """WT+ProSeries races that still lack GPX (and aren't already LFR-sourced),
-    optionally narrowed to a single slug."""
-    out = []
-    for r in races:
-        if r.get("uci_tour") not in TARGET_TOURS:
-            continue
-        if only and r["slug"] != only:
-            continue
-        entry = gpx_index.get("races", {}).get(r["slug"], {})
-        if entry.get("gpx_available"):
-            continue
-        out.append(r)
-    return out
-
-
 def main():
-    ap = argparse.ArgumentParser(description="LFR GPX fallback (WT + ProSeries).")
+    ap = argparse.ArgumentParser(
+        description="LFR GPX fallback (WT + ProSeries) - attended CDP-Chrome -> Turso.")
     ap.add_argument("--dry-run", action="store_true",
-                    help="resolve races/tracks but download nothing")
+                    help="resolve races/tracks but store nothing")
     ap.add_argument("--only", metavar="SLUG", help="limit to one race slug")
-    ap.add_argument("--insecure", action="store_true",
-                    help="skip TLS verification (local TLS-proxy workaround)")
+    ap.add_argument("--list-targets", action="store_true",
+                    help="print the GPX-less WT+ProSeries races and exit "
+                         "(reads the store only; no browser, no LFR)")
+    ap.add_argument("--cdp-url", default="http://localhost:9222",
+                    help="CDP endpoint of the user-launched Chrome")
+    ap.add_argument("--dump-html", action="store_true",
+                    help="save each fetched LFR page to scrapers/fixture/lfr_dump/ "
+                         "for debugging the parser/URL")
+    ap.add_argument("--start-after", metavar="YYYY-MM-DD",
+                    help="only harvest races starting on/after this date "
+                         "(default: tomorrow). Ignored when --only is given.")
     args = ap.parse_args()
-    insecure = args.insecure or os.environ.get("LFR_INSECURE") == "1"
+    dump_dir = (Path(__file__).resolve().parent / "fixture" / "lfr_dump"
+                if args.dump_html else None)
+    if args.start_after:
+        cutoff = datetime.strptime(args.start_after, "%Y-%m-%d").date()
+    else:
+        cutoff = (datetime.now() + timedelta(days=1)).date()
 
-    if not RACES_FILE.exists() or not GPX_INDEX_FILE.exists():
-        log.error("races.json / gpx_index.json missing — run scrape_races + scrape_gpx first.")
+    client = db.open_db()
+    log.info(f"GPX store: {'remote Turso' if db.is_remote() else 'local SQLite file'}")
+
+    races = list(db.get_all_documents(client, db.KIND_RACE).values())
+    if not races:
+        log.error("No races in the store — run scrape_races.py first.")
+        client.close()
         return
-    races_data = json.loads(RACES_FILE.read_text(encoding="utf-8"))
-    gpx_index = json.loads(GPX_INDEX_FILE.read_text(encoding="utf-8"))
-    year = races_data.get("year", datetime.now().year)
 
-    todo = targets(races_data["races"], gpx_index, args.only)
-    log.info(f"{len(todo)} WT+ProSeries race(s) missing GPX to try on LFR")
+    default_year = datetime.now().year
+    todo = targets(races, lambda s: db.has_gpx(client, s), args.only,
+                   start_on_or_after=cutoff)
+    scope = f"only '{args.only}'" if args.only else f"starting on/after {cutoff}"
+    log.info(f"{len(todo)} WT+ProSeries race(s) missing GPX to try on LFR ({scope})")
 
-    session = make_session(insecure)
-    filled = 0
-    for race in todo:
-        log.info(f"\n{'='*54}\n{race['name']}  [{race.get('uci_tour')}]\n{'='*54}")
-        files = scrape_race(session, race, year, args.dry_run)
-        if args.dry_run:
+    if args.list_targets:
+        for r in todo:
+            print(f"{r['slug']}\t{r.get('uci_tour')}\t{r['name']}")
+        client.close()
+        return
+
+    if not todo:
+        client.close()
+        return
+
+    fetcher = None
+    filled = stored_files = 0
+    try:
+        fetcher = CDPFetcher(args.cdp_url, dump_dir=dump_dir)
+        for race in todo:
+            year = race.get("year") or default_year
+            log.info(f"\n{'='*54}\n{race['name']}  [{race.get('uci_tour')}]\n{'='*54}")
+            files = scrape_race(fetcher, race, year, args.dry_run)
+
+            if args.dry_run:
+                for f in files:
+                    log.info(f"    stage {f['stage']}: track {f['track_id']} → {f['filename']}")
+                continue
+
+            n = 0
             for f in files:
-                log.info(f"    stage {f['stage']}: track {f['track_id']}")
-            continue
-        if files:
-            gpx_index["races"][race["slug"]] = {
-                "name": race["name"],
-                "gpx_available": True,
-                "total_files": len(files),
-                "source": SOURCE_TAG,
-                "files": files,
-            }
-            filled += 1
-            log.info(f"  → filled {len(files)} file(s) from LFR")
+                try:
+                    db.put_gpx(client, race["slug"], f["filename"], f["content"],
+                               stage=f["stage"], source=SOURCE_TAG, url=f["url"])
+                    n += 1
+                except Exception as e:
+                    log.error(f"    ✗ Turso write failed for {f['filename']}: {e}")
+            if n:
+                # Verify the write actually landed (catches a silent CA-bundle/proxy
+                # failure on the Python→Turso path).
+                if db.has_gpx(client, race["slug"]):
+                    filled += 1
+                    stored_files += n
+                    log.info(f"  → stored {n} GPX file(s) from LFR")
+                else:
+                    log.error("  ⚠ wrote %d file(s) but has_gpx is still False — "
+                              "check the Turso/CA-bundle config (SSL_CERT_FILE).", n)
+    finally:
+        if fetcher:
+            fetcher.close()
 
-    if not args.dry_run and filled:
-        gpx_index["updated_at"] = datetime.now().isoformat()
-        GPX_INDEX_FILE.write_text(
-            json.dumps(gpx_index, indent=2, ensure_ascii=False), encoding="utf-8")
-        log.info(f"\nUpdated {GPX_INDEX_FILE.name}: filled {filled} race(s) from LFR.")
-    elif not args.dry_run:
-        log.info("\nNo races filled from LFR.")
+    total_stored = len(db.gpx_slugs(client))
+    client.close()
+
+    if not args.dry_run:
+        print("\n" + "=" * 64)
+        print("  LFR GPX FALLBACK SUMMARY")
+        print(f"  Races filled from LFR:        {filled} ({stored_files} files)")
+        print(f"  Total races with GPX in store:{total_stored}")
+        print("=" * 64)
 
 
 if __name__ == "__main__":

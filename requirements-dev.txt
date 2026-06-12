@@ -1,0 +1,11 @@
+# LOCAL / dev-only dependencies — NOT installed in CI (the daily Actions
+# workflow installs requirements.txt only).
+#
+# Phase B: scrape_lfr.py drives a real Chrome over CDP to harvest GPX from
+# La Flamme Rouge (which is behind a Cloudflare managed challenge). This is an
+# occasional ATTENDED, local-only run — see scrapers/scrape_lfr.py.
+#
+# Setup:
+#   pip install -r requirements-dev.txt
+#   playwright install chromium
+playwright>=1.40.0
