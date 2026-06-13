@@ -270,19 +270,19 @@ def process_race(client, pcs_slug, year, today, force):
 
 def race_slugs(discover, year):
     """pcs_slugs to scrape for a year — CALENDAR by default, full WT+ProSeries
-    via --discover (falls back to CALENDAR if discovery fails)."""
+    via --discover (falls back to CALENDAR if discovery fails). Women's / other
+    excluded races (db.EXCLUDE_RESULT_PCS_SLUGS) are filtered out."""
     base = [v[0] for v in CALENDAR.values()]  # CALENDAR value[0] == pcs_slug
-    if not discover:
-        return base
-    rows = discover_calendar(year)
-    if not rows:
-        log.warning(f"  discovery failed for {year} — using CALENDAR only")
-        return base
-    extra = [r["pcs_slug"] for r in rows]
-    # de-dupe, keep order (CALENDAR first)
+    if discover:
+        rows = discover_calendar(year)
+        if rows:
+            base += [r["pcs_slug"] for r in rows]
+        else:
+            log.warning(f"  discovery failed for {year} — using CALENDAR only")
+    # de-dupe (keep order, CALENDAR first) and drop excluded slugs.
     seen, out = set(), []
-    for s in base + extra:
-        if s not in seen:
+    for s in base:
+        if s not in seen and s not in db.EXCLUDE_RESULT_PCS_SLUGS:
             seen.add(s)
             out.append(s)
     return out

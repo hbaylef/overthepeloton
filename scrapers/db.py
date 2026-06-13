@@ -29,6 +29,63 @@ import libsql_client
 # OVERTHEPELOTON_DB (handy for tests).
 DEFAULT_LOCAL_PATH = "data/overthepeloton.db"
 
+
+def _load_local_dotenv():
+    """Local-dev convenience: if a project-root .env exists, load its KEY=VALUE
+    lines into os.environ WITHOUT overriding already-set vars. Lets you run a
+    scraper/scorer from the IDE or a plain terminal and still reach Turso.
+
+    No-op in CI: there's no .env in the repo (it's gitignored), and the real
+    secrets are already in the environment (setdefault never clobbers them)."""
+    path = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env")
+    try:
+        with open(path, encoding="utf-8") as fh:
+            for line in fh:
+                line = line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                key, val = line.split("=", 1)
+                os.environ.setdefault(key.strip(), val.strip().strip('"').strip("'"))
+    except FileNotFoundError:
+        pass
+
+
+def _relax_tls_strict():
+    """LOCAL ONLY (gated by OVERTHEPELOTON_INSECURE_TLS=1 in .env). This dev
+    machine's TLS-intercepting proxy presents a CA cert that Python 3.14's
+    strict X509 verification rejects ("Basic Constraints of CA cert not marked
+    critical"), which blocks libsql/aiohttp from reaching Turso. Drop JUST the
+    VERIFY_X509_STRICT flag (normal verification + the Windows trust store still
+    apply) on every default SSL context the process builds. NEVER set the env
+    var in CI — Actions has clean egress and full strict verification."""
+    import ssl
+    _orig = ssl.create_default_context
+
+    def _ctx(*args, **kwargs):
+        ctx = _orig(*args, **kwargs)
+        ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
+        return ctx
+
+    ssl.create_default_context = _ctx
+
+    # aiohttp (libsql's HTTP backend) builds its SSL contexts at IMPORT time —
+    # already done before this runs — so also clear the flag on the existing
+    # module-level context the connector actually uses.
+    try:
+        from aiohttp import connector as _aioc
+        for _name in ("_SSL_CONTEXT_VERIFIED",):
+            _c = getattr(_aioc, _name, None)
+            if _c is not None:
+                _c.verify_flags &= ~ssl.VERIFY_X509_STRICT
+    except Exception:
+        pass
+
+
+_load_local_dotenv()
+if os.environ.get("OVERTHEPELOTON_INSECURE_TLS"):
+    _relax_tls_strict()
+
 # race_data "kind" values — the contract shared across scrapers.
 KIND_RACE = "race"
 KIND_STARTLIST = "startlist"
@@ -38,6 +95,14 @@ KIND_COBBLES = "cobbles"
 # Historical per-edition results (one doc per race-year, slug="{race}-{year}").
 # Feeds the results-based rider rating model (scrape_history.py / score_history.py).
 KIND_RESULTS = "results"
+
+# Race pcs_slugs to EXCLUDE from the results history + its ratings. The model is
+# men's WorldTour + ProSeries only. CALENDAR (hand-coded) leaks two:
+#   - "setmana-ciclista-valenciana": actually the WOMEN'S Valencia stage race
+#     (men's "Volta a la Comunitat Valenciana" has a different slug).
+#   - "gran-camino" (O Gran Camiño): class 2.1, below ProSeries.
+# (A full UCI-class scan of the store found these are the ONLY non-WT/ProSeries.)
+EXCLUDE_RESULT_PCS_SLUGS = {"setmana-ciclista-valenciana", "gran-camino"}
 
 # caches table names.
 CACHE_RIDERS = "riders"
@@ -167,6 +232,14 @@ def get_document(client, kind, slug):
         "SELECT content FROM race_data WHERE kind=? AND slug=?", [kind, slug]
     )
     return json.loads(rs.rows[0][0]) if rs.rows else None
+
+
+def delete_document(client, kind, slug):
+    """Delete one JSON doc. Needs a WRITE-capable Turso token (a read-only token
+    returns BLOCKED). Returns nothing."""
+    client.execute(
+        "DELETE FROM race_data WHERE kind=? AND slug=?", [kind, slug]
+    )
 
 
 def has_document(client, kind, slug):
