@@ -113,6 +113,28 @@
       "team_url": "team/cofidis-2026"
     },
     {
+      "birthdate": "1990-11-26",
+      "birthplace_lat": -41.5000831,
+      "birthplace_lon": 172.8344077,
+      "name": "GATE Aaron",
+      "nationality": "NZ",
+      "number": null,
+      "place_of_birth": "New Zealand",
+      "rider_url": "rider/aaron-gate",
+      "specialties": {
+        "career": {
+          "climber": 167,
+          "gc": 958,
+          "hills": 909,
+          "one_day_races": 600,
+          "sprint": 486,
+          "tt": 649
+        }
+      },
+      "team": "XDS Astana Team (WT)",
+      "team_url": "team/xds-astana-team-2026"
+    },
+    {
       "birthdate": null,
       "birthplace_lat": 48.1012954,
       "birthplace_lon": 66.7780818,
@@ -201,28 +223,6 @@
       "team_url": "team/soudal-quick-step-2026"
     },
     {
-      "birthdate": "1993-11-24",
-      "birthplace_lat": 50.9094333,
-      "birthplace_lon": 4.2015646,
-      "name": "DE BUYST Jasper",
-      "nationality": "BE",
-      "number": null,
-      "place_of_birth": " Asse",
-      "rider_url": "rider/jasper-de-buyst",
-      "specialties": {
-        "career": {
-          "climber": 164,
-          "gc": 710,
-          "hills": 887,
-          "one_day_races": 1683,
-          "sprint": 1102,
-          "tt": 128
-        }
-      },
-      "team": "Lotto Intermarché (WT)",
-      "team_url": "team/lotto-intermarche-2026"
-    },
-    {
       "birthdate": "2005-2-24",
       "birthplace_lat": 50.7715779,
       "birthplace_lon": 3.8827287,
@@ -239,6 +239,28 @@
           "one_day_races": 431,
           "sprint": 574,
           "tt": 70
+        }
+      },
+      "team": "Lotto Intermarché (WT)",
+      "team_url": "team/lotto-intermarche-2026"
+    },
+    {
+      "birthdate": "1993-11-24",
+      "birthplace_lat": 50.9094333,
+      "birthplace_lon": 4.2015646,
+      "name": "DE BUYST Jasper",
+      "nationality": "BE",
+      "number": null,
+      "place_of_birth": " Asse",
+      "rider_url": "rider/jasper-de-buyst",
+      "specialties": {
+        "career": {
+          "climber": 164,
+          "gc": 710,
+          "hills": 887,
+          "one_day_races": 1683,
+          "sprint": 1102,
+          "tt": 128
         }
       },
       "team": "Lotto Intermarché (WT)",
@@ -355,6 +377,28 @@
       "team_url": "team/unibet-rose-rockets-2026"
     },
     {
+      "birthdate": "1995-6-30",
+      "birthplace_lat": 52.865196,
+      "birthplace_lon": -7.9794599,
+      "name": "TOWNSEND Rory",
+      "nationality": "IE",
+      "number": null,
+      "place_of_birth": "Ireland",
+      "rider_url": "rider/rory-townsend",
+      "specialties": {
+        "career": {
+          "climber": 34,
+          "gc": 118,
+          "hills": 226,
+          "one_day_races": 849,
+          "sprint": 592,
+          "tt": 159
+        }
+      },
+      "team": "Unibet Rose Rockets (PRT)",
+      "team_url": "team/unibet-rose-rockets-2026"
+    },
+    {
       "birthdate": "1993-6-21",
       "birthplace_lat": 52.2434979,
       "birthplace_lon": 5.6343227,
@@ -421,28 +465,6 @@
       "team_url": "team/beat-cc-pb-saxo-2026"
     },
     {
-      "birthdate": "2003-1-11",
-      "birthplace_lat": 50.6402809,
-      "birthplace_lon": 4.6667145,
-      "name": "GEERAERTS Ferre",
-      "nationality": "BE",
-      "number": null,
-      "place_of_birth": "Belgium",
-      "rider_url": "rider/ferre-geeraerts",
-      "specialties": {
-        "career": {
-          "climber": 0,
-          "gc": 0,
-          "hills": 1,
-          "one_day_races": 10,
-          "sprint": 0,
-          "tt": 49
-        }
-      },
-      "team": "Team Flanders - Baloise (PRT)",
-      "team_url": "team/team-flanders-baloise-2026"
-    },
-    {
       "birthdate": "1998-11-11",
       "birthplace_lat": 50.6402809,
       "birthplace_lon": 4.6667145,
@@ -459,6 +481,28 @@
           "one_day_races": 224,
           "sprint": 374,
           "tt": 0
+        }
+      },
+      "team": "Team Flanders - Baloise (PRT)",
+      "team_url": "team/team-flanders-baloise-2026"
+    },
+    {
+      "birthdate": "2003-1-11",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145,
+      "name": "GEERAERTS Ferre",
+      "nationality": "BE",
+      "number": null,
+      "place_of_birth": "Belgium",
+      "rider_url": "rider/ferre-geeraerts",
+      "specialties": {
+        "career": {
+          "climber": 0,
+          "gc": 0,
+          "hills": 1,
+          "one_day_races": 10,
+          "sprint": 0,
+          "tt": 49
         }
       },
       "team": "Team Flanders - Baloise (PRT)",
@@ -751,6 +795,6 @@
       "team_url": "team/uae-team-emirates-xrg-2026"
     }
   ],
-  "total_riders": 34,
-  "updated_at": "2026-06-11T21:18:35.755271"
+  "total_riders": 36,
+  "updated_at": "2026-06-13T10:24:20.328599"
 }
