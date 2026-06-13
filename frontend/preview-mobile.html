@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peloton — Mobile Preview</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; gap: 18px;
+    padding: 26px 16px 40px;
+    background: #0f2238;
+    color: #eef3f9;
+    font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+  }
+  h1 { font-size: 17px; font-weight: 700; margin: 0; letter-spacing: .5px; }
+  .controls { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .controls button {
+    font: inherit; font-size: 13px; cursor: pointer;
+    background: #1b3553; color: #eef3f9;
+    border: 1.5px solid #2563d8; border-radius: 8px; padding: 7px 13px;
+  }
+  .controls button.active { background: #2563d8; }
+  .dims { font-family: ui-monospace, 'JetBrains Mono', monospace; font-size: 12px; color: #93a7c2; }
+
+  /* iPhone-ish device frame */
+  .device {
+    background: #11151c;
+    border-radius: 44px;
+    padding: 14px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.55), inset 0 0 0 2px #2a2f3a;
+    position: relative;
+  }
+  .device .notch {
+    position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+    width: 150px; height: 26px; background: #11151c;
+    border-bottom-left-radius: 16px; border-bottom-right-radius: 16px;
+    z-index: 3; pointer-events: none;
+  }
+  .screen {
+    border-radius: 32px; overflow: hidden; background: #eef3f9;
+    width: 375px; height: 667px;   /* default: iPhone SE / 8 “classic” */
+  }
+  .screen iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .hint { font-size: 12px; color: #93a7c2; max-width: 420px; text-align: center; line-height: 1.5; }
+  .hint code { background: #1b3553; padding: 1px 5px; border-radius: 4px; }
+</style>
+</head>
+<body>
+  <h1>Peloton — aperçu mobile</h1>
+  <div class="controls" id="sizes"></div>
+  <div class="dims" id="dims"></div>
+
+  <div class="device">
+    <div class="notch"></div>
+    <div class="screen" id="screen">
+      <iframe id="frame" src="./index.html" title="Peloton mobile"></iframe>
+    </div>
+  </div>
+
+  <div class="hint">
+    Ceci charge le vrai site <code>index.html</code> dans un cadre de la largeur d'un iPhone —
+    la mise en page mobile (<code>≤ 760px</code>) s'active donc automatiquement.
+    Le tactile : sur un vrai téléphone, glissez le doigt sur le profil ; ici à la souris,
+    cliquez-glissez sur le graphique pour tester l'équivalent.
+  </div>
+
+  <script>
+    // A few common "classic" iPhone logical sizes (CSS pixels, portrait).
+    const SIZES = [
+      { label: 'iPhone SE / 8',  w: 375, h: 667 },
+      { label: 'iPhone 12/13/14', w: 390, h: 844 },
+      { label: 'iPhone 14 Pro Max', w: 430, h: 932 },
+    ];
+    const screen = document.getElementById('screen');
+    const dims = document.getElementById('dims');
+    const sizesEl = document.getElementById('sizes');
+
+    function pick(i) {
+      const s = SIZES[i];
+      screen.style.width = s.w + 'px';
+      screen.style.height = s.h + 'px';
+      dims.textContent = `${s.w} × ${s.h} px`;
+      [...sizesEl.children].forEach((b, j) => b.classList.toggle('active', j === i));
+    }
+    SIZES.forEach((s, i) => {
+      const b = document.createElement('button');
+      b.textContent = s.label;
+      b.onclick = () => pick(i);
+      sizesEl.appendChild(b);
+    });
+    pick(0);
+  </script>
+</body>
+</html>
