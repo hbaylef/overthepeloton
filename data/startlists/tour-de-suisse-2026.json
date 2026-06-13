@@ -2547,6 +2547,28 @@
       "team_url": "team/uno-x-mobility-2026"
     },
     {
+      "birthdate": null,
+      "birthplace_lat": 48.1012954,
+      "birthplace_lon": 66.7780818,
+      "name": "VINOKUROV Nicolas",
+      "nationality": "KZ",
+      "number": null,
+      "place_of_birth": "Kazakhstan",
+      "rider_url": "rider/nicolas-vinokurov",
+      "specialties": {
+        "career": {
+          "climber": 152,
+          "gc": 353,
+          "hills": 210,
+          "one_day_races": 139,
+          "sprint": 76,
+          "tt": 108
+        }
+      },
+      "team": "XDS Astana Team (WT)",
+      "team_url": "team/xds-astana-team-2026"
+    },
+    {
       "birthdate": "1993-10-29",
       "birthplace_lat": 43.4677215,
       "birthplace_lon": 11.148762,
@@ -3009,6 +3031,6 @@
       "team_url": "team/tudor-pro-cycling-team-2026"
     }
   ],
-  "total_riders": 137,
-  "updated_at": "2026-06-11T11:55:24.739868"
+  "total_riders": 138,
+  "updated_at": "2026-06-13T20:12:47.067507"
 }

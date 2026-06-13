@@ -6,6 +6,12 @@
       "birthdate": "2003-11-27",
       "birthplace_lat": 31.8658887,
       "birthplace_lon": -116.602983,
+      "medals": [
+        {
+          "rank": 1,
+          "stage": "S7"
+        }
+      ],
       "name": "DEL TORO Isaac",
       "nationality": "MX",
       "number": 1,
@@ -368,6 +374,12 @@
       "birthdate": "2002-9-16",
       "birthplace_lat": 41.3825802,
       "birthplace_lon": 2.177073,
+      "medals": [
+        {
+          "rank": 2,
+          "stage": "S7"
+        }
+      ],
       "name": "AYUSO Juan",
       "nationality": "ES",
       "number": 21,
@@ -697,6 +709,7 @@
       "team_url": "team/netcompany-ineos-2026"
     },
     {
+      "abandoned_stage": "S7",
       "birthdate": "2001-9-24",
       "birthplace_lat": 54.3151594,
       "birthplace_lon": -1.9181532,
@@ -721,10 +734,12 @@
           "tt": 581
         }
       },
+      "status": "DNF",
       "team": "Netcompany INEOS (WT)",
       "team_url": "team/netcompany-ineos-2026"
     },
     {
+      "abandoned_stage": "S7",
       "birthdate": "1996-4-25",
       "birthplace_lat": 4.5826886,
       "birthplace_lon": -74.2117781,
@@ -743,6 +758,7 @@
           "tt": 1305
         }
       },
+      "status": "DNF",
       "team": "Red Bull - BORA - hansgrohe (WT)",
       "team_url": "team/red-bull-bora-hansgrohe-2026"
     },
@@ -971,6 +987,7 @@
       "team_url": "team/decathlon-cma-cgm-team-2026"
     },
     {
+      "abandoned_stage": "S7",
       "birthdate": "1999-2-22",
       "birthplace_lat": 52.2434979,
       "birthplace_lon": 5.6343227,
@@ -989,6 +1006,7 @@
           "tt": 1234
         }
       },
+      "status": "DNF",
       "team": "Decathlon CMA CGM Team (WT)",
       "team_url": "team/decathlon-cma-cgm-team-2026"
     },
@@ -1068,6 +1086,10 @@
         {
           "rank": 2,
           "stage": "S6"
+        },
+        {
+          "rank": 3,
+          "stage": "S7"
         }
       ],
       "name": "JOHANNESSEN Tobias Halland",
@@ -1139,6 +1161,7 @@
       "team_url": "team/uno-x-mobility-2026"
     },
     {
+      "abandoned_stage": "S7",
       "birthdate": "1999-8-23",
       "birthplace_lat": 61.1529386,
       "birthplace_lon": 8.7876653,
@@ -1157,6 +1180,7 @@
           "tt": 31
         }
       },
+      "status": "DNF",
       "team": "Uno-X Mobility (WT)",
       "team_url": "team/uno-x-mobility-2026"
     },
@@ -1451,6 +1475,7 @@
       "team_url": "team/soudal-quick-step-2026"
     },
     {
+      "abandoned_stage": "S7",
       "birthdate": "1996-2-13",
       "birthplace_lat": 51.1610826,
       "birthplace_lon": 4.9903187,
@@ -1469,10 +1494,12 @@
           "tt": 82
         }
       },
+      "status": "DNF",
       "team": "Soudal Quick-Step (WT)",
       "team_url": "team/soudal-quick-step-2026"
     },
     {
+      "abandoned_stage": "S7",
       "birthdate": "1997-2-8",
       "birthplace_lat": 52.5089759,
       "birthplace_lon": 6.0943765,
@@ -1491,6 +1518,7 @@
           "tt": 232
         }
       },
+      "status": "DNF",
       "team": "Soudal Quick-Step (WT)",
       "team_url": "team/soudal-quick-step-2026"
     },
@@ -1767,6 +1795,7 @@
       "team_url": "team/movistar-team-2026"
     },
     {
+      "abandoned_stage": "S7",
       "birthdate": "2001-1-2",
       "birthplace_lat": 39.3260685,
       "birthplace_lon": -4.8379791,
@@ -1785,6 +1814,7 @@
           "tt": 299
         }
       },
+      "status": "DNF",
       "team": "Movistar Team (WT)",
       "team_url": "team/movistar-team-2026"
     },
@@ -2317,6 +2347,7 @@
       "team_url": "team/lotto-intermarche-2026"
     },
     {
+      "abandoned_stage": "S7",
       "birthdate": "2004-1-31",
       "birthplace_lat": 49.8158683,
       "birthplace_lon": 6.1296751,
@@ -2335,6 +2366,7 @@
           "tt": 25
         }
       },
+      "status": "DNF",
       "team": "Lotto Intermarché (WT)",
       "team_url": "team/lotto-intermarche-2026"
     },
@@ -3676,5 +3708,5 @@
     }
   ],
   "total_riders": 154,
-  "updated_at": "2026-06-13T10:19:46.662421"
+  "updated_at": "2026-06-13T20:12:41.781310"
 }
