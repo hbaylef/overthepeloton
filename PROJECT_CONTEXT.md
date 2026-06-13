@@ -7,12 +7,60 @@
 
 ---
 
-## 0. ⚠️ CURRENT STATUS — START HERE (updated 2026-06-12, end of session)
+## 0. ⚠️ CURRENT STATUS — START HERE (updated 2026-06-14, end of session)
 
 Running in **Claude Code** locally at `C:\Users\PC\Desktop\cycling-dashboard`.
 Site is live; each verified increment is committed + pushed (GitHub Pages).
 
-### 🟢 LATEST SESSION (2026-06-12, pt 3) — FRONTEND UI overhaul (all live; commits a8159ed, 67c7140, 6e7ffb1)
+### 🟢 LATEST SESSION (2026-06-13→14) — Results-based rider rating model + local dashboard (committed d448cb0)
+
+Built a NEW, results-driven rider-rating model (distinct from R2's specialty-points
+softmax) on the 3-season `race_data kind="results"` history. All code committed; the
+rating JSON + dashboard HTML are generated **locally** (gitignored).
+
+**Pipeline — per rider × stage-type category (mountain / hilly / sprint / TT / prologue):**
+- per finished result → `percentile = rank / finishers` (lower = better);
+- **rolling-window recency by each result's DATE** (per-result weight): last 12mo
+  ×1.0, 12–24mo ×0.5, 24–36mo ×0.25, older dropped;
+- **symmetric 10% trimmed mean** (drop each rider's best 10% + worst 10% — kills
+  flukey peaks and off-days/non-targeted races);
+- per-category min results `{mountain:10, hilly:5, sprint:10, TT:3, prologue:1}` else UNRATED;
+- final score = aggregated percentile × 100 = **"top X%"** (lower = better). NO min-max.
+- **`break` category** (2 factors, still min-max 0-100, α=0.5): F1 propensity (% of road
+  stages in the break, `breakaway_kms>0`) + F2 placing-percentile when the break won
+  (flag derived from `won_how`). Real top-ratings look credible (mountain Pogačar top
+  1.17% / Vingegaard 2.31%; TT Evenepoel 0.93% / Ganna 0.95% / Tarling 1.42%).
+
+**Data scope — men's WorldTour + ProSeries only, VERIFIED.** Full scans of all 99 store
+races: a `category` scan found exactly 1 non-`Men Elite` (women's
+`setmana-ciclista-valenciana`); a `uci_tour` scan found exactly 1 non-WT/ProSeries
+(`gran-camino`, 2.1). Both in `db.EXCLUDE_RESULT_PCS_SLUGS` (filtered at scrape +
+scoring; `prune_results.py` deletes them from Turso when run with a write token).
+
+**Local-run plumbing (this machine = TLS proxy + READ-ONLY Turso token):** `db.py` now
+auto-loads a project-root `.env` and, gated by `OVERTHEPELOTON_INSECURE_TLS=1`, relaxes
+Python-3.14 strict TLS so libsql/aiohttp can reach Turso locally. Use `db.connect()`
+(NOT `open_db()` — its CREATE TABLE is a write, blocked by the read-only token). One-day
+races store `date=None`, so `enrich_oneday_dates.py` caches each race's date from PCS →
+`data/oneday_dates.json` (the rolling window needs a date per result).
+
+**Files (commit d448cb0):** new `scrapers/score_history.py`, `build_dashboard.py`
+(standalone double-click HTML), `enrich_oneday_dates.py`, `prune_results.py`,
+`test_score_history.py` (7/7); modified `db.py` (+KIND_RESULTS, EXCLUDE_RESULT_PCS_SLUGS,
+.env auto-load, TLS relax, `delete_document`) and `scrape_history.py` (exclusion filter);
+added `.env.example`. Generated `data/rider_ratings.json`, `data/oneday_dates.json`,
+`rider_dashboard.html` and the throwaway `spike_history.py` are **gitignored**.
+
+**⏭️ OPEN for next session — the ONLY unsettled piece:** how to turn the aggregated
+percentile into a 0-100 "note". Explored: top% (current), linear `100·(1−p)` (squashes
+the elite), log `100·log10(1/p)/log10(1/p_ref)` (good spread — base is irrelevant, it
+cancels; only lever is `p_ref`; a FIXED p_ref makes categories absolute, so a "shared"
+category like sprint tops out ~42 vs mountain ~86), or per-category min-max (pins every
+leader to ~100). Decide the trade-off (absolute fixed-ref vs per-category). Also: a
+spawned background task tracks a separate LIVE-SITE bug — the CALENDAR maps the MEN's
+Valencia slot (`tour-of-valencia`) to the women's slug.
+
+### 🟢 EARLIER SESSION (2026-06-12, pt 3) — FRONTEND UI overhaul (all live; commits a8159ed, 67c7140, 6e7ffb1)
 
 Iterated on `frontend/index.html` against a **local server** (`python -m http.server
 8000 --directory <repo>`, opened at `localhost:8000/frontend/`) — the agreed ground
