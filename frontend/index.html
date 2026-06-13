@@ -1388,6 +1388,11 @@ const STAGE_TYPE_META = {
   cobbles:        { emoji: '🧱', label: 'Cobbles' },
 };
 
+// Team time trial. TTT isn't its own stage_type in the data (it keeps the
+// profile-icon type), so it's detected by "(TTT)" in the stage name and shown
+// with its own chrono + handshake glyph, overriding the type emoji.
+const TTT_META = { emoji: '⏱️🤝', label: 'Team time trial (TTT)' };
+
 // Map a route's stage number to its stage_type by reading the race's stage list
 // (routes are a subset of stages, so we match "Stage N" by name, not position).
 function stageTypeByNumber(r) {
@@ -1400,6 +1405,18 @@ function stageTypeByNumber(r) {
   return map;
 }
 
+// Stage numbers flagged as team time trials, detected by "(TTT)" in the stage
+// name (PCS labels them e.g. "Stage 3 (TTT) | Cosne - Pouilly").
+function tttStageNumbers(r) {
+  const set = new Set();
+  (r.stages || []).forEach(s => {
+    if (!/\(TTT\)/i.test(s.stage_name || '')) return;
+    const m = (s.stage_name || '').match(/stage\s+(\d+)/i);
+    if (m) set.add(parseInt(m[1], 10));
+  });
+  return set;
+}
+
 function renderRaceHeader(gpx) {
   const main = document.getElementById('main');
   const r = currentRace;
@@ -1408,11 +1425,12 @@ function renderRaceHeader(gpx) {
   let stageTabsHtml = '';
   if (hasGpx && !r.is_one_day_race && currentStageFiles.length > 1) {
     const typeByNum = stageTypeByNumber(r);
+    const tttNums = tttStageNumbers(r);
     stageTabsHtml = '<div class="stage-tabs">' +
       currentStageFiles.map((f, i) => {
         const num = f.stage || (i + 1);
         const type = (f.stage ? typeByNum[f.stage] : null) || typeByNum.prologue;
-        const meta = STAGE_TYPE_META[type];
+        const meta = tttNums.has(num) ? TTT_META : STAGE_TYPE_META[type];
         const tag = meta ? ` <span class="st-emoji" title="${meta.label}">${meta.emoji}</span>` : '';
         return `<div class="stage-tab ${i===0?'active':''}" data-stage="${i}"
           onclick="loadStage(${i})">Stage ${num}${tag}</div>`;
