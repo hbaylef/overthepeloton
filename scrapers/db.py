@@ -35,6 +35,9 @@ KIND_STARTLIST = "startlist"
 KIND_CLIMBS = "climbs"
 KIND_PREDICTIONS = "predictions"
 KIND_COBBLES = "cobbles"
+# Historical per-edition results (one doc per race-year, slug="{race}-{year}").
+# Feeds the results-based rider rating model (scrape_history.py / score_history.py).
+KIND_RESULTS = "results"
 
 # caches table names.
 CACHE_RIDERS = "riders"

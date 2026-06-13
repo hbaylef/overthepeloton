@@ -1,0 +1,50 @@
+name: Weekly history scrape
+
+# Builds the 3-season per-stage results store (race_data kind="results") that
+# feeds the results-based rider rating model. Writes ONLY to Turso — no public
+# slice yet (score_history.py will consume it later), so there's no commit step.
+on:
+  schedule:
+    # Weekly, Sunday 03:00 UTC (low-traffic). UTC-only, no DST — fine for a
+    # weekly cadence. The FIRST run does the full 3-year backfill (heavy);
+    # every run after that only scrapes NEW / newly-finished races.
+    - cron: '0 3 * * 0'
+  workflow_dispatch:   # manual trigger from the Actions tab (use for the backfill)
+    inputs:
+      discover:
+        description: 'Scrape full WT+ProSeries calendar (not just CALENDAR)'
+        type: boolean
+        default: false
+      force:
+        description: 'Re-scrape editions even if already stored'
+        type: boolean
+        default: false
+
+jobs:
+  scrape-history:
+    runs-on: ubuntu-latest
+    # The first backfill is large (3 years × races × stages, 2s/request). Later
+    # runs are tiny. Cap near the GitHub job limit so the backfill can finish.
+    timeout-minutes: 350
+    env:
+      TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+      TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Scrape 3 seasons of per-stage results into Turso
+        run: |
+          python scrapers/scrape_history.py \
+            ${{ github.event.inputs.discover == 'true' && '--discover' || '' }} \
+            ${{ github.event.inputs.force == 'true' && '--force' || '' }}
