@@ -2671,7 +2671,16 @@ function drawElevation() {
   // On resize we refit the map + profile to the new viewport (throttled to one
   // call per animation frame), which also re-renders the profile.
   if (!window._elevResizeWired) {
+    window._vizW = window.innerWidth;
     window.addEventListener('resize', () => {
+      // On phones, scrolling shows/hides the browser's address bar, which fires a
+      // resize with a changed innerHeight. Refitting then would make the map +
+      // profile resize mid-scroll. So on mobile only refit when the WIDTH changes
+      // (orientation / a real resize); desktop refits on any resize.
+      const w = window.innerWidth;
+      const mobile = window.matchMedia('(max-width: 760px)').matches;
+      if (mobile && w === window._vizW) return;
+      window._vizW = w;
       if (window._vizRAF) cancelAnimationFrame(window._vizRAF);
       window._vizRAF = requestAnimationFrame(() => fitViz(false));
     });
