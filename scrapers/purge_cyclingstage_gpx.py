@@ -10,6 +10,11 @@ It connects via db.py, so it talks to remote Turso when TURSO_DATABASE_URL +
 TURSO_AUTH_TOKEN are set (the usual case for this cleanup), and to the local file
 DB otherwise.
 
+  The dry run is READ-ONLY (uses db.connect(), no CREATE TABLE), so it works with a
+  read-only Turso token. --apply DELETEs rows, so it needs a WRITE-capable token —
+  a read-only token fails with "SQL write operations are forbidden". The local .env
+  token may be read-only; use the write token (the one Actions uses) to --apply.
+
   ⚠ TLS gotcha (same as scrape_lfr.py): the Python -> Turso write goes through the
   corporate proxy. If it fails with a cert error, point the libsql client at the
   corporate CA bundle first, or set OVERTHEPELOTON_INSECURE_TLS=1 in .env (local
@@ -37,11 +42,17 @@ log = logging.getLogger(__name__)
 
 
 def list_source_rows(client, source):
-    """(slug, filename) for every GPX row from `source`, sorted, for the report."""
-    rs = client.execute(
-        "SELECT slug, filename FROM gpx_files WHERE source=? ORDER BY slug, filename",
-        [source],
-    )
+    """(slug, filename) for every GPX row from `source`, sorted, for the report.
+
+    Returns [] if the gpx_files table doesn't exist yet (empty/fresh store)."""
+    try:
+        rs = client.execute(
+            "SELECT slug, filename FROM gpx_files WHERE source=? ORDER BY slug, filename",
+            [source],
+        )
+    except Exception as exc:  # noqa: BLE001 — e.g. "no such table" on a fresh store
+        log.warning(f"Could not read gpx_files ({exc}); assuming empty.")
+        return []
     return [(r[0], r[1]) for r in rs.rows]
 
 
@@ -54,7 +65,10 @@ def main():
                     help=f"source tag to purge (default: {SOURCE})")
     args = ap.parse_args()
 
-    client = db.open_db()
+    # connect() (not open_db()) so the read-only dry run never runs CREATE TABLE.
+    # The store already exists; a read-only Turso token can do the dry run, and
+    # only --apply needs a write-capable token.
+    client = db.connect()
     where = "remote Turso" if db.is_remote() else "LOCAL file DB"
     log.info(f"Store: {where}")
 
@@ -71,7 +85,9 @@ def main():
         return
 
     if not args.apply:
-        log.info("DRY RUN — no rows deleted. Re-run with --apply to delete them.")
+        log.info("DRY RUN - no rows deleted. Re-run with --apply to delete them "
+                 "(--apply needs a WRITE-capable Turso token; a read-only token "
+                 "fails with 'SQL write operations are forbidden').")
         client.close()
         return
 
