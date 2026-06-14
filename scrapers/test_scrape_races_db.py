@@ -47,6 +47,24 @@ def _legacy_races_file(races):
     return p
 
 
+def test_national_championships_in_calendar():
+    nc = sr._national_championship_calendar()
+    assert len(nc) == 14                              # 7 countries x (road + ITT)
+    # Road + ITT for France, men's slugs (no gender suffix).
+    assert nc["nc-france"] == ("nc-france", "National Championships France - Road Race", "FR", True, 6)
+    assert nc["nc-france-itt"][0] == "nc-france-itt"
+    assert nc["nc-france-itt"][3] is True             # one-day
+    # Great Britain uses the hyphenated slug + GB code.
+    assert "nc-great-britain" in nc and nc["nc-great-britain"][2] == "GB"
+    assert "nc-great-britain-itt" in nc
+    # All requested countries present (road slug), none extra.
+    assert {k for k in nc if not k.endswith("-itt")} == {
+        "nc-france", "nc-belgium", "nc-spain", "nc-italy",
+        "nc-denmark", "nc-great-britain", "nc-slovenia"}
+    # And they were merged into the master CALENDAR.
+    assert "nc-italy-itt" in sr.CALENDAR
+
+
 def test_is_mens_race_filters_women():
     # Explicit women's category → dropped.
     assert sr.is_mens_race({"category": "Women Elite"}) is False

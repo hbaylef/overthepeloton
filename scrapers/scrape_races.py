@@ -118,6 +118,44 @@ CALENDAR = {
     "paris-tours":               ("paris-tours",                           "Paris-Tours",                    "FR", True,  10),
 }
 
+# ---------------------------------------------------------------------------
+# Men Elite NATIONAL CHAMPIONSHIPS — Road Race + ITT, for a curated set of
+# countries. These are class CN, so they are NOT in the WT/ProSeries PCS
+# discovery; we list them explicitly here. PCS slugs follow a fixed pattern:
+#   road = "nc-{country}"      ITT = "nc-{country}-itt"
+# Men's elite has NO gender suffix (women's would be "nc-{country}-we[-itt]"),
+# so the is_mens_race guard keeps these. All one-day, last week of June (month 6);
+# the real date/startlist come from PCS at scrape time.
+# ---------------------------------------------------------------------------
+NATIONAL_CHAMPIONSHIP_COUNTRIES = {
+    # PCS country slug : (display country, nationality code)
+    "france":        ("France",        "FR"),
+    "belgium":       ("Belgium",       "BE"),
+    "spain":         ("Spain",         "ES"),
+    "italy":         ("Italy",         "IT"),
+    "denmark":       ("Denmark",       "DK"),
+    "great-britain": ("Great Britain", "GB"),
+    "slovenia":      ("Slovenia",      "SI"),
+}
+
+
+def _national_championship_calendar() -> dict:
+    """CALENDAR entries (keyed by pcs_slug) for the men's elite Road + ITT
+    national championships of NATIONAL_CHAMPIONSHIP_COUNTRIES."""
+    out = {}
+    for slug, (country, nat) in NATIONAL_CHAMPIONSHIP_COUNTRIES.items():
+        out[f"nc-{slug}"] = (
+            f"nc-{slug}", f"National Championships {country} - Road Race",
+            nat, True, 6)
+        out[f"nc-{slug}-itt"] = (
+            f"nc-{slug}-itt", f"National Championships {country} - ITT",
+            nat, True, 6)
+    return out
+
+
+# Merge the national championships into the master calendar.
+CALENDAR.update(_national_championship_calendar())
+
 
 # ---------------------------------------------------------------------------
 # PCS season-calendar discovery (Phase A).
