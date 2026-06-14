@@ -72,7 +72,7 @@ CALENDAR = {
     # January
     "tour-down-under":           ("tour-down-under",                       "Tour Down Under",                "AU", False, 1),
     # February
-    "tour-of-valencia":          ("setmana-ciclista-valenciana",           "Volta a la Comunitat Valenciana","ES", False, 2),
+    "tour-of-valencia":          ("vuelta-a-la-comunidad-valenciana",      "Volta a la Comunitat Valenciana","ES", False, 2),
     "ruta-del-sol":              ("ruta-del-sol",                          "Vuelta a Andalucía",             "ES", False, 2),
     "volta-ao-algarve":          ("volta-ao-algarve",                      "Volta ao Algarve",               "PT", False, 2),
     "uae-tour":                  ("uae-tour",                              "UAE Tour",                       "AE", False, 2),
@@ -142,7 +142,9 @@ PCS_CALENDAR_URL = ("https://www.procyclingstats.com/races.php"
 # entry instead of duplicating the race.
 PCS_SLUG_ALIASES = {
     "tour-auvergne-rhone-alpes": "criterium-du-dauphine",        # renamed 2026
-    "vuelta-a-la-comunidad-valenciana": "setmana-ciclista-valenciana",
+    # (Removed valencia alias: the CALENDAR now points at the MEN'S race
+    #  "vuelta-a-la-comunidad-valenciana" directly, so discovery reconciles by
+    #  pcs_slug. The old alias folded the men's race into the WOMEN'S entry.)
 }
 
 # PCS listing names carry a gender/sponsor tail the race page itself drops
@@ -352,6 +354,18 @@ def scrape_race_info(race_url: str) -> Optional[dict]:
     except Exception as e:
         log.warning(f"Failed to scrape {race_url}: {e}")
         return None
+
+
+# Only MEN'S elite races belong in this dashboard. PCS race pages expose a
+# `category` ("Men Elite" / "Women Elite"). Discovery already queries men's
+# circuits only (WorldTour=1, ProSeries=26; Women's WorldTour=24 is never asked),
+# so this is the belt-and-braces guard that drops any women's race that still
+# slips in via a mis-mapped CALENDAR slug or alias.
+def is_mens_race(info: dict) -> bool:
+    """False only when the race's PCS category is explicitly a women's one.
+    Unknown/missing category → True (men-only discovery; don't drop legit races)."""
+    cat = (info or {}).get("category") or ""
+    return "women" not in cat.lower()
 
 
 def drop_substitute_riders(riders: list) -> list:
@@ -691,7 +705,9 @@ def main():
         #    and make zero network calls. Final-day results are still captured
         #    because the freeze waits FREEZE_GRACE_DAYS past the enddate.
         cached = existing.get(cs_slug)
-        if cached and is_finished(cached, today):
+        # A cached women's race must NOT be frozen-reused: skip the freeze so we
+        # fall through and (re)scrape this slug's men's race instead.
+        if cached and is_finished(cached, today) and is_mens_race(cached):
             log.info(f"  → Frozen (race over): {name} — reusing cached data")
             all_races.append(cached)
             frozen += 1
@@ -724,6 +740,12 @@ def main():
             elif not info.get("name"):
                 info["name"] = name   # listing name beats an empty parse
             pcs_ok += 1
+
+        # Men's-only guard: drop any women's race (e.g. a mis-mapped slug/alias)
+        # before doing any further work or storing a startlist for it.
+        if not is_mens_race(info):
+            log.info(f"  → Skipping non-men's race: {info.get('name') or name}")
+            continue
 
         # For one-day races, fetch the race-level profile icon (the library
         # gives us nothing — stages() returns []). Apply ONE_DAY_OVERRIDE

@@ -47,6 +47,15 @@ def _legacy_races_file(races):
     return p
 
 
+def test_is_mens_race_filters_women():
+    # Explicit women's category → dropped.
+    assert sr.is_mens_race({"category": "Women Elite"}) is False
+    # Men's / unknown / missing → kept (men-only discovery, don't drop legit races).
+    assert sr.is_mens_race({"category": "Men Elite"}) is True
+    assert sr.is_mens_race({"category": None}) is True
+    assert sr.is_mens_race({}) is True
+
+
 def test_seed_imports_legacy_and_is_idempotent():
     client = _fresh_db()
     _legacy_races_file([

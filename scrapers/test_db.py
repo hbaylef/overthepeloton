@@ -63,6 +63,15 @@ def test_get_document_missing_returns_none():
     assert db.get_document(client, "race", "does-not-exist") is None
 
 
+def test_delete_document():
+    db.put_document(client, "race", "old-race-2026", {"name": "Old"})
+    assert db.has_document(client, "race", "old-race-2026") is True
+    assert db.delete_document(client, "race", "old-race-2026") == 1
+    assert db.has_document(client, "race", "old-race-2026") is False
+    # Deleting a missing row is a no-op (0 rows).
+    assert db.delete_document(client, "race", "old-race-2026") == 0
+
+
 def test_list_and_get_all_documents():
     db.put_document(client, "startlist", "giro-2026", {"riders": []})
     db.put_document(client, "startlist", "vuelta-2026", {"riders": []})

@@ -250,6 +250,19 @@ def has_document(client, kind, slug):
     return bool(rs.rows)
 
 
+def delete_document(client, kind, slug):
+    """Delete one race_data doc by (kind, slug). Returns rows deleted (0 or 1).
+
+    There is no pruning in the scrapers — publish.py emits every stored doc — so
+    removing a race from the live site (e.g. a mis-mapped women's race) means
+    deleting its rows here. Pair with publish.py to regenerate the slices.
+    """
+    rs = client.execute(
+        "DELETE FROM race_data WHERE kind=? AND slug=?", [kind, slug]
+    )
+    return rs.rows_affected
+
+
 def list_slugs(client, kind):
     """All slugs stored for a kind, sorted."""
     rs = client.execute(
