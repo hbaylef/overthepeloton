@@ -12,7 +12,63 @@
 Running in **Claude Code** locally at `C:\Users\PC\Desktop\cycling-dashboard`.
 Site is live; each verified increment is committed + pushed (GitHub Pages).
 
-### 🟢 LATEST SESSION (2026-06-13→14) — Results-based rider rating model + local dashboard (committed d448cb0)
+### 🟢 LATEST SESSION (2026-06-14) — GPX source = La Flamme Rouge only · national championships · daily/weekly split
+
+**GPX: dropped cyclingstage.com; La Flamme Rouge (LFR) is now the SOLE source.**
+cyclingstage routes were unreliable (wrong Tour de France stage 4). Removed
+`scrape_gpx.py` and its daily workflow step; purged all 178 `source='cyclingstage'`
+rows from Turso via the new `purge_cyclingstage_gpx.py` (dry-run default; `--apply`
+needs a write token). Added `db.delete_gpx(slug/source)`. LFR (`scrape_lfr.py`)
+stays an ATTENDED local CDP-Chrome run, NOT in CI (LFR blocks Actions IPs).
+
+**LFR resolver rewritten to use the MONTH CALENDAR, not the /maps/races listing.**
+The listing renders grand-tour names as logo images (TdF was unmatchable — 191
+candidates, no match). `/maps/races/calendar?month=&year=` exposes a TEXT name,
+UCI class and gender per race. New `parse_calendar` + `build_calendar_pool`
+(men's-only via the gender flag) + `match_in_calendar` (match by exact start DATE,
+gated by a loose name score so two same-date races can't swap routes). Grand tours
+fall back to `LFR_RACE_OVERRIDES` (TdF pinned to LFR race_id 1).
+
+**Men's-only races + Valencia fix (`scrape_races.py`).** `is_mens_race` guard drops
+PCS category "Women Elite" (applied after enrichment AND in the freeze-reuse path).
+Repointed the Valencia CALENDAR entry from the women's slug
+`setmana-ciclista-valenciana` to the men's `vuelta-a-la-comunidad-valenciana` and
+removed the alias that folded the men's race into the women's. The stale 2026
+women's race was deleted from Turso (`db.delete_document`, write token).
+
+**National championships (Road + ITT, Men Elite) — PCS data + LFR GPX.** Added 14
+NC races (France, Belgium, Spain, Italy, Denmark, Great Britain, Slovenia) to the
+CALENDAR, generated from `NATIONAL_CHAMPIONSHIP_COUNTRIES`. PCS slugs: road
+`nc-{country}`, ITT `nc-{country}-itt`, with `NC_PCS_SLUG_OVERRIDES` for two
+exceptions (Denmark road = `danish-championships`, GB road = `ncgreat-britain`).
+LFR GPX for NCs resolves via the calendar-12 listing (`parse_nc_listing` /
+`build_nc_pool`), matched DETERMINISTICALLY by (nationality flag, discipline=ITT
+keyword), men's-only via the `ME` type cell; each NC race-view page has one track.
+`is_nc_race`/`nc_discipline` route NC races through the NC pool, WT/Pro through the
+month calendar. NC class is PCS "NC" (LFR "CN"). Landed: 13/14 race data (Slovenia
+ITT pending its PCS 2026 page); 8/14 GPX (France/Belgium/Italy/Spain — Denmark/GB/
+Slovenia not yet uploaded to LFR; re-run nearer June 25–28).
+
+**Scraping split into lean DAILY + WEEKLY full refresh.** `scrape.yml` (daily,
+07:30 + 19:00 UTC) now runs only volatile data: `scrape_races --startlists-only`
+(new lightweight mode — re-scrapes only existing races' rosters, skips finished,
+re-applies CACHED rider specialties/birthplaces inline, no calendar discovery / no
+climbs) → start times → results → publish. New `scrape-weekly.yml` (Mondays 06:00
+UTC) runs the full pipeline (race calendar, rider re-embed, geocode, climbs, derive
+climbs). GPX is in neither (attended LFR only).
+
+**Frontend.** Added a "Hide national championships" race-list toggle beside "Hide
+finished races" (`isNationalChampionship`: PCS class NC/CN or an `nc-` slug).
+
+**Other.** `export_turso.py` is now tracked (mirror the store → SQLite/JSON/GPX;
+`--gpx <dir>` writes every route to disk). The local `.env` Turso token is
+READ-ONLY: reads/dry-runs work via `db.connect()`; writes (purge / LFR store /
+publish — `open_db()`'s CREATE TABLE is a write) need the WRITE token or Actions.
+Tests green: `scrape_lfr` 16/16, `scrape_races_db` 8/8, `db` 8/8, `migration2` 6/6.
+Commits: c07baa3, 63453d1, 2360611, 240f990, a8aeb99, d31ee37, 9606e96, 38765be,
+92bad55, b659bde, 3341e3f, 2684014, ac8b65c.
+
+### 🟢 EARLIER SESSION (2026-06-13→14) — Results-based rider rating model + local dashboard (committed d448cb0)
 
 Built a NEW, results-driven rider-rating model (distinct from R2's specialty-points
 softmax) on the 3-season `race_data kind="results"` history. All code committed; the
@@ -692,11 +748,13 @@ should still be clear and beginner-friendly, but assume they know how to
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  SCRAPERS  (Python, runs daily on GitHub Actions)         │
-│                                                           │
-│  scrape_races · scrape_start_times · scrape_gpx ·         │
-│  scrape_riders · geocode_birthplaces · scrape_results ·   │
-│  scrape_climbs · derive_climbs                            │
+│  SCRAPERS  (Python, GitHub Actions)                       │
+│  DAILY (scrape.yml): scrape_races --startlists-only ·     │
+│      scrape_start_times · scrape_results                  │
+│  WEEKLY (scrape-weekly.yml): scrape_races (full) ·        │
+│      scrape_riders · geocode_birthplaces ·               │
+│      scrape_climbs · derive_climbs                        │
+│  ATTENDED/LOCAL: scrape_lfr (GPX, La Flamme Rouge)        │
 │      ▼ read/write via scrapers/db.py                      │
 └─────────────────────────────────────────────────────────┘
                           │  (raw data, PRIVATE)
@@ -763,7 +821,7 @@ on Pages is the simplest correct setup.
 | Need | Source | How | Notes |
 |---|---|---|---|
 | Race calendar + startlists | **procyclingstats.com** | `procyclingstats` library + `cloudscraper` for Cloudflare | Works reliably from GitHub Actions and locally. |
-| GPX routes | **cyclingstage.com** | Crawl-based discovery (visits multiple URL patterns + follows internal links) | Free, no login, ~62% race coverage. |
+| GPX routes | **La Flamme Rouge** (sole source since 2026-06-14) | `scrape_lfr.py` — ATTENDED CDP-Chrome; resolves via the month calendar (WT/Pro) + calendar-12 listing (national champs) | cyclingstage.com was dropped (unreliable). LFR blocks Actions IPs → manual/local only. |
 | Betting odds | **bet365.com** | Hub-page scraper + Playwright fallback + manual paste tool | Likely blocked from GitHub Actions; user runs locally. |
 
 ### Source decisions & history
@@ -796,12 +854,15 @@ overthepeloton/
 │   ├── db.py                    ← Turso/SQLite store: connection + schema + helpers
 │   ├── publish.py               ← Turso → thin public slices (incl. downsampled routes)
 │   ├── scrape_races.py          ← races + startlists → Turso; discovers the FULL
-│   │                               WT+ProSeries season from PCS races.php (Phase A)
+│   │                               WT+ProSeries season from PCS + hand-tuned CALENDAR
+│   │                               (incl. national championships). --startlists-only =
+│   │                               lightweight daily roster refresh.
 │   ├── test_discover_races.py   ← no-network tests for discovery/reconciliation (6/6)
-│   ├── scrape_gpx.py            ← GPX → Turso gpx_files; SKIPS routes already stored
-│   ├── scrape_lfr.py            ← GPX FALLBACK: La Flamme Rouge (local; Phase B will
-│   │                               swap its fetch layer to CDP-Chrome + output to Turso)
-│   ├── test_scrape_lfr.py       ← no-network tests for the LFR fallback (9/9)
+│   ├── scrape_lfr.py            ← GPX (SOLE source): La Flamme Rouge, ATTENDED CDP-Chrome.
+│   │                               Month-calendar resolver (WT/Pro) + calendar-12 NC pool.
+│   ├── purge_cyclingstage_gpx.py← one-shot: drop retired cyclingstage GPX from Turso
+│   ├── export_turso.py          ← mirror the store → local SQLite/JSON/GPX (--gpx)
+│   ├── test_scrape_lfr.py       ← no-network tests for the LFR scraper (16/16)
 │   ├── scrape_odds.py           ← Bet365 odds (PARKED; local-only)
 │   ├── enter_odds.py            ← manual odds entry
 │   ├── scrape_riders.py         ← specialties.career + birthdate + place_of_birth → Turso

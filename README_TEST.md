@@ -52,11 +52,17 @@ The raw scraped data (PCS responses, full `.gpx`, caches) now lives in a
 **published slices** that are already committed in `data/` (so Part A works
 out of the box).
 
-The full pipeline runs automatically in **GitHub Actions** (`.github/workflows/
-scrape.yml`): scrape → Turso → `scrapers/publish.py` → commit the slices. To run
-it by hand, **trigger "Daily scrape" from the repo's Actions tab** — live scraping
-needs to reach procyclingstats.com / cyclingstage.com, which the daily runner does
-(and which a TLS-proxied machine can't).
+The pipeline runs automatically in **GitHub Actions**, split in two:
+- **Daily** (`.github/workflows/scrape.yml`): the volatile data — startlists,
+  start times, results — then `publish.py` + commit.
+- **Weekly** (`.github/workflows/scrape-weekly.yml`, Mondays): the full refresh —
+  race calendar, rider data, climbs — then publish + commit.
+
+To run by hand, **trigger either workflow from the repo's Actions tab** (live
+scraping needs procyclingstats.com, which the runner reaches and a TLS-proxied
+machine can't). **GPX routes are the exception:** their sole source is La Flamme
+Rouge (`scrapers/scrape_lfr.py`), an ATTENDED local run (LFR blocks Actions IPs) —
+see PROJECT_CONTEXT.md.
 
 If you just want to regenerate the public slices from the store locally:
 
@@ -92,8 +98,8 @@ python scrapers/test_db.py        (and the other scrapers/test_*.py)
 - **`python` not found** → try `python3`. If neither works, install Python
   from python.org.
 - **A race shows "route not available"** → that race has no route in the store
-  yet (route not published, or not on cyclingstage.com). Routes fill in over
-  time; see PROJECT_CONTEXT.md, section 6 "Known limitations".
+  yet (La Flamme Rouge hasn't published it, or the attended `scrape_lfr.py` run
+  hasn't fetched it). Routes fill in over time; see PROJECT_CONTEXT.md.
 - **The map area is blank but the profile works** → the map tiles need
   internet access; check your connection.
 
