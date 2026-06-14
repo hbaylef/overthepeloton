@@ -15,6 +15,11 @@ on:
     # the week starts from a full refresh. Adjust the day/time as you like.
     - cron: '0 6 * * 1'
   workflow_dispatch:  # also runnable on demand from the Actions tab
+    inputs:
+      force_climbs:
+        description: 'Re-derive ALL stage-race climbs from GPX (backfill after a detection change; normally skipped as immutable)'
+        type: boolean
+        default: false
 
 # Permission needed to commit data back to the repo
 permissions:
@@ -73,7 +78,12 @@ jobs:
         continue-on-error: true
 
       - name: Derive stage-race climbs from GPX (R4)
-        run: python scrapers/derive_climbs.py
+        # Incremental by default (skips races already derived + named). Tick the
+        # "force_climbs" input on a manual run to re-derive everything — needed to
+        # backfill after a detection change, since GPX is treated as immutable.
+        run: |
+          python scrapers/derive_climbs.py \
+            ${{ github.event.inputs.force_climbs == 'true' && '--force' || '' }}
         continue-on-error: true
 
       - name: Publish public slices from Turso
