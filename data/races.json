@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-06-14T10:53:27.886564+00:00",
+  "updated_at": "2026-06-14T12:05:43.678053+00:00",
   "year": 2026,
-  "total_races": 99,
+  "total_races": 98,
   "races": [
     {
       "category": "Men Elite",
@@ -344,63 +344,6 @@
         }
       ],
       "startdate": "2026-02-07",
-      "uci_tour": "2.Pro",
-      "year": 2026
-    },
-    {
-      "category": "Women Elite",
-      "cyclingstage_slug": "tour-of-valencia",
-      "edition": 10,
-      "enddate": "2026-02-15",
-      "is_one_day_race": false,
-      "name": "Volta a la Comunitat Valenciana",
-      "nationality": "ES",
-      "pcs_slug": "setmana-ciclista-valenciana",
-      "pcs_url": "race/setmana-ciclista-valenciana/2026",
-      "slug": "setmana-ciclista-valenciana-2026",
-      "stages": [
-        {
-          "date": "02-12",
-          "profile_icon": "p2",
-          "stage_name": "Stage 1 | Gandia - Gandia",
-          "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon",
-          "stage_url": "race/setmana-ciclista-valenciana/2026/stage-1",
-          "start_time": "14:15",
-          "start_time_source": "pcs"
-        },
-        {
-          "date": "02-13",
-          "profile_icon": "p2",
-          "stage_name": "Stage 2 | Vila-Real - Vila-Real",
-          "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon",
-          "stage_url": "race/setmana-ciclista-valenciana/2026/stage-2",
-          "start_time": "13:35",
-          "start_time_source": "pcs"
-        },
-        {
-          "date": "02-14",
-          "profile_icon": "p4",
-          "stage_name": "Stage 3 | Agost - La Nucía",
-          "stage_type": "climber",
-          "stage_type_source": "profile_icon",
-          "stage_url": "race/setmana-ciclista-valenciana/2026/stage-3",
-          "start_time": "12:05",
-          "start_time_source": "pcs"
-        },
-        {
-          "date": "02-15",
-          "profile_icon": "p2",
-          "stage_name": "Stage 4 | Sagunt - Valencia",
-          "stage_type": "sprint_break",
-          "stage_type_source": "profile_icon",
-          "stage_url": "race/setmana-ciclista-valenciana/2026/stage-4",
-          "start_time": "11:16",
-          "start_time_source": "pcs"
-        }
-      ],
-      "startdate": "2026-02-12",
       "uci_tour": "2.Pro",
       "year": 2026
     },
