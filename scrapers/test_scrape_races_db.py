@@ -50,17 +50,17 @@ def _legacy_races_file(races):
 def test_national_championships_in_calendar():
     nc = sr._national_championship_calendar()
     assert len(nc) == 14                              # 7 countries x (road + ITT)
-    # Road + ITT for France, men's slugs (no gender suffix).
     assert nc["nc-france"] == ("nc-france", "National Championships France - Road Race", "FR", True, 6)
-    assert nc["nc-france-itt"][0] == "nc-france-itt"
-    assert nc["nc-france-itt"][3] is True             # one-day
-    # Great Britain uses the hyphenated slug + GB code.
-    assert "nc-great-britain" in nc and nc["nc-great-britain"][2] == "GB"
-    assert "nc-great-britain-itt" in nc
-    # All requested countries present (road slug), none extra.
-    assert {k for k in nc if not k.endswith("-itt")} == {
-        "nc-france", "nc-belgium", "nc-spain", "nc-italy",
-        "nc-denmark", "nc-great-britain", "nc-slovenia"}
+    assert nc["nc-france-itt"][0] == "nc-france-itt" and nc["nc-france-itt"][3] is True
+    # GB ITT + Denmark ITT are standard; GB road + Denmark road use override slugs.
+    assert nc["nc-great-britain-itt"][2] == "GB"
+    assert nc["nc-denmark-itt"][2] == "DK"
+    assert nc["ncgreat-britain"][1] == "National Championships Great Britain - Road Race"
+    assert nc["danish-championships"][2] == "DK"
+    # One road entry per country (with the two overrides), none extra.
+    assert {k for k in nc if "itt" not in k} == {
+        "nc-france", "nc-belgium", "nc-spain", "nc-italy", "nc-slovenia",
+        "danish-championships", "ncgreat-britain"}
     # And they were merged into the master CALENDAR.
     assert "nc-italy-itt" in sr.CALENDAR
 

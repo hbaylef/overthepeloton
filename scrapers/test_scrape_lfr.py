@@ -84,9 +84,13 @@ def test_parse_nc_listing_filters_me_and_target_nations():
 def test_is_nc_race_and_discipline():
     assert lfr.is_nc_race({"slug": "nc-france-itt-2026"}) is True
     assert lfr.is_nc_race({"slug": "tour-de-france-2026", "uci_tour": "2.UWT"}) is False
-    assert lfr.is_nc_race({"slug": "x-2026", "uci_tour": "CN"}) is True
+    assert lfr.is_nc_race({"slug": "x-2026", "uci_tour": "NC"}) is True   # PCS class
+    assert lfr.is_nc_race({"slug": "x-2026", "uci_tour": "CN"}) is True   # LFR class
+    # Override-slug NC (no 'nc-' prefix) still recognised via the class.
+    assert lfr.is_nc_race({"slug": "danish-championships-2026", "uci_tour": "NC"}) is True
     assert lfr.nc_discipline({"slug": "nc-france-itt-2026"}) == "itt"
     assert lfr.nc_discipline({"slug": "nc-france-2026"}) == "road"
+    assert lfr.nc_discipline({"slug": "danish-championships-2026"}) == "road"
 
 
 def test_find_race_page_resolves_nc_by_nation_and_discipline():

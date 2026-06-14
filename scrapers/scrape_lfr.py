@@ -325,8 +325,11 @@ def targets(races: List[dict], has_gpx: Callable[[str], bool],
 
 # --- National-championship resolution (calendar-12 listing) ----------------
 def is_nc_race(race: dict) -> bool:
-    """True for the national-championship races we add (slug 'nc-…' or class CN)."""
-    return str(race.get("slug", "")).startswith("nc-") or race.get("uci_tour") == "CN"
+    """True for national-championship races. PCS reports the class as 'NC' (LFR
+    calls it 'CN'); some have non-standard slugs (e.g. 'danish-championships',
+    'ncgreat-britain'), so we accept either the class OR an 'nc-' slug."""
+    return (race.get("uci_tour") in ("NC", "CN")
+            or str(race.get("slug", "")).startswith("nc-"))
 
 
 def nc_discipline(race: dict) -> str:

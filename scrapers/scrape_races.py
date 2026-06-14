@@ -139,17 +139,29 @@ NATIONAL_CHAMPIONSHIP_COUNTRIES = {
 }
 
 
+# A few championships use non-standard PCS slugs (verified on PCS, 2026). The
+# default is road="nc-{country}", ITT="nc-{country}-itt".
+NC_PCS_SLUG_OVERRIDES = {
+    ("denmark", "road"):       "danish-championships",   # not nc-denmark
+    ("great-britain", "road"): "ncgreat-britain",        # PCS quirk: no hyphen
+}
+
+
+def _nc_pcs_slug(country_slug: str, discipline: str) -> str:
+    if (country_slug, discipline) in NC_PCS_SLUG_OVERRIDES:
+        return NC_PCS_SLUG_OVERRIDES[(country_slug, discipline)]
+    return f"nc-{country_slug}" + ("-itt" if discipline == "itt" else "")
+
+
 def _national_championship_calendar() -> dict:
     """CALENDAR entries (keyed by pcs_slug) for the men's elite Road + ITT
     national championships of NATIONAL_CHAMPIONSHIP_COUNTRIES."""
     out = {}
     for slug, (country, nat) in NATIONAL_CHAMPIONSHIP_COUNTRIES.items():
-        out[f"nc-{slug}"] = (
-            f"nc-{slug}", f"National Championships {country} - Road Race",
-            nat, True, 6)
-        out[f"nc-{slug}-itt"] = (
-            f"nc-{slug}-itt", f"National Championships {country} - ITT",
-            nat, True, 6)
+        for disc, label in (("road", "Road Race"), ("itt", "ITT")):
+            pcs = _nc_pcs_slug(slug, disc)
+            out[pcs] = (pcs, f"National Championships {country} - {label}",
+                        nat, True, 6)
     return out
 
 
