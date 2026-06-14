@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-14T10:53:36.531805+00:00",
+  "updated_at": "2026-06-14T11:59:44.182411+00:00",
   "races": {
     "arctic-race-of-norway-2026": {
       "name": "Arctic Race of Norway",
@@ -70,6 +70,96 @@
         {
           "stage": null,
           "distance_km": 107.6
+        }
+      ]
+    },
+    "tour-de-france-2026": {
+      "name": "Tour de France",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 19.6
+        },
+        {
+          "stage": 2,
+          "distance_km": 178.8
+        },
+        {
+          "stage": 3,
+          "distance_km": 195.5
+        },
+        {
+          "stage": 4,
+          "distance_km": 182.2
+        },
+        {
+          "stage": 5,
+          "distance_km": 157.9
+        },
+        {
+          "stage": 6,
+          "distance_km": 185.9
+        },
+        {
+          "stage": 7,
+          "distance_km": 174.8
+        },
+        {
+          "stage": 8,
+          "distance_km": 182.2
+        },
+        {
+          "stage": 9,
+          "distance_km": 184.8
+        },
+        {
+          "stage": 10,
+          "distance_km": 166.9
+        },
+        {
+          "stage": 11,
+          "distance_km": 160.8
+        },
+        {
+          "stage": 12,
+          "distance_km": 180.8
+        },
+        {
+          "stage": 13,
+          "distance_km": 204.8
+        },
+        {
+          "stage": 14,
+          "distance_km": 155.6
+        },
+        {
+          "stage": 15,
+          "distance_km": 183.8
+        },
+        {
+          "stage": 16,
+          "distance_km": 26.0
+        },
+        {
+          "stage": 17,
+          "distance_km": 180.4
+        },
+        {
+          "stage": 18,
+          "distance_km": 185.1
+        },
+        {
+          "stage": 19,
+          "distance_km": 129.0
+        },
+        {
+          "stage": 20,
+          "distance_km": 172.1
+        },
+        {
+          "stage": 21,
+          "distance_km": 129.9
         }
       ]
     },
@@ -196,6 +286,96 @@
         {
           "stage": 4,
           "distance_km": 119.5
+        }
+      ]
+    },
+    "vuelta-a-espana-2026": {
+      "name": "Vuelta a España",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": 1,
+          "distance_km": 9.0
+        },
+        {
+          "stage": 2,
+          "distance_km": 216.6
+        },
+        {
+          "stage": 3,
+          "distance_km": 164.9
+        },
+        {
+          "stage": 4,
+          "distance_km": 106.2
+        },
+        {
+          "stage": 5,
+          "distance_km": 171.1
+        },
+        {
+          "stage": 6,
+          "distance_km": 175.4
+        },
+        {
+          "stage": 7,
+          "distance_km": 150.0
+        },
+        {
+          "stage": 8,
+          "distance_km": 165.7
+        },
+        {
+          "stage": 9,
+          "distance_km": 188.7
+        },
+        {
+          "stage": 10,
+          "distance_km": 183.9
+        },
+        {
+          "stage": 11,
+          "distance_km": 154.6
+        },
+        {
+          "stage": 12,
+          "distance_km": 166.5
+        },
+        {
+          "stage": 13,
+          "distance_km": 192.8
+        },
+        {
+          "stage": 14,
+          "distance_km": 151.6
+        },
+        {
+          "stage": 15,
+          "distance_km": 181.0
+        },
+        {
+          "stage": 16,
+          "distance_km": 189.1
+        },
+        {
+          "stage": 17,
+          "distance_km": 196.1
+        },
+        {
+          "stage": 18,
+          "distance_km": 32.0
+        },
+        {
+          "stage": 19,
+          "distance_km": 206.0
+        },
+        {
+          "stage": 20,
+          "distance_km": 186.8
+        },
+        {
+          "stage": 21,
+          "distance_km": 96.6
         }
       ]
     },
@@ -509,11 +689,6 @@
       "route_available": false,
       "stages": []
     },
-    "tour-de-france-2026": {
-      "name": "Tour de France",
-      "route_available": false,
-      "stages": []
-    },
     "tour-de-hongrie-2026": {
       "name": "Tour de Hongrie",
       "route_available": false,
@@ -626,11 +801,6 @@
     },
     "volta-ao-algarve-2026": {
       "name": "Volta ao Algarve",
-      "route_available": false,
-      "stages": []
-    },
-    "vuelta-a-espana-2026": {
-      "name": "Vuelta a España",
       "route_available": false,
       "stages": []
     },
