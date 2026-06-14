@@ -940,6 +940,7 @@
         </select>
       </div>
       <label><input type="checkbox" id="rf-hidepast" checked> Hide finished races</label>
+      <label><input type="checkbox" id="rf-hidenc"> Hide national championships</label>
     </div>
     <div class="race-count" id="race-count"></div>
     <div id="race-list"></div>
@@ -1259,10 +1260,17 @@ function routeTotals() {
 // Race-list filters. The tour dropdown groups PCS class codes into World Tour
 // (1.UWT one-day + 2.UWT stage) vs "the rest" (Pro/.1 etc) — R7 (non-WT) lands
 // in the latter bucket.
-let raceFilters = { q: '', tour: '', type: '', hidePast: true };
+let raceFilters = { q: '', tour: '', type: '', hidePast: true, hideNC: false };
 
 function isWorldTour(race) {
   return race.uci_tour === '1.UWT' || race.uci_tour === '2.UWT';
+}
+
+// National championships: PCS class 'NC' (LFR 'CN'); override-slug ones (e.g.
+// danish-championships, ncgreat-britain) carry the class but no 'nc-' slug prefix.
+function isNationalChampionship(race) {
+  return race.uci_tour === 'NC' || race.uci_tour === 'CN'
+      || (race.slug || '').startsWith('nc-');
 }
 
 function initRaceFilters() {
@@ -1271,6 +1279,7 @@ function initRaceFilters() {
   on('rf-tour', 'change', e => { raceFilters.tour = e.target.value; renderRaceList(); });
   on('rf-type', 'change', e => { raceFilters.type = e.target.value; renderRaceList(); });
   on('rf-hidepast', 'change', e => { raceFilters.hidePast = e.target.checked; renderRaceList(); });
+  on('rf-hidenc', 'change', e => { raceFilters.hideNC = e.target.checked; renderRaceList(); });
 }
 
 function raceMatches(race) {
@@ -1280,6 +1289,7 @@ function raceMatches(race) {
   if (f.tour === 'rest' && isWorldTour(race)) return false;
   if (f.type === 'stage' && race.is_one_day_race) return false;
   if (f.type === 'oneday' && !race.is_one_day_race) return false;
+  if (f.hideNC && isNationalChampionship(race)) return false;
   if (f.hidePast) {
     const end = race.enddate || race.startdate;
     if (end && end < new Date().toISOString().slice(0, 10)) return false;
