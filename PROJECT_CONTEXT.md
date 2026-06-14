@@ -12,7 +12,43 @@
 Running in **Claude Code** locally at `C:\Users\PC\Desktop\cycling-dashboard`.
 Site is live; each verified increment is committed + pushed (GitHub Pages).
 
-### 🟢 LATEST SESSION (2026-06-14) — GPX source = La Flamme Rouge only · national championships · daily/weekly split
+### 🟢 LATEST SESSION (2026-06-14, pt 2) — climb placement fix · stage-emoji tweak · odds section removed
+
+**Climb markers were drawn in the wrong place — root cause: a DISTANCE-SCALE
+mismatch.** `derive_climbs.py` measured each climb's `km_before_finish` on the
+FULL-resolution GPX, but the frontend positions climbs on the DOWNSAMPLED
+1500-point route slice it draws (`totalKm` = haversine length of that reduced
+polyline, ~3% shorter and non-uniformly so). Anchoring to the finish fixed the
+endpoint but not interior climbs, so the ▲ drifted off their peaks (Giro stage 11:
+first climb ~9.6 km past its summit) and feet started before the real ascent.
+Smoothing was NOT the cause (summits were within ~80 m). **Fix (commit 5283375):**
+detect on the SAME downsampled+rounded points `publish.py` emits — added
+`frontend_points()` = `downsample()` + `round_point()` to `derive_climbs`, which is
+now the single source of truth for `MAX_ROUTE_POINTS`/`downsample`/`round_point`
+(`publish.py` imports them). Validated on real route data: climbs now land within a
+few hundred m of their peaks. Tests 21/21. **Deploy gotcha:** `needs_processing`
+skips already-derived+named races (GPX treated as immutable), so backfilling needs
+`derive_climbs.py --force`. Added a `force_climbs` `workflow_dispatch` input to
+`scrape-weekly.yml` (commit 23a16a4) to trigger this from the Actions tab; the user
+ran it + verified the fix live.
+
+**Stage-emoji tweak (commit 378405a).** `sprint_break` (PCS p2 — hilly with a
+flat/sprint finish) now renders 🌄 "Hilly" instead of ➡️ "Flat / sprint" in
+`STAGE_TYPE_META` (Tour de Suisse p2 days read as flat). Display-only; scoring
+weights unchanged. `sprint_break` is also the fallback type, so fallback-flagged
+stages now read Hilly too (acceptable).
+
+**Race Winner Odds section REMOVED from the UI (commit 96055b1).** R6 odds is parked
+(no working data source — Bet365 blocks Actions, local TLS proxy blocks scraping),
+so it only ever showed "No odds published yet". Removed the odds container +
+`loadOdds`/`renderOdds`, the `odds_index.json` fetch, `ODDS_INDEX`, the race-list
+"odds" badge, the collapsed-section default, and the odds-only CSS. KEPT the shared
+section-card shell classes (`.odds-card`/`.odds-head`/`.odds-source`/`.odds-empty`/
+`.odds-note`, reused by the Startlist/Specialty cards). Dormant `data/odds/*` +
+`odds_index.json` left in place (same as the hidden win-prob). Inline script passes
+`node --check`.
+
+### 🟢 EARLIER SESSION (2026-06-14) — GPX source = La Flamme Rouge only · national championships · daily/weekly split
 
 **GPX: dropped cyclingstage.com; La Flamme Rouge (LFR) is now the SOLE source.**
 cyclingstage routes were unreliable (wrong Tour de France stage 4). Removed
@@ -1243,8 +1279,11 @@ a backlog, not in priority order. Several have open design questions noted.
   blocked both ways: Bet365 blocks GitHub Actions IPs, and this machine's
   TLS-intercepting proxy breaks Python cert verification, so neither path reaches
   live odds cleanly today. Do not build odds until the user revisits it.
-- The odds code exists (`scrape_odds.py`, `enter_odds.py`, frontend panel) but
-  has **not been run successfully against live Bet365 data yet**.
+- The odds code exists (`scrape_odds.py`, `enter_odds.py`) but has **not been run
+  successfully against live Bet365 data yet**. The **frontend "Race Winner Odds"
+  panel was REMOVED from the UI on 2026-06-14** (commit 96055b1) since it only ever
+  showed "No odds published yet"; the dormant `data/odds/*` + `odds_index.json`
+  slices remain, so re-enabling is a frontend-only restore once data flows.
 - Goal (when un-parked): get real odds flowing and displayed. May require a
   non-proxied machine, a more scrapable source, or the manual paste tool as the
   practical fallback. Still the "hardest part" of the project.
