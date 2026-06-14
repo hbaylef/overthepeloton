@@ -1,0 +1,78 @@
+{
+  "race": "National Championships Italy - Road Race",
+  "race_slug": "nc-italy-2026",
+  "riders": [
+    {
+      "birthdate": "1999-6-29",
+      "birthplace_lat": 42.6384261,
+      "birthplace_lon": 12.674297,
+      "name": "GARIBBO Nicolò",
+      "nationality": "IT",
+      "number": null,
+      "place_of_birth": "Italy",
+      "rider_url": "rider/nicolo-garibbo",
+      "specialties": {
+        "career": {
+          "climber": 68,
+          "gc": 137,
+          "hills": 152,
+          "one_day_races": 78,
+          "sprint": 18,
+          "tt": 1
+        }
+      },
+      "team": "Team UKYO (CT)",
+      "team_url": "team/team-ukyo-2026"
+    },
+    {
+      "birthdate": "2002-7-10",
+      "birthplace_lat": 46.1029536,
+      "birthplace_lon": 11.1297425,
+      "name": "IACOMONI Federico",
+      "nationality": "IT",
+      "number": null,
+      "place_of_birth": "Trento",
+      "rider_url": "rider/federico-iacomoni",
+      "specialties": {
+        "career": {
+          "climber": 98,
+          "gc": 16,
+          "hills": 96,
+          "one_day_races": 13,
+          "sprint": 38,
+          "tt": 5
+        }
+      },
+      "team": "Team UKYO (CT)",
+      "team_url": "team/team-ukyo-2026"
+    },
+    {
+      "birthdate": null,
+      "name": "PETTITI Nicolò",
+      "nationality": "IT",
+      "number": null,
+      "place_of_birth": null,
+      "rider_url": "rider/nicolo-pettiti",
+      "specialties": {
+        "career": null
+      },
+      "team": "Swatt Club (CT)",
+      "team_url": "team/swatt-club-2026"
+    },
+    {
+      "birthdate": null,
+      "name": "AGOSTINACCHIO Filippo",
+      "nationality": "IT",
+      "number": null,
+      "place_of_birth": null,
+      "rider_url": "rider/filippo-agostinacchio",
+      "specialties": {
+        "career": null
+      },
+      "team": "Biesse - Carrera - Premac (CT)",
+      "team_url": "team/biesse-carrera-premac-2026"
+    }
+  ],
+  "total_riders": 4,
+  "updated_at": "2026-06-14T13:13:17.960331"
+}

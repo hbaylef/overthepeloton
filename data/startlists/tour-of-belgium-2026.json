@@ -465,22 +465,44 @@
       "team_url": "team/beat-cc-pb-saxo-2026"
     },
     {
-      "birthdate": "1998-11-11",
+      "birthdate": "2000-10-29",
+      "birthplace_lat": 52.2434979,
+      "birthplace_lon": 5.6343227,
+      "name": "KERCKHAERT Jochem",
+      "nationality": "NL",
+      "number": null,
+      "place_of_birth": "Netherlands",
+      "rider_url": "rider/jochem-kerckhaert",
+      "specialties": {
+        "career": {
+          "climber": 8,
+          "gc": 11,
+          "hills": 76,
+          "one_day_races": 69,
+          "sprint": 27,
+          "tt": 22
+        }
+      },
+      "team": "BEAT CC p/b Saxo (CT)",
+      "team_url": "team/beat-cc-pb-saxo-2026"
+    },
+    {
+      "birthdate": "2003-2-10",
       "birthplace_lat": 50.6402809,
       "birthplace_lon": 4.6667145,
-      "name": "HESTERS Jules",
+      "name": "LAMBRECHT Michiel",
       "nationality": "BE",
       "number": null,
       "place_of_birth": "Belgium",
-      "rider_url": "rider/jules-hesters",
+      "rider_url": "rider/michiel-lambrecht",
       "specialties": {
         "career": {
-          "climber": 0,
-          "gc": 19,
-          "hills": 52,
-          "one_day_races": 224,
-          "sprint": 374,
-          "tt": 0
+          "climber": 16,
+          "gc": 30,
+          "hills": 84,
+          "one_day_races": 98,
+          "sprint": 69,
+          "tt": 5
         }
       },
       "team": "Team Flanders - Baloise (PRT)",
@@ -509,22 +531,22 @@
       "team_url": "team/team-flanders-baloise-2026"
     },
     {
-      "birthdate": "2003-2-10",
+      "birthdate": "1998-11-11",
       "birthplace_lat": 50.6402809,
       "birthplace_lon": 4.6667145,
-      "name": "LAMBRECHT Michiel",
+      "name": "HESTERS Jules",
       "nationality": "BE",
       "number": null,
       "place_of_birth": "Belgium",
-      "rider_url": "rider/michiel-lambrecht",
+      "rider_url": "rider/jules-hesters",
       "specialties": {
         "career": {
-          "climber": 16,
-          "gc": 30,
-          "hills": 84,
-          "one_day_races": 98,
-          "sprint": 69,
-          "tt": 5
+          "climber": 0,
+          "gc": 19,
+          "hills": 52,
+          "one_day_races": 224,
+          "sprint": 374,
+          "tt": 0
         }
       },
       "team": "Team Flanders - Baloise (PRT)",
@@ -795,6 +817,6 @@
       "team_url": "team/uae-team-emirates-xrg-2026"
     }
   ],
-  "total_riders": 36,
-  "updated_at": "2026-06-13T10:24:20.328599"
+  "total_riders": 37,
+  "updated_at": "2026-06-14T13:14:47.650429"
 }

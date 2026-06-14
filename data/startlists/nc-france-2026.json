@@ -1,0 +1,30 @@
+{
+  "race": "National Championships France - Road Race",
+  "race_slug": "nc-france-2026",
+  "riders": [
+    {
+      "birthdate": "1992-4-1",
+      "birthplace_lat": 47.3215806,
+      "birthplace_lon": 5.0414701,
+      "name": "BOUCHARD Geoffrey",
+      "nationality": "FR",
+      "number": null,
+      "place_of_birth": "Dijon",
+      "rider_url": "rider/geoffrey-bouchard",
+      "specialties": {
+        "career": {
+          "climber": 778,
+          "gc": 756,
+          "hills": 166,
+          "one_day_races": 134,
+          "sprint": 3,
+          "tt": 13
+        }
+      },
+      "team": "TotalEnergies (PRT)",
+      "team_url": "team/totalenergies-2026"
+    }
+  ],
+  "total_riders": 1,
+  "updated_at": "2026-06-14T13:12:35.171757"
+}

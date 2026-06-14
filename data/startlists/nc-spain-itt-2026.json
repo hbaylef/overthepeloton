@@ -1,0 +1,30 @@
+{
+  "race": "National Championships Spain - ITT",
+  "race_slug": "nc-spain-itt-2026",
+  "riders": [
+    {
+      "birthdate": "1996-1-6",
+      "birthplace_lat": 39.3260685,
+      "birthplace_lon": -4.8379791,
+      "name": "BARCELÓ Fernando",
+      "nationality": "ES",
+      "number": null,
+      "place_of_birth": "Spain",
+      "rider_url": "rider/fernando-barcelo",
+      "specialties": {
+        "career": {
+          "climber": 578,
+          "gc": 458,
+          "hills": 749,
+          "one_day_races": 671,
+          "sprint": 104,
+          "tt": 7
+        }
+      },
+      "team": "Caja Rural - Seguros RGA (PRT)",
+      "team_url": "team/caja-rural-seguros-rga-2026"
+    }
+  ],
+  "total_riders": 1,
+  "updated_at": "2026-06-14T13:13:10.206760"
+}

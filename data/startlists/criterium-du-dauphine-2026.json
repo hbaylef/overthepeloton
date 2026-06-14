@@ -815,6 +815,7 @@
       "team_url": "team/red-bull-bora-hansgrohe-2026"
     },
     {
+      "abandoned_stage": "S8",
       "birthdate": "2003-8-5",
       "birthplace_lat": 55.9533456,
       "birthplace_lon": -3.1883749,
@@ -833,6 +834,7 @@
           "tt": 111
         }
       },
+      "status": "DNS",
       "team": "Red Bull - BORA - hansgrohe (WT)",
       "team_url": "team/red-bull-bora-hansgrohe-2026"
     },
@@ -915,6 +917,7 @@
       "team_url": "team/red-bull-bora-hansgrohe-2026"
     },
     {
+      "abandoned_stage": "S8",
       "birthdate": "2006-9-24",
       "birthplace_lat": 46.603354,
       "birthplace_lon": 1.8883335,
@@ -933,6 +936,7 @@
           "tt": 318
         }
       },
+      "status": "DNF",
       "team": "Decathlon CMA CGM Team (WT)",
       "team_url": "team/decathlon-cma-cgm-team-2026"
     },
@@ -965,6 +969,7 @@
       "team_url": "team/decathlon-cma-cgm-team-2026"
     },
     {
+      "abandoned_stage": "S8",
       "birthdate": "1998-9-13",
       "birthplace_lat": 46.7985624,
       "birthplace_lon": 8.2319736,
@@ -983,6 +988,7 @@
           "tt": 2539
         }
       },
+      "status": "DNS",
       "team": "Decathlon CMA CGM Team (WT)",
       "team_url": "team/decathlon-cma-cgm-team-2026"
     },
@@ -1185,6 +1191,7 @@
       "team_url": "team/uno-x-mobility-2026"
     },
     {
+      "abandoned_stage": "S8",
       "birthdate": "1998-6-1",
       "birthplace_lat": 55.6586018,
       "birthplace_lon": 12.3562849,
@@ -1203,6 +1210,7 @@
           "tt": 9
         }
       },
+      "status": "DNS",
       "team": "Uno-X Mobility (WT)",
       "team_url": "team/uno-x-mobility-2026"
     },
@@ -2163,6 +2171,7 @@
       "team_url": "team/bahrain-victorious-2026"
     },
     {
+      "abandoned_stage": "S8",
       "birthdate": "1999-9-26",
       "birthplace_lat": 4.099917,
       "birthplace_lon": -72.9088133,
@@ -2181,6 +2190,7 @@
           "tt": 226
         }
       },
+      "status": "DNF",
       "team": "Bahrain - Victorious (WT)",
       "team_url": "team/bahrain-victorious-2026"
     },
@@ -3113,6 +3123,7 @@
       "team_url": "team/cofidis-2026"
     },
     {
+      "abandoned_stage": "S8",
       "birthdate": "1998-2-8",
       "birthplace_lat": 46.6121165,
       "birthplace_lon": 0.465407,
@@ -3131,6 +3142,7 @@
           "tt": 59
         }
       },
+      "status": "DNF",
       "team": "Cofidis (PRT)",
       "team_url": "team/cofidis-2026"
     },
@@ -3381,6 +3393,7 @@
       "team_url": "team/groupama-fdj-united-2026"
     },
     {
+      "abandoned_stage": "S8",
       "birthdate": "2001-8-1",
       "birthplace_lat": 51.1638175,
       "birthplace_lon": 10.4478313,
@@ -3399,10 +3412,12 @@
           "tt": 100
         }
       },
+      "status": "DNS",
       "team": "Alpecin - Premier Tech (WT)",
       "team_url": "team/alpecin-premier-tech-2026"
     },
     {
+      "abandoned_stage": "S8",
       "birthdate": "2002-2-15",
       "birthplace_lat": 50.6402809,
       "birthplace_lon": 4.6667145,
@@ -3421,6 +3436,7 @@
           "tt": 0
         }
       },
+      "status": "DNF",
       "team": "Alpecin - Premier Tech (WT)",
       "team_url": "team/alpecin-premier-tech-2026"
     },
@@ -3714,5 +3730,5 @@
     }
   ],
   "total_riders": 154,
-  "updated_at": "2026-06-14T10:37:57.269793"
+  "updated_at": "2026-06-14T13:11:29.324191"
 }

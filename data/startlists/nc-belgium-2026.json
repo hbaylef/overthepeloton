@@ -1,0 +1,30 @@
+{
+  "race": "National Championships Belgium - Road Race",
+  "race_slug": "nc-belgium-2026",
+  "riders": [
+    {
+      "birthdate": "2003-6-15",
+      "birthplace_lat": 50.6402809,
+      "birthplace_lon": 4.6667145,
+      "name": "AVONDTS Mathis",
+      "nationality": "BE",
+      "number": null,
+      "place_of_birth": "Belgium",
+      "rider_url": "rider/mathis-avondts",
+      "specialties": {
+        "career": {
+          "climber": 0,
+          "gc": 0,
+          "hills": 1,
+          "one_day_races": 30,
+          "sprint": 218,
+          "tt": 0
+        }
+      },
+      "team": "Azerion / Villa Valkenburg (CT)",
+      "team_url": "team/azerion-villa-valkenburg-2026"
+    }
+  ],
+  "total_riders": 1,
+  "updated_at": "2026-06-14T13:12:48.586263"
+}
