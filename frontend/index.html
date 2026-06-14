@@ -501,7 +501,7 @@
     margin-bottom: 6px;
   }
 
-  /* ---------- Odds panel ---------- */
+  /* ---------- Section card shell (shared by the Startlist / Specialty cards) ---------- */
   .odds-card {
     border: 2px solid var(--ink);
     border-radius: 6px;
@@ -533,49 +533,6 @@
     padding: 3px 8px;
     border-radius: 3px;
   }
-  .odds-source.manual { background: var(--moss); }
-  .odds-list { padding: 6px 0; }
-  .odds-row {
-    display: grid;
-    grid-template-columns: 26px 1fr auto;
-    align-items: center;
-    gap: 12px;
-    padding: 9px 18px;
-    border-bottom: 1px solid var(--line);
-    position: relative;
-  }
-  .odds-row:last-child { border-bottom: none; }
-  .odds-rank {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--grey);
-    font-weight: 700;
-  }
-  .odds-rider {
-    font-weight: 600;
-    font-size: 15px;
-    z-index: 1;
-  }
-  .odds-prob {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--grey);
-    margin-left: 8px;
-  }
-  .odds-val {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 700;
-    font-size: 15px;
-    color: var(--rust-dk);
-    z-index: 1;
-  }
-  .odds-bar {
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    background: linear-gradient(90deg, rgba(37,99,216,0.16), rgba(37,99,216,0.03));
-    z-index: 0;
-  }
-  .odds-fav .odds-rider { color: var(--rust-dk); font-weight: 700; }
   .odds-note {
     padding: 8px 18px;
     font-size: 10px;
@@ -969,7 +926,6 @@ const DATA_BASE_CANDIDATES = ['../data', './data', 'data', '/data'];
 let DATA_BASE = '../data';   // resolved at boot
 let RACES = [];
 let GPX_INDEX = {};
-let ODDS_INDEX = {};
 let PRED_INDEX = {};
 let STARTLISTS = {};    // slug -> startlist json (lazy-loaded, cached)
 let PREDICTIONS = {};   // slug -> prediction json (lazy-loaded, cached)
@@ -1040,12 +996,6 @@ async function boot() {
     GPX_INDEX = {};  // non-fatal: races still show, just no route
   }
 
-  try {
-    const oddsData = await fetchJsonFrom(DATA_BASE, 'odds_index.json');
-    ODDS_INDEX = oddsData.races || {};
-  } catch (e) {
-    ODDS_INDEX = {};  // non-fatal: races still show, just no odds
-  }
 
   try {
     const predData = await fetchJsonFrom(DATA_BASE, 'predictions_index.json');
@@ -1162,7 +1112,7 @@ function jerseyIcon(colour) {
 // ---- Collapsible section shell (item 3) ----
 // Default open/closed per section, remembered for the session so re-renders
 // (e.g. sorting the table) keep the user's choice.
-const SECTION_DEFAULT_COLLAPSED = { specialty: true, odds: false, startlist: true };
+const SECTION_DEFAULT_COLLAPSED = { specialty: true, startlist: true };
 let SECTION_STATE = {};
 function sectionCollapsed(id) {
   return (id in SECTION_STATE) ? SECTION_STATE[id] : !!SECTION_DEFAULT_COLLAPSED[id];
@@ -1306,8 +1256,6 @@ function renderRaceList() {
     shown++;
     const gpx = GPX_INDEX[race.slug] || {};
     const hasGpx = gpx.route_available;
-    const odds = ODDS_INDEX[race.slug] || {};
-    const hasOdds = odds.odds_available;
     const item = document.createElement('div');
     item.className = 'race-item';
     item.dataset.idx = i;
@@ -1325,7 +1273,6 @@ function renderRaceList() {
           ${race.is_one_day_race ? '1-day' : 'stage'}</span>
         <span class="badge ${hasGpx ? 'gpx' : 'nogpx'}">
           ${hasGpx ? 'route' : 'no route'}</span>
-        ${hasOdds ? '<span class="badge" style="background:var(--gold);color:var(--ink)">odds</span>' : ''}
       </div>`;
     if (currentRace && currentRace.slug === race.slug) item.classList.add('active');
     item.addEventListener('click', () => selectRace(i));
@@ -1535,11 +1482,9 @@ function renderRaceHeader(gpx) {
     ${vizHtml}
     <div class="viz" style="padding-top:0">
       <div id="startlist-container"></div>
-      <div id="odds-container"></div>
     </div>`;
 
   if (hasGpx) { initMap(); requestAnimationFrame(() => fitViz(true)); }
-  loadOdds();
   loadRosterSections();
 }
 
@@ -1937,73 +1882,6 @@ function renderLocalRiders() {
     parts.push(`<span class="lr-empty">No rider born near the race or on the day of the race.</span>`);
   }
   c.innerHTML = parts.join('');
-}
-
-// ============================================================
-//  ODDS
-// ============================================================
-async function loadOdds() {
-  const container = document.getElementById('odds-container');
-  if (!container || !currentRace) return;
-
-  const meta = ODDS_INDEX[currentRace.slug] || {};
-  if (!meta.odds_available) {
-    container.innerHTML = sectionCard('odds', 'Race Winner Odds', null, '',
-      `<div class="odds-empty">No odds published yet for this race.</div>`);
-    return;
-  }
-
-  // show a quick loading state
-  container.innerHTML = `
-    <div class="odds-card"><div class="odds-head"><h3>Race Winner Odds</h3></div>
-      <div class="odds-empty">Loading odds…</div></div>`;
-
-  try {
-    const data = await fetchJsonFrom(DATA_BASE, `odds/${currentRace.slug}.json`);
-    renderOdds(data);
-  } catch (e) {
-    container.innerHTML = sectionCard('odds', 'Race Winner Odds', null, '',
-      `<div class="odds-empty">Could not load odds.</div>`);
-  }
-}
-
-function renderOdds(data) {
-  const container = document.getElementById('odds-container');
-  const riders = (data.riders || []).slice().sort(
-    (a,b) => a.odds_decimal - b.odds_decimal);
-  if (!riders.length) {
-    container.innerHTML = '';
-    return;
-  }
-
-  // implied probability = 1 / decimal odds (includes bookmaker margin)
-  const maxProb = 1 / riders[0].odds_decimal;
-  const src = (data.source || 'bet365').toLowerCase();
-  const updated = data.updated_at
-    ? new Date(data.updated_at).toLocaleDateString() : '';
-
-  const rows = riders.map((r, i) => {
-    const prob = 1 / r.odds_decimal;
-    const barW = (prob / maxProb) * 100;
-    const probPct = (prob * 100).toFixed(1);
-    return `
-      <div class="odds-row ${i===0?'odds-fav':''}">
-        <div class="odds-bar" style="width:${barW}%"></div>
-        <div class="odds-rank">${i+1}</div>
-        <div class="odds-rider">${r.rider}
-          <span class="odds-prob">${probPct}%</span></div>
-        <div class="odds-val">${r.odds_decimal.toFixed(2)}</div>
-      </div>`;
-  }).join('');
-
-  container.innerHTML = sectionCard('odds', 'Race Winner Odds',
-    src, (src === 'manual' ? 'manual' : ''),
-    `<div class="odds-list">${rows}</div>
-     <div class="odds-note">
-       Decimal odds · implied probability shown · ${riders.length} riders
-       ${updated ? '· updated '+updated : ''}.
-       Includes bookmaker margin — for information only.
-     </div>`);
 }
 
 // ============================================================
