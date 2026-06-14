@@ -106,6 +106,8 @@
     },
     {
       "birthdate": "1997-7-11",
+      "birthplace_lat": null,
+      "birthplace_lon": null,
       "name": "SIVAKOV Pavel",
       "nationality": "FR",
       "number": 5,
@@ -797,6 +799,8 @@
     {
       "abandoned_stage": "S6",
       "birthdate": "2001-12-21",
+      "birthplace_lat": null,
+      "birthplace_lon": null,
       "medals": [
         {
           "rank": 2,
@@ -1273,6 +1277,8 @@
     {
       "abandoned_stage": "S7",
       "birthdate": "2000-9-11",
+      "birthplace_lat": null,
+      "birthplace_lon": null,
       "medals": [
         {
           "rank": 3,
@@ -3750,5 +3756,5 @@
     }
   ],
   "total_riders": 154,
-  "updated_at": "2026-06-14T19:46:07.001296"
+  "updated_at": "2026-06-14T20:15:45.469836"
 }

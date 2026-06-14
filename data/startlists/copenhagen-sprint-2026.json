@@ -1632,6 +1632,8 @@
     },
     {
       "birthdate": "1994-8-7",
+      "birthplace_lat": null,
+      "birthplace_lon": null,
       "name": "MULLEN Ryan",
       "nationality": "IE",
       "number": 105,
@@ -3830,5 +3832,5 @@
     }
   ],
   "total_riders": 174,
-  "updated_at": "2026-06-13T20:13:52.009796"
+  "updated_at": "2026-06-14T20:15:39.860673"
 }

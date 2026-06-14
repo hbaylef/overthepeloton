@@ -356,6 +356,8 @@
     },
     {
       "birthdate": null,
+      "birthplace_lat": null,
+      "birthplace_lon": null,
       "name": "DORUSSEN Johan",
       "nationality": "NL",
       "number": null,
@@ -831,5 +833,5 @@
     }
   ],
   "total_riders": 38,
-  "updated_at": "2026-06-14T19:49:37.787467"
+  "updated_at": "2026-06-14T20:17:49.705939"
 }

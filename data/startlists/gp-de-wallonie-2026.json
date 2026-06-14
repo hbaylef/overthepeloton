@@ -4,6 +4,8 @@
   "riders": [
     {
       "birthdate": "2003-5-28",
+      "birthplace_lat": null,
+      "birthplace_lon": null,
       "name": "JACQUES Lucas",
       "nationality": "BE",
       "number": null,
@@ -24,5 +26,5 @@
     }
   ],
   "total_riders": 1,
-  "updated_at": "2026-06-10T20:02:35.543905"
+  "updated_at": "2026-06-14T20:16:10.429870"
 }

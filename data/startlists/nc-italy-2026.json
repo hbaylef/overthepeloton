@@ -48,6 +48,8 @@
     },
     {
       "birthdate": null,
+      "birthplace_lat": null,
+      "birthplace_lon": null,
       "name": "PETTITI Nicolò",
       "nationality": "IT",
       "number": null,
@@ -61,6 +63,8 @@
     },
     {
       "birthdate": null,
+      "birthplace_lat": null,
+      "birthplace_lon": null,
       "name": "AGOSTINACCHIO Filippo",
       "nationality": "IT",
       "number": null,
@@ -74,5 +78,5 @@
     }
   ],
   "total_riders": 4,
-  "updated_at": "2026-06-14T13:13:17.960331"
+  "updated_at": "2026-06-14T20:17:02.024935"
 }

@@ -136,6 +136,8 @@
     },
     {
       "birthdate": "1995-1-19",
+      "birthplace_lat": null,
+      "birthplace_lon": null,
       "name": "VAN DER POEL Mathieu",
       "nationality": "NL",
       "number": 11,
@@ -1674,6 +1676,8 @@
     },
     {
       "birthdate": "2001-12-21",
+      "birthplace_lat": null,
+      "birthplace_lon": null,
       "name": "FISHER-BLACK Finn",
       "nationality": "NZ",
       "number": 113,
@@ -1760,6 +1764,8 @@
     },
     {
       "birthdate": "2001-5-9",
+      "birthplace_lat": null,
+      "birthplace_lon": null,
       "name": "WANDAHL Frederik",
       "nationality": "DK",
       "number": 117,
@@ -2088,6 +2094,8 @@
     },
     {
       "birthdate": "2000-4-9",
+      "birthplace_lat": null,
+      "birthplace_lon": null,
       "name": "DINHAM Matthew",
       "nationality": "AU",
       "number": 141,
@@ -3032,5 +3040,5 @@
     }
   ],
   "total_riders": 138,
-  "updated_at": "2026-06-13T20:12:47.067507"
+  "updated_at": "2026-06-14T20:17:46.865156"
 }

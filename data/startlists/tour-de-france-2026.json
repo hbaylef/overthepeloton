@@ -48,6 +48,8 @@
     },
     {
       "birthdate": "1995-1-19",
+      "birthplace_lat": null,
+      "birthplace_lon": null,
       "name": "VAN DER POEL Mathieu",
       "nationality": "NL",
       "number": null,
@@ -310,6 +312,8 @@
     },
     {
       "birthdate": "2000-9-11",
+      "birthplace_lat": null,
+      "birthplace_lon": null,
       "name": "HEALY Ben",
       "nationality": "IE",
       "number": null,
@@ -2398,5 +2402,5 @@
     }
   ],
   "total_riders": 109,
-  "updated_at": "2026-06-12T17:21:50.291603"
+  "updated_at": "2026-06-14T20:17:34.911593"
 }
