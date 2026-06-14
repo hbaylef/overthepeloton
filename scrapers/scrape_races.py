@@ -445,6 +445,54 @@ def scrape_startlist(race_url: str) -> Optional[list]:
         return None
 
 
+def refresh_startlists_only(client) -> int:
+    """DAILY lightweight path (--startlists-only): re-scrape ONLY the startlists of
+    races already in the store — no PCS calendar discovery, no climbs. Skips races
+    that are over, carries over abandon/medal fields, and RE-APPLIES the cached
+    rider specialties + birthplaces/coords (zero per-rider PCS / Nominatim calls),
+    so the rebuilt startlists stay complete between the WEEKLY full runs. New riders
+    get null enrichment blocks until the next weekly full run scrapes + caches them.
+    Returns the number of startlists rewritten."""
+    import scrape_riders
+    import geocode_birthplaces as geo
+
+    rider_cache = scrape_riders.load_cache(client).get("riders", {})
+    geo_cache = geo.load_cache(client)
+    races = db.get_all_documents(client, DB_RACE_KIND)
+    today = datetime.now().date()
+    log.info(f"--startlists-only: {len(races)} stored races (skipping finished ones)")
+
+    n = 0
+    for slug, race in races.items():
+        race_url = race.get("pcs_url")
+        if not race_url or is_finished(race, today):
+            continue
+        riders = scrape_startlist(race_url)
+        time.sleep(DELAY_BETWEEN_REQUESTS)
+        if not riders:
+            continue
+        carry_over_results(client, riders, slug)          # keep abandons/medals
+        for r in riders:                                  # re-apply cached enrichment
+            ent = rider_cache.get(r.get("rider_url")) or {}
+            r["specialties"] = {"career": ent.get("career")}
+            r["birthdate"] = ent.get("birthdate")
+            r["place_of_birth"] = ent.get("place_of_birth")
+            place = r.get("place_of_birth")
+            gent = geo_cache.get(geo.cache_key(place, r.get("nationality"))) if place else None
+            r["birthplace_lat"] = (gent or {}).get("lat")
+            r["birthplace_lon"] = (gent or {}).get("lon")
+        db.put_document(client, DB_STARTLIST_KIND, slug, {
+            "race": race.get("name"),
+            "race_slug": slug,
+            "updated_at": datetime.now().isoformat(),
+            "total_riders": len(riders),
+            "riders": riders,
+        })
+        n += 1
+        log.info(f"  → {slug}: {len(riders)} riders")
+    return n
+
+
 def scrape_one_day_profile_icon(pcs_slug: str, year: int) -> Optional[str]:
     """
     Fetch the profile icon (p0..p5) for a one-day race by scraping its
@@ -658,6 +706,16 @@ def is_finished(entry: dict, today: date) -> bool:
 
 
 def main():
+    import argparse
+    ap = argparse.ArgumentParser(
+        description="Scrape the race calendar + startlists into Turso.")
+    ap.add_argument("--startlists-only", action="store_true",
+                    help="DAILY lightweight mode: re-scrape ONLY the startlists of "
+                         "races already in the store (no calendar discovery, no "
+                         "climbs), re-applying cached rider data. Run the full "
+                         "no-flag scrape weekly.")
+    args = ap.parse_args()
+
     # Create output directories (startlists are still written to disk this step)
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     STARTLISTS_DIR.mkdir(parents=True, exist_ok=True)
@@ -666,6 +724,12 @@ def main():
     client = db.open_db()
     where = "remote Turso" if db.is_remote() else "local SQLite file"
     log.info(f"Race store: {where}")
+
+    if args.startlists_only:
+        n = refresh_startlists_only(client)
+        client.close()
+        log.info(f"--startlists-only done: {n} startlist(s) refreshed.")
+        return
 
     # First-run bootstrap: import the legacy JSON so freeze works today and
     # frozen races keep their startlists.

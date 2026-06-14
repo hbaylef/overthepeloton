@@ -56,6 +56,44 @@ def test_is_mens_race_filters_women():
     assert sr.is_mens_race({}) is True
 
 
+def test_refresh_startlists_only_reapplies_cache_and_skips_finished():
+    import geocode_birthplaces as geo
+    client = _fresh_db()
+    # One upcoming race (re-scraped) and one finished race (skipped).
+    db.put_document(client, sr.DB_RACE_KIND, "up-2026", {
+        "slug": "up-2026", "name": "Up Race",
+        "pcs_url": "race/up/2026", "enddate": "2099-12-31"})
+    db.put_document(client, sr.DB_RACE_KIND, "old-2026", {
+        "slug": "old-2026", "name": "Old Race",
+        "pcs_url": "race/old/2026", "enddate": "2020-01-01"})
+    # Cached enrichment: rider specialties + birthplace coords (no network).
+    db.put_cache(client, db.CACHE_RIDERS, {"riders": {
+        "rider/a": {"career": {"gc": 100}, "birthdate": "1995-01-01",
+                    "place_of_birth": "Townville"}}})
+    db.put_cache(client, db.CACHE_BIRTHPLACES, {
+        geo.cache_key("Townville", "FR"): {"lat": 1.5, "lon": 2.5}})
+
+    calls = []
+    def fake_sl(url):
+        calls.append(url)
+        return [{"name": "A", "rider_url": "rider/a", "nationality": "FR", "team": "T"}]
+    orig_sl, orig_sleep = sr.scrape_startlist, sr.time.sleep
+    sr.scrape_startlist, sr.time.sleep = fake_sl, (lambda *a, **k: None)
+    try:
+        n = sr.refresh_startlists_only(client)
+    finally:
+        sr.scrape_startlist, sr.time.sleep = orig_sl, orig_sleep
+
+    assert n == 1                          # only the upcoming race
+    assert calls == ["race/up/2026"]       # finished race skipped (no scrape)
+    r = db.get_document(client, db.KIND_STARTLIST, "up-2026")["riders"][0]
+    assert r["specialties"]["career"] == {"gc": 100}      # cached specialties applied
+    assert r["birthdate"] == "1995-01-01" and r["place_of_birth"] == "Townville"
+    assert r["birthplace_lat"] == 1.5 and r["birthplace_lon"] == 2.5  # cached coords
+    # The finished race never got a startlist written.
+    assert db.get_document(client, db.KIND_STARTLIST, "old-2026") is None
+
+
 def test_seed_imports_legacy_and_is_idempotent():
     client = _fresh_db()
     _legacy_races_file([

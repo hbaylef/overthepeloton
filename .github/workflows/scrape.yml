@@ -1,10 +1,11 @@
 name: Daily scrape
 
-# LEAN DAILY RUN — only the volatile race-day data (per-stage start times and
-# results/abandons). Everything else (race calendar, startlists, rider data,
-# climbs, derived climbs) is refreshed by the WEEKLY workflow (scrape-weekly.yml);
-# it doesn't change often enough to rescrape every day. Both workflows finish by
-# running publish.py + committing the public slices.
+# LEAN DAILY RUN — only the volatile race-day data: startlists, per-stage start
+# times, and results/abandons. The startlists-only mode re-scrapes just the
+# rosters of races already in the store (no calendar discovery, no climbs) and
+# re-applies cached rider data. Everything else (full race calendar, rider PCS
+# refresh, climbs, derived climbs) is handled by the WEEKLY workflow
+# (scrape-weekly.yml). Both workflows finish by running publish.py + committing.
 #
 # When this workflow runs
 on:
@@ -42,6 +43,13 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
+      - name: Refresh startlists (lightweight — no calendar discovery)
+        # Re-scrapes only the rosters of races already in the store and re-applies
+        # cached rider specialties/birthplaces (zero per-rider PCS calls). The full
+        # race-calendar + rider refresh runs weekly (scrape-weekly.yml).
+        run: python scrapers/scrape_races.py --startlists-only
+        continue-on-error: true
 
       - name: Scrape per-stage start times (R5)
         run: python scrapers/scrape_start_times.py
