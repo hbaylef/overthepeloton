@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-14T13:58:11.028583+00:00",
+  "updated_at": "2026-06-14T14:13:41.118350+00:00",
   "races": {
     "arctic-race-of-norway-2026": {
       "name": "Arctic Race of Norway",
@@ -70,6 +70,86 @@
         {
           "stage": null,
           "distance_km": 107.6
+        }
+      ]
+    },
+    "nc-belgium-2026": {
+      "name": "National Championships Belgium - Road Race",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 236.4
+        }
+      ]
+    },
+    "nc-belgium-itt-2026": {
+      "name": "National Championships Belgium - ITT",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 41.3
+        }
+      ]
+    },
+    "nc-france-2026": {
+      "name": "National Championships France - Road Race",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 241.5
+        }
+      ]
+    },
+    "nc-france-itt-2026": {
+      "name": "National Championships France - ITT",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 29.6
+        }
+      ]
+    },
+    "nc-italy-2026": {
+      "name": "National Championships Italy - Road Race",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 232.6
+        }
+      ]
+    },
+    "nc-italy-itt-2026": {
+      "name": "National Championships Italy - ITT",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 40.3
+        }
+      ]
+    },
+    "nc-spain-2026": {
+      "name": "National Championships Spain - Road Race",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 209.7
+        }
+      ]
+    },
+    "nc-spain-itt-2026": {
+      "name": "National Championships Spain - ITT",
+      "route_available": true,
+      "stages": [
+        {
+          "stage": null,
+          "distance_km": 30.9
         }
       ]
     },
@@ -619,53 +699,13 @@
       "route_available": false,
       "stages": []
     },
-    "nc-belgium-2026": {
-      "name": "National Championships Belgium - Road Race",
-      "route_available": false,
-      "stages": []
-    },
-    "nc-belgium-itt-2026": {
-      "name": "National Championships Belgium - ITT",
-      "route_available": false,
-      "stages": []
-    },
-    "nc-denmark-2026": {
-      "name": "National Championships Denmark - Road Race",
-      "route_available": false,
-      "stages": []
-    },
     "nc-denmark-itt-2026": {
       "name": "National Championships Denmark - ITT",
       "route_available": false,
       "stages": []
     },
-    "nc-france-2026": {
-      "name": "National Championships France - Road Race",
-      "route_available": false,
-      "stages": []
-    },
-    "nc-france-itt-2026": {
-      "name": "National Championships France - ITT",
-      "route_available": false,
-      "stages": []
-    },
-    "nc-great-britain-2026": {
-      "name": "National Championships Great Britain - Road Race",
-      "route_available": false,
-      "stages": []
-    },
     "nc-great-britain-itt-2026": {
       "name": "National Championships Great Britain - ITT",
-      "route_available": false,
-      "stages": []
-    },
-    "nc-italy-2026": {
-      "name": "National Championships Italy - Road Race",
-      "route_available": false,
-      "stages": []
-    },
-    "nc-italy-itt-2026": {
-      "name": "National Championships Italy - ITT",
       "route_available": false,
       "stages": []
     },
@@ -676,16 +716,6 @@
     },
     "nc-slovenia-itt-2026": {
       "name": "National Championships Slovenia - ITT",
-      "route_available": false,
-      "stages": []
-    },
-    "nc-spain-2026": {
-      "name": "National Championships Spain - Road Race",
-      "route_available": false,
-      "stages": []
-    },
-    "nc-spain-itt-2026": {
-      "name": "National Championships Spain - ITT",
       "route_available": false,
       "stages": []
     },
