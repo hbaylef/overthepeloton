@@ -45,9 +45,11 @@ jobs:
         run: python scrapers/scrape_start_times.py
         continue-on-error: true
 
-      - name: Scrape GPX routes
-        run: python scrapers/scrape_gpx.py
-        continue-on-error: true
+      # GPX routes are NOT scraped here. The sole GPX source is now La Flamme
+      # Rouge (scrapers/scrape_lfr.py), an ATTENDED local run (CDP-Chrome) — LFR
+      # blocks Actions IPs and uploads routes weeks ahead, so it is not a cron
+      # job. publish.py + derive_climbs below still read whatever GPX is already
+      # in the store. (cyclingstage.com was dropped 2026-06-14.)
 
       - name: Re-apply cached rider specialties/birthplaces to startlists (no PCS calls)
         # --embed-only makes ZERO PCS calls: it just re-applies the already-cached

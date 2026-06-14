@@ -327,6 +327,28 @@ def put_gpx(client, slug, filename, content, stage=None, source=None, url=None):
     return True
 
 
+def delete_gpx(client, slug=None, source=None):
+    """Delete GPX rows, narrowed by slug and/or source. Returns rows deleted.
+
+    Both filters are optional but at least one must be given (refusing to wipe the
+    whole table by accident). Used by purge_cyclingstage_gpx.py to drop the
+    retired cyclingstage routes so publish.py regenerates them from LFR only.
+    """
+    if not slug and not source:
+        raise ValueError("delete_gpx needs a slug and/or a source filter")
+    where, params = [], []
+    if slug:
+        where.append("slug=?")
+        params.append(slug)
+    if source:
+        where.append("source=?")
+        params.append(source)
+    rs = client.execute(
+        "DELETE FROM gpx_files WHERE " + " AND ".join(where), params
+    )
+    return rs.rows_affected
+
+
 def get_gpx(client, slug, filename):
     """Return the raw .gpx text for one file, or None."""
     rs = client.execute(

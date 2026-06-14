@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 """
-La Flamme Rouge (LFR) GPX FALLBACK — Phase B (attended CDP-Chrome → Turso).
+La Flamme Rouge (LFR) GPX scraper — attended CDP-Chrome → Turso.
 
-Primary GPX source is cyclingstage.com (scrape_gpx.py). This script fills the gap
-for **UCI WorldTour + ProSeries** races that still have NO GPX in the store, using
-LFR's public "maps" section. It is a FALLBACK: it only touches races that have no
-GPX yet (`db.has_gpx` is False) and NEVER overwrites an existing route.
+LFR is the SOLE GPX source as of 2026-06-14 (cyclingstage.com was dropped — its
+routes were unreliable, e.g. a wrong Tour de France stage 4). This script harvests
+GPX for **UCI WorldTour + ProSeries** races that have NO GPX in the store yet,
+using LFR's public "maps" section. It only touches races with no GPX
+(`db.has_gpx` is False) and NEVER overwrites an existing route, so re-runs are
+safe and idempotent. To re-fetch a race whose stored GPX is wrong, purge it first
+(scrapers/purge_cyclingstage_gpx.py for cyclingstage rows, or delete the rows),
+then run this.
 
 Why CDP-Chrome instead of plain HTTP? LFR sits behind a Cloudflare **managed
 challenge** (pre-login) that `requests`/`cloudscraper` cannot pass. So we drive a

@@ -17,7 +17,6 @@ os.environ.pop("TURSO_DATABASE_URL", None)
 os.environ.pop("TURSO_AUTH_TOKEN", None)
 
 import db
-import scrape_gpx as gpx
 import derive_climbs as dc
 import scrape_climbs as sc
 import scrape_start_times as st
@@ -53,27 +52,24 @@ def _climb_gpx(n=25):
 
 
 # --------------------------------------------------------------------------- #
-# scrape_gpx: import-from-disk + the has_gpx skip gate
+# db.delete_gpx: source-scoped purge (used by purge_cyclingstage_gpx.py)
 # --------------------------------------------------------------------------- #
-def test_gpx_import_disk_and_gate():
+def test_delete_gpx_by_source():
     client = _fresh_db()
-    tmp = _tmpdir("otp_gpxdata_")
-    (tmp / "gpx" / "giro-2026").mkdir(parents=True)
-    (tmp / "gpx" / "giro-2026" / "stage-1-route.gpx").write_text(
-        "<gpx><trk></trk></gpx>", encoding="utf-8")
-    gpx.DATA_DIR = tmp
-    disk_index = {"giro-2026": {"source": "cyclingstage", "files": [
-        {"filename": "stage-1-route.gpx", "stage": 1, "url": "http://x/s1.gpx",
-         "local_path": "gpx/giro-2026/stage-1-route.gpx"}]}}
-
-    assert db.has_gpx(client, "giro-2026") is False
-    assert gpx.import_disk_gpx(client, "giro-2026", disk_index) == 1
-    assert db.has_gpx(client, "giro-2026") is True        # gate now trips → skip
+    db.put_gpx(client, "giro-2026", "stage-1-route.gpx", "<gpx></gpx>",
+               stage=1, source="cyclingstage")
+    db.put_gpx(client, "giro-2026", "stage-2-route.gpx", "<gpx></gpx>",
+               stage=2, source="la_flamme_rouge")
+    # Purge only the cyclingstage row; the LFR row survives.
+    assert db.delete_gpx(client, source="cyclingstage") == 1
     meta = db.list_gpx(client, "giro-2026")
-    assert meta == [{"filename": "stage-1-route.gpx", "stage": 1,
-                     "source": "cyclingstage", "url": "http://x/s1.gpx"}]
-    # No disk entry → nothing imported.
-    assert gpx.import_disk_gpx(client, "missing-2026", disk_index) == 0
+    assert [m["source"] for m in meta] == ["la_flamme_rouge"]
+    # Refusing to wipe the whole table with no filter.
+    try:
+        db.delete_gpx(client)
+        assert False, "expected ValueError with no filter"
+    except ValueError:
+        pass
 
 
 # --------------------------------------------------------------------------- #
