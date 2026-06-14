@@ -1,5 +1,11 @@
 name: Daily scrape
 
+# LEAN DAILY RUN — only the volatile race-day data (per-stage start times and
+# results/abandons). Everything else (race calendar, startlists, rider data,
+# climbs, derived climbs) is refreshed by the WEEKLY workflow (scrape-weekly.yml);
+# it doesn't change often enough to rescrape every day. Both workflows finish by
+# running publish.py + committing the public slices.
+#
 # When this workflow runs
 on:
   schedule:
@@ -37,44 +43,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Scrape race calendar + startlists
-        run: python scrapers/scrape_races.py
-        continue-on-error: true   # Don't fail the whole run if this misbehaves
-
       - name: Scrape per-stage start times (R5)
         run: python scrapers/scrape_start_times.py
         continue-on-error: true
 
-      # GPX routes are NOT scraped here. The sole GPX source is now La Flamme
-      # Rouge (scrapers/scrape_lfr.py), an ATTENDED local run (CDP-Chrome) — LFR
-      # blocks Actions IPs and uploads routes weeks ahead, so it is not a cron
-      # job. publish.py + derive_climbs below still read whatever GPX is already
-      # in the store. (cyclingstage.com was dropped 2026-06-14.)
-
-      - name: Re-apply cached rider specialties/birthplaces to startlists (no PCS calls)
-        # --embed-only makes ZERO PCS calls: it just re-applies the already-cached
-        # specialties + birthdate/place onto the freshly-rebuilt startlists so the
-        # site keeps showing them. The heavy PCS specialty re-scrape was removed
-        # from the daily run (2026-06-12); run scrape_riders.py WITHOUT this flag
-        # on a weekly/monthly cadence to actually refresh rider data from PCS.
-        run: python scrapers/scrape_riders.py --embed-only
-        continue-on-error: true
-
-      - name: Geocode rider birthplaces (hometown section)
-        run: python scrapers/geocode_birthplaces.py
-        continue-on-error: true
-
       - name: Record stage-race abandons (DNF) into startlists
-        # Must run after scrape_riders + geocode — both rewrite the startlists.
+        # Daily volatile data. The weekly workflow rebuilds the startlists (races
+        # + rider data); here nothing else touches them, so this just updates the
+        # abandon/medal fields on the existing startlists.
         run: python scrapers/scrape_results.py
-        continue-on-error: true
-
-      - name: Scrape categorised climbs (R4)
-        run: python scrapers/scrape_climbs.py
-        continue-on-error: true
-
-      - name: Derive stage-race climbs from GPX (R4)
-        run: python scrapers/derive_climbs.py
         continue-on-error: true
 
       - name: Publish public slices from Turso

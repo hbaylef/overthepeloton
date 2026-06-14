@@ -1,0 +1,109 @@
+name: Weekly scrape
+
+# WEEKLY FULL REFRESH — the data that doesn't change often enough to rescrape
+# daily: the race calendar + startlists, rider data (cached re-embed), birthplace
+# geocoding, categorised climbs, and GPX-derived climbs. Start times + results
+# also run here so the weekly run is a complete superset. The lean DAILY workflow
+# (scrape.yml) handles only the volatile race-day data between these runs.
+#
+# GPX routes are NOT scraped by either workflow: the sole source is La Flamme
+# Rouge (scrapers/scrape_lfr.py), an ATTENDED local run (LFR blocks Actions IPs).
+# publish.py + derive_climbs below still read whatever GPX is already in the store.
+on:
+  schedule:
+    # Monday 06:00 UTC (08:00 Paris CEST). Runs before the daily morning cron so
+    # the week starts from a full refresh. Adjust the day/time as you like.
+    - cron: '0 6 * * 1'
+  workflow_dispatch:  # also runnable on demand from the Actions tab
+
+# Permission needed to commit data back to the repo
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    # Private raw-data store (Turso). All scrapers read/write the DB; publish.py
+    # reads it to regenerate the public slices. Absent vars => local file fallback.
+    env:
+      TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+      TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Scrape race calendar + startlists
+        run: python scrapers/scrape_races.py
+        continue-on-error: true   # Don't fail the whole run if this misbehaves
+
+      - name: Scrape per-stage start times (R5)
+        run: python scrapers/scrape_start_times.py
+        continue-on-error: true
+
+      - name: Re-apply cached rider specialties/birthplaces to startlists (no PCS calls)
+        # --embed-only makes ZERO PCS calls: it just re-applies the already-cached
+        # specialties + birthdate/place onto the freshly-rebuilt startlists so the
+        # site keeps showing them. To actually refresh rider data from PCS, run
+        # scrape_riders.py WITHOUT this flag manually on a monthly cadence.
+        run: python scrapers/scrape_riders.py --embed-only
+        continue-on-error: true
+
+      - name: Geocode rider birthplaces (hometown section)
+        run: python scrapers/geocode_birthplaces.py
+        continue-on-error: true
+
+      - name: Record stage-race abandons (DNF) into startlists
+        # Must run after scrape_riders + geocode — both rewrite the startlists.
+        run: python scrapers/scrape_results.py
+        continue-on-error: true
+
+      - name: Scrape categorised climbs (R4)
+        run: python scrapers/scrape_climbs.py
+        continue-on-error: true
+
+      - name: Derive stage-race climbs from GPX (R4)
+        run: python scrapers/derive_climbs.py
+        continue-on-error: true
+
+      - name: Publish public slices from Turso
+        # Reads the private store and (re)writes the thin public slices the site
+        # serves: races.json, startlists, climbs (+index), and DOWNSAMPLED routes
+        # (data/routes/* + routes_index.json). Change-aware, so unchanged runs
+        # produce no diff. Not continue-on-error: a failure here is worth seeing.
+        run: python scrapers/publish.py
+
+      - name: Commit & push updated public slices
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Weekly publish: $(date -u +'%Y-%m-%d %H:%M UTC')"
+          # Push robustly: the remote may have moved (the daily cron or a manual
+          # push) between checkout and now. Rebase onto the latest main and retry
+          # a few times instead of failing the run.
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:main; then
+              echo "Pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "Push rejected (attempt $attempt) — rebasing onto origin/main and retrying"
+            git pull --rebase --autostash origin main || true
+            sleep 5
+          done
+          echo "Could not push after retries" >&2
+          exit 1
