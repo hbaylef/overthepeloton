@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-14T13:29:53.815378+00:00",
+  "updated_at": "2026-06-14T13:58:11.028583+00:00",
   "races": {
     "arctic-race-of-norway-2026": {
       "name": "Arctic Race of Norway",
@@ -459,6 +459,11 @@
       "route_available": false,
       "stages": []
     },
+    "danish-championships-2026": {
+      "name": "National Championships Denmark - Road Race",
+      "route_available": false,
+      "stages": []
+    },
     "deutschland-tour-2026": {
       "name": "Deutschland Tour",
       "route_available": false,
@@ -681,6 +686,11 @@
     },
     "nc-spain-itt-2026": {
       "name": "National Championships Spain - ITT",
+      "route_available": false,
+      "stages": []
+    },
+    "ncgreat-britain-2026": {
+      "name": "National Championships Great Britain - Road Race",
       "route_available": false,
       "stages": []
     },

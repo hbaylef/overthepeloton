@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-14T13:29:40.391130+00:00",
+  "updated_at": "2026-06-14T13:58:01.432721+00:00",
   "source": "mixed",
   "races": {
     "4-jours-de-dunkerque-2026": {
@@ -106,6 +106,12 @@
     },
     "czech-tour-2026": {
       "name": "Czech Tour",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "danish-championships-2026": {
+      "name": "National Championships Denmark - Road Race",
       "climbs_available": false,
       "total_climbs": 0,
       "source": "procyclingstats"
@@ -400,6 +406,12 @@
     },
     "nc-spain-itt-2026": {
       "name": "National Championships Spain - ITT",
+      "climbs_available": false,
+      "total_climbs": 0,
+      "source": "procyclingstats"
+    },
+    "ncgreat-britain-2026": {
+      "name": "National Championships Great Britain - Road Race",
       "climbs_available": false,
       "total_climbs": 0,
       "source": "procyclingstats"
