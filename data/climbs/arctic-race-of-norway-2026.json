@@ -6,29 +6,29 @@
   "stages": {
     "2": [
       {
-        "km_before_finish": 151.0,
+        "km_before_finish": 150.5,
         "length_km": 2.1,
         "name": "Climb",
         "steepness": 5.2,
-        "top_m": 127
+        "top_m": 126
       }
     ],
     "4": [
       {
-        "km_before_finish": 64.2,
-        "length_km": 4.3,
+        "km_before_finish": 63.8,
+        "length_km": 4.2,
         "name": "Climb",
-        "steepness": 3.3,
+        "steepness": 3.5,
         "top_m": 176
       },
       {
         "km_before_finish": 0.0,
-        "length_km": 4.5,
+        "length_km": 4.4,
         "name": "Climb",
-        "steepness": 5.8,
-        "top_m": 264
+        "steepness": 6.0,
+        "top_m": 266
       }
     ]
   },
-  "updated_at": "2026-06-12T17:45:05.084028"
+  "updated_at": "2026-06-14T20:05:22.432369"
 }

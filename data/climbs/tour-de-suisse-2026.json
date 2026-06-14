@@ -6,66 +6,73 @@
   "stages": {
     "1": [
       {
-        "km_before_finish": 60.7,
-        "length_km": 16.3,
+        "km_before_finish": 80.2,
+        "length_km": 10.3,
+        "name": "Climb",
+        "steepness": 3.0,
+        "top_m": 573
+      },
+      {
+        "km_before_finish": 59.6,
+        "length_km": 16.1,
         "name": "Climb",
         "steepness": 3.2,
         "top_m": 783
       },
       {
-        "km_before_finish": 46.0,
+        "km_before_finish": 45.2,
         "length_km": 4.1,
         "name": "Climb",
         "steepness": 4.0,
         "top_m": 512
       },
       {
-        "km_before_finish": 20.3,
-        "length_km": 3.6,
+        "km_before_finish": 20.0,
+        "length_km": 3.4,
         "name": "Climb",
-        "steepness": 3.0,
+        "steepness": 3.1,
         "top_m": 470
       },
       {
-        "km_before_finish": 15.5,
+        "km_before_finish": 15.1,
         "length_km": 3.2,
         "name": "Climb",
-        "steepness": 5.4,
-        "top_m": 524
+        "steepness": 5.3,
+        "top_m": 523
       },
       {
-        "km_before_finish": 4.4,
+        "km_before_finish": 4.3,
         "length_km": 4.2,
         "name": "Climb",
         "steepness": 3.1,
-        "top_m": 425
+        "top_m": 424
       }
     ],
     "2": [
       {
-        "km_before_finish": 139.6,
-        "length_km": 8.1,
+        "km_before_finish": 138.5,
+        "length_km": 7.8,
         "name": "Climb",
-        "steepness": 4.4,
+        "steepness": 4.5,
         "top_m": 559
       },
       {
-        "km_before_finish": 122.6,
+        "km_before_finish": 121.6,
         "length_km": 4.2,
         "name": "Climb",
         "steepness": 4.3,
         "top_m": 492
       },
       {
-        "km_before_finish": 12.6,
-        "length_km": 9.1,
+        "km_before_finish": 12.3,
+        "length_km": 7.8,
         "name": "Climb",
-        "steepness": 3.1,
+        "steepness": 3.6,
         "top_m": 476
       },
       {
-        "km_before_finish": 7.7,
-        "length_km": 2.3,
+        "km_before_finish": 7.6,
+        "length_km": 2.2,
         "name": "Climb",
         "steepness": 5.6,
         "top_m": 397
@@ -73,22 +80,22 @@
     ],
     "3": [
       {
-        "km_before_finish": 154.3,
+        "km_before_finish": 153.2,
         "length_km": 2.6,
         "name": "Climb",
         "steepness": 8.5,
         "top_m": 718
       },
       {
-        "km_before_finish": 120.3,
-        "length_km": 18.3,
+        "km_before_finish": 119.3,
+        "length_km": 16.7,
         "name": "Climb",
-        "steepness": 3.5,
+        "steepness": 3.8,
         "top_m": 1088
       },
       {
-        "km_before_finish": 94.3,
-        "length_km": 11.2,
+        "km_before_finish": 93.6,
+        "length_km": 11.1,
         "name": "Climb",
         "steepness": 4.9,
         "top_m": 1302
@@ -96,34 +103,34 @@
     ],
     "5": [
       {
-        "km_before_finish": 143.9,
-        "length_km": 7.9,
-        "name": "Climb",
-        "steepness": 6.0,
-        "top_m": 1771
-      },
-      {
-        "km_before_finish": 93.1,
-        "length_km": 21.9,
+        "km_before_finish": 141.3,
+        "length_km": 7.7,
         "name": "Climb",
         "steepness": 6.2,
         "top_m": 1771
       },
       {
-        "km_before_finish": 42.0,
-        "length_km": 21.9,
+        "km_before_finish": 91.4,
+        "length_km": 20.1,
         "name": "Climb",
-        "steepness": 6.2,
+        "steepness": 6.9,
+        "top_m": 1771
+      },
+      {
+        "km_before_finish": 41.3,
+        "length_km": 20.1,
+        "name": "Climb",
+        "steepness": 6.9,
         "top_m": 1771
       },
       {
         "km_before_finish": 0.0,
-        "length_km": 11.8,
+        "length_km": 11.5,
         "name": "Climb",
-        "steepness": 7.2,
-        "top_m": 1243
+        "steepness": 7.5,
+        "top_m": 1249
       }
     ]
   },
-  "updated_at": "2026-06-10T20:50:25.011640"
+  "updated_at": "2026-06-14T20:05:37.530285"
 }

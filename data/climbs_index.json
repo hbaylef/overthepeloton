@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-14T14:00:00.246091+00:00",
+  "updated_at": "2026-06-14T20:05:57.000081+00:00",
   "source": "mixed",
   "races": {
     "4-jours-de-dunkerque-2026": {
@@ -491,7 +491,7 @@
     "tour-de-france-2026": {
       "name": "Tour de France",
       "climbs_available": true,
-      "total_climbs": 67,
+      "total_climbs": 73,
       "source": "gpx_derived"
     },
     "tour-de-hongrie-2026": {
@@ -521,13 +521,13 @@
     "tour-de-romandie-2026": {
       "name": "Tour de Romandie",
       "climbs_available": true,
-      "total_climbs": 23,
+      "total_climbs": 26,
       "source": "gpx_derived"
     },
     "tour-de-suisse-2026": {
       "name": "Tour de Suisse",
       "climbs_available": true,
-      "total_climbs": 16,
+      "total_climbs": 17,
       "source": "gpx_derived"
     },
     "tour-de-wallonie-2026": {
@@ -544,8 +544,8 @@
     },
     "tour-of-belgium-2026": {
       "name": "Baloise Belgium Tour",
-      "climbs_available": false,
-      "total_climbs": 0,
+      "climbs_available": true,
+      "total_climbs": 2,
       "source": "gpx_derived"
     },
     "tour-of-britain-2026": {
@@ -599,7 +599,7 @@
     "tour-of-slovenia-2026": {
       "name": "Tour of Slovenia",
       "climbs_available": true,
-      "total_climbs": 10,
+      "total_climbs": 9,
       "source": "gpx_derived"
     },
     "tour-of-the-alps-2026": {
@@ -665,7 +665,7 @@
     "vuelta-a-espana-2026": {
       "name": "Vuelta a España",
       "climbs_available": true,
-      "total_climbs": 94,
+      "total_climbs": 97,
       "source": "gpx_derived"
     },
     "vuelta-a-la-comunidad-valenciana-2026": {

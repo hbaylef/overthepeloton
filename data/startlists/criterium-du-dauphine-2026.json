@@ -10,6 +10,10 @@
         {
           "rank": 1,
           "stage": "S7"
+        },
+        {
+          "rank": 1,
+          "stage": "S8"
         }
       ],
       "name": "DEL TORO Isaac",
@@ -378,6 +382,10 @@
         {
           "rank": 2,
           "stage": "S7"
+        },
+        {
+          "rank": 2,
+          "stage": "S8"
         }
       ],
       "name": "AYUSO Juan",
@@ -1096,6 +1104,10 @@
         {
           "rank": 3,
           "stage": "S7"
+        },
+        {
+          "rank": 3,
+          "stage": "S8"
         }
       ],
       "name": "JOHANNESSEN Tobias Halland",
@@ -1210,7 +1222,7 @@
           "tt": 9
         }
       },
-      "status": "DNS",
+      "status": "DNF",
       "team": "Uno-X Mobility (WT)",
       "team_url": "team/uno-x-mobility-2026"
     },
@@ -1349,6 +1361,7 @@
       "team_url": "team/ef-education-easypost-2026"
     },
     {
+      "abandoned_stage": "S8",
       "birthdate": "2002-1-20",
       "birthplace_lat": -24.7761086,
       "birthplace_lon": 134.755,
@@ -1373,6 +1386,7 @@
           "tt": 48
         }
       },
+      "status": "DNF",
       "team": "EF Education - EasyPost (WT)",
       "team_url": "team/ef-education-easypost-2026"
     },
@@ -1599,6 +1613,7 @@
       "team_url": "team/soudal-quick-step-2026"
     },
     {
+      "abandoned_stage": "S8",
       "birthdate": "1999-6-1",
       "birthplace_lat": 51.2258565,
       "birthplace_lon": 2.919496,
@@ -1617,6 +1632,7 @@
           "tt": 65
         }
       },
+      "status": "DNF",
       "team": "Soudal Quick-Step (WT)",
       "team_url": "team/soudal-quick-step-2026"
     },
@@ -2143,6 +2159,7 @@
       "team_url": "team/bahrain-victorious-2026"
     },
     {
+      "abandoned_stage": "S8",
       "birthdate": "1994-7-8",
       "birthplace_lat": 51.1638175,
       "birthplace_lon": 10.4478313,
@@ -2167,6 +2184,7 @@
           "tt": 1
         }
       },
+      "status": "DNF",
       "team": "Bahrain - Victorious (WT)",
       "team_url": "team/bahrain-victorious-2026"
     },
@@ -2817,6 +2835,7 @@
       "team_url": "team/nsn-cycling-team-2026"
     },
     {
+      "abandoned_stage": "S8",
       "birthdate": "1994-2-13",
       "birthplace_lat": 47.6238204,
       "birthplace_lon": 7.2401542,
@@ -2841,6 +2860,7 @@
           "tt": 0
         }
       },
+      "status": "DNF",
       "team": "NSN Cycling Team (WT)",
       "team_url": "team/nsn-cycling-team-2026"
     },
@@ -3730,5 +3750,5 @@
     }
   ],
   "total_riders": 154,
-  "updated_at": "2026-06-14T13:11:29.324191"
+  "updated_at": "2026-06-14T19:46:07.001296"
 }

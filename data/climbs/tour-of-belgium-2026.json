@@ -3,6 +3,23 @@
   "race": "Baloise Belgium Tour",
   "race_slug": "tour-of-belgium-2026",
   "source": "gpx_derived",
-  "stages": {},
-  "updated_at": "2026-06-12T17:45:10.203738"
+  "stages": {
+    "3": [
+      {
+        "km_before_finish": 86.7,
+        "length_km": 1.6,
+        "name": "Mur de Durbuy",
+        "steepness": 3.7,
+        "top_m": 217
+      },
+      {
+        "km_before_finish": 43.1,
+        "length_km": 1.6,
+        "name": "Champs des Hêtres",
+        "steepness": 3.7,
+        "top_m": 217
+      }
+    ]
+  },
+  "updated_at": "2026-06-14T20:05:39.703075"
 }
