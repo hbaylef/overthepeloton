@@ -42,6 +42,10 @@ LFR mechanics (no login needed for the public maps section):
                     rendered grand-tour names as logo images → unmatchable).
   - Race page:      /maps/races/view/{year}/{race_id}    (lists the stage tracks)
   - GPX download:   /maps/viewtrack/gpx/{track_id}       (a ready GPX file)
+  - NC listing:     /maps/races?calendar[0]=12&type[0]=1&year[0]={yr}  (men's
+                    national championships; not in the month grid). Each row has a
+                    flag (country) + name; matched by (nationality, discipline=ITT
+                    vs road). Each NC race-view page has a single track.
 
 ⚠️ TLS gotcha for the WRITE side: the Python → Turso write does NOT go through the
 browser; it goes through the corporate proxy. If the Turso write fails with a cert
@@ -89,6 +93,16 @@ SOURCE_TAG = "la_flamme_rouge"
 
 # Only fill these UCI classes (the user wants WorldTour + ProSeries only).
 TARGET_TOURS = {"1.UWT", "2.UWT", "1.Pro", "2.Pro"}
+
+# National championships (class CN) are also fetched, for a curated set of
+# countries. They are NOT in the month-calendar grid — they live in LFR's
+# "calendar 12" listing, matched by (nationality, discipline) since the listing's
+# country wording is inconsistent. Map the LFR flag-image name -> our nat code.
+NC_FLAG_TO_NAT = {
+    "france": "FR", "belgium": "BE", "spain": "ES", "italy": "IT",
+    "denmark": "DK", "great-britain": "GB", "slovenia": "SI",
+}
+NC_MAX_LISTING_PAGES = 20   # safety cap when paginating the calendar-12 listing
 
 # Politeness: randomised delay (seconds) between LFR requests. LFR tolerates the
 # public maps section but blocks hammering — keep these generous.
@@ -296,7 +310,7 @@ def targets(races: List[dict], has_gpx: Callable[[str], bool],
     """
     out = []
     for r in races:
-        if r.get("uci_tour") not in TARGET_TOURS:
+        if r.get("uci_tour") not in TARGET_TOURS and not is_nc_race(r):
             continue
         if only:
             if r["slug"] != only:
@@ -306,6 +320,54 @@ def targets(races: List[dict], has_gpx: Callable[[str], bool],
         if has_gpx(r["slug"]):
             continue
         out.append(r)
+    return out
+
+
+# --- National-championship resolution (calendar-12 listing) ----------------
+def is_nc_race(race: dict) -> bool:
+    """True for the national-championship races we add (slug 'nc-…' or class CN)."""
+    return str(race.get("slug", "")).startswith("nc-") or race.get("uci_tour") == "CN"
+
+
+def nc_discipline(race: dict) -> str:
+    """'itt' or 'road' for an NC race, from its slug (nc-{country}[-itt]-{year})."""
+    return "itt" if "-itt" in str(race.get("slug", "")) else "road"
+
+
+_TYPE_CELL_RE = re.compile(r"type%5B0%5D=")
+
+
+def parse_nc_listing(html: str, year: int) -> List[dict]:
+    """Parse an LFR /maps/races?calendar[0]=12 listing page into MEN-ELITE national
+    championship candidates. Each row has an unambiguous flag image (country), a
+    type cell ('ME'/'WE'/…) and a name; we match by (nationality, discipline), so
+    the inconsistent country wording in the name doesn't matter. Returns
+    [{race_id, view_url, nat, discipline, name}] for ME rows of NC_FLAG_TO_NAT."""
+    soup = BeautifulSoup(html, "html.parser")
+    out = []
+    for tr in soup.find_all("tr", class_="displayRaceLine"):
+        a = tr.find("a", href=re.compile(r"/maps/races/view/\d+/\d+"))
+        if not a:
+            continue
+        tcell = tr.find("a", href=_TYPE_CELL_RE)
+        if not tcell or tcell.get_text(strip=True) != "ME":      # men's elite only
+            continue
+        flag = tr.find("img", class_="flag")
+        country = (re.sub(r"\.png$", "", flag["src"].split("/")[-1]).lower()
+                   if flag and flag.get("src") else "")
+        nat = NC_FLAG_TO_NAT.get(country)
+        if not nat:
+            continue
+        rid = int(re.search(r"/maps/races/view/\d+/(\d+)", a["href"]).group(1))
+        strong = tr.find("strong")
+        name = strong.get_text(strip=True) if strong else ""
+        out.append({
+            "race_id": rid,
+            "view_url": f"{BASE_URL}/maps/races/view/{year}/{rid}",
+            "nat": nat,
+            "discipline": "itt" if "itt" in name.lower() else "road",
+            "name": name,
+        })
     return out
 
 
@@ -429,9 +491,11 @@ class CDPFetcher:
 # ===========================================================================
 #  Resolve + scrape one race  (uses a CDPFetcher)
 # ===========================================================================
-def find_race_page(race: dict, year: int, pool: List[dict]) -> Optional[dict]:
-    """Resolve this race's LFR race-view page from the pre-fetched calendar pool.
-    Honours LFR_RACE_OVERRIDES first (no calendar lookup needed)."""
+def find_race_page(race: dict, year: int, wt_pool: List[dict],
+                   nc_pool: dict) -> Optional[dict]:
+    """Resolve this race's LFR race-view page. Honours LFR_RACE_OVERRIDES first,
+    then national championships via the NC pool (by nationality + discipline),
+    then WT/ProSeries via the month-calendar pool (by date + name)."""
     slug = race["slug"]
     if slug in LFR_RACE_OVERRIDES:
         rid = LFR_RACE_OVERRIDES[slug]
@@ -439,7 +503,17 @@ def find_race_page(race: dict, year: int, pool: List[dict]) -> Optional[dict]:
                 "view_url": f"{BASE_URL}/maps/races/view/{year}/{rid}",
                 "score": 1.0}
 
-    match = match_in_calendar(race, pool)
+    if is_nc_race(race):
+        key = (race.get("nationality"), nc_discipline(race))
+        cand = nc_pool.get(key)
+        if cand:
+            log.info(f"  matched NC '{race['name']}' → LFR #{cand['race_id']} "
+                     f"'{cand['name']}' {key}")
+            return {**cand, "score": 1.0}
+        log.warning(f"  no LFR NC match for '{race['name']}' {key}")
+        return None
+
+    match = match_in_calendar(race, wt_pool)
     if match:
         log.info(f"  matched '{race['name']}' → LFR #{match['race_id']} "
                  f"'{match.get('name')}' (date {match.get('date')}, "
@@ -448,6 +522,33 @@ def find_race_page(race: dict, year: int, pool: List[dict]) -> Optional[dict]:
     log.warning(f"  no LFR calendar match for '{race['name']}' "
                 f"(startdate {race.get('startdate')})")
     return None
+
+
+def build_nc_pool(fetcher: CDPFetcher, year: int, nats: set) -> dict:
+    """Paginate LFR's calendar-12 (national championships) ME listing and return a
+    {(nat, discipline): candidate} map for the requested nationalities. Men's-only
+    via the type=ME filter; nationality from each row's flag image. Stops once road
+    + ITT are found for every requested nation, or at the last/​capped page."""
+    pool: dict = {}
+    for p in range(1, NC_MAX_LISTING_PAGES + 1):
+        url = (f"{BASE_URL}/maps/races?count=0&page={p}"
+               f"&calendar%5B0%5D=12&type%5B0%5D=1&year%5B0%5D={year}&years=&name=")
+        html = fetcher.get_html(url)
+        polite_sleep()
+        if not html:
+            break
+        rows = parse_nc_listing(html, year)
+        for c in rows:
+            if c["nat"] in nats:
+                pool.setdefault((c["nat"], c["discipline"]), c)
+        log.info(f"  NC listing p{p}: {len(rows)} ME-NC row(s); "
+                 f"{len(pool)} target match(es) so far")
+        if all((n, d) in pool for n in nats for d in ("itt", "road")):
+            break                                  # found everything we need
+        # Last page when fewer than a full page of race rows came back.
+        if len(re.findall(r"/maps/races/view/\d+/\d+", html)) < 30:
+            break
+    return pool
 
 
 def build_calendar_pool(fetcher: CDPFetcher, year: int,
@@ -475,10 +576,10 @@ def build_calendar_pool(fetcher: CDPFetcher, year: int,
 
 
 def scrape_race(fetcher: CDPFetcher, race: dict, year: int,
-                pool: List[dict], dry_run: bool) -> List[dict]:
+                wt_pool: List[dict], nc_pool: dict, dry_run: bool) -> List[dict]:
     """Resolve a race on LFR and fetch its stage GPX. Returns a list of file
     records: dry-run → {stage, track_id, filename}; live → also {content, url}."""
-    page = find_race_page(race, year, pool)
+    page = find_race_page(race, year, wt_pool, nc_pool)
     if not page:
         return []
     html = fetcher.get_html(page["view_url"])
@@ -560,7 +661,7 @@ def main():
     todo = targets(races, lambda s: db.has_gpx(client, s), args.only,
                    start_on_or_after=cutoff)
     scope = f"only '{args.only}'" if args.only else f"starting on/after {cutoff}"
-    log.info(f"{len(todo)} WT+ProSeries race(s) missing GPX to try on LFR ({scope})")
+    log.info(f"{len(todo)} WT+ProSeries/NC race(s) missing GPX to try on LFR ({scope})")
 
     if args.list_targets:
         for r in todo:
@@ -572,27 +673,36 @@ def main():
         client.close()
         return
 
-    # Months to pull from LFR's calendar = the start months of the races we still
-    # need (only races not already pinned via an override need the calendar).
     cal_year = min((r.get("year") or default_year for r in todo), default=default_year)
-    months = sorted({int(str(r["startdate"])[5:7]) for r in todo
-                     if r.get("startdate") and r["slug"] not in LFR_RACE_OVERRIDES})
+    # WT/ProSeries resolve via month calendars (start months); NCs via the
+    # calendar-12 listing (by nationality). Overridden races need neither.
+    needs_pool = [r for r in todo if r["slug"] not in LFR_RACE_OVERRIDES]
+    wt_months = sorted({int(str(r["startdate"])[5:7]) for r in needs_pool
+                        if r.get("startdate") and not is_nc_race(r)})
+    nc_nats = {r.get("nationality") for r in needs_pool if is_nc_race(r)}
 
     fetcher = None
     filled = stored_files = 0
     try:
         fetcher = CDPFetcher(args.cdp_url, dump_dir=dump_dir)
 
-        pool: List[dict] = []
-        if months:
-            log.info(f"\nBuilding LFR calendar pool for {cal_year}, months {months} …")
-            pool = build_calendar_pool(fetcher, cal_year, months)
-            log.info(f"Calendar pool: {len(pool)} men's race(s) with maps")
+        wt_pool: List[dict] = []
+        if wt_months:
+            log.info(f"\nBuilding LFR calendar pool for {cal_year}, months {wt_months} …")
+            wt_pool = build_calendar_pool(fetcher, cal_year, wt_months)
+            log.info(f"Calendar pool: {len(wt_pool)} men's race(s) with maps")
+
+        nc_pool: dict = {}
+        if nc_nats:
+            log.info(f"\nBuilding LFR national-championship pool for {cal_year}, "
+                     f"nations {sorted(nc_nats)} …")
+            nc_pool = build_nc_pool(fetcher, cal_year, nc_nats)
+            log.info(f"NC pool: {len(nc_pool)} (nationality, discipline) entry(ies)")
 
         for race in todo:
             year = race.get("year") or default_year
             log.info(f"\n{'='*54}\n{race['name']}  [{race.get('uci_tour')}]\n{'='*54}")
-            files = scrape_race(fetcher, race, year, pool, args.dry_run)
+            files = scrape_race(fetcher, race, year, wt_pool, nc_pool, args.dry_run)
 
             if args.dry_run:
                 for f in files:

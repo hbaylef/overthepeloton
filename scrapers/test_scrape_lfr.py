@@ -57,6 +57,52 @@ def test_parse_calendar_extracts_name_meta_and_earliest_date():
     assert out[1]["view_url"].endswith("/maps/races/view/2026/1")
 
 
+def _nc_row(rid, name, flag, typ):
+    """One LFR calendar-12 listing row (mirrors the real markup)."""
+    return (f'<tr class="displayRaceLine"><td>Thu 25 June 2026</td>'
+            f'<td><a href="/maps/races?calendar%5B0%5D=12">National Championships</a></td>'
+            f'<td><div class="displayRaceLine__logo"><strong>{name}</strong></div></td>'
+            f'<td><a href="/maps/races?nations%5B0%5D=2"><img class="flag" '
+            f'src="/ext/theme/images/flags/{flag}.png"/></a></td><td>1</td>'
+            f'<td><a href="/maps/races?type%5B0%5D=1">{typ}</a></td>'
+            f'<td><a href="/maps/races?subclass%5B0%5D=18">CN</a></td>'
+            f'<td><a href="/maps/races/view/2026/{rid}"><h4 class="icon"></h4></a></td></tr>')
+
+
+def test_parse_nc_listing_filters_me_and_target_nations():
+    html = "<table>" + "".join([
+        _nc_row(112, "French Road National Championship - ITT (Men Elite)", "France", "ME"),
+        _nc_row(113, "French Road National Championship (Men Elite)", "France", "ME"),
+        _nc_row(592, "French Road National Championship - ITT (Women Elite)", "France", "WE"),
+        _nc_row(900, "USA Road National Championship (Men Elite)", "United-States", "ME"),
+    ]) + "</table>"
+    got = {(c["nat"], c["discipline"]): c["race_id"] for c in lfr.parse_nc_listing(html, 2026)}
+    # Men's France ITT + road kept; women's dropped; non-target nation dropped.
+    assert got == {("FR", "itt"): 112, ("FR", "road"): 113}
+
+
+def test_is_nc_race_and_discipline():
+    assert lfr.is_nc_race({"slug": "nc-france-itt-2026"}) is True
+    assert lfr.is_nc_race({"slug": "tour-de-france-2026", "uci_tour": "2.UWT"}) is False
+    assert lfr.is_nc_race({"slug": "x-2026", "uci_tour": "CN"}) is True
+    assert lfr.nc_discipline({"slug": "nc-france-itt-2026"}) == "itt"
+    assert lfr.nc_discipline({"slug": "nc-france-2026"}) == "road"
+
+
+def test_find_race_page_resolves_nc_by_nation_and_discipline():
+    nc_pool = {("FR", "itt"): {"race_id": 112, "name": "French NC ITT",
+                               "view_url": "u/112"}}
+    itt = lfr.find_race_page(
+        {"slug": "nc-france-itt-2026", "nationality": "FR", "name": "FR NC ITT"},
+        2026, [], nc_pool)
+    assert itt and itt["race_id"] == 112
+    # Road race for the same nation isn't in the pool → no match.
+    road = lfr.find_race_page(
+        {"slug": "nc-france-2026", "nationality": "FR", "name": "FR NC Road"},
+        2026, [], nc_pool)
+    assert road is None
+
+
 def test_match_in_calendar_prefers_exact_date_then_name():
     pool = [
         {"race_id": 1, "name": "Tour de France", "date": "2026-07-04"},
