@@ -32,7 +32,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import db
-from derive_climbs import parse_gpx, cumulative_distance
+from derive_climbs import (
+    MAX_ROUTE_POINTS,
+    cumulative_distance,
+    downsample,
+    parse_gpx,
+    round_point,
+)
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 STARTLISTS_DIR = DATA_DIR / "startlists"
@@ -40,9 +46,10 @@ CLIMBS_DIR = DATA_DIR / "climbs"
 ROUTES_DIR = DATA_DIR / "routes"
 PREDICTIONS_DIR = DATA_DIR / "predictions"
 
-# Max points kept per route in the public slice. Plenty for a smooth map line
-# and elevation profile; the full-resolution track stays private in Turso.
-MAX_ROUTE_POINTS = 1500
+# Route resolution (MAX_ROUTE_POINTS) and the downsample/round_point helpers live
+# in derive_climbs — the single source of truth for "the points the site sees" —
+# so climb detection and this publisher reduce the track identically. Plenty for a
+# smooth map line and elevation profile; the full-resolution track stays in Turso.
 
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(message)s")
@@ -90,22 +97,6 @@ def _write_if_changed(path: Path, payload, compact: bool = False) -> bool:
 # --------------------------------------------------------------------------- #
 # Routes: downsample raw gpx -> thin public point list
 # --------------------------------------------------------------------------- #
-def downsample(points: list, max_points: int = MAX_ROUTE_POINTS) -> list:
-    """Reduce a point list to exactly max_points evenly-spaced points (when it's
-    longer), always including the first and last point so the distance/profile
-    endpoints stay exact."""
-    n = len(points)
-    if n <= max_points:
-        return points
-    return [points[round(i * (n - 1) / (max_points - 1))] for i in range(max_points)]
-
-
-def round_point(p) -> list:
-    """(lat, lon, ele) -> [lat5, lon5, ele] — ~1 m horizontal precision, integer
-    metres of elevation. Small payload, plenty for the map line + profile."""
-    return [round(p[0], 5), round(p[1], 5), round(p[2])]
-
-
 def total_distance_km(points: list) -> float:
     return cumulative_distance(points)[-1] if len(points) > 1 else 0.0
 

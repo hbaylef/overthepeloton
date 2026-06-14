@@ -72,6 +72,16 @@ LEN_MATCH_TOL_KM = 2.0     # fallback: max length gap (km) when the pool entry
                            # has no altitude (some races, e.g. the Tour, publish
                            # the climb pool with names + lengths but top=0)
 
+# Public-slice route resolution. The frontend draws the DOWNSAMPLED route
+# (publish.py: exactly this many evenly-spaced points, first+last kept) and
+# measures every distance — including the profile's total km — along that
+# reduced polyline. Climb positions MUST be measured on the SAME polyline, or
+# `km_before_finish` lands on a different distance scale than the frontend's
+# `totalKm` and every climb drifts (the downsample is ~3% shorter, non-uniformly,
+# so anchoring to the finish doesn't save the interior). publish.py imports these
+# two so there is one definition of "the points the site sees".
+MAX_ROUTE_POINTS = 1500
+
 # --- Detection tuning (uncalibrated starting values; output is "experimental") --
 SMOOTH_M = 200.0        # elevation smoothing window (m) — kills GPS noise
 MIN_LENGTH_KM = 1.0     # ignore rises shorter than this
@@ -110,6 +120,31 @@ def haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
          math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) *
          math.sin(d_lon / 2) ** 2)
     return r * 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+
+
+def downsample(points: list, max_points: int = MAX_ROUTE_POINTS) -> list:
+    """Reduce a point list to exactly max_points evenly-spaced points (when it's
+    longer), always including the first and last point. This is the SAME reduction
+    publish.py applies to build the public route slice, so detecting on its output
+    measures climbs on the exact polyline the frontend draws (see MAX_ROUTE_POINTS)."""
+    n = len(points)
+    if n <= max_points:
+        return points
+    return [points[round(i * (n - 1) / (max_points - 1))] for i in range(max_points)]
+
+
+def round_point(p) -> list:
+    """(lat, lon, ele) -> [lat5, lon5, ele] — the exact rounding publish.py writes
+    into the public slice (~1 m horizontal, integer metres). Detecting on rounded
+    points keeps the distance/elevation series identical to what the site renders."""
+    return [round(p[0], 5), round(p[1], 5), round(p[2])]
+
+
+def frontend_points(points: list) -> list:
+    """The points the public site actually draws: downsampled then rounded,
+    exactly as publish.py emits them. Climb detection runs on these so positions
+    share the frontend's distance scale."""
+    return [round_point(p) for p in downsample(points)]
 
 
 def cumulative_distance(points: List[Tuple[float, float, float]]) -> List[float]:
@@ -208,6 +243,9 @@ def climbs_for_gpx(text: str) -> List[dict]:
     points = parse_gpx(text)
     if len(points) < 10:
         return []
+    # Detect on the SAME reduced+rounded polyline the frontend draws, so km_top /
+    # total_km (hence km_before_finish) match the frontend's totalKm exactly.
+    points = frontend_points(points)
     dist = cumulative_distance(points)
     ele_s = smooth_elevation(dist, [p[2] for p in points])
     detected = detect_climbs(dist, ele_s)
@@ -374,6 +412,11 @@ def main():
     ap.add_argument("--dry-run", action="store_true",
                     help="report how many stage races would be skipped vs processed, "
                          "then exit (no network, no re-derive, no writes)")
+    ap.add_argument("--force", action="store_true",
+                    help="re-derive EVERY stage race, ignoring the 'already derived + "
+                         "named' skip. Needed to backfill after a detection change "
+                         "(GPX is otherwise treated as immutable). Names are re-applied "
+                         "from the cached pool, so no extra PCS calls.")
     args = ap.parse_args()
 
     client = db.open_db()
@@ -400,7 +443,8 @@ def main():
     for slug in stage_slugs:
         cached_pool = (names_cache.get(slug) or {}).get("pool")
         payload = db.get_document(client, db.KIND_CLIMBS, slug)
-        (todo if needs_processing(payload, cached_pool) else done).append(slug)
+        process = args.force or needs_processing(payload, cached_pool)
+        (todo if process else done).append(slug)
     log.info(f"Stage races derived + named (skip): {len(done)} · "
              f"to process (new / names pending): {len(todo)}")
     if args.dry_run:
