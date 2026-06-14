@@ -1659,6 +1659,7 @@
       "team_url": "team/xds-astana-team-2026"
     },
     {
+      "abandoned_stage": "S8",
       "birthdate": "1996-5-9",
       "birthplace_lat": 42.6384261,
       "birthplace_lon": 12.674297,
@@ -1677,6 +1678,7 @@
           "tt": 8
         }
       },
+      "status": "DNS",
       "team": "XDS Astana Team (WT)",
       "team_url": "team/xds-astana-team-2026"
     },
@@ -2903,6 +2905,7 @@
       "team_url": "team/nsn-cycling-team-2026"
     },
     {
+      "abandoned_stage": "S8",
       "birthdate": "2000-12-25",
       "birthplace_lat": -37.8142454,
       "birthplace_lon": 144.9631732,
@@ -2921,10 +2924,12 @@
           "tt": 897
         }
       },
+      "status": "DNS",
       "team": "Team Jayco AlUla (WT)",
       "team_url": "team/team-jayco-alula-2026"
     },
     {
+      "abandoned_stage": "S8",
       "birthdate": "1998-9-28",
       "birthplace_lat": 42.6384261,
       "birthplace_lon": 12.674297,
@@ -2943,6 +2948,7 @@
           "tt": 6
         }
       },
+      "status": "DNS",
       "team": "Team Jayco AlUla (WT)",
       "team_url": "team/team-jayco-alula-2026"
     },
@@ -3708,5 +3714,5 @@
     }
   ],
   "total_riders": 154,
-  "updated_at": "2026-06-13T20:12:41.781310"
+  "updated_at": "2026-06-14T10:37:57.269793"
 }

@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-06-13T20:36:54.631309+00:00",
+  "updated_at": "2026-06-14T10:53:27.886564+00:00",
   "year": 2026,
-  "total_races": 98,
+  "total_races": 99,
   "races": [
     {
       "category": "Men Elite",
@@ -189,6 +189,73 @@
       "start_time_source": "default",
       "startdate": "2026-02-01",
       "uci_tour": "1.UWT",
+      "year": 2026
+    },
+    {
+      "category": "Men Elite",
+      "cyclingstage_slug": "tour-of-valencia",
+      "edition": 77,
+      "enddate": "2026-02-08",
+      "is_one_day_race": false,
+      "name": "Volta a la Comunitat Valenciana",
+      "nationality": "ES",
+      "pcs_slug": "vuelta-a-la-comunidad-valenciana",
+      "pcs_url": "race/vuelta-a-la-comunidad-valenciana/2026",
+      "slug": "vuelta-a-la-comunidad-valenciana-2026",
+      "stages": [
+        {
+          "date": "02-04",
+          "profile_icon": "p2",
+          "stage_name": "Stage 1 | Segorbe - Torreblanca",
+          "stage_type": "sprint_break",
+          "stage_type_source": "profile_icon",
+          "stage_url": "race/vuelta-a-la-comunidad-valenciana/2026/stage-1",
+          "start_time": "13:12",
+          "start_time_source": "pcs"
+        },
+        {
+          "date": "02-05",
+          "profile_icon": "p2",
+          "stage_name": "Stage 2 (ITT) | Carlet - Alginet",
+          "stage_type": "time_trial",
+          "stage_type_source": "stage_name_itt",
+          "stage_url": "race/vuelta-a-la-comunidad-valenciana/2026/stage-2",
+          "start_time": "14:28",
+          "start_time_source": "pcs"
+        },
+        {
+          "date": "02-06",
+          "profile_icon": "p4",
+          "stage_name": "Stage 3 | Orihuela - San Vicente del Raspeig",
+          "stage_type": "climber",
+          "stage_type_source": "profile_icon",
+          "stage_url": "race/vuelta-a-la-comunidad-valenciana/2026/stage-3",
+          "start_time": "13:20",
+          "start_time_source": "pcs"
+        },
+        {
+          "date": "02-07",
+          "profile_icon": "p2",
+          "stage_name": "Stage 4 | La Nucía - Teulada Moraira",
+          "stage_type": "sprint_break",
+          "stage_type_source": "profile_icon",
+          "stage_url": "race/vuelta-a-la-comunidad-valenciana/2026/stage-4",
+          "start_time": "12:50",
+          "start_time_source": "pcs"
+        },
+        {
+          "date": "02-08",
+          "profile_icon": "p2",
+          "stage_name": "Stage 5 | Bétera - Valencia",
+          "stage_type": "sprint_break",
+          "stage_type_source": "profile_icon",
+          "stage_url": "race/vuelta-a-la-comunidad-valenciana/2026/stage-5",
+          "start_time": "14:48",
+          "start_time_source": "pcs"
+        }
+      ],
+      "startdate": "2026-02-04",
+      "uci_tour": "2.Pro",
       "year": 2026
     },
     {
@@ -2793,7 +2860,7 @@
         {
           "date": "06-20",
           "profile_icon": "p2",
-          "stage_name": "Stage 4 | Begijnendijk - Aarschot",
+          "stage_name": "Stage 4 | Begijnendijk-Betekom - Aarschot",
           "stage_type": "sprint_break",
           "stage_type_source": "profile_icon",
           "stage_url": "race/tour-of-belgium/2026/stage-4",
