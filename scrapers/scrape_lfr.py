@@ -35,10 +35,13 @@ occasional ATTENDED run, NOT a cron job — it is deliberately NOT in the daily
 Actions workflow (LFR also blocks Actions IPs).
 
 LFR mechanics (no login needed for the public maps section):
-  - Race listing:  /maps/races?count=0&page={p}&calendar[0]={cal}&year[0]={yr}&name={q}
-                   calendar codes: 1=UWT, 2=Europe, 3=Americas, 4=Asia, 8=WC
-  - Race page:     /maps/races/view/{race_id}/{name}   (lists the stage tracks)
-  - GPX download:  /maps/viewtrack/gpx/{track_id}      (a ready GPX file)
+  - Month calendar: /maps/races/calendar?month={m}&year={yr}
+                    A day grid; each race links to its view page and exposes a
+                    TEXT name, UCI class and gender (ME/WE) in race__name/__meta.
+                    We resolve races from here (the old /maps/races listing
+                    rendered grand-tour names as logo images → unmatchable).
+  - Race page:      /maps/races/view/{year}/{race_id}    (lists the stage tracks)
+  - GPX download:   /maps/viewtrack/gpx/{track_id}       (a ready GPX file)
 
 ⚠️ TLS gotcha for the WRITE side: the Python → Turso write does NOT go through the
 browser; it goes through the corporate proxy. If the Turso write fails with a cert
@@ -87,14 +90,9 @@ SOURCE_TAG = "la_flamme_rouge"
 # Only fill these UCI classes (the user wants WorldTour + ProSeries only).
 TARGET_TOURS = {"1.UWT", "2.UWT", "1.Pro", "2.Pro"}
 
-# LFR race-listing calendar codes to search (UWT + the continental calendars that
-# carry ProSeries races). World Championships (8) excluded.
-CALENDAR_CODES = [1, 2, 3, 4]
-
 # Politeness: randomised delay (seconds) between LFR requests. LFR tolerates the
 # public maps section but blocks hammering — keep these generous.
 DELAY_RANGE = (3.0, 7.0)
-MAX_LISTING_PAGES = 12          # safety cap when crawling a calendar's listing
 
 # How long (seconds) to wait for the user to solve a Cloudflare challenge in the
 # visible Chrome window before giving up on a page.
@@ -103,7 +101,9 @@ CHALLENGE_WAIT_SECONDS = 180
 # Pin a race when the name auto-match fails: race_slug -> LFR race_id (the number
 # in /maps/races/view/{id}/...). Fill in after a --dry-run shows the candidates.
 LFR_RACE_OVERRIDES: dict = {
-    # "tour-de-suisse-2026": 12345,
+    # Grand tours render their name as a logo image (no <strong> text), so the
+    # listing name-match can't see them. Pin them by LFR race_id instead.
+    "tour-de-france-2026": 1,   # /maps/races/view/2026/1
 }
 
 logging.basicConfig(level=logging.INFO,
@@ -145,39 +145,90 @@ def name_match_score(target: str, candidate: str) -> float:
     return len(a & b) / len(a | b)
 
 
-def parse_race_listing(html: str) -> List[dict]:
-    """Extract races from an LFR /maps/races listing page.
+_VIEW_RE = re.compile(r"/maps/races/view/(\d+)/(\d+)")
+# Gender token inside race__meta, e.g. "2.UWT - ME -" (ME=Men Elite, WE=Women
+# Elite, MU/WU=U23, MJ/WJ=Junior). We keep only races whose gender is NOT women's.
+_GENDER_RE = re.compile(r"\b(ME|WE|MU|WU|MJ|WJ)\b")
 
-    Real LFR markup (verified 2026-06): each race is a table row; the map link is
-    `/maps/races/view/{year}/{race_id}` (an arrow icon, NO name in the link), and
-    the race name sits in a sibling cell as
-    `<div class="displayRaceLine__logo"><strong>Name</strong></div>`.
-    Returns [{race_id, name, view_url}] per race (de-duplicated by race_id).
+
+def _gender_from_meta(meta_text: str) -> str:
+    m = _GENDER_RE.search(meta_text or "")
+    return m.group(1) if m else ""
+
+
+def parse_calendar(html: str, year: int, month: int) -> List[dict]:
+    """Parse one /maps/races/calendar?month=&year= page into race candidates.
+
+    Real LFR markup (verified 2026-06): a month grid of `<td class="day">` cells
+    (spill-over days carry `day--anotherMonth` — skipped). Each cell has its day
+    number in `.day__header__day` and a `.day__body` of race links:
+
+        <a href="/maps/races/view/{year}/{id}">
+          <div class="race ...">
+            <div class="race__info">
+              <div class="race__name">Tour de Pologne</div>
+              <div class="race__meta"> 2.UWT - ME - <img ...></div>
+
+    Unlike the old /maps/races listing, the calendar exposes a TEXT name, the UCI
+    class AND the gender for EVERY race (even grand tours, whose listing name was
+    a logo image). Returns [{race_id, name, view_url, uci_class, gender, date}]
+    deduped by race_id, where `date` is the earliest in-month day it appears on
+    (i.e. its start date when this is the race's start month).
     """
-    out, seen = [], set()
     soup = BeautifulSoup(html, "html.parser")
-    for a in soup.find_all("a", href=True):
-        m = re.search(r"/maps/races/view/(\d+)/(\d+)", a["href"])
-        if not m:
+    by_id: dict = {}
+    for td in soup.find_all("td", class_="day"):
+        if "day--anotherMonth" in (td.get("class") or []):
             continue
-        year, rid = m.group(1), int(m.group(2))
-        if rid in seen:
+        dh = td.find("div", class_="day__header__day")
+        try:
+            day = int(dh.get_text(strip=True))
+        except (AttributeError, ValueError):
             continue
-        # The name lives elsewhere in the same row, not in this link.
-        name = ""
-        row = a.find_parent("tr")
-        if row:
-            logo = row.find("div", class_="displayRaceLine__logo")
-            strong = (logo.find("strong") if logo else None) or row.find("strong")
-            if strong:
-                name = strong.get_text(strip=True)
-        if not name:
-            continue  # can't match a race we can't name
-        seen.add(rid)
-        out.append({"race_id": rid,
-                    "name": name,
-                    "view_url": f"{BASE_URL}/maps/races/view/{year}/{rid}"})
-    return out
+        date = f"{year}-{month:02d}-{day:02d}"
+        for a in td.find_all("a", href=_VIEW_RE):
+            rid = int(_VIEW_RE.search(a["href"]).group(2))
+            name_el = a.find("div", class_="race__name")
+            meta_el = a.find("div", class_="race__meta")
+            name = name_el.get_text(strip=True) if name_el else ""
+            meta = (re.sub(r"\s+", " ", meta_el.get_text(" ", strip=True))
+                    if meta_el else "")
+            cur = by_id.get(rid)
+            if cur is not None and cur["date"] <= date:
+                continue  # keep the earliest day this race appears on
+            by_id[rid] = {
+                "race_id": rid,
+                "name": name or (cur["name"] if cur else ""),
+                "view_url": f"{BASE_URL}/maps/races/view/{year}/{rid}",
+                "uci_class": meta.split(" - ")[0].strip() if meta else "",
+                "gender": _gender_from_meta(meta),
+                "date": date,
+            }
+    return list(by_id.values())
+
+
+# A unique same-date candidate is only trusted if its name is at least loosely
+# similar. Without this, two of OUR races sharing a start date (e.g. Deutschland
+# Tour & Renewi Tour, both Aug 19) when only one is on LFR would mis-assign the
+# other race the wrong route. Legit LFR-vs-PCS name pairs score ≥0.33 (e.g.
+# "Clásica de San Sebastián" vs "DSSK (Donostia San Sebastian Klasikoa)" = 0.33);
+# genuine mismatches score 0.0. 0.30 separates them with margin.
+DATE_MATCH_NAME_MIN = 0.30
+
+
+def match_in_calendar(race: dict, pool: List[dict]) -> Optional[dict]:
+    """Resolve a race to a calendar candidate. Prefer an exact start-date match
+    when its name also passes a loose sanity-gate (guards against two same-date
+    races); otherwise fall back to a pure name match (handles LFR vs PCS naming)."""
+    rd = str(race.get("startdate") or "")[:10]
+    same = [c for c in pool if c["date"] == rd]
+    if len(same) == 1:
+        if name_match_score(race["name"], same[0]["name"]) >= DATE_MATCH_NAME_MIN:
+            return {**same[0], "score": 1.0}
+        return best_race_match(race["name"], pool)   # bad name → don't trust date
+    if len(same) > 1:
+        return best_race_match(race["name"], same)   # disambiguate by name
+    return best_race_match(race["name"], pool)        # no date hit → name match
 
 
 def best_race_match(target_name: str, candidates: List[dict],
@@ -378,9 +429,9 @@ class CDPFetcher:
 # ===========================================================================
 #  Resolve + scrape one race  (uses a CDPFetcher)
 # ===========================================================================
-def find_race_page(fetcher: CDPFetcher, race: dict, year: int) -> Optional[dict]:
-    """Find this race's LFR race-view page. Honours LFR_RACE_OVERRIDES, else
-    searches the listing by name across the target calendars."""
+def find_race_page(race: dict, year: int, pool: List[dict]) -> Optional[dict]:
+    """Resolve this race's LFR race-view page from the pre-fetched calendar pool.
+    Honours LFR_RACE_OVERRIDES first (no calendar lookup needed)."""
     slug = race["slug"]
     if slug in LFR_RACE_OVERRIDES:
         rid = LFR_RACE_OVERRIDES[slug]
@@ -388,39 +439,46 @@ def find_race_page(fetcher: CDPFetcher, race: dict, year: int) -> Optional[dict]
                 "view_url": f"{BASE_URL}/maps/races/view/{year}/{rid}",
                 "score": 1.0}
 
-    candidates: List[dict] = []
-    q = normalize_name(race["name"]).replace(" ", "+")
-    for cal in CALENDAR_CODES:
-        # LFR pages are 1-INDEXED: its SQL offset is (page-1)*30, so page=0 yields
-        # `LIMIT -30,30` → a phpBB "General Error" page (0 candidates). Start at 1.
-        for page in range(1, MAX_LISTING_PAGES + 1):
-            url = (f"{BASE_URL}/maps/races?count=0&page={page}"
-                   f"&calendar%5B0%5D={cal}&year%5B0%5D={year}&years=&name={q}")
-            html = fetcher.get_html(url)
-            polite_sleep()
-            if not html:
-                break
-            rows = parse_race_listing(html)
-            if not rows:
-                break
-            candidates.extend(rows)
-            if len(rows) < 10:          # last page of this calendar's results
-                break
-        match = best_race_match(race["name"], candidates)
-        if match:
-            log.info(f"  matched '{race['name']}' → LFR #{match['race_id']} "
-                     f"'{match['name']}' (score {match['score']})")
-            return match
-    log.warning(f"  no LFR race match for '{race['name']}' "
-                f"({len(candidates)} candidates seen)")
+    match = match_in_calendar(race, pool)
+    if match:
+        log.info(f"  matched '{race['name']}' → LFR #{match['race_id']} "
+                 f"'{match.get('name')}' (date {match.get('date')}, "
+                 f"score {match.get('score')})")
+        return match
+    log.warning(f"  no LFR calendar match for '{race['name']}' "
+                f"(startdate {race.get('startdate')})")
     return None
 
 
+def build_calendar_pool(fetcher: CDPFetcher, year: int,
+                        months: List[int]) -> List[dict]:
+    """Fetch the given month calendars and return a merged MEN'S-only candidate
+    pool (earliest date kept per race across months). Women's races are dropped
+    here by the gender flag in race__meta."""
+    by_id: dict = {}
+    for m in sorted(set(months)):
+        url = f"{BASE_URL}/maps/races/calendar?month={m}&year={year}"
+        html = fetcher.get_html(url)
+        polite_sleep()
+        if not html:
+            log.warning(f"  calendar {year}-{m:02d}: no HTML")
+            continue
+        cands = parse_calendar(html, year, m)
+        mens = [c for c in cands if not c["gender"].startswith("W")]
+        log.info(f"  calendar {year}-{m:02d}: {len(cands)} races "
+                 f"({len(mens)} men's with maps)")
+        for c in mens:
+            cur = by_id.get(c["race_id"])
+            if cur is None or c["date"] < cur["date"]:
+                by_id[c["race_id"]] = c
+    return list(by_id.values())
+
+
 def scrape_race(fetcher: CDPFetcher, race: dict, year: int,
-                dry_run: bool) -> List[dict]:
+                pool: List[dict], dry_run: bool) -> List[dict]:
     """Resolve a race on LFR and fetch its stage GPX. Returns a list of file
     records: dry-run → {stage, track_id, filename}; live → also {content, url}."""
-    page = find_race_page(fetcher, race, year)
+    page = find_race_page(race, year, pool)
     if not page:
         return []
     html = fetcher.get_html(page["view_url"])
@@ -514,14 +572,27 @@ def main():
         client.close()
         return
 
+    # Months to pull from LFR's calendar = the start months of the races we still
+    # need (only races not already pinned via an override need the calendar).
+    cal_year = min((r.get("year") or default_year for r in todo), default=default_year)
+    months = sorted({int(str(r["startdate"])[5:7]) for r in todo
+                     if r.get("startdate") and r["slug"] not in LFR_RACE_OVERRIDES})
+
     fetcher = None
     filled = stored_files = 0
     try:
         fetcher = CDPFetcher(args.cdp_url, dump_dir=dump_dir)
+
+        pool: List[dict] = []
+        if months:
+            log.info(f"\nBuilding LFR calendar pool for {cal_year}, months {months} …")
+            pool = build_calendar_pool(fetcher, cal_year, months)
+            log.info(f"Calendar pool: {len(pool)} men's race(s) with maps")
+
         for race in todo:
             year = race.get("year") or default_year
             log.info(f"\n{'='*54}\n{race['name']}  [{race.get('uci_tour')}]\n{'='*54}")
-            files = scrape_race(fetcher, race, year, args.dry_run)
+            files = scrape_race(fetcher, race, year, pool, args.dry_run)
 
             if args.dry_run:
                 for f in files:

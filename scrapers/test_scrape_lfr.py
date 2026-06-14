@@ -28,29 +28,58 @@ def test_name_match_score_low_for_different_races():
     assert lfr.name_match_score("Paris-Tours", "Tour Down Under") < 0.3
 
 
-def test_parse_race_listing_extracts_view_links():
-    # Real LFR markup: name in a sibling cell's <strong>, map link is
-    # /maps/races/view/{year}/{id} with only an icon inside.
-    html = """
-      <table>
-        <tr class="displayRaceLine">
-          <td><div class="displayRaceLine__logo"><strong>Tour de Suisse</strong></div></td>
-          <td><a href="/maps/races/view/2026/777"><h4 class="icon"></h4></a></td>
-        </tr>
-        <tr class="displayRaceLine">
-          <td><div class="displayRaceLine__logo"><strong>Il Lombardia</strong></div></td>
-          <td><a href="/maps/races/view/2026/901"><h4 class="icon"></h4></a></td>
-        </tr>
-        <tr class="displayRaceLine">
-          <td><div class="displayRaceLine__logo"><strong>dup row</strong></div></td>
-          <td><a href="/maps/races/view/2026/777"><h4 class="icon"></h4></a></td>
-        </tr>
-        <tr><td><a href="/something/else">noise</a></td></tr>
-      </table>"""
-    rows = lfr.parse_race_listing(html)
-    assert [r["race_id"] for r in rows] == [777, 901], rows
-    assert rows[0]["name"] == "Tour de Suisse"
-    assert rows[0]["view_url"].endswith("/maps/races/view/2026/777")
+def _cal_race(day, rid, name, meta):
+    return (f'<td class="day"><div class="day__header">'
+            f'<div class="day__header__day">{day}</div></div><div class="day__body">'
+            f'<a href="/maps/races/view/2026/{rid}"><div class="race"><div class="race__info">'
+            f'<div class="race__name">{name}</div>'
+            f'<div class="race__meta"> {meta} <img></div></div></div></a></div></td>')
+
+
+def test_parse_calendar_extracts_name_meta_and_earliest_date():
+    # Real LFR markup: month grid of <td class="day"> cells; a multi-day race
+    # repeats across days; spill-over days carry day--anotherMonth (skipped).
+    html = ("<table><tr>"
+            + _cal_race(4, 1, "Tour de France", "2.UWT - ME -")
+            + _cal_race(5, 1, "Tour de France", "2.UWT - ME -")   # same race, later day
+            + _cal_race(5, 445, "Tour of Britain Women", "2.WWT - WE -")
+            + '<td class="day day--anotherMonth"><div class="day__header">'
+              '<div class="day__header__day">31</div></div><div class="day__body">'
+              '<a href="/maps/races/view/2026/99"><div class="race__name">Spillover</div></a>'
+              '</div></td>'
+            + "</tr></table>")
+    out = {c["race_id"]: c for c in lfr.parse_calendar(html, 2026, 7)}
+    assert set(out) == {1, 445}                          # anotherMonth (99) skipped
+    assert out[1]["name"] == "Tour de France"
+    assert out[1]["date"] == "2026-07-04"                # earliest day kept, not 5
+    assert out[1]["uci_class"] == "2.UWT" and out[1]["gender"] == "ME"
+    assert out[445]["gender"] == "WE"
+    assert out[1]["view_url"].endswith("/maps/races/view/2026/1")
+
+
+def test_match_in_calendar_prefers_exact_date_then_name():
+    pool = [
+        {"race_id": 1, "name": "Tour de France", "date": "2026-07-04"},
+        {"race_id": 2, "name": "Tour de Pologne", "date": "2026-08-03"},
+    ]
+    # Unique same-date hit with a sane name wins outright.
+    m = lfr.match_in_calendar({"name": "Tour de France", "startdate": "2026-07-04"}, pool)
+    assert m and m["race_id"] == 1 and m["score"] == 1.0
+    # No date hit → fall back to name score across the pool.
+    m2 = lfr.match_in_calendar({"name": "Tour de Pologne", "startdate": "2099-01-01"}, pool)
+    assert m2 and m2["race_id"] == 2
+    # No date hit and weak name → None.
+    assert lfr.match_in_calendar({"name": "Surf Carnival", "startdate": "2099-01-01"}, pool) is None
+
+
+def test_match_in_calendar_rejects_same_date_wrong_name():
+    # Two of OUR races share a start date but only one is on LFR. The other must
+    # NOT inherit it just because the date lines up (the wrong-route guard).
+    pool = [{"race_id": 37, "name": "Renewi Tour", "date": "2026-08-19"}]
+    good = lfr.match_in_calendar({"name": "Renewi Tour", "startdate": "2026-08-19"}, pool)
+    assert good and good["race_id"] == 37
+    bad = lfr.match_in_calendar({"name": "Deutschland Tour", "startdate": "2026-08-19"}, pool)
+    assert bad is None, bad
 
 
 def test_best_race_match_picks_above_threshold():
